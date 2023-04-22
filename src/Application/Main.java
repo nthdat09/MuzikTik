@@ -1,7 +1,9 @@
 package Application;
 
+import View.LoginPage;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        LoginPage app = new LoginPage();
     }
 }
