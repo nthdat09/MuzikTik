@@ -12,8 +12,8 @@ import javax.swing.border.*;
 /**
  * @author ADMIN
  */
-public class mainMenu extends JPanel {
-    public mainMenu() {
+public class MainMenu extends JPanel {
+    public MainMenu() {
         initComponents();
     }
 
@@ -517,7 +517,7 @@ public class mainMenu extends JPanel {
     
     public static void main (String[] args) {
         JFrame frame = new JFrame("Đồ án bán vé hoà nhạc");
-        frame.setContentPane(new mainMenu());
+        frame.setContentPane(new MainMenu());
         frame.pack();
         frame.setVisible(true);
     }
