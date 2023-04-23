@@ -1,15 +1,12 @@
 package View;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import Controller.LoginPageListener;
-import DAO.UserDAO;
+import DAO.HoiVienDAO;
 import Model.User;
-import com.intellij.uiDesigner.core.*;
-import com.mysql.cj.log.Log;
 
 public class LoginPage extends JPanel {
     ActionListener ac = new LoginPageListener(this);
@@ -94,7 +91,7 @@ public class LoginPage extends JPanel {
         String username = this.UsernameField.getText();
         String password = this.PasswordField.getText();
 
-        User realuser = UserDAO.getInstance().selectById(username);
+        User realuser = HoiVienDAO.getInstance().selectById(username);
 
         if (realuser == null) {
             this.LoginStatus.setText("Login Failed");
