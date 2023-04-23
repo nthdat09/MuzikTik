@@ -105,6 +105,10 @@ public class LoginPage extends JPanel {
             if (username.equals(realUsername) && password.equals(realPassword)) {
                 this.LoginStatus.setText("Login Success");
                 this.LoginStatus.setForeground(Color.GREEN);
+                this.LoginPage.dispose();
+                MainMenu mainMenu = new MainMenu();
+                mainMenu.setVisible(true);
+
             } else {
                 this.LoginStatus.setText("Login Failed");
                 this.LoginStatus.setForeground(Color.RED);
