@@ -4,6 +4,7 @@
 
 package org.example;
 
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
@@ -19,216 +20,234 @@ public class mainMenu extends JPanel {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Man
-        panel1 = new JPanel();
-        label44 = new JLabel();
-        textField1 = new JTextField();
-        scrollPane3 = new JScrollPane();
+        headerPanel = new JPanel();
+        avatarFrame = new JLabel();
+        searchButton = new JTextField();
+        nameAppLabell = new JLabel();
+        mainScrollPanel = new JScrollPane();
         panel2 = new JPanel();
-        label11 = new JLabel();
-        label12 = new JLabel();
-        label13 = new JLabel();
-        label14 = new JLabel();
-        label15 = new JLabel();
-        label16 = new JLabel();
-        label17 = new JLabel();
-        label18 = new JLabel();
-        label19 = new JLabel();
-        label20 = new JLabel();
-        label21 = new JLabel();
-        label23 = new JLabel();
-        label24 = new JLabel();
-        label25 = new JLabel();
-        label26 = new JLabel();
-        label27 = new JLabel();
-        label28 = new JLabel();
-        label29 = new JLabel();
-        label30 = new JLabel();
-        label31 = new JLabel();
-        label32 = new JLabel();
-        label33 = new JLabel();
-        label34 = new JLabel();
-        label35 = new JLabel();
-        label36 = new JLabel();
-        label37 = new JLabel();
-        label38 = new JLabel();
-        label39 = new JLabel();
-        label40 = new JLabel();
-        label41 = new JLabel();
-        label42 = new JLabel();
-        label43 = new JLabel();
-        label22 = new JLabel();
+        mainLabel = new JLabel();
+        mainLivePicture = new JLabel();
+        previousButton = new JLabel();
+        nextButton = new JLabel();
+        eventLabel = new JLabel();
+        evetntPicture3 = new JLabel();
+        evetntPicture1 = new JLabel();
+        evetntPicture2 = new JLabel();
+        eventName1 = new JLabel();
+        eventName2 = new JLabel();
+        eventDate2 = new JLabel();
+        eventDate1 = new JLabel();
+        eventName3 = new JLabel();
+        eventDate3 = new JLabel();
+        evetntPicture4 = new JLabel();
+        evetntPicture5 = new JLabel();
+        evetntPicture6 = new JLabel();
+        eventName6 = new JLabel();
+        eventDate6 = new JLabel();
+        eventDate5 = new JLabel();
+        eventName5 = new JLabel();
+        eventName4 = new JLabel();
+        eventDate4 = new JLabel();
+        evetntPicture7 = new JLabel();
+        evetntPicture8 = new JLabel();
+        evetntPicture9 = new JLabel();
+        eventName9 = new JLabel();
+        eventDate9 = new JLabel();
+        eventDate8 = new JLabel();
+        eventName8 = new JLabel();
+        eventName7 = new JLabel();
+        eventDate7 = new JLabel();
+        navigationPanel = new JPanel();
+        homeButton = new JButton();
+        eventButton = new JButton();
+        customerButton = new JButton();
+        stageButton = new JButton();
+        partnersButton = new JButton();
+        analyticsButton = new JButton();
+        settingsButton = new JButton();
 
         //======== this ========
         setBorder(null);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
-        0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
-        . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
-        red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
-        beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
+        ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
+        .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt
+        . Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
+        propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+        ;} } );
 
-        //======== panel1 ========
+        //======== headerPanel ========
         {
+            headerPanel.setBorder(LineBorder.createBlackLineBorder());
+            headerPanel.setBackground(new Color(0x9fc5f8));
 
-            //---- label44 ----
-            label44.setText("text");
-            label44.setBorder(LineBorder.createBlackLineBorder());
+            //---- avatarFrame ----
+            avatarFrame.setText("text");
+            avatarFrame.setBorder(LineBorder.createBlackLineBorder());
 
-            //---- textField1 ----
-            textField1.setText("Search");
+            //---- searchButton ----
+            searchButton.setText("Search");
 
-            GroupLayout panel1Layout = new GroupLayout(panel1);
-            panel1.setLayout(panel1Layout);
-            panel1Layout.setHorizontalGroup(
-                panel1Layout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                        .addContainerGap(748, Short.MAX_VALUE)
-                        .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 191, GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(label44, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))
+            //---- nameAppLabell ----
+            nameAppLabell.setText("H\u1ec7 Th\u1ed1ng Qu\u1ea3n L\u00ed B\u00e1n V\u00e9 Ho\u00e0 Nh\u1ea1c");
+            nameAppLabell.setFont(nameAppLabell.getFont().deriveFont(nameAppLabell.getFont().getSize() + 7f));
+
+            GroupLayout headerPanelLayout = new GroupLayout(headerPanel);
+            headerPanel.setLayout(headerPanelLayout);
+            headerPanelLayout.setHorizontalGroup(
+                headerPanelLayout.createParallelGroup()
+                    .addGroup(GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(nameAppLabell, GroupLayout.PREFERRED_SIZE, 355, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 191, GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(avatarFrame, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+                        .addGap(87, 87, 87))
             );
-            panel1Layout.setVerticalGroup(
-                panel1Layout.createParallelGroup()
-                    .addGroup(panel1Layout.createSequentialGroup()
+            headerPanelLayout.setVerticalGroup(
+                headerPanelLayout.createParallelGroup()
+                    .addGroup(headerPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(label44, GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                            .addComponent(textField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addGroup(headerPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(searchButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(avatarFrame, GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                            .addComponent(nameAppLabell, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
             );
         }
 
-        //======== scrollPane3 ========
+        //======== mainScrollPanel ========
         {
 
             //======== panel2 ========
             {
 
-                //---- label11 ----
-                label11.setText("Let Make Live Happen");
-                label11.setFont(label11.getFont().deriveFont(label11.getFont().getSize() + 18f));
+                //---- mainLabel ----
+                mainLabel.setText("Let Make Live Happen");
+                mainLabel.setFont(mainLabel.getFont().deriveFont(mainLabel.getFont().getSize() + 18f));
 
-                //---- label12 ----
-                label12.setText("text");
-                label12.setBorder(LineBorder.createBlackLineBorder());
+                //---- mainLivePicture ----
+                mainLivePicture.setText("text");
+                mainLivePicture.setBorder(LineBorder.createBlackLineBorder());
 
-                //---- label13 ----
-                label13.setIcon(new ImageIcon("C:\\Users\\ADMIN\\Downloads\\Arrows-Left-Round-icon.png"));
+                //---- previousButton ----
+                previousButton.setIcon(new ImageIcon("C:\\Users\\ADMIN\\Downloads\\Arrows-Left-Round-icon.png"));
 
-                //---- label14 ----
-                label14.setIcon(new ImageIcon("C:\\Users\\ADMIN\\Downloads\\Arrows-Right-Round-icon.png"));
+                //---- nextButton ----
+                nextButton.setIcon(new ImageIcon("C:\\Users\\ADMIN\\Downloads\\Arrows-Right-Round-icon.png"));
 
-                //---- label15 ----
-                label15.setText("S\u1ef1 Ki\u1ec7n N\u1ed5i B\u1eadt");
-                label15.setFont(label15.getFont().deriveFont(label15.getFont().getSize() + 13f));
+                //---- eventLabel ----
+                eventLabel.setText("S\u1ef1 Ki\u1ec7n N\u1ed5i B\u1eadt");
+                eventLabel.setFont(eventLabel.getFont().deriveFont(eventLabel.getFont().getSize() + 13f));
 
-                //---- label16 ----
-                label16.setText("text");
-                label16.setBorder(LineBorder.createBlackLineBorder());
+                //---- evetntPicture3 ----
+                evetntPicture3.setText("text");
+                evetntPicture3.setBorder(LineBorder.createBlackLineBorder());
 
-                //---- label17 ----
-                label17.setText("text");
-                label17.setBorder(LineBorder.createBlackLineBorder());
+                //---- evetntPicture1 ----
+                evetntPicture1.setText("text");
+                evetntPicture1.setBorder(LineBorder.createBlackLineBorder());
 
-                //---- label18 ----
-                label18.setText("text");
-                label18.setBorder(LineBorder.createBlackLineBorder());
+                //---- evetntPicture2 ----
+                evetntPicture2.setText("text");
+                evetntPicture2.setBorder(LineBorder.createBlackLineBorder());
 
-                //---- label19 ----
-                label19.setText("Event Name");
-                label19.setFont(label19.getFont().deriveFont(label19.getFont().getSize() + 7f));
+                //---- eventName1 ----
+                eventName1.setText("Event Name");
+                eventName1.setFont(eventName1.getFont().deriveFont(eventName1.getFont().getSize() + 7f));
 
-                //---- label20 ----
-                label20.setText("Event Name");
-                label20.setFont(label20.getFont().deriveFont(label20.getFont().getSize() + 7f));
+                //---- eventName2 ----
+                eventName2.setText("Event Name");
+                eventName2.setFont(eventName2.getFont().deriveFont(eventName2.getFont().getSize() + 7f));
 
-                //---- label21 ----
-                label21.setText("Event Name");
-                label21.setFont(label21.getFont().deriveFont(label21.getFont().getSize() + 7f));
+                //---- eventDate2 ----
+                eventDate2.setText("Date");
+                eventDate2.setFont(eventDate2.getFont().deriveFont(eventDate2.getFont().getSize() + 7f));
 
-                //---- label23 ----
-                label23.setText("Date");
-                label23.setFont(label23.getFont().deriveFont(label23.getFont().getSize() + 7f));
+                //---- eventDate1 ----
+                eventDate1.setText("Date");
+                eventDate1.setFont(eventDate1.getFont().deriveFont(eventDate1.getFont().getSize() + 7f));
 
-                //---- label24 ----
-                label24.setText("Date");
-                label24.setFont(label24.getFont().deriveFont(label24.getFont().getSize() + 7f));
+                //---- eventName3 ----
+                eventName3.setText("Event Name");
+                eventName3.setFont(eventName3.getFont().deriveFont(eventName3.getFont().getSize() + 7f));
 
-                //---- label25 ----
-                label25.setText("Date");
-                label25.setFont(label25.getFont().deriveFont(label25.getFont().getSize() + 7f));
+                //---- eventDate3 ----
+                eventDate3.setText("Date");
+                eventDate3.setFont(eventDate3.getFont().deriveFont(eventDate3.getFont().getSize() + 7f));
 
-                //---- label26 ----
-                label26.setText("text");
-                label26.setBorder(LineBorder.createBlackLineBorder());
+                //---- evetntPicture4 ----
+                evetntPicture4.setText("text");
+                evetntPicture4.setBorder(LineBorder.createBlackLineBorder());
 
-                //---- label27 ----
-                label27.setText("text");
-                label27.setBorder(LineBorder.createBlackLineBorder());
+                //---- evetntPicture5 ----
+                evetntPicture5.setText("text");
+                evetntPicture5.setBorder(LineBorder.createBlackLineBorder());
 
-                //---- label28 ----
-                label28.setText("text");
-                label28.setBorder(LineBorder.createBlackLineBorder());
+                //---- evetntPicture6 ----
+                evetntPicture6.setText("text");
+                evetntPicture6.setBorder(LineBorder.createBlackLineBorder());
 
-                //---- label29 ----
-                label29.setText("Event Name");
-                label29.setFont(label29.getFont().deriveFont(label29.getFont().getSize() + 7f));
+                //---- eventName6 ----
+                eventName6.setText("Event Name");
+                eventName6.setFont(eventName6.getFont().deriveFont(eventName6.getFont().getSize() + 7f));
 
-                //---- label30 ----
-                label30.setText("Date");
-                label30.setFont(label30.getFont().deriveFont(label30.getFont().getSize() + 7f));
+                //---- eventDate6 ----
+                eventDate6.setText("Date");
+                eventDate6.setFont(eventDate6.getFont().deriveFont(eventDate6.getFont().getSize() + 7f));
 
-                //---- label31 ----
-                label31.setText("Event Name");
-                label31.setFont(label31.getFont().deriveFont(label31.getFont().getSize() + 7f));
+                //---- eventDate5 ----
+                eventDate5.setText("Date");
+                eventDate5.setFont(eventDate5.getFont().deriveFont(eventDate5.getFont().getSize() + 7f));
 
-                //---- label32 ----
-                label32.setText("Date");
-                label32.setFont(label32.getFont().deriveFont(label32.getFont().getSize() + 7f));
+                //---- eventName5 ----
+                eventName5.setText("Event Name");
+                eventName5.setFont(eventName5.getFont().deriveFont(eventName5.getFont().getSize() + 7f));
 
-                //---- label33 ----
-                label33.setText("Event Name");
-                label33.setFont(label33.getFont().deriveFont(label33.getFont().getSize() + 7f));
+                //---- eventName4 ----
+                eventName4.setText("Event Name");
+                eventName4.setFont(eventName4.getFont().deriveFont(eventName4.getFont().getSize() + 7f));
 
-                //---- label34 ----
-                label34.setText("Date");
-                label34.setFont(label34.getFont().deriveFont(label34.getFont().getSize() + 7f));
+                //---- eventDate4 ----
+                eventDate4.setText("Date");
+                eventDate4.setFont(eventDate4.getFont().deriveFont(eventDate4.getFont().getSize() + 7f));
 
-                //---- label35 ----
-                label35.setText("text");
-                label35.setBorder(LineBorder.createBlackLineBorder());
+                //---- evetntPicture7 ----
+                evetntPicture7.setText("text");
+                evetntPicture7.setBorder(LineBorder.createBlackLineBorder());
 
-                //---- label36 ----
-                label36.setText("text");
-                label36.setBorder(LineBorder.createBlackLineBorder());
+                //---- evetntPicture8 ----
+                evetntPicture8.setText("text");
+                evetntPicture8.setBorder(LineBorder.createBlackLineBorder());
 
-                //---- label37 ----
-                label37.setText("text");
-                label37.setBorder(LineBorder.createBlackLineBorder());
+                //---- evetntPicture9 ----
+                evetntPicture9.setText("text");
+                evetntPicture9.setBorder(LineBorder.createBlackLineBorder());
 
-                //---- label38 ----
-                label38.setText("Event Name");
-                label38.setFont(label38.getFont().deriveFont(label38.getFont().getSize() + 7f));
+                //---- eventName9 ----
+                eventName9.setText("Event Name");
+                eventName9.setFont(eventName9.getFont().deriveFont(eventName9.getFont().getSize() + 7f));
 
-                //---- label39 ----
-                label39.setText("Date");
-                label39.setFont(label39.getFont().deriveFont(label39.getFont().getSize() + 7f));
+                //---- eventDate9 ----
+                eventDate9.setText("Date");
+                eventDate9.setFont(eventDate9.getFont().deriveFont(eventDate9.getFont().getSize() + 7f));
 
-                //---- label40 ----
-                label40.setText("Event Name");
-                label40.setFont(label40.getFont().deriveFont(label40.getFont().getSize() + 7f));
+                //---- eventDate8 ----
+                eventDate8.setText("Date");
+                eventDate8.setFont(eventDate8.getFont().deriveFont(eventDate8.getFont().getSize() + 7f));
 
-                //---- label41 ----
-                label41.setText("Date");
-                label41.setFont(label41.getFont().deriveFont(label41.getFont().getSize() + 7f));
+                //---- eventName8 ----
+                eventName8.setText("Event Name");
+                eventName8.setFont(eventName8.getFont().deriveFont(eventName8.getFont().getSize() + 7f));
 
-                //---- label42 ----
-                label42.setText("Event Name");
-                label42.setFont(label42.getFont().deriveFont(label42.getFont().getSize() + 7f));
+                //---- eventName7 ----
+                eventName7.setText("Event Name");
+                eventName7.setFont(eventName7.getFont().deriveFont(eventName7.getFont().getSize() + 7f));
 
-                //---- label43 ----
-                label43.setText("Date");
-                label43.setFont(label43.getFont().deriveFont(label43.getFont().getSize() + 7f));
+                //---- eventDate7 ----
+                eventDate7.setText("Date");
+                eventDate7.setFont(eventDate7.getFont().deriveFont(eventDate7.getFont().getSize() + 7f));
 
                 GroupLayout panel2Layout = new GroupLayout(panel2);
                 panel2.setLayout(panel2Layout);
@@ -237,175 +256,262 @@ public class mainMenu extends JPanel {
                         .addGroup(panel2Layout.createSequentialGroup()
                             .addGroup(panel2Layout.createParallelGroup()
                                 .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(394, 394, 394)
-                                    .addComponent(label11))
+                                    .addGap(164, 164, 164)
+                                    .addComponent(eventName1)
+                                    .addGap(281, 281, 281)
+                                    .addComponent(eventName2)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
+                                    .addComponent(eventName3)
+                                    .addGap(88, 88, 88))
                                 .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(459, 459, 459)
-                                    .addComponent(label15))
+                                    .addGap(197, 197, 197)
+                                    .addComponent(eventDate1)
+                                    .addGap(340, 340, 340)
+                                    .addComponent(eventDate2)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 326, Short.MAX_VALUE)
+                                    .addComponent(eventDate3)
+                                    .addGap(116, 116, 116)))
+                            .addGap(477, 477, 477))
+                        .addGroup(panel2Layout.createSequentialGroup()
+                            .addGap(434, 434, 434)
+                            .addComponent(mainLabel)
+                            .addGap(0, 848, Short.MAX_VALUE))
+                        .addGroup(panel2Layout.createSequentialGroup()
+                            .addGroup(panel2Layout.createParallelGroup()
+                                .addGroup(panel2Layout.createParallelGroup()
+                                    .addGroup(panel2Layout.createSequentialGroup()
+                                        .addGap(460, 460, 460)
+                                        .addComponent(evetntPicture2, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                        .addGap(104, 104, 104)
+                                        .addComponent(evetntPicture3, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
+                                        .addGap(73, 73, 73)
+                                        .addComponent(previousButton)
+                                        .addGap(62, 62, 62)
+                                        .addComponent(mainLivePicture, GroupLayout.PREFERRED_SIZE, 796, GroupLayout.PREFERRED_SIZE)
+                                        .addGap(57, 57, 57)
+                                        .addComponent(nextButton)))
                                 .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(136, 136, 136)
-                                    .addComponent(label19)
-                                    .addGap(255, 255, 255)
-                                    .addComponent(label20)
-                                    .addGap(251, 251, 251)
-                                    .addComponent(label21))
+                                    .addGap(495, 495, 495)
+                                    .addComponent(eventLabel))
                                 .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(166, 166, 166)
-                                    .addComponent(label23)
-                                    .addGap(315, 315, 315)
-                                    .addComponent(label24)
-                                    .addGap(311, 311, 311)
-                                    .addComponent(label25))
-                                .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(60, 60, 60)
-                                    .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                    .addGap(91, 91, 91)
+                                    .addGroup(panel2Layout.createParallelGroup()
+                                        .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                            .addGroup(panel2Layout.createParallelGroup()
+                                                .addGroup(panel2Layout.createSequentialGroup()
+                                                    .addComponent(evetntPicture7, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(109, 109, 109)
+                                                    .addComponent(evetntPicture8, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(104, 104, 104)
+                                                    .addComponent(evetntPicture9, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(panel2Layout.createSequentialGroup()
+                                                    .addGap(73, 73, 73)
+                                                    .addComponent(eventName7)
+                                                    .addGap(281, 281, 281)
+                                                    .addComponent(eventName8)
+                                                    .addGap(266, 266, 266)
+                                                    .addComponent(eventName9))
+                                                .addGroup(panel2Layout.createSequentialGroup()
+                                                    .addGap(106, 106, 106)
+                                                    .addComponent(eventDate7)
+                                                    .addGap(340, 340, 340)
+                                                    .addComponent(eventDate8)
+                                                    .addGap(326, 326, 326)
+                                                    .addComponent(eventDate9)))
+                                            .addGroup(panel2Layout.createSequentialGroup()
+                                                .addComponent(evetntPicture1, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(733, 733, 733)))
                                         .addGroup(panel2Layout.createSequentialGroup()
-                                            .addComponent(label16, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(label17, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-                                            .addGap(84, 84, 84)
-                                            .addComponent(label18, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(evetntPicture4, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(109, 109, 109)
+                                            .addComponent(evetntPicture5, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(104, 104, 104)
+                                            .addComponent(evetntPicture6, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(panel2Layout.createSequentialGroup()
-                                            .addComponent(label13)
-                                            .addGap(80, 80, 80)
-                                            .addComponent(label12, GroupLayout.PREFERRED_SIZE, 705, GroupLayout.PREFERRED_SIZE)
-                                            .addGap(79, 79, 79)
-                                            .addComponent(label14))
-                                        .addGroup(GroupLayout.Alignment.TRAILING, panel2Layout.createParallelGroup()
-                                            .addGroup(panel2Layout.createSequentialGroup()
-                                                .addComponent(label26, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-                                                .addGap(96, 96, 96)
-                                                .addComponent(label27, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-                                                .addGap(84, 84, 84)
-                                                .addComponent(label28, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(panel2Layout.createSequentialGroup()
-                                                .addGap(80, 80, 80)
-                                                .addComponent(label33)
-                                                .addGap(258, 258, 258)
-                                                .addComponent(label31)
-                                                .addGap(249, 249, 249)
-                                                .addComponent(label29))
-                                            .addGroup(panel2Layout.createSequentialGroup()
-                                                .addGap(110, 110, 110)
-                                                .addComponent(label34)
-                                                .addGap(319, 319, 319)
-                                                .addComponent(label32)
-                                                .addGap(310, 310, 310)
-                                                .addComponent(label30))
-                                            .addGroup(GroupLayout.Alignment.TRAILING, panel2Layout.createParallelGroup()
-                                                .addGroup(panel2Layout.createSequentialGroup()
-                                                    .addComponent(label35, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(96, 96, 96)
-                                                    .addComponent(label36, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(84, 84, 84)
-                                                    .addComponent(label37, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(panel2Layout.createSequentialGroup()
-                                                    .addGap(80, 80, 80)
-                                                    .addComponent(label42)
-                                                    .addGap(258, 258, 258)
-                                                    .addComponent(label40)
-                                                    .addGap(249, 249, 249)
-                                                    .addComponent(label38))
-                                                .addGroup(panel2Layout.createSequentialGroup()
-                                                    .addGap(110, 110, 110)
-                                                    .addComponent(label43)
-                                                    .addGap(319, 319, 319)
-                                                    .addComponent(label41)
-                                                    .addGap(310, 310, 310)
-                                                    .addComponent(label39)))))))
-                            .addContainerGap(377, Short.MAX_VALUE))
+                                            .addGap(73, 73, 73)
+                                            .addComponent(eventName4)
+                                            .addGap(281, 281, 281)
+                                            .addComponent(eventName5)
+                                            .addGap(266, 266, 266)
+                                            .addComponent(eventName6))
+                                        .addGroup(panel2Layout.createSequentialGroup()
+                                            .addGap(106, 106, 106)
+                                            .addComponent(eventDate4)
+                                            .addGap(340, 340, 340)
+                                            .addComponent(eventDate5)
+                                            .addGap(326, 326, 326)
+                                            .addComponent(eventDate6)))))
+                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
                 panel2Layout.setVerticalGroup(
                     panel2Layout.createParallelGroup()
                         .addGroup(panel2Layout.createSequentialGroup()
-                            .addGap(33, 33, 33)
-                            .addComponent(label11)
                             .addGroup(panel2Layout.createParallelGroup()
                                 .addGroup(panel2Layout.createSequentialGroup()
                                     .addGroup(panel2Layout.createParallelGroup()
                                         .addGroup(panel2Layout.createSequentialGroup()
-                                            .addGap(125, 125, 125)
-                                            .addComponent(label14))
+                                            .addGap(183, 183, 183)
+                                            .addComponent(nextButton))
                                         .addGroup(panel2Layout.createSequentialGroup()
-                                            .addGap(32, 32, 32)
-                                            .addComponent(label12, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(27, 27, 27))
-                                .addGroup(GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(label13)
-                                    .addGap(134, 134, 134)))
-                            .addComponent(label15)
-                            .addGap(35, 35, 35)
-                            .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(label16, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label18, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label17, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(label19)
-                                .addComponent(label20)
-                                .addComponent(label21))
-                            .addGap(18, 18, 18)
-                            .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(label23)
-                                .addComponent(label24)
-                                .addComponent(label25))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                                            .addGap(33, 33, 33)
+                                            .addComponent(mainLabel)
+                                            .addGap(38, 38, 38)
+                                            .addComponent(mainLivePicture, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                                    .addComponent(eventLabel)
+                                    .addGap(42, 42, 42)
+                                    .addGroup(panel2Layout.createParallelGroup()
+                                        .addComponent(evetntPicture1, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(GroupLayout.Alignment.TRAILING, panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                            .addComponent(evetntPicture3, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(evetntPicture2, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(panel2Layout.createParallelGroup()
+                                        .addGroup(panel2Layout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
+                                            .addComponent(eventName3)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(eventDate3))
+                                        .addGroup(panel2Layout.createSequentialGroup()
+                                            .addGap(16, 16, 16)
+                                            .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addComponent(eventName1)
+                                                .addComponent(eventName2))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addComponent(eventDate1)
+                                                .addComponent(eventDate2)))))
+                                .addGroup(panel2Layout.createSequentialGroup()
+                                    .addGap(195, 195, 195)
+                                    .addComponent(previousButton)))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 269, Short.MAX_VALUE)
                             .addGroup(panel2Layout.createParallelGroup()
-                                .addComponent(label35, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label36, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label37, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
+                                .addComponent(evetntPicture4, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(evetntPicture5, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(evetntPicture6, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
+                            .addGap(16, 16, 16)
                             .addGroup(panel2Layout.createParallelGroup()
-                                .addComponent(label42)
-                                .addComponent(label40)
-                                .addComponent(label38))
-                            .addGap(18, 18, 18)
+                                .addComponent(eventName4)
+                                .addComponent(eventName5)
+                                .addGroup(panel2Layout.createSequentialGroup()
+                                    .addGap(2, 2, 2)
+                                    .addComponent(eventName6)))
+                            .addGap(16, 16, 16)
                             .addGroup(panel2Layout.createParallelGroup()
-                                .addComponent(label43)
-                                .addComponent(label41)
-                                .addComponent(label39))
-                            .addGap(151, 151, 151)
+                                .addComponent(eventDate4)
+                                .addComponent(eventDate5)
+                                .addGroup(panel2Layout.createSequentialGroup()
+                                    .addGap(2, 2, 2)
+                                    .addComponent(eventDate6)))
+                            .addGap(279, 279, 279)
                             .addGroup(panel2Layout.createParallelGroup()
-                                .addComponent(label26, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label27, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label28, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
+                                .addComponent(evetntPicture7, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(evetntPicture8, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(evetntPicture9, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
+                            .addGap(16, 16, 16)
                             .addGroup(panel2Layout.createParallelGroup()
-                                .addComponent(label33)
-                                .addComponent(label31)
-                                .addComponent(label29))
-                            .addGap(18, 18, 18)
+                                .addComponent(eventName7)
+                                .addComponent(eventName8)
+                                .addGroup(panel2Layout.createSequentialGroup()
+                                    .addGap(2, 2, 2)
+                                    .addComponent(eventName9)))
+                            .addGap(16, 16, 16)
                             .addGroup(panel2Layout.createParallelGroup()
-                                .addComponent(label34)
-                                .addComponent(label32)
-                                .addComponent(label30))
-                            .addGap(32, 32, 32))
+                                .addComponent(eventDate7)
+                                .addComponent(eventDate8)
+                                .addGroup(panel2Layout.createSequentialGroup()
+                                    .addGap(2, 2, 2)
+                                    .addComponent(eventDate9)))
+                            .addGap(50, 50, 50))
                 );
             }
-            scrollPane3.setViewportView(panel2);
+            mainScrollPanel.setViewportView(panel2);
+        }
+
+        //======== navigationPanel ========
+        {
+            navigationPanel.setBorder(LineBorder.createBlackLineBorder());
+
+            //---- homeButton ----
+            homeButton.setText("HOME");
+            homeButton.setBackground(Color.white);
+
+            //---- eventButton ----
+            eventButton.setText("EVENT");
+            eventButton.setBackground(Color.white);
+
+            //---- customerButton ----
+            customerButton.setText("CUSTOMER");
+            customerButton.setBackground(Color.white);
+
+            //---- stageButton ----
+            stageButton.setText("STAGE");
+            stageButton.setBackground(Color.white);
+
+            //---- partnersButton ----
+            partnersButton.setText("PARTNERS");
+            partnersButton.setBackground(Color.white);
+
+            //---- analyticsButton ----
+            analyticsButton.setText("ANALYTICS");
+            analyticsButton.setBackground(Color.white);
+
+            //---- settingsButton ----
+            settingsButton.setText("SETTINGS");
+            settingsButton.setBackground(Color.white);
+
+            GroupLayout navigationPanelLayout = new GroupLayout(navigationPanel);
+            navigationPanel.setLayout(navigationPanelLayout);
+            navigationPanelLayout.setHorizontalGroup(
+                navigationPanelLayout.createParallelGroup()
+                    .addComponent(homeButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addComponent(eventButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addComponent(customerButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addComponent(stageButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addComponent(partnersButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addComponent(analyticsButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addComponent(settingsButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+            );
+            navigationPanelLayout.setVerticalGroup(
+                navigationPanelLayout.createParallelGroup()
+                    .addGroup(navigationPanelLayout.createSequentialGroup()
+                        .addComponent(homeButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(eventButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(customerButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(partnersButton, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(analyticsButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(settingsButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 1394, Short.MAX_VALUE))
+            );
         }
 
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup()
-                .addComponent(panel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(headerPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createSequentialGroup()
-                    .addComponent(scrollPane3, GroupLayout.DEFAULT_SIZE, 1069, Short.MAX_VALUE)
+                    .addComponent(navigationPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1157, GroupLayout.PREFERRED_SIZE)
                     .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(headerPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(scrollPane3, GroupLayout.DEFAULT_SIZE, 1572, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup()
+                        .addComponent(navigationPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(mainScrollPanel, GroupLayout.DEFAULT_SIZE, 1865, Short.MAX_VALUE)))
         );
-
-        //---- label22 ----
-        label22.setText("Date");
-        label22.setFont(label22.getFont().deriveFont(label22.getFont().getSize() + 7f));
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
     
@@ -418,43 +524,51 @@ public class mainMenu extends JPanel {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - Man
-    private JPanel panel1;
-    private JLabel label44;
-    private JTextField textField1;
-    private JScrollPane scrollPane3;
+    private JPanel headerPanel;
+    private JLabel avatarFrame;
+    private JTextField searchButton;
+    private JLabel nameAppLabell;
+    private JScrollPane mainScrollPanel;
     private JPanel panel2;
-    private JLabel label11;
-    private JLabel label12;
-    private JLabel label13;
-    private JLabel label14;
-    private JLabel label15;
-    private JLabel label16;
-    private JLabel label17;
-    private JLabel label18;
-    private JLabel label19;
-    private JLabel label20;
-    private JLabel label21;
-    private JLabel label23;
-    private JLabel label24;
-    private JLabel label25;
-    private JLabel label26;
-    private JLabel label27;
-    private JLabel label28;
-    private JLabel label29;
-    private JLabel label30;
-    private JLabel label31;
-    private JLabel label32;
-    private JLabel label33;
-    private JLabel label34;
-    private JLabel label35;
-    private JLabel label36;
-    private JLabel label37;
-    private JLabel label38;
-    private JLabel label39;
-    private JLabel label40;
-    private JLabel label41;
-    private JLabel label42;
-    private JLabel label43;
-    private JLabel label22;
+    private JLabel mainLabel;
+    private JLabel mainLivePicture;
+    private JLabel previousButton;
+    private JLabel nextButton;
+    private JLabel eventLabel;
+    private JLabel evetntPicture3;
+    private JLabel evetntPicture1;
+    private JLabel evetntPicture2;
+    private JLabel eventName1;
+    private JLabel eventName2;
+    private JLabel eventDate2;
+    private JLabel eventDate1;
+    private JLabel eventName3;
+    private JLabel eventDate3;
+    private JLabel evetntPicture4;
+    private JLabel evetntPicture5;
+    private JLabel evetntPicture6;
+    private JLabel eventName6;
+    private JLabel eventDate6;
+    private JLabel eventDate5;
+    private JLabel eventName5;
+    private JLabel eventName4;
+    private JLabel eventDate4;
+    private JLabel evetntPicture7;
+    private JLabel evetntPicture8;
+    private JLabel evetntPicture9;
+    private JLabel eventName9;
+    private JLabel eventDate9;
+    private JLabel eventDate8;
+    private JLabel eventName8;
+    private JLabel eventName7;
+    private JLabel eventDate7;
+    private JPanel navigationPanel;
+    private JButton homeButton;
+    private JButton eventButton;
+    private JButton customerButton;
+    private JButton stageButton;
+    private JButton partnersButton;
+    private JButton analyticsButton;
+    private JButton settingsButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
