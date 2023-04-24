@@ -3,6 +3,7 @@ JFDML JFormDesigner: "9.0.0.0.263" Java: "17.0.6" encoding: "UTF-8"
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
+<<<<<<<< HEAD:src/View/MainMenu/MainMenu.jfd
 		auxiliary() {
 			"JavaCodeGenerator.defaultVariableModifiers": 4
 		}
@@ -12,6 +13,11 @@ new FormModel {
 		} ) {
 			name: "MainMenuPanel"
 			"visible": true
+========
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "this"
+			"defaultCloseOperation": 3
+>>>>>>>> master:src/View/MainMenu.jfd
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {seq t {space :p:38:p, comp nameAppLabell:::p:355:p, space :::x, comp searchButton:::p:191:p, space :p:46:p, comp avatarFrame:::p:77:p, space :p:87:p}}"
 				"$verticalGroup": "par l {seq l {space :::p, par b {comp searchButton::b:p::p, comp avatarFrame::b::65:x, comp nameAppLabell::b:p:30:p}, space :::p}}"
@@ -33,6 +39,8 @@ new FormModel {
 					"text": "Hệ Thống Quản Lí Bán Vé Hoà Nhạc"
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 7, false )
 				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 1395
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "mainScrollPanel"
@@ -200,6 +208,11 @@ new FormModel {
 						"font": #SwingDerivedFont0
 					} )
 				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 232
+				"y": 85
+				"width": 1157
+				"height": 1865
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {comp homeButton::::224:x, comp eventButton::::224:x, comp customerButton::l::224:x, comp stageButton::l::224:x, comp partnersButton::l::224:x, comp analyticsButton::::224:x, comp settingsButton::l::224:x}"
@@ -243,6 +256,8 @@ new FormModel {
 					"text": "SETTINGS"
 					"background": #Color0
 				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"y": 85
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
