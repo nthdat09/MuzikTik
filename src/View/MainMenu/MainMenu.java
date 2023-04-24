@@ -2,9 +2,10 @@
  * Created by JFormDesigner on Sun Apr 23 10:39:47 ICT 2023
  */
 
-package View;
+package View.MainMenu;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
@@ -12,14 +13,18 @@ import javax.swing.border.*;
 /**
  * @author ADMIN
  */
-public class mainMenu extends JPanel {
-    public mainMenu() {
+public class MainMenu extends JFrame {
+    public MainMenu() {
         initComponents();
+    }
+
+    private void customer(ActionEvent e) {
+        
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Man
+        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
         headerPanel = new JPanel();
         avatarFrame = new JLabel();
         searchButton = new JTextField();
@@ -68,20 +73,19 @@ public class mainMenu extends JPanel {
         settingsButton = new JButton();
 
         //======== this ========
-        setBorder(null);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-        new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e"
-        , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-        , new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 )
-        , java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
-        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-        ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( )
-        ; }} );
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        var contentPane = getContentPane();
 
         //======== headerPanel ========
         {
             headerPanel.setBorder(LineBorder.createBlackLineBorder());
             headerPanel.setBackground(new Color(0x9fc5f8));
+            headerPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
+            border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER
+            ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font
+            .BOLD,12),java.awt.Color.red),headerPanel. getBorder()));headerPanel. addPropertyChangeListener(
+            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r"
+            .equals(e.getPropertyName()))throw new RuntimeException();}});
 
             //---- avatarFrame ----
             avatarFrame.setText("text");
@@ -270,14 +274,14 @@ public class mainMenu extends JPanel {
                                     .addComponent(eventDate1)
                                     .addGap(340, 340, 340)
                                     .addComponent(eventDate2)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 326, Short.MAX_VALUE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 359, Short.MAX_VALUE)
                                     .addComponent(eventDate3)
                                     .addGap(116, 116, 116)))
                             .addGap(477, 477, 477))
                         .addGroup(panel2Layout.createSequentialGroup()
                             .addGap(434, 434, 434)
                             .addComponent(mainLabel)
-                            .addGap(0, 848, Short.MAX_VALUE))
+                            .addGap(0, 861, Short.MAX_VALUE))
                         .addGroup(panel2Layout.createSequentialGroup()
                             .addGroup(panel2Layout.createParallelGroup()
                                 .addGroup(panel2Layout.createParallelGroup()
@@ -445,6 +449,7 @@ public class mainMenu extends JPanel {
             //---- customerButton ----
             customerButton.setText("CUSTOMER");
             customerButton.setBackground(Color.white);
+            customerButton.addActionListener(e -> customer(e));
 
             //---- stageButton ----
             stageButton.setText("STAGE");
@@ -490,42 +495,44 @@ public class mainMenu extends JPanel {
                         .addComponent(analyticsButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(settingsButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1394, Short.MAX_VALUE))
+                        .addGap(0, 1363, Short.MAX_VALUE))
             );
         }
 
-        GroupLayout layout = new GroupLayout(this);
-        setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup()
+        GroupLayout contentPaneLayout = new GroupLayout(contentPane);
+        contentPane.setLayout(contentPaneLayout);
+        contentPaneLayout.setHorizontalGroup(
+            contentPaneLayout.createParallelGroup()
                 .addComponent(headerPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createSequentialGroup()
+                .addGroup(contentPaneLayout.createSequentialGroup()
                     .addComponent(navigationPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1157, GroupLayout.PREFERRED_SIZE)
                     .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup()
-                .addGroup(layout.createSequentialGroup()
+        contentPaneLayout.setVerticalGroup(
+            contentPaneLayout.createParallelGroup()
+                .addGroup(contentPaneLayout.createSequentialGroup()
                     .addComponent(headerPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup()
+                    .addGroup(contentPaneLayout.createParallelGroup()
                         .addComponent(navigationPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(mainScrollPanel, GroupLayout.DEFAULT_SIZE, 1865, Short.MAX_VALUE)))
+                        .addComponent(mainScrollPanel, GroupLayout.DEFAULT_SIZE, 1834, Short.MAX_VALUE)))
         );
+        pack();
+        setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
     
     public static void main (String[] args) {
         JFrame frame = new JFrame("Đồ án bán vé hoà nhạc");
-        frame.setContentPane(new mainMenu());
+        frame.setContentPane(new MainMenu());
         frame.pack();
         frame.setVisible(true);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Man
+    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
     private JPanel headerPanel;
     private JLabel avatarFrame;
     private JTextField searchButton;

@@ -1,24 +1,24 @@
 package Controller;
 
-import View.LoginPage;
+import View.CustomerPanel.CustomerPanel;
+import View.LoginPage.LoginPage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginPageListener implements ActionListener {
-private LoginPage view;
+private LoginPage loginPage;
 
     public LoginPageListener (LoginPage view) {
-        this.view = view;
+        this.loginPage = view;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String src = e.getActionCommand();
-
-            if(src.equals("LOGIN")){
-                this.view.DoLogin();
-            }
+        if (src.equals("LOGIN")) {
+            this.loginPage.DoLogin();
+        }
 
     }
 }

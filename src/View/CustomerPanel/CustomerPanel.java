@@ -2,10 +2,10 @@
  * Created by JFormDesigner on Mon Apr 24 08:33:28 ICT 2023
  */
 
-package View.customerPanel;
+package View.CustomerPanel;
 
-import View.customerPanel.controller.controllerCustomerPanel;
-import View.customerPanel.controller.customerList;
+import Controller.CustomerPanelListener;
+import Model.CustomerList;
 
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -17,21 +17,21 @@ import javax.swing.border.*;
 /**
  * @author ADMIN
  */
-public class customerPanel extends JPanel {
-    public customerPanel() {
+public class CustomerPanel extends JPanel {
+    public CustomerPanel() {
         initComponents();
 
-        controllerCustomerPanel controller = new controllerCustomerPanel(jpnView);
+        CustomerPanelListener controller = new CustomerPanelListener(jpnView);
         controller.setView(jpnInfor, jlbInfor);
 
-        List<customerList> listItem = new ArrayList<>();
-        listItem.add(new customerList("informationCustomer",jpnInfor,jlbInfor));
-        listItem.add(new customerList("historyCustomer",jpnHistory,jlbHistoory));
+        List<CustomerList> listItem = new ArrayList<>();
+        listItem.add(new CustomerList("informationCustomer",jpnInfor,jlbInfor));
+        listItem.add(new CustomerList("historyCustomer",jpnHistory,jlbHistoory));
         controller.setEvent(listItem);
     }
     public static void main (String[] args) {
         JFrame frame = new JFrame("Đồ án bán vé hoà nhạc");
-        frame.setContentPane(new customerPanel());
+        frame.setContentPane(new CustomerPanel());
         frame.pack();
         frame.setVisible(true);
     }

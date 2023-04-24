@@ -2,18 +2,17 @@
  * Created by JFormDesigner on Mon Apr 24 09:08:31 ICT 2023
  */
 
-package View.customerPanel.listPanel;
+package View.CustomerPanel.ListPanel;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
-import javax.swing.border.*;
 
 /**
  * @author ADMIN
  */
-public class informationCustomerPanel extends JPanel {
-    public informationCustomerPanel() {
+public class InformationCustomerPanel extends JPanel {
+    public InformationCustomerPanel() {
         initComponents();
     }
 

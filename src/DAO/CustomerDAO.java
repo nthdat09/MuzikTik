@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class customerDAO implements customerInterface {
+public class CustomerDAO implements CustomerInterface {
     @Override
     public List<Customer> getList() {
         try {
@@ -37,7 +37,7 @@ public class customerDAO implements customerInterface {
         return null;
     }
     public static void main (String[] args) throws SQLException {
-        customerInterface customerDao = new customerDAO();
+        CustomerInterface customerDao = new CustomerDAO();
         System.out.println(customerDao.getList());
     }
 }

@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Mon Apr 24 09:04:23 ICT 2023
  */
 
-package View.customerPanel.listPanel;
+package View.CustomerPanel.ListPanel;
 
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -11,8 +11,8 @@ import javax.swing.border.*;
 /**
  * @author ADMIN
  */
-public class historyCustomerPanel extends JPanel {
-    public historyCustomerPanel() {
+public class HistoryCustomerPanel extends JPanel {
+    public HistoryCustomerPanel() {
         initComponents();
     }
 

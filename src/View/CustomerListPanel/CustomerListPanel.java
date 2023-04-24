@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Mon Apr 24 12:42:18 ICT 2023
  */
 
-package View.customerListPanel;
+package View.CustomerListPanel;
 
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -10,8 +10,8 @@ import javax.swing.GroupLayout;
 /**
  * @author ADMIN
  */
-public class customerListPanel extends JPanel {
-    public customerListPanel() {
+public class CustomerListPanel extends JPanel {
+    public CustomerListPanel() {
         initComponents();
     }
 

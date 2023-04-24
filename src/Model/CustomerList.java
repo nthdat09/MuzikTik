@@ -1,18 +1,18 @@
-package View.customerPanel.controller;
+package Model;
 
 import javax.swing.*;
 
-public class customerList {
+public class CustomerList {
     private String kind;
     private JPanel jpn;
     private JLabel jlb;
 
-    public customerList(String kind, JPanel jpn, JLabel jlb) {
+    public CustomerList(String kind, JPanel jpn, JLabel jlb) {
         this.kind = kind;
         this.jpn = jpn;
         this.jlb = jlb;
     }
-    public customerList() {}
+    public CustomerList() {}
 
     public String getKind() {
         return kind;

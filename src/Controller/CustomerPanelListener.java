@@ -1,8 +1,9 @@
-package View.customerPanel.controller;
+package Controller;
 
 
-import View.customerPanel.listPanel.historyCustomerPanel;
-import View.customerPanel.listPanel.informationCustomerPanel;
+import Model.CustomerList;
+import View.CustomerPanel.ListPanel.HistoryCustomerPanel;
+import View.CustomerPanel.ListPanel.InformationCustomerPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,12 +11,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 
-public class controllerCustomerPanel {
+public class CustomerPanelListener {
     private JPanel root;
     private String kindSelected = "";
-    private List<customerList> listItem = null;
+    private List<CustomerList> listItem = null;
 
-    public controllerCustomerPanel(JPanel jpnRoot) {
+    public CustomerPanelListener(JPanel jpnRoot) {
         this.root = jpnRoot;
     }
 
@@ -24,15 +25,15 @@ public class controllerCustomerPanel {
 
         root.removeAll();
         root.setLayout(new BorderLayout());
-        root.add(new informationCustomerPanel());
+        root.add(new InformationCustomerPanel());
         root.validate();
         root.repaint();
     }
 
-    public void setEvent(List<customerList> listItem) {
+    public void setEvent(List<CustomerList> listItem) {
         this.listItem = listItem;
 
-        for (customerList item : listItem) {
+        for (CustomerList item : listItem) {
             item.getJlb().addMouseListener(new LabelEvent(item.getKind(), item.getJpn(), item.getJlb()));
         }
     }
@@ -70,10 +71,10 @@ public class controllerCustomerPanel {
         public void mouseClicked(MouseEvent e) {
             switch(kind) {
                 case "historyCustomer":
-                    node = new historyCustomerPanel();
+                    node = new HistoryCustomerPanel();
                     break;
                 default:
-                    node = new informationCustomerPanel();
+                    node = new InformationCustomerPanel();
                     break;
             }
             root.removeAll();

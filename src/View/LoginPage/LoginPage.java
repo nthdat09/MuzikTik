@@ -1,4 +1,4 @@
-package View;
+package View.LoginPage;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,10 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import Controller.LoginPageListener;
-import DAO.UserDAO;
+import DAO.DAOHoiVien;
 import Model.User;
-import com.intellij.uiDesigner.core.*;
-import com.mysql.cj.log.Log;
+import View.MainMenu.MainMenu;
 
 public class LoginPage extends JPanel {
     ActionListener ac = new LoginPageListener(this);
@@ -17,6 +16,11 @@ public class LoginPage extends JPanel {
     public LoginPage() {
         initComponents();
     }
+
+    private void Login(ActionEvent e) {
+        LoginButton.addActionListener(ac);
+    }
+
 
 
     private void initComponents() {
@@ -29,7 +33,6 @@ public class LoginPage extends JPanel {
         label2 = new JLabel();
         Password = new JLabel();
         LoginButton = new JButton();
-        LoginButton.addActionListener(ac);
         LoginStatus = new JLabel();
 
         //======== LoginPage ========
@@ -65,6 +68,10 @@ public class LoginPage extends JPanel {
 
             //---- LoginButton ----
             LoginButton.setText("LOGIN");
+            LoginButton.addActionListener(e -> {
+			Login(e);
+			Login(e);
+		});
             LoginPageContentPane.add(LoginButton);
             LoginButton.setBounds(new Rectangle(new Point(325, 350), LoginButton.getPreferredSize()));
             LoginPageContentPane.add(LoginStatus);
@@ -79,14 +86,14 @@ public class LoginPage extends JPanel {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
-    private JDialog LoginPage;
-    private JLabel label1;
-    private JTextField UsernameField;
-    private JPasswordField PasswordField;
-    private JLabel label2;
-    private JLabel Password;
-    private JButton LoginButton;
-    private JLabel LoginStatus;
+    public JDialog LoginPage;
+    public JLabel label1;
+    public JTextField UsernameField;
+    public JPasswordField PasswordField;
+    public JLabel label2;
+    public JLabel Password;
+    public JButton LoginButton;
+    public JLabel LoginStatus;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
 
@@ -94,7 +101,7 @@ public class LoginPage extends JPanel {
         String username = this.UsernameField.getText();
         String password = this.PasswordField.getText();
 
-        User realuser = UserDAO.getInstance().selectById(username);
+        User realuser = DAOHoiVien.getInstance().selectById(username);
 
         if (realuser == null) {
             this.LoginStatus.setText("Login Failed");
@@ -108,6 +115,9 @@ public class LoginPage extends JPanel {
             if (username.equals(realUsername) && password.equals(realPassword)) {
                 this.LoginStatus.setText("Login Success");
                 this.LoginStatus.setForeground(Color.GREEN);
+                this.LoginPage.dispose();
+                MainMenu mainMenu = new MainMenu();
+                mainMenu.setVisible(true);
             } else {
                 this.LoginStatus.setText("Login Failed");
                 this.LoginStatus.setForeground(Color.RED);
