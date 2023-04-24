@@ -1,0 +1,80 @@
+JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:64:p, par l {seq l {comp label5:::p:63:p, space :18:18:p, comp textField1:::p:258:p}, seq l {comp label6:::p:63:p, space :18:18:p, comp textField2:::p:258:p}, seq l {comp label7:::p:89:p, space :18:18:p, comp textField3:::p:258:p}, seq l {comp label8:::p:144:p, space :18:18:p, comp textField4:::p:258:p}, comp label9:::p:218:p, seq l {comp label10:::p:218:p, space :p:18:p, comp button5:::p:169:p}, seq l {comp label11:::p:218:p, space :p:18:p, comp button6:::p:262:p}, seq l {space :587:587:p, comp button7:::p:69:p, space :56:56:p, comp button8:::p:85:p}}, space ::134:x}}"
+			"$verticalGroup": "par l {seq l {space :p:96:p, par l {comp label5:::p:39:p, seq l {space :5:5:p, comp textField1:::p::p}}, space :6:6:p, par l {comp label6:::p:39:p, seq l {space :5:5:p, comp textField2:::p::p}}, space :18:18:p, par l {comp label7:::p:39:p, seq l {space :5:5:p, comp textField3:::p::p}}, space :18:18:p, par l {comp label8:::p:39:p, seq l {space :5:5:p, comp textField4:::p::p}}, space :18:18:p, comp label9:::p:39:p, space :18:18:p, par l {comp label10:::p:39:p, comp button5:::p:39:p}, space :18:18:p, par l {comp label11:::p:39:p, comp button6:::p:39:p}, space :120:120:p, par l {comp button7:::p::p, comp button8:::p::p}, space ::172:x}}"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Tên:"
+				"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, 8, false )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Email:"
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "Địa Chỉ:"
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label8"
+				"text": "Số Điện Thoại:"
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label9"
+				"text": "Thông Tin Thanh Toán"
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label10"
+				"text": "Thẻ tín dụng/ghi nợ"
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label11"
+				"text": "Tài khoản ngân hàng"
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button6"
+				"text": "THÊM TÀI KHOẢN NGÂN HÀNG"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button5"
+				"text": "THÊM THẺ MỚI"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField4"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField3"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField2"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField1"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button7"
+				"text": "LƯU"
+				"preferredSize": new java.awt.Dimension( 80, 30 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button8"
+				"text": "THOÁT"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 55, 20 )
+			"size": new java.awt.Dimension( 995, 795 )
+		} )
+	}
+}
