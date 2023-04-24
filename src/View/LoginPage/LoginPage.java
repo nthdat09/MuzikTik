@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import Application.Main;
 import Controller.LoginPageListener;
 import DAO.DAOHoiVien;
 import Model.User;
@@ -70,7 +71,6 @@ public class LoginPage extends JPanel {
             LoginButton.setText("LOGIN");
             LoginButton.addActionListener(e -> {
 			Login(e);
-			Login(e);
 		});
             LoginPageContentPane.add(LoginButton);
             LoginButton.setBounds(new Rectangle(new Point(325, 350), LoginButton.getPreferredSize()));
@@ -113,7 +113,6 @@ public class LoginPage extends JPanel {
             String realPassword = realuser.getPassword();
 
             if (username.equals(realUsername) && password.equals(realPassword)) {
-                this.LoginStatus.setText("Login Success");
                 this.LoginStatus.setForeground(Color.GREEN);
                 this.LoginPage.dispose();
                 MainMenu mainMenu = new MainMenu();
