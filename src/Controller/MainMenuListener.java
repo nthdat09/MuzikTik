@@ -21,8 +21,6 @@ public class MainMenuListener implements ActionListener {
         System.out.println(src);
         if (src.equals("CUSTOMER")) {
             CustomerListPanel customerListPanel = new CustomerListPanel();
-            mainMenu.setContentPane(customerListPanel);
-            mainMenu.revalidate();
         }
     }
 }

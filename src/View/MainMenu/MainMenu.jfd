@@ -3,21 +3,13 @@ JFDML JFormDesigner: "9.0.0.0.263" Java: "17.0.6" encoding: "UTF-8"
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
-<<<<<<<< HEAD:src/View/MainMenu/MainMenu.jfd
-		auxiliary() {
-			"JavaCodeGenerator.defaultVariableModifiers": 4
-		}
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 			"$horizontalGroup": "par l {comp headerPanel:::::x, seq {comp navigationPanel:::p::p, space :::x, comp mainScrollPanel:::p:1157:p, space :::p}}"
 			"$verticalGroup": "par l {seq l {comp headerPanel:::p::p, space :::p, par l {comp navigationPanel:::::x, comp mainScrollPanel::::1834:x}}}"
 		} ) {
-			name: "MainMenuPanel"
-			"visible": true
-========
-		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
+			"visible": true
 			"defaultCloseOperation": 3
->>>>>>>> master:src/View/MainMenu.jfd
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {seq t {space :p:38:p, comp nameAppLabell:::p:355:p, space :::x, comp searchButton:::p:191:p, space :p:46:p, comp avatarFrame:::p:77:p, space :p:87:p}}"
 				"$verticalGroup": "par l {seq l {space :::p, par b {comp searchButton::b:p::p, comp avatarFrame::b::65:x, comp nameAppLabell::b:p:30:p}, space :::p}}"
@@ -39,14 +31,12 @@ new FormModel {
 					"text": "Hệ Thống Quản Lí Bán Vé Hoà Nhạc"
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 7, false )
 				} )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 1395
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "mainScrollPanel"
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {seq {par l {seq l {space :p:164:p, comp eventName1:::p::p, space :p:281:p, comp eventName2:::p::p, space ::266:x, comp eventName3:::p::p, space :p:88:p}, seq l {space :p:197:p, comp eventDate1:::p::p, space :p:340:p, comp eventDate2:::p::p, space ::359:x, comp eventDate3:::p::p, space :p:116:p}}, space :p:477:p}, seq l {space :p:434:p, comp mainLabel:::p::p, space :0:861:x}, seq {par l {par l {seq {space :p:460:p, comp evetntPicture2:::p:260:p, space :p:104:p, comp evetntPicture3:::p:260:p}, seq t {space :p:73:p, comp previousButton:::p::p, space :p:62:p, comp mainLivePicture:::p:796:p, space :p:57:p, comp nextButton:::p::p}}, seq l {space :p:495:p, comp eventLabel:::p::p}, seq l {space :p:91:p, par l {par t {par l {seq l {comp evetntPicture7:::p:260:p, space :109:109:p, comp evetntPicture8:::p:260:p, space :104:104:p, comp evetntPicture9:::p:260:p}, seq l {space :73:73:p, comp eventName7:::p::p, space :281:281:p, comp eventName8:::p::p, space :266:266:p, comp eventName9:::p::p}, seq l {space :106:106:p, comp eventDate7:::p::p, space :340:340:p, comp eventDate8:::p::p, space :326:326:p, comp eventDate9:::p::p}}, seq {comp evetntPicture1:::p:260:p, space :p:733:p}}, seq l {comp evetntPicture4:::p:260:p, space :109:109:p, comp evetntPicture5:::p:260:p, space :104:104:p, comp evetntPicture6:::p:260:p}, seq l {space :73:73:p, comp eventName4:::p::p, space :281:281:p, comp eventName5:::p::p, space :266:266:p, comp eventName6:::p::p}, seq l {space :106:106:p, comp eventDate4:::p::p, space :340:340:p, comp eventDate5:::p::p, space :326:326:p, comp eventDate6:::p::p}}}}, space :::x}}"
-					"$verticalGroup": "par l {seq {par l {seq {par l {seq {space :p:183:p, comp nextButton:::p::p}, seq l {space :p:33:p, comp mainLabel:::p::p, space :p:38:p, comp mainLivePicture:::p:262:p}}, space ::87:x, comp eventLabel:::p::p, space :p:42:p, par l {comp evetntPicture1::t:p:153:p, par b:t {comp evetntPicture3::b:p:153:p, comp evetntPicture2::b:p:153:p}}, par l {seq {space :p:18:p, comp eventName3:::p::p, space s:::p, comp eventDate3:::p::p}, seq l {space :p:16:p, par b {comp eventName1::b:p::p, comp eventName2::b:p::p}, space s:::p, par b {comp eventDate1::b:p::p, comp eventDate2::b:p::p}}}}, seq l {space :p:195:p, comp previousButton:::p::p}}, space ::274:x, par l {comp evetntPicture4:::p:153:p, comp evetntPicture5:::p:153:p, comp evetntPicture6:::p:153:p}, space :16:16:p, par l {comp eventName4:::p::p, comp eventName5:::p::p, seq l {space :2:2:p, comp eventName6:::p::p}}, space :16:16:p, par l {comp eventDate4:::p::p, comp eventDate5:::p::p, seq l {space :2:2:p, comp eventDate6:::p::p}}, space :p:279:p, par l {comp evetntPicture7:::p:153:p, comp evetntPicture8:::p:153:p, comp evetntPicture9:::p:153:p}, space :16:16:p, par l {comp eventName7:::p::p, comp eventName8:::p::p, seq l {space :2:2:p, comp eventName9:::p::p}}, space :16:16:p, par l {comp eventDate7:::p::p, comp eventDate8:::p::p, seq l {space :2:2:p, comp eventDate9:::p::p}}, space :p:50:p}}"
+					"$verticalGroup": "par l {seq {par l {seq {par l {seq {space :p:183:p, comp nextButton:::p::p}, seq l {space :p:33:p, comp mainLabel:::p::p, space :p:38:p, comp mainLivePicture:::p:262:p}}, space ::82:x, comp eventLabel:::p::p, space :p:42:p, par l {comp evetntPicture1::t:p:153:p, par b:t {comp evetntPicture3::b:p:153:p, comp evetntPicture2::b:p:153:p}}, par l {seq {space :p:18:p, comp eventName3:::p::p, space s:::p, comp eventDate3:::p::p}, seq l {space :p:16:p, par b {comp eventName1::b:p::p, comp eventName2::b:p::p}, space s:::p, par b {comp eventDate1::b:p::p, comp eventDate2::b:p::p}}}}, seq l {space :p:195:p, comp previousButton:::p::p}}, space ::269:x, par l {comp evetntPicture4:::p:153:p, comp evetntPicture5:::p:153:p, comp evetntPicture6:::p:153:p}, space :16:16:p, par l {comp eventName4:::p::p, comp eventName5:::p::p, seq l {space :2:2:p, comp eventName6:::p::p}}, space :16:16:p, par l {comp eventDate4:::p::p, comp eventDate5:::p::p, seq l {space :2:2:p, comp eventDate6:::p::p}}, space :p:279:p, par l {comp evetntPicture7:::p:153:p, comp evetntPicture8:::p:153:p, comp evetntPicture9:::p:153:p}, space :16:16:p, par l {comp eventName7:::p::p, comp eventName8:::p::p, seq l {space :2:2:p, comp eventName9:::p::p}}, space :16:16:p, par l {comp eventDate7:::p::p, comp eventDate8:::p::p, seq l {space :2:2:p, comp eventDate9:::p::p}}, space :p:50:p}}"
 				} ) {
 					name: "panel2"
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -208,11 +198,6 @@ new FormModel {
 						"font": #SwingDerivedFont0
 					} )
 				} )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 232
-				"y": 85
-				"width": 1157
-				"height": 1865
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {comp homeButton::::224:x, comp eventButton::::224:x, comp customerButton::l::224:x, comp stageButton::l::224:x, comp partnersButton::l::224:x, comp analyticsButton::::224:x, comp settingsButton::l::224:x}"
@@ -234,7 +219,6 @@ new FormModel {
 					name: "customerButton"
 					"text": "CUSTOMER"
 					"background": #Color0
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "customer", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "stageButton"
@@ -256,8 +240,6 @@ new FormModel {
 					"text": "SETTINGS"
 					"background": #Color0
 				} )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"y": 85
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
