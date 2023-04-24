@@ -1,4 +1,4 @@
-package View.customerPanel;
+package View.customerPanel.controller;
 
 import javax.swing.*;
 

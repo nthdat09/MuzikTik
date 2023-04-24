@@ -1,5 +1,8 @@
-package View.customerPanel;
+package View.customerPanel.controller;
 
+
+import View.customerPanel.listPanel.historyCustomerPanel;
+import View.customerPanel.listPanel.informationCustomerPanel;
 
 import javax.swing.*;
 import java.awt.*;

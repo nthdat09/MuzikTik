@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Mon Apr 24 09:04:23 ICT 2023
  */
 
-package View.customerPanel;
+package View.customerPanel.listPanel;
 
 import javax.swing.*;
 import javax.swing.GroupLayout;
