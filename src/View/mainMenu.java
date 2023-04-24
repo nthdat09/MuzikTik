@@ -4,6 +4,8 @@
 
 package View;
 
+import Controller.SwitchScreen;
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -19,7 +21,7 @@ public class mainMenu extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Man
+        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
         headerPanel = new JPanel();
         avatarFrame = new JLabel();
         searchButton = new JTextField();
@@ -69,12 +71,11 @@ public class mainMenu extends JPanel {
 
         //======== this ========
         setBorder(null);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
-        ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
-        .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt
-        . Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
-        propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-        ;} } );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+        , 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+        , new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+         getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
         //======== headerPanel ========
         {
@@ -475,7 +476,7 @@ public class mainMenu extends JPanel {
             navigationPanelLayout.setVerticalGroup(
                 navigationPanelLayout.createParallelGroup()
                     .addGroup(navigationPanelLayout.createSequentialGroup()
-                        .addComponent(homeButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(homeButton, GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(eventButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
@@ -488,7 +489,7 @@ public class mainMenu extends JPanel {
                         .addComponent(analyticsButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(settingsButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1394, Short.MAX_VALUE))
+                        .addGap(1394, 1394, 1394))
             );
         }
 
@@ -520,10 +521,16 @@ public class mainMenu extends JPanel {
         frame.setContentPane(new mainMenu());
         frame.pack();
         frame.setVisible(true);
+
+        SwitchScreen controller = new SwitchScreen();
+        controller.setView(homeButton)
+
+
+
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Man
+    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
     private JPanel headerPanel;
     private JLabel avatarFrame;
     private JTextField searchButton;
@@ -571,4 +578,6 @@ public class mainMenu extends JPanel {
     private JButton analyticsButton;
     private JButton settingsButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
+
+
 }

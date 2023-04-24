@@ -200,7 +200,7 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {comp homeButton::::224:x, comp eventButton::::224:x, comp customerButton::l::224:x, comp stageButton::l::224:x, comp partnersButton::l::224:x, comp analyticsButton::::224:x, comp settingsButton::l::224:x}"
-				"$verticalGroup": "par l {seq l {comp homeButton:::p:62:p, space :::p, comp eventButton:::p:62:p, space :::p, comp customerButton:::p:62:p, space :::p, comp stageButton:::p:62:p, space :::p, comp partnersButton:::p:61:p, space :::p, comp analyticsButton:::p:62:p, space :::p, comp settingsButton:::p:62:p, space :0:1394:x}}"
+				"$verticalGroup": "par l {seq l {comp homeButton::::62:x, space :p::p, comp eventButton:::p:62:p, space :p::p, comp customerButton:::p:62:p, space :p::p, comp stageButton:::p:62:p, space :p::p, comp partnersButton:::p:61:p, space :p::p, comp analyticsButton:::p:62:p, space :p::p, comp settingsButton:::p:62:p, space :p:1394:p}}"
 			} ) {
 				name: "navigationPanel"
 				"border": #LineBorder0

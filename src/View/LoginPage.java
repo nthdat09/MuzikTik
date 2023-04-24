@@ -18,10 +18,14 @@ public class LoginPage extends JPanel {
         initComponents();
     }
 
+    private void Login(ActionEvent e) {
+        // TODO add your code here
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
         LoginPage = new JDialog();
         label1 = new JLabel();
         UsernameField = new JTextField();
@@ -29,23 +33,24 @@ public class LoginPage extends JPanel {
         label2 = new JLabel();
         Password = new JLabel();
         LoginButton = new JButton();
-        LoginButton.addActionListener(ac);
         LoginStatus = new JLabel();
 
         //======== LoginPage ========
         {
-            LoginPage.setTitle(" H\u1ec7 th\u1ed1ng qu\u1ea3n l\u00fd b\u00e1n v\u00e9 ch\u01b0\u01a1ng tr\u00ecnh \u00e2m nh\u1ea1c");
+            LoginPage.setTitle("Concert Go");
             LoginPage.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             LoginPage.setFont(new Font(Font.DIALOG, Font.BOLD, 16));
             LoginPage.setName("LoginPage");
             LoginPage.setVisible(true);
+            LoginPage.setBackground(Color.white);
+            LoginPage.setForeground(SystemColor.controlDkShadow);
             var LoginPageContentPane = LoginPage.getContentPane();
             LoginPageContentPane.setLayout(null);
 
             //---- label1 ----
             label1.setText("LOGIN");
             label1.setIcon(new ImageIcon(getClass().getResource("/Asset/icons8-login-64.png")));
-            label1.setFont(new Font("Inter", Font.BOLD, 26));
+            label1.setFont(new Font("UTM Avo", Font.BOLD, 26));
             LoginPageContentPane.add(label1);
             label1.setBounds(275, 60, 175, 70);
             LoginPageContentPane.add(UsernameField);
@@ -55,6 +60,7 @@ public class LoginPage extends JPanel {
 
             //---- label2 ----
             label2.setText("Username:");
+            label2.setFont(new Font("UTM Avo", Font.PLAIN, 12));
             LoginPageContentPane.add(label2);
             label2.setBounds(160, 185, 90, 35);
 
@@ -65,6 +71,11 @@ public class LoginPage extends JPanel {
 
             //---- LoginButton ----
             LoginButton.setText("LOGIN");
+            LoginButton.setFont(new Font("SVN-Avo", Font.BOLD, 12));
+            LoginButton.addActionListener(e -> {
+			Login(e);
+			Login(e);
+		});
             LoginPageContentPane.add(LoginButton);
             LoginButton.setBounds(new Rectangle(new Point(325, 350), LoginButton.getPreferredSize()));
             LoginPageContentPane.add(LoginStatus);
@@ -78,7 +89,7 @@ public class LoginPage extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
     private JDialog LoginPage;
     private JLabel label1;
     private JTextField UsernameField;
