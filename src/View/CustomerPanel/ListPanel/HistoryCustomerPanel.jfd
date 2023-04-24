@@ -1,0 +1,28 @@
+JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space ::229:x, par l {seq t {comp label1:::p:384:p, space :p:305:p}, seq t {comp label2:::p:538:p, space :p:228:p}}}}"
+			"$verticalGroup": "par l {seq l {space :p:42:p, comp label1:::p:131:p, space :p:62:p, comp label2:::p:72:p, space ::488:x}}"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "hình ảnh"
+				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Không Có Vé Nào Trong Quá Khứ"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 16, false )
+				"horizontalAlignment": 0
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 105, 30 )
+			"size": new java.awt.Dimension( 995, 795 )
+		} )
+	}
+}

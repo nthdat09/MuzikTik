@@ -1,15 +1,15 @@
-package View;
+package View.LoginPage;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import Application.Main;
 import Controller.LoginPageListener;
-import DAO.UserDAO;
+import DAO.DAOHoiVien;
 import Model.User;
-import com.intellij.uiDesigner.core.*;
-import com.mysql.cj.log.Log;
+import View.MainMenu.MainMenu;
 
 public class LoginPage extends JPanel {
     ActionListener ac = new LoginPageListener(this);
@@ -19,13 +19,14 @@ public class LoginPage extends JPanel {
     }
 
     private void Login(ActionEvent e) {
-        // TODO add your code here
+        LoginButton.addActionListener(ac);
     }
+
 
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
         LoginPage = new JDialog();
         label1 = new JLabel();
         UsernameField = new JTextField();
@@ -37,20 +38,18 @@ public class LoginPage extends JPanel {
 
         //======== LoginPage ========
         {
-            LoginPage.setTitle("Concert Go");
+            LoginPage.setTitle(" H\u1ec7 th\u1ed1ng qu\u1ea3n l\u00fd b\u00e1n v\u00e9 ch\u01b0\u01a1ng tr\u00ecnh \u00e2m nh\u1ea1c");
             LoginPage.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             LoginPage.setFont(new Font(Font.DIALOG, Font.BOLD, 16));
             LoginPage.setName("LoginPage");
             LoginPage.setVisible(true);
-            LoginPage.setBackground(Color.white);
-            LoginPage.setForeground(SystemColor.controlDkShadow);
             var LoginPageContentPane = LoginPage.getContentPane();
             LoginPageContentPane.setLayout(null);
 
             //---- label1 ----
             label1.setText("LOGIN");
             label1.setIcon(new ImageIcon(getClass().getResource("/Asset/icons8-login-64.png")));
-            label1.setFont(new Font("UTM Avo", Font.BOLD, 26));
+            label1.setFont(new Font("Inter", Font.BOLD, 26));
             LoginPageContentPane.add(label1);
             label1.setBounds(275, 60, 175, 70);
             LoginPageContentPane.add(UsernameField);
@@ -60,7 +59,6 @@ public class LoginPage extends JPanel {
 
             //---- label2 ----
             label2.setText("Username:");
-            label2.setFont(new Font("UTM Avo", Font.PLAIN, 12));
             LoginPageContentPane.add(label2);
             label2.setBounds(160, 185, 90, 35);
 
@@ -71,9 +69,7 @@ public class LoginPage extends JPanel {
 
             //---- LoginButton ----
             LoginButton.setText("LOGIN");
-            LoginButton.setFont(new Font("SVN-Avo", Font.BOLD, 12));
             LoginButton.addActionListener(e -> {
-			Login(e);
 			Login(e);
 		});
             LoginPageContentPane.add(LoginButton);
@@ -89,15 +85,15 @@ public class LoginPage extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
-    private JDialog LoginPage;
-    private JLabel label1;
-    private JTextField UsernameField;
-    private JPasswordField PasswordField;
-    private JLabel label2;
-    private JLabel Password;
-    private JButton LoginButton;
-    private JLabel LoginStatus;
+    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+    public JDialog LoginPage;
+    public JLabel label1;
+    public JTextField UsernameField;
+    public JPasswordField PasswordField;
+    public JLabel label2;
+    public JLabel Password;
+    public JButton LoginButton;
+    public JLabel LoginStatus;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
 
@@ -105,7 +101,7 @@ public class LoginPage extends JPanel {
         String username = this.UsernameField.getText();
         String password = this.PasswordField.getText();
 
-        User realuser = UserDAO.getInstance().selectById(username);
+        User realuser = DAOHoiVien.getInstance().selectById(username);
 
         if (realuser == null) {
             this.LoginStatus.setText("Login Failed");
@@ -117,8 +113,10 @@ public class LoginPage extends JPanel {
             String realPassword = realuser.getPassword();
 
             if (username.equals(realUsername) && password.equals(realPassword)) {
-                this.LoginStatus.setText("Login Success");
                 this.LoginStatus.setForeground(Color.GREEN);
+                this.LoginPage.dispose();
+                MainMenu mainMenu = new MainMenu();
+                mainMenu.setVisible(true);
             } else {
                 this.LoginStatus.setText("Login Failed");
                 this.LoginStatus.setForeground(Color.RED);

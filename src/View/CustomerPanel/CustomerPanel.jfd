@@ -1,0 +1,79 @@
+JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :::p, comp panel1:::p::p, space :::p, comp jpnView:::p::p, space :::x}}"
+			"$verticalGroup": "par l {seq {space :::p, par l {comp panel1:::::x, comp jpnView:::::x}, space :::p}}"
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {par l {comp label1::::250:x, seq l {space :::p, par l {comp jpnInfor:::::x, comp jpnLogOut::t:::x, comp jpnHistory::l:::x}}}, space :::p}, seq l {space :p:44:p, comp label2:::p:169:p, space ::43:x}}"
+				"$verticalGroup": "par l {seq {space :::p, comp label1:::p:70:p, space :p:33:p, comp label2:::p:208:p, space :p:39:p, comp jpnInfor:::p::p, space s:::p, comp jpnHistory:::p::p, space s:::p, comp jpnLogOut:::p::p, space ::191:x}}"
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "My Account"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 20, false )
+					"horizontalAlignment": 0
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "Avatar"
+					"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+					"horizontalAlignment": 0
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {comp jlbInfor::l::242:x}"
+					"$verticalGroup": "par l {comp jlbInfor::l::73:x}"
+				} ) {
+					name: "jpnInfor"
+					"border": &LineBorder0 new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "jlbInfor"
+						"text": "THÔNG TIN KHÁCH HÀNG"
+						"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+						"horizontalAlignment": 0
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {comp jlbHistoory::l::242:x}"
+					"$verticalGroup": "par l {comp jlbHistoory::l::73:x}"
+				} ) {
+					name: "jpnHistory"
+					"border": #LineBorder0
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "jlbHistoory"
+						"text": "LỊCH SỬ"
+						"font": #SwingDerivedFont0
+						"horizontalAlignment": 0
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {comp jlbLogOut::l::242:x}"
+					"$verticalGroup": "par l {comp jlbLogOut::l::73:x}"
+				} ) {
+					name: "jpnLogOut"
+					"border": #LineBorder0
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "jlbLogOut"
+						"text": "ĐĂNG XUẤT"
+						"font": #SwingDerivedFont0
+						"horizontalAlignment": 0
+					} )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {space :0:994:x}"
+				"$verticalGroup": "par l {space :0:808:x}"
+			} ) {
+				name: "jpnView"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 140, 120 )
+			"size": new java.awt.Dimension( 1265, 820 )
+		} )
+	}
+}

@@ -9,12 +9,12 @@ public class UserDatabase {
         Connection c = null;
         try {
             // Đăng ký MySQL Driver với DriverManager
-            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 
             // Các thông số
-            String url = "jdbc:mySQL://localhost:3306/TestMYSQL";
-            String username = "root";
-            String password = "";
+            String url = "jdbc:mySQL://localhost:3306/mctmsys";
+            String username = "newuser";
+            String password = "123456a@b@";
 
             // Tạo kết nối
             c = DriverManager.getConnection(url, username, password);
