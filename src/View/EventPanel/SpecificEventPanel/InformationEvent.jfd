@@ -1,0 +1,41 @@
+JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+			name: "scrollPane1"
+			"preferredSize": new java.awt.Dimension( 1020, 10021 )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :p:59:p, par l:::p {seq {comp EventName:::p:175:p, space :::x, comp button1:::p:115:p}, comp DescriptionText:::p:900:p}, space ::59:x}}"
+				"$verticalGroup": "par l {seq t {par l {seq {space :p:21:p, comp button1:::p:30:p, space :p:43:p}, seq t {space :::p, comp EventName:::p:55:p, space u:::p}}, comp DescriptionText:::p:531:p, space :::x}}"
+			} ) {
+				name: "InformationPanel"
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "EventName"
+					"text": "Event Name"
+					"font": new java.awt.Font( "Lato Black", 1, 30 )
+					"foreground": new java.awt.Color( 97, 184, 132, 255 )
+					"horizontalAlignment": 2
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "DescriptionText"
+					"text": "Description Event"
+					"verticalAlignment": 1
+					"font": new java.awt.Font( "Lato", 0, 14 )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button1"
+					"text": "EDIT"
+					"foreground": sfield java.awt.Color white
+					"background": new java.awt.Color( 97, 184, 132, 255 )
+					"font": new java.awt.Font( "Lato Black", 1, 14 )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 155 )
+			"size": new java.awt.Dimension( 1030, 576 )
+		} )
+	}
+}
