@@ -1,17 +1,16 @@
 package Controller;
 
-import View.CustomerListPanel.CustomerListPanel;
-import View.LoginPage.LoginPage;
-import View.MainMenu.MainMenu;
+import View.CustomerListPanel.*;
+import View.MenuPage.MenuPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainMenuListener implements ActionListener {
 
-    private MainMenu mainMenu;
+    private MenuPanel mainMenu;
 
-    public MainMenuListener (MainMenu view) {
+    public MainMenuListener (MenuPanel view) {
         this.mainMenu = view;
     }
 

@@ -5,11 +5,10 @@ import java.awt.event.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-import Application.Main;
 import Controller.LoginPageListener;
 import DAO.DAOHoiVien;
 import Model.User;
-import View.MainMenu.MainMenu;
+import View.MenuPage.MenuPanel;
 
 public class LoginPage extends JPanel {
     ActionListener ac = new LoginPageListener(this);
@@ -115,7 +114,7 @@ public class LoginPage extends JPanel {
             if (username.equals(realUsername) && password.equals(realPassword)) {
                 this.LoginStatus.setForeground(Color.GREEN);
                 this.LoginPage.dispose();
-                MainMenu mainMenu = new MainMenu();
+                MenuPanel mainMenu = new MenuPanel();
                 mainMenu.setVisible(true);
             } else {
                 this.LoginStatus.setText("Login Failed");

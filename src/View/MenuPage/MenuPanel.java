@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Sun Apr 23 10:39:47 ICT 2023
  */
 
-package View.MainMenu;
+package View.MenuPage;
 
 import java.awt.*;
 import javax.swing.*;
@@ -12,18 +12,14 @@ import javax.swing.border.*;
 /**
  * @author ADMIN
  */
-public class MainMenu extends JFrame {
-    public MainMenu() {
+public class MenuPanel extends JFrame {
+    public MenuPanel() {
         initComponents();
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
-        headerPanel = new JPanel();
-        avatarFrame = new JLabel();
-        searchButton = new JTextField();
-        nameAppLabell = new JLabel();
+        // Generated using JFormDesigner Evaluation license - Man
         mainScrollPanel = new JScrollPane();
         panel2 = new JPanel();
         mainLabel = new JLabel();
@@ -58,73 +54,24 @@ public class MainMenu extends JFrame {
         eventName8 = new JLabel();
         eventName7 = new JLabel();
         eventDate7 = new JLabel();
-        navigationPanel = new JPanel();
-        homeButton = new JButton();
-        eventButton = new JButton();
-        customerButton = new JButton();
-        stageButton = new JButton();
-        partnersButton = new JButton();
-        analyticsButton = new JButton();
-        settingsButton = new JButton();
 
         //======== this ========
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         var contentPane = getContentPane();
 
-        //======== headerPanel ========
-        {
-            headerPanel.setBorder(LineBorder.createBlackLineBorder());
-            headerPanel.setBackground(new Color(0x9fc5f8));
-            headerPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
-            .border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder
-            .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.
-            awt.Font.BOLD,12),java.awt.Color.red),headerPanel. getBorder()))
-            ;headerPanel. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-            ){if("\u0062or\u0064er".equals(e.getPropertyName()))throw new RuntimeException();}})
-            ;
-
-            //---- avatarFrame ----
-            avatarFrame.setText("text");
-            avatarFrame.setBorder(LineBorder.createBlackLineBorder());
-
-            //---- searchButton ----
-            searchButton.setText("Search");
-
-            //---- nameAppLabell ----
-            nameAppLabell.setText("H\u1ec7 Th\u1ed1ng Qu\u1ea3n L\u00ed B\u00e1n V\u00e9 Ho\u00e0 Nh\u1ea1c");
-            nameAppLabell.setFont(nameAppLabell.getFont().deriveFont(nameAppLabell.getFont().getSize() + 7f));
-
-            GroupLayout headerPanelLayout = new GroupLayout(headerPanel);
-            headerPanel.setLayout(headerPanelLayout);
-            headerPanelLayout.setHorizontalGroup(
-                headerPanelLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(nameAppLabell, GroupLayout.PREFERRED_SIZE, 355, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 191, GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(avatarFrame, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))
-            );
-            headerPanelLayout.setVerticalGroup(
-                headerPanelLayout.createParallelGroup()
-                    .addGroup(headerPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(headerPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(avatarFrame, GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                            .addComponent(nameAppLabell, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-            );
-        }
-
         //======== mainScrollPanel ========
         {
 
             //======== panel2 ========
             {
+                panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+                . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder
+                . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .
+                awt .Font .BOLD ,12 ), java. awt. Color. red) ,panel2. getBorder( )) )
+                ; panel2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+                ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+                ;
 
                 //---- mainLabel ----
                 mainLabel.setText("Let Make Live Happen");
@@ -263,7 +210,7 @@ public class MainMenu extends JFrame {
                                     .addComponent(eventName1)
                                     .addGap(281, 281, 281)
                                     .addComponent(eventName2)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
                                     .addComponent(eventName3)
                                     .addGap(88, 88, 88))
                                 .addGroup(panel2Layout.createSequentialGroup()
@@ -278,7 +225,7 @@ public class MainMenu extends JFrame {
                         .addGroup(panel2Layout.createSequentialGroup()
                             .addGap(434, 434, 434)
                             .addComponent(mainLabel)
-                            .addGap(0, 861, Short.MAX_VALUE))
+                            .addGap(0, 881, Short.MAX_VALUE))
                         .addGroup(panel2Layout.createSequentialGroup()
                             .addGroup(panel2Layout.createParallelGroup()
                                 .addGroup(panel2Layout.createParallelGroup()
@@ -361,7 +308,7 @@ public class MainMenu extends JFrame {
                                             .addComponent(mainLabel)
                                             .addGap(38, 38, 38)
                                             .addComponent(mainLivePicture, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                                     .addComponent(eventLabel)
                                     .addGap(42, 42, 42)
                                     .addGroup(panel2Layout.createParallelGroup()
@@ -387,7 +334,7 @@ public class MainMenu extends JFrame {
                                 .addGroup(panel2Layout.createSequentialGroup()
                                     .addGap(195, 195, 195)
                                     .addComponent(previousButton)))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 269, Short.MAX_VALUE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 296, Short.MAX_VALUE)
                             .addGroup(panel2Layout.createParallelGroup()
                                 .addComponent(evetntPicture4, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
                                 .addComponent(evetntPicture5, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
@@ -431,89 +378,17 @@ public class MainMenu extends JFrame {
             mainScrollPanel.setViewportView(panel2);
         }
 
-        //======== navigationPanel ========
-        {
-            navigationPanel.setBorder(LineBorder.createBlackLineBorder());
-
-            //---- homeButton ----
-            homeButton.setText("HOME");
-            homeButton.setBackground(Color.white);
-
-            //---- eventButton ----
-            eventButton.setText("EVENT");
-            eventButton.setBackground(Color.white);
-
-            //---- customerButton ----
-            customerButton.setText("CUSTOMER");
-            customerButton.setBackground(Color.white);
-
-            //---- stageButton ----
-            stageButton.setText("STAGE");
-            stageButton.setBackground(Color.white);
-
-            //---- partnersButton ----
-            partnersButton.setText("PARTNERS");
-            partnersButton.setBackground(Color.white);
-
-            //---- analyticsButton ----
-            analyticsButton.setText("ANALYTICS");
-            analyticsButton.setBackground(Color.white);
-
-            //---- settingsButton ----
-            settingsButton.setText("SETTINGS");
-            settingsButton.setBackground(Color.white);
-
-            GroupLayout navigationPanelLayout = new GroupLayout(navigationPanel);
-            navigationPanel.setLayout(navigationPanelLayout);
-            navigationPanelLayout.setHorizontalGroup(
-                navigationPanelLayout.createParallelGroup()
-                    .addComponent(homeButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                    .addComponent(eventButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                    .addComponent(customerButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                    .addComponent(stageButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                    .addComponent(partnersButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                    .addComponent(analyticsButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                    .addComponent(settingsButton, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-            );
-            navigationPanelLayout.setVerticalGroup(
-                navigationPanelLayout.createParallelGroup()
-                    .addGroup(navigationPanelLayout.createSequentialGroup()
-                        .addComponent(homeButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(eventButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(customerButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(stageButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(partnersButton, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(analyticsButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(settingsButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1363, Short.MAX_VALUE))
-            );
-        }
-
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
-                .addComponent(headerPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addComponent(navigationPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1157, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())
+                    .addGap(0, 1, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
-                .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addComponent(headerPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(navigationPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(mainScrollPanel, GroupLayout.DEFAULT_SIZE, 1834, Short.MAX_VALUE)))
+                .addComponent(mainScrollPanel, GroupLayout.DEFAULT_SIZE, 1919, Short.MAX_VALUE)
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -522,17 +397,13 @@ public class MainMenu extends JFrame {
     
     public static void main (String[] args) {
         JFrame frame = new JFrame("Đồ án bán vé hoà nhạc");
-        frame.setContentPane(new MainMenu());
+        frame.setContentPane(new MenuPanel());
         frame.pack();
         frame.setVisible(true);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
-    private JPanel headerPanel;
-    private JLabel avatarFrame;
-    private JTextField searchButton;
-    private JLabel nameAppLabell;
+    // Generated using JFormDesigner Evaluation license - Man
     private JScrollPane mainScrollPanel;
     private JPanel panel2;
     private JLabel mainLabel;
@@ -567,13 +438,5 @@ public class MainMenu extends JFrame {
     private JLabel eventName8;
     private JLabel eventName7;
     private JLabel eventDate7;
-    private JPanel navigationPanel;
-    private JButton homeButton;
-    private JButton eventButton;
-    private JButton customerButton;
-    private JButton stageButton;
-    private JButton partnersButton;
-    private JButton analyticsButton;
-    private JButton settingsButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
