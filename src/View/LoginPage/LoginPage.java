@@ -113,15 +113,14 @@ public class LoginPage extends JPanel {
     public JLabel LoginStatus;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
-    public void initComponentsLogin() {
+    public void initComponentsLogin(){
         ImageIcon icon = new ImageIcon(getClass().getResource("/Asset/icons8-login-64.png"));
         Image image = icon.getImage();
         Image scaledImage = image.getScaledInstance(24,24 , Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         JLabel label = new JLabel(scaledIcon);
         JLabel Logo = new JLabel("Text", scaledIcon, JLabel.LEFT);
-        Logo.setText("");
-        LoginPage.add(Logo);
+        add(Logo);
         Logo.setBounds(275, 60, 175, 70);
     }
     public void DoLogin(){
