@@ -13,7 +13,7 @@ import javax.swing.border.*;
 /**
  * @author ADMIN
  */
-public class Main extends JFrame {
+public class Main {
     public Main() {
         initComponents();
         jpnDropMenu4.setSize(0,0);
@@ -67,12 +67,14 @@ public class Main extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Man
+        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
         headerPanel = new JPanel();
         searchButton = new JTextField();
         nameAppLabell = new JLabel();
         label10 = new JLabel();
         jpnBuffer = new JPanel();
+        Logo1 = new JLabel();
+        Logo2 = new JLabel();
         navigationPanel = new JPanel();
         jpnHome = new JPanel();
         jlbHome = new JLabel();
@@ -104,16 +106,22 @@ public class Main extends JFrame {
 
         //======== headerPanel ========
         {
-            headerPanel.setBorder(null);
-            headerPanel.setBorder(new CompoundBorder(new TitledBorder(new EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", TitledBorder.CENTER, TitledBorder.BOTTOM,new Font("Dialo\u0067"
-            , Font.BOLD,12), Color.red),headerPanel. getBorder
-            ()));headerPanel. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
-            .beans.PropertyChangeEvent e){if("borde\u0072".equals(e.getPropertyName()))throw new RuntimeException
-            ();}});
+            headerPanel.setBorder(new LineBorder(new Color(0xbebebe)));
+            headerPanel.setBackground(Color.white);
+            headerPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
+            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax
+            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
+            . awt .Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,12 ) ,java . awt
+            . Color .red ) ,headerPanel. getBorder () ) ); headerPanel. addPropertyChangeListener( new java. beans .
+            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062or\u0064er" .
+            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             headerPanel.setLayout(null);
 
             //---- searchButton ----
             searchButton.setText("Search");
+            searchButton.setFont(new Font("Lato", Font.PLAIN, 16));
+            searchButton.setForeground(new Color(0x666666));
+            searchButton.setBorder(new LineBorder(new Color(0x61b884), 1, true));
             searchButton.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
@@ -121,18 +129,20 @@ public class Main extends JFrame {
                 }
             });
             headerPanel.add(searchButton);
-            searchButton.setBounds(700, 15, 461, searchButton.getPreferredSize().height);
+            searchButton.setBounds(750, 20, 461, 30);
 
             //---- nameAppLabell ----
-            nameAppLabell.setText("H\u1ec7 Th\u1ed1ng Qu\u1ea3n L\u00ed B\u00e1n V\u00e9 Ho\u00e0 Nh\u1ea1c");
-            nameAppLabell.setFont(nameAppLabell.getFont().deriveFont(nameAppLabell.getFont().getSize() + 7f));
+            nameAppLabell.setFont(new Font("Fredoka One", Font.BOLD, 20));
+            nameAppLabell.setIcon(new ImageIcon(getClass().getResource("/Asset/music logo design - no name.png")));
             headerPanel.add(nameAppLabell);
-            nameAppLabell.setBounds(40, 25, 355, 30);
+            nameAppLabell.setBounds(0, 5, 80, 65);
 
             //---- label10 ----
-            label10.setText("MENU");
+            label10.setText("Avatar");
             label10.setHorizontalAlignment(SwingConstants.CENTER);
-            label10.setBorder(LineBorder.createBlackLineBorder());
+            label10.setBorder(new LineBorder(new Color(0x61b884)));
+            label10.setFont(new Font("Lato Black", Font.BOLD, 18));
+            label10.setForeground(new Color(0x61b884));
             label10.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
@@ -171,11 +181,25 @@ public class Main extends JFrame {
                 );
                 jpnBufferLayout.setVerticalGroup(
                     jpnBufferLayout.createParallelGroup()
-                        .addGap(0, 20, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                 );
             }
             headerPanel.add(jpnBuffer);
             jpnBuffer.setBounds(1180, 55, 220, 0);
+
+            //---- Logo1 ----
+            Logo1.setText("MUZIKTIC");
+            Logo1.setFont(new Font("Fredoka One", Font.BOLD, 22));
+            Logo1.setForeground(new Color(0xa8cf45));
+            headerPanel.add(Logo1);
+            Logo1.setBounds(new Rectangle(new Point(85, 15), Logo1.getPreferredSize()));
+
+            //---- Logo2 ----
+            Logo2.setText("CONCERT MUSIC TICKETING");
+            Logo2.setForeground(new Color(0x0098da));
+            Logo2.setFont(new Font("Fredoka One", Font.BOLD, 15));
+            headerPanel.add(Logo2);
+            Logo2.setBounds(new Rectangle(new Point(85, 45), Logo2.getPreferredSize()));
 
             {
                 // compute preferred size
@@ -202,12 +226,17 @@ public class Main extends JFrame {
             //======== jpnHome ========
             {
                 jpnHome.setPreferredSize(new Dimension(225, 65));
+                jpnHome.setBackground(new Color(0x61b884));
 
                 //---- jlbHome ----
                 jlbHome.setText("HOME");
                 jlbHome.setHorizontalAlignment(SwingConstants.CENTER);
-                jlbHome.setBorder(LineBorder.createBlackLineBorder());
+                jlbHome.setBorder(null);
                 jlbHome.setPreferredSize(new Dimension(225, 65));
+                jlbHome.setBackground(new Color(0x61b884));
+                jlbHome.setFont(new Font("Lato Black", Font.BOLD, 20));
+                jlbHome.setForeground(Color.white);
+                jlbHome.setIcon(null);
 
                 GroupLayout jpnHomeLayout = new GroupLayout(jpnHome);
                 jpnHome.setLayout(jpnHomeLayout);
@@ -217,19 +246,22 @@ public class Main extends JFrame {
                 );
                 jpnHomeLayout.setVerticalGroup(
                     jpnHomeLayout.createParallelGroup()
-                        .addComponent(jlbHome, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlbHome, GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 );
             }
 
             //======== jpnEvent ========
             {
                 jpnEvent.setPreferredSize(new Dimension(225, 65));
+                jpnEvent.setBackground(new Color(0x61b884));
 
                 //---- jlbEvent ----
-                jlbEvent.setText("EVENT");
+                jlbEvent.setText("EVENTS");
                 jlbEvent.setHorizontalAlignment(SwingConstants.CENTER);
-                jlbEvent.setBorder(LineBorder.createBlackLineBorder());
+                jlbEvent.setBorder(null);
                 jlbEvent.setPreferredSize(new Dimension(225, 65));
+                jlbEvent.setForeground(Color.white);
+                jlbEvent.setFont(new Font("Lato Black", Font.BOLD, 20));
 
                 GroupLayout jpnEventLayout = new GroupLayout(jpnEvent);
                 jpnEvent.setLayout(jpnEventLayout);
@@ -239,139 +271,171 @@ public class Main extends JFrame {
                 );
                 jpnEventLayout.setVerticalGroup(
                     jpnEventLayout.createParallelGroup()
-                        .addComponent(jlbEvent, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlbEvent, GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 );
             }
 
             //======== jpnCustomers ========
             {
                 jpnCustomers.setPreferredSize(new Dimension(225, 65));
+                jpnCustomers.setBackground(new Color(0x61b884));
 
                 //---- jlbCustomer ----
                 jlbCustomer.setText("CUSTOMERS");
                 jlbCustomer.setHorizontalAlignment(SwingConstants.CENTER);
-                jlbCustomer.setBorder(LineBorder.createBlackLineBorder());
+                jlbCustomer.setBorder(null);
                 jlbCustomer.setPreferredSize(new Dimension(225, 65));
+                jlbCustomer.setForeground(Color.white);
+                jlbCustomer.setFont(new Font("Lato Black", Font.BOLD, 20));
 
                 GroupLayout jpnCustomersLayout = new GroupLayout(jpnCustomers);
                 jpnCustomers.setLayout(jpnCustomersLayout);
                 jpnCustomersLayout.setHorizontalGroup(
                     jpnCustomersLayout.createParallelGroup()
-                        .addComponent(jlbCustomer, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jpnCustomersLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(jlbCustomer, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 );
                 jpnCustomersLayout.setVerticalGroup(
                     jpnCustomersLayout.createParallelGroup()
-                        .addComponent(jlbCustomer, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlbCustomer, GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 );
             }
 
             //======== jpnTickets ========
             {
                 jpnTickets.setPreferredSize(new Dimension(225, 65));
+                jpnTickets.setBackground(new Color(0x61b884));
 
                 //---- jlbTickets ----
                 jlbTickets.setText("TICKETS");
                 jlbTickets.setHorizontalAlignment(SwingConstants.CENTER);
-                jlbTickets.setBorder(LineBorder.createBlackLineBorder());
+                jlbTickets.setBorder(null);
                 jlbTickets.setPreferredSize(new Dimension(225, 65));
+                jlbTickets.setForeground(Color.white);
+                jlbTickets.setFont(new Font("Lato Black", Font.BOLD, 20));
 
                 GroupLayout jpnTicketsLayout = new GroupLayout(jpnTickets);
                 jpnTickets.setLayout(jpnTicketsLayout);
                 jpnTicketsLayout.setHorizontalGroup(
                     jpnTicketsLayout.createParallelGroup()
-                        .addComponent(jlbTickets, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jpnTicketsLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(jlbTickets, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 );
                 jpnTicketsLayout.setVerticalGroup(
                     jpnTicketsLayout.createParallelGroup()
-                        .addComponent(jlbTickets, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlbTickets, GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 );
             }
 
             //======== jpnStages ========
             {
                 jpnStages.setPreferredSize(new Dimension(225, 65));
+                jpnStages.setBackground(new Color(0x61b884));
 
                 //---- jlbStages ----
                 jlbStages.setText("STAGES");
                 jlbStages.setHorizontalAlignment(SwingConstants.CENTER);
-                jlbStages.setBorder(LineBorder.createBlackLineBorder());
+                jlbStages.setBorder(null);
                 jlbStages.setPreferredSize(new Dimension(225, 65));
+                jlbStages.setForeground(Color.white);
+                jlbStages.setFont(new Font("Lato Black", Font.BOLD, 20));
 
                 GroupLayout jpnStagesLayout = new GroupLayout(jpnStages);
                 jpnStages.setLayout(jpnStagesLayout);
                 jpnStagesLayout.setHorizontalGroup(
                     jpnStagesLayout.createParallelGroup()
-                        .addComponent(jlbStages, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jpnStagesLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(jlbStages, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 );
                 jpnStagesLayout.setVerticalGroup(
                     jpnStagesLayout.createParallelGroup()
-                        .addComponent(jlbStages, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jpnStagesLayout.createSequentialGroup()
+                            .addComponent(jlbStages, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 2, Short.MAX_VALUE))
                 );
             }
 
             //======== jpnPartners ========
             {
                 jpnPartners.setPreferredSize(new Dimension(225, 65));
+                jpnPartners.setBackground(new Color(0x61b884));
 
                 //---- jlbParners ----
                 jlbParners.setText("PARTNERS");
                 jlbParners.setHorizontalAlignment(SwingConstants.CENTER);
-                jlbParners.setBorder(LineBorder.createBlackLineBorder());
+                jlbParners.setBorder(null);
                 jlbParners.setPreferredSize(new Dimension(225, 65));
+                jlbParners.setForeground(Color.white);
+                jlbParners.setFont(new Font("Lato Black", Font.BOLD, 20));
 
                 GroupLayout jpnPartnersLayout = new GroupLayout(jpnPartners);
                 jpnPartners.setLayout(jpnPartnersLayout);
                 jpnPartnersLayout.setHorizontalGroup(
                     jpnPartnersLayout.createParallelGroup()
-                        .addComponent(jlbParners, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jpnPartnersLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(jlbParners, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 );
                 jpnPartnersLayout.setVerticalGroup(
                     jpnPartnersLayout.createParallelGroup()
-                        .addComponent(jlbParners, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlbParners, GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 );
             }
 
             //======== jpnAnalytics ========
             {
                 jpnAnalytics.setPreferredSize(new Dimension(225, 65));
+                jpnAnalytics.setBackground(new Color(0x61b884));
 
                 //---- jlbAnalytics ----
                 jlbAnalytics.setText("ANALYTICS");
                 jlbAnalytics.setHorizontalAlignment(SwingConstants.CENTER);
-                jlbAnalytics.setBorder(LineBorder.createBlackLineBorder());
+                jlbAnalytics.setBorder(null);
                 jlbAnalytics.setPreferredSize(new Dimension(225, 65));
+                jlbAnalytics.setForeground(Color.white);
+                jlbAnalytics.setFont(new Font("Lato Black", Font.BOLD, 20));
 
                 GroupLayout jpnAnalyticsLayout = new GroupLayout(jpnAnalytics);
                 jpnAnalytics.setLayout(jpnAnalyticsLayout);
                 jpnAnalyticsLayout.setHorizontalGroup(
                     jpnAnalyticsLayout.createParallelGroup()
-                        .addComponent(jlbAnalytics, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jpnAnalyticsLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(jlbAnalytics, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 );
                 jpnAnalyticsLayout.setVerticalGroup(
                     jpnAnalyticsLayout.createParallelGroup()
-                        .addComponent(jlbAnalytics, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlbAnalytics, GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 );
             }
 
             //======== jpnSettings ========
             {
                 jpnSettings.setPreferredSize(new Dimension(225, 65));
+                jpnSettings.setBackground(new Color(0x61b884));
 
                 //---- jlbSettings ----
                 jlbSettings.setText("SETTINGS");
                 jlbSettings.setHorizontalAlignment(SwingConstants.CENTER);
-                jlbSettings.setBorder(LineBorder.createBlackLineBorder());
+                jlbSettings.setBorder(null);
                 jlbSettings.setPreferredSize(new Dimension(225, 65));
+                jlbSettings.setForeground(Color.white);
+                jlbSettings.setFont(new Font("Lato Black", Font.BOLD, 20));
 
                 GroupLayout jpnSettingsLayout = new GroupLayout(jpnSettings);
                 jpnSettings.setLayout(jpnSettingsLayout);
                 jpnSettingsLayout.setHorizontalGroup(
                     jpnSettingsLayout.createParallelGroup()
-                        .addComponent(jlbSettings, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jpnSettingsLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(jlbSettings, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 );
                 jpnSettingsLayout.setVerticalGroup(
                     jpnSettingsLayout.createParallelGroup()
-                        .addComponent(jlbSettings, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlbSettings, GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 );
             }
 
@@ -379,37 +443,41 @@ public class Main extends JFrame {
             navigationPanel.setLayout(navigationPanelLayout);
             navigationPanelLayout.setHorizontalGroup(
                 navigationPanelLayout.createParallelGroup()
-                    .addComponent(jpnHome, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(GroupLayout.Alignment.TRAILING, navigationPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(navigationPanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(navigationPanelLayout.createParallelGroup()
-                            .addComponent(jpnEvent, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jpnCustomers, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jpnTickets, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jpnStages, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jpnPartners, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jpnAnalytics, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jpnSettings, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jpnHome, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(navigationPanelLayout.createSequentialGroup()
+                                .addGroup(navigationPanelLayout.createParallelGroup()
+                                    .addComponent(jpnEvent, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jpnCustomers, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jpnTickets, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jpnStages, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jpnPartners, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jpnAnalytics, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jpnSettings, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
             );
             navigationPanelLayout.setVerticalGroup(
                 navigationPanelLayout.createParallelGroup()
                     .addGroup(navigationPanelLayout.createSequentialGroup()
-                        .addComponent(jpnHome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)
+                        .addComponent(jpnHome, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpnEvent, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jpnEvent, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpnCustomers, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jpnCustomers, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpnTickets, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jpnTickets, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpnStages, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jpnStages, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpnPartners, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jpnPartners, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpnAnalytics, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jpnAnalytics, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpnSettings, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jpnSettings, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(217, Short.MAX_VALUE))
             );
         }
         contentPane.add(navigationPanel);
@@ -418,6 +486,7 @@ public class Main extends JFrame {
         //======== jpnMainMenu ========
         {
             jpnMainMenu.setBorder(null);
+            jpnMainMenu.setBackground(Color.white);
             jpnMainMenu.setLayout(null);
 
             //======== jpnDropMenu4 ========
@@ -437,12 +506,18 @@ public class Main extends JFrame {
 
                 //---- label12 ----
                 label12.setText("*t\u00ean kh\u00e1ch h\u00e0ng");
+                label12.setFont(new Font("Lato Black", Font.BOLD, 18));
+                label12.setForeground(new Color(0x61b884));
 
                 //---- label13 ----
                 label13.setText("*ID");
+                label13.setFont(new Font("Lato Black", Font.BOLD, 18));
+                label13.setForeground(new Color(0x61b884));
 
                 //---- label14 ----
                 label14.setText("*\u0111\u0103ng xu\u1ea5t");
+                label14.setFont(new Font("Lato Black", Font.BOLD, 18));
+                label14.setForeground(new Color(0x61b884));
 
                 GroupLayout jpnDropMenu4Layout = new GroupLayout(jpnDropMenu4);
                 jpnDropMenu4.setLayout(jpnDropMenu4Layout);
@@ -488,7 +563,7 @@ public class Main extends JFrame {
             }
         }
         contentPane.add(jpnMainMenu);
-        jpnMainMenu.setBounds(230, 75, 1171, 693);
+        jpnMainMenu.setBounds(240, 90, 1161, 673);
 
         {
             // compute preferred size
@@ -517,12 +592,14 @@ public class Main extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Man
+    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
     private JPanel headerPanel;
     private JTextField searchButton;
     private JLabel nameAppLabell;
     private JLabel label10;
     private JPanel jpnBuffer;
+    private JLabel Logo1;
+    private JLabel Logo2;
     private JPanel navigationPanel;
     private JPanel jpnHome;
     private JLabel jlbHome;
