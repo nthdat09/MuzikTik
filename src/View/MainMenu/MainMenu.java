@@ -19,7 +19,7 @@ public class MainMenu extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
         headerPanel = new JPanel();
         avatarFrame = new JLabel();
         searchButton = new JTextField();
@@ -76,13 +76,13 @@ public class MainMenu extends JFrame {
         {
             headerPanel.setBorder(LineBorder.createBlackLineBorder());
             headerPanel.setBackground(new Color(0x9fc5f8));
-            headerPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
-            .border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder
-            .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.
-            awt.Font.BOLD,12),java.awt.Color.red),headerPanel. getBorder()))
-            ;headerPanel. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-            ){if("\u0062or\u0064er".equals(e.getPropertyName()))throw new RuntimeException();}})
-            ;
+            headerPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
+            swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border
+            . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog"
+            , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,headerPanel. getBorder
+            () ) ); headerPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
+            . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException
+            ( ) ;} } );
 
             //---- avatarFrame ----
             avatarFrame.setText("text");
@@ -92,7 +92,7 @@ public class MainMenu extends JFrame {
             searchButton.setText("Search");
 
             //---- nameAppLabell ----
-            nameAppLabell.setText("H\u1ec7 Th\u1ed1ng Qu\u1ea3n L\u00ed B\u00e1n V\u00e9 Ho\u00e0 Nh\u1ea1c");
+            nameAppLabell.setText("MUZIKTIC");
             nameAppLabell.setFont(nameAppLabell.getFont().deriveFont(nameAppLabell.getFont().getSize() + 7f));
 
             GroupLayout headerPanelLayout = new GroupLayout(headerPanel);
@@ -263,7 +263,7 @@ public class MainMenu extends JFrame {
                                     .addComponent(eventName1)
                                     .addGap(281, 281, 281)
                                     .addComponent(eventName2)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
                                     .addComponent(eventName3)
                                     .addGap(88, 88, 88))
                                 .addGroup(panel2Layout.createSequentialGroup()
@@ -278,7 +278,7 @@ public class MainMenu extends JFrame {
                         .addGroup(panel2Layout.createSequentialGroup()
                             .addGap(434, 434, 434)
                             .addComponent(mainLabel)
-                            .addGap(0, 861, Short.MAX_VALUE))
+                            .addGap(0, 881, Short.MAX_VALUE))
                         .addGroup(panel2Layout.createSequentialGroup()
                             .addGroup(panel2Layout.createParallelGroup()
                                 .addGroup(panel2Layout.createParallelGroup()
@@ -528,7 +528,7 @@ public class MainMenu extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
     private JPanel headerPanel;
     private JLabel avatarFrame;
     private JTextField searchButton;

@@ -16,57 +16,37 @@ new FormModel {
 			"name": "LoginPage"
 			"visible": true
 			"background": new java.awt.Color( 255, 255, 255, 255 )
-			"foreground": sfield java.awt.SystemColor controlDkShadow
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
-				"text": "LOGIN"
-				"icon": new com.jformdesigner.model.SwingIcon( 0, "/Asset/icons8-login-64.png" )
-				"font": new java.awt.Font( "UTM Avo", 1, 26 )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 275
-				"y": 60
-				"width": 175
-				"height": 70
-			} )
+			"foreground": sfield java.awt.SystemColor control
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "UsernameField"
+				"caretColor": new java.awt.Color( 97, 184, 132, 255 )
+				"cursor": new java.awt.Cursor( 2 )
+				"font": new java.awt.Font( "Lato Black", 0, 14 )
+				"foreground": new java.awt.Color( 0, 51, 51, 255 )
+				"disabledTextColor": new java.awt.Color( 204, 255, 204, 255 )
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+				"border": new javax.swing.border.LineBorder( new java.awt.Color( 97, 184, 132, 255 ), 1, false )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 250
-				"y": 180
+				"x": 230
+				"y": 170
 				"width": 270
 				"height": 45
 			} )
 			add( new FormComponent( "javax.swing.JPasswordField" ) {
 				name: "PasswordField"
+				"border": new javax.swing.border.LineBorder( new java.awt.Color( 97, 184, 132, 255 ), 1, false )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 250
+				"x": 230
 				"y": 255
 				"width": 270
 				"height": 45
 			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label2"
-				"text": "Username:"
-				"font": new java.awt.Font( "UTM Avo", 0, 12 )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 160
-				"y": 185
-				"width": 90
-				"height": 35
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "Password"
-				"text": "Password:"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 80
-				"height": 35
-				"x": 160
-				"y": 260
-			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "LoginButton"
 				"text": "LOGIN"
-				"font": new java.awt.Font( "SVN-Avo", 1, 12 )
+				"font": new java.awt.Font( "Lato Black", 1, 14 )
+				"foreground": new java.awt.Color( 255, 255, 255, 255 )
+				"background": new java.awt.Color( 97, 184, 132, 255 )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Login", true ) )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Login", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -74,12 +54,35 @@ new FormModel {
 				"y": 350
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "LoginStatus"
+				name: "Username"
+				"text": " Username"
+				"font": new java.awt.Font( "Lato Black", 1, 15 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 270
-				"y": 385
+				"width": 90
+				"height": 28
+				"x": 230
+				"y": 145
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Password"
+				"text": " Password"
+				"font": new java.awt.Font( "Lato Black", 1, 15 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 80
+				"x": 230
+				"y": 235
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "LoginStatus"
+				"font": new java.awt.Font( "Lato Black", 1, 14 )
+				"foreground": new java.awt.Color( 212, 92, 92, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 185
 				"height": 25
+				"x": 235
+				"y": 305
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 200, 55 )

@@ -1,4 +1,4 @@
-package Controller;
+/*package Controller;
 
 import Model.Menu;
 import View.mainMenu;
@@ -25,9 +25,9 @@ public class SwitchScreen {
         root.add(new mainMenu());
         root.validate();
         root.repaint();
-    }
+    }*/
 
-    public void setEvent(List<Menu> listItem){
+  /*  public void setEvent(List<Menu> listItem){
         this.ListItem = ListItem;
         for (Menu item : ListItem) {
             item.getJbt().addMouseListener(new LabelEvent(item.getKind(), item.getJbt()));
@@ -100,3 +100,4 @@ public class SwitchScreen {
     }
 
 }
+*/
