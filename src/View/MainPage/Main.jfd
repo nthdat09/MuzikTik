@@ -55,6 +55,7 @@ new FormModel {
 					"$verticalGroup": "par l {space :0:0:x}"
 				} ) {
 					name: "jpnBuffer"
+					"background": new java.awt.Color( 255, 255, 255, 255 )
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jpnBufferMouseEntered", true ) )
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jpnBufferMouseExited", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -108,6 +109,8 @@ new FormModel {
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						"foreground": new java.awt.Color( 255, 255, 255, 255 )
 						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbHomeMouseEntered", true ) )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbHomeMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -125,6 +128,8 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"foreground": sfield java.awt.Color white
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbEventMouseExited", true ) )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbEventMouseEntered", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -142,6 +147,8 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"foreground": new java.awt.Color( 255, 255, 255, 255 )
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbCustomerMouseEntered", true ) )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbCustomerMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -159,6 +166,8 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"foreground": sfield java.awt.Color white
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbTicketsMouseEntered", true ) )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbTicketsMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -176,6 +185,8 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"foreground": sfield java.awt.Color white
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbStagesMouseEntered", true ) )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbStagesMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -193,6 +204,8 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"foreground": sfield java.awt.Color white
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbParnersMouseEntered", true ) )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbParnersMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -210,6 +223,8 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"foreground": sfield java.awt.Color white
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbAnalyticsMouseEntered", true ) )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbAnalyticsMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -227,10 +242,12 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"foreground": sfield java.awt.Color white
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbSettingsMouseEntered", true ) )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbSettingsMouseExited", true ) )
 					} )
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"y": 75
+				"y": 65
 				"height": 699
 				"x": 0
 			} )
@@ -273,9 +290,24 @@ new FormModel {
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 240
-				"y": 90
-				"height": 673
+				"y": 95
+				"height": 633
 				"width": 1161
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {space :0:220:x}"
+				"$verticalGroup": "par l {space :0:0:x}"
+			} ) {
+				name: "jpnBuffer2"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jpnBufferMouseEntered", true ) )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jpnBufferMouseExited", true ) )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jpnBuffer2MouseEntered", true ) )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jpnBuffer2MouseExited", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"height": 25
+				"x": 1180
+				"y": 75
+				"width": 220
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

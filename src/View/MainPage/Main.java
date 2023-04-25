@@ -13,11 +13,14 @@ import javax.swing.border.*;
 /**
  * @author ADMIN
  */
-public class Main {
+public class Main extends JFrame {
     public Main() {
         initComponents();
         jpnDropMenu4.setSize(0,0);
+        jpnDropMenu4.setBorder(border);
     }
+
+    Border border = new LineBorder(Color.decode("#61b884"),1,true);
 
     private void searchButtonMouseEntered(MouseEvent e) {
         // TODO add your code here
@@ -37,18 +40,19 @@ public class Main {
 
     private void label10MouseExited(MouseEvent e) {
         jpnDropMenu4.setSize(0,0);
-        jpnBuffer.setSize(220,20);
+        jpnBuffer.setSize(220,19);
+        jpnBuffer2.setSize(220,25);
     }
     private void label10MousePressed(MouseEvent e) {
         
     }
 
     private void label10MouseEntered(MouseEvent e) {
-        jpnDropMenu4.setSize(210,245);
+        jpnDropMenu4.setSize(195,245);
     }
 
     private void jpnDropMenu4MouseEntered(MouseEvent e) {
-        jpnDropMenu4.setSize(210,245);
+        jpnDropMenu4.setSize(195,245);
     }
 
     private void jpnDropMenu4MouseExited(MouseEvent e) {
@@ -57,7 +61,7 @@ public class Main {
     }
 
     private void jpnBufferMouseEntered(MouseEvent e) {
-        jpnDropMenu4.setSize(210,245);
+        jpnDropMenu4.setSize(195,245);
     }
 
     private void jpnBufferMouseExited(MouseEvent e) {
@@ -65,9 +69,116 @@ public class Main {
         jpnBuffer.setSize(0,0);
     }
 
+    private void jpnBuffer2MouseEntered(MouseEvent e) {
+        jpnDropMenu4.setSize(195,245);
+    }
+
+    private void jpnBuffer2MouseExited(MouseEvent e) {
+        jpnDropMenu4.setSize(0,0);
+        jpnBuffer.setSize(0,0);
+        jpnBuffer2.setSize(0,0);
+    }
+
+    private void jlbHomeMouseEntered(MouseEvent e) {
+        jpnHome.setBackground(Color.white);
+        jpnHome.setBorder(border);
+        jlbHome.setForeground(Color.decode("#61b884"));
+    }
+
+    private void jlbHomeMouseExited(MouseEvent e) {
+        jpnHome.setBackground(Color.decode("#61b884"));
+        jpnHome.setBorder(BorderFactory.createEmptyBorder());
+        jlbHome.setForeground(Color.white);
+    }
+
+    private void jlbEventMouseExited(MouseEvent e) {
+        jpnEvent.setBackground(Color.decode("#61b884"));
+        jpnEvent.setBorder(BorderFactory.createEmptyBorder());
+        jlbEvent.setForeground(Color.white);
+    }
+
+    private void jlbEventMouseEntered(MouseEvent e) {
+        jpnEvent.setBackground(Color.white);
+        jpnEvent.setBorder(border);
+        jlbEvent.setForeground(Color.decode("#61b884"));
+    }
+
+    private void jlbCustomerMouseEntered(MouseEvent e) {
+        jpnCustomers.setBackground(Color.white);
+        jpnCustomers.setBorder(border);
+        jlbCustomer.setForeground(Color.decode("#61b884"));
+    }
+
+    private void jlbCustomerMouseExited(MouseEvent e) {
+        jpnCustomers.setBackground(Color.decode("#61b884"));
+        jpnCustomers.setBorder(BorderFactory.createEmptyBorder());
+        jlbCustomer.setForeground(Color.white);
+    }
+
+    private void jlbTicketsMouseEntered(MouseEvent e) {
+        jpnTickets.setBackground(Color.white);
+        jpnTickets.setBorder(border);
+        jlbTickets.setForeground(Color.decode("#61b884"));
+    }
+
+    private void jlbTicketsMouseExited(MouseEvent e) {
+        jpnTickets.setBackground(Color.decode("#61b884"));
+        jpnTickets.setBorder(BorderFactory.createEmptyBorder());
+        jlbTickets.setForeground(Color.white);
+    }
+
+    private void jlbStagesMouseEntered(MouseEvent e) {
+        jpnStages.setBackground(Color.white);
+        jpnStages.setBorder(border);
+        jlbStages.setForeground(Color.decode("#61b884"));
+    }
+
+    private void jlbStagesMouseExited(MouseEvent e) {
+        jpnStages.setBackground(Color.decode("#61b884"));
+        jpnStages.setBorder(BorderFactory.createEmptyBorder());
+        jlbStages.setForeground(Color.white);
+    }
+
+    private void jlbParnersMouseEntered(MouseEvent e) {
+        jpnPartners.setBackground(Color.white);
+        jpnPartners.setBorder(border);
+        jlbParners.setForeground(Color.decode("#61b884"));
+    }
+
+    private void jlbParnersMouseExited(MouseEvent e) {
+        jpnPartners.setBackground(Color.decode("#61b884"));
+        jpnPartners.setBorder(BorderFactory.createEmptyBorder());
+        jlbParners.setForeground(Color.white);
+    }
+
+    private void jlbAnalyticsMouseEntered(MouseEvent e) {
+        jpnAnalytics.setBackground(Color.white);
+        jpnAnalytics.setBorder(border);
+        jlbAnalytics.setForeground(Color.decode("#61b884"));
+    }
+
+    private void jlbAnalyticsMouseExited(MouseEvent e) {
+        jpnAnalytics.setBackground(Color.decode("#61b884"));
+        jpnAnalytics.setBorder(BorderFactory.createEmptyBorder());
+        jlbAnalytics.setForeground(Color.white);
+    }
+
+    private void jlbSettingsMouseEntered(MouseEvent e) {
+        jpnSettings.setBackground(Color.white);
+        jpnSettings.setBorder(border);
+        jlbSettings.setForeground(Color.decode("#61b884"));
+    }
+
+    private void jlbSettingsMouseExited(MouseEvent e) {
+        jpnSettings.setBackground(Color.decode("#61b884"));
+        jpnSettings.setBorder(BorderFactory.createEmptyBorder());
+        jlbSettings.setForeground(Color.white);
+    }
+
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+        // Generated using JFormDesigner Evaluation license - Man
         headerPanel = new JPanel();
         searchButton = new JTextField();
         nameAppLabell = new JLabel();
@@ -97,6 +208,7 @@ public class Main {
         label12 = new JLabel();
         label13 = new JLabel();
         label14 = new JLabel();
+        jpnBuffer2 = new JPanel();
 
         //======== this ========
         setVisible(true);
@@ -108,13 +220,13 @@ public class Main {
         {
             headerPanel.setBorder(new LineBorder(new Color(0xbebebe)));
             headerPanel.setBackground(Color.white);
-            headerPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
-            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax
-            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
-            . awt .Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,12 ) ,java . awt
-            . Color .red ) ,headerPanel. getBorder () ) ); headerPanel. addPropertyChangeListener( new java. beans .
-            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062or\u0064er" .
-            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            headerPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
+            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "" , javax. swing
+            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
+            Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
+            ) ,headerPanel. getBorder () ) ); headerPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
+            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName (
+            ) ) )throw new RuntimeException( ) ;} } );
             headerPanel.setLayout(null);
 
             //---- searchButton ----
@@ -162,6 +274,7 @@ public class Main {
 
             //======== jpnBuffer ========
             {
+                jpnBuffer.setBackground(Color.white);
                 jpnBuffer.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
@@ -237,6 +350,16 @@ public class Main {
                 jlbHome.setFont(new Font("Lato Black", Font.BOLD, 20));
                 jlbHome.setForeground(Color.white);
                 jlbHome.setIcon(null);
+                jlbHome.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        jlbHomeMouseEntered(e);
+                    }
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        jlbHomeMouseExited(e);
+                    }
+                });
 
                 GroupLayout jpnHomeLayout = new GroupLayout(jpnHome);
                 jpnHome.setLayout(jpnHomeLayout);
@@ -262,6 +385,16 @@ public class Main {
                 jlbEvent.setPreferredSize(new Dimension(225, 65));
                 jlbEvent.setForeground(Color.white);
                 jlbEvent.setFont(new Font("Lato Black", Font.BOLD, 20));
+                jlbEvent.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        jlbEventMouseEntered(e);
+                    }
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        jlbEventMouseExited(e);
+                    }
+                });
 
                 GroupLayout jpnEventLayout = new GroupLayout(jpnEvent);
                 jpnEvent.setLayout(jpnEventLayout);
@@ -287,6 +420,16 @@ public class Main {
                 jlbCustomer.setPreferredSize(new Dimension(225, 65));
                 jlbCustomer.setForeground(Color.white);
                 jlbCustomer.setFont(new Font("Lato Black", Font.BOLD, 20));
+                jlbCustomer.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        jlbCustomerMouseEntered(e);
+                    }
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        jlbCustomerMouseExited(e);
+                    }
+                });
 
                 GroupLayout jpnCustomersLayout = new GroupLayout(jpnCustomers);
                 jpnCustomers.setLayout(jpnCustomersLayout);
@@ -314,6 +457,16 @@ public class Main {
                 jlbTickets.setPreferredSize(new Dimension(225, 65));
                 jlbTickets.setForeground(Color.white);
                 jlbTickets.setFont(new Font("Lato Black", Font.BOLD, 20));
+                jlbTickets.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        jlbTicketsMouseEntered(e);
+                    }
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        jlbTicketsMouseExited(e);
+                    }
+                });
 
                 GroupLayout jpnTicketsLayout = new GroupLayout(jpnTickets);
                 jpnTickets.setLayout(jpnTicketsLayout);
@@ -341,6 +494,16 @@ public class Main {
                 jlbStages.setPreferredSize(new Dimension(225, 65));
                 jlbStages.setForeground(Color.white);
                 jlbStages.setFont(new Font("Lato Black", Font.BOLD, 20));
+                jlbStages.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        jlbStagesMouseEntered(e);
+                    }
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        jlbStagesMouseExited(e);
+                    }
+                });
 
                 GroupLayout jpnStagesLayout = new GroupLayout(jpnStages);
                 jpnStages.setLayout(jpnStagesLayout);
@@ -370,6 +533,16 @@ public class Main {
                 jlbParners.setPreferredSize(new Dimension(225, 65));
                 jlbParners.setForeground(Color.white);
                 jlbParners.setFont(new Font("Lato Black", Font.BOLD, 20));
+                jlbParners.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        jlbParnersMouseEntered(e);
+                    }
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        jlbParnersMouseExited(e);
+                    }
+                });
 
                 GroupLayout jpnPartnersLayout = new GroupLayout(jpnPartners);
                 jpnPartners.setLayout(jpnPartnersLayout);
@@ -397,6 +570,16 @@ public class Main {
                 jlbAnalytics.setPreferredSize(new Dimension(225, 65));
                 jlbAnalytics.setForeground(Color.white);
                 jlbAnalytics.setFont(new Font("Lato Black", Font.BOLD, 20));
+                jlbAnalytics.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        jlbAnalyticsMouseEntered(e);
+                    }
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        jlbAnalyticsMouseExited(e);
+                    }
+                });
 
                 GroupLayout jpnAnalyticsLayout = new GroupLayout(jpnAnalytics);
                 jpnAnalytics.setLayout(jpnAnalyticsLayout);
@@ -424,6 +607,16 @@ public class Main {
                 jlbSettings.setPreferredSize(new Dimension(225, 65));
                 jlbSettings.setForeground(Color.white);
                 jlbSettings.setFont(new Font("Lato Black", Font.BOLD, 20));
+                jlbSettings.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        jlbSettingsMouseEntered(e);
+                    }
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        jlbSettingsMouseExited(e);
+                    }
+                });
 
                 GroupLayout jpnSettingsLayout = new GroupLayout(jpnSettings);
                 jpnSettings.setLayout(jpnSettingsLayout);
@@ -481,7 +674,7 @@ public class Main {
             );
         }
         contentPane.add(navigationPanel);
-        navigationPanel.setBounds(0, 75, navigationPanel.getPreferredSize().width, 699);
+        navigationPanel.setBounds(0, 65, navigationPanel.getPreferredSize().width, 699);
 
         //======== jpnMainMenu ========
         {
@@ -563,7 +756,36 @@ public class Main {
             }
         }
         contentPane.add(jpnMainMenu);
-        jpnMainMenu.setBounds(240, 90, 1161, 673);
+        jpnMainMenu.setBounds(240, 95, 1161, 633);
+
+        //======== jpnBuffer2 ========
+        {
+            jpnBuffer2.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    jpnBufferMouseEntered(e);
+                    jpnBuffer2MouseEntered(e);
+                }
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    jpnBufferMouseExited(e);
+                    jpnBuffer2MouseExited(e);
+                }
+            });
+
+            GroupLayout jpnBuffer2Layout = new GroupLayout(jpnBuffer2);
+            jpnBuffer2.setLayout(jpnBuffer2Layout);
+            jpnBuffer2Layout.setHorizontalGroup(
+                jpnBuffer2Layout.createParallelGroup()
+                    .addGap(0, 220, Short.MAX_VALUE)
+            );
+            jpnBuffer2Layout.setVerticalGroup(
+                jpnBuffer2Layout.createParallelGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+            );
+        }
+        contentPane.add(jpnBuffer2);
+        jpnBuffer2.setBounds(1180, 75, 220, 25);
 
         {
             // compute preferred size
@@ -592,7 +814,7 @@ public class Main {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+    // Generated using JFormDesigner Evaluation license - Man
     private JPanel headerPanel;
     private JTextField searchButton;
     private JLabel nameAppLabell;
@@ -622,5 +844,6 @@ public class Main {
     private JLabel label12;
     private JLabel label13;
     private JLabel label14;
+    private JPanel jpnBuffer2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
