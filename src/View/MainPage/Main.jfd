@@ -87,8 +87,8 @@ new FormModel {
 				"height": 75
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq {space :::p, par l {comp jpnHome::l:::x, seq {par l {comp jpnEvent:::p::p, comp jpnCustomers:::p::p, comp jpnTickets::l:p::p, comp jpnStages::l:p::p, comp jpnPartners::l:p::p, comp jpnAnalytics::l:p::p, comp jpnSettings::l:p::p}, space :0:0:x}}}}"
-				"$verticalGroup": "par l {seq l {space :p:16:p, comp jpnHome:::p:53:p, space :::p, comp jpnEvent:::p:53:p, space :::p, comp jpnCustomers:::p:53:p, space :::p, comp jpnTickets:::p:53:p, space :::p, comp jpnStages:::p:53:p, space :::p, comp jpnPartners:::p:53:p, space :::p, comp jpnAnalytics:::p:53:p, space :::p, comp jpnSettings:::p:53:p, space ::217:x}}"
+				"$horizontalGroup": "par l {seq l {space :::p, par l {comp jpnHome::l:::x, comp jpnEvent:::p::p, comp jpnCustomers:::p::p, comp jpnTickets::l:p::p, comp jpnStages::l:p::p, comp jpnPartners::l:p::p, comp jpnAnalytics::l:p::p, comp jpnSettings::l:p::p}, space :::p}}"
+				"$verticalGroup": "par l {seq l {space :p:30:p, comp jpnHome:::p:53:p, space :::p, comp jpnEvent:::p:53:p, space :::p, comp jpnCustomers:::p:53:p, space :::p, comp jpnTickets:::p:53:p, space :::p, comp jpnStages:::p:53:p, space :::p, comp jpnPartners:::p:53:p, space :::p, comp jpnAnalytics:::p:53:p, space :::p, comp jpnSettings:::p:53:p, space ::203:x}}"
 			} ) {
 				name: "navigationPanel"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE

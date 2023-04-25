@@ -45,13 +45,14 @@ public class LoginPage extends JPanel {
             //======== LoginPagePanel ========
             {
                 LoginPagePanel.setBackground(Color.white);
-                LoginPagePanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-                swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border
-                . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
-                ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,LoginPagePanel. getBorder
-                ( )) ); LoginPagePanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-                .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
-                ( ); }} );
+                LoginPagePanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(
+                new javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e"
+                ,javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
+                ,new java.awt.Font("Dialo\u0067",java.awt.Font.BOLD,12)
+                ,java.awt.Color.red),LoginPagePanel. getBorder()));LoginPagePanel. addPropertyChangeListener(
+                new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+                ){if("borde\u0072".equals(e.getPropertyName()))throw new RuntimeException()
+                ;}});
 
                 //---- PasswordField ----
                 PasswordField.setBorder(new LineBorder(new Color(0x61b884)));
@@ -170,15 +171,6 @@ public class LoginPage extends JPanel {
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
     //Logo
-     public void AddLogo (){
-        ImageIcon logo = new ImageIcon(getClass().getResource("/Asset/music logo design.png")));
-        Image image = logo.getImage();
-        Image scaledImage = image.getScaledInstance(25,25,Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(scaledImage);
-        JLabel label = new JLabel(scaledIcon);
-        JLabel jlblogo = new JLabel("Xuân Quỳnh",scaledIcon, JLabel.LEFT);
-        LoginPagePanel.add(jlblogo);
-     }
 
     public void DoLogin(){
         String username = this.UsernameField.getText();
@@ -197,7 +189,7 @@ public class LoginPage extends JPanel {
 
             if (username.equals(realUsername) && password.equals(realPassword)) {
                 this.LoginStatus.setForeground(Color.GREEN);
-                this.LoginPage.dispose();
+                this.LoginPageDialog.dispose();
                 MenuPanel mainMenu = new MenuPanel();
                 mainMenu.setVisible(true);
             } else {

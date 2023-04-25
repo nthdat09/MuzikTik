@@ -29,12 +29,12 @@ public class TicketFeesEvent {
         {
             TicketFee.setBackground(Color.white);
             TicketFee.setFont(new Font("Lato Black", Font.BOLD, 18));
-            TicketFee.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
-            EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
-            . border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,
-            java . awt. Color .red ) ,TicketFee. getBorder () ) ); TicketFee. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
-            { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )
-            throw new RuntimeException( ) ;} } );
+            TicketFee.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
+            border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER
+            ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font
+            . BOLD ,12 ) ,java . awt. Color .red ) ,TicketFee. getBorder () ) ); TicketFee. addPropertyChangeListener(
+            new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order"
+            .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
             //======== Scroll ========
             {
@@ -67,8 +67,8 @@ public class TicketFeesEvent {
                         .addContainerGap()
                         .addComponent(label1, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Scroll, GroupLayout.PREFERRED_SIZE, 359, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(132, Short.MAX_VALUE))
+                        .addComponent(Scroll, GroupLayout.PREFERRED_SIZE, 375, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(116, Short.MAX_VALUE))
             );
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
