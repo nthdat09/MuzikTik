@@ -17,13 +17,13 @@ public class DAOHoiVien implements DAOInterface<User>{
             Connection con = UserDatabase.getConnection();
 
             // Tạo ra đối tượng PreparedStatement
-            String sql = "SELECT * FROM hoivien where HV_USERNAME='"+t+"'";
-            PreparedStatement st = con.prepareStatement(sql);
-
+            String sql = "SELECT * FROM hoivien where HV_USERNAME=?";
+            PreparedStatement st = con.prepareCall(sql);
+            st.setString(1, t);
             // Thực thi câu lệnh SQL
 
             System.out.println(sql);
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery();
 
             // Tìm kiếm trong database
             while(rs.next()) {
