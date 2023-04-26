@@ -1,13 +1,12 @@
 package View.LoginPage;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.*;
 
 import Controller.LoginPageListener;
-import DAO.DAOHoiVien;
+import DAO.EmployeeDAO;
 import Model.User;
 import View.MenuPage.MenuPanel;
 
@@ -167,7 +166,7 @@ public class LoginPage extends JPanel {
         String username = this.UsernameField.getText();
         String password = this.PasswordField.getText();
 
-        User realuser = DAOHoiVien.getInstance().selectById(username);
+        User realuser = EmployeeDAO.getInstance().selectById(username);
 
         if (realuser == null) {
             this.LoginStatus.setText("Login Failed");

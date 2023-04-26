@@ -5,9 +5,9 @@ import Model.User;
 
 import java.sql.*;
 
-public class DAOHoiVien implements DAOInterface<User>{
-    public static DAOHoiVien getInstance() {
-        return new DAOHoiVien();
+public class EmployeeDAO implements EmployeeInterface<User> {
+    public static EmployeeDAO getInstance() {
+        return new EmployeeDAO();
     }
     @Override
     public User selectById(String t) {
@@ -17,7 +17,7 @@ public class DAOHoiVien implements DAOInterface<User>{
             Connection con = UserDatabase.getConnection();
 
             // Tạo ra đối tượng PreparedStatement
-            String sql = "SELECT * FROM hoivien where HV_USERNAME=?";
+            String sql = "SELECT * FROM EMPLOYEE where EMP_USERNAME=?";
             PreparedStatement st = con.prepareCall(sql);
             st.setString(1, t);
             // Thực thi câu lệnh SQL
@@ -27,13 +27,15 @@ public class DAOHoiVien implements DAOInterface<User>{
 
             // Tìm kiếm trong database
             while(rs.next()) {
-                String username = rs.getString("HV_USERNAME");
-                String password = rs.getString("HV_PASSWORD");
+                String username = rs.getString("EMP_USERNAME");
+                String password = rs.getString("EMP_PASSWORD");
 
                 ketQua = new User(username, password);
 
             }
             // Đóng kết nối đến CSDL
+            st.close();
+            rs.close();
             UserDatabase.closeConnection(con);
         } catch (SQLException e) {
             e.printStackTrace();

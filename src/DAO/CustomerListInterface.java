@@ -1,2 +1,5 @@
-package DAO;public class CustomerListInterface {
+package DAO;
+
+public interface CustomerListInterface<T> {
+    public T getCustomerList();
 }
