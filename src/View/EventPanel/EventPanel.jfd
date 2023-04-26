@@ -246,7 +246,7 @@ new FormModel {
 					"title": "text"
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {space :::p, par l {par t:l::p {comp jlbPayment::l::513:x, comp scrollPane4::l::513:x}, seq l {space :p:52:p, par l {comp checkBox3:::p::p, comp checkBox2:::p::p, comp checkBox1:::p::p}}, seq {comp JlbInforCus::::239:x, space :p:289:p}}, par l {seq {space ::219:x, par l {comp table7:::::x, seq {comp table6:::p:255:p, space :0:0:x}}, space :p:34:p}, seq t {space ::98:x, comp jpnBack:::p::p, space s:::p, comp jpnNext:::p::p, space :p:48:p}}}}"
+					"$horizontalGroup": "par l {seq {space :::p, par l {par t:l::p {comp jlbPayment::l::513:x, comp scrollPane4::l::513:x}, seq l {space :p:52:p, par l {comp checkBox3:::p::p, comp checkBox2:::p::p, comp checkBox1:::p::p}}, seq {comp JlbInforCus::::224:x, space :p:289:p}}, par l {seq {space ::219:x, par l {comp table7:::::x, seq {comp table6:::p:255:p, space :0:0:x}}, space :p:34:p}, seq t {space ::98:x, comp jpnBack:::p::p, space s:::p, comp jpnNext:::p::p, space :p:48:p}}}}"
 					"$verticalGroup": "par l {seq l {par t {comp jpnNext:::p::p, seq {par l:::p {seq l {space :::p, comp JlbInforCus:::p:39:p, space :::p, comp scrollPane4:::p:155:p, space :::p, comp jlbPayment:::p:46:p, space :p:26:p, comp checkBox1:::p::p, space s:::p, comp checkBox2:::p::p}, seq l {space :p:24:p, comp table7:::p:147:p, space :::p, comp table6:::::x}}, par l {seq {space s:::p, comp checkBox3:::p::p}, seq l {space :p:37:p, comp jpnBack:::p::p}}}}, space ::139:x}}"
 				} ) {
 					name: "jpnPayment"
@@ -267,14 +267,18 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "checkBox1"
 						"text": "Thẻ tín dụng"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox1", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox1", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "checkBox2"
 						"text": "Sử dụng Internet Banking"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox2", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "checkBox3"
 						"text": "Thanh toán trực tuyến MoMo"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox3", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JTable" ) {
 						name: "table6"
