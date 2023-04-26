@@ -1,13 +1,12 @@
 package View.LoginPage;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.*;
 
 import Controller.LoginPageListener;
-import DAO.DAOHoiVien;
+import DAO.EmployeeDAO;
 import Model.User;
 import View.MenuPage.MenuPanel;
 
@@ -18,15 +17,9 @@ public class LoginPage extends JPanel {
         initComponents();
     }
 
-    private void Login(ActionEvent e) {
-        LoginButton.addActionListener(ac);
-    }
-
-    
-
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
         LoginPageDialog = new JDialog();
         LoginPagePanel = new JPanel();
         PasswordField = new JPasswordField();
@@ -40,17 +33,19 @@ public class LoginPage extends JPanel {
         //======== LoginPageDialog ========
         {
             LoginPageDialog.setTitle("MuzikTic - Concert Music Ticketing");
+            LoginPageDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            LoginPageDialog.setVisible(true);
             var LoginPageDialogContentPane = LoginPageDialog.getContentPane();
 
             //======== LoginPagePanel ========
             {
                 LoginPagePanel.setBackground(Color.white);
-                LoginPagePanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-                EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
-                . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
-                java. awt. Color. red) ,LoginPagePanel. getBorder( )) ); LoginPagePanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-                { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
-                throw new RuntimeException( ); }} );
+                LoginPagePanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+                . EmptyBorder( 0, 0, 0, 0) , "", javax. swing. border. TitledBorder. CENTER, javax
+                . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,
+                12 ), java. awt. Color. red) ,LoginPagePanel. getBorder( )) ); LoginPagePanel. addPropertyChangeListener (new java. beans
+                . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .
+                getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //---- PasswordField ----
                 PasswordField.setBorder(new LineBorder(new Color(0x61b884)));
@@ -69,10 +64,7 @@ public class LoginPage extends JPanel {
                 LoginButton.setFont(new Font("Lato Black", Font.BOLD, 14));
                 LoginButton.setForeground(Color.white);
                 LoginButton.setBackground(new Color(0x61b884));
-                LoginButton.addActionListener(e -> {
-			Login(e);
-			Login(e);
-		});
+                LoginButton.addActionListener(ac);
 
                 //---- Password ----
                 Password.setText(" Password");
@@ -156,7 +148,7 @@ public class LoginPage extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
     public JDialog LoginPageDialog;
     public JPanel LoginPagePanel;
     public JPasswordField PasswordField;
@@ -174,7 +166,7 @@ public class LoginPage extends JPanel {
         String username = this.UsernameField.getText();
         String password = this.PasswordField.getText();
 
-        User realuser = DAOHoiVien.getInstance().selectById(username);
+        User realuser = EmployeeDAO.getInstance().selectById(username);
 
         if (realuser == null) {
             this.LoginStatus.setText("Login Failed");
@@ -187,7 +179,7 @@ public class LoginPage extends JPanel {
 
             if (username.equals(realUsername) && password.equals(realPassword)) {
                 this.LoginStatus.setForeground(Color.GREEN);
-                //this.LoginPage.dispose();
+                this.LoginPageDialog.dispose();
                 MenuPanel mainMenu = new MenuPanel();
                 mainMenu.setVisible(true);
             } else {

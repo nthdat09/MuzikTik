@@ -5,9 +5,9 @@ import Model.User;
 
 import java.sql.*;
 
-public class HoiVienDAO implements DAOInterface<User>{
-    public static HoiVienDAO getInstance() {
-        return new HoiVienDAO();
+public class EmployeeDAO implements EmployeeInterface<User> {
+    public static EmployeeDAO getInstance() {
+        return new EmployeeDAO();
     }
     @Override
     public User selectById(String t) {
@@ -17,23 +17,25 @@ public class HoiVienDAO implements DAOInterface<User>{
             Connection con = UserDatabase.getConnection();
 
             // Tạo ra đối tượng PreparedStatement
-            String sql = "SELECT * FROM hoivien where HV_USERNAME='"+t+"'";
-            PreparedStatement st = con.prepareStatement(sql);
-
+            String sql = "SELECT * FROM EMPLOYEE where EMP_USERNAME=?";
+            PreparedStatement st = con.prepareCall(sql);
+            st.setString(1, t);
             // Thực thi câu lệnh SQL
 
             System.out.println(sql);
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery();
 
             // Tìm kiếm trong database
             while(rs.next()) {
-                String username = rs.getString("HV_USERNAME");
-                String password = rs.getString("HV_PASSWORD");
+                String username = rs.getString("EMP_USERNAME");
+                String password = rs.getString("EMP_PASSWORD");
 
                 ketQua = new User(username, password);
 
             }
             // Đóng kết nối đến CSDL
+            st.close();
+            rs.close();
             UserDatabase.closeConnection(con);
         } catch (SQLException e) {
             e.printStackTrace();

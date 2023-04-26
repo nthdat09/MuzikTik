@@ -5,7 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 			"$horizontalGroup": "par l {seq l {space :p:56:p, par l {comp label1:::p:219:p, comp Scroll:::p:509:p}, space ::465:x}}"
-			"$verticalGroup": "par l {seq l {space :::p, comp label1:::p:72:p, space :::p, comp Scroll:::p:359:p, space ::132:x}}"
+			"$verticalGroup": "par l {seq l {space :::p, comp label1:::p:72:p, space :::p, comp Scroll:::p:375:p, space ::116:x}}"
 		} ) {
 			name: "TicketFee"
 			"background": new java.awt.Color( 255, 255, 255, 255 )

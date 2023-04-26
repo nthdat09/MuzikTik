@@ -4,20 +4,20 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :::p, comp panel1:::p::p, space :::p, comp jpnView:::p::p, space :::x}}"
-			"$verticalGroup": "par l {seq {space :::p, par l {comp panel1:::::x, comp jpnView:::::x}, space :::p}}"
+			"$horizontalGroup": "par l {seq {space :::p, comp panel1:::p::p, space :::p, comp jpnView:::p::p, space ::403:x}}"
+			"$verticalGroup": "par l {seq {space :::p, par l {seq {comp jpnView:::::x, space :::p}, comp panel1::::814:x}}}"
 		} ) {
 			name: "this"
 			"preferredSize": new java.awt.Dimension( 1268, 820 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq {par l {comp label1::::250:x, seq l {space :::p, par l {comp jpnInfor:::::x, comp jpnLogOut::t:::x, comp jpnHistory::l:::x}}}, space :::p}, seq l {space :p:44:p, comp label2:::p:169:p, space ::43:x}}"
-				"$verticalGroup": "par l {seq {space :::p, comp label1:::p:70:p, space :p:33:p, comp label2:::p:208:p, space :p:39:p, comp jpnInfor:::p::p, space s:::p, comp jpnHistory:::p::p, space s:::p, comp jpnLogOut:::p::p, space ::191:x}}"
+				"$horizontalGroup": "par l {seq {par l {seq l {comp label1::::39:x, space :::p, comp label2:::p:169:p, space :p:36:p}, comp jpnInfor::t:::x, comp jpnHistory::t:::x}, space :::p}}"
+				"$verticalGroup": "par l {seq {par l {seq {space :::p, comp label1:::p:70:p}, seq l {space :p:37:p, comp label2:::p:208:p}}, space :p:58:p, comp jpnInfor:::p::p, space :p:28:p, comp jpnHistory:::p::p, space ::367:x}}"
 			} ) {
 				name: "panel1"
 				"preferredSize": new java.awt.Dimension( 256, 808 )
+				"background": sfield java.awt.Color white
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
-					"text": "My Account"
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 20, false )
 					"horizontalAlignment": 0
 				} )
@@ -28,50 +28,42 @@ new FormModel {
 					"horizontalAlignment": 0
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbInfor::l::242:x}"
-					"$verticalGroup": "par l {comp jlbInfor::l::73:x}"
+					"$horizontalGroup": "par l {seq t {space :::p, comp jlbInfor:::::x}}"
+					"$verticalGroup": "par l {comp jlbInfor::l::58:x}"
 				} ) {
 					name: "jpnInfor"
-					"border": &LineBorder0 new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"background": new java.awt.Color( 97, 184, 132, 255 )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "jlbInfor"
 						"text": "THÔNG TIN KHÁCH HÀNG"
-						"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+						"font": new java.awt.Font( "Lato Black", 1, 16 )
 						"horizontalAlignment": 0
+						"foreground": sfield java.awt.Color white
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbHistoory::l::242:x}"
-					"$verticalGroup": "par l {comp jlbHistoory::l::73:x}"
+					"$horizontalGroup": "par l {comp jlbHistoory::t::244:x}"
+					"$verticalGroup": "par l {comp jlbHistoory::l::58:x}"
 				} ) {
 					name: "jpnHistory"
-					"border": #LineBorder0
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"background": new java.awt.Color( 97, 184, 132, 255 )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "jlbHistoory"
-						"text": "LỊCH SỬ"
-						"font": #SwingDerivedFont0
+						"text": "HISTORY"
+						"font": new java.awt.Font( "Lato Black", 1, 16 )
 						"horizontalAlignment": 0
-					} )
-				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbLogOut::l::242:x}"
-					"$verticalGroup": "par l {comp jlbLogOut::l::73:x}"
-				} ) {
-					name: "jpnLogOut"
-					"border": #LineBorder0
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "jlbLogOut"
-						"text": "ĐĂNG XUẤT"
-						"font": #SwingDerivedFont0
-						"horizontalAlignment": 0
+						"foreground": sfield java.awt.Color white
 					} )
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {space :0:994:x}"
+				"$horizontalGroup": "par l {space :0:594:x}"
 				"$verticalGroup": "par l {space :0:808:x}"
 			} ) {
 				name: "jpnView"
+				"background": sfield java.awt.Color white
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 140, 120 )
