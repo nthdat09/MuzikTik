@@ -1,8 +1,13 @@
-JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "9.0.0.0.263" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
+		auxiliary() {
+			"JavaCodeGenerator.defaultVariableModifiers": 0
+			"JavaCodeGenerator.defaultVariableGetter": true
+			"JavaCodeGenerator.memberVariableThis": true
+		}
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 			"$horizontalGroup": "par l {seq l {space :p:64:p, par t {seq t {par t:::p {comp label5::l::171:x, comp label6::l::171:x}, space :::x}, seq t {space :0:0:x, par t {comp label3:::p:150:p, seq {comp label8:::p:174:p, space s:::p, comp label4:::p:150:p}, comp label2::t:p:150:p, comp label1::t:p:150:p}, space :p:589:p}, seq {comp label7:::::x, space :::p}}}, seq t {space :::x, comp button8:::p:112:p, space s:::p, comp button7:::p:112:p, space :p:214:p}}"
 			"$verticalGroup": "par l {seq l {space :p:96:p, par b {comp label1::b:p::p, comp label5::b:p:39:p}, space :p:6:p, par b {comp label2::b:p::p, comp label6::b:p:39:p}, space :p:18:p, par b {comp label3::b:p::p, comp label7::b:p:39:p}, space :18:18:p, par b {comp label8::b:p:39:p, comp label4::b:p::p}, space :p:44:p, par b {comp button7::b:p::p, comp button8::b:p::p}, space ::27:x}}"
