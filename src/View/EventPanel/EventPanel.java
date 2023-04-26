@@ -5,7 +5,6 @@
 package View.EventPanel;
 
 import java.awt.event.*;
-import View.MainPage.Main;
 
 import java.awt.*;
 import javax.swing.*;
@@ -189,7 +188,7 @@ public class EventPanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Man
+        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
         jpnEventHeader = new JPanel();
         EventArt = new JLabel();
         EventName = new JLabel();
@@ -243,13 +242,13 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 820));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-        . swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing
-        . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-        Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-        ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-        public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName (
-        ) )) throw new RuntimeException( ); }} );
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
+        .border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder
+        .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.
+        awt.Font.BOLD,12),java.awt.Color.red), getBorder()))
+        ; addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+        ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}})
+        ;
         setLayout(null);
 
         //======== jpnEventHeader ========
@@ -311,15 +310,15 @@ public class EventPanel extends JPanel {
                 jpnInfo.setLayout(jpnInfoLayout);
                 jpnInfoLayout.setHorizontalGroup(
                     jpnInfoLayout.createParallelGroup()
-                        .addGroup(jpnInfoLayout.createSequentialGroup()
+                        .addGroup(GroupLayout.Alignment.TRAILING, jpnInfoLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jlbInfo, GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
                 );
                 jpnInfoLayout.setVerticalGroup(
                     jpnInfoLayout.createParallelGroup()
-                        .addGroup(jpnInfoLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jlbInfo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jpnInfoLayout.createSequentialGroup()
+                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlbInfo, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                             .addContainerGap())
                 );
             }
@@ -369,7 +368,9 @@ public class EventPanel extends JPanel {
                 );
                 jpnTicketFeeLayout.setVerticalGroup(
                     jpnTicketFeeLayout.createParallelGroup()
-                        .addComponent(TicketFeeText, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jpnTicketFeeLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(TicketFeeText, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))
                 );
             }
 
@@ -408,13 +409,11 @@ public class EventPanel extends JPanel {
                 SeatPanel.setLayout(SeatPanelLayout);
                 SeatPanelLayout.setHorizontalGroup(
                     SeatPanelLayout.createParallelGroup()
-                        .addComponent(jlbSeat, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                        .addComponent(jlbSeat, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                 );
                 SeatPanelLayout.setVerticalGroup(
                     SeatPanelLayout.createParallelGroup()
-                        .addGroup(GroupLayout.Alignment.TRAILING, SeatPanelLayout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addComponent(jlbSeat, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jlbSeat, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 );
             }
 
@@ -495,11 +494,11 @@ public class EventPanel extends JPanel {
                                 .addComponent(EventPlace, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jpnBuyNow, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                        .addGap(39, 39, 39)
-                        .addGroup(jpnEventHeaderLayout.createParallelGroup()
-                            .addComponent(jpnInfo, GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                            .addComponent(jpnTicketFee, GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                            .addComponent(SeatPanel, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addGroup(jpnEventHeaderLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jpnTicketFee, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                            .addComponent(jpnInfo, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                            .addComponent(SeatPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             );
         }
         add(jpnEventHeader);
@@ -902,7 +901,7 @@ public class EventPanel extends JPanel {
                                         .addGroup(jpnPaymentLayout.createSequentialGroup()
                                             .addGap(37, 37, 37)
                                             .addComponent(jpnBack, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
-                            .addContainerGap(139, Short.MAX_VALUE))
+                            .addContainerGap(147, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnPayment);
@@ -935,7 +934,7 @@ public class EventPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Man
+    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
     private JPanel jpnEventHeader;
     private JLabel EventArt;
     private JLabel EventName;

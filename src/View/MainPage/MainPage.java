@@ -13,8 +13,8 @@ import javax.swing.border.*;
 /**
  * @author ADMIN
  */
-public class Main extends JFrame {
-    public Main() {
+public class MainPage extends JFrame {
+    public MainPage() {
         initComponents();
         jpnDropMenu4.setSize(0,0);
     }
@@ -67,7 +67,7 @@ public class Main extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Man
+        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
         headerPanel = new JPanel();
         searchButton = new JTextField();
         nameAppLabell = new JLabel();
@@ -105,11 +105,13 @@ public class Main extends JFrame {
         //======== headerPanel ========
         {
             headerPanel.setBorder(null);
-            headerPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0
-            ,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
-            ,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red),
-            headerPanel. getBorder()));headerPanel. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-            ){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
+            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing
+            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+            Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+            ) ,headerPanel. getBorder( )) ); headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName (
+            ) )) throw new RuntimeException( ); }} );
             headerPanel.setLayout(null);
 
             //---- searchButton ----
@@ -511,13 +513,13 @@ public class Main extends JFrame {
     
     public static void main (String[] args) {
         JFrame frame = new JFrame("Đồ án bán vé hoà nhạc");
-        frame.setContentPane(new Main());
+        frame.setContentPane(new MainPage());
         frame.pack();
         frame.setVisible(true);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Man
+    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
     private JPanel headerPanel;
     private JTextField searchButton;
     private JLabel nameAppLabell;

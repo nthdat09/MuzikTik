@@ -9,8 +9,8 @@ new FormModel {
 			"minimumSize": new java.awt.Dimension( 1268, 355 )
 			"preferredSize": new java.awt.Dimension( 1030, 820 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq l {space :p:49:p, par l {seq l {comp EventArt:::p:434:p, par l {seq {space :p:38:p, par l {comp EventName:::p:240:p, comp EventTime:::p:420:p, comp EventPlace::l:p:420:p}}, seq t {space :::p, comp jpnBuyNow:::p::p}}}, seq l {comp jpnInfo:::p::p, space :::p, comp jpnTicketFee:::p::p, space :::p, comp SeatPanel:::p::p}}, space ::89:x}}"
-				"$verticalGroup": "par l {seq {space :p:39:p, par l {comp EventArt:::p:233:p, seq {comp EventName:::p:58:p, space :::p, comp EventTime:::p:38:p, space :::p, comp EventPlace:::p:38:p, space :::x, comp jpnBuyNow:::p::p}}, space :p:39:p, par l {comp jpnInfo::::76:x, comp jpnTicketFee::l::76:x, comp SeatPanel::t:::x}}}"
+				"$horizontalGroup": "par l {seq l {space :p:49:p, par l {seq {comp EventArt:::p:434:p, par l {seq {space :p:38:p, par l {comp EventName:::p:240:p, comp EventTime:::p:420:p, comp EventPlace::l:p:420:p}}, seq t {space :::p, comp jpnBuyNow:::p::p}}}, seq {comp jpnInfo:::p::p, space :::p, comp jpnTicketFee:::p::p, space :::p, comp SeatPanel:::p::p}}, space ::89:x}}"
+				"$verticalGroup": "par l {seq {space :p:39:p, par l {comp EventArt:::p:233:p, seq {comp EventName:::p:58:p, space :::p, comp EventTime:::p:38:p, space :::p, comp EventPlace:::p:38:p, space :::x, comp jpnBuyNow:::p::p}}, space ::53:x, par l:::p {comp jpnTicketFee::t::60:x, comp jpnInfo::t::60:x, comp SeatPanel:::::x}}}"
 			} ) {
 				name: "jpnEventHeader"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -38,8 +38,8 @@ new FormModel {
 					"font": #Font0
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {space :::p, comp jlbInfo::::134:x}}"
-					"$verticalGroup": "par l {seq l {space :::p, comp jlbInfo:::::x, space :::p}}"
+					"$horizontalGroup": "par l {seq t {space :::p, comp jlbInfo::::134:x}}"
+					"$verticalGroup": "par l {seq t {space :::x, comp jlbInfo:::p:48:p, space :::p}}"
 				} ) {
 					name: "jpnInfo"
 					"background": &Color0 new java.awt.Color( 97, 184, 132, 255 )
@@ -59,7 +59,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {comp TicketFeeText::l::121:x}"
-					"$verticalGroup": "par l {comp TicketFeeText::t:::x}"
+					"$verticalGroup": "par l {seq t {space :0:0:x, comp TicketFeeText:::p:59:p}}"
 				} ) {
 					name: "jpnTicketFee"
 					"background": #Color0
@@ -80,8 +80,8 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbSeat::l::133:x}"
-					"$verticalGroup": "par l {seq t {space :0:0:x, comp jlbSeat:::p:76:p}}"
+					"$horizontalGroup": "par l {comp jlbSeat::t::133:x}"
+					"$verticalGroup": "par l {comp jlbSeat::t:::x}"
 				} ) {
 					name: "SeatPanel"
 					"background": #Color0
@@ -247,7 +247,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {seq {space :::p, par l {par t:l::p {comp jlbPayment::l::513:x, comp scrollPane4::l::513:x}, seq l {space :p:52:p, par l {comp checkBox3:::p::p, comp checkBox2:::p::p, comp checkBox1:::p::p}}, seq {comp JlbInforCus::::224:x, space :p:289:p}}, par l {seq {space ::219:x, par l {comp table7:::::x, seq {comp table6:::p:255:p, space :0:0:x}}, space :p:34:p}, seq t {space ::98:x, comp jpnBack:::p::p, space s:::p, comp jpnNext:::p::p, space :p:48:p}}}}"
-					"$verticalGroup": "par l {seq l {par t {comp jpnNext:::p::p, seq {par l:::p {seq l {space :::p, comp JlbInforCus:::p:39:p, space :::p, comp scrollPane4:::p:155:p, space :::p, comp jlbPayment:::p:46:p, space :p:26:p, comp checkBox1:::p::p, space s:::p, comp checkBox2:::p::p}, seq l {space :p:24:p, comp table7:::p:147:p, space :::p, comp table6:::::x}}, par l {seq {space s:::p, comp checkBox3:::p::p}, seq l {space :p:37:p, comp jpnBack:::p::p}}}}, space ::139:x}}"
+					"$verticalGroup": "par l {seq l {par t {comp jpnNext:::p::p, seq {par l:::p {seq l {space :::p, comp JlbInforCus:::p:39:p, space :::p, comp scrollPane4:::p:155:p, space :::p, comp jlbPayment:::p:46:p, space :p:26:p, comp checkBox1:::p::p, space s:::p, comp checkBox2:::p::p}, seq l {space :p:24:p, comp table7:::p:147:p, space :::p, comp table6:::::x}}, par l {seq {space s:::p, comp checkBox3:::p::p}, seq l {space :p:37:p, comp jpnBack:::p::p}}}}, space ::147:x}}"
 				} ) {
 					name: "jpnPayment"
 					add( new FormComponent( "javax.swing.JLabel" ) {
