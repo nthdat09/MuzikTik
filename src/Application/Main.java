@@ -1,7 +1,6 @@
 package Application;
 
 import View.LoginPage.LoginPage;
-import View.MainMenu.MainMenu;
 
 public class Main {
     public static void main(String[] args) {

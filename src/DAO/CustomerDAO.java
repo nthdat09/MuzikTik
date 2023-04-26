@@ -15,7 +15,7 @@ public class CustomerDAO implements CustomerInterface {
     public List<Customer> getList() {
         try {
             Connection con = UserDatabase.getConnection();
-            String sql = "Select HV_USERNAME, HV_SDT, HV_EMAIL, HV_DIACHI from hoivien";
+            String sql = "Select CUS_NAME, CUS_PHONE_NUMBER, CUS_EMAIL, CUS_ADDRESS from mctmsys.customer";
             List<Customer> list = new ArrayList<>();
             PreparedStatement ps = con.prepareCall(sql);
             ResultSet rs = ps.executeQuery();
@@ -35,9 +35,5 @@ public class CustomerDAO implements CustomerInterface {
             e.printStackTrace();
         }
         return null;
-    }
-    public static void main (String[] args) throws SQLException {
-        CustomerInterface customerDao = new CustomerDAO();
-        System.out.println(customerDao.getList());
     }
 }

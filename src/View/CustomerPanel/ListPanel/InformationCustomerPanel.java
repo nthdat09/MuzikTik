@@ -16,72 +16,117 @@ public class InformationCustomerPanel extends JPanel {
         initComponents();
     }
 
+    public JLabel getLabel5() {
+        return this.label5;
+    }
+
+    public JLabel getLabel6() {
+        return this.label6;
+    }
+
+    public JLabel getLabel7() {
+        return this.label7;
+    }
+
+    public JLabel getLabel8() {
+        return this.label8;
+    }
+
+    public JButton getButton7() {
+        return this.button7;
+    }
+
+    public JLabel getLabel1() {
+        return this.label1;
+    }
+
+    public JLabel getLabel2() {
+        return this.label2;
+    }
+
+    public JLabel getLabel3() {
+        return this.label3;
+    }
+
+    public JLabel getLabel4() {
+        return this.label4;
+    }
+
+    public JButton getButton8() {
+        return this.button8;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
-        label5 = new JLabel();
-        label6 = new JLabel();
-        label7 = new JLabel();
-        label8 = new JLabel();
-        label9 = new JLabel();
-        label10 = new JLabel();
-        label11 = new JLabel();
-        button6 = new JButton();
-        button5 = new JButton();
-        textField4 = new JTextField();
-        textField3 = new JTextField();
-        textField2 = new JTextField();
-        textField1 = new JTextField();
-        button7 = new JButton();
-        button8 = new JButton();
+        this.label5 = new JLabel();
+        this.label6 = new JLabel();
+        this.label7 = new JLabel();
+        this.label8 = new JLabel();
+        this.button7 = new JButton();
+        this.label1 = new JLabel();
+        this.label2 = new JLabel();
+        this.label3 = new JLabel();
+        this.label4 = new JLabel();
+        this.button8 = new JButton();
 
         //======== this ========
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
-        0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
-        . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
-        red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
-        beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
+        (0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border
+        .TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
+        .Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
+        propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
+        ;}});
 
         //---- label5 ----
-        label5.setText("T\u00ean:");
-        label5.setFont(label5.getFont().deriveFont(label5.getFont().getSize() + 8f));
+        this.label5.setText("Name:");
+        this.label5.setFont(new Font("Lato Black", Font.BOLD, 20));
 
         //---- label6 ----
-        label6.setText("Email:");
-        label6.setFont(label6.getFont().deriveFont(label6.getFont().getSize() + 8f));
+        this.label6.setText("Email:");
+        this.label6.setFont(new Font("Lato Black", Font.BOLD, 20));
 
         //---- label7 ----
-        label7.setText("\u0110\u1ecba Ch\u1ec9:");
-        label7.setFont(label7.getFont().deriveFont(label7.getFont().getSize() + 8f));
+        this.label7.setText("Address:");
+        this.label7.setFont(new Font("Lato Black", Font.BOLD, 20));
 
         //---- label8 ----
-        label8.setText("S\u1ed1 \u0110i\u1ec7n Tho\u1ea1i:");
-        label8.setFont(label8.getFont().deriveFont(label8.getFont().getSize() + 8f));
-
-        //---- label9 ----
-        label9.setText("Th\u00f4ng Tin Thanh To\u00e1n");
-        label9.setFont(label9.getFont().deriveFont(label9.getFont().getSize() + 8f));
-
-        //---- label10 ----
-        label10.setText("Th\u1ebb t\u00edn d\u1ee5ng/ghi n\u1ee3");
-        label10.setFont(label10.getFont().deriveFont(label10.getFont().getSize() + 8f));
-
-        //---- label11 ----
-        label11.setText("T\u00e0i kho\u1ea3n ng\u00e2n h\u00e0ng");
-        label11.setFont(label11.getFont().deriveFont(label11.getFont().getSize() + 8f));
-
-        //---- button6 ----
-        button6.setText("TH\u00caM T\u00c0I KHO\u1ea2N NG\u00c2N H\u00c0NG");
-
-        //---- button5 ----
-        button5.setText("TH\u00caM TH\u1eba M\u1edaI");
+        this.label8.setText("Number Phone:");
+        this.label8.setFont(new Font("Lato Black", Font.BOLD, 20));
 
         //---- button7 ----
-        button7.setText("L\u01afU");
-        button7.setPreferredSize(new Dimension(80, 30));
+        this.button7.setText("CANCEL");
+        this.button7.setPreferredSize(new Dimension(80, 30));
+        this.button7.setFont(new Font("Lato Black", Font.BOLD, 18));
+        this.button7.setBackground(new Color(0x61b884));
+        this.button7.setForeground(Color.white);
+
+        //---- label1 ----
+        this.label1.setText("text");
+        this.label1.setFont(new Font("Lato", Font.PLAIN, 20));
+        this.label1.setForeground(new Color(0x61b884));
+
+        //---- label2 ----
+        this.label2.setText("text");
+        this.label2.setFont(new Font("Lato", Font.PLAIN, 20));
+        this.label2.setForeground(new Color(0x61b884));
+
+        //---- label3 ----
+        this.label3.setText("text");
+        this.label3.setFont(new Font("Lato", Font.PLAIN, 20));
+        this.label3.setForeground(new Color(0x61b884));
+
+        //---- label4 ----
+        this.label4.setText("text");
+        this.label4.setFont(new Font("Lato", Font.PLAIN, 20));
+        this.label4.setForeground(new Color(0x61b884));
 
         //---- button8 ----
-        button8.setText("THO\u00c1T");
+        this.button8.setText("SAVE");
+        this.button8.setPreferredSize(new Dimension(80, 30));
+        this.button8.setFont(new Font("Lato Black", Font.BOLD, 18));
+        this.button8.setBackground(new Color(0x61b884));
+        this.button8.setForeground(Color.white);
 
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
@@ -89,101 +134,72 @@ public class InformationCustomerPanel extends JPanel {
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
                     .addGap(64, 64, 64)
-                    .addGroup(layout.createParallelGroup()
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(label5, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(this.label5, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                                .addComponent(this.label6, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
+                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(label6, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE))
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                .addComponent(this.label3, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(this.label8, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(this.label4, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(this.label2, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(this.label1, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+                            .addGap(589, 589, 589))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(label7, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(label8, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(textField4, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE))
-                        .addComponent(label9, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(label10, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(button5, GroupLayout.PREFERRED_SIZE, 169, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(label11, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(button6, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(587, 587, 587)
-                            .addComponent(button7, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
-                            .addGap(56, 56, 56)
-                            .addComponent(button8, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(134, Short.MAX_VALUE))
+                            .addComponent(this.label7, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addContainerGap())))
+                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(this.button8, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(this.button7, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+                    .addGap(214, 214, 214))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
                     .addGap(96, 96, 96)
-                    .addGroup(layout.createParallelGroup()
-                        .addComponent(label5, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(5, 5, 5)
-                            .addComponent(textField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(this.label1)
+                        .addComponent(this.label5, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
                     .addGap(6, 6, 6)
-                    .addGroup(layout.createParallelGroup()
-                        .addComponent(label6, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(5, 5, 5)
-                            .addComponent(textField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(this.label2)
+                        .addComponent(this.label6, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup()
-                        .addComponent(label7, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(5, 5, 5)
-                            .addComponent(textField3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(this.label3)
+                        .addComponent(this.label7, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup()
-                        .addComponent(label8, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(5, 5, 5)
-                            .addComponent(textField4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                    .addGap(18, 18, 18)
-                    .addComponent(label9, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup()
-                        .addComponent(label10, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(button5, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup()
-                        .addComponent(label11, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(button6, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
-                    .addGap(120, 120, 120)
-                    .addGroup(layout.createParallelGroup()
-                        .addComponent(button7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(button8))
-                    .addContainerGap(172, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(this.label8, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(this.label4))
+                    .addGap(44, 44, 44)
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(this.button7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(this.button8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(27, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
-    private JLabel label5;
-    private JLabel label6;
-    private JLabel label7;
-    private JLabel label8;
-    private JLabel label9;
-    private JLabel label10;
-    private JLabel label11;
-    private JButton button6;
-    private JButton button5;
-    private JTextField textField4;
-    private JTextField textField3;
-    private JTextField textField2;
-    private JTextField textField1;
-    private JButton button7;
-    private JButton button8;
+    JLabel label5;
+    JLabel label6;
+    JLabel label7;
+    JLabel label8;
+    JButton button7;
+    JLabel label1;
+    JLabel label2;
+    JLabel label3;
+    JLabel label4;
+    JButton button8;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
