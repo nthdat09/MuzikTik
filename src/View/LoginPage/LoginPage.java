@@ -171,7 +171,7 @@ public class LoginPage extends JPanel {
 
     //Logo
      public void AddLogo (){
-        ImageIcon logo = new ImageIcon(getClass().getResource("/Asset/music logo design.png")));
+        ImageIcon logo = new ImageIcon(getClass().getResource("/Asset/music logo design.png"));
         Image image = logo.getImage();
         Image scaledImage = image.getScaledInstance(25,25,Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
@@ -197,7 +197,7 @@ public class LoginPage extends JPanel {
 
             if (username.equals(realUsername) && password.equals(realPassword)) {
                 this.LoginStatus.setForeground(Color.GREEN);
-                this.LoginPage.dispose();
+                //this.LoginPage.dispose();
                 MenuPanel mainMenu = new MenuPanel();
                 mainMenu.setVisible(true);
             } else {
