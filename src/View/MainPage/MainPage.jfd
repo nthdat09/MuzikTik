@@ -98,7 +98,7 @@ new FormModel {
 				} ) {
 					name: "jpnHome"
 					"preferredSize": new java.awt.Dimension( 225, 65 )
-					"background": new java.awt.Color( 97, 184, 132, 255 )
+					"background": sfield java.awt.Color white
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "jlbHome"
 						"text": "HOME"
@@ -107,7 +107,7 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"background": new java.awt.Color( 97, 184, 132, 255 )
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
-						"foreground": new java.awt.Color( 255, 255, 255, 255 )
+						"foreground": &Color0 new java.awt.Color( 97, 184, 132, 255 )
 						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbHomeMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbHomeMouseExited", true ) )
@@ -119,14 +119,14 @@ new FormModel {
 				} ) {
 					name: "jpnEvent"
 					"preferredSize": new java.awt.Dimension( 225, 65 )
-					"background": new java.awt.Color( 97, 184, 132, 255 )
+					"background": sfield java.awt.Color white
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "jlbEvent"
 						"text": "EVENTS"
 						"horizontalAlignment": 0
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"preferredSize": new java.awt.Dimension( 225, 65 )
-						"foreground": sfield java.awt.Color white
+						"foreground": #Color0
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbEventMouseExited", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbEventMouseEntered", true ) )
@@ -138,14 +138,14 @@ new FormModel {
 				} ) {
 					name: "jpnCustomers"
 					"preferredSize": new java.awt.Dimension( 225, 65 )
-					"background": new java.awt.Color( 97, 184, 132, 255 )
+					"background": sfield java.awt.Color white
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "jlbCustomer"
 						"text": "CUSTOMERS"
 						"horizontalAlignment": 0
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"preferredSize": new java.awt.Dimension( 225, 65 )
-						"foreground": new java.awt.Color( 255, 255, 255, 255 )
+						"foreground": #Color0
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbCustomerMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbCustomerMouseExited", true ) )
@@ -157,14 +157,14 @@ new FormModel {
 				} ) {
 					name: "jpnTickets"
 					"preferredSize": new java.awt.Dimension( 225, 65 )
-					"background": new java.awt.Color( 97, 184, 132, 255 )
+					"background": sfield java.awt.Color white
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "jlbTickets"
 						"text": "TICKETS"
 						"horizontalAlignment": 0
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"preferredSize": new java.awt.Dimension( 225, 65 )
-						"foreground": sfield java.awt.Color white
+						"foreground": #Color0
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbTicketsMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbTicketsMouseExited", true ) )
@@ -176,14 +176,14 @@ new FormModel {
 				} ) {
 					name: "jpnStages"
 					"preferredSize": new java.awt.Dimension( 225, 65 )
-					"background": new java.awt.Color( 97, 184, 132, 255 )
+					"background": sfield java.awt.Color white
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "jlbStages"
 						"text": "STAGES"
 						"horizontalAlignment": 0
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"preferredSize": new java.awt.Dimension( 225, 65 )
-						"foreground": sfield java.awt.Color white
+						"foreground": #Color0
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbStagesMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbStagesMouseExited", true ) )
@@ -195,14 +195,14 @@ new FormModel {
 				} ) {
 					name: "jpnPartners"
 					"preferredSize": new java.awt.Dimension( 225, 65 )
-					"background": new java.awt.Color( 97, 184, 132, 255 )
+					"background": sfield java.awt.Color white
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "jlbParners"
 						"text": "PARTNERS"
 						"horizontalAlignment": 0
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"preferredSize": new java.awt.Dimension( 225, 65 )
-						"foreground": sfield java.awt.Color white
+						"foreground": #Color0
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbParnersMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbParnersMouseExited", true ) )
@@ -214,14 +214,14 @@ new FormModel {
 				} ) {
 					name: "jpnAnalytics"
 					"preferredSize": new java.awt.Dimension( 225, 65 )
-					"background": new java.awt.Color( 97, 184, 132, 255 )
+					"background": sfield java.awt.Color white
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "jlbAnalytics"
 						"text": "ANALYTICS"
 						"horizontalAlignment": 0
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"preferredSize": new java.awt.Dimension( 225, 65 )
-						"foreground": sfield java.awt.Color white
+						"foreground": #Color0
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbAnalyticsMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbAnalyticsMouseExited", true ) )
@@ -233,14 +233,14 @@ new FormModel {
 				} ) {
 					name: "jpnSettings"
 					"preferredSize": new java.awt.Dimension( 225, 65 )
-					"background": new java.awt.Color( 97, 184, 132, 255 )
+					"background": sfield java.awt.Color white
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "jlbSettings"
 						"text": "SETTINGS"
 						"horizontalAlignment": 0
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"preferredSize": new java.awt.Dimension( 225, 65 )
-						"foreground": sfield java.awt.Color white
+						"foreground": #Color0
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbSettingsMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbSettingsMouseExited", true ) )

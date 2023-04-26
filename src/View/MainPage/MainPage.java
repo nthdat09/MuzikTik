@@ -13,8 +13,8 @@ import javax.swing.border.*;
 /**
  * @author ADMIN
  */
-public class Main extends JFrame {
-    public Main() {
+public class MainPage extends JFrame {
+    public MainPage() {
         initComponents();
         jpnDropMenu4.setSize(0,0);
         jpnDropMenu4.setBorder(border);
@@ -178,7 +178,7 @@ public class Main extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
         headerPanel = new JPanel();
         searchButton = new JTextField();
         nameAppLabell = new JLabel();
@@ -220,14 +220,12 @@ public class Main extends JFrame {
         {
             headerPanel.setBorder(new LineBorder(new Color(0xbebebe)));
             headerPanel.setBackground(Color.white);
-            headerPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder (
-            new javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  ""
-            , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
-            , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 )
-            ,java . awt. Color .red ) ,headerPanel. getBorder () ) ); headerPanel. addPropertyChangeListener(
-            new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-            ) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-            ;} } );
+            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,headerPanel. getBorder( )) ); headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             headerPanel.setLayout(null);
 
             //---- searchButton ----
@@ -340,7 +338,7 @@ public class Main extends JFrame {
             //======== jpnHome ========
             {
                 jpnHome.setPreferredSize(new Dimension(225, 65));
-                jpnHome.setBackground(new Color(0x61b884));
+                jpnHome.setBackground(Color.white);
 
                 //---- jlbHome ----
                 jlbHome.setText("HOME");
@@ -349,7 +347,7 @@ public class Main extends JFrame {
                 jlbHome.setPreferredSize(new Dimension(225, 65));
                 jlbHome.setBackground(new Color(0x61b884));
                 jlbHome.setFont(new Font("Lato Black", Font.BOLD, 20));
-                jlbHome.setForeground(Color.white);
+                jlbHome.setForeground(new Color(0x61b884));
                 jlbHome.setIcon(null);
                 jlbHome.addMouseListener(new MouseAdapter() {
                     @Override
@@ -377,14 +375,14 @@ public class Main extends JFrame {
             //======== jpnEvent ========
             {
                 jpnEvent.setPreferredSize(new Dimension(225, 65));
-                jpnEvent.setBackground(new Color(0x61b884));
+                jpnEvent.setBackground(Color.white);
 
                 //---- jlbEvent ----
                 jlbEvent.setText("EVENTS");
                 jlbEvent.setHorizontalAlignment(SwingConstants.CENTER);
                 jlbEvent.setBorder(null);
                 jlbEvent.setPreferredSize(new Dimension(225, 65));
-                jlbEvent.setForeground(Color.white);
+                jlbEvent.setForeground(new Color(0x61b884));
                 jlbEvent.setFont(new Font("Lato Black", Font.BOLD, 20));
                 jlbEvent.addMouseListener(new MouseAdapter() {
                     @Override
@@ -412,14 +410,14 @@ public class Main extends JFrame {
             //======== jpnCustomers ========
             {
                 jpnCustomers.setPreferredSize(new Dimension(225, 65));
-                jpnCustomers.setBackground(new Color(0x61b884));
+                jpnCustomers.setBackground(Color.white);
 
                 //---- jlbCustomer ----
                 jlbCustomer.setText("CUSTOMERS");
                 jlbCustomer.setHorizontalAlignment(SwingConstants.CENTER);
                 jlbCustomer.setBorder(null);
                 jlbCustomer.setPreferredSize(new Dimension(225, 65));
-                jlbCustomer.setForeground(Color.white);
+                jlbCustomer.setForeground(new Color(0x61b884));
                 jlbCustomer.setFont(new Font("Lato Black", Font.BOLD, 20));
                 jlbCustomer.addMouseListener(new MouseAdapter() {
                     @Override
@@ -449,14 +447,14 @@ public class Main extends JFrame {
             //======== jpnTickets ========
             {
                 jpnTickets.setPreferredSize(new Dimension(225, 65));
-                jpnTickets.setBackground(new Color(0x61b884));
+                jpnTickets.setBackground(Color.white);
 
                 //---- jlbTickets ----
                 jlbTickets.setText("TICKETS");
                 jlbTickets.setHorizontalAlignment(SwingConstants.CENTER);
                 jlbTickets.setBorder(null);
                 jlbTickets.setPreferredSize(new Dimension(225, 65));
-                jlbTickets.setForeground(Color.white);
+                jlbTickets.setForeground(new Color(0x61b884));
                 jlbTickets.setFont(new Font("Lato Black", Font.BOLD, 20));
                 jlbTickets.addMouseListener(new MouseAdapter() {
                     @Override
@@ -486,14 +484,14 @@ public class Main extends JFrame {
             //======== jpnStages ========
             {
                 jpnStages.setPreferredSize(new Dimension(225, 65));
-                jpnStages.setBackground(new Color(0x61b884));
+                jpnStages.setBackground(Color.white);
 
                 //---- jlbStages ----
                 jlbStages.setText("STAGES");
                 jlbStages.setHorizontalAlignment(SwingConstants.CENTER);
                 jlbStages.setBorder(null);
                 jlbStages.setPreferredSize(new Dimension(225, 65));
-                jlbStages.setForeground(Color.white);
+                jlbStages.setForeground(new Color(0x61b884));
                 jlbStages.setFont(new Font("Lato Black", Font.BOLD, 20));
                 jlbStages.addMouseListener(new MouseAdapter() {
                     @Override
@@ -525,14 +523,14 @@ public class Main extends JFrame {
             //======== jpnPartners ========
             {
                 jpnPartners.setPreferredSize(new Dimension(225, 65));
-                jpnPartners.setBackground(new Color(0x61b884));
+                jpnPartners.setBackground(Color.white);
 
                 //---- jlbParners ----
                 jlbParners.setText("PARTNERS");
                 jlbParners.setHorizontalAlignment(SwingConstants.CENTER);
                 jlbParners.setBorder(null);
                 jlbParners.setPreferredSize(new Dimension(225, 65));
-                jlbParners.setForeground(Color.white);
+                jlbParners.setForeground(new Color(0x61b884));
                 jlbParners.setFont(new Font("Lato Black", Font.BOLD, 20));
                 jlbParners.addMouseListener(new MouseAdapter() {
                     @Override
@@ -562,14 +560,14 @@ public class Main extends JFrame {
             //======== jpnAnalytics ========
             {
                 jpnAnalytics.setPreferredSize(new Dimension(225, 65));
-                jpnAnalytics.setBackground(new Color(0x61b884));
+                jpnAnalytics.setBackground(Color.white);
 
                 //---- jlbAnalytics ----
                 jlbAnalytics.setText("ANALYTICS");
                 jlbAnalytics.setHorizontalAlignment(SwingConstants.CENTER);
                 jlbAnalytics.setBorder(null);
                 jlbAnalytics.setPreferredSize(new Dimension(225, 65));
-                jlbAnalytics.setForeground(Color.white);
+                jlbAnalytics.setForeground(new Color(0x61b884));
                 jlbAnalytics.setFont(new Font("Lato Black", Font.BOLD, 20));
                 jlbAnalytics.addMouseListener(new MouseAdapter() {
                     @Override
@@ -599,14 +597,14 @@ public class Main extends JFrame {
             //======== jpnSettings ========
             {
                 jpnSettings.setPreferredSize(new Dimension(225, 65));
-                jpnSettings.setBackground(new Color(0x61b884));
+                jpnSettings.setBackground(Color.white);
 
                 //---- jlbSettings ----
                 jlbSettings.setText("SETTINGS");
                 jlbSettings.setHorizontalAlignment(SwingConstants.CENTER);
                 jlbSettings.setBorder(null);
                 jlbSettings.setPreferredSize(new Dimension(225, 65));
-                jlbSettings.setForeground(Color.white);
+                jlbSettings.setForeground(new Color(0x61b884));
                 jlbSettings.setFont(new Font("Lato Black", Font.BOLD, 20));
                 jlbSettings.addMouseListener(new MouseAdapter() {
                     @Override
@@ -807,7 +805,7 @@ public class Main extends JFrame {
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
     private JPanel headerPanel;
     private JTextField searchButton;
     private JLabel nameAppLabell;

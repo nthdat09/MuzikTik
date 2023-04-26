@@ -1,6 +1,5 @@
 package Controller;
 
-import View.CustomerPanel.CustomerPanel;
 import View.LoginPage.LoginPage;
 
 import java.awt.event.ActionEvent;

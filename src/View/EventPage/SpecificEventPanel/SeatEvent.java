@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Tue Apr 25 10:21:17 ICT 2023
  */
 
-package View.EventPanel.SpecificEventPanel;
+package View.EventPage.SpecificEventPanel;
 
 import java.awt.*;
 import javax.swing.*;

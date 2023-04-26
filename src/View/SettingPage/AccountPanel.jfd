@@ -1,0 +1,83 @@
+JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq {space :p:219:p, par l {comp label6::l:p:171:p, comp label7::l:p:171:p, comp label8::l:p:174:p}}, seq l {space :p:429:p, comp jlbAccount:::p::p}}, space ::428:x}};par l {seq {space :0:0:x, par l {seq {comp label5:::p:171:p, space :21:21:p, comp label1:::p:150:p}, seq {space :p:192:p, comp label2:::p:150:p}, seq {space :p:189:p, comp label3:::p:150:p}, seq {space :p:192:p, comp label4:::p:150:p}, seq {space :350:350:p, comp jbtSave:::p:112:p, space :18:18:p, comp jbtCancel:::p:112:p}}, space :0:0:x}}"
+			"$verticalGroup": "par l {seq l {space :p:29:p, comp jlbAccount:::p::p, space :p:82:p, comp label6:::p:39:p, space :11:11:p, comp label7:::p:39:p, space :25:25:p, comp label8:::p:39:p, space ::214:x}};par l {seq {space :0:0:x, par l {comp label5:::p:39:p, seq {space :7:7:p, comp label1:::p::p}}, space :p:13:p, comp label2:::p::p, space :p:25:p, comp label3:::p::p, space :p:39:p, comp label4:::p::p, space :p:109:p, par l {comp jbtSave:::p::p, comp jbtCancel:::p::p}, space :0:0:x}}"
+		} ) {
+			name: "this"
+			"background": sfield java.awt.Color white
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Name:"
+				"font": new java.awt.Font( "Lato Black", 1, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Email:"
+				"font": new java.awt.Font( "Lato Black", 1, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "Address:"
+				"font": new java.awt.Font( "Lato Black", 1, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label8"
+				"text": "Number Phone:"
+				"font": new java.awt.Font( "Lato Black", 1, 20 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jbtCancel"
+				"text": "CANCEL"
+				"preferredSize": &Dimension0 new java.awt.Dimension( 80, 30 )
+				"font": &Font0 new java.awt.Font( "Lato Black", 1, 18 )
+				"background": &Color0 new java.awt.Color( 97, 184, 132, 255 )
+				"foreground": sfield java.awt.Color white
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "text"
+				"font": &Font1 new java.awt.Font( "Lato", 0, 20 )
+				"foreground": &Color1 new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "text"
+				"font": #Font1
+				"foreground": #Color1
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "text"
+				"font": #Font1
+				"foreground": #Color1
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "text"
+				"font": #Font1
+				"foreground": #Color1
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jbtSave"
+				"text": "SAVE"
+				"preferredSize": #Dimension0
+				"font": #Font0
+				"background": #Color0
+				"foreground": sfield java.awt.Color white
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jlbAccount"
+				"text": "MY ACCOUNT"
+				"font": new java.awt.Font( "Lato Black", 1, 26 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 20, 0 )
+			"size": new java.awt.Dimension( 1030, 510 )
+		} )
+	}
+}

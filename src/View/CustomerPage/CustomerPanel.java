@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Mon Apr 24 08:33:28 ICT 2023
  */
 
-package View.CustomerPanel;
+package View.CustomerPage;
 
 import java.awt.*;
 import Controller.CustomerPanelListener;

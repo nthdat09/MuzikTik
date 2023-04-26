@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Sun Apr 23 10:39:47 ICT 2023
  */
 
-package View.MenuPage;
+package View.HomePage;
 
 import java.awt.*;
 import javax.swing.*;
@@ -12,14 +12,14 @@ import javax.swing.border.*;
 /**
  * @author ADMIN
  */
-public class MenuPanel extends JFrame {
-    public MenuPanel() {
+public class HomePanel extends JFrame {
+    public HomePanel() {
         initComponents();
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Man
+        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
         mainScrollPanel = new JScrollPane();
         panel2 = new JPanel();
         mainLabel = new JLabel();
@@ -65,17 +65,17 @@ public class MenuPanel extends JFrame {
 
             //======== panel2 ========
             {
-                panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-                . border. EmptyBorder( 0, 0, 0, 0) , "", javax. swing. border. TitledBorder
-                . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .
-                awt .Font .BOLD ,12 ), java. awt. Color. red) ,panel2. getBorder( )) )
-                ; panel2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-                ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-                ;
+                panel2.setBackground(Color.white);
+                panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+                0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+                . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+                red) ,panel2. getBorder( )) ); panel2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+                beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
                 //---- mainLabel ----
                 mainLabel.setText("Let Make Live Happen");
-                mainLabel.setFont(mainLabel.getFont().deriveFont(mainLabel.getFont().getSize() + 18f));
+                mainLabel.setFont(new Font("Lato Black", Font.BOLD, 30));
+                mainLabel.setForeground(new Color(0x61b884));
 
                 //---- mainLivePicture ----
                 mainLivePicture.setText("text");
@@ -88,8 +88,9 @@ public class MenuPanel extends JFrame {
                 nextButton.setIcon(new ImageIcon("C:\\Users\\ADMIN\\Downloads\\Arrows-Right-Round-icon.png"));
 
                 //---- eventLabel ----
-                eventLabel.setText("S\u1ef1 Ki\u1ec7n N\u1ed5i B\u1eadt");
-                eventLabel.setFont(eventLabel.getFont().deriveFont(eventLabel.getFont().getSize() + 13f));
+                eventLabel.setText("HIGHLIGHT EVENT");
+                eventLabel.setFont(new Font("Lato Black", Font.BOLD, 28));
+                eventLabel.setForeground(new Color(0x61b884));
 
                 //---- evetntPicture3 ----
                 evetntPicture3.setText("text");
@@ -105,27 +106,33 @@ public class MenuPanel extends JFrame {
 
                 //---- eventName1 ----
                 eventName1.setText("Event Name");
-                eventName1.setFont(eventName1.getFont().deriveFont(eventName1.getFont().getSize() + 7f));
+                eventName1.setFont(new Font("Lato Black", Font.BOLD, 20));
+                eventName1.setForeground(new Color(0x61b884));
 
                 //---- eventName2 ----
                 eventName2.setText("Event Name");
-                eventName2.setFont(eventName2.getFont().deriveFont(eventName2.getFont().getSize() + 7f));
+                eventName2.setFont(new Font("Lato Black", Font.BOLD, 20));
+                eventName2.setForeground(new Color(0x61b884));
 
                 //---- eventDate2 ----
                 eventDate2.setText("Date");
-                eventDate2.setFont(eventDate2.getFont().deriveFont(eventDate2.getFont().getSize() + 7f));
+                eventDate2.setFont(new Font("Lato", Font.PLAIN, 18));
+                eventDate2.setForeground(new Color(0x61b884));
 
                 //---- eventDate1 ----
                 eventDate1.setText("Date");
-                eventDate1.setFont(eventDate1.getFont().deriveFont(eventDate1.getFont().getSize() + 7f));
+                eventDate1.setFont(new Font("Lato", Font.PLAIN, 18));
+                eventDate1.setForeground(new Color(0x61b884));
 
                 //---- eventName3 ----
                 eventName3.setText("Event Name");
-                eventName3.setFont(eventName3.getFont().deriveFont(eventName3.getFont().getSize() + 7f));
+                eventName3.setFont(new Font("Lato Black", Font.BOLD, 20));
+                eventName3.setForeground(new Color(0x61b884));
 
                 //---- eventDate3 ----
                 eventDate3.setText("Date");
-                eventDate3.setFont(eventDate3.getFont().deriveFont(eventDate3.getFont().getSize() + 7f));
+                eventDate3.setFont(new Font("Lato", Font.PLAIN, 18));
+                eventDate3.setForeground(new Color(0x61b884));
 
                 //---- evetntPicture4 ----
                 evetntPicture4.setText("text");
@@ -204,30 +211,25 @@ public class MenuPanel extends JFrame {
                 panel2Layout.setHorizontalGroup(
                     panel2Layout.createParallelGroup()
                         .addGroup(panel2Layout.createSequentialGroup()
+                            .addGap(434, 434, 434)
+                            .addComponent(mainLabel)
+                            .addGap(0, 899, Short.MAX_VALUE))
+                        .addGroup(panel2Layout.createSequentialGroup()
                             .addGroup(panel2Layout.createParallelGroup()
                                 .addGroup(panel2Layout.createSequentialGroup()
                                     .addGap(164, 164, 164)
                                     .addComponent(eventName1)
-                                    .addGap(281, 281, 281)
+                                    .addGap(274, 274, 274)
                                     .addComponent(eventName2)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
-                                    .addComponent(eventName3)
-                                    .addGap(88, 88, 88))
+                                    .addGap(253, 253, 253)
+                                    .addComponent(eventName3))
                                 .addGroup(panel2Layout.createSequentialGroup()
                                     .addGap(197, 197, 197)
                                     .addComponent(eventDate1)
                                     .addGap(340, 340, 340)
                                     .addComponent(eventDate2)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 359, Short.MAX_VALUE)
-                                    .addComponent(eventDate3)
-                                    .addGap(116, 116, 116)))
-                            .addGap(477, 477, 477))
-                        .addGroup(panel2Layout.createSequentialGroup()
-                            .addGap(434, 434, 434)
-                            .addComponent(mainLabel)
-                            .addGap(0, 881, Short.MAX_VALUE))
-                        .addGroup(panel2Layout.createSequentialGroup()
-                            .addGroup(panel2Layout.createParallelGroup()
+                                    .addGap(333, 333, 333)
+                                    .addComponent(eventDate3))
                                 .addGroup(panel2Layout.createParallelGroup()
                                     .addGroup(panel2Layout.createSequentialGroup()
                                         .addGap(460, 460, 460)
@@ -292,7 +294,7 @@ public class MenuPanel extends JFrame {
                                             .addComponent(eventDate5)
                                             .addGap(326, 326, 326)
                                             .addComponent(eventDate6)))))
-                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addContainerGap(547, Short.MAX_VALUE))
                 );
                 panel2Layout.setVerticalGroup(
                     panel2Layout.createParallelGroup()
@@ -308,7 +310,7 @@ public class MenuPanel extends JFrame {
                                             .addComponent(mainLabel)
                                             .addGap(38, 38, 38)
                                             .addComponent(mainLivePicture, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                                     .addComponent(eventLabel)
                                     .addGap(42, 42, 42)
                                     .addGroup(panel2Layout.createParallelGroup()
@@ -330,11 +332,12 @@ public class MenuPanel extends JFrame {
                                             .addGap(18, 18, 18)
                                             .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                                 .addComponent(eventDate1)
-                                                .addComponent(eventDate2)))))
+                                                .addComponent(eventDate2))))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE))
                                 .addGroup(panel2Layout.createSequentialGroup()
                                     .addGap(195, 195, 195)
-                                    .addComponent(previousButton)))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 296, Short.MAX_VALUE)
+                                    .addComponent(previousButton)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 885, Short.MAX_VALUE)))
                             .addGroup(panel2Layout.createParallelGroup()
                                 .addComponent(evetntPicture4, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
                                 .addComponent(evetntPicture5, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
@@ -397,7 +400,7 @@ public class MenuPanel extends JFrame {
     
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Man
+    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
     private JScrollPane mainScrollPanel;
     private JPanel panel2;
     private JLabel mainLabel;

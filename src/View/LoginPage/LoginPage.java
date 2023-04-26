@@ -1,6 +1,7 @@
 package View.LoginPage;
 
 import java.awt.*;
+import java.awt.event.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -8,7 +9,7 @@ import javax.swing.border.*;
 import Controller.LoginPageListener;
 import DAO.EmployeeDAO;
 import Model.User;
-import View.MenuPage.MenuPanel;
+import View.HomePage.HomePanel;
 
 public class LoginPage extends JPanel {
     ActionListener ac = new LoginPageListener(this);
@@ -17,9 +18,13 @@ public class LoginPage extends JPanel {
         initComponents();
     }
 
+    private void Login(ActionEvent e) {
+        // TODO add your code here
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
         LoginPageDialog = new JDialog();
         LoginPagePanel = new JPanel();
         PasswordField = new JPasswordField();
@@ -29,6 +34,8 @@ public class LoginPage extends JPanel {
         Username = new JLabel();
         LoginStatus = new JLabel();
         label1 = new JLabel();
+        label2 = new JLabel();
+        label3 = new JLabel();
 
         //======== LoginPageDialog ========
         {
@@ -40,12 +47,12 @@ public class LoginPage extends JPanel {
             //======== LoginPagePanel ========
             {
                 LoginPagePanel.setBackground(Color.white);
-                LoginPagePanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-                . EmptyBorder( 0, 0, 0, 0) , "", javax. swing. border. TitledBorder. CENTER, javax
-                . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,
-                12 ), java. awt. Color. red) ,LoginPagePanel. getBorder( )) ); LoginPagePanel. addPropertyChangeListener (new java. beans
-                . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .
-                getPropertyName () )) throw new RuntimeException( ); }} );
+                LoginPagePanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
+                border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER
+                ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font
+                .BOLD,12),java.awt.Color.red),LoginPagePanel. getBorder()));LoginPagePanel. addPropertyChangeListener(
+                new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er"
+                .equals(e.getPropertyName()))throw new RuntimeException();}});
 
                 //---- PasswordField ----
                 PasswordField.setBorder(new LineBorder(new Color(0x61b884)));
@@ -64,7 +71,10 @@ public class LoginPage extends JPanel {
                 LoginButton.setFont(new Font("Lato Black", Font.BOLD, 14));
                 LoginButton.setForeground(Color.white);
                 LoginButton.setBackground(new Color(0x61b884));
-                LoginButton.addActionListener(ac);
+                LoginButton.addActionListener(e -> {
+			Login(e);
+			Login(e);
+		});
 
                 //---- Password ----
                 Password.setText(" Password");
@@ -81,8 +91,18 @@ public class LoginPage extends JPanel {
                 LoginStatus.setForeground(new Color(0xd45c5c));
 
                 //---- label1 ----
-                label1.setIcon(new ImageIcon(getClass().getResource("/Asset/1.png")));
+                label1.setIcon(new ImageIcon(getClass().getResource("/Asset/music logo design - no name.png")));
                 label1.setHorizontalAlignment(SwingConstants.CENTER);
+
+                //---- label2 ----
+                label2.setText("MUZIKTIC");
+                label2.setFont(new Font("Fredoka One", Font.BOLD, 24));
+                label2.setForeground(new Color(0xa8cf45));
+
+                //---- label3 ----
+                label3.setText("MUSIC CONCERT TICKETING");
+                label3.setFont(new Font("Fredoka One", Font.BOLD, 18));
+                label3.setForeground(new Color(0x0098da));
 
                 GroupLayout LoginPagePanelLayout = new GroupLayout(LoginPagePanel);
                 LoginPagePanel.setLayout(LoginPagePanelLayout);
@@ -92,24 +112,35 @@ public class LoginPage extends JPanel {
                             .addContainerGap(161, Short.MAX_VALUE)
                             .addGroup(LoginPagePanelLayout.createParallelGroup()
                                 .addGroup(GroupLayout.Alignment.TRAILING, LoginPagePanelLayout.createSequentialGroup()
-                                    .addGroup(LoginPagePanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(LoginStatus, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(PasswordField, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                                        .addComponent(Password, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(UsernameField, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                                        .addComponent(Username, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(label1, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
-                                    .addGap(150, 150, 150))
-                                .addGroup(GroupLayout.Alignment.TRAILING, LoginPagePanelLayout.createSequentialGroup()
                                     .addComponent(LoginButton)
-                                    .addGap(244, 244, 244))))
+                                    .addGap(244, 244, 244))
+                                .addGroup(GroupLayout.Alignment.TRAILING, LoginPagePanelLayout.createSequentialGroup()
+                                    .addGroup(LoginPagePanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                        .addGroup(LoginPagePanelLayout.createSequentialGroup()
+                                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(50, 50, 50))
+                                        .addGroup(LoginPagePanelLayout.createSequentialGroup()
+                                            .addComponent(label2)
+                                            .addGap(71, 71, 71))
+                                        .addComponent(label3)
+                                        .addGroup(LoginPagePanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(LoginStatus, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(PasswordField, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                                            .addComponent(Password, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(UsernameField, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                                            .addComponent(Username, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(150, 150, 150))))
                 );
                 LoginPagePanelLayout.setVerticalGroup(
                     LoginPagePanelLayout.createParallelGroup()
                         .addGroup(LoginPagePanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(label1, GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                            .addGap(20, 20, 20)
+                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(label2)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(label3)
+                            .addGap(26, 26, 26)
                             .addComponent(Username, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(UsernameField, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
@@ -138,7 +169,7 @@ public class LoginPage extends JPanel {
                 LoginPageDialogContentPaneLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, LoginPageDialogContentPaneLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(LoginPagePanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LoginPagePanel, GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
                         .addContainerGap())
             );
             LoginPageDialog.pack();
@@ -148,7 +179,7 @@ public class LoginPage extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
     public JDialog LoginPageDialog;
     public JPanel LoginPagePanel;
     public JPasswordField PasswordField;
@@ -158,6 +189,8 @@ public class LoginPage extends JPanel {
     public JLabel Username;
     public JLabel LoginStatus;
     public JLabel label1;
+    public JLabel label2;
+    public JLabel label3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
     //Logo
@@ -180,7 +213,7 @@ public class LoginPage extends JPanel {
             if (username.equals(realUsername) && password.equals(realPassword)) {
                 this.LoginStatus.setForeground(Color.GREEN);
                 this.LoginPageDialog.dispose();
-                MenuPanel mainMenu = new MenuPanel();
+                HomePanel mainMenu = new HomePanel();
                 mainMenu.setVisible(true);
             } else {
                 this.LoginStatus.setText("Login Failed");

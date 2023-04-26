@@ -1,0 +1,76 @@
+JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space ::446:x, comp label1:::p:147:p, space :p:432:p}, seq t {space :::p, comp evetntPicture1:::p:260:p, space ::119:x, comp evetntPicture2:::p:260:p, space :p:96:p, comp evetntPicture3:::p:265:p, space :p:19:p}, seq {space :p:69:p, par l {seq l {space :p:32:p, comp eventDate1:::p::p}, comp eventName1::l:p::p}, par l {seq l {space :p:279:p, comp eventName2:::p::p, space ::252:x, comp eventName3:::p::p, space :89:89:p}, seq l {space :p:314:p, comp eventDate2:::p::p, space ::327:x, comp eventDate3:::p::p, space :p:127:p}}}}"
+			"$verticalGroup": "par l {seq l {space :p:27:p, comp label1:::p:46:p, space s:::p, par b {comp evetntPicture1::b:p:153:p, comp evetntPicture3::b:p:153:p, comp evetntPicture2::b:p:153:p}, space u:::p, par b {comp eventName1::b:p::p, comp eventName2::b:p::p, comp eventName3::b:p::p}, space :::p, par b {comp eventDate1::b:p::p, comp eventDate2::b:p::p, comp eventDate3::b:p::p}, space ::216:x}}"
+		} ) {
+			name: "this"
+			"background": new java.awt.Color( 255, 255, 255, 255 )
+			"foreground": sfield java.awt.Color white
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "evetntPicture1"
+				"text": "text"
+				"border": &LineBorder0 new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "eventName1"
+				"text": "Event Name"
+				"font": new java.awt.Font( "Lato Black", 1, 20 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "eventDate1"
+				"text": "Date"
+				"font": new java.awt.Font( "Lato", 0, 18 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "evetntPicture2"
+				"text": "text"
+				"border": #LineBorder0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "eventName2"
+				"text": "Event Name"
+				"font": new java.awt.Font( "Lato Black", 1, 20 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "eventDate2"
+				"text": "Date"
+				"font": new java.awt.Font( "Lato", 0, 18 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "evetntPicture3"
+				"text": "text"
+				"border": #LineBorder0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "eventName3"
+				"text": "Event Name"
+				"font": new java.awt.Font( "Lato Black", 1, 20 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "eventDate3"
+				"text": "Date"
+				"font": new java.awt.Font( "Lato", 0, 18 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "EVENT"
+				"font": new java.awt.Font( "Lato Black", 1, 30 )
+				"horizontalAlignment": 0
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 55, 5 )
+			"size": new java.awt.Dimension( 1025, 525 )
+		} )
+	}
+}

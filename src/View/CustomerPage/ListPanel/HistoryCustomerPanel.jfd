@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:32:p, par l {comp scrollPane1:::p::p, comp label1:::p::p}, space ::511:x}}"
-			"$verticalGroup": "par l {seq l {space :p:23:p, comp label1:::p::p, space s:::p, comp scrollPane1:::p::p, space ::300:x}}"
+			"$horizontalGroup": "par l {seq l {space :p:32:p, par l {comp scrollPane1:::p::p, comp jlbTicket:::p::p}, space ::511:x}}"
+			"$verticalGroup": "par l {seq l {space :p:23:p, comp jlbTicket:::p::p, space s:::p, comp scrollPane1:::p::p, space ::300:x}}"
 		} ) {
 			name: "this"
 			"background": sfield java.awt.Color white
@@ -16,7 +16,7 @@ new FormModel {
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
+				name: "jlbTicket"
 				"text": "TICKETS"
 				"foreground": new java.awt.Color( 97, 184, 132, 255 )
 				"font": new java.awt.Font( "Lato Black", 1, 22 )

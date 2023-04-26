@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Tue Apr 25 08:30:00 ICT 2023
  */
 
-package View.EventPanel;
+package View.EventPage;
 
 import java.awt.event.*;
 
@@ -225,8 +225,6 @@ public class EventPanel extends JPanel {
         table1 = new JTable();
         jpnPayment = new JPanel();
         JlbInforCus = new JLabel();
-        scrollPane4 = new JScrollPane();
-        table4 = new JTable();
         jlbPayment = new JLabel();
         checkBox1 = new JCheckBox();
         checkBox2 = new JCheckBox();
@@ -242,13 +240,13 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 820));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
-        .border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder
-        .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.
-        awt.Font.BOLD,12),java.awt.Color.red), getBorder()))
-        ; addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-        ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}})
-        ;
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+        . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
+        . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+        Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+        ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+        public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
+        ) )) throw new RuntimeException( ); }} );
         setLayout(null);
 
         //======== jpnEventHeader ========
@@ -681,6 +679,7 @@ public class EventPanel extends JPanel {
 
             //======== jpnPickTicket ========
             {
+                jpnPickTicket.setBackground(Color.white);
 
                 //======== scrollPane3 ========
                 {
@@ -689,6 +688,7 @@ public class EventPanel extends JPanel {
 
                 //======== jpnNextButton ========
                 {
+                    jpnNextButton.setBackground(new Color(0x61b884));
                     jpnNextButton.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseClicked(MouseEvent e) {
@@ -699,7 +699,10 @@ public class EventPanel extends JPanel {
                     //---- jlbNextButton ----
                     jlbNextButton.setText("NEXT");
                     jlbNextButton.setHorizontalAlignment(SwingConstants.CENTER);
-                    jlbNextButton.setBorder(LineBorder.createBlackLineBorder());
+                    jlbNextButton.setBorder(null);
+                    jlbNextButton.setFont(new Font("Lato Black", Font.BOLD, 22));
+                    jlbNextButton.setBackground(new Color(0x61b884));
+                    jlbNextButton.setForeground(Color.white);
                     jlbNextButton.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseClicked(MouseEvent e) {
@@ -712,16 +715,14 @@ public class EventPanel extends JPanel {
                     jpnNextButtonLayout.setHorizontalGroup(
                         jpnNextButtonLayout.createParallelGroup()
                             .addGroup(jpnNextButtonLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jlbNextButton, GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-                                .addContainerGap())
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jlbNextButton, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE))
                     );
                     jpnNextButtonLayout.setVerticalGroup(
                         jpnNextButtonLayout.createParallelGroup()
                             .addGroup(jpnNextButtonLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jlbNextButton, GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-                                .addContainerGap())
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jlbNextButton, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
                     );
                 }
 
@@ -734,9 +735,12 @@ public class EventPanel extends JPanel {
                             .addComponent(table1, GroupLayout.PREFERRED_SIZE, 642, GroupLayout.PREFERRED_SIZE)
                             .addGap(53, 53, 53)
                             .addGroup(jpnPickTicketLayout.createParallelGroup()
-                                .addComponent(jpnNextButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(scrollPane3, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
-                            .addContainerGap(22, Short.MAX_VALUE))
+                                .addGroup(jpnPickTicketLayout.createSequentialGroup()
+                                    .addComponent(scrollPane3, GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                                    .addContainerGap(22, Short.MAX_VALUE))
+                                .addGroup(jpnPickTicketLayout.createSequentialGroup()
+                                    .addComponent(jpnNextButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap(144, Short.MAX_VALUE))))
                 );
                 jpnPickTicketLayout.setVerticalGroup(
                     jpnPickTicketLayout.createParallelGroup()
@@ -757,17 +761,17 @@ public class EventPanel extends JPanel {
 
             //======== jpnPayment ========
             {
+                jpnPayment.setBackground(Color.white);
 
                 //---- JlbInforCus ----
-                JlbInforCus.setText("Th\u00f4ng Tin Ng\u01b0\u1eddi Nh\u1eadn V\u00e9");
-
-                //======== scrollPane4 ========
-                {
-                    scrollPane4.setViewportView(table4);
-                }
+                JlbInforCus.setText("CUSTOMER INFORMATION");
+                JlbInforCus.setFont(new Font("Lato Black", Font.BOLD, 16));
+                JlbInforCus.setForeground(new Color(0x61b884));
 
                 //---- jlbPayment ----
-                jlbPayment.setText("H\u00ecnh Th\u1ee9c Thanh To\u00e1n");
+                jlbPayment.setText("PAYMENT METHOD");
+                jlbPayment.setForeground(new Color(0x61b884));
+                jlbPayment.setFont(new Font("Lato Black", Font.BOLD, 16));
 
                 //---- checkBox1 ----
                 checkBox1.setText("Th\u1ebb t\u00edn d\u1ee5ng");
@@ -786,7 +790,8 @@ public class EventPanel extends JPanel {
 
                 //======== jpnBack ========
                 {
-                    jpnBack.setBorder(LineBorder.createBlackLineBorder());
+                    jpnBack.setBorder(null);
+                    jpnBack.setBackground(new Color(0x61b884));
                     jpnBack.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseClicked(MouseEvent e) {
@@ -797,6 +802,9 @@ public class EventPanel extends JPanel {
                     //---- jlbBack ----
                     jlbBack.setText("BACK");
                     jlbBack.setHorizontalAlignment(SwingConstants.CENTER);
+                    jlbBack.setFont(new Font("Lato Black", Font.BOLD, 19));
+                    jlbBack.setForeground(Color.white);
+                    jlbBack.setBackground(new Color(0x61b884));
                     jlbBack.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseClicked(MouseEvent e) {
@@ -818,11 +826,14 @@ public class EventPanel extends JPanel {
 
                 //======== jpnNext ========
                 {
-                    jpnNext.setBorder(LineBorder.createBlackLineBorder());
+                    jpnNext.setBorder(null);
+                    jpnNext.setBackground(new Color(0x61b884));
 
                     //---- jlbNext ----
                     jlbNext.setText("NEXT");
                     jlbNext.setHorizontalAlignment(SwingConstants.CENTER);
+                    jlbNext.setFont(new Font("Lato Black", Font.BOLD, 17));
+                    jlbNext.setForeground(Color.white);
 
                     GroupLayout jpnNextLayout = new GroupLayout(jpnNext);
                     jpnNext.setLayout(jpnNextLayout);
@@ -843,9 +854,7 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnPaymentLayout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(jpnPaymentLayout.createParallelGroup()
-                                .addGroup(jpnPaymentLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jlbPayment, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
-                                    .addComponent(scrollPane4, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
+                                .addComponent(jlbPayment, GroupLayout.PREFERRED_SIZE, 513, GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jpnPaymentLayout.createSequentialGroup()
                                     .addGap(52, 52, 52)
                                     .addGroup(jpnPaymentLayout.createParallelGroup()
@@ -853,7 +862,7 @@ public class EventPanel extends JPanel {
                                         .addComponent(checkBox2)
                                         .addComponent(checkBox1)))
                                 .addGroup(jpnPaymentLayout.createSequentialGroup()
-                                    .addComponent(JlbInforCus, GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                                    .addComponent(JlbInforCus, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGap(289, 289, 289)))
                             .addGroup(jpnPaymentLayout.createParallelGroup()
                                 .addGroup(jpnPaymentLayout.createSequentialGroup()
@@ -881,9 +890,7 @@ public class EventPanel extends JPanel {
                                         .addGroup(jpnPaymentLayout.createSequentialGroup()
                                             .addContainerGap()
                                             .addComponent(JlbInforCus, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(scrollPane4, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGap(167, 167, 167)
                                             .addComponent(jlbPayment, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
                                             .addGap(26, 26, 26)
                                             .addComponent(checkBox1)
@@ -971,8 +978,6 @@ public class EventPanel extends JPanel {
     private JTable table1;
     private JPanel jpnPayment;
     private JLabel JlbInforCus;
-    private JScrollPane scrollPane4;
-    private JTable table4;
     private JLabel jlbPayment;
     private JCheckBox checkBox1;
     private JCheckBox checkBox2;

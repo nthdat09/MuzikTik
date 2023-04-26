@@ -24,59 +24,64 @@ public class CustomerListPanel {
         return CustomerListTable;
     }
 
+    public JPanel getPanel1() {
+        return this.panel1;
+    }
+
+    public JScrollPane getScrollPane1() {
+        return this.scrollPane1;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
-        panel1 = new JPanel();
-        scrollPane1 = new JScrollPane();
-        CustomerListTable = new JTable();
+        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+        this.panel1 = new JPanel();
+        this.scrollPane1 = new JScrollPane();
+        this.CustomerListTable = new JTable();
 
         //======== panel1 ========
         {
-            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , ""
-            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 )
-            , java. awt. Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            this.panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+            0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+            . BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+            red) ,this.panel1. getBorder( )) ); this.panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+            beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             //======== scrollPane1 ========
             {
 
                 //---- CustomerListTable ----
-                CustomerListTable.setModel(new DefaultTableModel(
+                this.CustomerListTable.setModel(new DefaultTableModel(
                     new Object[][] {
                     },
                     new String[] {
                         "ID", "Name", "Phone Number", "Email", "Address", "Type", "Total Point"
                     }
                 ));
-                CustomerListTable.setAutoCreateRowSorter(true);
-                CustomerListTable.setName("cusListTable");
-                scrollPane1.setViewportView(CustomerListTable);
+                this.CustomerListTable.setAutoCreateRowSorter(true);
+                this.CustomerListTable.setName("cusListTable");
+                this.scrollPane1.setViewportView(this.CustomerListTable);
             }
 
-            GroupLayout panel1Layout = new GroupLayout(panel1);
+            GroupLayout panel1Layout = new GroupLayout(this.panel1);
             panel1.setLayout(panel1Layout);
             panel1Layout.setHorizontalGroup(
                 panel1Layout.createParallelGroup()
-                    .addComponent(scrollPane1, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 965, Short.MAX_VALUE)
+                    .addComponent(this.scrollPane1, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 965, Short.MAX_VALUE)
             );
             panel1Layout.setVerticalGroup(
                 panel1Layout.createParallelGroup()
-                    .addComponent(scrollPane1, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+                    .addComponent(this.scrollPane1, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
             );
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
     JPanel panel1;
     JScrollPane scrollPane1;
-    static JTable CustomerListTable;
+    JTable CustomerListTable;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
     public static void setCustomerListTable() {

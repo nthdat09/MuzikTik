@@ -2,8 +2,8 @@ package Controller;
 
 
 import Model.CustomerList;
-import View.CustomerPanel.ListPanel.HistoryCustomerPanel;
-import View.CustomerPanel.ListPanel.InformationCustomerPanel;
+import View.CustomerPage.ListPanel.HistoryCustomerPanel;
+import View.CustomerPage.ListPanel.InformationCustomerPanel;
 
 import javax.swing.*;
 import java.awt.*;
