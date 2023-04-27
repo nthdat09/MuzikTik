@@ -16,12 +16,32 @@ public class LoginPage extends JPanel {
     User user = new User();
     public LoginPage() {
         initComponents();
+        initMoreComponents();
+    }
+
+    public void initMoreComponents() {
+        this.getLoginButton().addActionListener(ac);
+        getLoginButton().addKeyListener(new LoginPageListener(this));
+        getUsernameField().addKeyListener(new LoginPageListener(this));
+        getPasswordField().addKeyListener(new LoginPageListener(this));
+    }
+
+    public JButton getLoginButton() {
+        return LoginButton;
+    }
+
+    public JTextField getUsernameField() {
+        return UsernameField;
+    }
+
+    public JPasswordField getPasswordField() {
+        return PasswordField;
     }
 
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
         LoginPageDialog = new JDialog();
         LoginPagePanel = new JPanel();
         PasswordField = new JPasswordField();
@@ -44,12 +64,12 @@ public class LoginPage extends JPanel {
             //======== LoginPagePanel ========
             {
                 LoginPagePanel.setBackground(Color.white);
-                LoginPagePanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
-                border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER
-                ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font
-                .BOLD,12),java.awt.Color.red),LoginPagePanel. getBorder()));LoginPagePanel. addPropertyChangeListener(
-                new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er"
-                .equals(e.getPropertyName()))throw new RuntimeException();}});
+                LoginPagePanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
+                ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
+                .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt
+                . Color .red ) ,LoginPagePanel. getBorder () ) ); LoginPagePanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
+                propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+                ;} } );
 
                 //---- PasswordField ----
                 PasswordField.setBorder(new LineBorder(new Color(0x61b884)));
@@ -68,7 +88,6 @@ public class LoginPage extends JPanel {
                 LoginButton.setFont(new Font("Lato Black", Font.BOLD, 14));
                 LoginButton.setForeground(Color.white);
                 LoginButton.setBackground(new Color(0x61b884));
-                LoginButton.addActionListener(ac);
 
                 //---- Password ----
                 Password.setText(" Password");
@@ -173,7 +192,7 @@ public class LoginPage extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
     public JDialog LoginPageDialog;
     public JPanel LoginPagePanel;
     public JPasswordField PasswordField;

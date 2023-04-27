@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "9.0.0.0.263" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -23,6 +23,9 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JPasswordField" ) {
 					name: "PasswordField"
 					"border": new javax.swing.border.LineBorder( new java.awt.Color( 97, 184, 132, 255 ), 1, false )
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
 					name: "UsernameField"
@@ -33,6 +36,9 @@ new FormModel {
 					"disabledTextColor": new java.awt.Color( 204, 255, 204, 255 )
 					"background": new java.awt.Color( 255, 255, 255, 255 )
 					"border": new javax.swing.border.LineBorder( new java.awt.Color( 97, 184, 132, 255 ), 1, false )
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "LoginButton"
@@ -40,8 +46,9 @@ new FormModel {
 					"font": new java.awt.Font( "Lato Black", 1, 14 )
 					"foreground": new java.awt.Color( 255, 255, 255, 255 )
 					"background": new java.awt.Color( 97, 184, 132, 255 )
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Login", true ) )
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Login", true ) )
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "Password"
@@ -84,4 +91,3 @@ new FormModel {
 		} )
 	}
 }
-
