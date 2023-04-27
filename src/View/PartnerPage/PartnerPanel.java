@@ -5,6 +5,7 @@
 package View.PartnerPage;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
@@ -16,9 +17,45 @@ public class PartnerPanel extends JPanel {
         initComponents();
     }
 
+    public void initMoreSetting(){
+
+    }
+
+    public JButton getJlbSearch() {
+        return jlbSearch;
+    }
+
+    public JButton getJlbAdd() {
+        return jlbAdd;
+    }
+
+    public JButton getJlbEdit() {
+        return jlbEdit;
+    }
+
+    public JButton getJlbDelete() {
+        return jlbDelete;
+    }
+
+    public JLabel getLabel1() {
+        return label1;
+    }
+
+    public JScrollPane getScrollPane1() {
+        return scrollPane1;
+    }
+
+    public JTable getTable1() {
+        return table1;
+    }
+
+    public JTextField getJtfSearch() {
+        return jtfSearch;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
         label1 = new JLabel();
         scrollPane1 = new JScrollPane();
         table1 = new JTable();
@@ -30,13 +67,11 @@ public class PartnerPanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
-        swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border
-        . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog"
-        , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) , getBorder
-        () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
-        . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException
-        ( ) ;} } );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+        0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+        . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+        beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
         //---- label1 ----
         label1.setText("PARTNERS LIST");
@@ -102,7 +137,7 @@ public class PartnerPanel extends JPanel {
                                     .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
                                     .addGap(6, 6, 6)
                                     .addComponent(jlbDelete)))))
-                    .addContainerGap(98, Short.MAX_VALUE))
+                    .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
@@ -121,13 +156,13 @@ public class PartnerPanel extends JPanel {
                                 .addComponent(jlbDelete, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 363, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(20, Short.MAX_VALUE))
+                    .addContainerGap(15, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
     private JLabel label1;
     private JScrollPane scrollPane1;
     private JTable table1;

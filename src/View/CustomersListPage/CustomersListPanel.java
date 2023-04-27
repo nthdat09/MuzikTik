@@ -4,25 +4,39 @@
 
 package View.CustomersListPage;
 
+import Controller.CustomerListListener;
+import Controller.SwitchMenuController;
 import Model.DAO.CustomerListDAO;
 import Model.BEAN.CustomerListP;
+import View.CustomerPage.ListPanel.InformationCustomerPanel;
+import View.MainPage.MainPage;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.table.*;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
  * @author ADMIN
  */
 public class CustomersListPanel {
+    ActionListener ac = new CustomerListListener(this);
     public CustomersListPanel() {
         initComponents();
-        setCustomerListTable();
+        initMoreSetting();
     }
 
-    public static JTable getCustomerListTable() {
+    public void initMoreSetting(){
+        setCustomerListTable();
+        getJlbAdd().addActionListener(ac);
+        getJlbEdit().addActionListener(ac);
+        getJlbDelete().addActionListener(ac);
+        getJlbSearch().addActionListener(ac);
+    }
+
+    public JTable getCustomerListTable() {
         return CustomerListTable;
     }
 
@@ -32,6 +46,34 @@ public class CustomersListPanel {
 
     public JPanel getCustomersListPage() {
         return customersListPage;
+    }
+
+    public JScrollPane getScrollPane1() {
+        return scrollPane1;
+    }
+
+    public JLabel getTextField1() {
+        return textField1;
+    }
+
+    public JTextField getJtfSearch() {
+        return jtfSearch;
+    }
+
+    public JButton getJlbDelete() {
+        return jlbDelete;
+    }
+
+    public JButton getJlbEdit() {
+        return jlbEdit;
+    }
+
+    public JButton getJlbAdd() {
+        return jlbAdd;
+    }
+
+    public JButton getJlbSearch() {
+        return jlbSearch;
     }
 
     private void initComponents() {
@@ -52,11 +94,12 @@ public class CustomersListPanel {
         {
             customersListPage.setBackground(Color.white);
             customersListPage.setName("customersListPage");
-            customersListPage.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-            0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-            red) ,customersListPage. getBorder( )) ); customersListPage. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-            beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            customersListPage.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER
+            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font
+            .BOLD ,12 ), java. awt. Color. red) ,customersListPage. getBorder( )) ); customersListPage. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072"
+            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             //======== panel1 ========
             {
@@ -185,7 +228,7 @@ public class CustomersListPanel {
     private JPanel customersListPage;
     private JPanel panel1;
     private JScrollPane scrollPane1;
-    private static JTable CustomerListTable;
+    private JTable CustomerListTable;
     private JLabel textField1;
     private JTextField jtfSearch;
     private JButton jlbDelete;
@@ -194,7 +237,7 @@ public class CustomersListPanel {
     private JButton jlbSearch;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on'
 
-    public static void setCustomerListTable() {
+    public void setCustomerListTable() {
         List <CustomerListP> listCustomer = CustomerListDAO.getCustomerList();
         DefaultTableModel tableModel = (DefaultTableModel) getCustomerListTable().getModel();
         for (CustomerListP customer : listCustomer) {
@@ -210,5 +253,22 @@ public class CustomersListPanel {
         }
     }
 
+    public void addCustomer() {
+        MainPage mainPage = new MainPage();
+        mainPage.SwitchView("CustomersPanel");
+    }
+
+    public void editCustomer() {
+
+    }
+
+
+    public void deleteCustomer() {
+
+    }
+
+    public void searchCustomer() {
+
+    }
 }
 

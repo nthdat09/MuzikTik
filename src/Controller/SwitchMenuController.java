@@ -2,6 +2,7 @@ package Controller;
 
 import Model.BEAN.MenuList;
 import View.AnalyticPage.AnalyticPanel;
+import View.CustomerPage.ListPanel.InformationCustomerPanel;
 import View.CustomersListPage.CustomersListPanel;
 import View.EventPage.EventPanel;
 import View.Home.HomePanel;
@@ -20,9 +21,14 @@ public class SwitchMenuController {
     private JPanel rootPanel;
     private String selectedKind = "";
     private List<MenuList> listItem = null;
+
+    public SwitchMenuController() {
+    }
+
     public SwitchMenuController(JPanel rootPanel) {
         this.rootPanel = rootPanel;
     }
+
     public void setView(JPanel jpnItem, JLabel jlbItem) {
         selectedKind = "HomePanel";
 
@@ -38,6 +44,15 @@ public class SwitchMenuController {
             item.getJlb().addMouseListener(new LabelEvent(item.getKind(),item.getJpn(),item.getJlb()));
         }
     }
+
+    public void SwitchView(JPanel informationCustomerPanel,  selectedKind) {
+        rootPanel.removeAll();
+        rootPanel.setLayout(new BorderLayout());
+        rootPanel.add(new HomePanel());
+        rootPanel.validate();
+        rootPanel.repaint();
+    }
+
     class LabelEvent implements MouseListener {
         private JPanel node;
         private String kind;
@@ -117,6 +132,16 @@ public class SwitchMenuController {
                     item.getJlb().setForeground(new Color(97,184,132));
                 }
             }
+        }
+
+        private void SwitchView(JPanel view){ // Đổi màn chính giữa sang Jpanel khác
+            kind = view.getName();
+            rootPanel.removeAll();
+            rootPanel.setLayout(new BorderLayout());
+            rootPanel.add(node);
+            rootPanel.validate();
+            rootPanel.repaint();
+            setChangeBackground(kind);
         }
     }
 }

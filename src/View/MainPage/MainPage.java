@@ -39,6 +39,11 @@ public class MainPage extends JFrame {
         controller.setEvent(listItem);
     }
 
+    public void SwitchView(){
+        SwitchMenuController controller = new SwitchMenuController(jpnView);
+        controller.SwitchView(jpnCustomers, jlbCustomer);
+    }
+
     Border border = new LineBorder(Color.decode("#61b884"),1,true);
 
     private void button1MouseExited(MouseEvent e) {
