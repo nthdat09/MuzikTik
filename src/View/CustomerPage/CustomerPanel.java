@@ -6,7 +6,7 @@ package View.CustomerPage;
 
 import java.awt.*;
 import Controller.CustomerPanelListener;
-import Model.CustomerList;
+import Model.BEAN.CustomerList;
 
 import java.awt.event.*;
 import java.util.ArrayList;

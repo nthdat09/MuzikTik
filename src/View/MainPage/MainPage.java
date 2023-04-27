@@ -4,9 +4,8 @@
 
 package View.MainPage;
 
-import Controller.MenuList;
+import Model.BEAN.MenuList;
 import Controller.SwitchMenuController;
-import View.EventPage.EventPanel;
 
 import java.awt.*;
 import java.awt.event.*;

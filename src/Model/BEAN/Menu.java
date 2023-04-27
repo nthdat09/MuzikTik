@@ -1,4 +1,4 @@
-package Model;
+package Model.BEAN;
 
 import javax.swing.*;
 

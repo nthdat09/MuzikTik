@@ -4,8 +4,8 @@
 
 package View.CustomersListPage;
 
-import DAO.CustomerListDAO;
-import Model.CustomerListP;
+import Model.DAO.CustomerListDAO;
+import Model.BEAN.CustomerListP;
 
 import java.awt.*;
 import javax.swing.*;

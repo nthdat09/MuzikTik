@@ -1,6 +1,6 @@
-package DAO;
+package Model.DAO;
 
-import Model.Customer;
+import Model.BEAN.Customer;
 
 import java.sql.SQLException;
 import java.util.List;

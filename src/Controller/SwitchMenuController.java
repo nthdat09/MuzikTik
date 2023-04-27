@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.BEAN.MenuList;
 import View.AnalyticPage.AnalyticPanel;
 import View.CustomersListPage.CustomersListPanel;
 import View.EventPage.EventPanel;

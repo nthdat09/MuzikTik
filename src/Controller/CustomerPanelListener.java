@@ -1,7 +1,7 @@
 package Controller;
 
 
-import Model.CustomerList;
+import Model.BEAN.CustomerList;
 import View.CustomerPage.ListPanel.HistoryCustomerPanel;
 import View.CustomerPage.ListPanel.InformationCustomerPanel;
 

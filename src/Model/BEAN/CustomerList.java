@@ -1,32 +1,33 @@
-package Controller;
+package Model.BEAN;
 
 import javax.swing.*;
 
-public class MenuList {
+public class CustomerList {
     private String kind;
     private JPanel jpn;
     private JLabel jlb;
 
-    public MenuList() {}
-    public MenuList(String kind, JPanel jpn, JLabel jlb) {
+    public CustomerList(String kind, JPanel jpn, JLabel jlb) {
         this.kind = kind;
         this.jpn = jpn;
         this.jlb = jlb;
     }
+    public CustomerList() {}
+
     public String getKind() {
         return kind;
-    }
-    public JPanel getJpn() {
-        return jpn;
-    }
-    public JLabel getJlb() {
-        return jlb;
     }
     public void setKind(String kind) {
         this.kind = kind;
     }
+    public JPanel getJpn() {
+        return jpn;
+    }
     public void setJpn(JPanel jpn) {
         this.jpn = jpn;
+    }
+    public JLabel getJlb() {
+        return jlb;
     }
     public void setJlb(JLabel jlb) {
         this.jlb = jlb;

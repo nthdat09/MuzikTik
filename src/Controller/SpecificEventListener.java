@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.SpecificEvent;
+import Model.BEAN.SpecificEvent;
 
 import javax.swing.*;
 import java.util.List;

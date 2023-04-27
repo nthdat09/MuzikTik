@@ -1,4 +1,4 @@
-package Model;
+package Model.BEAN;
 
 public class CustomerListP {
     private int id;

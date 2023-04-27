@@ -1,14 +1,13 @@
 package View.LoginPage;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.*;
 
 import Controller.LoginPageListener;
-import DAO.EmployeeDAO;
-import Model.User;
+import Model.DAO.EmployeeDAO;
+import Model.BEAN.User;
 import View.MainPage.MainPage;
 
 public class LoginPage extends JPanel {

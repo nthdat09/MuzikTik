@@ -1,9 +1,7 @@
-package DAO;
+package Model.DAO;
 
-import Database.UserDatabase;
-import Model.CustomerList;
-import Model.CustomerListP;
-import Model.User;
+import Model.Database.UserDatabase;
+import Model.BEAN.CustomerListP;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

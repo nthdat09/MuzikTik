@@ -1,7 +1,7 @@
-package DAO;
+package Model.DAO;
 
-import Database.UserDatabase;
-import Model.User;
+import Model.Database.UserDatabase;
+import Model.BEAN.User;
 
 import java.sql.*;
 
