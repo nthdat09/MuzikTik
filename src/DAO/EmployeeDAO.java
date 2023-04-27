@@ -17,7 +17,7 @@ public class EmployeeDAO implements EmployeeInterface<User> {
             Connection con = UserDatabase.getConnection();
 
             // Tạo ra đối tượng PreparedStatement
-            String sql = "SELECT * FROM EMPLOYEE where EMP_USERNAME=?";
+            String sql = "SELECT * FROM mctmsys.employee WHERE EMP_USERNAME = ?";
             PreparedStatement st = con.prepareCall(sql);
             st.setString(1, t);
             // Thực thi câu lệnh SQL
