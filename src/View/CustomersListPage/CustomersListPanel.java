@@ -185,7 +185,7 @@ public class CustomersListPanel {
     private JPanel customersListPage;
     private JPanel panel1;
     private JScrollPane scrollPane1;
-    private JTable CustomerListTable;
+    private static JTable CustomerListTable;
     private JLabel textField1;
     private JTextField jtfSearch;
     private JButton jlbDelete;
