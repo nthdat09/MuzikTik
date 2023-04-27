@@ -1,0 +1,65 @@
+JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq l {space :p:401:p, comp label1:::p::p}, seq l {space :p:36:p, par l {comp scrollPane1:::p:896:p, seq {comp jtfSearch:::p:210:p, space :6:6:p, comp jlbSearch:::p:111:p, space :287:287:p, comp jlbAdd:::p:90:p, space :6:6:p, comp jlbEdit:::p:90:p, space :6:6:p, comp jlbDelete:::p::p}}}}, space ::98:x}}"
+			"$verticalGroup": "par l {seq l {space :p:25:p, comp label1:::p::p, space :p:24:p, par l {comp jtfSearch:::p::p, seq l {space :2:2:p, par l {comp jlbSearch:::p:26:p, comp jlbAdd:::p:26:p, comp jlbEdit:::p:26:p, comp jlbDelete:::p:26:p}}}, space u:::p, comp scrollPane1:::p:363:p, space ::20:x}}"
+		} ) {
+			name: "this"
+			"background": new java.awt.Color( 255, 255, 255, 255 )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "PARTNERS LIST"
+				"horizontalAlignment": 0
+				"font": new java.awt.Font( "Lato Black", 1, 25 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "table1"
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "jtfSearch"
+				"text": " Search MuzikTic"
+				"font": new java.awt.Font( "Lato", 0, 16 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+				"caretColor": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jlbDelete"
+				"text": "DELETE"
+				"font": &Font0 new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": &Color0 new java.awt.Color( 255, 255, 255, 255 )
+				"background": &Color1 new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jlbEdit"
+				"text": "EDIT"
+				"font": #Font0
+				"foreground": #Color0
+				"background": #Color1
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jlbAdd"
+				"text": "ADD "
+				"font": #Font0
+				"foreground": #Color0
+				"background": #Color1
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jlbSearch"
+				"text": "SEARCH"
+				"font": #Font0
+				"foreground": #Color0
+				"background": #Color1
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1030, 505 )
+		} )
+	}
+}

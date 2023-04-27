@@ -12,14 +12,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerListDAO implements CustomerListInterface{
+public class CustomerListDAO{
 
     public static CustomerListDAO getInstance() {
         return new CustomerListDAO();
     }
 
-    @Override
-    public List<CustomerListP> getCustomerList() {
+    public static List<CustomerListP> getCustomerList() {
         List<CustomerListP> result = new ArrayList<>();
         CustomerListP customerList = null;
         try {
@@ -27,7 +26,7 @@ public class CustomerListDAO implements CustomerListInterface{
             Connection con = UserDatabase.getConnection();
 
             // Tạo ra đối tượng PreparedStatement
-            String sql = "SELECT * FROM CUSTOMER";
+            String sql = "SELECT * FROM mctmsys.customer";
             PreparedStatement st = con.prepareCall(sql);
 
             // Thực thi câu lệnh SQL

@@ -8,21 +8,24 @@ new FormModel {
 		}
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 			"$horizontalGroup": "par l {seq t {space :::p, comp LoginPagePanel:::::x, space :::p}}"
-			"$verticalGroup": "par l {seq t {space :::p, comp LoginPagePanel:::::x, space :::p}}"
+			"$verticalGroup": "par l {seq t {space :::p, comp LoginPagePanel::::427:x, space :::p}}"
 		} ) {
 			name: "LoginPageDialog"
 			"title": "MuzikTic - Concert Music Ticketing"
 			"defaultCloseOperation": 2
 			"visible": true
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq {space ::161:x, par l {seq t {par l:::p {comp LoginStatus:::p:185:p, comp PasswordField::::270:x, comp Password::l:p:80:p, comp UsernameField::l::270:x, comp Username::l:p:90:p, comp label1::l::270:x}, space :p:150:p}, seq t {comp LoginButton:::p::p, space :p:244:p}}}}"
-				"$verticalGroup": "par l {seq l {space :::p, comp label1::::156:x, space :::p, comp Username:::p:28:p, space :::p, comp UsernameField:::p:45:p, space s:::p, comp Password:::p::p, space :::p, comp PasswordField:::p:45:p, space :::p, comp LoginStatus:::p:25:p, space :::p, comp LoginButton:::p::p, space :p:32:p}}"
+				"$horizontalGroup": "par l {seq {space ::161:x, par l {seq t {comp LoginButton:::p::p, space :p:244:p}, seq t {par t {seq t {comp label1:::p:171:p, space :p:50:p}, seq t {comp label2:::p::p, space :p:71:p}, comp label3::t:p::p, par l:::p {comp LoginStatus:::p:185:p, comp PasswordField::::270:x, comp Password::l:p:80:p, comp UsernameField::l::270:x, comp Username::l:p:90:p}}, space :p:150:p}}}}"
+				"$verticalGroup": "par l {seq l {space :p:20:p, comp label1:::p:60:p, space :::x, comp label2:::p::p, space :::p, comp label3:::p::p, space :p:26:p, comp Username:::p:28:p, space :::p, comp UsernameField:::p:45:p, space s:::p, comp Password:::p::p, space :::p, comp PasswordField:::p:45:p, space :::p, comp LoginStatus:::p:25:p, space :::p, comp LoginButton:::p::p, space :p:32:p}}"
 			} ) {
 				name: "LoginPagePanel"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
 				add( new FormComponent( "javax.swing.JPasswordField" ) {
 					name: "PasswordField"
 					"border": new javax.swing.border.LineBorder( new java.awt.Color( 97, 184, 132, 255 ), 1, false )
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
 					name: "UsernameField"
@@ -33,6 +36,9 @@ new FormModel {
 					"disabledTextColor": new java.awt.Color( 204, 255, 204, 255 )
 					"background": new java.awt.Color( 255, 255, 255, 255 )
 					"border": new javax.swing.border.LineBorder( new java.awt.Color( 97, 184, 132, 255 ), 1, false )
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "LoginButton"
@@ -40,8 +46,9 @@ new FormModel {
 					"font": new java.awt.Font( "Lato Black", 1, 14 )
 					"foreground": new java.awt.Color( 255, 255, 255, 255 )
 					"background": new java.awt.Color( 97, 184, 132, 255 )
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Login", true ) )
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Login", true ) )
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "Password"
@@ -62,8 +69,20 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
-					"icon": new com.jformdesigner.model.SwingIcon( 0, "/Asset/1.png" )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/Asset/music logo design - no name.png" )
 					"horizontalAlignment": 0
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "MUZIKTIC"
+					"font": new java.awt.Font( "Fredoka One", 1, 24 )
+					"foreground": new java.awt.Color( 168, 207, 69, 255 )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label3"
+					"text": "MUSIC CONCERT TICKETING"
+					"font": new java.awt.Font( "Fredoka One", 1, 18 )
+					"foreground": new java.awt.Color( 0, 152, 218, 255 )
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
