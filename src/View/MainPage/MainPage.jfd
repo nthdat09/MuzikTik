@@ -72,6 +72,7 @@ new FormModel {
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 85
 					"y": 15
+					"width": 215
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "Logo2"
@@ -81,19 +82,20 @@ new FormModel {
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 85
 					"y": 45
+					"width": 325
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 1401
 				"height": 75
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq l {space :::p, par l {comp jpnHome::l:::x, comp jpnEvent:::p::p, comp jpnCustomers:::p::p, comp jpnTickets::l:p::p, comp jpnStages::l:p::p, comp jpnPartners::l:p::p, comp jpnAnalytics::l:p::p, comp jpnSettings::l:p::p}, space :::p}}"
-				"$verticalGroup": "par l {seq l {space :p:30:p, comp jpnHome:::p:53:p, space :::p, comp jpnEvent:::p:53:p, space :::p, comp jpnCustomers:::p:53:p, space :::p, comp jpnTickets:::p:53:p, space :::p, comp jpnStages:::p:53:p, space :::p, comp jpnPartners:::p:53:p, space :::p, comp jpnAnalytics:::p:53:p, space :::p, comp jpnSettings:::p:53:p, space ::203:x}}"
+				"$horizontalGroup": "par l {seq {par l {comp jpnHome::l:p:231:p, comp jpnEvent::l:p:231:p, comp jpnCustomers::l:p:231:p, comp jpnTickets::l:p:231:p, comp jpnStages::l:p:231:p, comp jpnPartners::l:p:231:p, comp jpnAnalytics::l:p:231:p, comp jpnSettings::l:p:231:p}, space :::x}}"
+				"$verticalGroup": "par l {seq l {space :p:30:p, comp jpnHome:::p:53:p, space :::p, comp jpnEvent:::p:53:p, space :::p, comp jpnCustomers:::p:53:p, space :::p, comp jpnTickets:::p:53:p, space :::p, comp jpnStages:::p:53:p, space :::p, comp jpnPartners:::p:53:p, space :::p, comp jpnAnalytics:::p:53:p, space :::p, comp jpnSettings:::p:53:p, space ::409:x}}"
 			} ) {
 				name: "navigationPanel"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbHome::l:::x}"
+					"$horizontalGroup": "par l {comp jlbHome::t::231:x}"
 					"$verticalGroup": "par l {comp jlbHome::l::53:x}"
 				} ) {
 					name: "jpnHome"
@@ -114,7 +116,7 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbEvent::l:::x}"
+					"$horizontalGroup": "par l {comp jlbEvent::l::231:x}"
 					"$verticalGroup": "par l {comp jlbEvent::l::53:x}"
 				} ) {
 					name: "jpnEvent"
@@ -133,7 +135,7 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq t {space :0:0:x, comp jlbCustomer:::p::p}}"
+					"$horizontalGroup": "par l {comp jlbCustomer::t::231:x}"
 					"$verticalGroup": "par l {comp jlbCustomer::l::53:x}"
 				} ) {
 					name: "jpnCustomers"
@@ -152,7 +154,7 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq t {space :0:0:x, comp jlbTickets:::p::p}}"
+					"$horizontalGroup": "par l {comp jlbTickets::t::231:x}"
 					"$verticalGroup": "par l {comp jlbTickets::l::53:x}"
 				} ) {
 					name: "jpnTickets"
@@ -171,7 +173,7 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq t {space :0:0:x, comp jlbStages:::p::p}}"
+					"$horizontalGroup": "par l {comp jlbStages::t::231:x}"
 					"$verticalGroup": "par l {seq l {comp jlbStages:::p:51:p, space :0:2:x}}"
 				} ) {
 					name: "jpnStages"
@@ -190,7 +192,7 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq t {space :0:0:x, comp jlbParners:::p::p}}"
+					"$horizontalGroup": "par l {comp jlbParners::t::231:x}"
 					"$verticalGroup": "par l {comp jlbParners::l::53:x}"
 				} ) {
 					name: "jpnPartners"
@@ -209,7 +211,7 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq t {space :0:0:x, comp jlbAnalytics:::p::p}}"
+					"$horizontalGroup": "par l {comp jlbAnalytics::t::231:x}"
 					"$verticalGroup": "par l {comp jlbAnalytics::l::53:x}"
 				} ) {
 					name: "jpnAnalytics"
@@ -228,7 +230,7 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq t {space :0:0:x, comp jlbSettings:::p::p}}"
+					"$horizontalGroup": "par l {seq t {space :0:6:x, comp jlbSettings:::p::p}}"
 					"$verticalGroup": "par l {comp jlbSettings::l::53:x}"
 				} ) {
 					name: "jpnSettings"
@@ -248,7 +250,7 @@ new FormModel {
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"y": 65
-				"height": 699
+				"height": 905
 				"x": 0
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
@@ -288,10 +290,22 @@ new FormModel {
 					"x": 950
 					"y": 0
 				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {space :0:1155:x}"
+					"$verticalGroup": "par l {space :0:720:x}"
+				} ) {
+					name: "jpnView"
+					"background": new java.awt.Color( 255, 255, 255, 255 )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 5
+					"y": 5
+					"width": 1155
+					"height": 730
+				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 240
 				"y": 95
-				"height": 633
+				"height": 735
 				"width": 1161
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -311,7 +325,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1405, 795 )
+			"size": new java.awt.Dimension( 1405, 870 )
 		} )
 	}
 }

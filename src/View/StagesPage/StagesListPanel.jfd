@@ -1,0 +1,50 @@
+JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {space :0:1040:x};par l {seq {space :0:0:x, comp StageList:::p::p, space :0:0:x}}"
+			"$verticalGroup": "par l {space :0:620:x};par l {seq {space :0:0:x, comp StageList:::p::p, space :0:0:x}}"
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq t {space :::x, par l:::p {seq l {space :376:376:p, comp jlbStageList:::p::p}, seq l {comp jtfSearch:::p:210:p, space :p:572:p, comp jbtAdd:::p::p}, comp scrollPane1::l:::x}, space :p:38:p}}"
+				"$verticalGroup": "par l {seq l {space :p:25:p, comp jlbStageList:::p::p, space :12:12:p, par b {comp jtfSearch::b:p::p, comp jbtAdd::b:p::p}, space s:::p, comp scrollPane1:::p:419:p, space ::69:x}}"
+			} ) {
+				name: "StageList"
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jlbStageList"
+					"text": "STAGES LIST"
+					"horizontalAlignment": 0
+					"font": new java.awt.Font( "Lato Black", 1, 25 )
+					"foreground": new java.awt.Color( 97, 184, 132, 255 )
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "jtfSearch"
+					"text": "Search "
+					"font": new java.awt.Font( "Lato", 0, 16 )
+					"foreground": new java.awt.Color( 97, 184, 132, 255 )
+					"caretColor": new java.awt.Color( 97, 184, 132, 255 )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "jbtAdd"
+					"text": "ADD NEW STAGE"
+					"font": new java.awt.Font( "Lato Black", 1, 16 )
+					"foreground": new java.awt.Color( 255, 255, 255, 255 )
+					"background": new java.awt.Color( 97, 184, 132, 255 )
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JTable" ) {
+						name: "table1"
+					} )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 15, 5 )
+			"size": new java.awt.Dimension( 1040, 620 )
+		} )
+	}
+}

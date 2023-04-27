@@ -1,7 +1,7 @@
 package Controller;
 
-import View.CustomerListPanel.*;
-import View.HomePage.HomePanel;
+import View.CustomersListPage.CustomersListPanel;
+import View.Home.HomePanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +19,7 @@ public class MainMenuListener implements ActionListener {
         String src = e.getActionCommand();
         System.out.println(src);
         if (src.equals("CUSTOMER")) {
-            CustomerListPanel customerListPanel = new CustomerListPanel();
+            CustomersListPanel customerListPanel = new CustomersListPanel();
         }
     }
 }

@@ -1,21 +1,22 @@
-JFDML JFormDesigner: "9.0.0.0.263" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
-		auxiliary() {
-			"JavaCodeGenerator.defaultVariableModifiers": 0
-			"JavaCodeGenerator.defaultVariableGetter": true
-			"JavaCodeGenerator.memberVariableThis": true
-		}
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {comp scrollPane1::t::965:x}"
-			"$verticalGroup": "par l {comp scrollPane1::t::520:x}"
+			"$horizontalGroup": "par l {seq l {space :p:33:p, comp scrollPane1:::p:896:p, space ::116:x}};par l {seq t {space ::538:x, comp panel1:::p::p, space ::491:x}}"
+			"$verticalGroup": "par l {seq l {space :p:17:p, comp scrollPane1:::p:555:p, space ::123:x}};par l {seq t {space ::279:x, comp panel1:::p::p, space ::396:x}}"
 		} ) {
-			name: "panel1"
-			auxiliary() {
-				"JavaCodeGenerator.variableGetter": true
-			}
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {space :0:16:x}"
+				"$verticalGroup": "par l {space :0:20:x}"
+			} ) {
+				name: "panel1"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTable" ) {
@@ -62,8 +63,8 @@ new FormModel {
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 5, 15 )
-			"size": new java.awt.Dimension( 965, 520 )
+			"location": new java.awt.Point( 10, 0 )
+			"size": new java.awt.Dimension( 1045, 695 )
 		} )
 	}
 }

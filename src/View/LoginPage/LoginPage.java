@@ -9,7 +9,7 @@ import javax.swing.border.*;
 import Controller.LoginPageListener;
 import DAO.EmployeeDAO;
 import Model.User;
-import View.HomePage.HomePanel;
+import View.Home.HomePanel;
 
 public class LoginPage extends JPanel {
     ActionListener ac = new LoginPageListener(this);

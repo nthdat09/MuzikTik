@@ -1,24 +1,27 @@
 /*
- * Created by JFormDesigner on Wed Apr 26 21:51:11 ICT 2023
+ * Created by JFormDesigner on Thu Apr 27 11:57:11 ICT 2023
  */
 
-package View.StagePage;
+package View.StagesPage;
+
+import View.MainPage.MainPage;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
+import javax.swing.table.*;
 
 /**
- * @author Admin
+ * @author ADMIN
  */
-public class StageListPanel {
-    public StageListPanel() {
+public class StagesListPanel extends JPanel {
+    public StagesListPanel() {
         initComponents();
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+        // Generated using JFormDesigner Evaluation license - Man
         StageList = new JPanel();
         jlbStageList = new JLabel();
         jtfSearch = new JTextField();
@@ -26,14 +29,17 @@ public class StageListPanel {
         scrollPane1 = new JScrollPane();
         table1 = new JTable();
 
+        //======== this ========
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
+        border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder. CENTER
+        ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font
+        . BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener(
+        new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "borde\u0072"
+        .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+
         //======== StageList ========
         {
             StageList.setBackground(Color.white);
-            StageList.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
-            0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
-            .BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),java.awt.Color.
-            red),StageList. getBorder()));StageList. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
-            beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName()))throw new RuntimeException();}});
 
             //---- jlbStageList ----
             jlbStageList.setText("STAGES LIST");
@@ -63,7 +69,7 @@ public class StageListPanel {
             StageListLayout.setHorizontalGroup(
                 StageListLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, StageListLayout.createSequentialGroup()
-                        .addContainerGap(50, Short.MAX_VALUE)
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(StageListLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                             .addGroup(StageListLayout.createSequentialGroup()
                                 .addGap(376, 376, 376)
@@ -86,14 +92,35 @@ public class StageListPanel {
                             .addComponent(jbtAdd))
                         .addGap(18, 18, 18)
                         .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(84, Short.MAX_VALUE))
+                        .addContainerGap(69, Short.MAX_VALUE))
             );
         }
+
+        GroupLayout layout = new GroupLayout(this);
+        setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup()
+                .addGroup(layout.createParallelGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(StageList, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(0, 1040, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup()
+                .addGroup(layout.createParallelGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(StageList, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(0, 620, Short.MAX_VALUE)
+        );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+    // Generated using JFormDesigner Evaluation license - Man
     private JPanel StageList;
     private JLabel jlbStageList;
     private JTextField jtfSearch;

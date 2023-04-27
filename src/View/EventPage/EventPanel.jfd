@@ -10,7 +10,7 @@ new FormModel {
 			"preferredSize": new java.awt.Dimension( 1030, 820 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {seq l {space :p:49:p, par l {seq {comp EventArt:::p:434:p, par l {seq {space :p:38:p, par l {comp EventName:::p:240:p, comp EventTime:::p:420:p, comp EventPlace::l:p:420:p}}, seq t {space :::p, comp jpnBuyNow:::p::p}}}, seq {comp jpnInfo:::p::p, space :::p, comp jpnTicketFee:::p::p, space :::p, comp SeatPanel:::p::p}}, space ::89:x}}"
-				"$verticalGroup": "par l {seq {space :p:39:p, par l {comp EventArt:::p:233:p, seq {comp EventName:::p:58:p, space :::p, comp EventTime:::p:38:p, space :::p, comp EventPlace:::p:38:p, space :::x, comp jpnBuyNow:::p::p}}, space ::53:x, par l:::p {comp jpnTicketFee::t::60:x, comp jpnInfo::t::60:x, comp SeatPanel:::::x}}}"
+				"$verticalGroup": "par l {seq {space :p:39:p, par l {comp EventArt:::p:233:p, seq {comp EventName:::p:58:p, space :::p, comp EventTime:::p:38:p, space :::p, comp EventPlace:::p:38:p, space :::x, comp jpnBuyNow:::p::p}}, space s:::p, par l:::p {comp jpnInfo::l::60:x, comp jpnTicketFee::::60:x, comp SeatPanel:::::x}, space :0:0:x}}"
 			} ) {
 				name: "jpnEventHeader"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -119,14 +119,14 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 0
 				"width": 1030
-				"height": 385
+				"height": 350
 				"y": 0
 			} )
 			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 				name: "jtbTabEvent"
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {seq l {space :::p, comp scrollPane1:::p::p, space :::x}}"
-					"$verticalGroup": "par l {seq l {comp scrollPane1:::p:576:p, space :0:7:x}}"
+					"$verticalGroup": "par l {seq l {comp scrollPane1:::p:576:p, space :0:48:x}}"
 				} ) {
 					name: "jpnEventInformation"
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
@@ -165,7 +165,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {seq t {space :0:0:x, comp TicketFee:::p::p}}"
-					"$verticalGroup": "par l {seq t {space :0:8:x, comp TicketFee:::p::p}}"
+					"$verticalGroup": "par l {seq l {comp TicketFee:::p::p, space :0:49:x}}"
 				} ) {
 					name: "jpnEventTicket"
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -195,7 +195,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {seq l {space :::p, comp jlbSeatingChart:::p:219:p, space ::800:x}}"
-					"$verticalGroup": "par l {seq l {space :::p, comp jlbSeatingChart:::p:72:p, space ::505:x}}"
+					"$verticalGroup": "par l {seq l {space :::p, comp jlbSeatingChart:::p:72:p, space ::546:x}}"
 				} ) {
 					name: "SeatEvent"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -216,7 +216,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {seq l {space :::p, comp table1:::p:642:p, space :p:53:p, par l {seq {comp scrollPane3::::302:x, space ::22:x}, seq {comp jpnNextButton:::p::p, space ::144:x}}}}"
-					"$verticalGroup": "par l {seq {par l {seq {space :p:74:p, comp scrollPane3:::p:204:p, space :p:74:p, comp jpnNextButton:::p::p}, seq l {space :::p, comp table1:::p:449:p}}, space ::128:x}}"
+					"$verticalGroup": "par l {seq {par l {seq {space :p:74:p, comp scrollPane3:::p:204:p, space :p:74:p, comp jpnNextButton:::p::p}, seq l {space :::p, comp table1:::p:449:p}}, space ::169:x}}"
 				} ) {
 					name: "jpnPickTicket"
 					"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -251,8 +251,8 @@ new FormModel {
 					"title": "text"
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {space :::p, par l {comp jlbPayment::l:p:513:p, seq l {space :p:52:p, par l {comp checkBox3:::p::p, comp checkBox2:::p::p, comp checkBox1:::p::p}}, seq {comp JlbInforCus:::::x, space :p:289:p}}, par l {seq {space ::219:x, par l {comp table7:::::x, seq {comp table6:::p:255:p, space :0:0:x}}, space :p:34:p}, seq t {space ::98:x, comp jpnBack:::p::p, space s:::p, comp jpnNext:::p::p, space :p:48:p}}}}"
-					"$verticalGroup": "par l {seq l {par t {comp jpnNext:::p::p, seq {par l:::p {seq l {space :::p, comp JlbInforCus:::p:39:p, space :p:167:p, comp jlbPayment:::p:46:p, space :p:26:p, comp checkBox1:::p::p, space s:::p, comp checkBox2:::p::p}, seq l {space :p:24:p, comp table7:::p:147:p, space :::p, comp table6:::::x}}, par l {seq {space s:::p, comp checkBox3:::p::p}, seq l {space :p:37:p, comp jpnBack:::p::p}}}}, space ::147:x}}"
+					"$horizontalGroup": "par l {seq {space :::p, par l {comp jlbPayment::l:p:513:p, seq l {space :p:52:p, par l {comp checkBox3:::p::p, comp checkBox2:::p::p, comp checkBox1:::p::p}}, seq {comp JlbInforCus:::::x, space :p:289:p}}, par l {seq {space ::219:x, par l {comp table7:::::x, seq {comp table6:::p:255:p, space :0:0:x}}, space :p:34:p}, seq t {space ::102:x, comp jpnBack:::p::p, space s:::p, comp jpnNext:::p::p, space :p:48:p}}}}"
+					"$verticalGroup": "par l {seq l {par t {comp jpnNext:::p::p, seq {par l:::p {seq l {space :::p, comp JlbInforCus:::p:39:p, space :p:167:p, comp jlbPayment:::p:46:p, space :p:26:p, comp checkBox1:::p::p, space s:::p, comp checkBox2:::p::p}, seq l {space :p:24:p, comp table7:::p:147:p, space :::p, comp table6:::::x}}, par l {seq {space s:::p, comp checkBox3:::p::p}, seq l {space :p:37:p, comp jpnBack:::p::p}}}}, space ::182:x}}"
 				} ) {
 					name: "jpnPayment"
 					"background": sfield java.awt.Color white
@@ -328,8 +328,9 @@ new FormModel {
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 0
-				"y": 355
+				"y": 320
 				"width": 1025
+				"height": 656
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
