@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {par l {seq l {space :p:423:p, comp label1:::p::p}, seq l {space :p:47:p, par l:::p {seq {comp textField1:::p:210:p, space :::x, comp button1:::p::p}, comp scrollPane1:::p:943:p}}}, space ::40:x}}"
-			"$verticalGroup": "par l {seq l {space :p:16:p, comp label1:::p::p, space :p:12:p, par b {comp textField1::b:p::p, comp button1::b:p::p}, space u:::p, comp scrollPane1:::p:363:p, space ::20:x}}"
+			"$horizontalGroup": "par l {seq {par l {seq l {space :p:401:p, comp label1:::p::p}, seq l {space :p:36:p, par l:::p {comp scrollPane1:::p:943:p, seq {comp textField1:::p:210:p, space :::x, comp button1:::p::p}}}}, space ::51:x}}"
+			"$verticalGroup": "par l {seq l {space :p:21:p, comp label1:::p::p, space :p:28:p, par b {comp textField1::b:p::p, comp button1::b:p::p}, space u:::p, comp scrollPane1:::p:363:p, space ::24:x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -38,7 +38,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1030, 480 )
+			"size": new java.awt.Dimension( 1030, 505 )
 		} )
 	}
 }

@@ -9,7 +9,7 @@ import javax.swing.border.*;
 import Controller.LoginPageListener;
 import DAO.EmployeeDAO;
 import Model.User;
-import View.Home.HomePanel;
+import View.MainPage.MainPage;
 
 public class LoginPage extends JPanel {
     ActionListener ac = new LoginPageListener(this);
@@ -213,7 +213,7 @@ public class LoginPage extends JPanel {
             if (username.equals(realUsername) && password.equals(realPassword)) {
                 this.LoginStatus.setForeground(Color.GREEN);
                 this.LoginPageDialog.dispose();
-                HomePanel mainMenu = new HomePanel();
+                MainPage mainMenu = new MainPage();
                 mainMenu.setVisible(true);
             } else {
                 this.LoginStatus.setText("Login Failed");

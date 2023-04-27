@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space ::52:x, par l:::p {seq l {space :376:376:p, comp jlbTicket:::p::p}, seq l {comp jtfSearch:::p:210:p, space :p:568:p, comp jbtAdd:::p::p}, comp scrollPane1::l:::x}, space :p:36:p}}"
-			"$verticalGroup": "par l {seq l {space :p:17:p, comp jlbTicket:::p::p, space :12:12:p, par b {comp jtfSearch::b:p::p, comp jbtAdd::b:p::p}, space s:::p, comp scrollPane1:::p::p, space ::49:x}}"
+			"$horizontalGroup": "par l {seq {par l {seq l {space :p:26:p, par l {comp jtfSearch:::p:210:p, par t:l {comp jbtAdd:::p::p, comp scrollPane1:::p:942:p}}}, seq l {space :p:418:p, comp jlbTicket:::p::p}}, space ::62:x}}"
+			"$verticalGroup": "par l {seq l {space :p:11:p, comp jlbTicket:::p::p, space s:::p, par b {comp jtfSearch::b:p::p, comp jbtAdd::b:p::p}, space s:::p, comp scrollPane1:::p::p, space ::49:x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )

@@ -4,13 +4,14 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {space :0:1040:x};par l {seq {space :0:0:x, comp StageList:::p::p, space :0:0:x}}"
-			"$verticalGroup": "par l {space :0:620:x};par l {seq {space :0:0:x, comp StageList:::p::p, space :0:0:x}}"
+			"$horizontalGroup": "par l {seq t {space :::x, comp StageList:::p::p, space :::p}}"
+			"$verticalGroup": "par l {seq l {comp StageList:::p::p, space :0:6:x}}"
 		} ) {
 			name: "this"
+			"background": new java.awt.Color( 255, 255, 255, 255 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq t {space :::x, par l:::p {seq l {space :376:376:p, comp jlbStageList:::p::p}, seq l {comp jtfSearch:::p:210:p, space :p:572:p, comp jbtAdd:::p::p}, comp scrollPane1::l:::x}, space :p:38:p}}"
-				"$verticalGroup": "par l {seq l {space :p:25:p, comp jlbStageList:::p::p, space :12:12:p, par b {comp jtfSearch::b:p::p, comp jbtAdd::b:p::p}, space s:::p, comp scrollPane1:::p:419:p, space ::69:x}}"
+				"$horizontalGroup": "par l {seq {comp jtfSearch:::p:210:p, space :::x, comp jbtAdd:::p::p, space :p:100:p}, seq {comp scrollPane1:::p:942:p, space :0:89:x}, seq l {space :p:386:p, comp jlbStageList:::p::p, space :::x}}"
+				"$verticalGroup": "par l {seq l {space :p:22:p, comp jlbStageList:::p::p, space :p:27:p, par b {comp jbtAdd::b:p::p, comp jtfSearch::b:p::p}, space s:::p, comp scrollPane1:::p:419:p, space ::61:x}}"
 			} ) {
 				name: "StageList"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -44,7 +45,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 15, 5 )
-			"size": new java.awt.Dimension( 1040, 620 )
+			"size": new java.awt.Dimension( 1030, 610 )
 		} )
 	}
 }

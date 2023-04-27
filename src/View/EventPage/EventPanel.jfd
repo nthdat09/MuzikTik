@@ -7,7 +7,7 @@ new FormModel {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
 			"minimumSize": new java.awt.Dimension( 1268, 355 )
-			"preferredSize": new java.awt.Dimension( 1030, 820 )
+			"preferredSize": new java.awt.Dimension( 1030, 2000 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {seq l {space :p:49:p, par l {seq {comp EventArt:::p:434:p, par l {seq {space :p:38:p, par l {comp EventName:::p:240:p, comp EventTime:::p:420:p, comp EventPlace::l:p:420:p}}, seq t {space :::p, comp jpnBuyNow:::p::p}}}, seq {comp jpnInfo:::p::p, space :::p, comp jpnTicketFee:::p::p, space :::p, comp SeatPanel:::p::p}}, space ::89:x}}"
 				"$verticalGroup": "par l {seq {space :p:39:p, par l {comp EventArt:::p:233:p, seq {comp EventName:::p:58:p, space :::p, comp EventTime:::p:38:p, space :::p, comp EventPlace:::p:38:p, space :::x, comp jpnBuyNow:::p::p}}, space s:::p, par l:::p {comp jpnInfo::l::60:x, comp jpnTicketFee::::60:x, comp SeatPanel:::::x}, space :0:0:x}}"
@@ -124,24 +124,25 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 				name: "jtbTabEvent"
+				"preferredSize": new java.awt.Dimension( 1079, 2000 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {seq l {space :::p, comp scrollPane1:::p::p, space :::x}}"
-					"$verticalGroup": "par l {seq l {comp scrollPane1:::p:576:p, space :0:48:x}}"
+					"$verticalGroup": "par l {seq l {comp scrollPane1:::p:576:p, space :0:47:x}}"
 				} ) {
 					name: "jpnEventInformation"
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 						name: "scrollPane1"
 						"preferredSize": new java.awt.Dimension( 1020, 10021 )
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-							"$horizontalGroup": "par l {seq l {space :p:59:p, par l {comp DescriptionText:::p:900:p, seq {comp EventName2:::p:175:p, space :p:610:p, comp button1:::p:115:p}}, space ::59:x}}"
-							"$verticalGroup": "par l {seq {par l {seq l {space :p:21:p, comp button1:::p:30:p}, seq l {space :::p, comp EventName2:::p:55:p}}, space ::33:x, comp DescriptionText:::p:531:p, space :::p}}"
+							"$horizontalGroup": "par l {seq l {space :p:40:p, par l {comp DescriptionText:::p:900:p, seq {comp EventName2:::p:255:p, space :p:549:p, comp button1:::p:115:p}}, space ::59:x}}"
+							"$verticalGroup": "par l {seq {space :p:3:p, par b {comp button1::b:p:30:p, comp EventName2::b:p:55:p}, space s:::p, comp DescriptionText:::p:531:p, space ::24:x}}"
 						} ) {
 							name: "InformationPanel"
 							"background": new java.awt.Color( 255, 255, 255, 255 )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "EventName2"
-								"text": "Event Name"
-								"font": new java.awt.Font( "Lato Black", 1, 30 )
+								"text": "EVENT NAME"
+								"font": new java.awt.Font( "Lato Black", 1, 22 )
 								"foreground": new java.awt.Color( 97, 184, 132, 255 )
 								"horizontalAlignment": 2
 							} )
@@ -165,12 +166,12 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {seq t {space :0:0:x, comp TicketFee:::p::p}}"
-					"$verticalGroup": "par l {seq l {comp TicketFee:::p::p, space :0:49:x}}"
+					"$verticalGroup": "par l {seq l {comp TicketFee:::p::p, space :0:48:x}}"
 				} ) {
 					name: "jpnEventTicket"
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :p:56:p, par l {comp label1:::p:219:p, comp Scroll:::p:509:p}, space ::465:x}}"
-						"$verticalGroup": "par l {seq l {space :p::p, comp label1:::p:72:p, space :p::p, comp Scroll::::359:x, space :p:132:p}}"
+						"$horizontalGroup": "par l {seq l {space :p:48:p, par l {comp Scroll:::p:509:p, comp label1:::p:219:p}, space ::473:x}}"
+						"$verticalGroup": "par l {seq l {comp label1:::p:72:p, space :::p, comp Scroll::::350:x, space :p:147:p}}"
 					} ) {
 						name: "TicketFee"
 						"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -194,11 +195,12 @@ new FormModel {
 					"title": "text"
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {space :::p, comp jlbSeatingChart:::p:219:p, space ::800:x}}"
-					"$verticalGroup": "par l {seq l {space :::p, comp jlbSeatingChart:::p:72:p, space ::546:x}}"
+					"$horizontalGroup": "par l {seq l {space :p:46:p, comp jlbSeatingChart:::p:219:p, space ::760:x}}"
+					"$verticalGroup": "par l {seq l {space :p:20:p, comp jlbSeatingChart:::p:72:p, space ::531:x}}"
 				} ) {
 					name: "SeatEvent"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"background": new java.awt.Color( 255, 255, 255, 255 )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label2"
 						"text": "Ảnh sơ đồ ghế"
@@ -207,28 +209,23 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "jlbSeatingChart"
 						"text": "SEATING CHART"
-						"foreground": new java.awt.Color( 97, 184, 132, 255 )
-						"font": new java.awt.Font( "Lato Black", 1, 22 )
+						"foreground": &Color1 new java.awt.Color( 97, 184, 132, 255 )
+						"font": &Font2 new java.awt.Font( "Lato Black", 1, 22 )
 						"horizontalAlignment": 2
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "text"
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {space :::p, comp table1:::p:642:p, space :p:53:p, par l {seq {comp scrollPane3::::302:x, space ::22:x}, seq {comp jpnNextButton:::p::p, space ::144:x}}}}"
-					"$verticalGroup": "par l {seq {par l {seq {space :p:74:p, comp scrollPane3:::p:204:p, space :p:74:p, comp jpnNextButton:::p::p}, seq l {space :::p, comp table1:::p:449:p}}, space ::169:x}}"
+					"$horizontalGroup": "par l {seq l {space :p:44:p, par l {comp table1:::p:596:p, comp jlbSeatingChart2:::p:257:p}, space :p:61:p, comp jpnNextButton:::p::p, space ::138:x}}"
+					"$verticalGroup": "par l {seq {par l {seq l {space :p:5:p, comp jlbSeatingChart2:::p:72:p, space :::p, comp table1:::p:372:p}, seq l {space :p:278:p, comp jpnNextButton:::p::p}}, space ::168:x}}"
 				} ) {
 					name: "jpnPickTicket"
 					"background": new java.awt.Color( 255, 255, 255, 255 )
-					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-						name: "scrollPane3"
-						add( new FormComponent( "javax.swing.JTable" ) {
-							name: "table3"
-						} )
-					} )
+					"preferredSize": new java.awt.Dimension( 1025, 1000 )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :::x, comp jlbNextButton:::p:174:p}}"
-						"$verticalGroup": "par l {seq l {space :::x, comp jlbNextButton:::p:41:p}}"
+						"$horizontalGroup": "par l {seq t {space :::p, comp jlbNextButton::::174:x, space :::p}}"
+						"$verticalGroup": "par l {comp jlbNextButton::l::47:x}"
 					} ) {
 						name: "jpnNextButton"
 						"background": new java.awt.Color( 97, 184, 132, 255 )
@@ -247,15 +244,23 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JTable" ) {
 						name: "table1"
 					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "jlbSeatingChart2"
+						"text": "TICKET INFORMATION"
+						"foreground": #Color1
+						"font": #Font2
+						"horizontalAlignment": 2
+					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "text"
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {space :::p, par l {comp jlbPayment::l:p:513:p, seq l {space :p:52:p, par l {comp checkBox3:::p::p, comp checkBox2:::p::p, comp checkBox1:::p::p}}, seq {comp JlbInforCus:::::x, space :p:289:p}}, par l {seq {space ::219:x, par l {comp table7:::::x, seq {comp table6:::p:255:p, space :0:0:x}}, space :p:34:p}, seq t {space ::102:x, comp jpnBack:::p::p, space s:::p, comp jpnNext:::p::p, space :p:48:p}}}}"
-					"$verticalGroup": "par l {seq l {par t {comp jpnNext:::p::p, seq {par l:::p {seq l {space :::p, comp JlbInforCus:::p:39:p, space :p:167:p, comp jlbPayment:::p:46:p, space :p:26:p, comp checkBox1:::p::p, space s:::p, comp checkBox2:::p::p}, seq l {space :p:24:p, comp table7:::p:147:p, space :::p, comp table6:::::x}}, par l {seq {space s:::p, comp checkBox3:::p::p}, seq l {space :p:37:p, comp jpnBack:::p::p}}}}, space ::182:x}}"
+					"$horizontalGroup": "par l {seq {space :p:49:p, par l {seq l {par l {comp JlbInforCus:::::x, seq {par l {comp jlbPayment:::p:513:p, seq l {par l {comp label3:::p::p, comp label4::l:p::p, comp label5::l:p::p}, space :p:63:p, par l {comp textField3:::p:246:p, comp textField1:::p:246:p, comp textField2:::p:246:p}}, comp checkBox1::l:p::p, comp checkBox2::l:p::p}, space :0:0:x}}, space :::x, par l {seq {space :p:35:p, comp jpnBack:::p::p, space s:::p, comp jpnNext:::p::p, space :::x}, seq t {comp table7:::p:357:p, space :p:34:p}}}, seq l {comp checkBox3:::p::p, space :351:804:x}}}}"
+					"$verticalGroup": "par l {seq l {par l {seq l {space :p:24:p, comp table7:::p:147:p}, seq {space :::p, par t {seq {comp JlbInforCus:::p:39:p, space :::p, comp label3:::p::p}, comp textField1:::p::p}, space :p:30:p, par b {comp label4::b:p::p, comp textField2::b:p::p}, space :p:86:p, comp jlbPayment:::p:46:p}, seq l {space :p:145:p, par b {comp label5::b:p::p, comp textField3::b:p::p}}}, par l {seq l {space :p:11:p, par l {comp jpnNext::l:p::p, seq {space :p:24:p, comp checkBox2:::p::p}, comp jpnBack:::p::p}, space s:::p, comp checkBox3:::p::p}, seq l {space :::p, comp checkBox1:::p::p}}, space ::269:x}}"
 				} ) {
 					name: "jpnPayment"
 					"background": sfield java.awt.Color white
+					"preferredSize": new java.awt.Dimension( 1079, 1000 )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "JlbInforCus"
 						"text": "CUSTOMER INFORMATION"
@@ -270,29 +275,32 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "checkBox1"
-						"text": "Thẻ tín dụng"
+						"text": "Credit card"
+						"font": new java.awt.Font( "Lato Black", 0, 14 )
+						"foreground": new java.awt.Color( 98, 98, 98, 255 )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox1", true ) )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox1", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "checkBox2"
-						"text": "Sử dụng Internet Banking"
+						"text": "Payment using Internet Banking"
+						"font": new java.awt.Font( "Lato Black", 1, 14 )
+						"foreground": new java.awt.Color( 98, 98, 98, 255 )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox2", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "checkBox3"
-						"text": "Thanh toán trực tuyến MoMo"
+						"text": "Payment using E-Wallet"
+						"foreground": new java.awt.Color( 98, 98, 98, 255 )
+						"font": new java.awt.Font( "Lato Black", 1, 14 )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox3", true ) )
-					} )
-					add( new FormComponent( "javax.swing.JTable" ) {
-						name: "table6"
 					} )
 					add( new FormComponent( "javax.swing.JTable" ) {
 						name: "table7"
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {comp jlbBack::t::170:x}"
-						"$verticalGroup": "par l {comp jlbBack::t::55:x}"
+						"$horizontalGroup": "par l {comp jlbBack::l::166:x}"
+						"$verticalGroup": "par l {comp jlbBack::l::45:x}"
 					} ) {
 						name: "jpnBack"
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -309,8 +317,8 @@ new FormModel {
 						} )
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {comp jlbNext::l::170:x}"
-						"$verticalGroup": "par l {comp jlbNext::l::55:x}"
+						"$horizontalGroup": "par l {comp jlbNext::l::166:x}"
+						"$verticalGroup": "par l {comp jlbNext::t::45:x}"
 					} ) {
 						name: "jpnNext"
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -322,6 +330,39 @@ new FormModel {
 							"font": new java.awt.Font( "Lato Black", 1, 17 )
 							"foreground": sfield java.awt.Color white
 						} )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "Full Name"
+						"foreground": &Color2 new java.awt.Color( 98, 98, 98, 255 )
+						"font": &Font3 new java.awt.Font( "Lato Black", 1, 16 )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": "Address"
+						"foreground": #Color2
+						"font": #Font3
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label5"
+						"text": "Phone Number"
+						"foreground": #Color2
+						"font": #Font3
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField1"
+						"font": &Font4 new java.awt.Font( "Lato", 0, 16 )
+						"foreground": &Color3 new java.awt.Color( 97, 184, 132, 255 )
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField2"
+						"font": #Font4
+						"foreground": #Color3
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField3"
+						"font": #Font4
+						"foreground": #Color3
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "text"

@@ -4,17 +4,18 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space ::98:x, comp Analytic:::p:210:p, space :p:92:p}}"
-			"$verticalGroup": "par l {seq l {space :p:117:p, comp Analytic:::p::p, space ::167:x}}"
+			"$horizontalGroup": "par l {seq l {space :p:32:p, comp Analytic:::p:210:p, space ::783:x}}"
+			"$verticalGroup": "par l {seq l {space :p:27:p, comp Analytic:::p::p, space ::422:x}}"
 		} ) {
 			name: "this"
+			"background": new java.awt.Color( 255, 255, 255, 255 )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "Analytic"
-				"text": "Analytics đây nè làm xong nhé"
+				"text": "Analytics đây nè "
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"size": new java.awt.Dimension( 1025, 465 )
 		} )
 	}
 }
