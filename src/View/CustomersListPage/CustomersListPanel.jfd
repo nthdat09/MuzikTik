@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {par l {seq {space :p:401:p, comp textField1:::p::p}, seq l {space :p:35:p, par l:::p {seq {comp jtfSearch:::p:210:p, space :::x, comp jbtAdd:::p::p}, comp scrollPane1:::p:896:p}}}, space ::99:x}};par l {seq t {space ::530:x, comp panel1:::p::p, space ::484:x}}"
-			"$verticalGroup": "par l {seq l {space :p:21:p, comp textField1:::p::p, space :::p, par b {comp jtfSearch::b:p::p, comp jbtAdd::b:p::p}, space ::20:x, comp scrollPane1:::p:555:p, space :p:29:p}};par l {seq t {space ::279:x, comp panel1:::p::p, space ::396:x}}"
+			"$horizontalGroup": "par l {seq {par l {seq {space :p:35:p, par l {comp scrollPane1:::p:896:p, seq {comp jtfSearch:::p:210:p, space :::p, comp jlbSearch:::p:111:p, space :p:287:p, comp jlbAdd:::p:90:p, space :::p, comp jlbEdit:::p:90:p, space :::p, comp jlbDelete:::p:90:p}}}, seq l {space :p:401:p, comp textField1:::p::p}}, space ::99:x}};par l {seq t {space ::530:x, comp panel1:::p::p, space ::484:x}}"
+			"$verticalGroup": "par l {seq l {space :p:9:p, comp textField1:::p::p, space s:::p, par b {comp jtfSearch::b:p::p, comp jlbDelete::b:p::p, comp jlbEdit::b:p:26:p, comp jlbAdd::b:p:26:p, comp jlbSearch::b:p:26:p}, space :::p, comp scrollPane1:::p:555:p, space ::45:x}};par l {seq t {space ::279:x, comp panel1:::p::p, space ::396:x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -72,17 +72,38 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "jtfSearch"
-				"text": "Search "
+				"text": " Search MuzikTic"
 				"font": new java.awt.Font( "Lato", 0, 16 )
 				"foreground": new java.awt.Color( 97, 184, 132, 255 )
 				"caretColor": new java.awt.Color( 97, 184, 132, 255 )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "jbtAdd"
-				"text": "ADD NEW CUSTOMER"
-				"font": new java.awt.Font( "Lato Black", 1, 16 )
-				"foreground": new java.awt.Color( 255, 255, 255, 255 )
-				"background": new java.awt.Color( 97, 184, 132, 255 )
+				name: "jlbDelete"
+				"text": "DELETE"
+				"font": &Font0 new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": &Color0 new java.awt.Color( 255, 255, 255, 255 )
+				"background": &Color1 new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jlbEdit"
+				"text": "EDIT"
+				"font": #Font0
+				"foreground": #Color0
+				"background": #Color1
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jlbAdd"
+				"text": "ADD "
+				"font": #Font0
+				"foreground": #Color0
+				"background": #Color1
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jlbSearch"
+				"text": "SEARCH"
+				"font": #Font0
+				"foreground": #Color0
+				"background": #Color1
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 10, 0 )

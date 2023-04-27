@@ -33,17 +33,20 @@ public class CustomersListPanel extends JPanel {
         CustomerListTable = new JTable();
         textField1 = new JLabel();
         jtfSearch = new JTextField();
-        jbtAdd = new JButton();
+        jlbDelete = new JButton();
+        jlbEdit = new JButton();
+        jlbAdd = new JButton();
+        jlbSearch = new JButton();
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-        swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border
-        . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog"
-        ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder
-        ( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-        .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException
-        ( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+        . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing
+        . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+        Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+        ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+        public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName (
+        ) )) throw new RuntimeException( ); }} );
 
         //======== panel1 ========
         {
@@ -83,16 +86,34 @@ public class CustomersListPanel extends JPanel {
         textField1.setBorder(null);
 
         //---- jtfSearch ----
-        jtfSearch.setText("Search ");
+        jtfSearch.setText(" Search MuzikTic");
         jtfSearch.setFont(new Font("Lato", Font.PLAIN, 16));
         jtfSearch.setForeground(new Color(0x61b884));
         jtfSearch.setCaretColor(new Color(0x61b884));
 
-        //---- jbtAdd ----
-        jbtAdd.setText("ADD NEW CUSTOMER");
-        jbtAdd.setFont(new Font("Lato Black", Font.BOLD, 16));
-        jbtAdd.setForeground(Color.white);
-        jbtAdd.setBackground(new Color(0x61b884));
+        //---- jlbDelete ----
+        jlbDelete.setText("DELETE");
+        jlbDelete.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbDelete.setForeground(Color.white);
+        jlbDelete.setBackground(new Color(0x61b884));
+
+        //---- jlbEdit ----
+        jlbEdit.setText("EDIT");
+        jlbEdit.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbEdit.setForeground(Color.white);
+        jlbEdit.setBackground(new Color(0x61b884));
+
+        //---- jlbAdd ----
+        jlbAdd.setText("ADD ");
+        jlbAdd.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbAdd.setForeground(Color.white);
+        jlbAdd.setBackground(new Color(0x61b884));
+
+        //---- jlbSearch ----
+        jlbSearch.setText("SEARCH");
+        jlbSearch.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbSearch.setForeground(Color.white);
+        jlbSearch.setBackground(new Color(0x61b884));
 
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
@@ -106,16 +127,22 @@ public class CustomersListPanel extends JPanel {
                 .addGroup(layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup()
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(401, 401, 401)
-                            .addComponent(textField1))
-                        .addGroup(layout.createSequentialGroup()
                             .addGap(35, 35, 35)
-                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createParallelGroup()
+                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 896, GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jbtAdd))
-                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 896, GroupLayout.PREFERRED_SIZE))))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(287, 287, 287)
+                                    .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jlbDelete, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(401, 401, 401)
+                            .addComponent(textField1)))
                     .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -126,15 +153,18 @@ public class CustomersListPanel extends JPanel {
                         .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(396, Short.MAX_VALUE)))
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(21, 21, 21)
+                    .addGap(9, 9, 9)
                     .addComponent(textField1)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jbtAdd))
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addComponent(jlbDelete)
+                        .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 555, GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29))
+                    .addContainerGap(45, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
@@ -146,6 +176,9 @@ public class CustomersListPanel extends JPanel {
     private JTable CustomerListTable;
     private JLabel textField1;
     private JTextField jtfSearch;
-    private JButton jbtAdd;
+    private JButton jlbDelete;
+    private JButton jlbEdit;
+    private JButton jlbAdd;
+    private JButton jlbSearch;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
