@@ -1,6 +1,7 @@
 package View.LoginPage;
 
 import java.awt.*;
+import java.awt.event.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -15,6 +16,10 @@ public class LoginPage extends JPanel {
     User user = new User();
     public LoginPage() {
         initComponents();
+    }
+
+    private void Login(ActionEvent e) {
+        // TODO add your code here
     }
 
     private void initComponents() {
@@ -40,12 +45,12 @@ public class LoginPage extends JPanel {
             //======== LoginPagePanel ========
             {
                 LoginPagePanel.setBackground(Color.white);
-                LoginPagePanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-                . EmptyBorder( 0, 0, 0, 0) , "", javax. swing. border. TitledBorder. CENTER, javax
-                . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,
-                12 ), java. awt. Color. red) ,LoginPagePanel. getBorder( )) ); LoginPagePanel. addPropertyChangeListener (new java. beans
-                . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .
-                getPropertyName () )) throw new RuntimeException( ); }} );
+                LoginPagePanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
+                border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER
+                ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font
+                .BOLD,12),java.awt.Color.red),LoginPagePanel. getBorder()));LoginPagePanel. addPropertyChangeListener(
+                new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order"
+                .equals(e.getPropertyName()))throw new RuntimeException();}});
 
                 //---- PasswordField ----
                 PasswordField.setBorder(new LineBorder(new Color(0x61b884)));
@@ -64,7 +69,10 @@ public class LoginPage extends JPanel {
                 LoginButton.setFont(new Font("Lato Black", Font.BOLD, 14));
                 LoginButton.setForeground(Color.white);
                 LoginButton.setBackground(new Color(0x61b884));
-                LoginButton.addActionListener(ac);
+                LoginButton.addActionListener(e -> {
+			Login(e);
+			Login(e);
+		});
 
                 //---- Password ----
                 Password.setText(" Password");
