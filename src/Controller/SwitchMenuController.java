@@ -58,7 +58,7 @@ public class SwitchMenuController {
                     node = new EventPanel();
                     break;
                 case "CustomersPanel":
-                    node = new CustomersListPanel();
+                    node = new CustomersListPanel().getCustomersListPage();
                     break;
                 case "TicketPanel":
                     node = new TicketListPanel();

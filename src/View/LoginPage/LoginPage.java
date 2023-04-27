@@ -18,9 +18,6 @@ public class LoginPage extends JPanel {
         initComponents();
     }
 
-    private void Login(ActionEvent e) {
-        // TODO add your code here
-    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -71,10 +68,7 @@ public class LoginPage extends JPanel {
                 LoginButton.setFont(new Font("Lato Black", Font.BOLD, 14));
                 LoginButton.setForeground(Color.white);
                 LoginButton.setBackground(new Color(0x61b884));
-                LoginButton.addActionListener(e -> {
-			Login(e);
-			Login(e);
-		});
+                LoginButton.addActionListener(ac);
 
                 //---- Password ----
                 Password.setText(" Password");
