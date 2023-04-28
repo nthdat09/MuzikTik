@@ -100,7 +100,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jlbAdd"
-				"text": "ADD "
+				"text": "ADD"
 				"font": #Font0
 				"foreground": #Color0
 				"background": #Color1

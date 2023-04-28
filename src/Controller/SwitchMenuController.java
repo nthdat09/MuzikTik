@@ -38,19 +38,21 @@ public class SwitchMenuController {
         rootPanel.validate();
         rootPanel.repaint();
     }
+
+    public void changeViewController(JPanel jPanel, JLabel jlbItem, String Kind){
+        selectedKind = Kind;
+
+        rootPanel.removeAll();
+        rootPanel.setLayout(new BorderLayout());
+        rootPanel.add(jPanel);
+        rootPanel.validate();
+        rootPanel.repaint();
+    }
     public void setEvent(List<MenuList> listItem) {
         this.listItem = listItem;
         for (MenuList item : listItem) {
             item.getJlb().addMouseListener(new LabelEvent(item.getKind(),item.getJpn(),item.getJlb()));
         }
-    }
-
-    public void SwitchView(JPanel informationCustomerPanel,  selectedKind) {
-        rootPanel.removeAll();
-        rootPanel.setLayout(new BorderLayout());
-        rootPanel.add(new HomePanel());
-        rootPanel.validate();
-        rootPanel.repaint();
     }
 
     class LabelEvent implements MouseListener {
@@ -134,14 +136,5 @@ public class SwitchMenuController {
             }
         }
 
-        private void SwitchView(JPanel view){ // Đổi màn chính giữa sang Jpanel khác
-            kind = view.getName();
-            rootPanel.removeAll();
-            rootPanel.setLayout(new BorderLayout());
-            rootPanel.add(node);
-            rootPanel.validate();
-            rootPanel.repaint();
-            setChangeBackground(kind);
-        }
     }
 }

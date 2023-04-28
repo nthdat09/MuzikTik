@@ -6,6 +6,7 @@ package View.CustomersListPage;
 
 import Controller.CustomerListListener;
 import Controller.SwitchMenuController;
+import Model.BEAN.MenuList;
 import Model.DAO.CustomerListDAO;
 import Model.BEAN.CustomerListP;
 import View.CustomerPage.ListPanel.InformationCustomerPanel;
@@ -27,6 +28,7 @@ public class CustomersListPanel {
         initComponents();
         initMoreSetting();
     }
+    List <CustomerListP> listCustomer = CustomerListDAO.getCustomerList();
 
     public void initMoreSetting(){
         setCustomerListTable();
@@ -34,6 +36,12 @@ public class CustomersListPanel {
         getJlbEdit().addActionListener(ac);
         getJlbDelete().addActionListener(ac);
         getJlbSearch().addActionListener(ac);
+    }
+
+    public CustomerListP getDataFromJTable(){
+        int i = CustomerListTable.getSelectedRow();
+        CustomerListP customerListP = listCustomer.get(i);
+        return customerListP;
     }
 
     public JTable getCustomerListTable() {
@@ -94,12 +102,12 @@ public class CustomersListPanel {
         {
             customersListPage.setBackground(Color.white);
             customersListPage.setName("customersListPage");
-            customersListPage.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER
-            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font
-            .BOLD ,12 ), java. awt. Color. red) ,customersListPage. getBorder( )) ); customersListPage. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072"
-            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            customersListPage.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+            . EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax
+            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
+            12 ), java. awt. Color. red) ,customersListPage. getBorder( )) ); customersListPage. addPropertyChangeListener (new java. beans
+            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .
+            getPropertyName () )) throw new RuntimeException( ); }} );
 
             //======== panel1 ========
             {
@@ -157,7 +165,7 @@ public class CustomersListPanel {
             jlbEdit.setBackground(new Color(0x61b884));
 
             //---- jlbAdd ----
-            jlbAdd.setText("ADD ");
+            jlbAdd.setText("ADD");
             jlbAdd.setFont(new Font("Lato Black", Font.BOLD, 16));
             jlbAdd.setForeground(Color.white);
             jlbAdd.setBackground(new Color(0x61b884));
@@ -238,7 +246,6 @@ public class CustomersListPanel {
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on'
 
     public void setCustomerListTable() {
-        List <CustomerListP> listCustomer = CustomerListDAO.getCustomerList();
         DefaultTableModel tableModel = (DefaultTableModel) getCustomerListTable().getModel();
         for (CustomerListP customer : listCustomer) {
             int ID = customer.getId();
@@ -254,17 +261,16 @@ public class CustomersListPanel {
     }
 
     public void addCustomer() {
-        MainPage mainPage = new MainPage();
-        mainPage.SwitchView("CustomersPanel");
+        MainPage.changeView(new InformationCustomerPanel(), MainPage.getJlbCustomer(), "InformationCustomerPanel");
     }
 
     public void editCustomer() {
-
+        MainPage.changeView(new InformationCustomerPanel(getDataFromJTable()), MainPage.getJlbCustomer(), "InformationCustomerPanel");
     }
 
 
     public void deleteCustomer() {
-
+        JPopupMenu popupMenu = new JPopupMenu();
     }
 
     public void searchCustomer() {

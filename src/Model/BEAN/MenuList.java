@@ -13,6 +13,11 @@ public class MenuList {
         this.jpn = jpn;
         this.jlb = jlb;
     }
+
+    public MenuList getInstance(){
+        return new MenuList();
+    }
+
     public String getKind() {
         return kind;
     }

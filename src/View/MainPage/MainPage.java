@@ -6,6 +6,7 @@ package View.MainPage;
 
 import Model.BEAN.MenuList;
 import Controller.SwitchMenuController;
+import Model.DAO.EmployeeDAO;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -39,9 +40,9 @@ public class MainPage extends JFrame {
         controller.setEvent(listItem);
     }
 
-    public void SwitchView(){
+    public static void changeView(JPanel jpnItem, JLabel jlbItem, String Kind){
         SwitchMenuController controller = new SwitchMenuController(jpnView);
-        controller.SwitchView(jpnCustomers, jlbCustomer);
+        controller.changeViewController(jpnItem, jlbItem, Kind);
     }
 
     Border border = new LineBorder(Color.decode("#61b884"),1,true);
@@ -175,9 +176,17 @@ public class MainPage extends JFrame {
         // TODO add your code here
     }
 
+    public static JLabel getJlbCustomer() {
+        return jlbCustomer;
+    }
+
+    public JPanel getJpnView() {
+        return jpnView;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
         headerPanel = new JPanel();
         searchButton = new JTextField();
         nameAppLabell = new JLabel();
@@ -220,13 +229,12 @@ public class MainPage extends JFrame {
         {
             headerPanel.setBorder(new LineBorder(new Color(0xbebebe)));
             headerPanel.setBackground(Color.white);
-            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
-            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-            Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-            ) ,headerPanel. getBorder( )) ); headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
-            ) )) throw new RuntimeException( ); }} );
+            headerPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
+            .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax
+            . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,
+            12 ) ,java . awt. Color .red ) ,headerPanel. getBorder () ) ); headerPanel. addPropertyChangeListener( new java. beans
+            .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e.
+            getPropertyName () ) )throw new RuntimeException( ) ;} } );
             headerPanel.setLayout(null);
 
             //---- searchButton ----
@@ -739,7 +747,7 @@ public class MainPage extends JFrame {
                 );
                 jpnViewLayout.setVerticalGroup(
                     jpnViewLayout.createParallelGroup()
-                        .addGap(0, 720, Short.MAX_VALUE)
+                        .addGap(0, 730, Short.MAX_VALUE)
                 );
             }
             jpnMainMenu.add(jpnView);
@@ -813,7 +821,7 @@ public class MainPage extends JFrame {
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
     private JPanel headerPanel;
     private JTextField searchButton;
     private JLabel nameAppLabell;
@@ -827,7 +835,7 @@ public class MainPage extends JFrame {
     private JPanel jpnEvent;
     private JLabel jlbEvent;
     private JPanel jpnCustomers;
-    private JLabel jlbCustomer;
+    private static JLabel jlbCustomer;
     private JPanel jpnTickets;
     private JLabel jlbTickets;
     private JPanel jpnStages;
@@ -843,7 +851,7 @@ public class MainPage extends JFrame {
     private JLabel label12;
     private JLabel label13;
     private JLabel label14;
-    private JPanel jpnView;
+    private static JPanel jpnView;
     private JPanel jpnBuffer2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

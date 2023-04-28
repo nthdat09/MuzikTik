@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "9.0.0.0.263" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -149,6 +149,9 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"foreground": #Color0
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbCustomerMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbCustomerMouseExited", true ) )
 					} )
@@ -292,10 +295,13 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {space :0:1155:x}"
-					"$verticalGroup": "par l {space :0:720:x}"
+					"$verticalGroup": "par l {space :0:730:x}"
 				} ) {
 					name: "jpnView"
 					"background": new java.awt.Color( 255, 255, 255, 255 )
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 5
 					"y": 5
