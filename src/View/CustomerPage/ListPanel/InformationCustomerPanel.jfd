@@ -9,8 +9,8 @@ new FormModel {
 			"JavaCodeGenerator.memberVariableThis": true
 		}
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space ::414:x, comp button8:::p:112:p, space s:::p, comp Cancel:::p:112:p, space :p:214:p}, seq l {space :p:64:p, par l {seq {comp WalletBalance:::p:174:p, space :18:18:p, comp WalletBalanceVal:::p:150:p}, par t {seq t {par t:::p {comp Name::l:::x, comp Email::l:::x, comp Address::l:p:171:p}, space s:::p, comp AddressVal:::p:150:p, space ::3:p}, seq t {comp PhoneNumber:::p:174:p, space s:::p, comp PhoneNumberVal:::p:150:p}, comp EmailVal::t:p:150:p, comp NameVal::t:p:150:p}}, space ::464:x}}"
-			"$verticalGroup": "par l {seq l {space :p:38:p, par b {comp NameVal::b:p::p, comp Name::b:p:39:p}, space :p:6:p, par b {comp EmailVal::b:p::p, comp Email::b:p:39:p}, space :p:11:p, par b {comp Address::b:p:39:p, comp AddressVal::b:p::p}, space :25:25:p, par b {comp PhoneNumber::b:p:39:p, comp PhoneNumberVal::b:p::p}, space s:::p, par l {comp WalletBalance:::p:39:p, seq l {space :7:7:p, comp WalletBalanceVal:::p::p}}, space :p:45:p, par b {comp Cancel::b:p::p, comp button8::b:p::p}, space ::27:x}}"
+			"$horizontalGroup": "par l {seq t {par l {seq l {par l {seq l {space :p:67:p, par l {par t:l::p {comp Name::l::171:x, comp Email::l:::x}, comp PhoneNumber::l:p:174:p, comp WalletBalance::l:p:174:p}}, seq t {space :p:64:p, comp Address:::p:171:p}}, space :p:65:p, par l:::p {comp EmailVal::::220:x, comp AddressVal::l::220:x, comp PhoneNumberVal::l::220:x, comp TotalPointVal::l::220:x, comp NameVal::::220:x}}, seq l {space :p:298:p, comp SAVE:::p:112:p, space s:::p, comp Cancel:::p:112:p}}, space ::330:x}}"
+			"$verticalGroup": "par l {seq l {space :p:38:p, par b {comp Name::b:p:39:p, comp NameVal::b:p:39:p}, space u:::p, par b {comp Email::b:p:39:p, comp EmailVal::b:p:39:p}, space :p:14:p, par b {comp Address::b:p:39:p, comp AddressVal::b:p:39:p}, space u:::p, par l {comp PhoneNumber:::p:39:p, comp PhoneNumberVal::l:p:39:p}, space s:::p, par l {comp WalletBalance:::p:39:p, comp TotalPointVal::l:p:39:p}, space :p:33:p, par b {comp Cancel::b:p::p, comp SAVE::b:p::p}, space ::31:x}}"
 		} ) {
 			name: "this"
 			"background": sfield java.awt.Color white
@@ -34,7 +34,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "PhoneNumber"
-				"text": "Number Phone:"
+				"text": "Phone Number"
 				"font": &Font0 new java.awt.Font( "Lato Black", 1, 20 )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -45,32 +45,8 @@ new FormModel {
 				"background": &Color0 new java.awt.Color( 97, 184, 132, 255 )
 				"foreground": sfield java.awt.Color white
 			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "NameVal"
-				"text": "text"
-				"font": &Font2 new java.awt.Font( "Lato", 0, 20 )
-				"foreground": &Color1 new java.awt.Color( 97, 184, 132, 255 )
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "EmailVal"
-				"text": "text"
-				"font": #Font2
-				"foreground": #Color1
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "AddressVal"
-				"text": "text"
-				"font": #Font2
-				"foreground": #Color1
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "PhoneNumberVal"
-				"text": "text"
-				"font": #Font2
-				"foreground": #Color1
-			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button8"
+				name: "SAVE"
 				"text": "SAVE"
 				"preferredSize": #Dimension0
 				"font": #Font1
@@ -80,13 +56,32 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "WalletBalance"
 				"font": #Font0
-				"text": "Wallet Balance"
+				"text": "Total Point"
 			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "WalletBalanceVal"
-				"text": "text"
-				"font": #Font2
-				"foreground": #Color1
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "NameVal"
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+				"name": "NameVal"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "EmailVal"
+				"background": sfield java.awt.Color white
+				"name": "EmailVal"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "AddressVal"
+				"background": sfield java.awt.Color white
+				"name": "AddressVal"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "PhoneNumberVal"
+				"background": sfield java.awt.Color white
+				"name": "PhoneNumberVal"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TotalPointVal"
+				"background": sfield java.awt.Color white
+				"name": "TotalPointVal"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 55, 20 )

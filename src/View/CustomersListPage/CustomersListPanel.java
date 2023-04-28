@@ -5,10 +5,12 @@
 package View.CustomersListPage;
 
 import Controller.CustomerListListener;
+import Controller.InformationCustomerController;
 import Controller.SwitchMenuController;
 import Model.BEAN.MenuList;
 import Model.DAO.CustomerListDAO;
 import Model.BEAN.CustomerListP;
+import View.CustomerPage.ListPanel.ComfirmDeleteJPopupMenu;
 import View.CustomerPage.ListPanel.InformationCustomerPanel;
 import View.MainPage.MainPage;
 
@@ -24,6 +26,8 @@ import java.util.List;
  */
 public class CustomersListPanel {
     ActionListener ac = new CustomerListListener(this);
+    CustomerListP customerSelected = new CustomerListP();
+
     public CustomersListPanel() {
         initComponents();
         initMoreSetting();
@@ -40,8 +44,20 @@ public class CustomersListPanel {
 
     public CustomerListP getDataFromJTable(){
         int i = CustomerListTable.getSelectedRow();
-        CustomerListP customerListP = listCustomer.get(i);
-        return customerListP;
+        if (i == -1){
+            JOptionPane.showMessageDialog(null, "Please choose a customer to edit");
+            return null;
+        }
+        else {
+            customerSelected = listCustomer.get(i);
+            int IDSelected = customerSelected.getId();
+            System.out.println(IDSelected);
+            return customerSelected;
+        }
+    }
+
+    public CustomerListP getCustomerSelected() {
+        return customerSelected;
     }
 
     public JTable getCustomerListTable() {
@@ -102,12 +118,13 @@ public class CustomersListPanel {
         {
             customersListPage.setBackground(Color.white);
             customersListPage.setName("customersListPage");
-            customersListPage.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) ,customersListPage. getBorder( )) ); customersListPage. addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+            customersListPage.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
+            swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border
+            .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog"
+            ,java.awt.Font.BOLD,12),java.awt.Color.red),customersListPage. getBorder
+            ()));customersListPage. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
+            .beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException
+            ();}});
 
             //======== panel1 ========
             {
@@ -147,10 +164,10 @@ public class CustomersListPanel {
             textField1.setBorder(null);
 
             //---- jtfSearch ----
-            jtfSearch.setText(" Search MuzikTic");
             jtfSearch.setFont(new Font("Lato", Font.PLAIN, 16));
             jtfSearch.setForeground(new Color(0x61b884));
             jtfSearch.setCaretColor(new Color(0x61b884));
+            jtfSearch.setName("jtfSearch");
 
             //---- jlbDelete ----
             jlbDelete.setText("DELETE");
@@ -175,6 +192,7 @@ public class CustomersListPanel {
             jlbSearch.setFont(new Font("Lato Black", Font.BOLD, 16));
             jlbSearch.setForeground(Color.white);
             jlbSearch.setBackground(new Color(0x61b884));
+            jlbSearch.setName("SEARCH");
 
             GroupLayout customersListPageLayout = new GroupLayout(customersListPage);
             customersListPage.setLayout(customersListPageLayout);
@@ -195,12 +213,12 @@ public class CustomersListPanel {
                                         .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(287, 287, 287)
-                                        .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                                        .addGap(258, 258, 258)
+                                        .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jlbDelete, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jlbDelete))))
                             .addGroup(customersListPageLayout.createSequentialGroup()
                                 .addGap(401, 401, 401)
                                 .addComponent(textField1)))
@@ -219,10 +237,10 @@ public class CustomersListPanel {
                         .addGap(18, 18, 18)
                         .addGroup(customersListPageLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlbDelete)
                             .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 555, GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(39, Short.MAX_VALUE))
@@ -268,11 +286,17 @@ public class CustomersListPanel {
         MainPage.changeView(new InformationCustomerPanel(getDataFromJTable()), MainPage.getJlbCustomer(), "InformationCustomerPanel");
     }
 
-
     public void deleteCustomer() {
-        JPopupMenu popupMenu = new JPopupMenu();
+        int i = CustomerListTable.getSelectedRow();
+        if (i == -1) {
+            JOptionPane.showMessageDialog(null, "Please select a row to delete");
+        } else {
+            customerSelected = listCustomer.get(i);
+            int IDSelected = customerSelected.getId();
+            ComfirmDeleteJPopupMenu comfirmDeleteJPopupMenu = new ComfirmDeleteJPopupMenu();
+            comfirmDeleteJPopupMenu.setSelectedID(IDSelected);
+        }
     }
-
     public void searchCustomer() {
 
     }
