@@ -12,9 +12,6 @@ new FormModel {
 		} ) {
 			name: "ConfirmJDialog"
 			"visible": true
-			auxiliary() {
-				"JavaCodeGenerator.variableLocal": true
-			}
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "ConfirmText"
 				"text": "ARE YOU SURE TO DELETE THIS CUSTOMER?"
@@ -33,3 +30,4 @@ new FormModel {
 		} )
 	}
 }
+

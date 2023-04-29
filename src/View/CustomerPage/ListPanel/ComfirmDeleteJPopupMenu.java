@@ -47,10 +47,14 @@ public class ComfirmDeleteJPopupMenu extends JDialog{
         return NoButton;
     }
 
+    public JDialog getConfirmJDialog() {
+        return ConfirmJDialog;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
-        var ConfirmJDialog = new JDialog();
+        ConfirmJDialog = new JDialog();
         ConfirmText = new JLabel();
         YesButton = new JButton();
         NoButton = new JButton();
@@ -104,6 +108,7 @@ public class ComfirmDeleteJPopupMenu extends JDialog{
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+    private JDialog ConfirmJDialog;
     private JLabel ConfirmText;
     private JButton YesButton;
     private JButton NoButton;
@@ -120,6 +125,7 @@ public class ComfirmDeleteJPopupMenu extends JDialog{
         }
     }
     public void cancelDeleteCustomer() {
-        ComfirmDeleteJPopupMenu.this.dispose();
+        System.out.println("Cancel");
+        this.getConfirmJDialog().dispose();
     }
 }
