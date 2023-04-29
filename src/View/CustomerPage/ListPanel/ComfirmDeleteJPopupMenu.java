@@ -122,6 +122,7 @@ public class ComfirmDeleteJPopupMenu extends JDialog{
         else {
             CustomerDAO.getInstance().deleteCustomer(getSelectedID());
             MainPage.changeView(new CustomersListPanel().getCustomersListPage(), MainPage.getJlbCustomer(), "CustomerListPanel");
+            this.getConfirmJDialog().dispose();
         }
     }
     public void cancelDeleteCustomer() {
