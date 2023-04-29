@@ -36,6 +36,12 @@ public class CustomerListP {
         return phoneNumber;
     }
 
+    public String getUsernameEmail(){
+        String email = getEmail();
+        String[] words = email.split("@");
+        return words[0];
+    }
+
     public String getEmail() {
         return email;
     }

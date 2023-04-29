@@ -7,7 +7,9 @@ package View.CustomersListPage;
 import Controller.CustomerListListener;
 import Controller.InformationCustomerController;
 import Controller.SwitchMenuController;
+import Model.BEAN.CustomerList;
 import Model.BEAN.MenuList;
+import Model.DAO.CustomerDAO;
 import Model.DAO.CustomerListDAO;
 import Model.BEAN.CustomerListP;
 import View.CustomerPage.ListPanel.ComfirmDeleteJPopupMenu;
@@ -19,6 +21,9 @@ import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.table.*;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -27,14 +32,27 @@ import java.util.List;
 public class CustomersListPanel {
     ActionListener ac = new CustomerListListener(this);
     CustomerListP customerSelected = new CustomerListP();
+    String textSearched = "";
 
     public CustomersListPanel() {
         initComponents();
         initMoreSetting();
     }
-    List <CustomerListP> listCustomer = CustomerListDAO.getCustomerList();
+
+    public CustomersListPanel(List<CustomerListP> listCustomerP, String textSearched){
+        initComponents();
+        this.listCustomer = listCustomerP;
+        setCustomerListTable();
+        getJlbAdd().addActionListener(ac);
+        getJlbEdit().addActionListener(ac);
+        getJlbDelete().addActionListener(ac);
+        getJlbSearch().addActionListener(ac);
+        jtfSearch.setText(textSearched);
+    }
+    List <CustomerListP> listCustomer = null;
 
     public void initMoreSetting(){
+        listCustomer = CustomerListDAO.getCustomerList();
         setCustomerListTable();
         getJlbAdd().addActionListener(ac);
         getJlbEdit().addActionListener(ac);
@@ -118,13 +136,13 @@ public class CustomersListPanel {
         {
             customersListPage.setBackground(Color.white);
             customersListPage.setName("customersListPage");
-            customersListPage.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
-            swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border
-            .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog"
-            ,java.awt.Font.BOLD,12),java.awt.Color.red),customersListPage. getBorder
-            ()));customersListPage. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
-            .beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException
-            ();}});
+            customersListPage.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
+            .swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing
+            .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
+            Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red
+            ),customersListPage. getBorder()));customersListPage. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
+            public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName(
+            )))throw new RuntimeException();}});
 
             //======== panel1 ========
             {
@@ -297,8 +315,34 @@ public class CustomersListPanel {
             comfirmDeleteJPopupMenu.setSelectedID(IDSelected);
         }
     }
-    public void searchCustomer() {
+    public void searchCustomer() throws SQLException {
+        textSearched = jtfSearch.getText();
+        listCustomer = CustomerListDAO.getCustomerList();
+        System.out.println("Text input: " + textSearched);
+        if (!textSearched.equals("")) {
+            System.out.println("Search");
+            List<Integer> idResult = new ArrayList<>();
 
+            for (CustomerListP customer : listCustomer) {
+                String customerCompiled = customer.getId() + "" + customer.getName() + customer.getUsernameEmail() + customer.getAddress() + customer.getTotalPoint() + customer.getPhoneNumber();
+                System.out.println(customerCompiled);
+                if (customerCompiled.contains(textSearched) == true) {
+                    idResult.add(customer.getId());
+                }
+            }
+            listCustomer.clear();
+            for (int id : idResult) {
+                CustomerListP cus = CustomerDAO.getInstance().selectByID(id);
+                if (cus != null) {
+                    listCustomer.add(cus);
+                }
+            }
+            MainPage.changeView(new CustomersListPanel(listCustomer, textSearched).getCustomersListPage(), MainPage.getJlbCustomer(), "CustomerListPanel");
+        }
+        else {
+            System.out.println("No search");
+            MainPage.changeView(new CustomersListPanel().getCustomersListPage(), MainPage.getJlbCustomer(), "CustomerListPanel");
+        }
     }
 }
 

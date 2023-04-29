@@ -16,4 +16,5 @@ public interface CustomerInterface {
     public void insertCustomer(CustomerListP oldCustomer) throws SQLException;
 
     public void deleteCustomer(int ID) throws SQLException;
+
 }

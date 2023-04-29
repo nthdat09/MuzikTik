@@ -4,6 +4,7 @@ import View.CustomersListPage.CustomersListPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class CustomerListListener implements ActionListener {
     private CustomersListPanel customersListPanel;
@@ -24,7 +25,11 @@ public class CustomerListListener implements ActionListener {
         } else if (src.equals("DELETE")){
             customersListPanel.deleteCustomer();
         } else if (src.equals("SEARCH")){
-            customersListPanel.searchCustomer();
+            try {
+                customersListPanel.searchCustomer();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
         }
 
     }
