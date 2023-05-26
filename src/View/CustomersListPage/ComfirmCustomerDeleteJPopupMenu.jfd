@@ -1,0 +1,32 @@
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		auxiliary() {
+			"JavaCodeGenerator.defaultVariableGetter": true
+		}
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space ::100:x, par l {seq t {comp YesButton:::p::p, space :p:46:p, comp NoButton:::p::p, space :p:145:p}, seq {comp ConfirmText:::p:305:p, space :p:93:p}}}}"
+			"$verticalGroup": "par l {seq l {space :p:91:p, comp ConfirmText:::p:54:p, space ::104:x, par b {comp YesButton::b:p::p, comp NoButton::b:p::p}, space :p:98:p}}"
+		} ) {
+			name: "ConfirmJDialog"
+			"visible": true
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "ConfirmText"
+				"text": "ARE YOU SURE TO DELETE THIS CUSTOMER?"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "YesButton"
+				"text": "YES"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "NoButton"
+				"text": "NO"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 500, 400 )
+		} )
+	}
+}

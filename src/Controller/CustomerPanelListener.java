@@ -3,7 +3,7 @@ package Controller;
 
 import Model.BEAN.CustomerList;
 import View.CustomerPage.ListPanel.HistoryCustomerPanel;
-import View.CustomerPage.ListPanel.InformationCustomerPanel;
+import View.CustomersListPage.InformationCustomerForm;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +25,7 @@ public class CustomerPanelListener {
 
         root.removeAll();
         root.setLayout(new BorderLayout());
-        root.add(new InformationCustomerPanel());
+        root.add(new InformationCustomerForm());
         root.validate();
         root.repaint();
     }
@@ -74,7 +74,7 @@ public class CustomerPanelListener {
                     node = new HistoryCustomerPanel();
                     break;
                 default:
-                    node = new InformationCustomerPanel();
+                    node = new InformationCustomerForm();
                     break;
             }
             root.removeAll();

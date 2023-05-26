@@ -1,32 +1,32 @@
-package Controller;
+package Controller.TicketPage;
 
-import View.CustomersListPage.CustomersListPanel;
+import View.TicketPage.TicketInformationForm;
+import View.TicketPage.TicketListPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class CustomerListListener implements ActionListener {
-    private CustomersListPanel customersListPanel;
+public class TicketPageListener implements ActionListener {
+    private final TicketListPanel ticketListPanel;
 
-    public CustomerListListener(CustomersListPanel view) {
-        this.customersListPanel = view;
+    public TicketPageListener(TicketListPanel ticketListPanel) {
+        this.ticketListPanel = ticketListPanel;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String src = e.getActionCommand();
         System.out.println(src);
-
         if (src.equals("ADD")){
-            this.customersListPanel.addCustomer();
+            this.ticketListPanel.addTicket();
         } else if (src.equals("EDIT")){
-            customersListPanel.editCustomer();
+            ticketListPanel.editTicket();
         } else if (src.equals("DELETE")){
-            customersListPanel.deleteCustomer();
+            ticketListPanel.deleteTicket();
         } else if (src.equals("SEARCH")){
             try {
-                customersListPanel.searchCustomer();
+                ticketListPanel.searchTicket();
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }

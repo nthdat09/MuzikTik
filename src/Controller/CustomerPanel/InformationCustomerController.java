@@ -1,16 +1,15 @@
-package Controller;
+package Controller.CustomerPanel;
 
-import View.CustomerPage.ListPanel.InformationCustomerPanel;
+import View.CustomersListPage.InformationCustomerForm;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 public class InformationCustomerController implements ActionListener {
-    private InformationCustomerPanel informationCustomerPanel;
-    private int ID;
-    public InformationCustomerController(InformationCustomerPanel view ) {
-        this.informationCustomerPanel = view;
+    private InformationCustomerForm informationCustomerForm;
+    public InformationCustomerController(InformationCustomerForm view ) {
+        this.informationCustomerForm = view;
     }
 
     @Override
@@ -20,12 +19,12 @@ public class InformationCustomerController implements ActionListener {
 
         if (src.equals("SAVE")){
             try {
-                informationCustomerPanel.saveCustomer();
+                informationCustomerForm.saveCustomer();
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
         } else if (src.equals("CANCEL")){
-            informationCustomerPanel.cancelCustomer();
+            informationCustomerForm.cancelCustomer();
         }
     }
 }

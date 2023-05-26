@@ -180,6 +180,10 @@ public class MainPage extends JFrame {
         return jlbCustomer;
     }
 
+    public static JLabel getJlbTicket(){
+        return jlbTickets;
+    }
+
     public JPanel getJpnView() {
         return jpnView;
     }
@@ -838,7 +842,7 @@ public class MainPage extends JFrame {
     private JPanel jpnCustomers;
     private static JLabel jlbCustomer;
     private JPanel jpnTickets;
-    private JLabel jlbTickets;
+    private static JLabel jlbTickets;
     private JPanel jpnStages;
     private JLabel jlbStages;
     private JPanel jpnPartners;

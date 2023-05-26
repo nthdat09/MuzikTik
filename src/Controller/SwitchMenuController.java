@@ -2,7 +2,6 @@ package Controller;
 
 import Model.BEAN.MenuList;
 import View.AnalyticPage.AnalyticPanel;
-import View.CustomerPage.ListPanel.InformationCustomerPanel;
 import View.CustomersListPage.CustomersListPanel;
 import View.EventPage.EventPanel;
 import View.Home.HomePanel;
@@ -79,7 +78,7 @@ public class SwitchMenuController {
                     node = new CustomersListPanel().getCustomersListPage();
                     break;
                 case "TicketPanel":
-                    node = new TicketListPanel();
+                    node = new TicketListPanel().getTicketListPanel();
                     break;
                 case "StagePanel":
                     node = new StagesListPanel();

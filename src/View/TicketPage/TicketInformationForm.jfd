@@ -1,0 +1,100 @@
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		auxiliary() {
+			"JavaCodeGenerator.defaultVariableGetter": true
+			"JavaCodeGenerator.memberVariableThis": true
+		}
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq {space :185:185:p, comp SaveButton:::p::p, space :53:53:p, comp CancelButton:::p:95:p}, seq l {par l {seq l {space :100:100:p, par l {comp EventID::l:p:110:p, comp TicketID::l:p:90:p, comp SeatID::l:p:85:p}}, seq l {space :105:105:p, comp StageID:::p:95:p}, seq l {space :95:95:p, comp TicketPrice:::p::p}}, space :p:90:p, par l {comp TicketIDField::l:p:200:p, comp SeatIDField::l:p:200:p, comp TicketPriceField::l:p:200:p, comp StageIDField::l:p:200:p, comp EventIDField::l:p:200:p}}}, space :p:170:p}}"
+			"$verticalGroup": "par l {seq {space :65:65:p, par b {comp TicketID::b:p:45:p, comp TicketIDField::b:p:45:p}, par l:::p {seq {space :10:10:p, comp EventID:::p:45:p}, seq {space :::p, comp EventIDField:::::x}}, space s:::p, par l {seq {comp SeatID:::p:45:p, space :10:10:p, comp StageID:::p:45:p}, seq {comp SeatIDField:::p:41:p, space u:::p, comp StageIDField:::p:45:p}}, space :p:18:p, par t {comp TicketPrice:::p:45:p, seq {comp TicketPriceField:::p:39:p, space :3:3:p}}, space :40:40:p, par l {comp SaveButton:::p::p, comp CancelButton:::p::p}}}"
+		} ) {
+			name: "TicketInformationFormPanel"
+			"background": sfield java.awt.Color white
+			"minimumSize": new java.awt.Dimension( 670, 500 )
+			"maximumSize": new java.awt.Dimension( 670, 500 )
+			"preferredSize": new java.awt.Dimension( 670, 450 )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "TicketID"
+				"text": "Ticket ID"
+				"font": &Font0 new java.awt.Font( "Leelawadee", 1, 20 )
+				"foreground": &Color0 new java.awt.Color( 0, 0, 0, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "EventID"
+				"text": "Event ID"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "TicketPrice"
+				"text": "Ticket Price"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "StageID"
+				"text": "Stage ID"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "SeatID"
+				"text": "Seat ID"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TicketIDField"
+				"editable": false
+				"background": sfield java.awt.Color lightGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "EventIDField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "SeatIDField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "StageIDField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TicketPriceField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "SaveButton"
+				"text": "SAVE"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "CancelButton"
+				"text": "CANCEL"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 5 )
+			"size": new java.awt.Dimension( 670, 465 )
+		} )
+	}
+}

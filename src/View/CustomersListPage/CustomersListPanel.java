@@ -4,16 +4,10 @@
 
 package View.CustomersListPage;
 
-import Controller.CustomerListListener;
-import Controller.InformationCustomerController;
-import Controller.SwitchMenuController;
-import Model.BEAN.CustomerList;
-import Model.BEAN.MenuList;
+import Controller.CustomerPanel.CustomerListListener;
 import Model.DAO.CustomerDAO;
 import Model.DAO.CustomerListDAO;
 import Model.BEAN.CustomerListP;
-import View.CustomerPage.ListPanel.ComfirmDeleteJPopupMenu;
-import View.CustomerPage.ListPanel.InformationCustomerPanel;
 import View.MainPage.MainPage;
 
 import java.awt.*;
@@ -23,7 +17,6 @@ import javax.swing.table.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -33,6 +26,7 @@ public class CustomersListPanel {
     ActionListener ac = new CustomerListListener(this);
     CustomerListP customerSelected = new CustomerListP();
     String textSearched = "";
+    List <CustomerListP> listCustomer = null;
 
     public CustomersListPanel() {
         initComponents();
@@ -49,7 +43,6 @@ public class CustomersListPanel {
         getJlbSearch().addActionListener(ac);
         jtfSearch.setText(textSearched);
     }
-    List <CustomerListP> listCustomer = null;
 
     public void initMoreSetting(){
         listCustomer = CustomerListDAO.getCustomerList();
@@ -69,7 +62,7 @@ public class CustomersListPanel {
         else {
             customerSelected = listCustomer.get(i);
             int IDSelected = customerSelected.getId();
-            System.out.println(IDSelected);
+            System.out.println("ID selected: " + IDSelected);
             return customerSelected;
         }
     }
@@ -120,7 +113,7 @@ public class CustomersListPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+        // Generated using JFormDesigner Evaluation license - Dat
         customersListPage = new JPanel();
         panel1 = new JPanel();
         scrollPane1 = new JScrollPane();
@@ -136,12 +129,11 @@ public class CustomersListPanel {
         {
             customersListPage.setBackground(Color.white);
             customersListPage.setName("customersListPage");
-            customersListPage.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing
-            . border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ),
-            java. awt. Color. red) ,customersListPage. getBorder( )) ); customersListPage. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () ))
-            throw new RuntimeException( ); }} );
+            customersListPage.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
+            0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
+            . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
+            red ) ,customersListPage. getBorder () ) ); customersListPage. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
+            beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
             //======== panel1 ========
             {
@@ -171,6 +163,7 @@ public class CustomersListPanel {
                 ));
                 CustomerListTable.setAutoCreateRowSorter(true);
                 CustomerListTable.setName("cusListTable");
+                CustomerListTable.setFont(new Font("Segoe UI", Font.PLAIN, 12));
                 scrollPane1.setViewportView(CustomerListTable);
             }
 
@@ -260,14 +253,14 @@ public class CustomersListPanel {
                             .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 555, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(39, Short.MAX_VALUE))
+                        .addContainerGap(43, Short.MAX_VALUE))
             );
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+    // Generated using JFormDesigner Evaluation license - Dat
     private JPanel customersListPage;
     private JPanel panel1;
     private JScrollPane scrollPane1;
@@ -296,11 +289,12 @@ public class CustomersListPanel {
     }
 
     public void addCustomer() {
-        MainPage.changeView(new InformationCustomerPanel(), MainPage.getJlbCustomer(), "InformationCustomerPanel");
+        int newID = CustomerListDAO.getLastID();
+        MainPage.changeView(new InformationCustomerForm(newID + 1), MainPage.getJlbCustomer(), "InformationCustomerPanel");
     }
 
     public void editCustomer() {
-        MainPage.changeView(new InformationCustomerPanel(getDataFromJTable()), MainPage.getJlbCustomer(), "InformationCustomerPanel");
+        MainPage.changeView(new InformationCustomerForm(getDataFromJTable()), MainPage.getJlbCustomer(), "InformationCustomerPanel");
     }
 
     public void deleteCustomer() {
@@ -310,8 +304,8 @@ public class CustomersListPanel {
         } else {
             customerSelected = listCustomer.get(i);
             int IDSelected = customerSelected.getId();
-            ComfirmDeleteJPopupMenu comfirmDeleteJPopupMenu = new ComfirmDeleteJPopupMenu();
-            comfirmDeleteJPopupMenu.setSelectedID(IDSelected);
+            ComfirmCustomerDeleteJPopupMenu confirmDeleteJPopupMenu = new ComfirmCustomerDeleteJPopupMenu();
+            confirmDeleteJPopupMenu.setSelectedID(IDSelected);
         }
     }
     public void searchCustomer() throws SQLException {
@@ -323,7 +317,7 @@ public class CustomersListPanel {
             List<Integer> idResult = new ArrayList<>();
 
             for (CustomerListP customer : listCustomer) {
-                String customerCompiled = customer.getId() + "" + customer.getName() + customer.getUsernameEmail() + customer.getAddress() + customer.getTotalPoint() + customer.getPhoneNumber();
+                String customerCompiled = customer.getId() + "!@#$" + customer.getName() + "!@#$" + customer.getUsernameEmail() + "!@#$" + customer.getAddress() + "!@#$" + customer.getTotalPoint() + "!@#$" + customer.getPhoneNumber();
                 System.out.println(customerCompiled);
                 if (customerCompiled.contains(textSearched) == true) {
                     idResult.add(customer.getId());
@@ -343,5 +337,6 @@ public class CustomersListPanel {
             MainPage.changeView(new CustomersListPanel().getCustomersListPage(), MainPage.getJlbCustomer(), "CustomerListPanel");
         }
     }
+
 }
 

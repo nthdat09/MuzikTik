@@ -1,15 +1,15 @@
-package Controller;
+package Controller.CustomerPanel;
 
-import View.CustomerPage.ListPanel.ComfirmDeleteJPopupMenu;
+import View.CustomersListPage.ComfirmCustomerDeleteJPopupMenu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class DeleteConfirmJDialogController implements ActionListener {
-    private ComfirmDeleteJPopupMenu comfirmDeleteJPopupMenu;
+public class CustomerDeleteConfirmJDialogController implements ActionListener {
+    private ComfirmCustomerDeleteJPopupMenu comfirmDeleteJPopupMenu;
 
-    public  DeleteConfirmJDialogController(ComfirmDeleteJPopupMenu view) {
+    public CustomerDeleteConfirmJDialogController(ComfirmCustomerDeleteJPopupMenu view) {
         this.comfirmDeleteJPopupMenu = view;
     }
     @Override

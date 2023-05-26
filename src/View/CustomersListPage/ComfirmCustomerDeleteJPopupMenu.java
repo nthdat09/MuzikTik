@@ -1,20 +1,15 @@
-package View.CustomerPage.ListPanel;
+package View.CustomersListPage;
 
-import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import javax.swing.*;
 
-import Controller.DeleteConfirmJDialogController;
-import Controller.InformationCustomerController;
+import Controller.CustomerPanel.CustomerDeleteConfirmJDialogController;
 import Model.DAO.CustomerDAO;
-import View.CustomersListPage.CustomersListPanel;
 import View.MainPage.MainPage;
-import com.intellij.uiDesigner.core.*;
 
-public class ComfirmDeleteJPopupMenu extends JDialog{
-    ActionListener ac = new DeleteConfirmJDialogController(this);
+public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
+    ActionListener ac = new CustomerDeleteConfirmJDialogController(this);
     int selectedID;
 
     public void setSelectedID(int selectedID) {
@@ -25,7 +20,7 @@ public class ComfirmDeleteJPopupMenu extends JDialog{
         return selectedID;
     }
 
-    public ComfirmDeleteJPopupMenu() {
+    public ComfirmCustomerDeleteJPopupMenu() {
         initComponents();
         initSomeComponents();
     }
@@ -53,7 +48,7 @@ public class ComfirmDeleteJPopupMenu extends JDialog{
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+        // Generated using JFormDesigner Evaluation license - Dat
         ConfirmJDialog = new JDialog();
         ConfirmText = new JLabel();
         YesButton = new JButton();
@@ -94,7 +89,7 @@ public class ComfirmDeleteJPopupMenu extends JDialog{
                     .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addComponent(ConfirmText, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                         .addGroup(ConfirmJDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(YesButton)
                             .addComponent(NoButton))
@@ -107,7 +102,7 @@ public class ComfirmDeleteJPopupMenu extends JDialog{
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+    // Generated using JFormDesigner Evaluation license - Dat
     private JDialog ConfirmJDialog;
     private JLabel ConfirmText;
     private JButton YesButton;
