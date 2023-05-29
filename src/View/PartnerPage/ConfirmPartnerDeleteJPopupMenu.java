@@ -1,15 +1,19 @@
-package View.CustomersListPage;
+package View.PartnerPage;
 
+import Controller.PartnerPage.PartnerDeleteConfirmJDialogController;
+import Controller.StagesPage.StageDeleteConfirmJDialogController;
+import Model.DAO.Partner.PartnerDAO;
+import Model.DAO.Stage.StageDAO;
+import Model.DAO.Ticket.TicketDAO;
+import View.MainPage.MainPage;
+import View.StagesPage.StagesListPanel;
+
+import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import javax.swing.*;
 
-import Controller.CustomerPanel.CustomerDeleteConfirmJDialogController;
-import Model.DAO.Customer.CustomerDAO;
-import View.MainPage.MainPage;
-
-public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
-    ActionListener ac = new CustomerDeleteConfirmJDialogController(this);
+public class ConfirmPartnerDeleteJPopupMenu extends JDialog{
+    ActionListener ac = new PartnerDeleteConfirmJDialogController(this);
     int selectedID;
 
     public void setSelectedID(int selectedID) {
@@ -20,7 +24,7 @@ public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
         return selectedID;
     }
 
-    public ComfirmCustomerDeleteJPopupMenu() {
+    public ConfirmPartnerDeleteJPopupMenu() {
         initComponents();
         initSomeComponents();
     }
@@ -60,7 +64,7 @@ public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
             var ConfirmJDialogContentPane = ConfirmJDialog.getContentPane();
 
             //---- ConfirmText ----
-            ConfirmText.setText("ARE YOU SURE TO DELETE THIS CUSTOMER?");
+            ConfirmText.setText("ARE YOU SURE TO DELETE THIS PARTNER?");
 
             //---- YesButton ----
             YesButton.setText("YES");
@@ -72,24 +76,24 @@ public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
             ConfirmJDialogContentPane.setLayout(ConfirmJDialogContentPaneLayout);
             ConfirmJDialogContentPaneLayout.setHorizontalGroup(
                 ConfirmJDialogContentPaneLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                        .addContainerGap(100, Short.MAX_VALUE)
+                    .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
+                        .addContainerGap(112, Short.MAX_VALUE)
                         .addGroup(ConfirmJDialogContentPaneLayout.createParallelGroup()
                             .addGroup(GroupLayout.Alignment.TRAILING, ConfirmJDialogContentPaneLayout.createSequentialGroup()
                                 .addComponent(YesButton)
                                 .addGap(46, 46, 46)
                                 .addComponent(NoButton)
                                 .addGap(145, 145, 145))
-                            .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                                .addComponent(ConfirmText, GroupLayout.PREFERRED_SIZE, 305, GroupLayout.PREFERRED_SIZE)
-                                .addGap(93, 93, 93))))
+                            .addGroup(GroupLayout.Alignment.TRAILING, ConfirmJDialogContentPaneLayout.createSequentialGroup()
+                                .addComponent(ConfirmText, GroupLayout.PREFERRED_SIZE, 281, GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105))))
             );
             ConfirmJDialogContentPaneLayout.setVerticalGroup(
                 ConfirmJDialogContentPaneLayout.createParallelGroup()
                     .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                        .addGap(91, 91, 91)
+                        .addContainerGap(101, Short.MAX_VALUE)
                         .addComponent(ConfirmText, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                        .addGap(86, 86, 86)
                         .addGroup(ConfirmJDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(YesButton)
                             .addComponent(NoButton))
@@ -109,18 +113,21 @@ public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
     private JButton NoButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
-    public void deleteCustomer() throws SQLException {
+
+    public void deletePartner() throws SQLException {
         if (this.getSelectedID() == -1) {
-            JOptionPane.showMessageDialog(null, "Please select a customer to delete");
+            JOptionPane.showMessageDialog(null, "Please select a stage to delete");
             return;
         }
         else {
-            CustomerDAO.getInstance().deleteCustomer(getSelectedID());
-            MainPage.changeView(new CustomersListPanel().getCustomersListPage(), MainPage.getJlbCustomer(), "CustomerListPanel");
+            System.out.println("Delete Partner");
+            PartnerDAO.getInstance().deletePartner(this.getSelectedID());
+            MainPage.changeView(new PartnerListPanel(), MainPage.getJlbPartners() , "Partner List Panel");
             this.getConfirmJDialog().dispose();
         }
     }
-    public void cancelDeleteCustomer() {
+
+    public void cancelDeletePartner() {
         System.out.println("Cancel");
         this.getConfirmJDialog().dispose();
     }

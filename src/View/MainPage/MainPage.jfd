@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "9.0.0.0.263" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -111,6 +111,9 @@ new FormModel {
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						"foreground": &Color0 new java.awt.Color( 97, 184, 132, 255 )
 						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbHomeMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbHomeMouseExited", true ) )
 					} )
@@ -130,6 +133,9 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"foreground": #Color0
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbEventMouseExited", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbEventMouseEntered", true ) )
 					} )
@@ -171,6 +177,9 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"foreground": #Color0
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbTicketsMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbTicketsMouseExited", true ) )
 					} )
@@ -190,25 +199,31 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"foreground": #Color0
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbStagesMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbStagesMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbParners::t::231:x}"
-					"$verticalGroup": "par l {comp jlbParners::l::53:x}"
+					"$horizontalGroup": "par l {comp jlbPartners::t::231:x}"
+					"$verticalGroup": "par l {comp jlbPartners::l::53:x}"
 				} ) {
 					name: "jpnPartners"
 					"preferredSize": new java.awt.Dimension( 225, 65 )
 					"background": sfield java.awt.Color white
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "jlbParners"
+						name: "jlbPartners"
 						"text": "PARTNERS"
 						"horizontalAlignment": 0
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"foreground": #Color0
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbParnersMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbParnersMouseExited", true ) )
 					} )
@@ -228,6 +243,9 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"foreground": #Color0
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbAnalyticsMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbAnalyticsMouseExited", true ) )
 					} )
@@ -247,6 +265,9 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 225, 65 )
 						"foreground": #Color0
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbSettingsMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbSettingsMouseExited", true ) )
 					} )

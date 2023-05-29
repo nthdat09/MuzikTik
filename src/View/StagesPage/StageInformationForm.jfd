@@ -1,0 +1,137 @@
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		auxiliary() {
+			"JavaCodeGenerator.defaultVariableGetter": true
+			"JavaCodeGenerator.memberVariableThis": true
+		}
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq l {space :100:100:p, par l {comp EventID::l:p:110:p, comp TicketID::l:p:90:p, comp SeatID::l:p:85:p, comp StageID:::p:124:p, seq {space :6:6:p, comp TicketPrice:::p::p}}}, seq l {space :105:105:p, par l {comp TicketPrice3:::p::p, comp TicketPrice2:::p::p}}, seq l {space :p:189:p, comp SaveButton:::p::p}}, space :p:33:p, par l {par l:::p {comp CancelButton:::p:95:p, comp NameField::l:p:200:p, comp IDField:::p:200:p, seq l {comp Open_Hour:::p:59:p, space u:::p, comp Open_Minute:::p:59:p, space u:::p, comp Open_Second:::p:59:p}, comp CapacityField::l:::x, comp RentalPriceField::l:::x, comp AddressField::l:::x}, seq {comp Close_Hour:::p:59:p, space u:::p, comp Close_Minute:::p:59:p, space u:::p, comp Close_Second:::p:59:p}}, space :p:169:p}}"
+			"$verticalGroup": "par l {seq {space :p:65:p, par t {comp TicketID:::p:45:p, comp IDField:::p:45:p}, par l:::p {seq {space :10:10:p, comp EventID:::p:45:p}, seq {space :::p, comp NameField:::::x}}, space s:::p, par l {seq l {comp SeatID:::p:45:p, space u:::p, comp StageID:::p:45:p}, seq l {comp AddressField:::p:41:p, space u:::p, comp RentalPriceField:::p:45:p}}, space u:::p, par l {seq {comp TicketPrice:::p:45:p, space :p:20:p}, seq t {comp CapacityField:::p:39:p, space s:::p}}, par b {comp TicketPrice2::b:p:45:p, comp Open_Hour::b:p:41:p, comp Open_Minute::b:p:41:p, comp Open_Second::b:p:41:p}, space s:::p, par b {comp TicketPrice3::b:p:45:p, comp Close_Hour::b:p:41:p, comp Close_Minute::b:p:41:p, comp Close_Second::b:p:41:p}, space s:::p, par b {comp SaveButton::b:p::p, comp CancelButton::b:p::p}, space ::50:x}}"
+		} ) {
+			name: "StageInformationFormPanel"
+			"background": sfield java.awt.Color white
+			"minimumSize": new java.awt.Dimension( 670, 500 )
+			"maximumSize": new java.awt.Dimension( 670, 500 )
+			"preferredSize": new java.awt.Dimension( 670, 600 )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "TicketID"
+				"text": "ID"
+				"font": &Font0 new java.awt.Font( "Leelawadee", 1, 20 )
+				"foreground": &Color0 new java.awt.Color( 0, 0, 0, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "EventID"
+				"text": "Name"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "TicketPrice"
+				"text": "Capacity"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "StageID"
+				"text": "Rental Price"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "SeatID"
+				"text": "Address"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "IDField"
+				"editable": false
+				"background": sfield java.awt.Color lightGray
+				"foreground": sfield java.awt.Color white
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "NameField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "AddressField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "RentalPriceField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "SaveButton"
+				"text": "SAVE"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "CancelButton"
+				"text": "CANCEL"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "TicketPrice2"
+				"text": "Open Time"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "TicketPrice3"
+				"text": "Close Time"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "CapacityField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Open_Hour"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 24, 1 )
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Open_Minute"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Open_Second"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Close_Hour"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 24, 1 )
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Close_Minute"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Close_Second"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 5 )
+			"size": new java.awt.Dimension( 670, 570 )
+		} )
+	}
+}

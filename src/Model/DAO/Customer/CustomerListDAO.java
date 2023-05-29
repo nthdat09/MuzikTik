@@ -1,4 +1,4 @@
-package Model.DAO;
+package Model.DAO.Customer;
 
 import Model.Database.UserDatabase;
 import Model.BEAN.CustomerListP;

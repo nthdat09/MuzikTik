@@ -4,9 +4,21 @@
 
 package View.StagesPage;
 
+import Application.Main;
+import Controller.StagesPage.StagesListPanelListener;
+import Model.BEAN.Stage;
+import Model.BEAN.Ticket;
+import Model.DAO.Stage.StageDAO;
+import Model.DAO.Stage.StageListDAO;
+import Model.DAO.Ticket.TicketDAO;
 import View.MainPage.MainPage;
+import View.TicketPage.TicketListPanel;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.table.*;
@@ -15,17 +27,97 @@ import javax.swing.table.*;
  * @author ADMIN
  */
 public class StagesListPanel extends JPanel {
+    ActionListener ac = new StagesListPanelListener(this);
+    Stage stageSelected = new Stage();
+    List<Stage> listStage = null;
+    String textSearched = "";
     public StagesListPanel() {
         initComponents();
+        initMoreSetting();
+    }
+
+    public StagesListPanel(List<Stage> stageList, String textSearched){
+        initComponents();
+
+        this.listStage = stageList;
+        setStagesListTable();
+
+        getJlbDelete().addActionListener(ac);
+        getJlbEdit().addActionListener(ac);
+        getJlbAdd().addActionListener(ac);
+        getJlbSearch().addActionListener(ac);
+
+        jtfSearch.setText(textSearched);
+    }
+
+    private void initMoreSetting() {
+        listStage = StageListDAO.getList();
+        String a = listStage.toString();
+
+        setStagesListTable();
+
+        getJlbDelete().addActionListener(ac);
+        getJlbEdit().addActionListener(ac);
+        getJlbAdd().addActionListener(ac);
+        getJlbSearch().addActionListener(ac);
+    }
+
+    public void setStagesListTable() {
+        DefaultTableModel tableModel = (DefaultTableModel) getStagesListTable().getModel();
+        for (Stage stage: listStage) {
+            int id = stage.getId();
+            String name = stage.getName();
+            String address = stage.getAddress();
+            double rentalPrice = stage.getRentalPrice();
+            int capacity = stage.getCapacity();
+            String openTime = stage.getOpenTime();
+            String closeTime = stage.getCloseTime();
+            tableModel.addRow(new Object[]{id + "", name, address, rentalPrice + "", capacity + "", openTime, closeTime});
+        }
+    }
+
+
+    private Stage getDataFromJTable() {
+        int i = StagesListTable.getSelectedRow();
+        if (i == -1) {
+            JOptionPane.showMessageDialog(null, "Please choose a stage to edit");
+            return null;
+        } else {
+            stageSelected = listStage.get(i);
+            int IDSelected = stageSelected.getId();
+            System.out.println("ID selected: " + IDSelected);
+            return stageSelected;
+        }
+    }
+
+
+    public JButton getJlbDelete() {
+        return jlbDelete;
+    }
+
+    public JButton getJlbEdit() {
+        return jlbEdit;
+    }
+
+    public JButton getJlbAdd() {
+        return jlbAdd;
+    }
+
+    public JButton getJlbSearch() {
+        return jlbSearch;
+    }
+
+    public JTable getStagesListTable() {
+        return StagesListTable;
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+        // Generated using JFormDesigner Evaluation license - Dat
         StageList = new JPanel();
         jlbStageList = new JLabel();
         scrollPane1 = new JScrollPane();
-        table1 = new JTable();
+        StagesListTable = new JTable();
         jtfSearch = new JTextField();
         jlbDelete = new JButton();
         jlbEdit = new JButton();
@@ -34,13 +126,11 @@ public class StagesListPanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-        . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
-        . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-        Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-        ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-        public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
-        ) )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+        0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+        . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+        beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
         //======== StageList ========
         {
@@ -54,11 +144,19 @@ public class StagesListPanel extends JPanel {
 
             //======== scrollPane1 ========
             {
-                scrollPane1.setViewportView(table1);
+
+                //---- StagesListTable ----
+                StagesListTable.setModel(new DefaultTableModel(
+                    new Object[][] {
+                    },
+                    new String[] {
+                        "ID", "Name", "Address", "Rental Price", "Capacity", "Open Time", "Close Time"
+                    }
+                ));
+                scrollPane1.setViewportView(StagesListTable);
             }
 
             //---- jtfSearch ----
-            jtfSearch.setText(" Search MuzikTic");
             jtfSearch.setFont(new Font("Lato", Font.PLAIN, 16));
             jtfSearch.setForeground(new Color(0x61b884));
             jtfSearch.setCaretColor(new Color(0x61b884));
@@ -76,7 +174,7 @@ public class StagesListPanel extends JPanel {
             jlbEdit.setBackground(new Color(0x61b884));
 
             //---- jlbAdd ----
-            jlbAdd.setText("ADD ");
+            jlbAdd.setText("ADD");
             jlbAdd.setFont(new Font("Lato Black", Font.BOLD, 16));
             jlbAdd.setForeground(Color.white);
             jlbAdd.setBackground(new Color(0x61b884));
@@ -99,8 +197,9 @@ public class StagesListPanel extends JPanel {
                         .addGroup(StageListLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                             .addComponent(scrollPane1, GroupLayout.Alignment.LEADING)
                             .addGroup(GroupLayout.Alignment.LEADING, StageListLayout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
                                 .addGap(287, 287, 287)
                                 .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
@@ -108,24 +207,22 @@ public class StagesListPanel extends JPanel {
                                 .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
                                 .addComponent(jlbDelete)))
-                        .addGap(0, 135, Short.MAX_VALUE))
+                        .addGap(0, 123, Short.MAX_VALUE))
             );
             StageListLayout.setVerticalGroup(
                 StageListLayout.createParallelGroup()
                     .addGroup(StageListLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jlbStageList)
-                        .addGap(31, 31, 31)
+                        .addGap(30, 30, 30)
                         .addGroup(StageListLayout.createParallelGroup()
-                            .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addGroup(StageListLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(StageListLayout.createParallelGroup()
-                                    .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jlbDelete, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(StageListLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlbDelete, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13)
                         .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(33, Short.MAX_VALUE))
             );
@@ -144,21 +241,76 @@ public class StagesListPanel extends JPanel {
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(StageList, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 32, Short.MAX_VALUE))
+                    .addGap(0, 27, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Lê Xuân Quỳnh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JPanel StageList;
     private JLabel jlbStageList;
     private JScrollPane scrollPane1;
-    private JTable table1;
+    private JTable StagesListTable;
     private JTextField jtfSearch;
     private JButton jlbDelete;
     private JButton jlbEdit;
     private JButton jlbAdd;
     private JButton jlbSearch;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
+
+    public void addStage() {
+        System.out.println("addStage");
+        int newID = StageListDAO.getLastID();
+        MainPage.changeView(new StageInformationForm(newID + 1).getStageInformationFormPanel(), MainPage.getJlbStages(), "Stage Information Form");
+
+    }
+    public void editStage() {
+        System.out.println("editStage");
+        MainPage.changeView(new StageInformationForm(getDataFromJTable()).getStageInformationFormPanel(), MainPage.getJlbStages(), "Stage Information Form");
+    }
+
+    public void deleteStage() {
+        System.out.println("deleteStage");
+        int i = StagesListTable.getSelectedRow();
+        if (i == -1) {
+            JOptionPane.showMessageDialog(null, "Please select a row to delete");
+        } else {
+            stageSelected = listStage.get(i);
+            int IDSelected = stageSelected.getId();
+            ConfirmStageDeleteJPopupMenu confirmStageDeleteJPopupMenuDeleteJPopupMenu = new ConfirmStageDeleteJPopupMenu();
+            confirmStageDeleteJPopupMenuDeleteJPopupMenu.setSelectedID(IDSelected);
+        }
+    }
+    public void searchStage() throws SQLException {
+        System.out.println("search Stage");
+        textSearched = jtfSearch.getText();
+        listStage = StageDAO.getInstance().getStageList();
+        System.out.println("Text input: " + textSearched);
+        if (!textSearched.equals("")) {
+            System.out.println("Search");
+            List<Integer> idResult = new ArrayList<>();
+
+            for (Stage stage: listStage) {
+                String stageCompiled = stage.getId() + "!@#$" + stage.getName() + "!@#$" + stage.getAddress() + "!@#$" + stage.getRentalPrice()
+                        + "!@#$" + stage.getCapacity() + "!@#$" + stage.getOpenTime() + "!@#$" + stage.getCloseTime();
+
+                if (stageCompiled.contains(textSearched)) {
+                    idResult.add(stage.getId());
+                }
+            }
+
+            listStage.clear();
+            for (int id : idResult) {
+                Stage stage = StageDAO.getInstance().selectByID(id);
+                if (stage != null) {
+                    listStage.add(stage);
+                }
+            }
+            MainPage.changeView(new StagesListPanel(listStage, textSearched), MainPage.getJlbStages(), "Stage List Panel");
+        } else {
+            System.out.println("No search");
+            MainPage.changeView(new StagesListPanel(), MainPage.getJlbStages(), "Stage List Panel");
+        }
+    }
 }

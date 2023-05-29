@@ -6,15 +6,10 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 import Controller.TicketPage.TicketInformationController;
-import Controller.TicketPage.TicketPageListener;
-import Model.BEAN.CustomerListP;
+import Model.BEAN.Stage;
 import Model.BEAN.Ticket;
-import Model.DAO.CustomerDAO;
-import Model.DAO.TicketDAO;
-import Model.DAO.TicketListDAO;
-import View.CustomersListPage.CustomersListPanel;
+import Model.DAO.Ticket.TicketDAO;
 import View.MainPage.MainPage;
-import com.intellij.uiDesigner.core.*;
 
 public class TicketInformationForm extends JPanel{
     static int selectedID = -1;
@@ -36,7 +31,8 @@ public class TicketInformationForm extends JPanel{
         initComponents();
         getSaveButton().addActionListener(ac);
         getCancelButton().addActionListener(ac);
-        this.TicketIDField.setText(newID + ""); }
+        this.TicketIDField.setText(newID + "");
+    }
 
     private void initSomeComponents(Ticket ticket) {
         this.EventIDField.setText(ticket.getEventID() + "");
@@ -123,11 +119,13 @@ public class TicketInformationForm extends JPanel{
             this.TicketInformationFormPanel.setMinimumSize(new Dimension(670, 500));
             this.TicketInformationFormPanel.setMaximumSize(new Dimension(670, 500));
             this.TicketInformationFormPanel.setPreferredSize(new Dimension(670, 450));
-            this.TicketInformationFormPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
-            , 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
-            this.TicketInformationFormPanel. getBorder( )) ); this.TicketInformationFormPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            this.TicketInformationFormPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
+            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing
+            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
+            Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
+            ) ,this.TicketInformationFormPanel. getBorder () ) ); this.TicketInformationFormPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
+            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName (
+            ) ) )throw new RuntimeException( ) ;} } );
 
             //---- TicketID ----
             this.TicketID.setText("Ticket ID");
@@ -262,22 +260,28 @@ public class TicketInformationForm extends JPanel{
             JOptionPane.showMessageDialog(null, "Please fill in all fields");
         } else {
             Ticket ticket = null;
-            if (selectedID == -1 ) {
+            if (selectedID == -1 ) { // insert
                 ticket = new Ticket();
+                ticket.setTicketID(Integer.parseInt(this.TicketIDField.getText()));
+                ticket.setEventID(Integer.parseInt(this.EventIDField.getText()));
+                ticket.setSeatID(Integer.parseInt(this.SeatIDField.getText()));
+                ticket.setStageID(Integer.parseInt(this.StageIDField.getText()));
+                ticket.setPrice(Double.parseDouble(this.TicketPriceField.getText()));
             }
-            else {
+            else { // update
                 ticket = TicketDAO.getInstance().selectByID(selectedID);
+                ticket.setTicketID(selectedID);
+                ticket.setEventID(Integer.parseInt(this.EventIDField.getText()));
+                ticket.setSeatID(Integer.parseInt(this.SeatIDField.getText()));
+                ticket.setStageID(Integer.parseInt(this.StageIDField.getText()));
+                ticket.setPrice(Double.parseDouble(this.TicketPriceField.getText()));
             }
-            ticket.setTicketID(selectedID);
-            ticket.setEventID(Integer.parseInt(this.EventIDField.getText()));
-            ticket.setSeatID(Integer.parseInt(this.SeatIDField.getText()));
-            ticket.setStageID(Integer.parseInt(this.StageIDField.getText()));
-            ticket.setPrice(Double.parseDouble(this.TicketPriceField.getText()));
-
             if (selectedID != -1) {
+                System.out.println("Update Ticket");
                 TicketDAO.getInstance().updateTicket(ticket);
             }
             else {
+                System.out.println("Insert Ticket");
                 TicketDAO.getInstance().insertTicket(ticket);
             }
             MainPage.changeView(new TicketListPanel().getTicketListPanel(), MainPage.getJlbTicket() , "Ticket Information Form");

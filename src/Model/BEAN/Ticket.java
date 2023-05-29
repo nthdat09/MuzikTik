@@ -73,4 +73,14 @@ public class Ticket {
                 ", seatID=" + seatID +
                 '}';
     }
+
+    public void toPrint(){
+        System.out.println("Ticket{" +
+                "ticketID=" + ticketID +
+                ", eventID=" + eventID +
+                ", price=" + price +
+                ", stageID=" + stageID +
+                ", seatID=" + seatID +
+                '}');
+    }
 }

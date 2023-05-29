@@ -1,84 +1,63 @@
-JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:219:p, par l {comp label12::l:p:211:p, comp label9::l:p:174:p, comp label8::l:p:166:p, comp label5::l:p:171:p, comp label6::l:p:171:p, comp label7:::p:171:p}, space :::p, par l {comp label2:::p:150:p, comp label4:::p:150:p, comp label10:::p:150:p, comp label13:::p:150:p, comp label3::l:p:150:p, comp label1:::p:150:p}, space ::444:x}, seq t {space ::433:x, par l {seq t {comp label11:::p::p, space :p:306:p}, seq t {comp button8:::p:112:p, space :18:18:p, comp button7:::p:112:p, space :p:110:p}}}}"
-			"$verticalGroup": "par l {seq t {space :p:31:p, comp label11:::p::p, space :p:33:p, par b {comp label5::b:p:39:p, comp label1::b:p::p}, space :::p, par b {comp label6::b:p:39:p, comp label2::b:p::p}, space :p:13:p, par b {comp label3::b:p::p, comp label7::b:p:39:p}, space :p:23:p, par b {comp label8::b:p::p, comp label4::b:p::p}, space :p:30:p, par b {comp label9::b:p:39:p, comp label10::b:p::p}, space s:::p, par l {comp label13:::p::p, comp label12:::p:39:p}, space ::69:x, par l {comp button8:::p::p, comp button7:::p::p}, space :p:37:p}}"
+			"$horizontalGroup": "par l {seq l {space :p:219:p, par t {comp label14:::p:174:p, par l {comp label8::l:p:166:p, comp label5::l:p:171:p, comp label6::l:p:171:p, comp label7:::p:171:p, comp label12::t:p:174:p, comp label9::t:p:174:p}, comp label15::t:p:174:p}, space :::x}, seq t {space ::298:x, comp SaveBtn:::p:112:p, space :p:34:p, par l {comp IDField:::::x, seq {par l {comp NameField:::p:169:p, comp CancelBtn:::p:112:p, comp PhoneNumberField::l:p:169:p, comp EmailField::l:p:169:p, comp AddressField::l:p:169:p, comp LogoField::l:p:169:p, comp AccountNumberField::l:p:169:p, comp BankField::l:p:169:p}, space :0:0:x}}, space :p:192:p}, seq t {space ::268:x, comp label11:::p:321:p, space :p:216:p}}"
+			"$verticalGroup": "par l {seq t {space :p:27:p, comp label11:::p:51:p, space s:::p, par t {seq {par b {comp label5::b:p:39:p, comp IDField::b:p:39:p}, space :::p, par b {comp label6::b:p:39:p, comp NameField::b:p:39:p}, space :p:9:p, par b {comp label7::b:p:39:p, comp PhoneNumberField::b:p:39:p}, space :p:19:p, comp label8:::p::p}, comp EmailField:::p:39:p}, space :p:20:p, par b {comp label9::b:p:39:p, comp AddressField::b:p:39:p}, space :::p, par b {comp label12::b:p:39:p, comp LogoField::b:p:39:p}, space u:::p, par b {comp label14::b:p:39:p, comp AccountNumberField::b:p:39:p}, space :::p, par b {comp label15::b:p:39:p, comp BankField::b:p:39:p}, space s:::p, par b {comp SaveBtn::b:p::p, comp CancelBtn::b:p::p}, space :::x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
+			auxiliary() {
+				"JavaCodeGenerator.variableGetter": true
+			}
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label5"
-				"text": "Name:"
+				"text": "ID"
 				"font": new java.awt.Font( "Lato Black", 1, 20 )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label6"
-				"text": "Email:"
+				"text": "Name"
 				"font": new java.awt.Font( "Lato Black", 1, 20 )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label7"
-				"text": "Address:"
+				"text": "Phone Number"
 				"font": new java.awt.Font( "Lato Black", 1, 20 )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label8"
-				"text": "Number Phone:"
+				"text": "Email"
 				"font": &Font0 new java.awt.Font( "Lato Black", 1, 20 )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button7"
+				name: "CancelBtn"
 				"text": "CANCEL"
 				"preferredSize": &Dimension0 new java.awt.Dimension( 80, 30 )
 				"font": &Font1 new java.awt.Font( "Lato Black", 1, 18 )
 				"background": &Color0 new java.awt.Color( 97, 184, 132, 255 )
 				"foreground": sfield java.awt.Color white
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
-				"text": "text"
-				"font": &Font2 new java.awt.Font( "Lato", 0, 20 )
-				"foreground": &Color1 new java.awt.Color( 97, 184, 132, 255 )
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label2"
-				"text": "text"
-				"font": #Font2
-				"foreground": #Color1
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label3"
-				"text": "text"
-				"font": #Font2
-				"foreground": #Color1
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label4"
-				"text": "text"
-				"font": #Font2
-				"foreground": #Color1
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button8"
+				name: "SaveBtn"
 				"text": "SAVE"
 				"preferredSize": #Dimension0
 				"font": #Font1
 				"background": #Color0
 				"foreground": sfield java.awt.Color white
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label9"
 				"font": #Font0
-				"text": "Account Number"
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label10"
-				"text": "text"
-				"font": #Font2
-				"foreground": #Color1
+				"text": "Address"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label11"
@@ -89,17 +68,70 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label12"
 				"font": #Font0
-				"text": "Beneficiary Account"
+				"text": "Logo"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label13"
-				"text": "text"
-				"font": #Font2
-				"foreground": #Color1
+				name: "label14"
+				"font": #Font0
+				"text": "Account Number"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label15"
+				"font": #Font0
+				"text": "Bank"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "IDField"
+				"editable": false
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "NameField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "PhoneNumberField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "EmailField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "AddressField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "LogoField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "AccountNumberField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "BankField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1030, 540 )
+			"location": new java.awt.Point( 0, 5 )
+			"size": new java.awt.Dimension( 805, 550 )
 		} )
 	}
 }

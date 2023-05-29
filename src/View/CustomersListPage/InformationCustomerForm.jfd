@@ -14,6 +14,8 @@ new FormModel {
 		} ) {
 			name: "this"
 			"background": sfield java.awt.Color white
+			"minimumSize": new java.awt.Dimension( 735, 548 )
+			"maximumSize": new java.awt.Dimension( 735, 548 )
 			auxiliary() {
 				"JavaCodeGenerator.variableName": "InformationCustomerPanel"
 				"JavaCodeGenerator.variableModifiers": 2

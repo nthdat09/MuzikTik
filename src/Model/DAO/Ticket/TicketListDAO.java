@@ -1,4 +1,4 @@
-package Model.DAO;
+package Model.DAO.Ticket;
 
 import Model.BEAN.Ticket;
 import Model.Database.UserDatabase;

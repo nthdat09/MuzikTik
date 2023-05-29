@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "9.0.0.0.263" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -22,12 +22,48 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTable" ) {
-					name: "table1"
+					name: "PartnerListTable"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+						add( "ID" )
+						add( "Name" )
+						add( "Phone Number" )
+						add( "Email" )
+						add( "Address" )
+						add( "Logo" )
+						add( "Account Number" )
+						add( "Bank" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "jtfSearch"
-				"text": " Search MuzikTic"
 				"font": new java.awt.Font( "Lato", 0, 16 )
 				"foreground": new java.awt.Color( 97, 184, 132, 255 )
 				"caretColor": new java.awt.Color( 97, 184, 132, 255 )
@@ -54,7 +90,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jlbAdd"
-				"text": "ADD "
+				"text": "ADD"
 				"font": #Font0
 				"foreground": #Color0
 				"background": #Color1

@@ -1,6 +1,5 @@
-package Model.DAO;
+package Model.DAO.Ticket;
 
-import Model.BEAN.CustomerListP;
 import Model.BEAN.Ticket;
 import Model.Database.UserDatabase;
 
@@ -74,8 +73,10 @@ public class TicketDAO {
             ps.setInt(3, (int) oldTicket.getPrice());
             ps.setInt(4, oldTicket.getStageID());
             ps.setInt(5, oldTicket.getSeatID());
+
             int rowChanged = ps.executeUpdate();
             System.out.println("Row changed: " + rowChanged);
+
             ps.close();
             con.close();
         }

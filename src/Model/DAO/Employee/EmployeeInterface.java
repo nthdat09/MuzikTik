@@ -1,4 +1,4 @@
-package Model.DAO;
+package Model.DAO.Employee;
 
 public interface EmployeeInterface<T> {
 

@@ -6,7 +6,6 @@ package View.MainPage;
 
 import Model.BEAN.MenuList;
 import Controller.SwitchMenuController;
-import Model.DAO.EmployeeDAO;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -34,14 +33,14 @@ public class MainPage extends JFrame {
         listItem.add(new MenuList("CustomersPanel", jpnCustomers, jlbCustomer));
         listItem.add(new MenuList("TicketPanel", jpnTickets,jlbTickets));
         listItem.add(new MenuList("StagePanel",jpnStages,jlbStages));
-        listItem.add(new MenuList("PartnerPanel",jpnPartners,jlbParners));
+        listItem.add(new MenuList("PartnerPanel",jpnPartners,getJlbPartners()));
         listItem.add(new MenuList("AnalyticPanel",jpnAnalytics,jlbAnalytics));
         listItem.add(new MenuList("SettingPanel", jpnSettings,jlbSettings));
         controller.setEvent(listItem);
     }
 
     public static void changeView(JPanel jpnItem, JLabel jlbItem, String Kind){
-        SwitchMenuController controller = new SwitchMenuController(jpnView);
+        SwitchMenuController controller = new SwitchMenuController(getJpnView());
         controller.changeViewController(jpnItem, jlbItem, Kind);
     }
 
@@ -95,13 +94,6 @@ public class MainPage extends JFrame {
         jpnDropMenu4.setSize(0,0);
         jpnBuffer.setSize(0,0);
         jpnBuffer2.setSize(0,0);
-    }
-
-    public static void main (String[] args) {
-        JFrame frame = new JFrame("Đồ án bán vé hoà nhạc");
-        frame.setContentPane(new MainPage());
-        frame.pack();
-        frame.setVisible(true);
     }
 
     private void searchButtonMouseEntered(MouseEvent e) {
@@ -184,13 +176,41 @@ public class MainPage extends JFrame {
         return jlbTickets;
     }
 
-    public JPanel getJpnView() {
+    public static JPanel getJpnView() {
         return jpnView;
+    }
+
+    public JLabel getJlbTickets() {
+        return jlbTickets;
+    }
+
+    public static JLabel getJlbStages() {
+        return jlbStages;
+    }
+
+    public static JLabel getJlbPartners() {
+        return jlbPartners;
+    }
+
+    public JLabel getJlbAnalytics() {
+        return jlbAnalytics;
+    }
+
+    public JLabel getJlbSettings() {
+        return jlbSettings;
+    }
+
+    public JLabel getJlbEvent() {
+        return jlbEvent;
+    }
+
+    public JLabel getJlbHome() {
+        return jlbHome;
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+        // Generated using JFormDesigner Evaluation license - Dat
         headerPanel = new JPanel();
         searchButton = new JTextField();
         nameAppLabell = new JLabel();
@@ -210,7 +230,7 @@ public class MainPage extends JFrame {
         jpnStages = new JPanel();
         jlbStages = new JLabel();
         jpnPartners = new JPanel();
-        jlbParners = new JLabel();
+        jlbPartners = new JLabel();
         jpnAnalytics = new JPanel();
         jlbAnalytics = new JLabel();
         jpnSettings = new JPanel();
@@ -234,11 +254,11 @@ public class MainPage extends JFrame {
             headerPanel.setBorder(new LineBorder(new Color(0xbebebe)));
             headerPanel.setBackground(Color.white);
             headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing
+            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing
             . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-            Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+            Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
             ) ,headerPanel. getBorder( )) ); headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName (
+            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName (
             ) )) throw new RuntimeException( ); }} );
             headerPanel.setLayout(null);
 
@@ -533,14 +553,14 @@ public class MainPage extends JFrame {
                 jpnPartners.setPreferredSize(new Dimension(225, 65));
                 jpnPartners.setBackground(Color.white);
 
-                //---- jlbParners ----
-                jlbParners.setText("PARTNERS");
-                jlbParners.setHorizontalAlignment(SwingConstants.CENTER);
-                jlbParners.setBorder(null);
-                jlbParners.setPreferredSize(new Dimension(225, 65));
-                jlbParners.setForeground(new Color(0x61b884));
-                jlbParners.setFont(new Font("Lato Black", Font.BOLD, 20));
-                jlbParners.addMouseListener(new MouseAdapter() {
+                //---- jlbPartners ----
+                jlbPartners.setText("PARTNERS");
+                jlbPartners.setHorizontalAlignment(SwingConstants.CENTER);
+                jlbPartners.setBorder(null);
+                jlbPartners.setPreferredSize(new Dimension(225, 65));
+                jlbPartners.setForeground(new Color(0x61b884));
+                jlbPartners.setFont(new Font("Lato Black", Font.BOLD, 20));
+                jlbPartners.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseEntered(MouseEvent e) {
                         jlbParnersMouseEntered(e);
@@ -555,11 +575,11 @@ public class MainPage extends JFrame {
                 jpnPartners.setLayout(jpnPartnersLayout);
                 jpnPartnersLayout.setHorizontalGroup(
                     jpnPartnersLayout.createParallelGroup()
-                        .addComponent(jlbParners, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                        .addComponent(jlbPartners, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                 );
                 jpnPartnersLayout.setVerticalGroup(
                     jpnPartnersLayout.createParallelGroup()
-                        .addComponent(jlbParners, GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                        .addComponent(jlbPartners, GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 );
             }
 
@@ -826,7 +846,7 @@ public class MainPage extends JFrame {
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Nguyen Thanh Dat
+    // Generated using JFormDesigner Evaluation license - Dat
     private JPanel headerPanel;
     private JTextField searchButton;
     private JLabel nameAppLabell;
@@ -844,9 +864,9 @@ public class MainPage extends JFrame {
     private JPanel jpnTickets;
     private static JLabel jlbTickets;
     private JPanel jpnStages;
-    private JLabel jlbStages;
+    private static JLabel jlbStages;
     private JPanel jpnPartners;
-    private JLabel jlbParners;
+    private static JLabel jlbPartners;
     private JPanel jpnAnalytics;
     private JLabel jlbAnalytics;
     private JPanel jpnSettings;

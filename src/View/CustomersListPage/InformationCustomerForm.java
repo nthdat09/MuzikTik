@@ -6,7 +6,7 @@ package View.CustomersListPage;
 
 import Controller.CustomerPanel.InformationCustomerController;
 import Model.BEAN.CustomerListP;
-import Model.DAO.CustomerDAO;
+import Model.DAO.Customer.CustomerDAO;
 import View.MainPage.MainPage;
 
 import java.awt.*;
@@ -149,12 +149,15 @@ public class InformationCustomerForm extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-        border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER
-        , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
-        .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
-        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r"
-        .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setMinimumSize(new Dimension(735, 548));
+        setMaximumSize(new Dimension(735, 548));
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+        . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder
+        . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .
+        awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder( )) )
+        ;  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+        ;
 
         //---- Name ----
         this.Name.setText("Name:");
@@ -335,26 +338,36 @@ public class InformationCustomerForm extends JPanel {
             JOptionPane.showMessageDialog(null, "Please fill in all fields");
         } else {
             CustomerListP customer = null;
-            if (selectedID == -1 ) {
+            if (selectedID == -1 ) { // add new customer
+                System.out.println("add new customer");
                 customer = new CustomerListP();
+                customer.setId(Integer.parseInt(this.IDField.getText()));
+                customer.setName(this.NameField.getText());
+                customer.setEmail(this.EmailField.getText());
+                customer.setAddress(this.AddressField.getText());
+                customer.setPhoneNumber(this.PhoneNumberFiled.getText());
+                customer.setTotalPoint(Integer.parseInt(this.TotalPointVal.getText()));
+                customer.setType(this.TypeField.getText());
+                customer.setId(Integer.parseInt(this.IDField.getText()));
             }
-            else {
+            else { // update customer
+                System.out.println("update customer");
                 customer = CustomerDAO.getInstance().selectByID(selectedID);
+                customer.setId(selectedID);
+                customer.setName(this.NameField.getText());
+                customer.setEmail(this.EmailField.getText());
+                customer.setAddress(this.AddressField.getText());
+                customer.setPhoneNumber(this.PhoneNumberFiled.getText());
+                customer.setTotalPoint(Integer.parseInt(this.TotalPointVal.getText()));
+                customer.setType(this.TypeField.getText());
+                customer.setId(Integer.parseInt(this.IDField.getText()));
             }
-            customer.setId(selectedID);
-            customer.setName(this.NameField.getText());
-            customer.setEmail(this.EmailField.getText());
-            customer.setAddress(this.AddressField.getText());
-            customer.setPhoneNumber(this.PhoneNumberFiled.getText());
-            customer.setTotalPoint(Integer.parseInt(this.TotalPointVal.getText()));
-            customer.setType(this.TypeField.getText());
-            customer.setId(Integer.parseInt(this.IDField.getText()));
 
             if (selectedID != -1) {
                 CustomerDAO.getInstance().updateCustomer(customer);
             }
             else {
-                CustomerDAO.getInstance().insertCustomer(customer);
+                CustomerDAO.getInstance().addCustomer(customer);
             }
             MainPage.changeView(new CustomersListPanel().getCustomersListPage(), MainPage.getJlbCustomer(), "CustomerListPanel");
         }

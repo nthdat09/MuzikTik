@@ -1,9 +1,7 @@
-package Model.DAO;
+package Model.DAO.Customer;
 
-import Model.BEAN.CustomerList;
 import Model.BEAN.CustomerListP;
 import Model.Database.UserDatabase;
-import Model.BEAN.Customer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,11 +10,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerDAO implements CustomerInterface {
+public class CustomerDAO{
     public static CustomerDAO getInstance() {
         return new CustomerDAO();
     }
-    @Override
+
     public List<CustomerListP> getList() {
         try {
             Connection con = UserDatabase.getConnection();
@@ -45,7 +43,6 @@ public class CustomerDAO implements CustomerInterface {
         return null;
     }
 
-    @Override
     public CustomerListP selectByID(int ID) throws SQLException {
         CustomerListP customer = null;
         try {
@@ -75,7 +72,6 @@ public class CustomerDAO implements CustomerInterface {
         return null;
     }
 
-    @Override
     public void updateCustomer(CustomerListP cus) throws SQLException {
         try {
             Connection con = UserDatabase.getConnection();
@@ -94,14 +90,20 @@ public class CustomerDAO implements CustomerInterface {
         }
     }
 
-    @Override
-    public void insertCustomer(CustomerListP oldCustomer) throws SQLException {
+    public void addCustomer(CustomerListP newCustomer) throws SQLException {
         try {
             Connection con = UserDatabase.getConnection();
-            String sql = "INSERT INTO mctmsys.customer (CUS_ID, CUS_NAME, CUS_PHONE_NUMBER, CUS_EMAIL, CUS_ADDRESS, CUS_TYPE, CUS_TOTAL_POINT) VALUES (10, '" + oldCustomer.getName() + "', '" + oldCustomer.getPhoneNumber() + "', '" + oldCustomer.getEmail() + "', '" + oldCustomer.getAddress() + "', '1', " + oldCustomer.getTotalPoint() + ")";
+            String sql = "INSERT INTO mctmsys.customer (CUS_ID, CUS_NAME, CUS_PHONE_NUMBER, CUS_EMAIL, CUS_ADDRESS, CUS_TYPE, CUS_TOTAL_POINT) VALUES (?, ?, ?, ?, ?, ?, ?)";
             System.out.println(sql);
 
             PreparedStatement ps = con.prepareCall(sql);
+            ps.setInt(1, newCustomer.getId());
+            ps.setString(2, newCustomer.getName());
+            ps.setString(3, newCustomer.getPhoneNumber());
+            ps.setString(4, newCustomer.getEmail());
+            ps.setString(5, newCustomer.getAddress());
+            ps.setString(6, newCustomer.getType());
+            ps.setInt(7, newCustomer.getTotalPoint());
 
             int rowChanged = ps.executeUpdate();
             System.out.println("Row changed: " + rowChanged);
@@ -112,7 +114,6 @@ public class CustomerDAO implements CustomerInterface {
         }
     }
 
-    @Override
     public void deleteCustomer(int ID) throws SQLException {
         try {
             Connection con = UserDatabase.getConnection();

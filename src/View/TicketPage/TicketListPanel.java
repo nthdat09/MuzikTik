@@ -6,9 +6,8 @@ package View.TicketPage;
 
 import Controller.TicketPage.TicketPageListener;
 import Model.BEAN.Ticket;
-import Model.DAO.TicketDAO;
-import Model.DAO.TicketListDAO;
-import View.CustomersListPage.ComfirmCustomerDeleteJPopupMenu;
+import Model.DAO.Ticket.TicketDAO;
+import Model.DAO.Ticket.TicketListDAO;
 import View.MainPage.MainPage;
 
 import java.awt.*;
@@ -36,21 +35,20 @@ public class TicketListPanel {
 
     public TicketListPanel(List<Ticket> listTicket, String textSearched) {
         initComponents();
+
         this.listTicket = listTicket;
         setTicketListTable();
+
         getJlbAdd().addActionListener(ac);
         getJlbEdit().addActionListener(ac);
         getJlbDelete().addActionListener(ac);
         getJlbSearch().addActionListener(ac);
+
         jtfSearch.setText(textSearched);
     }
 
     public void initMoreSetting() {
         listTicket = TicketListDAO.getList();
-        System.out.println("List Ticket: ");
-        for (Ticket ticket : listTicket) {
-            ticket.toString();
-        }
 
         setTicketListTable();
         jlbAdd.addActionListener(ac);
@@ -69,6 +67,18 @@ public class TicketListPanel {
             int IDSelected = ticketSelected.getTicketID();
             System.out.println("ID selected: " + IDSelected);
             return ticketSelected;
+        }
+    }
+
+    public void setTicketListTable() {
+        DefaultTableModel tableModel = (DefaultTableModel) getTicketListTable().getModel();
+        for (Ticket ticket : listTicket) {
+            int TKT_ID = ticket.getTicketID();
+            int EVT_ID = ticket.getEventID();
+            int STG_ID = ticket.getStageID();
+            int SEAT_ID = ticket.getSeatID();
+            double TKT_PRICE = ticket.getPrice();
+            tableModel.addRow(new Object[]{TKT_ID + "", EVT_ID + "", STG_ID + "", SEAT_ID + "", TKT_PRICE + ""});
         }
     }
 
@@ -124,13 +134,11 @@ public class TicketListPanel {
         //======== TicketListPanel ========
         {
             TicketListPanel.setBackground(Color.white);
-            TicketListPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
-            .swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing
-            .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
-            Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red
-            ),TicketListPanel. getBorder()));TicketListPanel. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
-            public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName(
-            )))throw new RuntimeException();}});
+            TicketListPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+            , 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+            , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+            TicketListPanel. getBorder( )) ); TicketListPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             //---- jlbTicket ----
             jlbTicket.setText("TICKET LIST");
@@ -242,25 +250,6 @@ public class TicketListPanel {
     private JButton jlbSearch;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
-    public void setTicketListTable() {
-        DefaultTableModel tableModel = (DefaultTableModel) getTicketListTable().getModel();
-        for (Ticket ticket : listTicket) {
-            int TKT_ID = ticket.getTicketID();
-            int EVT_ID = ticket.getEventID();
-            int STG_ID = ticket.getStageID();
-            int SEAT_ID = ticket.getSeatID();
-            double TKT_PRICE = ticket.getPrice();
-            tableModel.addRow(new Object[]{TKT_ID + "", EVT_ID + "", STG_ID + "", SEAT_ID + "", TKT_PRICE + ""});
-        }
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        frame.add(new TicketListPanel().getTicketListPanel());
-        frame.setVisible(true);
-        frame.pack();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
 
     public void addTicket() {
         System.out.println("addTicket");
@@ -287,7 +276,7 @@ public class TicketListPanel {
     }
 
     public void searchTicket() throws SQLException {
-        System.out.println("searchTicket");
+        System.out.println("search Ticket");
         textSearched = jtfSearch.getText();
         listTicket = TicketDAO.getInstance().getTicketList();
         System.out.println("Text input: " + textSearched);
@@ -310,10 +299,10 @@ public class TicketListPanel {
                     listTicket.add(ticket);
                 }
             }
-            MainPage.changeView(new TicketListPanel(listTicket, textSearched).getTicketListPanel(), MainPage.getJlbTicket(), "Ticket Information Form");
+            MainPage.changeView(new TicketListPanel(listTicket, textSearched).getTicketListPanel(), MainPage.getJlbTicket(), "Ticket List Panel");
         } else {
             System.out.println("No search");
-            MainPage.changeView(new TicketListPanel().getTicketListPanel(), MainPage.getJlbTicket(), "Ticket Information Form");
+            MainPage.changeView(new TicketListPanel().getTicketListPanel(), MainPage.getJlbTicket(), "Ticket List Panel");
         }
     }
 }

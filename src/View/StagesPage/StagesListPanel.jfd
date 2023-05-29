@@ -1,17 +1,17 @@
-JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 			"$horizontalGroup": "par l {seq t {space :::x, comp StageList:::p::p, space :::p}}"
-			"$verticalGroup": "par l {seq l {comp StageList:::p::p, space :0:32:x}}"
+			"$verticalGroup": "par l {seq l {comp StageList:::p::p, space :0:27:x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq l {space :p:386:p, comp jlbStageList:::p::p, space :::x}, seq l {par t:::p {comp scrollPane1::l:::x, seq l {comp jtfSearch:::p:210:p, space :6:6:p, comp jlbSearch:::p:111:p, space :287:287:p, comp jlbAdd:::p:90:p, space :6:6:p, comp jlbEdit:::p:90:p, space :6:6:p, comp jlbDelete:::p::p}}, space :0:135:x}}"
-				"$verticalGroup": "par l {seq l {space :p:22:p, comp jlbStageList:::p::p, space :p:31:p, par l {comp jtfSearch:::p::p, seq l {space :2:2:p, par l {comp jlbSearch:::p:26:p, comp jlbAdd:::p:26:p, comp jlbEdit:::p:26:p, comp jlbDelete:::p:26:p}}}, space u:::p, comp scrollPane1:::p:419:p, space ::33:x}}"
+				"$horizontalGroup": "par l {seq l {space :p:386:p, comp jlbStageList:::p::p, space :::x}, seq l {par t:::p {comp scrollPane1::l:::x, seq l {space :::p, comp jtfSearch:::p:210:p, space u:::p, comp jlbSearch:::p:111:p, space :287:287:p, comp jlbAdd:::p:90:p, space :6:6:p, comp jlbEdit:::p:90:p, space :6:6:p, comp jlbDelete:::p::p}}, space :0:123:x}}"
+				"$verticalGroup": "par l {seq l {space :p:22:p, comp jlbStageList:::p::p, space :p:30:p, par l {par b {comp jlbSearch::b:p:26:p, comp jtfSearch::b:p::p}, comp jlbAdd:::p:26:p, comp jlbEdit:::p:26:p, comp jlbDelete:::p:26:p}, space :p:13:p, comp scrollPane1:::p:419:p, space ::33:x}}"
 			} ) {
 				name: "StageList"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -25,12 +25,47 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 					name: "scrollPane1"
 					add( new FormComponent( "javax.swing.JTable" ) {
-						name: "table1"
+						name: "StagesListTable"
+						"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+							add( "ID" )
+							add( "Name" )
+							add( "Address" )
+							add( "Rental Price" )
+							add( "Capacity" )
+							add( "Open Time" )
+							add( "Close Time" )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
 					} )
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
 					name: "jtfSearch"
-					"text": " Search MuzikTic"
 					"font": new java.awt.Font( "Lato", 0, 16 )
 					"foreground": new java.awt.Color( 97, 184, 132, 255 )
 					"caretColor": new java.awt.Color( 97, 184, 132, 255 )
@@ -41,6 +76,9 @@ new FormModel {
 					"font": &Font0 new java.awt.Font( "Lato Black", 1, 16 )
 					"foreground": &Color0 new java.awt.Color( 255, 255, 255, 255 )
 					"background": &Color1 new java.awt.Color( 97, 184, 132, 255 )
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "jlbEdit"
@@ -48,13 +86,19 @@ new FormModel {
 					"font": #Font0
 					"foreground": #Color0
 					"background": #Color1
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "jlbAdd"
-					"text": "ADD "
+					"text": "ADD"
 					"font": #Font0
 					"foreground": #Color0
 					"background": #Color1
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "jlbSearch"
@@ -62,6 +106,9 @@ new FormModel {
 					"font": #Font0
 					"foreground": #Color0
 					"background": #Color1
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {

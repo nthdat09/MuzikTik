@@ -1,7 +1,7 @@
 package View.TicketPage;
 
 import Controller.TicketPage.TicketDeleteConfirmJDialogController;
-import Model.DAO.TicketDAO;
+import Model.DAO.Ticket.TicketDAO;
 import View.MainPage.MainPage;
 
 import javax.swing.*;
@@ -111,7 +111,7 @@ public class ComfirmTicketDeleteJPopupMenu extends JDialog{
 
     public void deleteTicket() throws SQLException {
         if (this.getSelectedID() == -1) {
-            JOptionPane.showMessageDialog(null, "Please select a customer to delete");
+            JOptionPane.showMessageDialog(null, "Please select a ticket to delete");
             return;
         }
         else {

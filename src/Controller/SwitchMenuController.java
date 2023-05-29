@@ -5,7 +5,7 @@ import View.AnalyticPage.AnalyticPanel;
 import View.CustomersListPage.CustomersListPanel;
 import View.EventPage.EventPanel;
 import View.Home.HomePanel;
-import View.PartnerPage.PartnerPanel;
+import View.PartnerPage.PartnerListPanel;
 import View.SettingPage.AccountPanel;
 import View.StagesPage.StagesListPanel;
 import View.TicketPage.TicketListPanel;
@@ -84,7 +84,7 @@ public class SwitchMenuController {
                     node = new StagesListPanel();
                     break;
                 case "PartnerPanel":
-                    node = new PartnerPanel();
+                    node = new PartnerListPanel();
                     break;
                 case "AnalyticPanel":
                     node = new AnalyticPanel();
