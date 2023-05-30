@@ -1,4 +1,4 @@
-package Controller;
+package Controller.LoginPage;
 
 import View.LoginPage.LoginPage;
 
@@ -19,6 +19,9 @@ private LoginPage loginPage;
         String src = e.getActionCommand();
         if (src.equals("LOGIN")) {
             this.loginPage.DoLogin();
+        }
+        else if (src.equals("Forgot Password?")) {
+            this.loginPage.SwitchToForgotPasswordPage();
         }
 
     }

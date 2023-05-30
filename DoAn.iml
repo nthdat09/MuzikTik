@@ -7,9 +7,20 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="IntelliJ IDEA GridLayout" level="project" />
-    <orderEntry type="library" name="protobuf-java-3.19.4 (2)" level="project" />
-    <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
-    <orderEntry type="library" name="Library" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.mail.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" exported="" name="commons-email-1.4" level="project" />
+    <orderEntry type="library" exported="" name="protobuf-java-3.19.4 (2)" level="project" />
+    <orderEntry type="library" exported="" name="Library" level="project" />
+    <orderEntry type="library" exported="" name="KotlinJavaRuntime" level="project" />
+    <orderEntry type="library" exported="" name="IntelliJ IDEA GridLayout" level="project" />
+    <orderEntry type="library" name="activation" level="project" />
   </component>
 </module>
