@@ -68,6 +68,7 @@ public class ConfirmLogoutJPopupMenu extends JDialog{
         //======== ConfirmJDialog ========
         {
             ConfirmJDialog.setVisible(true);
+            ConfirmJDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             var ConfirmJDialogContentPane = ConfirmJDialog.getContentPane();
 
             //---- ConfirmText ----

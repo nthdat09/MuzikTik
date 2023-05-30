@@ -258,7 +258,7 @@ public class LoginPage extends JPanel {
             if (username.equals(realUsername) && password.equals(realPassword)) {
                 this.LoginStatus.setForeground(Color.GREEN);
                 this.LoginPageDialog.dispose();
-                MainPage mainMenu = new MainPage();
+                MainPage mainMenu = new MainPage(username);
                 mainMenu.setVisible(true);
             }
             else {

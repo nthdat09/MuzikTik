@@ -21,9 +21,12 @@ import java.util.List;
  */
 public class MainPage extends JFrame {
     ActionListener ac = new LogoutController(this);
-    public MainPage() {
+    public MainPage(String username) {
         initComponents();
+        initSomeSetting(username);
+    }
 
+    private void initSomeSetting(String username) {
         SwitchMenuController controller = new SwitchMenuController(jpnView);
         controller.setView(jpnHome,jlbHome);
 
@@ -39,6 +42,7 @@ public class MainPage extends JFrame {
         controller.setEvent(listItem);
 
         this.getLogOutJMenuItem().addActionListener(ac);
+        this.getNameJMenuItem().setText("Hello, " + username);
     }
 
     public static void changeView(JPanel jpnItem, JLabel jlbItem, String Kind){
@@ -48,7 +52,6 @@ public class MainPage extends JFrame {
 
     public void logout() {
         ConfirmLogoutJPopupMenu confirmLogoutJPopupMenu = new ConfirmLogoutJPopupMenu(this);
-        confirmLogoutJPopupMenu.getConfirmJDialog().setVisible(true);
     }
 
     Border border = new LineBorder(Color.decode("#61b884"),1,true);
@@ -185,10 +188,6 @@ public class MainPage extends JFrame {
         return nameJMenuItem;
     }
 
-    public JMenuItem getIdJMenuItem() {
-        return idJMenuItem;
-    }
-
     public JMenuItem getLogOutJMenuItem() {
         return logOutJMenuItem;
     }
@@ -205,7 +204,6 @@ public class MainPage extends JFrame {
         menuBar1 = new JMenuBar();
         avatarJMenu = new JMenu();
         nameJMenuItem = new JMenuItem();
-        idJMenuItem = new JMenuItem();
         logOutJMenuItem = new JMenuItem();
         navigationPanel = new JPanel();
         jpnHome = new JPanel();
@@ -237,11 +235,12 @@ public class MainPage extends JFrame {
         {
             headerPanel.setBorder(new LineBorder(new Color(0xbebebe)));
             headerPanel.setBackground(Color.white);
-            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-            0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-            red) ,headerPanel. getBorder( )) ); headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-            beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) ,headerPanel. getBorder( )) ); headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
             headerPanel.setLayout(null);
 
             //---- searchButton ----
@@ -318,11 +317,6 @@ public class MainPage extends JFrame {
                     //---- nameJMenuItem ----
                     nameJMenuItem.setText("Name");
                     avatarJMenu.add(nameJMenuItem);
-                    avatarJMenu.addSeparator();
-
-                    //---- idJMenuItem ----
-                    idJMenuItem.setText("ID");
-                    avatarJMenu.add(idJMenuItem);
                     avatarJMenu.addSeparator();
 
                     //---- logOutJMenuItem ----
@@ -756,7 +750,6 @@ public class MainPage extends JFrame {
     private JMenuBar menuBar1;
     private JMenu avatarJMenu;
     private JMenuItem nameJMenuItem;
-    private JMenuItem idJMenuItem;
     private static JMenuItem logOutJMenuItem;
     private JPanel navigationPanel;
     private JPanel jpnHome;

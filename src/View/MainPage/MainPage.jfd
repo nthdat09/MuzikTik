@@ -92,16 +92,6 @@ new FormModel {
 							name: "separator1"
 						} )
 						add( new FormComponent( "javax.swing.JMenuItem" ) {
-							name: "idJMenuItem"
-							"text": "ID"
-							auxiliary() {
-								"JavaCodeGenerator.variableGetter": true
-							}
-						} )
-						add( new FormComponent( "javax.swing.JPopupMenu$Separator" ) {
-							name: "separator2"
-						} )
-						add( new FormComponent( "javax.swing.JMenuItem" ) {
 							name: "logOutJMenuItem"
 							"text": "LOGOUT"
 							auxiliary() {

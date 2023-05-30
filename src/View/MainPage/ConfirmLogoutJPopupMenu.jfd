@@ -12,6 +12,7 @@ new FormModel {
 		} ) {
 			name: "ConfirmJDialog"
 			"visible": true
+			"defaultCloseOperation": 2
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "ConfirmText"
 				"text": "ARE YOU SURE TO LOGOUT?"
