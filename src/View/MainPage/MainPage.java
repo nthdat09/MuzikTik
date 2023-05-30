@@ -4,6 +4,7 @@
 
 package View.MainPage;
 
+import Controller.MainMenu.LogoutController;
 import Model.BEAN.MenuList;
 import Controller.Menu.SwitchMenuController;
 
@@ -19,10 +20,9 @@ import java.util.List;
  * @author ADMIN
  */
 public class MainPage extends JFrame {
+    ActionListener ac = new LogoutController(this);
     public MainPage() {
         initComponents();
-        jpnDropMenu4.setSize(0,0);
-        jpnDropMenu4.setBorder(border);
 
         SwitchMenuController controller = new SwitchMenuController(jpnView);
         controller.setView(jpnHome,jlbHome);
@@ -37,11 +37,18 @@ public class MainPage extends JFrame {
         listItem.add(new MenuList("AnalyticPanel",jpnAnalytics,jlbAnalytics));
         listItem.add(new MenuList("AccountPanel", jpnSettings,jlbSettings));
         controller.setEvent(listItem);
+
+        this.getLogOutJMenuItem().addActionListener(ac);
     }
 
     public static void changeView(JPanel jpnItem, JLabel jlbItem, String Kind){
         SwitchMenuController controller = new SwitchMenuController(getJpnView());
         controller.changeViewController(jpnItem, jlbItem, Kind);
+    }
+
+    public void logout() {
+        ConfirmLogoutJPopupMenu confirmLogoutJPopupMenu = new ConfirmLogoutJPopupMenu(this);
+        confirmLogoutJPopupMenu.getConfirmJDialog().setVisible(true);
     }
 
     Border border = new LineBorder(Color.decode("#61b884"),1,true);
@@ -53,49 +60,7 @@ public class MainPage extends JFrame {
     private void button1MouseClicked(MouseEvent e) {
         jpnMainMenu.setVisible(false);
     }
-
-    private void jpnAvatarMouseEntered(MouseEvent e) {
-        jpnDropMenu4.setSize(300,300);
-    }
-
-    private void label10MouseExited(MouseEvent e) {
-        jpnDropMenu4.setSize(0,0);
-        jpnBuffer.setSize(220,19);
-        jpnBuffer2.setSize(220,25);
-    }
-
-    private void label10MouseEntered(MouseEvent e) {
-        jpnDropMenu4.setSize(195,245);
-    }
-
-    private void jpnDropMenu4MouseEntered(MouseEvent e) {
-        jpnDropMenu4.setSize(195,245);
-    }
-
-    private void jpnDropMenu4MouseExited(MouseEvent e) {
-        jpnDropMenu4.setSize(0,0);
-        jpnBuffer.setSize(0,0);
-    }
-
-    private void jpnBufferMouseEntered(MouseEvent e) {
-        jpnDropMenu4.setSize(195,245);
-    }
-
-    private void jpnBufferMouseExited(MouseEvent e) {
-        jpnDropMenu4.setSize(0,0);
-        jpnBuffer.setSize(0,0);
-    }
-
-    private void jpnBuffer2MouseEntered(MouseEvent e) {
-        jpnDropMenu4.setSize(195,245);
-    }
-
-    private void jpnBuffer2MouseExited(MouseEvent e) {
-        jpnDropMenu4.setSize(0,0);
-        jpnBuffer.setSize(0,0);
-        jpnBuffer2.setSize(0,0);
-    }
-
+    
     private void searchButtonMouseEntered(MouseEvent e) {
         // TODO add your code here
     }
@@ -204,8 +169,28 @@ public class MainPage extends JFrame {
         return jlbHome;
     }
 
-    public JButton getLogoutJbt() {
-        return LogoutJbt;
+    public JMenu getAvatarJMenu() {
+        return avatarJMenu;
+    }
+
+    private void jpnBufferMouseEntered(MouseEvent e) {
+        // TODO add your code here
+    }
+
+    private void jpnBufferMouseExited(MouseEvent e) {
+        // TODO add your code here
+    }
+
+    public JMenuItem getNameJMenuItem() {
+        return nameJMenuItem;
+    }
+
+    public JMenuItem getIdJMenuItem() {
+        return idJMenuItem;
+    }
+
+    public JMenuItem getLogOutJMenuItem() {
+        return logOutJMenuItem;
     }
 
     private void initComponents() {
@@ -214,10 +199,14 @@ public class MainPage extends JFrame {
         headerPanel = new JPanel();
         searchButton = new JTextField();
         nameAppLabell = new JLabel();
-        label10 = new JLabel();
         jpnBuffer = new JPanel();
         Logo1 = new JLabel();
         Logo2 = new JLabel();
+        menuBar1 = new JMenuBar();
+        avatarJMenu = new JMenu();
+        nameJMenuItem = new JMenuItem();
+        idJMenuItem = new JMenuItem();
+        logOutJMenuItem = new JMenuItem();
         navigationPanel = new JPanel();
         jpnHome = new JPanel();
         jlbHome = new JLabel();
@@ -236,12 +225,7 @@ public class MainPage extends JFrame {
         jpnSettings = new JPanel();
         jlbSettings = new JLabel();
         jpnMainMenu = new JPanel();
-        jpnDropMenu4 = new JPanel();
-        NameJlb = new JLabel();
-        IDJlb = new JLabel();
-        LogoutJbt = new JButton();
         jpnView = new JPanel();
-        jpnBuffer2 = new JPanel();
 
         //======== this ========
         setVisible(true);
@@ -253,12 +237,11 @@ public class MainPage extends JFrame {
         {
             headerPanel.setBorder(new LineBorder(new Color(0xbebebe)));
             headerPanel.setBackground(Color.white);
-            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,headerPanel. getBorder( )) ); headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+            0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+            red) ,headerPanel. getBorder( )) ); headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+            beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             headerPanel.setLayout(null);
 
             //---- searchButton ----
@@ -280,29 +263,6 @@ public class MainPage extends JFrame {
             nameAppLabell.setIcon(new ImageIcon(getClass().getResource("/Asset/music logo design - no name.png")));
             headerPanel.add(nameAppLabell);
             nameAppLabell.setBounds(0, 5, 80, 65);
-
-            //---- label10 ----
-            label10.setText("Avatar");
-            label10.setHorizontalAlignment(SwingConstants.CENTER);
-            label10.setBorder(new LineBorder(new Color(0x61b884)));
-            label10.setFont(new Font("Lato Black", Font.BOLD, 18));
-            label10.setForeground(new Color(0x61b884));
-            label10.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    label10MouseEntered(e);
-                }
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    label10MouseExited(e);
-                }
-                @Override
-                public void mousePressed(MouseEvent e) {
-                    label10MousePressed(e);
-                }
-            });
-            headerPanel.add(label10);
-            label10.setBounds(1235, 10, 105, 45);
 
             //======== jpnBuffer ========
             {
@@ -345,6 +305,34 @@ public class MainPage extends JFrame {
             Logo2.setFont(new Font("Fredoka One", Font.BOLD, 15));
             headerPanel.add(Logo2);
             Logo2.setBounds(85, 45, 325, Logo2.getPreferredSize().height);
+
+            //======== menuBar1 ========
+            {
+                menuBar1.setBorderPainted(false);
+                menuBar1.setBackground(Color.white);
+
+                //======== avatarJMenu ========
+                {
+                    avatarJMenu.setText("Avatar");
+
+                    //---- nameJMenuItem ----
+                    nameJMenuItem.setText("Name");
+                    avatarJMenu.add(nameJMenuItem);
+                    avatarJMenu.addSeparator();
+
+                    //---- idJMenuItem ----
+                    idJMenuItem.setText("ID");
+                    avatarJMenu.add(idJMenuItem);
+                    avatarJMenu.addSeparator();
+
+                    //---- logOutJMenuItem ----
+                    logOutJMenuItem.setText("LOGOUT");
+                    avatarJMenu.add(logOutJMenuItem);
+                }
+                menuBar1.add(avatarJMenu);
+            }
+            headerPanel.add(menuBar1);
+            menuBar1.setBounds(1260, 15, 105, 40);
 
             {
                 // compute preferred size
@@ -701,64 +689,6 @@ public class MainPage extends JFrame {
             jpnMainMenu.setBackground(Color.white);
             jpnMainMenu.setLayout(null);
 
-            //======== jpnDropMenu4 ========
-            {
-                jpnDropMenu4.setBorder(null);
-                jpnDropMenu4.setBackground(Color.white);
-                jpnDropMenu4.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        jpnDropMenu4MouseEntered(e);
-                    }
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        jpnDropMenu4MouseExited(e);
-                    }
-                });
-
-                //---- NameJlb ----
-                NameJlb.setText("*t\u00ean kh\u00e1ch h\u00e0ng");
-                NameJlb.setFont(new Font("Lato Black", Font.BOLD, 18));
-                NameJlb.setForeground(new Color(0x61b884));
-
-                //---- IDJlb ----
-                IDJlb.setText("*ID");
-                IDJlb.setFont(new Font("Lato Black", Font.BOLD, 18));
-                IDJlb.setForeground(new Color(0x61b884));
-
-                //---- LogoutJbt ----
-                LogoutJbt.setText("*\u0111\u0103ng xu\u1ea5t");
-                LogoutJbt.setFont(new Font("Lato Black", Font.BOLD, 18));
-                LogoutJbt.setForeground(new Color(0x61b884));
-
-                GroupLayout jpnDropMenu4Layout = new GroupLayout(jpnDropMenu4);
-                jpnDropMenu4.setLayout(jpnDropMenu4Layout);
-                jpnDropMenu4Layout.setHorizontalGroup(
-                    jpnDropMenu4Layout.createParallelGroup()
-                        .addGroup(jpnDropMenu4Layout.createSequentialGroup()
-                            .addGroup(jpnDropMenu4Layout.createParallelGroup()
-                                .addComponent(NameJlb, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(GroupLayout.Alignment.TRAILING, jpnDropMenu4Layout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
-                                    .addGroup(jpnDropMenu4Layout.createParallelGroup()
-                                        .addComponent(IDJlb, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(LogoutJbt, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))))
-                            .addContainerGap())
-                );
-                jpnDropMenu4Layout.setVerticalGroup(
-                    jpnDropMenu4Layout.createParallelGroup()
-                        .addGroup(jpnDropMenu4Layout.createSequentialGroup()
-                            .addComponent(NameJlb, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(IDJlb, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(LogoutJbt, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap())
-                );
-            }
-            jpnMainMenu.add(jpnDropMenu4);
-            jpnDropMenu4.setBounds(950, 0, 210, 5);
-
             //======== jpnView ========
             {
                 jpnView.setBackground(Color.white);
@@ -795,35 +725,6 @@ public class MainPage extends JFrame {
         contentPane.add(jpnMainMenu);
         jpnMainMenu.setBounds(240, 95, 1161, 735);
 
-        //======== jpnBuffer2 ========
-        {
-            jpnBuffer2.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    jpnBufferMouseEntered(e);
-                    jpnBuffer2MouseEntered(e);
-                }
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    jpnBufferMouseExited(e);
-                    jpnBuffer2MouseExited(e);
-                }
-            });
-
-            GroupLayout jpnBuffer2Layout = new GroupLayout(jpnBuffer2);
-            jpnBuffer2.setLayout(jpnBuffer2Layout);
-            jpnBuffer2Layout.setHorizontalGroup(
-                jpnBuffer2Layout.createParallelGroup()
-                    .addGap(0, 220, Short.MAX_VALUE)
-            );
-            jpnBuffer2Layout.setVerticalGroup(
-                jpnBuffer2Layout.createParallelGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-            );
-        }
-        contentPane.add(jpnBuffer2);
-        jpnBuffer2.setBounds(1180, 75, 220, 25);
-
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -849,10 +750,14 @@ public class MainPage extends JFrame {
     private JPanel headerPanel;
     private JTextField searchButton;
     private JLabel nameAppLabell;
-    private JLabel label10;
     private JPanel jpnBuffer;
     private JLabel Logo1;
     private JLabel Logo2;
+    private JMenuBar menuBar1;
+    private JMenu avatarJMenu;
+    private JMenuItem nameJMenuItem;
+    private JMenuItem idJMenuItem;
+    private static JMenuItem logOutJMenuItem;
     private JPanel navigationPanel;
     private JPanel jpnHome;
     private static JLabel jlbHome;
@@ -871,11 +776,6 @@ public class MainPage extends JFrame {
     private JPanel jpnSettings;
     private static JLabel jlbSettings;
     private JPanel jpnMainMenu;
-    private JPanel jpnDropMenu4;
-    private JLabel NameJlb;
-    private JLabel IDJlb;
-    private JButton LogoutJbt;
     private static JPanel jpnView;
-    private JPanel jpnBuffer2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

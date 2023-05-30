@@ -7,6 +7,9 @@ new FormModel {
 			name: "this"
 			"visible": true
 			"defaultCloseOperation": 3
+			auxiliary() {
+				"JavaCodeGenerator.variableGetter": true
+			}
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 				name: "headerPanel"
 				"border": new javax.swing.border.LineBorder( new java.awt.Color( 190, 190, 190, 255 ), 1, false )
@@ -33,22 +36,6 @@ new FormModel {
 					"y": 5
 					"width": 80
 					"height": 65
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label10"
-					"text": "Avatar"
-					"horizontalAlignment": 0
-					"border": new javax.swing.border.LineBorder( new java.awt.Color( 97, 184, 132, 255 ), 1, false )
-					"font": new java.awt.Font( "Lato Black", 1, 18 )
-					"foreground": new java.awt.Color( 97, 184, 132, 255 )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "label10MouseExited", true ) )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mousePressed", "label10MousePressed", true ) )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "label10MouseEntered", true ) )
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 1235
-					"y": 10
-					"width": 105
-					"height": 45
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {space :0:220:x}"
@@ -83,6 +70,51 @@ new FormModel {
 					"x": 85
 					"y": 45
 					"width": 325
+				} )
+				add( new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
+					name: "menuBar1"
+					"borderPainted": false
+					"background": sfield java.awt.Color white
+					add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+						name: "avatarJMenu"
+						"text": "Avatar"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "nameJMenuItem"
+							"text": "Name"
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
+						} )
+						add( new FormComponent( "javax.swing.JPopupMenu$Separator" ) {
+							name: "separator1"
+						} )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "idJMenuItem"
+							"text": "ID"
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
+						} )
+						add( new FormComponent( "javax.swing.JPopupMenu$Separator" ) {
+							name: "separator2"
+						} )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "logOutJMenuItem"
+							"text": "LOGOUT"
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+								"JavaCodeGenerator.variableModifiers": 10
+							}
+						} )
+					} )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 1260
+					"y": 15
+					"width": 105
+					"height": 40
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 1401
@@ -290,42 +322,6 @@ new FormModel {
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"background": new java.awt.Color( 255, 255, 255, 255 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {par l {comp NameJlb:::::x, seq t {space :0:0:x, par l {comp IDJlb::t:p:214:p, comp LogoutJbt::t:p:214:p}}}, space :::p}}"
-					"$verticalGroup": "par l {seq l {comp NameJlb:::p:75:p, space :::p, comp IDJlb:::p:75:p, space u:::p, comp LogoutJbt:::p:75:p, space :::p}}"
-				} ) {
-					name: "jpnDropMenu4"
-					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-					"background": new java.awt.Color( 255, 255, 255, 255 )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jpnDropMenu4MouseEntered", true ) )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jpnDropMenu4MouseExited", true ) )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "NameJlb"
-						"text": "*tên khách hàng"
-						"font": new java.awt.Font( "Lato Black", 1, 18 )
-						"foreground": new java.awt.Color( 97, 184, 132, 255 )
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "IDJlb"
-						"text": "*ID"
-						"font": new java.awt.Font( "Lato Black", 1, 18 )
-						"foreground": new java.awt.Color( 97, 184, 132, 255 )
-					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "LogoutJbt"
-						"text": "*đăng xuất"
-						"font": new java.awt.Font( "Lato Black", 1, 18 )
-						"foreground": new java.awt.Color( 97, 184, 132, 255 )
-						auxiliary() {
-							"JavaCodeGenerator.variableGetter": true
-						}
-					} )
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"width": 210
-					"height": 5
-					"x": 950
-					"y": 0
-				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {space :0:1155:x}"
 					"$verticalGroup": "par l {space :0:730:x}"
 				} ) {
@@ -346,21 +342,6 @@ new FormModel {
 				"y": 95
 				"height": 735
 				"width": 1161
-			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {space :0:220:x}"
-				"$verticalGroup": "par l {space :0:0:x}"
-			} ) {
-				name: "jpnBuffer2"
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jpnBufferMouseEntered", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jpnBufferMouseExited", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jpnBuffer2MouseEntered", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jpnBuffer2MouseExited", true ) )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"height": 25
-				"x": 1180
-				"y": 75
-				"width": 220
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
