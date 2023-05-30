@@ -53,8 +53,6 @@ new FormModel {
 						"horizontalTextPosition": 4
 						"horizontalAlignment": 0
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jlbInfoMouseClicked", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbInfoMouseEntered", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbInfoMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -65,8 +63,6 @@ new FormModel {
 					"background": #Color0
 					"preferredSize": new java.awt.Dimension( 121, 38 )
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jpnTicketFeeMouseClicked", true ) )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jpnTicketFeeMouseEntered", true ) )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jpnTicketFeeMouseClicked", true ) )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "TicketFeeText"
 						"text": "TICKET FEES"
@@ -75,8 +71,6 @@ new FormModel {
 						"horizontalTextPosition": 4
 						"horizontalAlignment": 0
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "TicketFeeTextMouseClicked", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "TicketFeeTextMouseEntered", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "TicketFeeTextMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -94,8 +88,6 @@ new FormModel {
 						"horizontalTextPosition": 4
 						"horizontalAlignment": 0
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jlbSeatMouseClicked", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbSeatMouseEntered", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbSeatMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {

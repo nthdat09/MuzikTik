@@ -55,7 +55,6 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventPicture1"
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "evetntPicture1MouseClicked", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventPicture2"

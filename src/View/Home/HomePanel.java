@@ -6,11 +6,16 @@ package View.Home;
 
 import java.awt.event.*;
 
+import Controller.EventListPanel;
 import Controller.SwitchMenuController;
-import Model.BEAN.EventList;
-import Model.BEAN.MenuList;
+import Model.BEAN.*;
 import Model.DAO.Event.Event;
+import Model.DAO.Event.EventInformation.EventArtID;
+import Model.DAO.Event.EventInformation.EventInformation;
+import Model.DAO.Event.EventInformation.StageInformation;
+import View.EventPage.EventPanel;
 import View.MainPage.MainPage;
+import Model.DAO.Event.EventInformation.EventInformation;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -18,6 +23,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.DriverManager;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -31,7 +38,21 @@ import javax.swing.border.*;
  * @author ADMIN
  */
 public class HomePanel extends JPanel {
-
+    static Integer selectedEventID;
+    static String selectedEvent;
+    static Integer selectedStage;
+    MouseListener ac1 = new EventListPanel(this);
+    MouseListener ac2 = new EventListPanel(this);
+    MouseListener ac3 = new EventListPanel(this);
+    MouseListener ac4 = new EventListPanel(this);
+    MouseListener ac5 = new EventListPanel(this);
+    MouseListener ac6 = new EventListPanel(this);
+    MouseListener ac7 = new EventListPanel(this);
+    MouseListener ac8 = new EventListPanel(this);
+    MouseListener ac9 = new EventListPanel(this);
+    List<EventArtID> eventArt = null;
+    List<EventInformation> eventInformationList= null;
+    List<StageInformation> eventStageInformation = null;
     List<EventList> listEvent = null;
     ArrayList<JLabel> listLabelPicture = new ArrayList<JLabel>();
     ArrayList<JLabel> listLabelName = new ArrayList<JLabel>();
@@ -39,6 +60,23 @@ public class HomePanel extends JPanel {
 
     public HomePanel() {
         initComponents();
+        initMoreSetting();
+        initEventHandler();
+    }
+
+    public void initEventHandler() {
+        eventPicture1.addMouseListener(ac1);
+        eventPicture2.addMouseListener(ac2);
+        eventPicture3.addMouseListener(ac3);
+        evetntPicture4.addMouseListener(ac4);
+        evetntPicture5.addMouseListener(ac5);
+        evetntPicture6.addMouseListener(ac6);
+        evetntPicture7.addMouseListener(ac7);
+        evetntPicture8.addMouseListener(ac8);
+        evetntPicture9.addMouseListener(ac9);
+    }
+
+    public void initMoreSetting() {
         show(position);
         slideDot1.setSelected(true);
         mainScrollPanel.getVerticalScrollBar().setUnitIncrement(19);
@@ -47,7 +85,6 @@ public class HomePanel extends JPanel {
         addLabelDate();
         listEvent = Event.getEventList();
         setEventList();
-
     }
     public void addListPicture() {
         listLabelPicture.add(eventPicture1);
@@ -89,7 +126,7 @@ public class HomePanel extends JPanel {
             String eventName = listEvent.get(i).getEventName();
             String eventDate = listEvent.get(i).getEventDate();
 
-            ImageIcon icon = new ImageIcon(getClass().getResource("/Asset/Event/" + eventPicture));
+            ImageIcon icon = new ImageIcon(getClass().getResource("/Image/" + eventPicture));;
             listLabelPicture.get(i).setIcon(icon);
             listLabelName.get(i).setText(eventName);
             listLabelDate.get(i).setText(eventDate);
@@ -98,7 +135,6 @@ public class HomePanel extends JPanel {
 
     int position = 0;
     int index = 0;
-    int time =0;
     public String[] takeImage() {
         File f = new File(getClass().getResource("/Image").getFile());
         String[] Images = f.list();
@@ -111,6 +147,62 @@ public class HomePanel extends JPanel {
         ImageIcon icon = new ImageIcon(getClass().getResource("/Image/" + img));
         Image image = icon.getImage().getScaledInstance(796, 262, Image.SCALE_SMOOTH);
         mainLivePicture.setIcon(new ImageIcon(image));
+    }
+
+    public void clickEventPanel(String src) {
+        setSelectedEvent(src);
+        MainPage.changeView(new EventPanel(), MainPage.getJlbEvent(), "EventPanel");
+        eventInformationList = EventInformationList.getEventInformationList();
+        eventSetting();
+        eventStageInformation = GetStageName.getStageInformationList();
+        stageSetting();
+        eventArt = GetArt.getArtByID();
+        pictureArtSetting();
+    }
+    public void eventSetting() {
+        for(EventInformation eventInformation : eventInformationList) {
+            EventPanel.getEventName().setText(eventInformation.getEventName());
+            String fomattedString = localDateToString(eventInformation.getEventDate());
+            EventPanel.getEventTime().setText(fomattedString);
+            setSelectedStage(eventInformation.getEventStageID());
+            EventPanel.getDescriptionText().setText(eventInformation.getEventDescription());
+            setSelectedEventID(eventInformation.getEventID());
+        }
+    }
+    public void pictureArtSetting() {
+        for(EventArtID art : eventArt) {
+            ImageIcon icon = new ImageIcon(getClass().getResource("/Image/" + art.getEventArtID()));;
+            EventPanel.getEventArt().setIcon(icon);
+        }
+    }
+    public void stageSetting() {
+        for(StageInformation stage : eventStageInformation) {
+            EventPanel.getEventPlace().setText(stage.getStageName());
+        }
+    }
+    public String localDateToString(LocalDate localDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedString = localDate.format(formatter);
+
+        return formattedString;
+    }
+    public void setSelectedEventID(Integer eventID) {
+        selectedEventID = eventID;
+    }
+    public static Integer getSelectedEventID() {
+        return selectedEventID;
+    }
+    public void setSelectedEvent(String src) {
+        selectedEvent = src;
+    }
+    public static String getSelectedEvent() {
+        return selectedEvent;
+    }
+    public void setSelectedStage(Integer stageID) {
+        selectedStage = stageID;
+    }
+    public static Integer getSelectedStage() {
+        return selectedStage;
     }
     private void radioButton1MouseClicked(MouseEvent e) {
         if(slideDot1.isSelected()) {
@@ -254,10 +346,9 @@ public class HomePanel extends JPanel {
         }
     }
 
-    private void evetntPicture1MouseClicked(MouseEvent e) {
+    public static JLabel getEventName1() {
+        return eventName1;
     }
-
-
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Man
@@ -304,13 +395,13 @@ public class HomePanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-        swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border
-        . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg"
-        ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder
-        ( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-        .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException
-        ( ); }} );
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
+        .swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing
+        .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
+        Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red
+        ), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
+        public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName(
+        )))throw new RuntimeException();}});
 
         //======== mainScrollPanel ========
         {
@@ -360,12 +451,6 @@ public class HomePanel extends JPanel {
 
                 //---- eventPicture1 ----
                 eventPicture1.setBorder(null);
-                eventPicture1.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        evetntPicture1MouseClicked(e);
-                    }
-                });
 
                 //---- eventPicture2 ----
                 eventPicture2.setBorder(null);
@@ -736,7 +821,7 @@ public class HomePanel extends JPanel {
     private JLabel eventPicture3;
     private JLabel eventPicture1;
     private JLabel eventPicture2;
-    private JLabel eventName1;
+    private static JLabel eventName1;
     private JLabel eventName2;
     private JLabel eventDate2;
     private JLabel eventDate1;

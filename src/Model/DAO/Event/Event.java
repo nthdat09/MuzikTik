@@ -25,7 +25,7 @@ public class Event {
 
             while(rs.next()) {
                 String eventPicture = rs.getString("eventPicture");
-                String eventName = rs.getString("eventName");
+                String eventName = rs.getString("EVT_NAME");
                 String eventDate = rs.getString("eventDate");
                 eventList = new EventList(eventPicture, eventName, eventDate);
                 result.add(eventList);

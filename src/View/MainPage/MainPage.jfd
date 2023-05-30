@@ -17,7 +17,6 @@ new FormModel {
 					"font": new java.awt.Font( "Lato", 0, 16 )
 					"foreground": new java.awt.Color( 102, 102, 102, 255 )
 					"border": new javax.swing.border.LineBorder( new java.awt.Color( 97, 184, 132, 255 ), 1, true )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "searchButtonMouseEntered", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 750
 					"y": 20
@@ -42,7 +41,6 @@ new FormModel {
 					"font": new java.awt.Font( "Lato Black", 1, 18 )
 					"foreground": new java.awt.Color( 97, 184, 132, 255 )
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "label10MouseExited", true ) )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mousePressed", "label10MousePressed", true ) )
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "label10MouseEntered", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 1235
@@ -114,8 +112,6 @@ new FormModel {
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
 						}
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbHomeMouseEntered", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbHomeMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -136,8 +132,6 @@ new FormModel {
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
 						}
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbEventMouseExited", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbEventMouseEntered", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -158,8 +152,6 @@ new FormModel {
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
 						}
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbCustomerMouseEntered", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbCustomerMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -180,8 +172,6 @@ new FormModel {
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
 						}
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbTicketsMouseEntered", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbTicketsMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -202,8 +192,6 @@ new FormModel {
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
 						}
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbStagesMouseEntered", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbStagesMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -224,8 +212,6 @@ new FormModel {
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
 						}
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbParnersMouseEntered", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbParnersMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -246,8 +232,6 @@ new FormModel {
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
 						}
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbAnalyticsMouseEntered", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbAnalyticsMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
@@ -268,8 +252,6 @@ new FormModel {
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
 						}
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbSettingsMouseEntered", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbSettingsMouseExited", true ) )
 					} )
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -356,4 +338,3 @@ new FormModel {
 		} )
 	}
 }
-

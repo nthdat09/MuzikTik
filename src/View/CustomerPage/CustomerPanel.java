@@ -30,28 +30,7 @@ public class CustomerPanel extends JPanel {
         listItem.add(new CustomerList("historyCustomer",jpnHistory,jlbHistoory));
         controller.setEvent(listItem);
     }
-    public static void main (String[] args) {
-        JFrame frame = new JFrame("Đồ án bán vé hoà nhạc");
-        frame.setContentPane(new CustomerPanel());
-        frame.pack();
-        frame.setVisible(true);
-    }
 
-    private void button1MouseClicked(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void informationButtonMouseClicked(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void button2MouseClicked(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void historyButtonMouseClicked(MouseEvent e) {
-        // TODO add your code here
-    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off

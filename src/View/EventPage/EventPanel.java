@@ -4,9 +4,14 @@
 
 package View.EventPage;
 
+import Model.BEAN.EventInformationList;
+import Model.DAO.Event.EventInformation.EventInformation;
+
 import java.awt.event.*;
 
 import java.awt.*;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
@@ -15,6 +20,7 @@ import javax.swing.border.*;
  * @author Admin
  */
 public class EventPanel extends JPanel {
+
     public EventPanel() {
         initComponents();
         selectedTab(0);
@@ -40,39 +46,11 @@ public class EventPanel extends JPanel {
         selectedTab(2);
     }
 
-    private void jlbInfoMouseEntered(MouseEvent e) {
-
-    }
-
-    private void jlbInfoMouseExited(MouseEvent e) {
-
-    }
-
     private void jpnTicketFeeMouseClicked(MouseEvent e) {
         jtbTabEvent.setSelectedIndex(1);
         selectedTab(1);
     }
-
-    private void jpnTicketFeeMouseEntered(MouseEvent e) {
-
-    }
-
-    private void TicketFeeTextMouseEntered(MouseEvent e) {
-
-    }
-
-    private void TicketFeeTextMouseExited(MouseEvent e) {
-
-    }
-
-    private void jlbSeatMouseEntered(MouseEvent e) {
-
-    }
-
-    private void jlbSeatMouseExited(MouseEvent e) {
-
-    }
-
+    
     private void jpnInfoMouseClicked(MouseEvent e) {
         jtbTabEvent.setSelectedIndex(0);
         selectedTab(0);
@@ -182,6 +160,21 @@ public class EventPanel extends JPanel {
         }
     }
 
+    public static JLabel getEventName() {
+        return EventName;
+    }
+    public static JLabel getEventArt() {
+        return EventArt;
+    }
+    public static JLabel getEventTime() {
+        return EventTime;
+    }
+    public static JLabel getEventPlace() {
+        return EventPlace;
+    }
+    public static JLabel getDescriptionText() {
+        return DescriptionText;
+    }
     private void checkBox2(ActionEvent e) {
         isCheckSelected(2);
     }
@@ -251,12 +244,13 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
-        .EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder.CENTER,javax
-        .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.awt.Font.BOLD,
-        12),java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans
-        .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072".equals(e.
-        getPropertyName()))throw new RuntimeException();}});
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
+        javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax
+        . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
+        . awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+        . Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .
+        PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .
+        equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
         setLayout(null);
 
         //======== jpnEventHeader ========
@@ -304,14 +298,6 @@ public class EventPanel extends JPanel {
                     public void mouseClicked(MouseEvent e) {
                         jlbInfoMouseClicked(e);
                     }
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        jlbInfoMouseEntered(e);
-                    }
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        jlbInfoMouseExited(e);
-                    }
                 });
 
                 GroupLayout jpnInfoLayout = new GroupLayout(jpnInfo);
@@ -334,11 +320,6 @@ public class EventPanel extends JPanel {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         jpnTicketFeeMouseClicked(e);
-                        jpnTicketFeeMouseClicked(e);
-                    }
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        jpnTicketFeeMouseEntered(e);
                     }
                 });
 
@@ -352,14 +333,6 @@ public class EventPanel extends JPanel {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         TicketFeeTextMouseClicked(e);
-                    }
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        TicketFeeTextMouseEntered(e);
-                    }
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        TicketFeeTextMouseExited(e);
                     }
                 });
 
@@ -395,14 +368,6 @@ public class EventPanel extends JPanel {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         jlbSeatMouseClicked(e);
-                    }
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        jlbSeatMouseEntered(e);
-                    }
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        jlbSeatMouseExited(e);
                     }
                 });
 
@@ -1020,20 +985,13 @@ public class EventPanel extends JPanel {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
-    public static void main (String[] args) {
-        JFrame frame = new JFrame("Đồ án bán vé hoà nhạc");
-        frame.setContentPane(new EventPanel());
-        frame.pack();
-        frame.setVisible(true);
-    }
-
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - Man
     private JPanel jpnEventHeader;
-    private JLabel EventArt;
-    private JLabel EventName;
-    private JLabel EventTime;
-    private JLabel EventPlace;
+    private static JLabel EventArt;
+    private static JLabel EventName;
+    private static JLabel EventTime;
+    private static JLabel EventPlace;
     private JPanel jpnInfo;
     private JLabel jlbInfo;
     private JPanel jpnTicketFee;
@@ -1047,7 +1005,7 @@ public class EventPanel extends JPanel {
     private JScrollPane scrollPane1;
     private JPanel InformationPanel;
     private JLabel EventName2;
-    private JLabel DescriptionText;
+    private static JLabel DescriptionText;
     private JButton button1;
     private JPanel jpnEventTicket;
     private JScrollPane ticketFeeScrollPanel;
