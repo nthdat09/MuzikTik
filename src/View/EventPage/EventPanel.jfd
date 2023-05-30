@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -9,8 +9,8 @@ new FormModel {
 			"minimumSize": new java.awt.Dimension( 1268, 355 )
 			"preferredSize": new java.awt.Dimension( 1030, 2000 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq l {space :p:49:p, par l {seq {comp EventArt:::p:434:p, par l {seq {space :p:38:p, par l {comp EventName:::p:240:p, comp EventTime:::p:420:p, comp EventPlace::l:p:420:p}}, seq t {space :::p, comp jpnBuyNow:::p::p}}}, seq {comp jpnInfo:::p::p, space :::p, comp jpnTicketFee:::p::p, space :::p, comp SeatPanel:::p::p}}, space ::89:x}}"
-				"$verticalGroup": "par l {seq {space :p:39:p, par l {comp EventArt:::p:233:p, seq {comp EventName:::p:58:p, space :::p, comp EventTime:::p:38:p, space :::p, comp EventPlace:::p:38:p, space :::x, comp jpnBuyNow:::p::p}}, space s:::p, par l:::p {comp jpnInfo::l::60:x, comp jpnTicketFee::::60:x, comp SeatPanel:::::x}, space :0:0:x}}"
+				"$horizontalGroup": "par l {seq l {space :p:49:p, par l {seq {space :6:6:p, comp jpnInfo:::p:134:p, space s:::p, comp jpnTicketFee:::p:115:p, space s:::p, comp SeatPanel:::p::p, space :0:725:x}, seq l {comp EventArt:::p:434:p, par l {seq {space :p:38:p, par l {comp EventName:::p:240:p, comp EventTime:::p:420:p, comp EventPlace::l:p:420:p}, space ::239:x}, seq t {space ::489:x, comp jpnBuyNow:::p::p, space :p:68:p}}}}}}"
+				"$verticalGroup": "par l {seq {space :p:39:p, par l {comp EventArt:::p:233:p, seq {comp EventName:::p:58:p, space :::p, comp EventTime:::p:38:p, space :::p, comp EventPlace:::p:38:p}, comp jpnBuyNow::t:p::p}, space u:::p, par l:::p {comp jpnInfo::l::60:x, comp SeatPanel::t:::x, comp jpnTicketFee::t::60:x}, space :0:21:x}}"
 			} ) {
 				name: "jpnEventHeader"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -38,8 +38,8 @@ new FormModel {
 					"font": #Font0
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq t {space :::p, comp jlbInfo::::134:x}}"
-					"$verticalGroup": "par l {seq t {space :::x, comp jlbInfo:::p:48:p, space :::p}}"
+					"$horizontalGroup": "par l {comp jlbInfo::t::134:x}"
+					"$verticalGroup": "par l {comp jlbInfo::l:::x}"
 				} ) {
 					name: "jpnInfo"
 					"background": &Color0 new java.awt.Color( 97, 184, 132, 255 )
@@ -58,8 +58,8 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp TicketFeeText::l::121:x}"
-					"$verticalGroup": "par l {seq t {space :0:0:x, comp TicketFeeText:::p:59:p}}"
+					"$horizontalGroup": "par l {comp TicketFeeText::l::115:x}"
+					"$verticalGroup": "par l {comp TicketFeeText::t::60:x}"
 				} ) {
 					name: "jpnTicketFee"
 					"background": #Color0
@@ -80,8 +80,8 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbSeat::t::133:x}"
-					"$verticalGroup": "par l {comp jlbSeat::t:::x}"
+					"$horizontalGroup": "par l {comp jlbSeat:::p:115:p}"
+					"$verticalGroup": "par l {comp jlbSeat::t::60:x}"
 				} ) {
 					name: "SeatPanel"
 					"background": #Color0
@@ -118,27 +118,31 @@ new FormModel {
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 0
-				"width": 1030
-				"height": 350
+				"width": 1180
+				"height": 365
 				"y": 0
 			} )
 			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 				name: "jtbTabEvent"
 				"preferredSize": new java.awt.Dimension( 1079, 2000 )
+				"background": sfield java.awt.Color white
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {space :::p, comp scrollPane1:::p::p, space :::x}}"
-					"$verticalGroup": "par l {seq l {comp scrollPane1:::p:576:p, space :0:47:x}}"
+					"$horizontalGroup": "par l {comp scrollPane1::l::1195:x}"
+					"$verticalGroup": "par l {seq l {comp scrollPane1:::p:576:p, space :0:35:x}}"
 				} ) {
 					name: "jpnEventInformation"
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 						name: "scrollPane1"
 						"preferredSize": new java.awt.Dimension( 1020, 10021 )
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-							"$horizontalGroup": "par l {seq l {space :p:40:p, par l {comp DescriptionText:::p:900:p, seq {comp EventName2:::p:255:p, space :p:549:p, comp button1:::p:115:p}}, space ::59:x}}"
-							"$verticalGroup": "par l {seq {space :p:3:p, par b {comp button1::b:p:30:p, comp EventName2::b:p:55:p}, space s:::p, comp DescriptionText:::p:531:p, space ::24:x}}"
+							"$horizontalGroup": "par l {seq l {space :p:55:p, par l {seq {comp DescriptionText:::p:1143:p, space :::x}, seq {comp EventName2:::p:289:p, space :::x, comp button1:::p:115:p, space :p:92:p}}}}"
+							"$verticalGroup": "par l {seq {space :p:3:p, par b {comp EventName2::b:p:55:p, comp button1::b:p::p}, space s:::p, comp DescriptionText:::p:531:p, space ::24:x}}"
 						} ) {
 							name: "InformationPanel"
 							"background": new java.awt.Color( 255, 255, 255, 255 )
+							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "EventName2"
 								"text": "EVENT NAME"
@@ -151,6 +155,7 @@ new FormModel {
 								"text": "Description Event"
 								"verticalAlignment": 1
 								"font": new java.awt.Font( "Lato", 0, 14 )
+								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 							} )
 							add( new FormComponent( "javax.swing.JButton" ) {
 								name: "button1"
@@ -165,38 +170,42 @@ new FormModel {
 					"title": "text"
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq t {space :0:0:x, comp TicketFee:::p::p}}"
-					"$verticalGroup": "par l {seq l {comp TicketFee:::p::p, space :0:48:x}}"
+					"$horizontalGroup": "par l {seq l {comp ticketFeeScrollPanel:::p:1209:p, space :0:0:x}}"
+					"$verticalGroup": "par l {seq l {comp ticketFeeScrollPanel:::p:505:p, space :0:106:x}}"
 				} ) {
 					name: "jpnEventTicket"
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {seq l {space :p:48:p, par l {comp Scroll:::p:509:p, comp label1:::p:219:p}, space ::473:x}}"
-						"$verticalGroup": "par l {seq l {comp label1:::p:72:p, space :::p, comp Scroll::::350:x, space :p:147:p}}"
-					} ) {
-						name: "TicketFee"
-						"background": new java.awt.Color( 255, 255, 255, 255 )
-						"font": new java.awt.Font( "Lato Black", 1, 18 )
-						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-							name: "Scroll"
-							add( new FormComponent( "javax.swing.JTable" ) {
-								name: "TicketFeeTable"
-								"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "ticketFeeScrollPanel"
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+							"$horizontalGroup": "par l {seq l {space :p:48:p, par l {comp Scroll:::p:1070:p, comp label1:::p:219:p}, space :::x}}"
+							"$verticalGroup": "par l {seq l {comp label1:::p:72:p, space :::p, comp Scroll::::350:x, space :p:147:p}}"
+						} ) {
+							name: "TicketFee"
+							"background": new java.awt.Color( 255, 255, 255, 255 )
+							"font": new java.awt.Font( "Lato Black", 1, 18 )
+							add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+								name: "Scroll"
+								add( new FormComponent( "javax.swing.JTable" ) {
+									name: "TicketFeeTable"
+									"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+								} )
 							} )
-						} )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "label1"
-							"text": "TICKET"
-							"foreground": new java.awt.Color( 97, 184, 132, 255 )
-							"font": new java.awt.Font( "Lato Black", 1, 22 )
-							"horizontalAlignment": 2
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label1"
+								"text": "TICKET"
+								"foreground": new java.awt.Color( 97, 184, 132, 255 )
+								"font": new java.awt.Font( "Lato Black", 1, 22 )
+								"horizontalAlignment": 2
+							} )
 						} )
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "text"
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {space :p:46:p, comp jlbSeatingChart:::p:219:p, space ::760:x}}"
-					"$verticalGroup": "par l {seq l {space :p:20:p, comp jlbSeatingChart:::p:72:p, space ::531:x}}"
+					"$horizontalGroup": "par l {seq l {space :p:46:p, comp jlbSeatingChart:::p:219:p, space ::930:x}}"
+					"$verticalGroup": "par l {seq l {space :::p, comp jlbSeatingChart:::p:72:p, space ::533:x}}"
 				} ) {
 					name: "SeatEvent"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -217,8 +226,8 @@ new FormModel {
 					"title": "text"
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {space :p:44:p, par l {comp table1:::p:596:p, comp jlbSeatingChart2:::p:257:p}, space :p:61:p, comp jpnNextButton:::p::p, space ::138:x}}"
-					"$verticalGroup": "par l {seq {par l {seq l {space :p:5:p, comp jlbSeatingChart2:::p:72:p, space :::p, comp table1:::p:372:p}, seq l {space :p:278:p, comp jpnNextButton:::p::p}}, space ::168:x}}"
+					"$horizontalGroup": "par l {seq l {space :p:44:p, par l {comp table1:::p:596:p, comp jlbSeatingChart2:::p:257:p}, space :p:61:p, comp jpnNextButton:::p::p, space ::308:x}}"
+					"$verticalGroup": "par l {seq {par l {seq l {space :p:5:p, comp jlbSeatingChart2:::p:72:p, space :::p, comp table1:::p:372:p}, seq l {space :p:278:p, comp jpnNextButton:::p::p}}, space ::156:x}}"
 				} ) {
 					name: "jpnPickTicket"
 					"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -255,127 +264,138 @@ new FormModel {
 					"title": "text"
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {space :p:49:p, par l {seq l {par l {comp JlbInforCus:::::x, seq {par l {comp jlbPayment:::p:513:p, seq l {par l {comp label3:::p::p, comp label4::l:p::p, comp label5::l:p::p}, space :p:63:p, par l {comp textField3:::p:246:p, comp textField1:::p:246:p, comp textField2:::p:246:p}}, comp checkBox1::l:p::p, comp checkBox2::l:p::p}, space :0:0:x}}, space :::x, par l {seq {space :p:35:p, comp jpnBack:::p::p, space s:::p, comp jpnNext:::p::p, space :::x}, seq t {comp table7:::p:357:p, space :p:34:p}}}, seq l {comp checkBox3:::p::p, space :351:804:x}}}}"
-					"$verticalGroup": "par l {seq l {par l {seq l {space :p:24:p, comp table7:::p:147:p}, seq {space :::p, par t {seq {comp JlbInforCus:::p:39:p, space :::p, comp label3:::p::p}, comp textField1:::p::p}, space :p:30:p, par b {comp label4::b:p::p, comp textField2::b:p::p}, space :p:86:p, comp jlbPayment:::p:46:p}, seq l {space :p:145:p, par b {comp label5::b:p::p, comp textField3::b:p::p}}}, par l {seq l {space :p:11:p, par l {comp jpnNext::l:p::p, seq {space :p:24:p, comp checkBox2:::p::p}, comp jpnBack:::p::p}, space s:::p, comp checkBox3:::p::p}, seq l {space :::p, comp checkBox1:::p::p}}, space ::269:x}}"
+					"$horizontalGroup": "par l {comp scrollPane2::l::1195:x}"
+					"$verticalGroup": "par l {seq l {comp scrollPane2:::p:573:p, space :0:38:x}}"
 				} ) {
 					name: "jpnPayment"
 					"background": sfield java.awt.Color white
 					"preferredSize": new java.awt.Dimension( 1079, 1000 )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "JlbInforCus"
-						"text": "CUSTOMER INFORMATION"
-						"font": new java.awt.Font( "Lato Black", 1, 16 )
-						"foreground": new java.awt.Color( 97, 184, 132, 255 )
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "jlbPayment"
-						"text": "PAYMENT METHOD"
-						"foreground": new java.awt.Color( 97, 184, 132, 255 )
-						"font": new java.awt.Font( "Lato Black", 1, 16 )
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "checkBox1"
-						"text": "Credit card"
-						"font": new java.awt.Font( "Lato Black", 0, 14 )
-						"foreground": new java.awt.Color( 98, 98, 98, 255 )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox1", true ) )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox1", true ) )
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "checkBox2"
-						"text": "Payment using Internet Banking"
-						"font": new java.awt.Font( "Lato Black", 1, 14 )
-						"foreground": new java.awt.Color( 98, 98, 98, 255 )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox2", true ) )
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "checkBox3"
-						"text": "Payment using E-Wallet"
-						"foreground": new java.awt.Color( 98, 98, 98, 255 )
-						"font": new java.awt.Font( "Lato Black", 1, 14 )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox3", true ) )
-					} )
-					add( new FormComponent( "javax.swing.JTable" ) {
-						name: "table7"
-					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {comp jlbBack::l::166:x}"
-						"$verticalGroup": "par l {comp jlbBack::l::45:x}"
-					} ) {
-						name: "jpnBack"
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane2"
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"background": new java.awt.Color( 97, 184, 132, 255 )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jpnBackMouseClicked", true ) )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "jlbBack"
-							"text": "BACK"
-							"horizontalAlignment": 0
-							"font": new java.awt.Font( "Lato Black", 1, 19 )
-							"foreground": sfield java.awt.Color white
-							"background": new java.awt.Color( 97, 184, 132, 255 )
-							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jlbBackMouseClicked", true ) )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+							"$horizontalGroup": "par l {seq {par l {seq {space :p:71:p, par l {seq l {par l {comp jlbPayment:::p:513:p, comp checkBox1::l:p::p, comp checkBox2::l:p::p, comp checkBox3::l:p:201:p}, space :p:121:p, comp jpnBack:::p::p, space :::p, comp jpnNext:::p::p}, seq l {par l {comp label4::l:p::p, comp label5::l:p::p, comp label3::l:p::p}, space :p:82:p, par l {comp textField2:::p:246:p, comp textField3:::p:246:p, comp textField1::l:p:246:p}, space :p:121:p, comp table7:::p:429:p}}, space :0:104:x}, seq l {space :p:35:p, comp JlbInforCus:::::x}}, space :p:385:p}}"
+							"$verticalGroup": "par l {seq l {space :p:21:p, comp JlbInforCus:::p:39:p, par l {seq l {space :p:138:p, comp label5:::p::p}, seq l {space :p:56:p, par l {seq {comp textField1:::p::p, space u:::p, comp textField2:::p::p, space :::p, comp textField3:::p::p}, seq {comp label3:::p::p, space s:::p, comp label4:::p::p}}}, seq l {space :p:11:p, comp table7:::p:147:p}}, space :p:44:p, comp jlbPayment:::p:46:p, par l {seq l {space :::p, comp checkBox1:::p::p}, seq l {space :p:35:p, par l {comp jpnBack:::p::p, comp jpnNext::l:p::p, seq {space :p:2:p, comp checkBox2:::p::p, space :::p, comp checkBox3:::p::p}}}}, space ::275:x}}"
+						} ) {
+							name: "panel1"
+							"background": new java.awt.Color( 255, 255, 255, 255 )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "JlbInforCus"
+								"text": "CUSTOMER INFORMATION"
+								"font": new java.awt.Font( "Lato Black", 1, 16 )
+								"foreground": new java.awt.Color( 97, 184, 132, 255 )
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "jlbPayment"
+								"text": "PAYMENT METHOD"
+								"foreground": new java.awt.Color( 97, 184, 132, 255 )
+								"font": new java.awt.Font( "Lato Black", 1, 16 )
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox1"
+								"text": "Credit card"
+								"font": new java.awt.Font( "Lato Black", 1, 14 )
+								"foreground": new java.awt.Color( 98, 98, 98, 255 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox1", true ) )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox1", true ) )
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox2"
+								"text": "Payment using Internet Banking"
+								"font": new java.awt.Font( "Lato Black", 1, 14 )
+								"foreground": new java.awt.Color( 98, 98, 98, 255 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox2", true ) )
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox3"
+								"text": "Payment using E-Wallet"
+								"foreground": new java.awt.Color( 98, 98, 98, 255 )
+								"font": new java.awt.Font( "Lato Black", 1, 14 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox3", true ) )
+							} )
+							add( new FormComponent( "javax.swing.JTable" ) {
+								name: "table7"
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+								"$horizontalGroup": "par l {comp jlbBack::l::166:x}"
+								"$verticalGroup": "par l {comp jlbBack::l::45:x}"
+							} ) {
+								name: "jpnBack"
+								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								"background": new java.awt.Color( 97, 184, 132, 255 )
+								addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jpnBackMouseClicked", true ) )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "jlbBack"
+									"text": "BACK"
+									"horizontalAlignment": 0
+									"font": new java.awt.Font( "Lato Black", 1, 19 )
+									"foreground": sfield java.awt.Color white
+									"background": new java.awt.Color( 97, 184, 132, 255 )
+									addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jlbBackMouseClicked", true ) )
+								} )
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+								"$horizontalGroup": "par l {comp jlbNext::t::166:x}"
+								"$verticalGroup": "par l {comp jlbNext::t::45:x}"
+							} ) {
+								name: "jpnNext"
+								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+								"background": new java.awt.Color( 97, 184, 132, 255 )
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "jlbNext"
+									"text": "NEXT"
+									"horizontalAlignment": 0
+									"font": new java.awt.Font( "Lato Black", 1, 17 )
+									"foreground": sfield java.awt.Color white
+								} )
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label3"
+								"text": "Full Name"
+								"foreground": &Color2 new java.awt.Color( 98, 98, 98, 255 )
+								"font": &Font3 new java.awt.Font( "Lato Black", 1, 16 )
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label4"
+								"text": "Address"
+								"foreground": #Color2
+								"font": #Font3
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label5"
+								"text": "Phone Number"
+								"foreground": #Color2
+								"font": #Font3
+							} )
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "textField1"
+								"font": &Font4 new java.awt.Font( "Lato", 0, 16 )
+								"foreground": &Color3 new java.awt.Color( 97, 184, 132, 255 )
+							} )
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "textField2"
+								"font": #Font4
+								"foreground": #Color3
+							} )
+							add( new FormComponent( "javax.swing.JTextField" ) {
+								name: "textField3"
+								"font": #Font4
+								"foreground": #Color3
+							} )
 						} )
-					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-						"$horizontalGroup": "par l {comp jlbNext::l::166:x}"
-						"$verticalGroup": "par l {comp jlbNext::t::45:x}"
-					} ) {
-						name: "jpnNext"
-						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"background": new java.awt.Color( 97, 184, 132, 255 )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "jlbNext"
-							"text": "NEXT"
-							"horizontalAlignment": 0
-							"font": new java.awt.Font( "Lato Black", 1, 17 )
-							"foreground": sfield java.awt.Color white
-						} )
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label3"
-						"text": "Full Name"
-						"foreground": &Color2 new java.awt.Color( 98, 98, 98, 255 )
-						"font": &Font3 new java.awt.Font( "Lato Black", 1, 16 )
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label4"
-						"text": "Address"
-						"foreground": #Color2
-						"font": #Font3
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label5"
-						"text": "Phone Number"
-						"foreground": #Color2
-						"font": #Font3
-					} )
-					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField1"
-						"font": &Font4 new java.awt.Font( "Lato", 0, 16 )
-						"foreground": &Color3 new java.awt.Color( 97, 184, 132, 255 )
-					} )
-					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField2"
-						"font": #Font4
-						"foreground": #Color3
-					} )
-					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField3"
-						"font": #Font4
-						"foreground": #Color3
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": "text"
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 0
-				"y": 320
-				"width": 1025
-				"height": 656
+				"x": -15
+				"y": 325
+				"width": 1195
+				"height": 651
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1030, 860 )
+			"size": new java.awt.Dimension( 1180, 860 )
 		} )
 	}
 }

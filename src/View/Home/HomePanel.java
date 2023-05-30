@@ -5,13 +5,24 @@
 package View.Home;
 
 import java.awt.event.*;
+
+import Controller.SwitchMenuController;
+import Model.BEAN.EventList;
+import Model.BEAN.MenuList;
+import Model.DAO.Event.Event;
 import View.MainPage.MainPage;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.DriverManager;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
@@ -20,10 +31,69 @@ import javax.swing.border.*;
  * @author ADMIN
  */
 public class HomePanel extends JPanel {
+
+    List<EventList> listEvent = null;
+    ArrayList<JLabel> listLabelPicture = new ArrayList<JLabel>();
+    ArrayList<JLabel> listLabelName = new ArrayList<JLabel>();
+    ArrayList<JLabel> listLabelDate = new ArrayList<JLabel>();
+
     public HomePanel() {
         initComponents();
         show(position);
         slideDot1.setSelected(true);
+        mainScrollPanel.getVerticalScrollBar().setUnitIncrement(19);
+        addListPicture();
+        addLabelName();
+        addLabelDate();
+        listEvent = Event.getEventList();
+        setEventList();
+
+    }
+    public void addListPicture() {
+        listLabelPicture.add(eventPicture1);
+        listLabelPicture.add(eventPicture2);
+        listLabelPicture.add(eventPicture3);
+        listLabelPicture.add(evetntPicture4);
+        listLabelPicture.add(evetntPicture5);
+        listLabelPicture.add(evetntPicture6);
+        listLabelPicture.add(evetntPicture7);
+        listLabelPicture.add(evetntPicture8);
+        listLabelPicture.add(evetntPicture9);
+    }
+    public void addLabelName() {
+        listLabelName.add(eventName1);
+        listLabelName.add(eventName2);
+        listLabelName.add(eventName3);
+        listLabelName.add(eventName4);
+        listLabelName.add(eventName5);
+        listLabelName.add(eventName6);
+        listLabelName.add(eventName7);
+        listLabelName.add(eventName8);
+        listLabelName.add(eventName9);
+    }
+    public void addLabelDate() {
+        listLabelDate.add(eventDate1);
+        listLabelDate.add(eventDate2);
+        listLabelDate.add(eventDate3);
+        listLabelDate.add(eventDate4);
+        listLabelDate.add(eventDate5);
+        listLabelDate.add(eventDate6);
+        listLabelDate.add(eventDate7);
+        listLabelDate.add(eventDate8);
+        listLabelDate.add(eventDate9);
+    }
+
+    public void setEventList() {
+        for (int i = 0; i < listEvent.size(); i++) {
+            String eventPicture = listEvent.get(i).getEventPicture();
+            String eventName = listEvent.get(i).getEventName();
+            String eventDate = listEvent.get(i).getEventDate();
+
+            ImageIcon icon = new ImageIcon(getClass().getResource("/Asset/Event/" + eventPicture));
+            listLabelPicture.get(i).setIcon(icon);
+            listLabelName.get(i).setText(eventName);
+            listLabelDate.get(i).setText(eventDate);
+        }
     }
 
     int position = 0;
@@ -43,69 +113,81 @@ public class HomePanel extends JPanel {
         mainLivePicture.setIcon(new ImageIcon(image));
     }
     private void radioButton1MouseClicked(MouseEvent e) {
-        slideDot2.setSelected(false);
-        slideDot3.setSelected(false);
-        slideDot4.setSelected(false);
-        slideDot5.setSelected(false);
-        slideDot6.setSelected(false);
-        show(0);
-        index = 0;
-        position = 0;
+        if(slideDot1.isSelected()) {
+            slideDot2.setSelected(false);
+            slideDot3.setSelected(false);
+            slideDot4.setSelected(false);
+            slideDot5.setSelected(false);
+            slideDot6.setSelected(false);
+            show(0);
+            index = 0;
+            position = 0;
+        }
     }
 
     private void radioButton2MouseClicked(MouseEvent e) {
-        slideDot1.setSelected(false);
-        slideDot3.setSelected(false);
-        slideDot4.setSelected(false);
-        slideDot5.setSelected(false);
-        slideDot6.setSelected(false);
-        show(1);
-        index = 1;
-        position = 1;
+        if(slideDot2.isSelected()) {
+            slideDot1.setSelected(false);
+            slideDot3.setSelected(false);
+            slideDot4.setSelected(false);
+            slideDot5.setSelected(false);
+            slideDot6.setSelected(false);
+            show(1);
+            index = 1;
+            position = 1;
+        }
     }
 
     private void radioButton3MouseClicked(MouseEvent e) {
-        slideDot1.setSelected(false);
-        slideDot2.setSelected(false);
-        slideDot4.setSelected(false);
-        slideDot5.setSelected(false);
-        slideDot6.setSelected(false);
-        show(2);
-        index = 2;
-        position = 2;
+        if(slideDot3.isSelected()) {
+            slideDot1.setSelected(false);
+            slideDot2.setSelected(false);
+            slideDot4.setSelected(false);
+            slideDot5.setSelected(false);
+            slideDot6.setSelected(false);
+            show(2);
+            index = 2;
+            position = 2;
+        }
     }
 
     private void radioButton4MouseClicked(MouseEvent e) {
-        slideDot1.setSelected(false);
-        slideDot2.setSelected(false);
-        slideDot3.setSelected(false);
-        slideDot5.setSelected(false);
-        slideDot6.setSelected(false);
-        show(3);
-        index = 3;
-        position = 3;
+        if(slideDot4.isSelected()) {
+            slideDot1.setSelected(false);
+            slideDot2.setSelected(false);
+            slideDot3.setSelected(false);
+            slideDot5.setSelected(false);
+            slideDot6.setSelected(false);
+            show(3);
+            index = 3;
+            position = 3;
+        }
     }
 
     private void radioButton5MouseClicked(MouseEvent e) {
-        slideDot1.setSelected(false);
-        slideDot2.setSelected(false);
-        slideDot3.setSelected(false);
-        slideDot4.setSelected(false);
-        slideDot6.setSelected(false);
-        show(4);
-        index = 4;
-        position = 4;
+        if(slideDot5.isSelected()) {
+            slideDot1.setSelected(false);
+            slideDot2.setSelected(false);
+            slideDot3.setSelected(false);
+            slideDot4.setSelected(false);
+            slideDot6.setSelected(false);
+            show(4);
+            index = 4;
+            position = 4;
+        }
     }
 
     private void radioButton6MouseClicked(MouseEvent e) {
-        slideDot1.setSelected(false);
-        slideDot2.setSelected(false);
-        slideDot3.setSelected(false);
-        slideDot4.setSelected(false);
-        slideDot5.setSelected(false);
-        show(5);
-        index = 5;
-        position = 5;
+        if(slideDot6.isSelected()) {
+            slideDot1.setSelected(false);
+            slideDot2.setSelected(false);
+            slideDot3.setSelected(false);
+            slideDot4.setSelected(false);
+            slideDot5.setSelected(false);
+            show(5);
+            index = 5;
+            position = 5;
+        }
     }
 
     private void previousButtonMouseClicked(MouseEvent e) {
@@ -119,7 +201,9 @@ public class HomePanel extends JPanel {
         if(p>-1) {
             Animacion.Animacion.mover_izquierda(200, 900, 1, 2, mainLivePicture);
         }
-        position=position-1;
+        if(position > 0) {
+            position = position - 1;
+        }
         if (position>=takeImage().length) {
             position = takeImage().length+1;
         }
@@ -132,9 +216,9 @@ public class HomePanel extends JPanel {
         slideDots.add(slideDot5);
         slideDots.add(slideDot6);
 
-        if(index > 0) {
+        if (index > 0) {
             slideDots.get(index).setSelected(false);
-            slideDots.get(index-1).setSelected(true);
+            slideDots.get(index - 1).setSelected(true);
             index = index - 1;
         }
     }
@@ -170,6 +254,10 @@ public class HomePanel extends JPanel {
         }
     }
 
+    private void evetntPicture1MouseClicked(MouseEvent e) {
+    }
+
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Man
@@ -180,9 +268,9 @@ public class HomePanel extends JPanel {
         previousButton = new JLabel();
         nextButton = new JLabel();
         eventLabel = new JLabel();
-        evetntPicture3 = new JLabel();
-        evetntPicture1 = new JLabel();
-        evetntPicture2 = new JLabel();
+        eventPicture3 = new JLabel();
+        eventPicture1 = new JLabel();
+        eventPicture2 = new JLabel();
         eventName1 = new JLabel();
         eventName2 = new JLabel();
         eventDate2 = new JLabel();
@@ -216,15 +304,17 @@ public class HomePanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-        ( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-        . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-        propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-        ; }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+        swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border
+        . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg"
+        ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder
+        ( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+        .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException
+        ( ); }} );
 
         //======== mainScrollPanel ========
         {
+            mainScrollPanel.setBorder(null);
 
             //======== panel2 ========
             {
@@ -236,8 +326,7 @@ public class HomePanel extends JPanel {
                 mainLabel.setForeground(new Color(0x61b884));
 
                 //---- mainLivePicture ----
-                mainLivePicture.setText("text");
-                mainLivePicture.setBorder(LineBorder.createBlackLineBorder());
+                mainLivePicture.setBorder(null);
 
                 //---- previousButton ----
                 previousButton.setIcon(null);
@@ -266,17 +355,20 @@ public class HomePanel extends JPanel {
                 eventLabel.setFont(new Font("Lato Black", Font.BOLD, 28));
                 eventLabel.setForeground(new Color(0x61b884));
 
-                //---- evetntPicture3 ----
-                evetntPicture3.setText("text");
-                evetntPicture3.setBorder(LineBorder.createBlackLineBorder());
+                //---- eventPicture3 ----
+                eventPicture3.setBorder(null);
 
-                //---- evetntPicture1 ----
-                evetntPicture1.setText("text");
-                evetntPicture1.setBorder(LineBorder.createBlackLineBorder());
+                //---- eventPicture1 ----
+                eventPicture1.setBorder(null);
+                eventPicture1.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        evetntPicture1MouseClicked(e);
+                    }
+                });
 
-                //---- evetntPicture2 ----
-                evetntPicture2.setText("text");
-                evetntPicture2.setBorder(LineBorder.createBlackLineBorder());
+                //---- eventPicture2 ----
+                eventPicture2.setBorder(null);
 
                 //---- eventName1 ----
                 eventName1.setText("Event Name");
@@ -309,16 +401,13 @@ public class HomePanel extends JPanel {
                 eventDate3.setForeground(new Color(0x61b884));
 
                 //---- evetntPicture4 ----
-                evetntPicture4.setText("text");
-                evetntPicture4.setBorder(LineBorder.createBlackLineBorder());
+                evetntPicture4.setBorder(null);
 
                 //---- evetntPicture5 ----
-                evetntPicture5.setText("text");
-                evetntPicture5.setBorder(LineBorder.createBlackLineBorder());
+                evetntPicture5.setBorder(null);
 
                 //---- evetntPicture6 ----
-                evetntPicture6.setText("text");
-                evetntPicture6.setBorder(LineBorder.createBlackLineBorder());
+                evetntPicture6.setBorder(null);
 
                 //---- eventName6 ----
                 eventName6.setText("Event Name");
@@ -345,16 +434,13 @@ public class HomePanel extends JPanel {
                 eventDate4.setFont(eventDate4.getFont().deriveFont(eventDate4.getFont().getSize() + 7f));
 
                 //---- evetntPicture7 ----
-                evetntPicture7.setText("text");
-                evetntPicture7.setBorder(LineBorder.createBlackLineBorder());
+                evetntPicture7.setBorder(null);
 
                 //---- evetntPicture8 ----
-                evetntPicture8.setText("text");
-                evetntPicture8.setBorder(LineBorder.createBlackLineBorder());
+                evetntPicture8.setBorder(null);
 
                 //---- evetntPicture9 ----
-                evetntPicture9.setText("text");
-                evetntPicture9.setBorder(LineBorder.createBlackLineBorder());
+                evetntPicture9.setBorder(null);
 
                 //---- eventName9 ----
                 eventName9.setText("Event Name");
@@ -381,6 +467,7 @@ public class HomePanel extends JPanel {
                 eventDate7.setFont(eventDate7.getFont().deriveFont(eventDate7.getFont().getSize() + 7f));
 
                 //---- slideDot1 ----
+                slideDot1.setBackground(Color.white);
                 slideDot1.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -389,6 +476,7 @@ public class HomePanel extends JPanel {
                 });
 
                 //---- slideDot2 ----
+                slideDot2.setBackground(Color.white);
                 slideDot2.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -397,6 +485,7 @@ public class HomePanel extends JPanel {
                 });
 
                 //---- slideDot3 ----
+                slideDot3.setBackground(Color.white);
                 slideDot3.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -405,6 +494,7 @@ public class HomePanel extends JPanel {
                 });
 
                 //---- slideDot4 ----
+                slideDot4.setBackground(Color.white);
                 slideDot4.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -413,6 +503,7 @@ public class HomePanel extends JPanel {
                 });
 
                 //---- slideDot5 ----
+                slideDot5.setBackground(Color.white);
                 slideDot5.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -421,6 +512,7 @@ public class HomePanel extends JPanel {
                 });
 
                 //---- slideDot6 ----
+                slideDot6.setBackground(Color.white);
                 slideDot6.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -454,7 +546,7 @@ public class HomePanel extends JPanel {
                                         .addComponent(eventDate2)
                                         .addGap(333, 333, 333)
                                         .addComponent(eventDate3))
-                                    .addComponent(evetntPicture1, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(eventPicture1, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
                                     .addGroup(panel2Layout.createSequentialGroup()
                                         .addComponent(evetntPicture4, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
                                         .addGap(109, 109, 109)
@@ -477,12 +569,13 @@ public class HomePanel extends JPanel {
                                         .addComponent(eventDate6))
                                     .addGroup(panel2Layout.createSequentialGroup()
                                         .addGap(369, 369, 369)
-                                        .addComponent(evetntPicture2, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(eventPicture2, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
                                         .addGap(104, 104, 104)
-                                        .addComponent(evetntPicture3, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(eventPicture3, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
                                     .addGroup(panel2Layout.createSequentialGroup()
                                         .addGap(404, 404, 404)
                                         .addGroup(panel2Layout.createParallelGroup()
+                                            .addComponent(eventLabel)
                                             .addGroup(panel2Layout.createSequentialGroup()
                                                 .addComponent(slideDot1)
                                                 .addGap(18, 18, 18)
@@ -494,8 +587,7 @@ public class HomePanel extends JPanel {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(slideDot5)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(slideDot6))
-                                            .addComponent(eventLabel))))
+                                                .addComponent(slideDot6)))))
                                 .addGroup(panel2Layout.createParallelGroup()
                                     .addGroup(panel2Layout.createSequentialGroup()
                                         .addComponent(evetntPicture7, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
@@ -516,35 +608,31 @@ public class HomePanel extends JPanel {
                                         .addGap(340, 340, 340)
                                         .addComponent(eventDate8)
                                         .addGap(326, 326, 326)
-                                        .addComponent(eventDate9))))
+                                        .addComponent(eventDate9)))
+                                .addGroup(panel2Layout.createSequentialGroup()
+                                    .addComponent(previousButton, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(70, 70, 70)
+                                    .addComponent(mainLivePicture, GroupLayout.PREFERRED_SIZE, 652, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(62, 62, 62)
+                                    .addComponent(nextButton, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
                             .addContainerGap(581, Short.MAX_VALUE))
-                        .addGroup(GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
-                            .addGap(41, 41, 41)
-                            .addComponent(previousButton, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(mainLivePicture, GroupLayout.PREFERRED_SIZE, 796, GroupLayout.PREFERRED_SIZE)
-                            .addGap(36, 36, 36)
-                            .addComponent(nextButton, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-                            .addGap(538, 538, 538))
                 );
                 panel2Layout.setVerticalGroup(
                     panel2Layout.createParallelGroup()
                         .addGroup(panel2Layout.createSequentialGroup()
+                            .addGap(33, 33, 33)
+                            .addComponent(mainLabel)
                             .addGroup(panel2Layout.createParallelGroup()
                                 .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(33, 33, 33)
-                                    .addComponent(mainLabel)
-                                    .addGroup(panel2Layout.createParallelGroup()
-                                        .addGroup(panel2Layout.createSequentialGroup()
-                                            .addGap(38, 38, 38)
-                                            .addComponent(mainLivePicture, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(panel2Layout.createSequentialGroup()
-                                            .addGap(111, 111, 111)
-                                            .addComponent(nextButton, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))))
+                                    .addGap(154, 154, 154)
+                                    .addComponent(nextButton, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
                                 .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(195, 195, 195)
-                                    .addComponent(previousButton, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)))
-                            .addGap(18, 18, 18)
+                                    .addGap(148, 148, 148)
+                                    .addComponent(previousButton, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(panel2Layout.createSequentialGroup()
+                                    .addGap(75, 75, 75)
+                                    .addComponent(mainLivePicture, GroupLayout.PREFERRED_SIZE, 274, GroupLayout.PREFERRED_SIZE)))
+                            .addGap(27, 27, 27)
                             .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                 .addComponent(slideDot1)
                                 .addComponent(slideDot2)
@@ -552,14 +640,14 @@ public class HomePanel extends JPanel {
                                 .addComponent(slideDot4)
                                 .addComponent(slideDot5)
                                 .addComponent(slideDot6))
-                            .addGap(73, 73, 73)
+                            .addGap(200, 200, 200)
                             .addComponent(eventLabel)
                             .addGap(42, 42, 42)
                             .addGroup(panel2Layout.createParallelGroup()
-                                .addComponent(evetntPicture1, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(eventPicture1, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
                                 .addGroup(GroupLayout.Alignment.TRAILING, panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                    .addComponent(evetntPicture3, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(evetntPicture2, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(eventPicture3, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(eventPicture2, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panel2Layout.createParallelGroup()
                                 .addGroup(panel2Layout.createSequentialGroup()
                                     .addGap(18, 18, 18)
@@ -613,7 +701,7 @@ public class HomePanel extends JPanel {
                                 .addGroup(panel2Layout.createSequentialGroup()
                                     .addGap(2, 2, 2)
                                     .addComponent(eventDate9)))
-                            .addContainerGap(656, Short.MAX_VALUE))
+                            .addContainerGap(471, Short.MAX_VALUE))
                 );
             }
             mainScrollPanel.setViewportView(panel2);
@@ -623,7 +711,9 @@ public class HomePanel extends JPanel {
         setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup()
-                .addComponent(mainScrollPanel, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 1135, Short.MAX_VALUE)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1250, GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
@@ -643,9 +733,9 @@ public class HomePanel extends JPanel {
     private JLabel previousButton;
     private JLabel nextButton;
     private JLabel eventLabel;
-    private JLabel evetntPicture3;
-    private JLabel evetntPicture1;
-    private JLabel evetntPicture2;
+    private JLabel eventPicture3;
+    private JLabel eventPicture1;
+    private JLabel eventPicture2;
     private JLabel eventName1;
     private JLabel eventName2;
     private JLabel eventDate2;

@@ -4,16 +4,17 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {comp mainScrollPanel::t::1135:x}"
+			"$horizontalGroup": "par l {seq l {comp mainScrollPanel:::p:1250:p, space :0:0:x}}"
 			"$verticalGroup": "par l {seq l {comp mainScrollPanel:::p:911:p, space :0:2239:x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "mainScrollPanel"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {space :p:434:p, comp mainLabel:::p::p, space :0:899:x}, seq {space :p:73:p, par t {par l {seq l {space :p:73:p, comp eventName1:::p::p, space :p:274:p, comp eventName2:::p::p, space :p:253:p, comp eventName3:::p::p}, seq l {space :p:106:p, comp eventDate1:::p::p, space :p:340:p, comp eventDate2:::p::p, space :p:333:p, comp eventDate3:::p::p}, comp evetntPicture1::l:p:260:p, seq l {comp evetntPicture4:::p:260:p, space :109:109:p, comp evetntPicture5:::p:260:p, space :104:104:p, comp evetntPicture6:::p:260:p}, seq l {space :73:73:p, comp eventName4:::p::p, space :281:281:p, comp eventName5:::p::p, space :266:266:p, comp eventName6:::p::p}, seq l {space :106:106:p, comp eventDate4:::p::p, space :340:340:p, comp eventDate5:::p::p, space :326:326:p, comp eventDate6:::p::p}, seq l {space :p:369:p, comp evetntPicture2:::p:260:p, space :p:104:p, comp evetntPicture3:::p:260:p}, seq l {space :p:404:p, par l {seq {comp slideDot1:::p::p, space s:::p, comp slideDot2:::p::p, space s:::p, comp slideDot3:::p::p, space s:::p, comp slideDot4:::p::p, space s:::p, comp slideDot5:::p::p, space s:::p, comp slideDot6:::p::p}, comp eventLabel:::p::p}}}, par l:t {seq l {comp evetntPicture7:::p:260:p, space :109:109:p, comp evetntPicture8:::p:260:p, space :104:104:p, comp evetntPicture9:::p:260:p}, seq l {space :73:73:p, comp eventName7:::p::p, space :281:281:p, comp eventName8:::p::p, space :266:266:p, comp eventName9:::p::p}, seq l {space :106:106:p, comp eventDate7:::p::p, space :340:340:p, comp eventDate8:::p::p, space :326:326:p, comp eventDate9:::p::p}}}, space ::581:x}, seq t {space :p:41:p, comp previousButton:::p:94:p, space :::x, comp mainLivePicture:::p:796:p, space :p:36:p, comp nextButton:::p:80:p, space :p:538:p}}"
-					"$verticalGroup": "par l {seq {par l {seq l {space :p:33:p, comp mainLabel:::p::p, par l {seq {space :p:38:p, comp mainLivePicture:::p:262:p}, seq {space :p:111:p, comp nextButton:::p:96:p}}}, seq l {space :p:195:p, comp previousButton:::p:96:p}}, space s:::p, par t {comp slideDot1:::p::p, comp slideDot2:::p::p, comp slideDot3:::p::p, comp slideDot4:::p::p, comp slideDot5:::p::p, comp slideDot6:::p::p}, space :p:73:p, comp eventLabel:::p::p, space :p:42:p, par l {comp evetntPicture1::t:p:153:p, par b:t {comp evetntPicture3::b:p:153:p, comp evetntPicture2::b:p:153:p}}, par l {seq l {space :p:18:p, comp eventName3:::p::p, space s:::p, comp eventDate3:::p::p}, seq l {space :p:16:p, par b {comp eventName1::b:p::p, comp eventName2::b:p::p}, space s:::p, par b {comp eventDate1::b:p::p, comp eventDate2::b:p::p}}}, space :p:175:p, par l {comp evetntPicture4:::p:153:p, comp evetntPicture5:::p:153:p, comp evetntPicture6:::p:153:p}, space :16:16:p, par l {comp eventName4:::p::p, comp eventName5:::p::p, seq l {space :2:2:p, comp eventName6:::p::p}}, space :16:16:p, par l {comp eventDate4:::p::p, comp eventDate5:::p::p, seq l {space :2:2:p, comp eventDate6:::p::p}}, space :p:179:p, par l {comp evetntPicture7:::p:153:p, comp evetntPicture8:::p:153:p, comp evetntPicture9:::p:153:p}, space :16:16:p, par l {comp eventName7:::p::p, comp eventName8:::p::p, seq l {space :2:2:p, comp eventName9:::p::p}}, space :16:16:p, par l {comp eventDate7:::p::p, comp eventDate8:::p::p, seq l {space :2:2:p, comp eventDate9:::p::p}}, space ::656:x}}"
+					"$horizontalGroup": "par l {seq l {space :p:434:p, comp mainLabel:::p::p, space :0:899:x}, seq {space :p:73:p, par t {par l {seq l {space :p:73:p, comp eventName1:::p::p, space :p:274:p, comp eventName2:::p::p, space :p:253:p, comp eventName3:::p::p}, seq l {space :p:106:p, comp eventDate1:::p::p, space :p:340:p, comp eventDate2:::p::p, space :p:333:p, comp eventDate3:::p::p}, comp eventPicture1::l:p:260:p, seq l {comp evetntPicture4:::p:260:p, space :109:109:p, comp evetntPicture5:::p:260:p, space :104:104:p, comp evetntPicture6:::p:260:p}, seq l {space :73:73:p, comp eventName4:::p::p, space :281:281:p, comp eventName5:::p::p, space :266:266:p, comp eventName6:::p::p}, seq l {space :106:106:p, comp eventDate4:::p::p, space :340:340:p, comp eventDate5:::p::p, space :326:326:p, comp eventDate6:::p::p}, seq l {space :p:369:p, comp eventPicture2:::p:260:p, space :p:104:p, comp eventPicture3:::p:260:p}, seq l {space :p:404:p, par l {comp eventLabel:::p::p, seq {comp slideDot1:::p::p, space s:::p, comp slideDot2:::p::p, space s:::p, comp slideDot3:::p::p, space s:::p, comp slideDot4:::p::p, space s:::p, comp slideDot5:::p::p, space s:::p, comp slideDot6:::p::p}}}}, par l:t {seq l {comp evetntPicture7:::p:260:p, space :109:109:p, comp evetntPicture8:::p:260:p, space :104:104:p, comp evetntPicture9:::p:260:p}, seq l {space :73:73:p, comp eventName7:::p::p, space :281:281:p, comp eventName8:::p::p, space :266:266:p, comp eventName9:::p::p}, seq l {space :106:106:p, comp eventDate7:::p::p, space :340:340:p, comp eventDate8:::p::p, space :326:326:p, comp eventDate9:::p::p}}, seq t {comp previousButton:::p:94:p, space :p:70:p, comp mainLivePicture:::p:652:p, space :p:62:p, comp nextButton:::p:80:p}}, space ::581:x}}"
+					"$verticalGroup": "par l {seq {space :p:33:p, comp mainLabel:::p::p, par l {seq l {space :p:154:p, comp nextButton:::p:96:p}, seq l {space :p:148:p, comp previousButton:::p:96:p}, seq {space :p:75:p, comp mainLivePicture:::p:274:p}}, space :p:27:p, par t {comp slideDot1:::p::p, comp slideDot2:::p::p, comp slideDot3:::p::p, comp slideDot4:::p::p, comp slideDot5:::p::p, comp slideDot6:::p::p}, space :p:200:p, comp eventLabel:::p::p, space :p:42:p, par l {comp eventPicture1::t:p:153:p, par b:t {comp eventPicture3::b:p:153:p, comp eventPicture2::b:p:153:p}}, par l {seq l {space :p:18:p, comp eventName3:::p::p, space s:::p, comp eventDate3:::p::p}, seq l {space :p:16:p, par b {comp eventName1::b:p::p, comp eventName2::b:p::p}, space s:::p, par b {comp eventDate1::b:p::p, comp eventDate2::b:p::p}}}, space :p:175:p, par l {comp evetntPicture4:::p:153:p, comp evetntPicture5:::p:153:p, comp evetntPicture6:::p:153:p}, space :16:16:p, par l {comp eventName4:::p::p, comp eventName5:::p::p, seq l {space :2:2:p, comp eventName6:::p::p}}, space :16:16:p, par l {comp eventDate4:::p::p, comp eventDate5:::p::p, seq l {space :2:2:p, comp eventDate6:::p::p}}, space :p:179:p, par l {comp evetntPicture7:::p:153:p, comp evetntPicture8:::p:153:p, comp evetntPicture9:::p:153:p}, space :16:16:p, par l {comp eventName7:::p::p, comp eventName8:::p::p, seq l {space :2:2:p, comp eventName9:::p::p}}, space :16:16:p, par l {comp eventDate7:::p::p, comp eventDate8:::p::p, seq l {space :2:2:p, comp eventDate9:::p::p}}, space ::471:x}}"
 				} ) {
 					name: "panel2"
 					"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -25,8 +26,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "mainLivePicture"
-						"text": "text"
-						"border": &LineBorder0 new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "previousButton"
@@ -49,19 +49,17 @@ new FormModel {
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "evetntPicture3"
-						"text": "text"
-						"border": #LineBorder0
+						name: "eventPicture3"
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "evetntPicture1"
-						"text": "text"
-						"border": #LineBorder0
+						name: "eventPicture1"
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "evetntPicture1MouseClicked", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "evetntPicture2"
-						"text": "text"
-						"border": #LineBorder0
+						name: "eventPicture2"
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventName1"
@@ -101,18 +99,15 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "evetntPicture4"
-						"text": "text"
-						"border": #LineBorder0
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "evetntPicture5"
-						"text": "text"
-						"border": #LineBorder0
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "evetntPicture6"
-						"text": "text"
-						"border": #LineBorder0
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventName6"
@@ -146,18 +141,15 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "evetntPicture7"
-						"text": "text"
-						"border": #LineBorder0
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "evetntPicture8"
-						"text": "text"
-						"border": #LineBorder0
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "evetntPicture9"
-						"text": "text"
-						"border": #LineBorder0
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventName9"
@@ -191,26 +183,32 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JRadioButton" ) {
 						name: "slideDot1"
+						"background": &Color0 new java.awt.Color( 255, 255, 255, 255 )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "radioButton1MouseClicked", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JRadioButton" ) {
 						name: "slideDot2"
+						"background": #Color0
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "radioButton2MouseClicked", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JRadioButton" ) {
 						name: "slideDot3"
+						"background": #Color0
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "radioButton3MouseClicked", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JRadioButton" ) {
 						name: "slideDot4"
+						"background": #Color0
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "radioButton4MouseClicked", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JRadioButton" ) {
 						name: "slideDot5"
+						"background": #Color0
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "radioButton5MouseClicked", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JRadioButton" ) {
 						name: "slideDot6"
+						"background": #Color0
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "radioButton6MouseClicked", true ) )
 					} )
 				} )

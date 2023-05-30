@@ -19,6 +19,12 @@ import java.util.List;
  * @author ADMIN
  */
 public class MainPage extends JFrame {
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Do an");
+        frame.setContentPane(new MainPage());
+        frame.setVisible(true);
+    }
     public MainPage() {
         initComponents();
         jpnDropMenu4.setSize(0,0);
