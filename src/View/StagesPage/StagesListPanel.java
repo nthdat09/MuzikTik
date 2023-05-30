@@ -90,6 +90,9 @@ public class StagesListPanel extends JPanel {
         }
     }
 
+    public JTable getStagesListTable() {
+        return StagesListTable;
+    }
 
     public JButton getJlbDelete() {
         return jlbDelete;
@@ -107,14 +110,10 @@ public class StagesListPanel extends JPanel {
         return jlbSearch;
     }
 
-    public JTable getStagesListTable() {
-        return StagesListTable;
-    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Dat
-        StageList = new JPanel();
         jlbStageList = new JLabel();
         scrollPane1 = new JScrollPane();
         StagesListTable = new JTable();
@@ -126,129 +125,109 @@ public class StagesListPanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-        0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-        . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-        beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+        javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax
+        . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+        .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
+        PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .
+        equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
-        //======== StageList ========
+        //---- jlbStageList ----
+        jlbStageList.setText("STAGES LIST");
+        jlbStageList.setHorizontalAlignment(SwingConstants.CENTER);
+        jlbStageList.setFont(new Font("Lato Black", Font.BOLD, 25));
+        jlbStageList.setForeground(new Color(0x61b884));
+
+        //======== scrollPane1 ========
         {
-            StageList.setBackground(Color.white);
 
-            //---- jlbStageList ----
-            jlbStageList.setText("STAGES LIST");
-            jlbStageList.setHorizontalAlignment(SwingConstants.CENTER);
-            jlbStageList.setFont(new Font("Lato Black", Font.BOLD, 25));
-            jlbStageList.setForeground(new Color(0x61b884));
-
-            //======== scrollPane1 ========
-            {
-
-                //---- StagesListTable ----
-                StagesListTable.setModel(new DefaultTableModel(
-                    new Object[][] {
-                    },
-                    new String[] {
-                        "ID", "Name", "Address", "Rental Price", "Capacity", "Open Time", "Close Time"
-                    }
-                ));
-                scrollPane1.setViewportView(StagesListTable);
-            }
-
-            //---- jtfSearch ----
-            jtfSearch.setFont(new Font("Lato", Font.PLAIN, 16));
-            jtfSearch.setForeground(new Color(0x61b884));
-            jtfSearch.setCaretColor(new Color(0x61b884));
-
-            //---- jlbDelete ----
-            jlbDelete.setText("DELETE");
-            jlbDelete.setFont(new Font("Lato Black", Font.BOLD, 16));
-            jlbDelete.setForeground(Color.white);
-            jlbDelete.setBackground(new Color(0x61b884));
-
-            //---- jlbEdit ----
-            jlbEdit.setText("EDIT");
-            jlbEdit.setFont(new Font("Lato Black", Font.BOLD, 16));
-            jlbEdit.setForeground(Color.white);
-            jlbEdit.setBackground(new Color(0x61b884));
-
-            //---- jlbAdd ----
-            jlbAdd.setText("ADD");
-            jlbAdd.setFont(new Font("Lato Black", Font.BOLD, 16));
-            jlbAdd.setForeground(Color.white);
-            jlbAdd.setBackground(new Color(0x61b884));
-
-            //---- jlbSearch ----
-            jlbSearch.setText("SEARCH");
-            jlbSearch.setFont(new Font("Lato Black", Font.BOLD, 16));
-            jlbSearch.setForeground(Color.white);
-            jlbSearch.setBackground(new Color(0x61b884));
-
-            GroupLayout StageListLayout = new GroupLayout(StageList);
-            StageList.setLayout(StageListLayout);
-            StageListLayout.setHorizontalGroup(
-                StageListLayout.createParallelGroup()
-                    .addGroup(StageListLayout.createSequentialGroup()
-                        .addGap(386, 386, 386)
-                        .addComponent(jlbStageList)
-                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(StageListLayout.createSequentialGroup()
-                        .addGroup(StageListLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(scrollPane1, GroupLayout.Alignment.LEADING)
-                            .addGroup(GroupLayout.Alignment.LEADING, StageListLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-                                .addGap(287, 287, 287)
-                                .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(jlbDelete)))
-                        .addGap(0, 123, Short.MAX_VALUE))
-            );
-            StageListLayout.setVerticalGroup(
-                StageListLayout.createParallelGroup()
-                    .addGroup(StageListLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jlbStageList)
-                        .addGap(30, 30, 30)
-                        .addGroup(StageListLayout.createParallelGroup()
-                            .addGroup(StageListLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlbDelete, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
-                        .addGap(13, 13, 13)
-                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(33, Short.MAX_VALUE))
-            );
+            //---- StagesListTable ----
+            StagesListTable.setModel(new DefaultTableModel(
+                new Object[][] {
+                },
+                new String[] {
+                    "ID", "Name", "Address", "Rental Price", "Capacity", "Open Time", "Close Time"
+                }
+            ));
+            scrollPane1.setViewportView(StagesListTable);
         }
+
+        //---- jtfSearch ----
+        jtfSearch.setFont(new Font("Lato", Font.PLAIN, 16));
+        jtfSearch.setForeground(new Color(0x61b884));
+        jtfSearch.setCaretColor(new Color(0x61b884));
+
+        //---- jlbDelete ----
+        jlbDelete.setText("DELETE");
+        jlbDelete.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbDelete.setForeground(Color.white);
+        jlbDelete.setBackground(new Color(0x61b884));
+
+        //---- jlbEdit ----
+        jlbEdit.setText("EDIT");
+        jlbEdit.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbEdit.setForeground(Color.white);
+        jlbEdit.setBackground(new Color(0x61b884));
+
+        //---- jlbAdd ----
+        jlbAdd.setText("ADD");
+        jlbAdd.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbAdd.setForeground(Color.white);
+        jlbAdd.setBackground(new Color(0x61b884));
+
+        //---- jlbSearch ----
+        jlbSearch.setText("SEARCH");
+        jlbSearch.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbSearch.setForeground(Color.white);
+        jlbSearch.setBackground(new Color(0x61b884));
 
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup()
-                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(StageList, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(386, 386, 386)
+                    .addComponent(jlbStageList)
+                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(scrollPane1, GroupLayout.Alignment.LEADING)
+                        .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+                            .addGap(287, 287, 287)
+                            .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(jlbDelete)))
+                    .addGap(0, 123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addComponent(StageList, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 27, Short.MAX_VALUE))
+                    .addGap(22, 22, 22)
+                    .addComponent(jlbStageList)
+                    .addGap(30, 30, 30)
+                    .addGroup(layout.createParallelGroup()
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlbDelete, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+                    .addGap(13, 13, 13)
+                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(33, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - Dat
-    private JPanel StageList;
     private JLabel jlbStageList;
     private JScrollPane scrollPane1;
     private JTable StagesListTable;

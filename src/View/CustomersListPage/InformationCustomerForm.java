@@ -369,10 +369,10 @@ public class InformationCustomerForm extends JPanel {
             else {
                 CustomerDAO.getInstance().addCustomer(customer);
             }
-            MainPage.changeView(new CustomersListPanel().getCustomersListPage(), MainPage.getJlbCustomer(), "CustomerListPanel");
+            MainPage.changeView(new CustomersListPanel(), MainPage.getJlbCustomer(), "CustomerListPanel");
         }
     }
     public void cancelCustomer() {
-        MainPage.changeView(new CustomersListPanel().getCustomersListPage(), MainPage.getJlbCustomer(), "CustomerListPanel");
+        MainPage.changeView(new CustomersListPanel(), MainPage.getJlbCustomer(), "CustomerListPanel");
     }
 }

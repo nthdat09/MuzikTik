@@ -284,12 +284,12 @@ public class TicketInformationForm extends JPanel{
                 System.out.println("Insert Ticket");
                 TicketDAO.getInstance().insertTicket(ticket);
             }
-            MainPage.changeView(new TicketListPanel().getTicketListPanel(), MainPage.getJlbTicket() , "Ticket Information Form");
+            MainPage.changeView(new TicketListPanel(), MainPage.getJlbTicket() , "Ticket Information Form");
         }
     }
 
     public void cancelTicket() {
         System.out.println("Cancel Ticket");
-        MainPage.changeView(new TicketListPanel().getTicketListPanel(), MainPage.getJlbTicket() , "Ticket Information Form");
+        MainPage.changeView(new TicketListPanel(), MainPage.getJlbTicket() , "Ticket Information Form");
     }
 }

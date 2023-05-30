@@ -22,7 +22,7 @@ import javax.swing.table.*;
 /**
  * @author Admin
  */
-public class TicketListPanel {
+public class TicketListPanel extends JPanel{
     ActionListener ac = new TicketPageListener(this);
     Ticket ticketSelected = new Ticket();
     List<Ticket> listTicket = null;
@@ -114,14 +114,13 @@ public class TicketListPanel {
         return scrollPane1;
     }
 
-    public JPanel getTicketListPanel() {
-        return TicketListPanel;
+    public JPanel getThis() {
+        return this;
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Dat
-        TicketListPanel = new JPanel();
         jlbTicket = new JLabel();
         scrollPane1 = new JScrollPane();
         TicketListTable = new JTable();
@@ -131,115 +130,115 @@ public class TicketListPanel {
         jlbAdd = new JButton();
         jlbSearch = new JButton();
 
-        //======== TicketListPanel ========
+        //======== this ========
+        setBackground(Color.white);
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder (
+        new javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion"
+        , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
+        , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 )
+        ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener(
+        new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+        ) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+        ;} } );
+
+        //---- jlbTicket ----
+        jlbTicket.setText("TICKET LIST");
+        jlbTicket.setHorizontalAlignment(SwingConstants.CENTER);
+        jlbTicket.setFont(new Font("Lato Black", Font.BOLD, 25));
+        jlbTicket.setForeground(new Color(0x61b884));
+
+        //======== scrollPane1 ========
         {
-            TicketListPanel.setBackground(Color.white);
-            TicketListPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
-            , 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
-            TicketListPanel. getBorder( )) ); TicketListPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
-            //---- jlbTicket ----
-            jlbTicket.setText("TICKET LIST");
-            jlbTicket.setHorizontalAlignment(SwingConstants.CENTER);
-            jlbTicket.setFont(new Font("Lato Black", Font.BOLD, 25));
-            jlbTicket.setForeground(new Color(0x61b884));
-
-            //======== scrollPane1 ========
-            {
-
-                //---- TicketListTable ----
-                TicketListTable.setModel(new DefaultTableModel(
-                    new Object[][] {
-                    },
-                    new String[] {
-                        "TicketID", "EventID", "SeatID", "StageID", "Ticket Price"
-                    }
-                ));
-                scrollPane1.setViewportView(TicketListTable);
-            }
-
-            //---- jtfSearch ----
-            jtfSearch.setFont(new Font("Lato", Font.PLAIN, 16));
-            jtfSearch.setForeground(new Color(0x61b884));
-            jtfSearch.setCaretColor(new Color(0x61b884));
-
-            //---- jlbDelete ----
-            jlbDelete.setText("DELETE");
-            jlbDelete.setFont(new Font("Lato Black", Font.BOLD, 16));
-            jlbDelete.setForeground(Color.white);
-            jlbDelete.setBackground(new Color(0x61b884));
-
-            //---- jlbEdit ----
-            jlbEdit.setText("EDIT");
-            jlbEdit.setFont(new Font("Lato Black", Font.BOLD, 16));
-            jlbEdit.setForeground(Color.white);
-            jlbEdit.setBackground(new Color(0x61b884));
-
-            //---- jlbAdd ----
-            jlbAdd.setText("ADD");
-            jlbAdd.setFont(new Font("Lato Black", Font.BOLD, 16));
-            jlbAdd.setForeground(Color.white);
-            jlbAdd.setBackground(new Color(0x61b884));
-
-            //---- jlbSearch ----
-            jlbSearch.setText("SEARCH");
-            jlbSearch.setFont(new Font("Lato Black", Font.BOLD, 16));
-            jlbSearch.setForeground(Color.white);
-            jlbSearch.setBackground(new Color(0x61b884));
-
-            GroupLayout TicketListPanelLayout = new GroupLayout(TicketListPanel);
-            TicketListPanel.setLayout(TicketListPanelLayout);
-            TicketListPanelLayout.setHorizontalGroup(
-                TicketListPanelLayout.createParallelGroup()
-                    .addGroup(TicketListPanelLayout.createSequentialGroup()
-                        .addGroup(TicketListPanelLayout.createParallelGroup()
-                            .addGroup(TicketListPanelLayout.createSequentialGroup()
-                                .addGap(418, 418, 418)
-                                .addComponent(jlbTicket))
-                            .addGroup(TicketListPanelLayout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addGroup(TicketListPanelLayout.createParallelGroup()
-                                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 896, GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(TicketListPanelLayout.createSequentialGroup()
-                                        .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(287, 287, 287)
-                                        .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jlbDelete)))))
-                        .addContainerGap(103, Short.MAX_VALUE))
-            );
-            TicketListPanelLayout.setVerticalGroup(
-                TicketListPanelLayout.createParallelGroup()
-                    .addGroup(TicketListPanelLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jlbTicket)
-                        .addGap(24, 24, 24)
-                        .addGroup(TicketListPanelLayout.createParallelGroup()
-                            .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addGroup(TicketListPanelLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(TicketListPanelLayout.createParallelGroup()
-                                    .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jlbDelete, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(44, Short.MAX_VALUE))
-            );
+            //---- TicketListTable ----
+            TicketListTable.setModel(new DefaultTableModel(
+                new Object[][] {
+                },
+                new String[] {
+                    "TicketID", "EventID", "SeatID", "StageID", "Ticket Price"
+                }
+            ));
+            scrollPane1.setViewportView(TicketListTable);
         }
+
+        //---- jtfSearch ----
+        jtfSearch.setFont(new Font("Lato", Font.PLAIN, 16));
+        jtfSearch.setForeground(new Color(0x61b884));
+        jtfSearch.setCaretColor(new Color(0x61b884));
+
+        //---- jlbDelete ----
+        jlbDelete.setText("DELETE");
+        jlbDelete.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbDelete.setForeground(Color.white);
+        jlbDelete.setBackground(new Color(0x61b884));
+
+        //---- jlbEdit ----
+        jlbEdit.setText("EDIT");
+        jlbEdit.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbEdit.setForeground(Color.white);
+        jlbEdit.setBackground(new Color(0x61b884));
+
+        //---- jlbAdd ----
+        jlbAdd.setText("ADD");
+        jlbAdd.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbAdd.setForeground(Color.white);
+        jlbAdd.setBackground(new Color(0x61b884));
+
+        //---- jlbSearch ----
+        jlbSearch.setText("SEARCH");
+        jlbSearch.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbSearch.setForeground(Color.white);
+        jlbSearch.setBackground(new Color(0x61b884));
+
+        GroupLayout layout = new GroupLayout(this);
+        setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup()
+                .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup()
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(418, 418, 418)
+                            .addComponent(jlbTicket))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(26, 26, 26)
+                            .addGroup(layout.createParallelGroup()
+                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 896, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(287, 287, 287)
+                                    .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jlbDelete)))))
+                    .addContainerGap(99, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup()
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(11, 11, 11)
+                    .addComponent(jlbTicket)
+                    .addGap(24, 24, 24)
+                    .addGroup(layout.createParallelGroup()
+                        .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addGroup(layout.createParallelGroup()
+                                .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jlbDelete, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(39, Short.MAX_VALUE))
+        );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - Dat
-    private JPanel TicketListPanel;
     private JLabel jlbTicket;
     private JScrollPane scrollPane1;
     private JTable TicketListTable;
@@ -253,8 +252,8 @@ public class TicketListPanel {
 
     public void addTicket() {
         System.out.println("addTicket");
-        int newID = TicketListDAO.getLastID();
-        MainPage.changeView(new TicketInformationForm(newID + 1).getTicketInformationFormPanel(), MainPage.getJlbTicket(), "Ticket Information Form");
+        int newID = TicketListDAO.getLastID() + 1;
+        MainPage.changeView(new TicketInformationForm(newID).getTicketInformationFormPanel(), MainPage.getJlbTicket(), "Ticket Information Form");
     }
 
     public void editTicket() {
@@ -299,10 +298,10 @@ public class TicketListPanel {
                     listTicket.add(ticket);
                 }
             }
-            MainPage.changeView(new TicketListPanel(listTicket, textSearched).getTicketListPanel(), MainPage.getJlbTicket(), "Ticket List Panel");
+            MainPage.changeView(new TicketListPanel(listTicket, textSearched), MainPage.getJlbTicket(), "Ticket List Panel");
         } else {
             System.out.println("No search");
-            MainPage.changeView(new TicketListPanel().getTicketListPanel(), MainPage.getJlbTicket(), "Ticket List Panel");
+            MainPage.changeView(new TicketListPanel(), MainPage.getJlbTicket(), "Ticket List Panel");
         }
     }
 }

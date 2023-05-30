@@ -56,7 +56,6 @@ public class PartnerListPanel extends JPanel {
 
     public void initMoreSetting(){
         partnerList = PartnerListDAO.getList();
-        String a = partnerList.toString();
 
         setPartnerListTable();
 
