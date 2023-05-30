@@ -208,6 +208,10 @@ public class MainPage extends JFrame {
         return jlbHome;
     }
 
+    public JButton getLogoutJbt() {
+        return LogoutJbt;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Dat
@@ -237,9 +241,9 @@ public class MainPage extends JFrame {
         jlbSettings = new JLabel();
         jpnMainMenu = new JPanel();
         jpnDropMenu4 = new JPanel();
-        label12 = new JLabel();
-        label13 = new JLabel();
-        label14 = new JLabel();
+        NameJlb = new JLabel();
+        IDJlb = new JLabel();
+        LogoutJbt = new JButton();
         jpnView = new JPanel();
         jpnBuffer2 = new JPanel();
 
@@ -253,13 +257,13 @@ public class MainPage extends JFrame {
         {
             headerPanel.setBorder(new LineBorder(new Color(0xbebebe)));
             headerPanel.setBackground(Color.white);
-            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing
-            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-            Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-            ) ,headerPanel. getBorder( )) ); headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName (
-            ) )) throw new RuntimeException( ); }} );
+            headerPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
+            swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border
+            . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog"
+            , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,headerPanel. getBorder
+            () ) ); headerPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
+            . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException
+            ( ) ;} } );
             headerPanel.setLayout(null);
 
             //---- searchButton ----
@@ -717,20 +721,20 @@ public class MainPage extends JFrame {
                     }
                 });
 
-                //---- label12 ----
-                label12.setText("*t\u00ean kh\u00e1ch h\u00e0ng");
-                label12.setFont(new Font("Lato Black", Font.BOLD, 18));
-                label12.setForeground(new Color(0x61b884));
+                //---- NameJlb ----
+                NameJlb.setText("*t\u00ean kh\u00e1ch h\u00e0ng");
+                NameJlb.setFont(new Font("Lato Black", Font.BOLD, 18));
+                NameJlb.setForeground(new Color(0x61b884));
 
-                //---- label13 ----
-                label13.setText("*ID");
-                label13.setFont(new Font("Lato Black", Font.BOLD, 18));
-                label13.setForeground(new Color(0x61b884));
+                //---- IDJlb ----
+                IDJlb.setText("*ID");
+                IDJlb.setFont(new Font("Lato Black", Font.BOLD, 18));
+                IDJlb.setForeground(new Color(0x61b884));
 
-                //---- label14 ----
-                label14.setText("*\u0111\u0103ng xu\u1ea5t");
-                label14.setFont(new Font("Lato Black", Font.BOLD, 18));
-                label14.setForeground(new Color(0x61b884));
+                //---- LogoutJbt ----
+                LogoutJbt.setText("*\u0111\u0103ng xu\u1ea5t");
+                LogoutJbt.setFont(new Font("Lato Black", Font.BOLD, 18));
+                LogoutJbt.setForeground(new Color(0x61b884));
 
                 GroupLayout jpnDropMenu4Layout = new GroupLayout(jpnDropMenu4);
                 jpnDropMenu4.setLayout(jpnDropMenu4Layout);
@@ -738,22 +742,22 @@ public class MainPage extends JFrame {
                     jpnDropMenu4Layout.createParallelGroup()
                         .addGroup(jpnDropMenu4Layout.createSequentialGroup()
                             .addGroup(jpnDropMenu4Layout.createParallelGroup()
-                                .addComponent(label12, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(NameJlb, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(GroupLayout.Alignment.TRAILING, jpnDropMenu4Layout.createSequentialGroup()
                                     .addGap(0, 0, Short.MAX_VALUE)
                                     .addGroup(jpnDropMenu4Layout.createParallelGroup()
-                                        .addComponent(label13, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(label14, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(IDJlb, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(LogoutJbt, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))))
                             .addContainerGap())
                 );
                 jpnDropMenu4Layout.setVerticalGroup(
                     jpnDropMenu4Layout.createParallelGroup()
                         .addGroup(jpnDropMenu4Layout.createSequentialGroup()
-                            .addComponent(label12, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NameJlb, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(label13, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IDJlb, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(label14, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LogoutJbt, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
                             .addContainerGap())
                 );
             }
@@ -856,9 +860,9 @@ public class MainPage extends JFrame {
     private JLabel Logo2;
     private JPanel navigationPanel;
     private JPanel jpnHome;
-    private JLabel jlbHome;
+    private static JLabel jlbHome;
     private JPanel jpnEvent;
-    private JLabel jlbEvent;
+    private static JLabel jlbEvent;
     private JPanel jpnCustomers;
     private static JLabel jlbCustomer;
     private JPanel jpnTickets;
@@ -868,14 +872,14 @@ public class MainPage extends JFrame {
     private JPanel jpnPartners;
     private static JLabel jlbPartners;
     private JPanel jpnAnalytics;
-    private JLabel jlbAnalytics;
+    private static JLabel jlbAnalytics;
     private JPanel jpnSettings;
-    private JLabel jlbSettings;
+    private static JLabel jlbSettings;
     private JPanel jpnMainMenu;
     private JPanel jpnDropMenu4;
-    private JLabel label12;
-    private JLabel label13;
-    private JLabel label14;
+    private JLabel NameJlb;
+    private JLabel IDJlb;
+    private JButton LogoutJbt;
     private static JPanel jpnView;
     private JPanel jpnBuffer2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on

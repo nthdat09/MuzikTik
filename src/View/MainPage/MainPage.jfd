@@ -113,6 +113,7 @@ new FormModel {
 						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
+							"JavaCodeGenerator.variableModifiers": 10
 						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbHomeMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbHomeMouseExited", true ) )
@@ -135,6 +136,7 @@ new FormModel {
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
+							"JavaCodeGenerator.variableModifiers": 10
 						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbEventMouseExited", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbEventMouseEntered", true ) )
@@ -157,6 +159,7 @@ new FormModel {
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
+							"JavaCodeGenerator.variableModifiers": 10
 						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbCustomerMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbCustomerMouseExited", true ) )
@@ -179,6 +182,7 @@ new FormModel {
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
+							"JavaCodeGenerator.variableModifiers": 10
 						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbTicketsMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbTicketsMouseExited", true ) )
@@ -201,6 +205,7 @@ new FormModel {
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
+							"JavaCodeGenerator.variableModifiers": 10
 						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbStagesMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbStagesMouseExited", true ) )
@@ -223,6 +228,7 @@ new FormModel {
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
+							"JavaCodeGenerator.variableModifiers": 10
 						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbParnersMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbParnersMouseExited", true ) )
@@ -245,6 +251,7 @@ new FormModel {
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
+							"JavaCodeGenerator.variableModifiers": 10
 						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbAnalyticsMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbAnalyticsMouseExited", true ) )
@@ -267,6 +274,7 @@ new FormModel {
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
+							"JavaCodeGenerator.variableModifiers": 10
 						}
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbSettingsMouseEntered", true ) )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbSettingsMouseExited", true ) )
@@ -282,8 +290,8 @@ new FormModel {
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"background": new java.awt.Color( 255, 255, 255, 255 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {par l {comp label12:::::x, seq t {space :0:0:x, par l {comp label13::t:p:214:p, comp label14::t:p:214:p}}}, space :::p}}"
-					"$verticalGroup": "par l {seq l {comp label12:::p:75:p, space :::p, comp label13:::p:75:p, space u:::p, comp label14:::p:75:p, space :::p}}"
+					"$horizontalGroup": "par l {seq {par l {comp NameJlb:::::x, seq t {space :0:0:x, par l {comp IDJlb::t:p:214:p, comp LogoutJbt::t:p:214:p}}}, space :::p}}"
+					"$verticalGroup": "par l {seq l {comp NameJlb:::p:75:p, space :::p, comp IDJlb:::p:75:p, space u:::p, comp LogoutJbt:::p:75:p, space :::p}}"
 				} ) {
 					name: "jpnDropMenu4"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -291,22 +299,25 @@ new FormModel {
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jpnDropMenu4MouseEntered", true ) )
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jpnDropMenu4MouseExited", true ) )
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label12"
+						name: "NameJlb"
 						"text": "*tên khách hàng"
 						"font": new java.awt.Font( "Lato Black", 1, 18 )
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label13"
+						name: "IDJlb"
 						"text": "*ID"
 						"font": new java.awt.Font( "Lato Black", 1, 18 )
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
 					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label14"
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "LogoutJbt"
 						"text": "*đăng xuất"
 						"font": new java.awt.Font( "Lato Black", 1, 18 )
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"width": 210
@@ -322,6 +333,7 @@ new FormModel {
 					"background": new java.awt.Color( 255, 255, 255, 255 )
 					auxiliary() {
 						"JavaCodeGenerator.variableGetter": true
+						"JavaCodeGenerator.variableModifiers": 10
 					}
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 5
