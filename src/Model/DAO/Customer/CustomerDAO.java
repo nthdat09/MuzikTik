@@ -1,6 +1,6 @@
 package Model.DAO.Customer;
 
-import Model.BEAN.CustomerListP;
+import Model.BEAN.Customer;
 import Model.Database.UserDatabase;
 
 import java.sql.Connection;
@@ -15,15 +15,15 @@ public class CustomerDAO{
         return new CustomerDAO();
     }
 
-    public List<CustomerListP> getList() {
+    public List<Customer> getList() {
         try {
             Connection con = UserDatabase.getConnection();
             String sql = "Select * from mctmsys.customer";
-            List<CustomerListP> list = new ArrayList<>();
+            List<Customer> list = new ArrayList<>();
             PreparedStatement ps = con.prepareCall(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                CustomerListP customer = new CustomerListP();
+                Customer customer = new Customer();
                 customer.setId(rs.getInt("CUS_ID"));
                 customer.setName(rs.getString("CUS_NAME"));
                 customer.setPhoneNumber(rs.getString("CUS_PHONE_NUMBER"));
@@ -43,8 +43,8 @@ public class CustomerDAO{
         return null;
     }
 
-    public CustomerListP selectByID(int ID) throws SQLException {
-        CustomerListP customer = null;
+    public Customer selectByID(int ID) throws SQLException {
+        Customer customer = null;
         try {
             Connection con = UserDatabase.getConnection();
             String sql = "Select * from mctmsys.customer where CUS_ID = " + ID + ";";
@@ -52,7 +52,7 @@ public class CustomerDAO{
             PreparedStatement ps = con.prepareCall(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                customer = new CustomerListP();
+                customer = new Customer();
                 customer.setId(rs.getInt("CUS_ID"));
                 customer.setName(rs.getString("CUS_NAME"));
                 customer.setPhoneNumber(rs.getString("CUS_PHONE_NUMBER"));
@@ -72,7 +72,7 @@ public class CustomerDAO{
         return null;
     }
 
-    public int updateCustomer(CustomerListP cus) throws SQLException {
+    public int updateCustomer(Customer cus) throws SQLException {
         int rowChanged = 0;
         try {
             Connection con = UserDatabase.getConnection();
@@ -92,7 +92,7 @@ public class CustomerDAO{
         return rowChanged;
     }
 
-    public int addCustomer(CustomerListP newCustomer) throws SQLException {
+    public int addCustomer(Customer newCustomer) throws SQLException {
         int rowChanged = 0;
         try {
             Connection con = UserDatabase.getConnection();

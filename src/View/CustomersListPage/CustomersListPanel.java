@@ -7,7 +7,7 @@ package View.CustomersListPage;
 import Controller.CustomerPanel.CustomerListListener;
 import Model.DAO.Customer.CustomerDAO;
 import Model.DAO.Customer.CustomerListDAO;
-import Model.BEAN.CustomerListP;
+import Model.BEAN.Customer;
 import View.MainPage.MainPage;
 
 import java.awt.*;
@@ -24,16 +24,16 @@ import java.util.List;
  */
 public class CustomersListPanel extends JPanel{
     ActionListener ac = new CustomerListListener(this);
-    CustomerListP customerSelected = new CustomerListP();
+    Customer customerSelected = new Customer();
     String textSearched = "";
-    List <CustomerListP> listCustomer = null;
+    List <Customer> listCustomer = null;
 
     public CustomersListPanel() {
         initComponents();
         initMoreSetting();
     }
 
-    public CustomersListPanel(List<CustomerListP> listCustomerP, String textSearched){
+    public CustomersListPanel(List<Customer> listCustomerP, String textSearched){
         initComponents();
         this.listCustomer = listCustomerP;
         setCustomerListTable();
@@ -53,7 +53,7 @@ public class CustomersListPanel extends JPanel{
         getJlbSearch().addActionListener(ac);
     }
 
-    public CustomerListP getDataFromJTable(){
+    public Customer getDataFromJTable(){
         int i = CustomerListTable.getSelectedRow();
         if (i == -1){
             JOptionPane.showMessageDialog(null, "Please choose a customer to edit");
@@ -67,7 +67,7 @@ public class CustomersListPanel extends JPanel{
         }
     }
 
-    public CustomerListP getCustomerSelected() {
+    public Customer getCustomerSelected() {
         return customerSelected;
     }
 
@@ -240,7 +240,7 @@ public class CustomersListPanel extends JPanel{
 
     public void setCustomerListTable() {
         DefaultTableModel tableModel = (DefaultTableModel) getCustomerListTable().getModel();
-        for (CustomerListP customer : listCustomer) {
+        for (Customer customer : listCustomer) {
             int ID = customer.getId();
             String name = customer.getName();
             String phoneNumber = customer.getPhoneNumber();
@@ -281,7 +281,7 @@ public class CustomersListPanel extends JPanel{
             System.out.println("Search");
             List<Integer> idResult = new ArrayList<>();
 
-            for (CustomerListP customer : listCustomer) {
+            for (Customer customer : listCustomer) {
                 String customerCompiled = customer.getId() + "!@#$" + customer.getName() + "!@#$" + customer.getUsernameEmail() + "!@#$" + customer.getAddress() + "!@#$" + customer.getTotalPoint() + "!@#$" + customer.getPhoneNumber();
                 System.out.println(customerCompiled);
                 if (customerCompiled.contains(textSearched) == true) {
@@ -290,7 +290,7 @@ public class CustomersListPanel extends JPanel{
             }
             listCustomer.clear();
             for (int id : idResult) {
-                CustomerListP cus = CustomerDAO.getInstance().selectByID(id);
+                Customer cus = CustomerDAO.getInstance().selectByID(id);
                 if (cus != null) {
                     listCustomer.add(cus);
                 }

@@ -92,16 +92,4 @@ public class Stage {
                 ", closeTime='" + closeTime + '\'' +
                 '}';
     }
-
-    public void toPrint() {
-        System.out.println("Stage{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", rentalPrice=" + rentalPrice +
-                ", capacity=" + capacity +
-                ", openTime='" + openTime + '\'' +
-                ", closeTime='" + closeTime + '\'' +
-                '}');
-    }
 }

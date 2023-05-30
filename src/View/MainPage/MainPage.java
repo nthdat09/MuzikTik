@@ -5,7 +5,7 @@
 package View.MainPage;
 
 import Model.BEAN.MenuList;
-import Controller.SwitchMenuController;
+import Controller.Menu.SwitchMenuController;
 
 import java.awt.*;
 import java.awt.event.*;

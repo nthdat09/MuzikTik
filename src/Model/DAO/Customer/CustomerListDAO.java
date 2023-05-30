@@ -1,7 +1,7 @@
 package Model.DAO.Customer;
 
 import Model.Database.UserDatabase;
-import Model.BEAN.CustomerListP;
+import Model.BEAN.Customer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,9 +16,9 @@ public class CustomerListDAO{
         return new CustomerListDAO();
     }
 
-    public static List<CustomerListP> getCustomerList() {
-            List<CustomerListP> result = new ArrayList<>();
-            CustomerListP customerList = null;
+    public static List<Customer> getCustomerList() {
+            List<Customer> result = new ArrayList<>();
+            Customer customerList = null;
             try {
                 // Tạo kết nối đến CSDL
                 Connection con = UserDatabase.getConnection();
@@ -40,7 +40,7 @@ public class CustomerListDAO{
                     int cusId = rs.getInt("CUS_ID");
                     String cusType = rs.getString("CUS_TYPE");
                     int cusTotalPoint = rs.getInt("CUS_TOTAL_POINT");
-                    customerList = new CustomerListP(cusId, cusName, cusPhoneNumber, cusEmail, cusAddress, cusType, cusTotalPoint);
+                    customerList = new Customer(cusId, cusName, cusPhoneNumber, cusEmail, cusAddress, cusType, cusTotalPoint);
                     result.add(customerList);
                 }
 

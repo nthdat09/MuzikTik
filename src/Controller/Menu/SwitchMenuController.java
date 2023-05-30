@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Menu;
 
 import Model.BEAN.MenuList;
 import View.AnalyticPage.AnalyticPanel;

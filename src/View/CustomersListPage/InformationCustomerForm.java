@@ -5,7 +5,7 @@
 package View.CustomersListPage;
 
 import Controller.CustomerPanel.InformationCustomerController;
-import Model.BEAN.CustomerListP;
+import Model.BEAN.Customer;
 import Model.DAO.Customer.CustomerDAO;
 import View.MainPage.MainPage;
 
@@ -35,22 +35,22 @@ public class InformationCustomerForm extends JPanel {
         this.IDField.setText(String.valueOf(newID));
     }
 
-    public InformationCustomerForm(CustomerListP customerListP){
+    public InformationCustomerForm(Customer customer){
         initComponents();
-        initMoreSetting(customerListP);
+        initMoreSetting(customer);
         getSAVE().addActionListener(ac);
         getCancel().addActionListener(ac);
     }
 
-    public void initMoreSetting(CustomerListP customerListP) {
-        this.NameField.setText(customerListP.getName());
-        this.AddressField.setText(customerListP.getAddress());
-        this.PhoneNumberFiled.setText(customerListP.getPhoneNumber());
-        this.TotalPointVal.setText(String.valueOf(customerListP.getTotalPoint()));
-        this.EmailField.setText(customerListP.getEmail());
-        this.TypeField.setText(customerListP.getType());
-        this.selectedID = customerListP.getId();
-        this.IDField.setText(String.valueOf(customerListP.getId()));
+    public void initMoreSetting(Customer customer) {
+        this.NameField.setText(customer.getName());
+        this.AddressField.setText(customer.getAddress());
+        this.PhoneNumberFiled.setText(customer.getPhoneNumber());
+        this.TotalPointVal.setText(String.valueOf(customer.getTotalPoint()));
+        this.EmailField.setText(customer.getEmail());
+        this.TypeField.setText(customer.getType());
+        this.selectedID = customer.getId();
+        this.IDField.setText(String.valueOf(customer.getId()));
         System.out.println("selected id = " + this.selectedID);
     }
 
@@ -337,10 +337,10 @@ public class InformationCustomerForm extends JPanel {
             || this.IDField.equals("") || this.TypeField.equals("")){
             JOptionPane.showMessageDialog(null, "Please fill in all fields");
         } else {
-            CustomerListP customer = null;
+            Customer customer = null;
             if (selectedID == -1 ) { // add new customer
                 System.out.println("add new customer");
-                customer = new CustomerListP();
+                customer = new Customer();
                 customer.setId(Integer.parseInt(this.IDField.getText()));
                 customer.setName(this.NameField.getText());
                 customer.setEmail(this.EmailField.getText());
