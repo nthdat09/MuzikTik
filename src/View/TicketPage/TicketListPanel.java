@@ -253,12 +253,12 @@ public class TicketListPanel extends JPanel{
     public void addTicket() {
         System.out.println("addTicket");
         int newID = TicketListDAO.getLastID() + 1;
-        MainPage.changeView(new TicketInformationForm(newID).getTicketInformationFormPanel(), MainPage.getJlbTicket(), "Ticket Information Form");
+        MainPage.changeView(new TicketInformationForm(newID).getTicketInformationFormPanel(), MainPage.getJlbTickets(), "Ticket Information Form");
     }
 
     public void editTicket() {
         System.out.println("editTicket");
-        MainPage.changeView(new TicketInformationForm(getDataFromJTable()).getTicketInformationFormPanel(), MainPage.getJlbTicket(), "Ticket Information Form");
+        MainPage.changeView(new TicketInformationForm(getDataFromJTable()).getTicketInformationFormPanel(), MainPage.getJlbTickets(), "Ticket Information Form");
     }
 
     public void deleteTicket() {
@@ -298,10 +298,10 @@ public class TicketListPanel extends JPanel{
                     listTicket.add(ticket);
                 }
             }
-            MainPage.changeView(new TicketListPanel(listTicket, textSearched), MainPage.getJlbTicket(), "Ticket List Panel");
+            MainPage.changeView(new TicketListPanel(listTicket, textSearched), MainPage.getJlbTickets(), "Ticket List Panel");
         } else {
             System.out.println("No search");
-            MainPage.changeView(new TicketListPanel(), MainPage.getJlbTicket(), "Ticket List Panel");
+            MainPage.changeView(new TicketListPanel(), MainPage.getJlbTickets(), "Ticket List Panel");
         }
     }
 }

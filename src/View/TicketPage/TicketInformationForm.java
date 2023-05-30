@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 import Controller.TicketPage.TicketInformationController;
-import Model.BEAN.Stage;
 import Model.BEAN.Ticket;
 import Model.DAO.Ticket.TicketDAO;
 import View.MainPage.MainPage;
@@ -284,12 +283,12 @@ public class TicketInformationForm extends JPanel{
                 System.out.println("Insert Ticket");
                 TicketDAO.getInstance().insertTicket(ticket);
             }
-            MainPage.changeView(new TicketListPanel(), MainPage.getJlbTicket() , "Ticket Information Form");
+            MainPage.changeView(new TicketListPanel(), MainPage.getJlbTickets() , "Ticket Information Form");
         }
     }
 
     public void cancelTicket() {
         System.out.println("Cancel Ticket");
-        MainPage.changeView(new TicketListPanel(), MainPage.getJlbTicket() , "Ticket Information Form");
+        MainPage.changeView(new TicketListPanel(), MainPage.getJlbTickets() , "Ticket Information Form");
     }
 }

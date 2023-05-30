@@ -117,7 +117,7 @@ public class ComfirmTicketDeleteJPopupMenu extends JDialog{
         else {
             System.out.println("Delete ticket");
             TicketDAO.getInstance().deleteTicket(this.getSelectedID());
-            MainPage.changeView(new TicketListPanel(), MainPage.getJlbTicket() , "Ticket Information Form");
+            MainPage.changeView(new TicketListPanel(), MainPage.getJlbTickets() , "Ticket Information Form");
             this.getConfirmJDialog().dispose();
         }
     }

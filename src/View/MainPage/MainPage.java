@@ -33,9 +33,9 @@ public class MainPage extends JFrame {
         listItem.add(new MenuList("CustomersPanel", jpnCustomers, jlbCustomer));
         listItem.add(new MenuList("TicketPanel", jpnTickets,jlbTickets));
         listItem.add(new MenuList("StagePanel",jpnStages,jlbStages));
-        listItem.add(new MenuList("PartnerPanel",jpnPartners,getJlbPartners()));
+        listItem.add(new MenuList("PartnerPanel",jpnPartners,jlbPartners));
         listItem.add(new MenuList("AnalyticPanel",jpnAnalytics,jlbAnalytics));
-        listItem.add(new MenuList("SettingPanel", jpnSettings,jlbSettings));
+        listItem.add(new MenuList("AccountPanel", jpnSettings,jlbSettings));
         controller.setEvent(listItem);
     }
 
@@ -172,16 +172,12 @@ public class MainPage extends JFrame {
         return jlbCustomer;
     }
 
-    public static JLabel getJlbTicket(){
+    public static JLabel getJlbTickets(){
         return jlbTickets;
     }
 
     public static JPanel getJpnView() {
         return jpnView;
-    }
-
-    public JLabel getJlbTickets() {
-        return jlbTickets;
     }
 
     public static JLabel getJlbStages() {
@@ -257,13 +253,12 @@ public class MainPage extends JFrame {
         {
             headerPanel.setBorder(new LineBorder(new Color(0xbebebe)));
             headerPanel.setBackground(Color.white);
-            headerPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
-            swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border
-            . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog"
-            , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,headerPanel. getBorder
-            () ) ); headerPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
-            . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException
-            ( ) ;} } );
+            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) ,headerPanel. getBorder( )) ); headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
             headerPanel.setLayout(null);
 
             //---- searchButton ----

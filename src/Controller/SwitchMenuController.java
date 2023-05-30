@@ -84,6 +84,7 @@ public class SwitchMenuController {
 
         @Override
         public void mouseClicked(MouseEvent e) {
+            System.out.println(kind);
             Class<? extends JPanel> panelClass = panelMap.get(kind);
             if (panelClass != null) {
                 JPanel node;
