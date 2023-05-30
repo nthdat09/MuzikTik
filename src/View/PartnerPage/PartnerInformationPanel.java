@@ -5,13 +5,9 @@
 package View.PartnerPage;
 
 import Controller.PartnerPage.PartnerInformationController;
-import Controller.StagesPage.StageInformationController;
 import Model.BEAN.Partner;
-import Model.BEAN.Stage;
 import Model.DAO.Partner.PartnerDAO;
-import Model.DAO.Stage.StageDAO;
 import View.MainPage.MainPage;
-import View.StagesPage.StagesListPanel;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -332,11 +328,23 @@ public class PartnerInformationPanel extends JPanel {
             }
             if (selectedID != -1) {
                 System.out.println("Update Partner");
-                PartnerDAO.getInstance().updatePartner(partner);
+                int rowChanged = PartnerDAO.getInstance().updatePartner(partner);
+                if (rowChanged > 0){
+                    JOptionPane.showMessageDialog(null, "Update successfully");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Update failed");
+                }
             }
             else {
-                System.out.println("Insert Partner");
-                PartnerDAO.getInstance().insertPartner(partner);
+                System.out.println("Add Partner");
+                int rowChanged = PartnerDAO.getInstance().addPartner(partner);
+                if (rowChanged > 0){
+                    JOptionPane.showMessageDialog(null, "Add successfully");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Add failed");
+                }
             }
             MainPage.changeView(new PartnerListPanel(), MainPage.getJlbPartners() , "Partner List Panel");
         }

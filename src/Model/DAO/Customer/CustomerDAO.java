@@ -72,7 +72,8 @@ public class CustomerDAO{
         return null;
     }
 
-    public void updateCustomer(CustomerListP cus) throws SQLException {
+    public int updateCustomer(CustomerListP cus) throws SQLException {
+        int rowChanged = 0;
         try {
             Connection con = UserDatabase.getConnection();
             String sql = "UPDATE mctmsys.customer SET CUS_NAME = '" + cus.getName() + "' , CUS_PHONE_NUMBER = '" + cus.getPhoneNumber() +
@@ -81,16 +82,18 @@ public class CustomerDAO{
 
             PreparedStatement ps = con.prepareCall(sql);
 
-            int rowChanged = ps.executeUpdate();
+            rowChanged = ps.executeUpdate();
             System.out.println("Row changed: " + rowChanged);
             ps.close();
             con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return rowChanged;
     }
 
-    public void addCustomer(CustomerListP newCustomer) throws SQLException {
+    public int addCustomer(CustomerListP newCustomer) throws SQLException {
+        int rowChanged = 0;
         try {
             Connection con = UserDatabase.getConnection();
             String sql = "INSERT INTO mctmsys.customer (CUS_ID, CUS_NAME, CUS_PHONE_NUMBER, CUS_EMAIL, CUS_ADDRESS, CUS_TYPE, CUS_TOTAL_POINT) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -105,29 +108,31 @@ public class CustomerDAO{
             ps.setString(6, newCustomer.getType());
             ps.setInt(7, newCustomer.getTotalPoint());
 
-            int rowChanged = ps.executeUpdate();
+            rowChanged = ps.executeUpdate();
             System.out.println("Row changed: " + rowChanged);
             ps.close();
             con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return rowChanged;
     }
 
-    public void deleteCustomer(int ID) throws SQLException {
+    public int deleteCustomer(int ID) throws SQLException {
+        int rowChanged = 0;
         try {
             Connection con = UserDatabase.getConnection();
             String sql = "DELETE from mctmsys.customer where CUS_ID = " + ID + ";";
             System.out.println(sql);
             PreparedStatement ps = con.prepareCall(sql);
-            int rs = ps.executeUpdate();
-            System.out.println("Row changed: " + rs);
+            rowChanged = ps.executeUpdate();
 
             ps.close();
             con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return rowChanged;
     }
 
 }

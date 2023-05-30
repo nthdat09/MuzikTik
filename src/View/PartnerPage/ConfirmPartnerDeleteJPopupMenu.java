@@ -121,7 +121,14 @@ public class ConfirmPartnerDeleteJPopupMenu extends JDialog{
         }
         else {
             System.out.println("Delete Partner");
-            PartnerDAO.getInstance().deletePartner(this.getSelectedID());
+            int rowChanged = PartnerDAO.getInstance().deletePartner(this.getSelectedID());
+            if (rowChanged == 0) {
+                JOptionPane.showMessageDialog(null, "Delete failed");
+                return;
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Delete successfully");
+            }
             MainPage.changeView(new PartnerListPanel(), MainPage.getJlbPartners() , "Partner List Panel");
             this.getConfirmJDialog().dispose();
         }

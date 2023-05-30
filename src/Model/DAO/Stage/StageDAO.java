@@ -1,8 +1,6 @@
 package Model.DAO.Stage;
 
 import Model.BEAN.Stage;
-import Model.BEAN.Ticket;
-import Model.DAO.Ticket.TicketDAO;
 import Model.Database.UserDatabase;
 
 import java.sql.*;
@@ -49,7 +47,8 @@ public class StageDAO {
         return null;
     }
 
-    public void updateStage(Stage stage) {
+    public int updateStage(Stage stage) {
+        int rowChanged = 0;
         try{
             Connection con = UserDatabase.getConnection();
             String sql = "UPDATE mctmsys.stage SET STG_NAME = ?, STG_ADDRESS = ?, STG_RENTAL_PRICE = ?, STG_CAPACITY = ?, STG_OPEN_TIME = ?, STG_CLOSE_TIME = ? WHERE STG_ID = ?;";
@@ -62,15 +61,17 @@ public class StageDAO {
             ps.setString(5, stage.getOpenTime());
             ps.setString(6, stage.getCloseTime());
             ps.setInt(7, stage.getId());
-            ps.executeUpdate();
+            rowChanged = ps.executeUpdate();
             ps.close();
             UserDatabase.closeConnection(con);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return rowChanged;
     }
 
-    public void insertStage(Stage stage) {
+    public int addStage(Stage stage) {
+        int rowChanged = 0;
         try{
             Connection con = UserDatabase.getConnection();
             String sql = "INSERT INTO mctmsys.stage (STG_ID, STG_NAME, STG_ADDRESS, STG_RENTAL_PRICE, STG_CAPACITY, STG_OPEN_TIME, STG_CLOSE_TIME) VALUES (?, ?, ?, ?, ?, ?, ?);";
@@ -86,7 +87,7 @@ public class StageDAO {
             ps.setString(6, stage.getOpenTime());
             ps.setString(7, stage.getCloseTime());
 
-            int rowChanged = ps.executeUpdate();
+            rowChanged = ps.executeUpdate();
             System.out.println(rowChanged + " row(s) changed");
 
             ps.close();
@@ -94,9 +95,11 @@ public class StageDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return rowChanged;
     }
 
-    public void deleteStage(int selectedID) {
+    public int deleteStage(int selectedID) {
+        int rowChanged = 0;
         try{
             Connection con = UserDatabase.getConnection();
             String sql = "DELETE FROM mctmsys.stage WHERE STG_ID = ?;";
@@ -105,13 +108,14 @@ public class StageDAO {
             PreparedStatement ps = con.prepareCall(sql);
             ps.setInt(1, selectedID);
 
-            int rowChanged = ps.executeUpdate();
+            rowChanged = ps.executeUpdate();
             System.out.println(rowChanged + " row(s) changed");
             ps.close();
             UserDatabase.closeConnection(con);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return rowChanged;
     }
 
     public List<Stage> getStageList() {

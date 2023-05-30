@@ -2,11 +2,8 @@ package View.StagesPage;
 
 import Controller.StagesPage.StageInformationController;
 import Model.BEAN.Stage;
-import Model.BEAN.Ticket;
 import Model.DAO.Stage.StageDAO;
-import Model.DAO.Ticket.TicketDAO;
 import View.MainPage.MainPage;
-import View.TicketPage.TicketListPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -410,11 +407,23 @@ public class StageInformationForm extends JPanel{
             }
             if (selectedID != -1) {
                 System.out.println("Update Stage");
-                StageDAO.getInstance().updateStage(stage);
+                int rowChanged = StageDAO.getInstance().updateStage(stage);
+                if (rowChanged == 0) {
+                    JOptionPane.showMessageDialog(null, "Update failed");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Update successfully");
+                }
             }
             else {
                 System.out.println("Insert Stage");
-                StageDAO.getInstance().insertStage(stage);
+                int rowChanged = StageDAO.getInstance().addStage(stage);
+                if (rowChanged == 0) {
+                    JOptionPane.showMessageDialog(null, "Insert failed");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Insert successfully");
+                }
             }
             MainPage.changeView(new StagesListPanel(), MainPage.getJlbStages() , "Stage List Panel");
         }

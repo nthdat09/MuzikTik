@@ -112,10 +112,16 @@ public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
     public void deleteCustomer() throws SQLException {
         if (this.getSelectedID() == -1) {
             JOptionPane.showMessageDialog(null, "Please select a customer to delete");
-            return;
         }
         else {
-            CustomerDAO.getInstance().deleteCustomer(getSelectedID());
+            int rowChanged = CustomerDAO.getInstance().deleteCustomer(getSelectedID());
+            if (rowChanged == 0) {
+                JOptionPane.showMessageDialog(null, "Delete failed");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Delete successfully");
+            }
+
             MainPage.changeView(new CustomersListPanel(), MainPage.getJlbCustomer(), "CustomerListPanel");
             this.getConfirmJDialog().dispose();
         }

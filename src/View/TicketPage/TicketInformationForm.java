@@ -277,11 +277,23 @@ public class TicketInformationForm extends JPanel{
             }
             if (selectedID != -1) {
                 System.out.println("Update Ticket");
-                TicketDAO.getInstance().updateTicket(ticket);
+                int rowChanged = TicketDAO.getInstance().updateTicket(ticket);
+                if (rowChanged == 0) {
+                    JOptionPane.showMessageDialog(null, "Update failed");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Update successful");
+                }
             }
             else {
-                System.out.println("Insert Ticket");
-                TicketDAO.getInstance().insertTicket(ticket);
+                System.out.println("Add Ticket");
+                int rowChanged = TicketDAO.getInstance().addTicket(ticket);
+                if (rowChanged == 0) {
+                    JOptionPane.showMessageDialog(null, "Add failed");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Add successful");
+                }
             }
             MainPage.changeView(new TicketListPanel(), MainPage.getJlbTickets() , "Ticket Information Form");
         }

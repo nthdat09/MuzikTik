@@ -1,12 +1,9 @@
 package Model.DAO.Partner;
 
 import Model.BEAN.Partner;
-import Model.BEAN.Stage;
-import Model.DAO.Stage.StageDAO;
 import Model.Database.UserDatabase;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class PartnerDAO {
@@ -44,7 +41,8 @@ public class PartnerDAO {
         return null;
     }
 
-    public void updatePartner(Partner partner) {
+    public int updatePartner(Partner partner) {
+        int rowChanged = 0;
         try{
             Connection con = UserDatabase.getConnection();
             String sql = "UPDATE mctmsys.partner SET PTN_NAME = ?, PTN_PHONE_NUMBER = ?, PTN_EMAIL = ?, PTN_ADDRESS = ?, PTN_LOGO = ?, PTN_ACC_NUMBER = ?, PTN_BANK = ? WHERE PTN_ID = ?;";
@@ -59,15 +57,17 @@ public class PartnerDAO {
             ps.setString(7, partner.getBank());
             ps.setInt(8, partner.getId());
 
-            ps.executeUpdate();
+            rowChanged = ps.executeUpdate();
             ps.close();
             con.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return rowChanged;
     }
 
-    public void insertPartner (Partner partner) {
+    public int addPartner(Partner partner) {
+        int rowChanged = 0;
         try{
             Connection con = UserDatabase.getConnection();
             String sql = "INSERT INTO mctmsys.partner (PTN_ID, PTN_NAME, PTN_PHONE_NUMBER, PTN_EMAIL, PTN_ADDRESS, PTN_LOGO, PTN_ACC_NUMBER, PTN_BANK) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
@@ -83,7 +83,7 @@ public class PartnerDAO {
             ps.setString(7, partner.getAccNumber());
             ps.setString(8, partner.getBank());
 
-            int rowChanged = ps.executeUpdate();
+            rowChanged = ps.executeUpdate();
             System.out.println(rowChanged + " row(s) changed");
 
             ps.close();
@@ -91,9 +91,11 @@ public class PartnerDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return rowChanged;
     }
 
-    public void deletePartner(int selectedID) {
+    public int deletePartner(int selectedID) {
+        int rowChanged = 0;
         try{
             Connection con = UserDatabase.getConnection();
             String sql = "DELETE FROM mctmsys.partner WHERE PTN_ID = ?;";
@@ -103,13 +105,14 @@ public class PartnerDAO {
             ps.setInt(1, selectedID);
 
 
-            int rowChanged = ps.executeUpdate();
+            rowChanged = ps.executeUpdate();
             System.out.println(rowChanged + " row(s) changed");
             ps.close();
             UserDatabase.closeConnection(con);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return rowChanged;
     }
 
     public List<Partner> getPartnerList() {

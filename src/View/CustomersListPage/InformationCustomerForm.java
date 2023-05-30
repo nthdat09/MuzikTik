@@ -151,13 +151,13 @@ public class InformationCustomerForm extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(735, 548));
         setMaximumSize(new Dimension(735, 548));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-        . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder
-        . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .
-        awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder( )) )
-        ;  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-        ) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-        ;
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+        . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing
+        . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+        Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+        ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+        public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName (
+        ) )) throw new RuntimeException( ); }} );
 
         //---- Name ----
         this.Name.setText("Name:");
@@ -364,10 +364,22 @@ public class InformationCustomerForm extends JPanel {
             }
 
             if (selectedID != -1) {
-                CustomerDAO.getInstance().updateCustomer(customer);
+                int rowChanged = CustomerDAO.getInstance().updateCustomer(customer);
+                if (rowChanged > 0) {
+                    JOptionPane.showMessageDialog(null, "Update customer successfully");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Update customer failed");
+                }
             }
             else {
-                CustomerDAO.getInstance().addCustomer(customer);
+                int rowChanged = CustomerDAO.getInstance().addCustomer(customer);
+                if (rowChanged > 0) {
+                    JOptionPane.showMessageDialog(null, "Add customer successfully");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Add customer failed");
+                }
             }
             MainPage.changeView(new CustomersListPanel(), MainPage.getJlbCustomer(), "CustomerListPanel");
         }

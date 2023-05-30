@@ -40,7 +40,8 @@ public class TicketDAO {
         return null;
     }
 
-    public void updateTicket(Ticket ticket) throws SQLException {
+    public int updateTicket(Ticket ticket) throws SQLException {
+        int rowChanged = 0;
         try{
             Connection con = UserDatabase.getConnection();
             String sql = "Update mctmsys.ticket set TKT_EVT_ID = ?, TKT_PRICE = ?, TKT_STG_ID = ?, TKT_SEAT_ID = ? where TKT_ID = ?;";
@@ -50,7 +51,7 @@ public class TicketDAO {
             ps.setInt(3, ticket.getStageID());
             ps.setInt(4, ticket.getSeatID());
             ps.setInt(5, ticket.getTicketID());
-            int rowChanged = ps.executeUpdate();
+            rowChanged = ps.executeUpdate();
             System.out.println("Row changed: " + rowChanged);
             ps.close();
             con.close();
@@ -58,9 +59,11 @@ public class TicketDAO {
         catch (SQLException e) {
             e.printStackTrace();
         }
+        return rowChanged;
     }
 
-    public void insertTicket(Ticket oldTicket) throws SQLException {
+    public int addTicket(Ticket oldTicket) throws SQLException {
+        int rowChanged = 0;
         try {
             Connection con = UserDatabase.getConnection();
             String sql = "Insert into mctmsys.ticket(TKT_ID, TKT_EVT_ID, TKT_PRICE, TKT_STG_ID, TKT_SEAT_ID) values(?, ?, ?, ?, ?);";
@@ -74,7 +77,7 @@ public class TicketDAO {
             ps.setInt(4, oldTicket.getStageID());
             ps.setInt(5, oldTicket.getSeatID());
 
-            int rowChanged = ps.executeUpdate();
+            rowChanged = ps.executeUpdate();
             System.out.println("Row changed: " + rowChanged);
 
             ps.close();
@@ -83,21 +86,24 @@ public class TicketDAO {
         catch (SQLException e) {
             e.printStackTrace();
         }
+        return rowChanged;
     }
 
-    public void deleteTicket(int ID) throws SQLException {
+    public int deleteTicket(int ID) throws SQLException {
+        int rowChanged = 0;
         try{
             Connection con = UserDatabase.getConnection();
             String sql = "Delete from mctmsys.ticket where TKT_ID = ?;";
             PreparedStatement ps = con.prepareCall(sql);
             ps.setInt(1, ID);
-            ps.executeUpdate();
+            rowChanged = ps.executeUpdate();
             ps.close();
             con.close();
         }
         catch (SQLException e) {
             e.printStackTrace();
         }
+        return rowChanged;
     }
 
     public static List<Ticket>  getTicketList(){

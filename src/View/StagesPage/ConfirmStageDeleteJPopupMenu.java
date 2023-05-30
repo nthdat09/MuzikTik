@@ -117,7 +117,14 @@ public class ConfirmStageDeleteJPopupMenu extends JDialog{
         }
         else {
             System.out.println("Delete Stage");
-            StageDAO.getInstance().deleteStage(this.getSelectedID());
+            int rowChanged = StageDAO.getInstance().deleteStage(this.getSelectedID());
+            if (rowChanged == 0) {
+                JOptionPane.showMessageDialog(null, "Delete Stage Failed");
+                return;
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Delete Stage Successfully");
+            }
             MainPage.changeView(new StagesListPanel(), MainPage.getJlbStages() , "Stage List Panel");
             this.getConfirmJDialog().dispose();
         }
