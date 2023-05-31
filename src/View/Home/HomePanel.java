@@ -35,6 +35,7 @@ public class HomePanel extends JPanel {
     static Integer selectedEventID;
     static String selectedEvent;
     static Integer selectedStage;
+    ButtonGroup bg = new ButtonGroup();
     MouseListener ac1 = new EventListPanel(this,1);
     MouseListener ac2 = new EventListPanel(this,2);
     MouseListener ac3 = new EventListPanel(this,3);
@@ -51,6 +52,7 @@ public class HomePanel extends JPanel {
     ArrayList<JLabel> listLabelPicture = new ArrayList<JLabel>();
     ArrayList<JLabel> listLabelName = new ArrayList<JLabel>();
     ArrayList<JLabel> listLabelDate = new ArrayList<JLabel>();
+    ArrayList<JRadioButton> slideDots = new ArrayList<>();
 
     public HomePanel() {
         initComponents();
@@ -79,6 +81,22 @@ public class HomePanel extends JPanel {
         addLabelDate();
         listEvent = Event.getEventList();
         setEventList();
+        addButtonGroup();
+
+        slideDots.add(slideDot1);
+        slideDots.add(slideDot2);
+        slideDots.add(slideDot3);
+        slideDots.add(slideDot4);
+        slideDots.add(slideDot5);
+        slideDots.add(slideDot6);
+    }
+    public void addButtonGroup() {
+        bg.add(slideDot1);
+        bg.add(slideDot2);
+        bg.add(slideDot3);
+        bg.add(slideDot4);
+        bg.add(slideDot5);
+        bg.add(slideDot6);
     }
     public void addListPicture() {
         listLabelPicture.add(eventPicture1);
@@ -201,81 +219,45 @@ public class HomePanel extends JPanel {
         return selectedStage;
     }
     private void radioButton1MouseClicked(MouseEvent e) {
-        if(slideDot1.isSelected()) {
-            slideDot2.setSelected(false);
-            slideDot3.setSelected(false);
-            slideDot4.setSelected(false);
-            slideDot5.setSelected(false);
-            slideDot6.setSelected(false);
-            show(0);
-            index = 0;
-            position = 0;
-        }
+        bg.setSelected(slideDot1.getModel(), true);
+        show(0);
+        index = 0;
+        position = 0;
     }
 
     private void radioButton2MouseClicked(MouseEvent e) {
-        if(slideDot2.isSelected()) {
-            slideDot1.setSelected(false);
-            slideDot3.setSelected(false);
-            slideDot4.setSelected(false);
-            slideDot5.setSelected(false);
-            slideDot6.setSelected(false);
-            show(1);
-            index = 1;
-            position = 1;
-        }
+        bg.setSelected(slideDot2.getModel(), true);
+        show(1);
+        index = 1;
+        position = 1;
     }
 
     private void radioButton3MouseClicked(MouseEvent e) {
-        if(slideDot3.isSelected()) {
-            slideDot1.setSelected(false);
-            slideDot2.setSelected(false);
-            slideDot4.setSelected(false);
-            slideDot5.setSelected(false);
-            slideDot6.setSelected(false);
-            show(2);
-            index = 2;
-            position = 2;
-        }
+        bg.setSelected(slideDot3.getModel(), true);
+        show(2);
+        index = 2;
+        position = 2;
     }
 
     private void radioButton4MouseClicked(MouseEvent e) {
-        if(slideDot4.isSelected()) {
-            slideDot1.setSelected(false);
-            slideDot2.setSelected(false);
-            slideDot3.setSelected(false);
-            slideDot5.setSelected(false);
-            slideDot6.setSelected(false);
-            show(3);
-            index = 3;
-            position = 3;
-        }
+        bg.setSelected(slideDot4.getModel(), true);
+        show(3);
+        index = 3;
+        position = 3;
     }
 
     private void radioButton5MouseClicked(MouseEvent e) {
-        if(slideDot5.isSelected()) {
-            slideDot1.setSelected(false);
-            slideDot2.setSelected(false);
-            slideDot3.setSelected(false);
-            slideDot4.setSelected(false);
-            slideDot6.setSelected(false);
-            show(4);
-            index = 4;
-            position = 4;
-        }
+        bg.setSelected(slideDot5.getModel(), true);
+        show(4);
+        index = 4;
+        position = 4;
     }
 
     private void radioButton6MouseClicked(MouseEvent e) {
-        if(slideDot6.isSelected()) {
-            slideDot1.setSelected(false);
-            slideDot2.setSelected(false);
-            slideDot3.setSelected(false);
-            slideDot4.setSelected(false);
-            slideDot5.setSelected(false);
-            show(5);
-            index = 5;
-            position = 5;
-        }
+        bg.setSelected(slideDot6.getModel(), true);
+        show(5);
+        index = 5;
+        position = 5;
     }
 
     private void previousButtonMouseClicked(MouseEvent e) {
@@ -296,17 +278,9 @@ public class HomePanel extends JPanel {
             position = takeImage().length+1;
         }
         show(position);
-        ArrayList<JRadioButton> slideDots = new ArrayList<>();
-        slideDots.add(slideDot1);
-        slideDots.add(slideDot2);
-        slideDots.add(slideDot3);
-        slideDots.add(slideDot4);
-        slideDots.add(slideDot5);
-        slideDots.add(slideDot6);
 
         if (index > 0) {
-            slideDots.get(index).setSelected(false);
-            slideDots.get(index - 1).setSelected(true);
+            bg.setSelected(slideDots.get(index-1).getModel(), true);
             index = index - 1;
         }
     }
@@ -327,17 +301,9 @@ public class HomePanel extends JPanel {
             position = takeImage().length-1;
         }
         show(position);
-        ArrayList<JRadioButton> slideDots = new ArrayList<>();
-        slideDots.add(slideDot1);
-        slideDots.add(slideDot2);
-        slideDots.add(slideDot3);
-        slideDots.add(slideDot4);
-        slideDots.add(slideDot5);
-        slideDots.add(slideDot6);
 
         if(index < 5) {
-            slideDots.get(index+1).setSelected(true);
-            slideDots.get(index).setSelected(false);
+            bg.setSelected(slideDots.get(index+1).getModel(), true);
             index = index + 1;
         }
     }
@@ -368,6 +334,10 @@ public class HomePanel extends JPanel {
     }
     public static JLabel getEventName9() {
         return eventName9;
+    }
+
+    private void slideDot1(ActionEvent e) {
+        System.out.println(e.getActionCommand());
     }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -415,13 +385,11 @@ public class HomePanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
-        .swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing
-        .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
-        Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red
-        ), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
-        public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName(
-        )))throw new RuntimeException();}});
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
+        0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
+        .BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.
+        red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
+        beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
 
         //======== mainScrollPanel ========
         {
