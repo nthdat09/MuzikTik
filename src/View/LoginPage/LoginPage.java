@@ -5,17 +5,16 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import Controller.LoginPage.ForgetPasswordPage1Listener;
 import Controller.LoginPage.LoginPageListener;
 import Model.DAO.Employee.EmployeeDAO;
-import Model.BEAN.User;
+import Model.BEAN.Employee;
 import View.LoginPage.ForgetPasswordPage.ForgotPasswordPage_1;
 import View.MainPage.MainPage;
 
 public class LoginPage extends JPanel {
     ActionListener ac = new LoginPageListener(this);
 
-    User user = new User();
+    Employee employee = new Employee();
 
     private static int loginAttempt = 0;
 
@@ -240,7 +239,7 @@ public class LoginPage extends JPanel {
         String username = this.UsernameField.getText();
         String password = this.PasswordField.getText();
 
-        User realuser = EmployeeDAO.getInstance().selectById(username);
+        Employee realuser = EmployeeDAO.getInstance().selectUserandPassByID(username);
 
         if (loginAttempt >= 3) {
             loginStatus = "Forgot your password? Click Forgot Password to reset the password";

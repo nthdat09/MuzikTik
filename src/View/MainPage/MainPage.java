@@ -21,6 +21,16 @@ import java.util.List;
  */
 public class MainPage extends JFrame {
     ActionListener ac = new LogoutController(this);
+    static String username;
+
+    public static String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public MainPage(String username) {
         initComponents();
         initSomeSetting(username);
@@ -28,7 +38,10 @@ public class MainPage extends JFrame {
 
     private void initSomeSetting(String username) {
         SwitchMenuController controller = new SwitchMenuController(jpnView);
+        controller.setUserName(username);
         controller.setView(jpnHome,jlbHome);
+
+        this.username = username;
 
         List<MenuList> listItem = new ArrayList<MenuList>();
         listItem.add(new MenuList("HomePanel", jpnHome, jlbHome));
@@ -160,7 +173,7 @@ public class MainPage extends JFrame {
         return jlbAnalytics;
     }
 
-    public JLabel getJlbSettings() {
+    public static JLabel getJlbSettings() {
         return jlbSettings;
     }
 
@@ -235,12 +248,13 @@ public class MainPage extends JFrame {
         {
             headerPanel.setBorder(new LineBorder(new Color(0xbebebe)));
             headerPanel.setBackground(Color.white);
-            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
-            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
-            java. awt. Color. red) ,headerPanel. getBorder( )) ); headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
-            throw new RuntimeException( ); }} );
+            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+            . border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder
+            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
+            awt .Font .BOLD ,12 ), java. awt. Color. red) ,headerPanel. getBorder( )) )
+            ; headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+            ;
             headerPanel.setLayout(null);
 
             //---- searchButton ----

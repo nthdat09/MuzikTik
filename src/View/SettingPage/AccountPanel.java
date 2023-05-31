@@ -4,7 +4,21 @@
 
 package View.SettingPage;
 
+import Application.Main;
+import Controller.AccountPanel.AccountPanelController;
+import Model.BEAN.Employee;
+import Model.DAO.Employee.EmployeeDAO;
+import View.MainPage.MainPage;
+import com.github.lgooddatepicker.components.DatePicker;
+
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
@@ -13,8 +27,177 @@ import javax.swing.border.*;
  * @author Admin
  */
 public class AccountPanel extends JPanel {
+    ActionListener ac = new AccountPanelController(this);
+
+    byte[] photo = null;
+    String filename = null;
+
     public AccountPanel() {
         initComponents();
+        initMoreSetting();
+    }
+
+    private void initMoreSetting() {
+        setDataForComponents();
+
+        getJbtCancel().addActionListener(ac);
+        getJbtSave().addActionListener(ac);
+        getUploadJbt().addActionListener(ac);
+
+    }
+
+    private void setDataForComponents() {
+        Employee employee = EmployeeDAO.getUserByUsername(MainPage.getUsername());
+
+        getUsernameJtf().setText(employee.getUsername());
+        getEmailJtf().setText(employee.getEmail());
+        getAddressJtf().setText(employee.getAddress());
+        getPhoneJtf().setText(String.valueOf(employee.getPhoneNumber()));
+        
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
+        LocalDate localDate = LocalDate.parse(employee.getDOB().toString(), formatter);
+        getDobJpn().setDate(localDate);
+
+        ImageIcon imageIcon = new ImageIcon(employee.getAvatar());
+        Image image = imageIcon.getImage().getScaledInstance(avatarJlb.getWidth(), avatarJlb.getHeight(), Image.SCALE_SMOOTH);
+        avatarJlb.setIcon(new ImageIcon(image));
+        getAvatarLinkJlb().setText(employee.getUrlAvatar());
+
+    }
+
+    public void uploadNewAvatar() {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.showOpenDialog(this);
+            File file = fileChooser.getSelectedFile();
+            filename = file.getAbsolutePath();
+            ImageIcon imageIcon = new ImageIcon(file.toString());
+            Image image = imageIcon.getImage().getScaledInstance(avatarJlb.getWidth(), avatarJlb.getHeight(), Image.SCALE_SMOOTH);
+            avatarJlb.setIcon(new ImageIcon(image));
+            getAvatarLinkJlb().setText(filename);
+    }
+    private static void copyFileUsingStream(File source, File dest) throws IOException {
+        InputStream is = null;
+        OutputStream os = null;
+        try {
+            is = new FileInputStream(source);
+
+            // Create the destination directory if it doesn't exist
+            if (!dest.exists()) {
+                dest.mkdirs();
+            }
+
+            // Create the destination file
+            File destinationFile = new File(dest, MainPage.getUsername() + ".jpg");
+
+            os = new FileOutputStream(destinationFile);
+            byte[] buffer = new byte[1024];
+            int length;
+
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+        } finally {
+            // Close the streams in separate try-catch blocks to ensure both streams are closed even if one throws an exception
+            try {
+                if (is != null) {
+                    is.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (os != null) {
+                    os.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void save() throws IOException {
+        if (getUsernameJtf().getText().equals("") || getEmailJtf().getText().equals("") || getAddressJtf().getText().equals("") || getPhoneJtf().getText().equals("") || getDobJpn().getDate().toString().equals("") || getAvatarLinkJlb().getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Please fill all the fields");
+        }
+        else {
+                Employee employee = new Employee();
+                employee.setUsername(getUsernameJtf().getText());
+                employee.setEmail(getEmailJtf().getText());
+                employee.setAddress(getAddressJtf().getText());
+                employee.setPhoneNumber(getPhoneJtf().getText());
+                employee.setDOB(java.sql.Date.valueOf(getDobJpn().getDate()));
+
+                File image = new File(filename);
+                FileInputStream fis = new FileInputStream(image);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                byte[] buf = new byte[1024];
+                for (int readNum; (readNum = fis.read(buf)) != -1; ) {
+                    bos.write(buf, 0, readNum);
+                }
+                photo = bos.toByteArray();
+                employee.setAvatar(photo);
+
+                String desPath = "D:/DoAn/Fantastic-Four/src/Image/Avatar/";// Nhớ đổi đường dẫn cho đúng nha
+
+                File source = new File(filename);
+                File dest = new File(desPath);
+                copyFileUsingStream(source, dest);
+
+                employee.setUrlAvatar(desPath + MainPage.getUsername() + ".jpg");
+
+                int rowChanged = EmployeeDAO.updateEmployee(employee);
+                System.out.println(rowChanged);
+                if (rowChanged > 0) {
+                    JOptionPane.showMessageDialog(this, "Update successfully");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Update failed");
+                }
+                MainPage.changeView(new AccountPanel(), MainPage.getJlbSettings(), "AccountPanel");
+        }
+    }
+    public void cancel() {
+        setDataForComponents();
+    }
+
+    public JButton getJbtCancel() {
+        return jbtCancel;
+    }
+
+    public JButton getJbtSave() {
+        return jbtSave;
+    }
+
+    public JTextField getUsernameJtf() {
+        return usernameJtf;
+    }
+
+    public JTextField getEmailJtf() {
+        return emailJtf;
+    }
+
+    public JTextField getPhoneJtf() {
+        return phoneJtf;
+    }
+
+    public JTextField getAddressJtf() {
+        return addressJtf;
+    }
+
+    public DatePicker getDobJpn() {
+        return dobJpn;
+    }
+
+    public JLabel getAvatarJlb() {
+        return avatarJlb;
+    }
+
+    public JButton getUploadJbt() {
+        return UploadJbt;
+    }
+
+    public JLabel getAvatarLinkJlb() {
+        return avatarLinkJlb;
     }
 
     private void initComponents() {
@@ -24,26 +207,30 @@ public class AccountPanel extends JPanel {
         jbtSave = new JButton();
         jlbMyAccount = new JLabel();
         jlbUsername = new JLabel();
-        jpnUsername = new JPanel();
-        jlbFillUsername = new JLabel();
         jlbEmail = new JLabel();
         jlbPhoneNumber = new JLabel();
         jlbDOB = new JLabel();
         jlbDOB2 = new JLabel();
         jlbAvatar = new JLabel();
-        jlbURLAva = new JLabel();
-        jlbFillUsername2 = new JLabel();
-        jlbFillUsername3 = new JLabel();
-        jlbFillUsername4 = new JLabel();
-        jlbFillUsername5 = new JLabel();
+        usernameJtf = new JTextField();
+        emailJtf = new JTextField();
+        phoneJtf = new JTextField();
+        addressJtf = new JTextField();
+        dobJpn = new DatePicker();
+        UploadJbt = new JButton();
+        avatarLinkJlb = new JLabel();
+        desktopPane1 = new JDesktopPane();
+        avatarJlb = new JLabel();
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-        0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-        . BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-        beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+        . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
+        . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+        Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+        ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+        public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
+        ) )) throw new RuntimeException( ); }} );
 
         //---- jbtCancel ----
         jbtCancel.setText("CANCEL");
@@ -70,28 +257,6 @@ public class AccountPanel extends JPanel {
         jlbUsername.setFont(new Font("Lato Black", Font.BOLD, 20));
         jlbUsername.setForeground(new Color(0x626262));
 
-        //======== jpnUsername ========
-        {
-            jpnUsername.setBackground(Color.white);
-            jpnUsername.setBorder(new LineBorder(new Color(0x626262)));
-
-            //---- jlbFillUsername ----
-            jlbFillUsername.setText("text");
-            jlbFillUsername.setFont(new Font("Lato", Font.PLAIN, 16));
-            jlbFillUsername.setForeground(new Color(0x61b884));
-
-            GroupLayout jpnUsernameLayout = new GroupLayout(jpnUsername);
-            jpnUsername.setLayout(jpnUsernameLayout);
-            jpnUsernameLayout.setHorizontalGroup(
-                jpnUsernameLayout.createParallelGroup()
-                    .addComponent(jlbFillUsername, GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-            );
-            jpnUsernameLayout.setVerticalGroup(
-                jpnUsernameLayout.createParallelGroup()
-                    .addComponent(jlbFillUsername, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-            );
-        }
-
         //---- jlbEmail ----
         jlbEmail.setText("Email");
         jlbEmail.setFont(new Font("Lato Black", Font.BOLD, 20));
@@ -117,104 +282,132 @@ public class AccountPanel extends JPanel {
         jlbAvatar.setFont(new Font("Lato Black", Font.BOLD, 20));
         jlbAvatar.setForeground(new Color(0x626262));
 
-        //---- jlbURLAva ----
-        jlbURLAva.setText("text");
-        jlbURLAva.setBackground(Color.white);
-        jlbURLAva.setBorder(LineBorder.createBlackLineBorder());
+        //---- usernameJtf ----
+        usernameJtf.setFont(new Font("Lato", Font.PLAIN, 16));
+        usernameJtf.setForeground(new Color(0x61b884));
+        usernameJtf.setEditable(false);
+        usernameJtf.setBackground(Color.lightGray);
 
-        //---- jlbFillUsername2 ----
-        jlbFillUsername2.setText("text");
-        jlbFillUsername2.setFont(new Font("Lato", Font.PLAIN, 16));
-        jlbFillUsername2.setForeground(new Color(0x61b884));
+        //---- emailJtf ----
+        emailJtf.setFont(new Font("Lato", Font.PLAIN, 16));
+        emailJtf.setForeground(new Color(0x61b884));
 
-        //---- jlbFillUsername3 ----
-        jlbFillUsername3.setText("text");
-        jlbFillUsername3.setFont(new Font("Lato", Font.PLAIN, 16));
-        jlbFillUsername3.setForeground(new Color(0x61b884));
+        //---- phoneJtf ----
+        phoneJtf.setFont(new Font("Lato", Font.PLAIN, 16));
+        phoneJtf.setForeground(new Color(0x61b884));
 
-        //---- jlbFillUsername4 ----
-        jlbFillUsername4.setText("text");
-        jlbFillUsername4.setFont(new Font("Lato", Font.PLAIN, 16));
-        jlbFillUsername4.setForeground(new Color(0x61b884));
+        //---- addressJtf ----
+        addressJtf.setFont(new Font("Lato", Font.PLAIN, 16));
+        addressJtf.setForeground(new Color(0x61b884));
 
-        //---- jlbFillUsername5 ----
-        jlbFillUsername5.setText("text");
-        jlbFillUsername5.setFont(new Font("Lato", Font.PLAIN, 16));
-        jlbFillUsername5.setForeground(new Color(0x61b884));
+        //---- UploadJbt ----
+        UploadJbt.setText("Upload new avatar");
+
+        //---- avatarLinkJlb ----
+        avatarLinkJlb.setBorder(LineBorder.createBlackLineBorder());
+
+        //======== desktopPane1 ========
+        {
+            desktopPane1.setBackground(Color.white);
+            desktopPane1.setMaximumSize(new Dimension(208, 212));
+            desktopPane1.setMinimumSize(new Dimension(208, 212));
+            desktopPane1.setPreferredSize(new Dimension(208, 212));
+
+            //---- avatarJlb ----
+            avatarJlb.setBackground(Color.white);
+            avatarJlb.setBorder(LineBorder.createBlackLineBorder());
+            avatarJlb.setMaximumSize(new Dimension(208, 212));
+            avatarJlb.setMinimumSize(new Dimension(208, 212));
+            avatarJlb.setPreferredSize(new Dimension(208, 212));
+            desktopPane1.add(avatarJlb, JLayeredPane.DEFAULT_LAYER);
+            avatarJlb.setBounds(0, 0, 265, 270);
+        }
 
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(350, 569, Short.MAX_VALUE)
-                    .addComponent(jbtSave, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(jbtCancel, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 219, Short.MAX_VALUE))
-                .addGroup(layout.createSequentialGroup()
                     .addGap(404, 404, 404)
                     .addComponent(jlbMyAccount)
-                    .addGap(0, 464, Short.MAX_VALUE))
+                    .addGap(0, 0, Short.MAX_VALUE))
                 .addGroup(layout.createSequentialGroup()
+                    .addGap(380, 380, 380)
+                    .addComponent(jbtSave, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+                    .addGap(42, 42, 42)
+                    .addComponent(jbtCancel, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(374, Short.MAX_VALUE))
+                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(705, Short.MAX_VALUE)
+                    .addComponent(UploadJbt)
+                    .addGap(164, 164, 164))
+                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addGap(100, 100, 100)
                     .addGroup(layout.createParallelGroup()
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jlbDOB)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlbFillUsername4, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jlbDOB2)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlbFillUsername5, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup()
-                                .addComponent(jlbUsername)
-                                .addComponent(jlbEmail)
-                                .addComponent(jlbAvatar)
-                                .addComponent(jlbPhoneNumber))
-                            .addGap(23, 23, 23)
-                            .addGroup(layout.createParallelGroup()
-                                .addComponent(jlbFillUsername3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jpnUsername, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jlbURLAva, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jlbFillUsername2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGap(0, 523, Short.MAX_VALUE))
+                        .addComponent(jlbUsername)
+                        .addComponent(jlbEmail)
+                        .addComponent(jlbDOB2)
+                        .addComponent(jlbPhoneNumber)
+                        .addComponent(jlbDOB))
+                    .addGap(23, 23, 23)
+                    .addGroup(layout.createParallelGroup()
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(usernameJtf, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                            .addComponent(emailJtf, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))
+                        .addComponent(addressJtf, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(phoneJtf, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dobJpn, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup()
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jlbAvatar)
+                            .addGap(224, 224, 224))
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                .addComponent(avatarLinkJlb, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(desktopPane1, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE))
+                            .addGap(117, 117, 117))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(24, 24, 24)
-                    .addComponent(jlbMyAccount)
-                    .addGap(17, 17, 17)
                     .addGroup(layout.createParallelGroup()
-                        .addComponent(jlbUsername)
-                        .addComponent(jpnUsername, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(24, 24, 24)
+                            .addComponent(jlbMyAccount)
+                            .addGap(8, 8, 8)
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(jlbUsername)
+                                .addComponent(usernameJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(jlbEmail)
+                                .addComponent(emailJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(jlbDOB2)
+                                .addComponent(addressJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(jlbPhoneNumber)
+                                .addComponent(phoneJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(jlbDOB, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dobJpn, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(86, 86, 86)
+                            .addComponent(jlbAvatar)
+                            .addGap(34, 34, 34)
+                            .addComponent(desktopPane1, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(avatarLinkJlb, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
+                    .addComponent(UploadJbt)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(jlbEmail)
-                        .addComponent(jlbFillUsername2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(jlbPhoneNumber)
-                        .addComponent(jlbFillUsername3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(jlbDOB)
-                        .addComponent(jlbFillUsername4))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(jlbDOB2)
-                        .addComponent(jlbFillUsername5))
-                    .addGap(19, 19, 19)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(jlbAvatar)
-                        .addComponent(jlbURLAva, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
-                    .addGap(92, 92, 92)
-                    .addGroup(layout.createParallelGroup()
                         .addComponent(jbtSave, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(jbtCancel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE))
+                    .addGap(0, 66, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
@@ -225,17 +418,19 @@ public class AccountPanel extends JPanel {
     private JButton jbtSave;
     private JLabel jlbMyAccount;
     private JLabel jlbUsername;
-    private JPanel jpnUsername;
-    private JLabel jlbFillUsername;
     private JLabel jlbEmail;
     private JLabel jlbPhoneNumber;
     private JLabel jlbDOB;
     private JLabel jlbDOB2;
     private JLabel jlbAvatar;
-    private JLabel jlbURLAva;
-    private JLabel jlbFillUsername2;
-    private JLabel jlbFillUsername3;
-    private JLabel jlbFillUsername4;
-    private JLabel jlbFillUsername5;
+    private JTextField usernameJtf;
+    private JTextField emailJtf;
+    private JTextField phoneJtf;
+    private JTextField addressJtf;
+    private DatePicker dobJpn;
+    private JButton UploadJbt;
+    private JLabel avatarLinkJlb;
+    private JDesktopPane desktopPane1;
+    private JLabel avatarJlb;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

@@ -1,11 +1,11 @@
-JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :350:569:x, comp jbtSave:::p:112:p, space :18:18:p, comp jbtCancel:::p:112:p, space :0:219:x}, seq l {space :p:404:p, comp jlbMyAccount:::p::p, space :0:464:x}, seq l {space :p:100:p, par l {seq {comp jlbDOB:::p::p, space :::x, comp jlbFillUsername4:::p:244:p}, seq l {comp jlbDOB2:::p::p, space :::x, comp jlbFillUsername5:::p:244:p}, seq l {par l {comp jlbUsername:::p::p, comp jlbEmail:::p::p, comp jlbAvatar::l:p::p, comp jlbPhoneNumber::l:p::p}, space :p:23:p, par l {comp jlbFillUsername3:::::x, comp jpnUsername:::p::p, comp jlbURLAva:::p:100:p, comp jlbFillUsername2:::::x}}}, space :0:523:x}}"
-			"$verticalGroup": "par l {seq l {space :p:24:p, comp jlbMyAccount:::p::p, space :p:17:p, par l {comp jlbUsername:::p::p, comp jpnUsername:::p::p}, space s:::p, par b {comp jlbEmail::b:p::p, comp jlbFillUsername2::b:::x}, space s:::p, par b {comp jlbPhoneNumber::b:p::p, comp jlbFillUsername3::b:::x}, space s:::p, par b {comp jlbDOB::b:p::p, comp jlbFillUsername4::b:p::p}, space s:::p, par b {comp jlbDOB2::b:p::p, comp jlbFillUsername5::b:p::p}, space :p:19:p, par b {comp jlbAvatar::b:p::p, comp jlbURLAva::b:p:100:p}, space :p:92:p, par l {comp jbtSave:::p::p, comp jbtCancel:::p::p}, space :0:0:x}}"
+			"$horizontalGroup": "par l {seq l {space :p:404:p, comp jlbMyAccount:::p::p, space :0:0:x}, seq l {space :p:380:p, comp jbtSave:::p:112:p, space :p:42:p, comp jbtCancel:::p:112:p, space ::374:x}, seq t {space ::705:x, comp UploadJbt:::p::p, space :p:164:p}, seq t {space :p:100:p, par l {comp jlbUsername:::p::p, comp jlbEmail:::p::p, comp jlbDOB2::l:p::p, comp jlbPhoneNumber:::p::p, comp jlbDOB::l:p::p}, space :p:23:p, par l {par t:::p {comp usernameJtf::l::244:x, comp emailJtf::l::244:x}, comp addressJtf:::p:244:p, comp phoneJtf:::p:244:p, comp dobJpn:::p:244:p}, space ::124:x, par l {seq t {comp jlbAvatar:::p::p, space :p:224:p}, seq t {par t {comp avatarLinkJlb::t:p:272:p, comp desktopPane1:::p:272:p}, space :p:117:p}}}}"
+			"$verticalGroup": "par l {seq l {par l {seq l {space :p:24:p, comp jlbMyAccount:::p::p, space :p:8:p, par b {comp jlbUsername::b:p::p, comp usernameJtf::b:p::p}, par b {comp jlbEmail::b:p::p, comp emailJtf::b:p::p}, space u:::p, par b {comp jlbDOB2::b:p::p, comp addressJtf::b:p::p}, space s:::p, par b {comp jlbPhoneNumber::b:p::p, comp phoneJtf::b:p::p}, space s:::p, par b {comp jlbDOB::b:p:30:p, comp dobJpn::b:p:41:p}}, seq l {space :p:86:p, comp jlbAvatar:::p::p, space :p:34:p, comp desktopPane1:::p:277:p}}, space u:::p, comp avatarLinkJlb:::p:29:p, space :p:18:p, comp UploadJbt:::p::p, space :::x, par b {comp jbtSave::b:p::p, comp jbtCancel::b:p::p}, space :0:66:x}}"
 		} ) {
 			name: "this"
 			"background": sfield java.awt.Color white
@@ -16,6 +16,9 @@ new FormModel {
 				"font": &Font0 new java.awt.Font( "Lato Black", 1, 18 )
 				"background": &Color0 new java.awt.Color( 97, 184, 132, 255 )
 				"foreground": sfield java.awt.Color white
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jbtSave"
@@ -24,6 +27,9 @@ new FormModel {
 				"font": #Font0
 				"background": #Color0
 				"foreground": sfield java.awt.Color white
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "jlbMyAccount"
@@ -37,20 +43,6 @@ new FormModel {
 				"text": "Username"
 				"font": &Font1 new java.awt.Font( "Lato Black", 1, 20 )
 				"foreground": &Color1 new java.awt.Color( 98, 98, 98, 255 )
-			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {comp jlbFillUsername::l::242:x}"
-				"$verticalGroup": "par l {comp jlbFillUsername::l::25:x}"
-			} ) {
-				name: "jpnUsername"
-				"background": new java.awt.Color( 255, 255, 255, 255 )
-				"border": new javax.swing.border.LineBorder( new java.awt.Color( 98, 98, 98, 255 ), 1, false )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "jlbFillUsername"
-					"text": "text"
-					"font": &Font2 new java.awt.Font( "Lato", 0, 16 )
-					"foreground": &Color2 new java.awt.Color( 97, 184, 132, 255 )
-				} )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "jlbEmail"
@@ -82,39 +74,86 @@ new FormModel {
 				"font": #Font1
 				"foreground": #Color1
 			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "usernameJtf"
+				"font": &Font2 new java.awt.Font( "Lato", 0, 16 )
+				"foreground": &Color2 new java.awt.Color( 97, 184, 132, 255 )
+				"editable": false
+				"background": sfield java.awt.Color lightGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "emailJtf"
+				"font": #Font2
+				"foreground": #Color2
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "phoneJtf"
+				"font": #Font2
+				"foreground": #Color2
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "addressJtf"
+				"font": #Font2
+				"foreground": #Color2
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "com.github.lgooddatepicker.components.DatePicker" ) {
+				name: "dobJpn"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "UploadJbt"
+				"text": "Upload new avatar"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "jlbURLAva"
-				"text": "text"
-				"background": new java.awt.Color( 255, 255, 255, 255 )
+				name: "avatarLinkJlb"
 				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
 			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "jlbFillUsername2"
-				"text": "text"
-				"font": #Font2
-				"foreground": #Color2
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "jlbFillUsername3"
-				"text": "text"
-				"font": #Font2
-				"foreground": #Color2
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "jlbFillUsername4"
-				"text": "text"
-				"font": #Font2
-				"foreground": #Color2
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "jlbFillUsername5"
-				"text": "text"
-				"font": #Font2
-				"foreground": #Color2
+			add( new FormContainer( "javax.swing.JDesktopPane", new FormLayoutManager( class javax.swing.JDesktopPane ) ) {
+				name: "desktopPane1"
+				"background": sfield java.awt.Color white
+				"maximumSize": new java.awt.Dimension( 208, 212 )
+				"minimumSize": new java.awt.Dimension( 208, 212 )
+				"preferredSize": new java.awt.Dimension( 208, 212 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "avatarJlb"
+					"background": new java.awt.Color( 255, 255, 255, 255 )
+					"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+					"maximumSize": new java.awt.Dimension( 208, 212 )
+					"minimumSize": new java.awt.Dimension( 208, 212 )
+					"preferredSize": new java.awt.Dimension( 208, 212 )
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
+				}, new FormLayoutConstraints( null ) {
+					"width": 265
+					"height": 270
+					"x": 0
+					"y": 0
+				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 75, 0 )
-			"size": new java.awt.Dimension( 1030, 510 )
+			"size": new java.awt.Dimension( 1020, 615 )
 		} )
 	}
 }

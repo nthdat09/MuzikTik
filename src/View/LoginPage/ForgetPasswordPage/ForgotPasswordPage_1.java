@@ -1,9 +1,8 @@
 package View.LoginPage.ForgetPasswordPage;
 
 import Controller.LoginPage.ForgetPasswordPage1Listener;
-import Model.BEAN.User;
+import Model.BEAN.Employee;
 import Model.DAO.Employee.EmployeeDAO;
-import Model.DAO.Employee.SendEmail;
 import Model.DAO.Employee.VerificationCode;
 import View.LoginPage.LoginPage;
 import org.apache.commons.mail.EmailException;
@@ -140,7 +139,7 @@ public class ForgotPasswordPage_1 extends JPanel {
 
     public void goToNextPage() throws MessagingException, EmailException {
         userName = userNameField.getText();
-        User realuser = EmployeeDAO.getInstance().selectById(userName);
+        Employee realuser = EmployeeDAO.getInstance().selectUserandPassByID(userName);
 
         if (realuser == null) {
             JOptionPane.showMessageDialog(null, "Username is not exist");

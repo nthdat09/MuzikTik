@@ -24,6 +24,16 @@ public class SwitchMenuController {
     private List<MenuList> listItem = null;
     private final Map<String, Class<? extends JPanel>> panelMap = new HashMap<>();
 
+    private String userName;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public SwitchMenuController() {
         initializePanelMap();
     }
