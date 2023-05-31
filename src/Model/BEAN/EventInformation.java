@@ -1,4 +1,4 @@
-package Model.DAO.Event.EventInformation;
+package Model.BEAN;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

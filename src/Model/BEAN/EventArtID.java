@@ -1,4 +1,4 @@
-package Model.DAO.Event.EventInformation;
+package Model.BEAN;
 
 public class EventArtID {
     private String eventArtID;

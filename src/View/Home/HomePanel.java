@@ -7,32 +7,26 @@ package View.Home;
 import java.awt.event.*;
 
 import Controller.EventListPanel;
-import Controller.SwitchMenuController;
 import Model.BEAN.*;
 import Model.DAO.Event.Event;
-import Model.DAO.Event.EventInformation.EventArtID;
-import Model.DAO.Event.EventInformation.EventInformation;
-import Model.DAO.Event.EventInformation.StageInformation;
+import Model.BEAN.EventArtID;
+import Model.BEAN.EventInformation;
+import Model.DAO.Event.GetArt;
+import Model.DAO.Event.GetStageName;
+import Model.DAO.Event.StageInformation;
 import View.EventPage.EventPanel;
 import View.MainPage.MainPage;
-import Model.DAO.Event.EventInformation.EventInformation;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.sql.DriverManager;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.GroupLayout;
-import javax.swing.border.*;
 
 /**
  * @author ADMIN
@@ -41,15 +35,15 @@ public class HomePanel extends JPanel {
     static Integer selectedEventID;
     static String selectedEvent;
     static Integer selectedStage;
-    MouseListener ac1 = new EventListPanel(this);
-    MouseListener ac2 = new EventListPanel(this);
-    MouseListener ac3 = new EventListPanel(this);
-    MouseListener ac4 = new EventListPanel(this);
-    MouseListener ac5 = new EventListPanel(this);
-    MouseListener ac6 = new EventListPanel(this);
-    MouseListener ac7 = new EventListPanel(this);
-    MouseListener ac8 = new EventListPanel(this);
-    MouseListener ac9 = new EventListPanel(this);
+    MouseListener ac1 = new EventListPanel(this,1);
+    MouseListener ac2 = new EventListPanel(this,2);
+    MouseListener ac3 = new EventListPanel(this,3);
+    MouseListener ac4 = new EventListPanel(this,4);
+    MouseListener ac5 = new EventListPanel(this,5);
+    MouseListener ac6 = new EventListPanel(this,6);
+    MouseListener ac7 = new EventListPanel(this,7);
+    MouseListener ac8 = new EventListPanel(this,8);
+    MouseListener ac9 = new EventListPanel(this,9);
     List<EventArtID> eventArt = null;
     List<EventInformation> eventInformationList= null;
     List<StageInformation> eventStageInformation = null;
@@ -65,15 +59,15 @@ public class HomePanel extends JPanel {
     }
 
     public void initEventHandler() {
-        eventPicture1.addMouseListener(ac1);
-        eventPicture2.addMouseListener(ac2);
-        eventPicture3.addMouseListener(ac3);
-        evetntPicture4.addMouseListener(ac4);
-        evetntPicture5.addMouseListener(ac5);
-        evetntPicture6.addMouseListener(ac6);
-        evetntPicture7.addMouseListener(ac7);
-        evetntPicture8.addMouseListener(ac8);
-        evetntPicture9.addMouseListener(ac9);
+        eventName1.addMouseListener(ac1);
+        eventName2.addMouseListener(ac2);
+        eventName3.addMouseListener(ac3);
+        eventName4.addMouseListener(ac4);
+        eventName5.addMouseListener(ac5);
+        eventName6.addMouseListener(ac6);
+        eventName7.addMouseListener(ac7);
+        eventName8.addMouseListener(ac8);
+        eventName9.addMouseListener(ac9);
     }
 
     public void initMoreSetting() {
@@ -154,8 +148,10 @@ public class HomePanel extends JPanel {
         MainPage.changeView(new EventPanel(), MainPage.getJlbEvent(), "EventPanel");
         eventInformationList = EventInformationList.getEventInformationList();
         eventSetting();
+        eventStageInformation = null;
         eventStageInformation = GetStageName.getStageInformationList();
         stageSetting();
+        eventArt = null;
         eventArt = GetArt.getArtByID();
         pictureArtSetting();
     }
@@ -348,6 +344,30 @@ public class HomePanel extends JPanel {
 
     public static JLabel getEventName1() {
         return eventName1;
+    }
+    public static JLabel getEventName2() {
+        return eventName2;
+    }
+    public static JLabel getEventName3() {
+        return eventName3;
+    }
+    public static JLabel getEventName4() {
+        return eventName4;
+    }
+    public static JLabel getEventName5() {
+        return eventName5;
+    }
+    public static JLabel getEventName6() {
+        return eventName6;
+    }
+    public static JLabel getEventName7() {
+        return eventName7;
+    }
+    public static JLabel getEventName8() {
+        return eventName8;
+    }
+    public static JLabel getEventName9() {
+        return eventName9;
     }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -822,28 +842,28 @@ public class HomePanel extends JPanel {
     private JLabel eventPicture1;
     private JLabel eventPicture2;
     private static JLabel eventName1;
-    private JLabel eventName2;
+    private static JLabel eventName2;
     private JLabel eventDate2;
     private JLabel eventDate1;
-    private JLabel eventName3;
+    private static JLabel eventName3;
     private JLabel eventDate3;
     private JLabel evetntPicture4;
     private JLabel evetntPicture5;
     private JLabel evetntPicture6;
-    private JLabel eventName6;
+    private static JLabel eventName6;
     private JLabel eventDate6;
     private JLabel eventDate5;
-    private JLabel eventName5;
-    private JLabel eventName4;
+    private static JLabel eventName5;
+    private static JLabel eventName4;
     private JLabel eventDate4;
     private JLabel evetntPicture7;
     private JLabel evetntPicture8;
     private JLabel evetntPicture9;
-    private JLabel eventName9;
+    private static JLabel eventName9;
     private JLabel eventDate9;
     private JLabel eventDate8;
-    private JLabel eventName8;
-    private JLabel eventName7;
+    private static JLabel eventName8;
+    private static JLabel eventName7;
     private JLabel eventDate7;
     private JRadioButton slideDot1;
     private JRadioButton slideDot2;

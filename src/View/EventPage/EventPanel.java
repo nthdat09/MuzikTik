@@ -4,14 +4,9 @@
 
 package View.EventPage;
 
-import Model.BEAN.EventInformationList;
-import Model.DAO.Event.EventInformation.EventInformation;
-
 import java.awt.event.*;
 
 import java.awt.*;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;

@@ -1,10 +1,8 @@
 package Model.BEAN;
 
-import Model.DAO.Event.EventInformation.EventInformation;
 import Model.Database.UserDatabase;
 import View.Home.HomePanel;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,8 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventInformationList {
-    private static String selectedEvent = HomePanel.getSelectedEvent();
+    private static String selectedEvent;
     public static List<EventInformation> getEventInformationList() {
+        selectedEvent = HomePanel.getSelectedEvent();
         List<EventInformation> result = new ArrayList<>();
         EventInformation eventInformation = null;
         try {

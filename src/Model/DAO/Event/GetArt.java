@@ -1,10 +1,9 @@
-package Model.BEAN;
+package Model.DAO.Event;
 
-import Model.DAO.Event.EventInformation.EventArtID;
+import Model.BEAN.EventArtID;
 import Model.Database.UserDatabase;
 import View.Home.HomePanel;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,8 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetArt {
-    private static Integer selectedEventID = HomePanel.getSelectedEventID();
+    private static Integer selectedEventID;
     public static List<EventArtID> getArtByID() {
+        selectedEventID = HomePanel.getSelectedEventID();
         List<EventArtID> result = new ArrayList<>();
         EventArtID eventArtID = null;
         try {

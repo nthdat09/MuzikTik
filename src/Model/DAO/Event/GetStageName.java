@@ -1,23 +1,19 @@
-package Model.BEAN;
+package Model.DAO.Event;
 
-import Model.DAO.Event.EventInformation.EventInformation;
-import Model.DAO.Event.EventInformation.StageInformation;
 import Model.Database.UserDatabase;
 import View.Home.HomePanel;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GetStageName {
-    private static Integer selectedStage = HomePanel.getSelectedStage();
+    private static Integer selectedStage;
     public static List<StageInformation> getStageInformationList() {
+        selectedStage = HomePanel.getSelectedStage();
         List<StageInformation> result = new ArrayList<>();
         StageInformation stageInformation = null;
         try {

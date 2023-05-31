@@ -1,4 +1,4 @@
-package Model.DAO.Event.EventInformation;
+package Model.DAO.Event;
 
 public class StageInformation {
     private String stageName;

@@ -19,8 +19,6 @@ public class Event {
             Connection con = UserDatabase.getConnection();
             String sql = "SELECT * FROM mctmsys.eventtest";
             PreparedStatement st = con.prepareCall(sql);
-
-            System.out.println(sql);
             ResultSet rs = st.executeQuery();
 
             while(rs.next()) {
