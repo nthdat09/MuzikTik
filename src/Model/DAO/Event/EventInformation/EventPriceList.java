@@ -1,6 +1,6 @@
-package Model.DAO.Event;
+package Model.DAO.Event.EventInformation;
 
-import Model.BEAN.EventArtID;
+import Model.BEAN.EventPrice;
 import Model.Database.UserDatabase;
 import View.Home.HomePanel;
 
@@ -10,21 +10,23 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetArt {
+public class EventPriceList {
     private static Integer selectedEventID;
-    public static List<EventArtID> getArtByID() {
+    public static List<EventPrice> getEventPriceList() {
         selectedEventID = HomePanel.getSelectedEventID();
-        List<EventArtID> result = new ArrayList<>();
-        EventArtID eventArtID = null;
+        List<EventPrice> result = new ArrayList<>();
+        EventPrice eventPrice = null;
         try {
             Connection con = UserDatabase.getConnection();
-            String sql = "Select * from mctmsys.eventtest where EVT_ID = '" + selectedEventID + "'";
+            String sql = "Select TKT_PRICE, SEAT_TYPE from mctmsys.ticket join mctmsys.seat on ticket.TKT_SEAT_ID = seat.SEAT_ID where TKT_STG_ID = " + selectedEventID;
             PreparedStatement st = con.prepareCall(sql);
             ResultSet rs = st.executeQuery();
+
             while(rs.next()) {
-                String artID = rs.getString("eventPicture");
-                eventArtID = new EventArtID(artID);
-                result.add(eventArtID);
+                Integer ticketPrice = rs.getInt("TKT_PRICE");
+                String seatType = rs.getString("SEAT_TYPE");
+                eventPrice = new EventPrice(seatType, ticketPrice);
+                result.add(eventPrice);
             }
             st.close();
             rs.close();

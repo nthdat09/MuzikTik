@@ -65,36 +65,54 @@ new FormModel {
 						"text": "Event Name"
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventName2"
 						"text": "Event Name"
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventDate2"
 						"text": "Date"
 						"font": new java.awt.Font( "Lato", 0, 18 )
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventDate1"
 						"text": "Date"
 						"font": new java.awt.Font( "Lato", 0, 18 )
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventName3"
 						"text": "Event Name"
 						"font": new java.awt.Font( "Lato Black", 1, 20 )
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventDate3"
 						"text": "Date"
 						"font": new java.awt.Font( "Lato", 0, 18 )
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "evetntPicture4"
@@ -112,31 +130,49 @@ new FormModel {
 						name: "eventName6"
 						"text": "Event Name"
 						"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, 7, false )
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventDate6"
 						"text": "Date"
 						"font": #SwingDerivedFont0
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventDate5"
 						"text": "Date"
 						"font": #SwingDerivedFont0
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventName5"
 						"text": "Event Name"
 						"font": #SwingDerivedFont0
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventName4"
 						"text": "Event Name"
 						"font": #SwingDerivedFont0
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventDate4"
 						"text": "Date"
 						"font": #SwingDerivedFont0
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "evetntPicture7"
@@ -154,31 +190,49 @@ new FormModel {
 						name: "eventName9"
 						"text": "Event Name"
 						"font": #SwingDerivedFont0
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventDate9"
 						"text": "Date"
 						"font": #SwingDerivedFont0
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventDate8"
 						"text": "Date"
 						"font": #SwingDerivedFont0
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventName8"
 						"text": "Event Name"
 						"font": #SwingDerivedFont0
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventName7"
 						"text": "Event Name"
 						"font": #SwingDerivedFont0
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventDate7"
 						"text": "Date"
 						"font": #SwingDerivedFont0
+						auxiliary() {
+							"JavaCodeGenerator.variableModifiers": 10
+						}
 					} )
 					add( new FormComponent( "javax.swing.JRadioButton" ) {
 						name: "slideDot1"

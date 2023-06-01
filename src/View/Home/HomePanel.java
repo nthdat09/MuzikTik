@@ -11,9 +11,8 @@ import Model.BEAN.*;
 import Model.DAO.Event.Event;
 import Model.BEAN.EventArtID;
 import Model.BEAN.EventInformation;
-import Model.DAO.Event.GetArt;
-import Model.DAO.Event.GetStageName;
-import Model.DAO.Event.StageInformation;
+import Model.DAO.Event.EventInformation.*;
+import Model.BEAN.StageInformation;
 import View.EventPage.EventPanel;
 import View.MainPage.MainPage;
 
@@ -23,6 +22,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -49,6 +49,7 @@ public class HomePanel extends JPanel {
     List<EventInformation> eventInformationList= null;
     List<StageInformation> eventStageInformation = null;
     List<EventList> listEvent = null;
+    List<EventPrice> listEventPrice = null;
     ArrayList<JLabel> listLabelPicture = new ArrayList<JLabel>();
     ArrayList<JLabel> listLabelName = new ArrayList<JLabel>();
     ArrayList<JLabel> listLabelDate = new ArrayList<JLabel>();
@@ -166,32 +167,57 @@ public class HomePanel extends JPanel {
         MainPage.changeView(new EventPanel(), MainPage.getJlbEvent(), "EventPanel");
         eventInformationList = EventInformationList.getEventInformationList();
         eventSetting();
-        eventStageInformation = null;
         eventStageInformation = GetStageName.getStageInformationList();
         stageSetting();
-        eventArt = null;
         eventArt = GetArt.getArtByID();
         pictureArtSetting();
+        listEventPrice = EventPriceList.getEventPriceList();
+        eventPriceSetting();
+        EventTableDatabase.getEventTableDatabase();
+    }
+    public void eventPriceSetting() {
+        ArrayList<JLabel> listLabelType = EventPanel.addTicketType();
+        ArrayList<JLabel> listLabelPrice = EventPanel.addTicketPrice();
+        for (int i = 0; i < listLabelType.size(); i++) {
+            try {
+                listLabelType.get(i).setText("Ticket Class: " + listEventPrice.get(i).getEventType());
+                listLabelPrice.get(i).setText("Price: " + listEventPrice.get(i).getEventPrice() + " USD");
+            } catch (Exception e) {
+                listLabelType.get(i).setText("");
+                listLabelPrice.get(i).setText("");
+            }
+        }
     }
     public void eventSetting() {
         for(EventInformation eventInformation : eventInformationList) {
-            EventPanel.getEventName().setText(eventInformation.getEventName());
+            EventPanel.getEventName().setText("<HTML>" + eventInformation.getEventName() + "</HTML>");
+            EventPanel.getEventName2().setText("<HTML>" + eventInformation.getEventName() + "</HTML>");
             String fomattedString = localDateToString(eventInformation.getEventDate());
             EventPanel.getEventTime().setText(fomattedString);
             setSelectedStage(eventInformation.getEventStageID());
-            EventPanel.getDescriptionText().setText(eventInformation.getEventDescription());
+            EventPanel.getDescriptionText().setText("<HTML>" + eventInformation.getEventDescription() + "</HTML>");
             setSelectedEventID(eventInformation.getEventID());
         }
     }
     public void pictureArtSetting() {
         for(EventArtID art : eventArt) {
-            ImageIcon icon = new ImageIcon(getClass().getResource("/Image/" + art.getEventArtID()));;
+            ImageIcon icon = new ImageIcon(getClass().getResource("/Image/" + art.getEventArtID()));
             EventPanel.getEventArt().setIcon(icon);
         }
     }
     public void stageSetting() {
         for(StageInformation stage : eventStageInformation) {
             EventPanel.getEventPlace().setText(stage.getStageName());
+            ImageIcon icon = new ImageIcon(getClass().getResource("/Asset/Stage/" + stage.getStageSeatingChart()));
+            EventPanel.getSeatingChartView().setIcon(icon);
+            EventPanel.getEventSeatingChart().setIcon(icon);
+            EventPanel.getSeatingChartView().setText("");
+            EventPanel.getSeatingChartView().setVerticalAlignment(JLabel.CENTER);
+            EventPanel.getSeatingChartView().setHorizontalAlignment(JLabel.CENTER);
+            EventPanel.getEventSeatingChart().setText("");
+            EventPanel.getEventSeatingChart().setVerticalAlignment(JLabel.CENTER);
+            EventPanel.getEventSeatingChart().setHorizontalAlignment(JLabel.CENTER);
+
         }
     }
     public String localDateToString(LocalDate localDate) {
@@ -385,11 +411,12 @@ public class HomePanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
-        0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
-        .BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.
-        red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
-        beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
+        border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER
+        ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font
+        .BOLD,12),java.awt.Color.red), getBorder())); addPropertyChangeListener(
+        new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r"
+        .equals(e.getPropertyName()))throw new RuntimeException();}});
 
         //======== mainScrollPanel ========
         {
@@ -811,28 +838,28 @@ public class HomePanel extends JPanel {
     private JLabel eventPicture2;
     private static JLabel eventName1;
     private static JLabel eventName2;
-    private JLabel eventDate2;
-    private JLabel eventDate1;
+    private static JLabel eventDate2;
+    private static JLabel eventDate1;
     private static JLabel eventName3;
-    private JLabel eventDate3;
+    private static JLabel eventDate3;
     private JLabel evetntPicture4;
     private JLabel evetntPicture5;
     private JLabel evetntPicture6;
     private static JLabel eventName6;
-    private JLabel eventDate6;
-    private JLabel eventDate5;
+    private static JLabel eventDate6;
+    private static JLabel eventDate5;
     private static JLabel eventName5;
     private static JLabel eventName4;
-    private JLabel eventDate4;
+    private static JLabel eventDate4;
     private JLabel evetntPicture7;
     private JLabel evetntPicture8;
     private JLabel evetntPicture9;
     private static JLabel eventName9;
-    private JLabel eventDate9;
-    private JLabel eventDate8;
+    private static JLabel eventDate9;
+    private static JLabel eventDate8;
     private static JLabel eventName8;
     private static JLabel eventName7;
-    private JLabel eventDate7;
+    private static JLabel eventDate7;
     private JRadioButton slideDot1;
     private JRadioButton slideDot2;
     private JRadioButton slideDot3;

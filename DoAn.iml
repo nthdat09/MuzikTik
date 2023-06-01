@@ -22,5 +22,6 @@
     <orderEntry type="library" exported="" name="KotlinJavaRuntime" level="project" />
     <orderEntry type="library" exported="" name="IntelliJ IDEA GridLayout" level="project" />
     <orderEntry type="library" name="activation" level="project" />
+    <orderEntry type="library" name="MigLayout" level="project" />
   </component>
 </module>

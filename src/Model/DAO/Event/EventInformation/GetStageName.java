@@ -1,5 +1,6 @@
-package Model.DAO.Event;
+package Model.DAO.Event.EventInformation;
 
+import Model.BEAN.StageInformation;
 import Model.Database.UserDatabase;
 import View.Home.HomePanel;
 
@@ -23,7 +24,8 @@ public class GetStageName {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 String eventName = rs.getString("STG_NAME");
-                stageInformation = new StageInformation(eventName);
+                String eventSeatingChart = rs.getString("STG_MAP");
+                stageInformation = new StageInformation(eventName,eventSeatingChart);
                 result.add(stageInformation);
             }
             st.close();
