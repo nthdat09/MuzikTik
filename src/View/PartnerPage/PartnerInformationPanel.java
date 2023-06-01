@@ -21,11 +21,6 @@ import javax.swing.GroupLayout;
 public class PartnerInformationPanel extends JPanel {
     static int selectedID = -1;
     ActionListener ac = new PartnerInformationController(this);
-    public PartnerInformationPanel() {
-        initComponents();
-        getSaveBtn().addActionListener(ac);
-        getCancelBtn().addActionListener(ac);
-    }
 
     public PartnerInformationPanel(Partner partner) {
         initComponents();
@@ -53,6 +48,70 @@ public class PartnerInformationPanel extends JPanel {
         
 
         this.selectedID = partner.getId();
+    }
+
+    public void savePartner() {
+        System.out.println("Save Partner");
+        if (this.IDField.getText().equals("") || this.NameField.getText().equals("") || this.PhoneNumberField.getText().equals("")
+                || this.EmailField.getText().equals("") || this.AddressField.getText().equals("") || this.LogoField.getText().equals("")
+                || this.AccountNumberField.getText().equals("") || this.BankField.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please fill in all fields");
+        }
+        else {
+            Partner partner = null;
+            if (selectedID == -1 ) { // insert
+                partner = new Partner();
+                partner.setId(Integer.parseInt(this.IDField.getText()));
+                partner.setName(this.NameField.getText());
+                partner.setPhoneNumber(this.PhoneNumberField.getText());
+                partner.setEmail(this.EmailField.getText());
+                partner.setAddress(this.AddressField.getText());
+                partner.setLogo(this.LogoField.getText());
+                partner.setAccNumber(this.AccountNumberField.getText());
+                partner.setBank(this.BankField.getText());
+            }
+            else { // update
+                try {
+                    partner = PartnerDAO.getInstance().selectByID(selectedID);
+                    partner.setId(Integer.parseInt(this.IDField.getText()));
+                    partner.setName(this.NameField.getText());
+                    partner.setPhoneNumber(this.PhoneNumberField.getText());
+                    partner.setEmail(this.EmailField.getText());
+                    partner.setAddress(this.AddressField.getText());
+                    partner.setLogo(this.LogoField.getText());
+                    partner.setAccNumber(this.AccountNumberField.getText());
+                    partner.setBank(this.BankField.getText());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (selectedID != -1) {
+                System.out.println("Update Partner");
+                int rowChanged = PartnerDAO.getInstance().updatePartner(partner);
+                if (rowChanged > 0){
+                    JOptionPane.showMessageDialog(null, "Update successfully");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Update failed");
+                }
+            }
+            else {
+                System.out.println("Add Partner");
+                int rowChanged = PartnerDAO.getInstance().addPartner(partner);
+                if (rowChanged > 0){
+                    JOptionPane.showMessageDialog(null, "Add successfully");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Add failed");
+                }
+            }
+            MainPage.changeView(new PartnerListPanel(), MainPage.getJlbPartners() , "Partner List Panel");
+        }
+
+    }
+
+    public void cancelPartner() {
+        MainPage.changeView(new PartnerListPanel(), MainPage.getJlbPartners() , "Partner List Panel");
     }
 
     public JButton getCancelBtn() {
@@ -291,67 +350,4 @@ public class PartnerInformationPanel extends JPanel {
     private JTextField BankField;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
-    public void savePartner() {
-        System.out.println("Save Partner");
-        if (this.IDField.getText().equals("") || this.NameField.getText().equals("") || this.PhoneNumberField.getText().equals("")
-                || this.EmailField.getText().equals("") || this.AddressField.getText().equals("") || this.LogoField.getText().equals("")
-                || this.AccountNumberField.getText().equals("") || this.BankField.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Please fill in all fields");
-        }
-        else {
-            Partner partner = null;
-            if (selectedID == -1 ) { // insert
-                partner = new Partner();
-                partner.setId(Integer.parseInt(this.IDField.getText()));
-                partner.setName(this.NameField.getText());
-                partner.setPhoneNumber(this.PhoneNumberField.getText());
-                partner.setEmail(this.EmailField.getText());
-                partner.setAddress(this.AddressField.getText());
-                partner.setLogo(this.LogoField.getText());
-                partner.setAccNumber(this.AccountNumberField.getText());
-                partner.setBank(this.BankField.getText());
-            }
-            else { // update
-                try {
-                    partner = PartnerDAO.getInstance().selectByID(selectedID);
-                    partner.setId(Integer.parseInt(this.IDField.getText()));
-                    partner.setName(this.NameField.getText());
-                    partner.setPhoneNumber(this.PhoneNumberField.getText());
-                    partner.setEmail(this.EmailField.getText());
-                    partner.setAddress(this.AddressField.getText());
-                    partner.setLogo(this.LogoField.getText());
-                    partner.setAccNumber(this.AccountNumberField.getText());
-                    partner.setBank(this.BankField.getText());
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (selectedID != -1) {
-                System.out.println("Update Partner");
-                int rowChanged = PartnerDAO.getInstance().updatePartner(partner);
-                if (rowChanged > 0){
-                    JOptionPane.showMessageDialog(null, "Update successfully");
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "Update failed");
-                }
-            }
-            else {
-                System.out.println("Add Partner");
-                int rowChanged = PartnerDAO.getInstance().addPartner(partner);
-                if (rowChanged > 0){
-                    JOptionPane.showMessageDialog(null, "Add successfully");
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "Add failed");
-                }
-            }
-            MainPage.changeView(new PartnerListPanel(), MainPage.getJlbPartners() , "Partner List Panel");
-        }
-
-    }
-
-    public void cancelPartner() {
-        MainPage.changeView(new PartnerListPanel(), MainPage.getJlbPartners() , "Partner List Panel");
-    }
 }

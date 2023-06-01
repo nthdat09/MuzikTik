@@ -4,28 +4,19 @@
 
 package View.PartnerPage;
 
-import Application.Main;
 import Controller.PartnerPage.PartnerListPanelController;
-import Controller.StagesPage.StagesListPanelListener;
 import Model.BEAN.Partner;
-import Model.BEAN.Stage;
 import Model.DAO.Partner.PartnerDAO;
 import Model.DAO.Partner.PartnerListDAO;
-import Model.DAO.Stage.StageDAO;
-import Model.DAO.Stage.StageListDAO;
 import View.MainPage.MainPage;
-import View.StagesPage.ConfirmStageDeleteJPopupMenu;
-import View.StagesPage.StageInformationForm;
-import View.StagesPage.StagesListPanel;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.*;
-import javax.swing.GroupLayout;
-import javax.swing.table.*;
 
 /**
  * @author Admin
@@ -65,7 +56,6 @@ public class PartnerListPanel extends JPanel {
         getJlbSearch().addActionListener(ac);
     }
 
-
     private void setPartnerListTable() {
         DefaultTableModel tableModel = (DefaultTableModel) getPartnerListTable().getModel();
         for (Partner partner : partnerList) {
@@ -95,6 +85,66 @@ public class PartnerListPanel extends JPanel {
         }
     }
 
+    public void addPartner() {
+        System.out.println("Add partner");
+        int newID = PartnerListDAO.getLastID() + 1;
+        MainPage.changeView(new PartnerInformationPanel(newID), MainPage.getJlbPartners(), "Partner Information Form");
+    }
+
+
+    public void editPartner() {
+        System.out.println("Edit partner");
+        MainPage.changeView(new PartnerInformationPanel(getDataFromJTable()), MainPage.getJlbPartners(), "Partner Information Form");
+
+
+    }
+
+    public void deletePartner() {
+        System.out.println("Delete partner");
+        int i = PartnerListTable.getSelectedRow();
+        if (i == -1) {
+            JOptionPane.showMessageDialog(null, "Please select a row to delete");
+        } else {
+            partnerSelected = partnerList.get(i);
+            int IDSelected = partnerSelected.getId();
+            ConfirmPartnerDeleteJPopupMenu confirmPartnerDeleteJPopupMenu = new ConfirmPartnerDeleteJPopupMenu();
+            confirmPartnerDeleteJPopupMenu.setSelectedID(IDSelected);
+        }
+    }
+
+    public void searchPartner() throws SQLException {
+        System.out.println("Search partner");
+        textSearched = jtfSearch.getText();
+        partnerList = PartnerListDAO.getList();
+        System.out.println("Text input: " + textSearched);
+        if (!textSearched.equals("")) {
+            System.out.println("Search");
+            List<Integer> idResult = new ArrayList<>();
+
+            for (Partner partner: partnerList) {
+                String partnerCompiled = partner.getId() + "!@#$" + partner.getName() + "!@#$" + partner.getAddress() + "!@#$"
+                        + partner.getEmail() + "!@#$" + partner.getPhoneNumber() + "!@#$" + partner.getLogo() + "!@#$" + partner.getAccNumber()
+                        + partner.getBank();
+
+                if (partnerCompiled.contains(textSearched)) {
+                    idResult.add(partner.getId());
+                }
+            }
+
+            partnerList.clear();
+            for (int id : idResult) {
+                Partner partner = PartnerDAO.getInstance().selectByID(id);
+                if (partner != null) {
+                    partnerList.add(partner);
+                }
+            }
+            MainPage.changeView(new PartnerListPanel(partnerList, textSearched), MainPage.getJlbStages(), "Partner List Panel");
+        } else {
+            System.out.println("No search");
+            MainPage.changeView(new PartnerListPanel(), MainPage.getJlbPartners(), "Partner List Panel");
+        }
+    }
+
     public JButton getJlbSearch() {
         return jlbSearch;
     }
@@ -111,20 +161,8 @@ public class PartnerListPanel extends JPanel {
         return jlbDelete;
     }
 
-    public JLabel getLabel1() {
-        return label1;
-    }
-
-    public JScrollPane getScrollPane1() {
-        return scrollPane1;
-    }
-
     public JTable getPartnerListTable() {
         return PartnerListTable;
-    }
-
-    public JTextField getJtfSearch() {
-        return jtfSearch;
     }
 
     private void initComponents() {
@@ -254,66 +292,5 @@ public class PartnerListPanel extends JPanel {
     private JButton jlbAdd;
     private JButton jlbSearch;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
-
-
-    public void addPartner() {
-        System.out.println("Add partner");
-        int newID = PartnerListDAO.getLastID() + 1;
-        MainPage.changeView(new PartnerInformationPanel(newID), MainPage.getJlbPartners(), "Partner Information Form");
-    }
-
-
-    public void editPartner() {
-        System.out.println("Edit partner");
-        MainPage.changeView(new PartnerInformationPanel(getDataFromJTable()), MainPage.getJlbPartners(), "Partner Information Form");
-
-
-    }
-
-    public void deletePartner() {
-        System.out.println("Delete partner");
-        int i = PartnerListTable.getSelectedRow();
-        if (i == -1) {
-            JOptionPane.showMessageDialog(null, "Please select a row to delete");
-        } else {
-            partnerSelected = partnerList.get(i);
-            int IDSelected = partnerSelected.getId();
-            ConfirmPartnerDeleteJPopupMenu confirmPartnerDeleteJPopupMenu = new ConfirmPartnerDeleteJPopupMenu();
-            confirmPartnerDeleteJPopupMenu.setSelectedID(IDSelected);
-        }
-    }
-
-    public void searchPartner() throws SQLException {
-        System.out.println("Search partner");
-        textSearched = jtfSearch.getText();
-        partnerList = PartnerListDAO.getList();
-        System.out.println("Text input: " + textSearched);
-        if (!textSearched.equals("")) {
-            System.out.println("Search");
-            List<Integer> idResult = new ArrayList<>();
-
-            for (Partner partner: partnerList) {
-                String partnerCompiled = partner.getId() + "!@#$" + partner.getName() + "!@#$" + partner.getAddress() + "!@#$"
-                        + partner.getEmail() + "!@#$" + partner.getPhoneNumber() + "!@#$" + partner.getLogo() + "!@#$" + partner.getAccNumber()
-                        + partner.getBank();
-
-                if (partnerCompiled.contains(textSearched)) {
-                    idResult.add(partner.getId());
-                }
-            }
-
-            partnerList.clear();
-            for (int id : idResult) {
-                Partner partner = PartnerDAO.getInstance().selectByID(id);
-                if (partner != null) {
-                    partnerList.add(partner);
-                }
-            }
-            MainPage.changeView(new PartnerListPanel(partnerList, textSearched), MainPage.getJlbStages(), "Partner List Panel");
-        } else {
-            System.out.println("No search");
-            MainPage.changeView(new PartnerListPanel(), MainPage.getJlbPartners(), "Partner List Panel");
-        }
-    }
 
 }

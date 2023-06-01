@@ -27,13 +27,5 @@ public class MenuList {
     public JLabel getJlb() {
         return jlb;
     }
-    public void setKind(String kind) {
-        this.kind = kind;
-    }
-    public void setJpn(JPanel jpn) {
-        this.jpn = jpn;
-    }
-    public void setJlb(JLabel jlb) {
-        this.jlb = jlb;
-    }
+
 }

@@ -17,19 +17,15 @@ public class ForgetPasswordPage2Listener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String src = e.getActionCommand();
 
-        if (src.equals("VERIFY")) {
-            this.forgotPasswordPage_2.goToNextPage();
-        }
-        else if (src.equals("BACK")) {
-            this.forgotPasswordPage_2.backToPreviousPage();
-        }
-        else if (src.equals("Resend code")) {
-            try {
-                this.forgotPasswordPage_2.resendCode();
-            } catch (MessagingException ex) {
-                throw new RuntimeException(ex);
-            } catch (EmailException ex) {
-                throw new RuntimeException(ex);
+        switch (src) {
+            case "VERIFY" -> this.forgotPasswordPage_2.goToNextPage();
+            case "BACK" -> this.forgotPasswordPage_2.backToPreviousPage();
+            case "Resend code" -> {
+                try {
+                    this.forgotPasswordPage_2.resendCode();
+                } catch (MessagingException | EmailException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         }
 

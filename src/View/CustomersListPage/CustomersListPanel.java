@@ -67,28 +67,12 @@ public class CustomersListPanel extends JPanel{
         }
     }
 
-    public Customer getCustomerSelected() {
-        return customerSelected;
-    }
-
     public JTable getCustomerListTable() {
         return CustomerListTable;
     }
 
     public JPanel getThis() {
         return this;
-    }
-
-    public JScrollPane getScrollPane1() {
-        return scrollPane1;
-    }
-
-    public JLabel getTextField1() {
-        return textField1;
-    }
-
-    public JTextField getJtfSearch() {
-        return jtfSearch;
     }
 
     public JButton getJlbDelete() {

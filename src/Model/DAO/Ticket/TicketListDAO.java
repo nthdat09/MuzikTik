@@ -17,7 +17,7 @@ public class TicketListDAO {
 
     public static List<Ticket> getList() {
         List<Ticket> result = new ArrayList<>();
-        Ticket ticket = null;
+        Ticket ticket;
         try {
             Connection con = UserDatabase.getConnection();
 

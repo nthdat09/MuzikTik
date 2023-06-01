@@ -42,10 +42,6 @@ public class ConfirmLogoutJPopupMenu extends JDialog{
         this.getConfirmJDialog().dispose();
     }
 
-    public JLabel getConfirmText() {
-        return ConfirmText;
-    }
-
     public JButton getYesButton() {
         return YesButton;
     }

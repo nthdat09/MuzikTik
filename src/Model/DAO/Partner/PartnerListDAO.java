@@ -1,15 +1,11 @@
 package Model.DAO.Partner;
 
 import Model.BEAN.Partner;
-import Model.BEAN.Stage;
-import Model.DAO.Stage.StageListDAO;
 import Model.Database.UserDatabase;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +16,7 @@ public class PartnerListDAO {
 
     public static List<Partner> getList(){
         List<Partner> result = new ArrayList<>();
-        Partner partner = null;
+        Partner partner;
 
         try{
             Connection con = UserDatabase.getConnection();

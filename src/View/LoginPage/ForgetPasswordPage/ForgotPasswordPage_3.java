@@ -14,9 +14,6 @@ public class ForgotPasswordPage_3 extends JPanel {
     String userName;
     String email;
     ActionListener ac = new ForgetPasswordPage3Listener(this);
-    public ForgotPasswordPage_3() {
-        initComponents();
-    }
 
     public ForgotPasswordPage_3(String userName, String email) {
         initComponents();
@@ -65,10 +62,6 @@ public class ForgotPasswordPage_3 extends JPanel {
         return NewPasswordField;
     }
 
-    public JButton getOKJbt() {
-        return OKJbt;
-    }
-
     public JButton getShowPasswordJbt() {
         return ShowPasswordJbt;
     }
@@ -83,10 +76,6 @@ public class ForgotPasswordPage_3 extends JPanel {
 
     public JDialog getForgotPasswordPage_3JDialog() {
         return ForgotPasswordPage_3JDialog;
-    }
-
-    public JButton getBackJbt() {
-        return BackJbt;
     }
 
     private void initComponents() {

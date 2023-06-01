@@ -15,18 +15,11 @@ public class ChangPasswordJDialogController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String src = e.getActionCommand();
-        if (src.equals("OK")) {
-            changPasswordJDialog.save();
-        }
-        else if (src.equals("Cancel")) {
-            changPasswordJDialog.cancel();
-        }
-        else if (src.equals("Show Password")) {
-            changPasswordJDialog.showPassword();
-        }
-
-        else if (src.equals("Hide Password")){
-            changPasswordJDialog.hidePassword();
+        switch (src) {
+            case "OK" -> changPasswordJDialog.save();
+            case "Cancel" -> changPasswordJDialog.cancel();
+            case "Show Password" -> changPasswordJDialog.showPassword();
+            case "Hide Password" -> changPasswordJDialog.hidePassword();
         }
 
 

@@ -78,7 +78,62 @@ public class TicketListPanel extends JPanel{
             int STG_ID = ticket.getStageID();
             int SEAT_ID = ticket.getSeatID();
             double TKT_PRICE = ticket.getPrice();
-            tableModel.addRow(new Object[]{TKT_ID + "", EVT_ID + "", STG_ID + "", SEAT_ID + "", TKT_PRICE + ""});
+            tableModel.addRow(new Object[]{String.valueOf(TKT_ID), String.valueOf(EVT_ID), String.valueOf(STG_ID), String.valueOf(SEAT_ID), String.valueOf(TKT_PRICE)});
+        }
+    }
+
+    public void addTicket() {
+        System.out.println("addTicket");
+        int newID = TicketListDAO.getLastID() + 1;
+        MainPage.changeView(new TicketInformationForm(newID).getTicketInformationFormPanel(), MainPage.getJlbTickets(), "Ticket Information Form");
+    }
+
+    public void editTicket() {
+        System.out.println("editTicket");
+        MainPage.changeView(new TicketInformationForm(getDataFromJTable()).getTicketInformationFormPanel(), MainPage.getJlbTickets(), "Ticket Information Form");
+    }
+
+    public void deleteTicket() {
+        System.out.println("deleteTicket");
+        int i = TicketListTable.getSelectedRow();
+        if (i == -1) {
+            JOptionPane.showMessageDialog(null, "Please select a row to delete");
+        } else {
+            ticketSelected = listTicket.get(i);
+            int IDSelected = ticketSelected.getTicketID();
+            ComfirmTicketDeleteJPopupMenu comfirmTicketDeleteJPopupMenu = new ComfirmTicketDeleteJPopupMenu();
+            comfirmTicketDeleteJPopupMenu.setSelectedID(IDSelected);
+        }
+    }
+
+    public void searchTicket() throws SQLException {
+        System.out.println("search Ticket");
+        textSearched = jtfSearch.getText();
+        listTicket = TicketDAO.getInstance().getTicketList();
+        System.out.println("Text input: " + textSearched);
+        if (!textSearched.equals("")) {
+            System.out.println("Search");
+            List<Integer> idResult = new ArrayList<>();
+
+            for (Ticket ticket : listTicket) {
+                String ticketCompiled = ticket.getTicketID() + "!@#$" + ticket.getEventID() + "!@#$" + ticket.getStageID() + "!@#$" + ticket.getSeatID() + "!@#$" + ticket.getPrice();
+
+                if (ticketCompiled.contains(textSearched)) {
+                    idResult.add(ticket.getTicketID());
+                }
+            }
+
+            listTicket.clear();
+            for (int id : idResult) {
+                Ticket ticket = TicketDAO.getInstance().selectByID(id);
+                if (ticket != null) {
+                    listTicket.add(ticket);
+                }
+            }
+            MainPage.changeView(new TicketListPanel(listTicket, textSearched), MainPage.getJlbTickets(), "Ticket List Panel");
+        } else {
+            System.out.println("No search");
+            MainPage.changeView(new TicketListPanel(), MainPage.getJlbTickets(), "Ticket List Panel");
         }
     }
 
@@ -247,61 +302,5 @@ public class TicketListPanel extends JPanel{
     private JButton jlbAdd;
     private JButton jlbSearch;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
-
-
-    public void addTicket() {
-        System.out.println("addTicket");
-        int newID = TicketListDAO.getLastID() + 1;
-        MainPage.changeView(new TicketInformationForm(newID).getTicketInformationFormPanel(), MainPage.getJlbTickets(), "Ticket Information Form");
-    }
-
-    public void editTicket() {
-        System.out.println("editTicket");
-        MainPage.changeView(new TicketInformationForm(getDataFromJTable()).getTicketInformationFormPanel(), MainPage.getJlbTickets(), "Ticket Information Form");
-    }
-
-    public void deleteTicket() {
-        System.out.println("deleteTicket");
-        int i = TicketListTable.getSelectedRow();
-        if (i == -1) {
-            JOptionPane.showMessageDialog(null, "Please select a row to delete");
-        } else {
-            ticketSelected = listTicket.get(i);
-            int IDSelected = ticketSelected.getTicketID();
-            ComfirmTicketDeleteJPopupMenu comfirmTicketDeleteJPopupMenu = new ComfirmTicketDeleteJPopupMenu();
-            comfirmTicketDeleteJPopupMenu.setSelectedID(IDSelected);
-        }
-    }
-
-    public void searchTicket() throws SQLException {
-        System.out.println("search Ticket");
-        textSearched = jtfSearch.getText();
-        listTicket = TicketDAO.getInstance().getTicketList();
-        System.out.println("Text input: " + textSearched);
-        if (!textSearched.equals("")) {
-            System.out.println("Search");
-            List<Integer> idResult = new ArrayList<>();
-
-            for (Ticket ticket : listTicket) {
-                String ticketCompiled = ticket.getTicketID() + "!@#$" + ticket.getEventID() + "!@#$" + ticket.getStageID() + "!@#$" + ticket.getSeatID() + "!@#$" + ticket.getPrice();
-
-                if (ticketCompiled.contains(textSearched)) {
-                    idResult.add(ticket.getTicketID());
-                }
-            }
-
-            listTicket.clear();
-            for (int id : idResult) {
-                Ticket ticket = TicketDAO.getInstance().selectByID(id);
-                if (ticket != null) {
-                    listTicket.add(ticket);
-                }
-            }
-            MainPage.changeView(new TicketListPanel(listTicket, textSearched), MainPage.getJlbTickets(), "Ticket List Panel");
-        } else {
-            System.out.println("No search");
-            MainPage.changeView(new TicketListPanel(), MainPage.getJlbTickets(), "Ticket List Panel");
-        }
-    }
 }
 

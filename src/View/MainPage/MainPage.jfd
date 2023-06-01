@@ -77,8 +77,10 @@ new FormModel {
 					"background": sfield java.awt.Color white
 					add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
 						name: "avatarJMenu"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Asset/music logo design - no name.png" )
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true
+							"JavaCodeGenerator.variableModifiers": 10
 						}
 						add( new FormComponent( "javax.swing.JMenuItem" ) {
 							name: "nameJMenuItem"

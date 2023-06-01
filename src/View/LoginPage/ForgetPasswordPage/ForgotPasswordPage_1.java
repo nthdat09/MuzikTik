@@ -31,20 +31,8 @@ public class ForgotPasswordPage_1 extends JPanel {
         userNameField.setText(userName);
     }
 
-    public JTextField getUserNameField() {
-        return userNameField;
-    }
-
-    public JButton getNextJbt() {
-        return NextJbt;
-    }
-
     public JDialog getForgotPasswordPage_1JDialog() {
         return ForgotPasswordPage_1JDialog;
-    }
-
-    public JButton getBackJbt() {
-        return BackJbt;
     }
 
     private void initComponents() {

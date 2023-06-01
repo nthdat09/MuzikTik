@@ -4,24 +4,23 @@
 
 package View.SettingPage;
 
-import Application.Main;
 import Controller.AccountPanel.AccountPanelController;
 import Model.BEAN.Employee;
 import Model.DAO.Employee.EmployeeDAO;
 import View.MainPage.MainPage;
 import com.github.lgooddatepicker.components.DatePicker;
 
+import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
-import javax.swing.*;
-import javax.swing.GroupLayout;
-import javax.swing.border.*;
 
 /**
  * @author Admin
@@ -74,6 +73,7 @@ public class AccountPanel extends JPanel {
             fileChooser.showOpenDialog(this);
             File file = fileChooser.getSelectedFile();
             filename = file.getAbsolutePath();
+            System.out.println(filename);
             ImageIcon imageIcon = new ImageIcon(file.toString());
             Image image = imageIcon.getImage().getScaledInstance(avatarJlb.getWidth(), avatarJlb.getHeight(), Image.SCALE_SMOOTH);
             avatarJlb.setIcon(new ImageIcon(image));
@@ -82,10 +82,7 @@ public class AccountPanel extends JPanel {
     }
 
     public void changePassword() {
-        System.out.println("Change password");
         ChangPasswordJDialog changPasswordJDialog = new ChangPasswordJDialog();
-
-
     }
 
     public void save() throws IOException {
@@ -104,7 +101,7 @@ public class AccountPanel extends JPanel {
             int rowChanged = EmployeeDAO.updateEmployeeWithoutAvatar(employee);
             System.out.println(rowChanged);
 
-            int avatarUploadSuscessfully = 0;
+            int avatarUploadSuscessfully;
             if (newPhotoUploaded == 1) {
                 File image = new File(filename);
                 FileInputStream fis = new FileInputStream(image);
@@ -134,6 +131,7 @@ public class AccountPanel extends JPanel {
                 }
             }
 
+            MainPage.setImageForLogoUser();
             MainPage.changeView(new AccountPanel(), MainPage.getJlbSettings(), "AccountPanel");
         }
     }
@@ -169,10 +167,6 @@ public class AccountPanel extends JPanel {
         return dobJpn;
     }
 
-    public JLabel getAvatarJlb() {
-        return avatarJlb;
-    }
-
     public JButton getUploadJbt() {
         return UploadJbt;
     }
@@ -205,12 +199,12 @@ public class AccountPanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
-        ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
-        .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt
-        . Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
-        propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-        ;} } );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
+        EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
+        . border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,
+        java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
+        { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )
+        throw new RuntimeException( ) ;} } );
 
         //---- jbtCancel ----
         jbtCancel.setText("CANCEL");

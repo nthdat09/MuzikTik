@@ -18,7 +18,7 @@ public class CustomerListDAO{
 
     public static List<Customer> getCustomerList() {
             List<Customer> result = new ArrayList<>();
-            Customer customerList = null;
+            Customer customerList;
             try {
                 // Tạo kết nối đến CSDL
                 Connection con = UserDatabase.getConnection();

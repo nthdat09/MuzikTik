@@ -18,23 +18,17 @@ public class ForgetPasswordPage3Listener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String src = e.getActionCommand();
 
-        if (src.equals("OK")){
-            this.forgotPasswordPage_3.goToNextPage();
-        }
-        else if (src.equals("BACK")){
-            try {
-                this.forgotPasswordPage_3.backToPreviousPage();
-            } catch (MessagingException ex) {
-                throw new RuntimeException(ex);
-            } catch (EmailException ex) {
-                throw new RuntimeException(ex);
+        switch (src) {
+            case "OK" -> this.forgotPasswordPage_3.goToNextPage();
+            case "BACK" -> {
+                try {
+                    this.forgotPasswordPage_3.backToPreviousPage();
+                } catch (MessagingException | EmailException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
-        }
-        else if (src.equals("Show Password")){
-            this.forgotPasswordPage_3.showPassword();
-        }
-        else if (src.equals("Hide Password")){
-            this.forgotPasswordPage_3.hidePassword();
+            case "Show Password" -> this.forgotPasswordPage_3.showPassword();
+            case "Hide Password" -> this.forgotPasswordPage_3.hidePassword();
         }
 
     }

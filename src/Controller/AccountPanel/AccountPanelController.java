@@ -16,21 +16,20 @@ public class AccountPanelController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String src = e.getActionCommand();
-        if (src.equals("SAVE")) {
-            try {
-                accountPanel.save();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
+        switch (src) {
+            case "SAVE" -> {
+                try {
+                    accountPanel.save();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
-        }
-        else if (src.equals("CANCEL"))
-            accountPanel.cancel();
-        else if (src.equals("Upload new avatar")){
-            accountPanel.uploadNewAvatar();
-        }
-        else if (src.equals("Change Password")){
-            System.out.println("Change password");
-            accountPanel.changePassword();
+            case "CANCEL" -> accountPanel.cancel();
+            case "Upload new avatar" -> accountPanel.uploadNewAvatar();
+            case "Change Password" -> {
+                System.out.println("Change password");
+                accountPanel.changePassword();
+            }
         }
 
     }

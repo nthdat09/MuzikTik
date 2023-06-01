@@ -17,11 +17,7 @@ public class ForgotPasswordPage_2 extends JPanel {
     private int timeLeft = 30;
     ActionListener ac = new ForgetPasswordPage2Listener(this);
 
-    public ForgotPasswordPage_2() {
-        initComponents();
-    }
-
-    public ForgotPasswordPage_2(int code, String userName, String email) throws EmailException {
+    public ForgotPasswordPage_2(int code, String userName, String email) {
         initComponents();
         EmailField.setText(email);
         this.verificationCode = code;
@@ -37,7 +33,6 @@ public class ForgotPasswordPage_2 extends JPanel {
         new Thread(() -> {
             try {
                 Thread.sleep(1000);
-                System.out.println("Send code to email");
                 SendEmail.sendCodeToEmail(verificationCode, email);
             }
             catch (Exception e){
@@ -47,7 +42,7 @@ public class ForgotPasswordPage_2 extends JPanel {
 
     }
 
-    public ForgotPasswordPage_2(String email) throws MessagingException, EmailException {
+    public ForgotPasswordPage_2(String email) throws MessagingException {
         initComponents();
         EmailField.setText(email);
 
@@ -62,8 +57,6 @@ public class ForgotPasswordPage_2 extends JPanel {
             try {
                 Thread.sleep(1000);
                 this.verificationCode = VerificationCode.createVerificationCode();
-                System.out.println("Verification code: " + verificationCode);
-                System.out.println("Send code to email");
                 SendEmail.sendCodeToEmail(verificationCode, email);
             }
             catch (Exception e){
@@ -72,14 +65,13 @@ public class ForgotPasswordPage_2 extends JPanel {
         }).start();
     }
 
-    private void setResendTimeLeft() throws EmailException {
+    private void setResendTimeLeft() {
         ResendCodeJbt.setEnabled(false);
         new Thread(() -> {
             while (timeLeft > 0) {
                 try {
                     Thread.sleep(1000);
                     timeLeft--;
-                    ResendTimeLeft.setText("Resend code in " + timeLeft + "s");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -129,36 +121,8 @@ public class ForgotPasswordPage_2 extends JPanel {
         }).start();
     }
 
-    public JTextField getVerifyCodeField() {
-        return VerifyCodeField;
-    }
-
-    public JButton getNextJbt() {
-        return NextJbt;
-    }
-
-    public JLabel getEmailField() {
-        return EmailField;
-    }
-
-    public JLabel getErrorText() {
-        return ErrorText;
-    }
-
-    public JButton getResendCodeJbt() {
-        return ResendCodeJbt;
-    }
-
-    public JLabel getResendTimeLeft() {
-        return ResendTimeLeft;
-    }
-
     public JDialog getForgotPasswordPage_2JDialog() {
         return ForgotPasswordPage_2JDialog;
-    }
-
-    public JButton getBackJbt() {
-        return BackJbt;
     }
 
     private void initComponents() {

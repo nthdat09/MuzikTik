@@ -1,16 +1,11 @@
 package View.PartnerPage;
 
 import Controller.PartnerPage.PartnerDeleteConfirmJDialogController;
-import Controller.StagesPage.StageDeleteConfirmJDialogController;
 import Model.DAO.Partner.PartnerDAO;
-import Model.DAO.Stage.StageDAO;
-import Model.DAO.Ticket.TicketDAO;
 import View.MainPage.MainPage;
-import View.StagesPage.StagesListPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 public class ConfirmPartnerDeleteJPopupMenu extends JDialog{
     ActionListener ac = new PartnerDeleteConfirmJDialogController(this);
@@ -34,8 +29,28 @@ public class ConfirmPartnerDeleteJPopupMenu extends JDialog{
         getNoButton().addActionListener(ac);
     }
 
-    public JLabel getConfirmText() {
-        return ConfirmText;
+    public void deletePartner() {
+        if (this.getSelectedID() == -1) {
+            JOptionPane.showMessageDialog(null, "Please select a stage to delete");
+        }
+        else {
+            System.out.println("Delete Partner");
+            int rowChanged = PartnerDAO.getInstance().deletePartner(this.getSelectedID());
+            if (rowChanged == 0) {
+                JOptionPane.showMessageDialog(null, "Delete failed");
+                return;
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Delete successfully");
+            }
+            MainPage.changeView(new PartnerListPanel(), MainPage.getJlbPartners() , "Partner List Panel");
+            this.getConfirmJDialog().dispose();
+        }
+    }
+
+    public void cancelDeletePartner() {
+        System.out.println("Cancel");
+        this.getConfirmJDialog().dispose();
     }
 
     public JButton getYesButton() {
@@ -113,29 +128,4 @@ public class ConfirmPartnerDeleteJPopupMenu extends JDialog{
     private JButton NoButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
-
-    public void deletePartner() throws SQLException {
-        if (this.getSelectedID() == -1) {
-            JOptionPane.showMessageDialog(null, "Please select a stage to delete");
-            return;
-        }
-        else {
-            System.out.println("Delete Partner");
-            int rowChanged = PartnerDAO.getInstance().deletePartner(this.getSelectedID());
-            if (rowChanged == 0) {
-                JOptionPane.showMessageDialog(null, "Delete failed");
-                return;
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Delete successfully");
-            }
-            MainPage.changeView(new PartnerListPanel(), MainPage.getJlbPartners() , "Partner List Panel");
-            this.getConfirmJDialog().dispose();
-        }
-    }
-
-    public void cancelDeletePartner() {
-        System.out.println("Cancel");
-        this.getConfirmJDialog().dispose();
-    }
 }

@@ -1,6 +1,5 @@
 package Controller.MainMenu;
 
-import View.MainPage.ConfirmLogoutJPopupMenu;
 import View.MainPage.MainPage;
 
 import java.awt.event.ActionEvent;

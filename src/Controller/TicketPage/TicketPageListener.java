@@ -1,6 +1,5 @@
 package Controller.TicketPage;
 
-import View.TicketPage.TicketInformationForm;
 import View.TicketPage.TicketListPanel;
 
 import java.awt.event.ActionEvent;
@@ -18,17 +17,16 @@ public class TicketPageListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String src = e.getActionCommand();
         System.out.println(src);
-        if (src.equals("ADD")){
-            this.ticketListPanel.addTicket();
-        } else if (src.equals("EDIT")){
-            ticketListPanel.editTicket();
-        } else if (src.equals("DELETE")){
-            ticketListPanel.deleteTicket();
-        } else if (src.equals("SEARCH")){
-            try {
-                ticketListPanel.searchTicket();
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
+        switch (src) {
+            case "ADD" -> this.ticketListPanel.addTicket();
+            case "EDIT" -> ticketListPanel.editTicket();
+            case "DELETE" -> ticketListPanel.deleteTicket();
+            case "SEARCH" -> {
+                try {
+                    ticketListPanel.searchTicket();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         }
 

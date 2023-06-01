@@ -14,8 +14,6 @@ import View.MainPage.MainPage;
 public class LoginPage extends JPanel {
     ActionListener ac = new LoginPageListener(this);
 
-    Employee employee = new Employee();
-
     private static int loginAttempt = 0;
 
     String loginStatus = "Login Failed";

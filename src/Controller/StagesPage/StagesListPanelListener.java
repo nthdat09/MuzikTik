@@ -15,17 +15,16 @@ public class StagesListPanelListener implements ActionListener{
     public void actionPerformed(java.awt.event.ActionEvent e) {
         String src = e.getActionCommand();
         System.out.println(src);
-        if (src.equals("ADD")){
-            this.stagesListPanel.addStage();
-        } else if (src.equals("EDIT")){
-            stagesListPanel.editStage();
-        } else if (src.equals("DELETE")){
-            stagesListPanel.deleteStage();
-        } else if (src.equals("SEARCH")){
-            try {
-                stagesListPanel.searchStage();
-            } catch (Exception ex) {
-                throw new RuntimeException(ex);
+        switch (src) {
+            case "ADD" -> this.stagesListPanel.addStage();
+            case "EDIT" -> stagesListPanel.editStage();
+            case "DELETE" -> stagesListPanel.deleteStage();
+            case "SEARCH" -> {
+                try {
+                    stagesListPanel.searchStage();
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         }
     }

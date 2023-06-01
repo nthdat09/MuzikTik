@@ -13,11 +13,6 @@ import View.MainPage.MainPage;
 public class TicketInformationForm extends JPanel{
     static int selectedID = -1;
     ActionListener ac = new TicketInformationController(this);
-    public TicketInformationForm() {
-        initComponents();
-        getSaveButton().addActionListener(ac);
-        getCancelButton().addActionListener(ac);
-    }
 
     public TicketInformationForm(Ticket ticket) {
         initComponents();
@@ -30,37 +25,17 @@ public class TicketInformationForm extends JPanel{
         initComponents();
         getSaveButton().addActionListener(ac);
         getCancelButton().addActionListener(ac);
-        this.TicketIDField.setText(newID + "");
+        this.TicketIDField.setText(String.valueOf(newID));
     }
 
     private void initSomeComponents(Ticket ticket) {
-        this.EventIDField.setText(ticket.getEventID() + "");
-        this.TicketIDField.setText(ticket.getTicketID() + "");
-        this.TicketPriceField.setText(ticket.getPrice() + "");
-        this.StageIDField.setText(ticket.getStageID() + "");
-        this.SeatIDField.setText(ticket.getSeatID() + "");
+        this.EventIDField.setText(String.valueOf(ticket.getEventID()));
+        this.TicketIDField.setText(String.valueOf(ticket.getTicketID()));
+        this.TicketPriceField.setText(String.valueOf(ticket.getPrice()));
+        this.StageIDField.setText(String.valueOf(ticket.getStageID()));
+        this.SeatIDField.setText(String.valueOf(ticket.getSeatID()));
         this.selectedID = ticket.getTicketID();
         System.out.println("Selected Ticket ID: " + selectedID);
-    }
-
-    public JTextField getTicketIDField() {
-        return this.TicketIDField;
-    }
-
-    public JTextField getEventIDField() {
-        return this.EventIDField;
-    }
-
-    public JTextField getSeatIDField() {
-        return this.SeatIDField;
-    }
-
-    public JTextField getStageIDField() {
-        return this.StageIDField;
-    }
-
-    public JTextField getTicketPriceField() {
-        return this.TicketPriceField;
     }
 
     public JButton getSaveButton() {
@@ -69,26 +44,6 @@ public class TicketInformationForm extends JPanel{
 
     public JButton getCancelButton() {
         return this.CancelButton;
-    }
-
-    public JLabel getTicketID() {
-        return this.TicketID;
-    }
-
-    public JLabel getEventID() {
-        return this.EventID;
-    }
-
-    public JLabel getTicketPrice() {
-        return this.TicketPrice;
-    }
-
-    public JLabel getStageID() {
-        return this.StageID;
-    }
-
-    public JLabel getSeatID() {
-        return this.SeatID;
     }
 
     public JPanel getTicketInformationFormPanel() {
@@ -262,19 +217,15 @@ public class TicketInformationForm extends JPanel{
             if (selectedID == -1 ) { // insert
                 ticket = new Ticket();
                 ticket.setTicketID(Integer.parseInt(this.TicketIDField.getText()));
-                ticket.setEventID(Integer.parseInt(this.EventIDField.getText()));
-                ticket.setSeatID(Integer.parseInt(this.SeatIDField.getText()));
-                ticket.setStageID(Integer.parseInt(this.StageIDField.getText()));
-                ticket.setPrice(Double.parseDouble(this.TicketPriceField.getText()));
             }
             else { // update
                 ticket = TicketDAO.getInstance().selectByID(selectedID);
                 ticket.setTicketID(selectedID);
-                ticket.setEventID(Integer.parseInt(this.EventIDField.getText()));
-                ticket.setSeatID(Integer.parseInt(this.SeatIDField.getText()));
-                ticket.setStageID(Integer.parseInt(this.StageIDField.getText()));
-                ticket.setPrice(Double.parseDouble(this.TicketPriceField.getText()));
             }
+            ticket.setEventID(Integer.parseInt(this.EventIDField.getText()));
+            ticket.setSeatID(Integer.parseInt(this.SeatIDField.getText()));
+            ticket.setStageID(Integer.parseInt(this.StageIDField.getText()));
+            ticket.setPrice(Double.parseDouble(this.TicketPriceField.getText()));
             if (selectedID != -1) {
                 System.out.println("Update Ticket");
                 int rowChanged = TicketDAO.getInstance().updateTicket(ticket);

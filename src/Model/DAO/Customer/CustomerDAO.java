@@ -72,12 +72,12 @@ public class CustomerDAO{
         return null;
     }
 
-    public int updateCustomer(Customer cus) throws SQLException {
+    public int updateCustomer(Customer cus) {
         int rowChanged = 0;
         try {
             Connection con = UserDatabase.getConnection();
             String sql = "UPDATE mctmsys.customer SET CUS_NAME = '" + cus.getName() + "' , CUS_PHONE_NUMBER = '" + cus.getPhoneNumber() +
-                    "', CUS_EMAIL = '" + cus.getEmail() +"', CUS_ADDRESS = '" + cus.getAddress() + "', CUS_TOTAL_POINT = " + cus.getTotalPoint() + " WHERE CUS_ID = " +cus.getId() + "";
+                    "', CUS_EMAIL = '" + cus.getEmail() +"', CUS_ADDRESS = '" + cus.getAddress() + "', CUS_TOTAL_POINT = " + cus.getTotalPoint() + " WHERE CUS_ID = " +cus.getId();
             System.out.println(sql);
 
             PreparedStatement ps = con.prepareCall(sql);
@@ -92,7 +92,7 @@ public class CustomerDAO{
         return rowChanged;
     }
 
-    public int addCustomer(Customer newCustomer) throws SQLException {
+    public int addCustomer(Customer newCustomer) {
         int rowChanged = 0;
         try {
             Connection con = UserDatabase.getConnection();
@@ -118,7 +118,7 @@ public class CustomerDAO{
         return rowChanged;
     }
 
-    public int deleteCustomer(int ID) throws SQLException {
+    public int deleteCustomer(int ID) {
         int rowChanged = 0;
         try {
             Connection con = UserDatabase.getConnection();

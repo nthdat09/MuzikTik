@@ -31,6 +31,30 @@ public class ConfirmStageDeleteJPopupMenu extends JDialog{
         getNoButton().addActionListener(ac);
     }
 
+    public void deleteStage() throws SQLException {
+        if (this.getSelectedID() == -1) {
+            JOptionPane.showMessageDialog(null, "Please select a stage to delete");
+            return;
+        }
+        else {
+            System.out.println("Delete Stage");
+            int rowChanged = StageDAO.getInstance().deleteStage(this.getSelectedID());
+            if (rowChanged == 0) {
+                JOptionPane.showMessageDialog(null, "Delete Stage Failed");
+                return;
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Delete Stage Successfully");
+            }
+            MainPage.changeView(new StagesListPanel(), MainPage.getJlbStages() , "Stage List Panel");
+            this.getConfirmJDialog().dispose();
+        }
+    }
+    public void cancelDeleteStage() {
+        System.out.println("Cancel");
+        this.getConfirmJDialog().dispose();
+    }
+
     public JLabel getConfirmText() {
         return ConfirmText;
     }
@@ -110,28 +134,5 @@ public class ConfirmStageDeleteJPopupMenu extends JDialog{
     private JButton NoButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
-    public void deleteStage() throws SQLException {
-        if (this.getSelectedID() == -1) {
-            JOptionPane.showMessageDialog(null, "Please select a stage to delete");
-            return;
-        }
-        else {
-            System.out.println("Delete Stage");
-            int rowChanged = StageDAO.getInstance().deleteStage(this.getSelectedID());
-            if (rowChanged == 0) {
-                JOptionPane.showMessageDialog(null, "Delete Stage Failed");
-                return;
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Delete Stage Successfully");
-            }
-            MainPage.changeView(new StagesListPanel(), MainPage.getJlbStages() , "Stage List Panel");
-            this.getConfirmJDialog().dispose();
-        }
-    }
-    public void cancelDeleteStage() {
-        System.out.println("Cancel");
-        this.getConfirmJDialog().dispose();
-    }
 
 }

@@ -30,10 +30,6 @@ public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
         getNoButton().addActionListener(ac);
     }
 
-    public JLabel getConfirmText() {
-        return ConfirmText;
-    }
-
     public JButton getYesButton() {
         return YesButton;
     }

@@ -20,9 +20,7 @@ public class ForgetPasswordPage1Listener implements ActionListener{
         if (src.equals("NEXT")) {
             try {
                 this.forgotPasswordPage_1.goToNextPage();
-            } catch (MessagingException ex) {
-                throw new RuntimeException(ex);
-            } catch (EmailException ex) {
+            } catch (MessagingException | EmailException ex) {
                 throw new RuntimeException(ex);
             }
         }

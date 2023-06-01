@@ -5,20 +5,23 @@
 package View.MainPage;
 
 import Controller.MainMenu.LogoutController;
+import Controller.Menu.SwitchMenuController;
 import Model.BEAN.Employee;
 import Model.BEAN.MenuList;
-import Controller.Menu.SwitchMenuController;
 import Model.DAO.Employee.EmployeeDAO;
 
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import javax.swing.*;
-import javax.swing.GroupLayout;
-import javax.swing.border.*;
 import java.util.List;
 
 /**
@@ -64,13 +67,47 @@ public class MainPage extends JFrame {
         this.getNameJMenuItem().setText("Hello, " + username);
 
         // Set avatar
+        setImageForLogoUser();
+    }
+
+    public static void setImageForLogoUser(){
+        // Set avatar
         Employee employee = EmployeeDAO.getUserByUsername(MainPage.getUsername());
         if (employee.getAvatar() != null) { // If avatar is not null
             ImageIcon imageIcon = new ImageIcon(employee.getAvatar());
             Image image = imageIcon.getImage();
             Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
             imageIcon = new ImageIcon(newimg);
-            this.getAvatarJMenu().setIcon(imageIcon);
+            getAvatarJMenu().setIcon(imageIcon);
+        }
+        else {
+            // Set default avatar
+            File file = new File("D:\\DoAn\\Fantastic-Four\\src\\Asset\\Avatar\\DefaultAvatar.png");
+
+            // Convert file to byte[]
+            FileInputStream fis = null;
+            try {
+                fis = new FileInputStream(file);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            byte[] buf = new byte[1024];
+            try {
+                for (int readNum; (readNum = fis.read(buf)) != -1;) {
+                    bos.write(buf, 0, readNum); //no doubt here is 0
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            byte[] bytes = bos.toByteArray();
+            employee.setAvatar(bytes);
+            EmployeeDAO.updateAvatar(employee);
+            ImageIcon imageIcon = new ImageIcon(bytes);
+            Image image = imageIcon.getImage();
+            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
+            imageIcon = new ImageIcon(newimg);
+            getAvatarJMenu().setIcon(imageIcon);
         }
     }
 
@@ -90,10 +127,6 @@ public class MainPage extends JFrame {
 
     Border border = new LineBorder(Color.decode("#61b884"),1,true);
 
-    private void button1MouseExited(MouseEvent e) {
-        jpnMainMenu.setVisible(true);
-    }
-
     private void button1MouseClicked(MouseEvent e) {
         jpnMainMenu.setVisible(false);
     }
@@ -102,9 +135,6 @@ public class MainPage extends JFrame {
         // TODO add your code here
     }
 
-    private void label10MousePressed(MouseEvent e) {
-        // TODO add your code here
-    }
 
     private void jlbHomeMouseEntered(MouseEvent e) {
         // TODO add your code here
@@ -206,7 +236,7 @@ public class MainPage extends JFrame {
         return jlbHome;
     }
 
-    public JMenu getAvatarJMenu() {
+    public static JMenu getAvatarJMenu() {
         return avatarJMenu;
     }
 
@@ -269,13 +299,13 @@ public class MainPage extends JFrame {
         {
             headerPanel.setBorder(new LineBorder(new Color(0xbebebe)));
             headerPanel.setBackground(Color.white);
-            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border
-            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067"
-            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,headerPanel. getBorder
-            ( )) ); headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException
-            ( ); }} );
+            headerPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
+            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing
+            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
+            Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
+            ) ,headerPanel. getBorder () ) ); headerPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
+            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName (
+            ) ) )throw new RuntimeException( ) ;} } );
             headerPanel.setLayout(null);
 
             //---- searchButton ----
@@ -347,6 +377,7 @@ public class MainPage extends JFrame {
 
                 //======== avatarJMenu ========
                 {
+                    avatarJMenu.setIcon(new ImageIcon(getClass().getResource("/Asset/music logo design - no name.png")));
 
                     //---- nameJMenuItem ----
                     nameJMenuItem.setText("Name");
@@ -782,7 +813,7 @@ public class MainPage extends JFrame {
     private JLabel Logo1;
     private JLabel Logo2;
     private JMenuBar menuBar1;
-    private JMenu avatarJMenu;
+    private static JMenu avatarJMenu;
     private JMenuItem nameJMenuItem;
     private static JMenuItem logOutJMenuItem;
     private JPanel navigationPanel;

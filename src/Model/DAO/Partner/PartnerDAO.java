@@ -71,8 +71,6 @@ public class PartnerDAO {
         try{
             Connection con = UserDatabase.getConnection();
             String sql = "INSERT INTO mctmsys.partner (PTN_ID, PTN_NAME, PTN_PHONE_NUMBER, PTN_EMAIL, PTN_ADDRESS, PTN_LOGO, PTN_ACC_NUMBER, PTN_BANK) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-            System.out.println(sql);
-
             PreparedStatement ps = con.prepareCall(sql);
             ps.setInt(1, partner.getId());
             ps.setString(2, partner.getName());
@@ -99,7 +97,6 @@ public class PartnerDAO {
         try{
             Connection con = UserDatabase.getConnection();
             String sql = "DELETE FROM mctmsys.partner WHERE PTN_ID = ?;";
-            System.out.println(sql);
 
             PreparedStatement ps = con.prepareCall(sql);
             ps.setInt(1, selectedID);
@@ -115,38 +112,4 @@ public class PartnerDAO {
         return rowChanged;
     }
 
-    public List<Partner> getPartnerList() {
-        List<Partner> partnerList = null;
-        try {
-            Connection con = UserDatabase.getConnection();
-            String sql = "SELECT * FROM mctmsys.partner;";
-            System.out.println(sql);
-
-            PreparedStatement ps = con.prepareCall(sql);
-            ResultSet rs = ps.executeQuery();
-            partnerList = new java.util.ArrayList<>();
-
-            while (rs.next()) {
-                Partner partner = new Partner();
-                partner.setId(rs.getInt("PTN_ID"));
-                partner.setName(rs.getString("PTN_NAME"));
-                partner.setPhoneNumber(rs.getString("PTN_PHONE_NUMBER"));
-                partner.setEmail(rs.getString("PTN_EMAIL"));
-                partner.setAddress(rs.getString("PTN_ADDRESS"));
-                partner.setLogo(rs.getString("PTN_LOGO"));
-                partner.setAccNumber(rs.getString("PTN_ACC_NUMBER"));
-                partner.setBank(rs.getString("PTN_BANK"));
-
-                partnerList.add(partner);
-            }
-            ps.close();
-            rs.close();
-            con.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return partnerList;
-    }
 }

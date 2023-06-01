@@ -30,10 +30,6 @@ public class ComfirmTicketDeleteJPopupMenu extends JDialog{
         getNoButton().addActionListener(ac);
     }
 
-    public JLabel getConfirmText() {
-        return ConfirmText;
-    }
-
     public JButton getYesButton() {
         return YesButton;
     }
@@ -112,7 +108,6 @@ public class ComfirmTicketDeleteJPopupMenu extends JDialog{
     public void deleteTicket() throws SQLException {
         if (this.getSelectedID() == -1) {
             JOptionPane.showMessageDialog(null, "Please select a ticket to delete");
-            return;
         }
         else {
             System.out.println("Delete ticket");

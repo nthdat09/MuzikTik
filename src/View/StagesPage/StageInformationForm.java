@@ -13,11 +13,6 @@ import java.sql.SQLException;
 public class StageInformationForm extends JPanel{
     static int selectedID = -1;
     ActionListener ac = new StageInformationController(this);
-    public StageInformationForm() {
-        initComponents();
-        getSaveButton().addActionListener(ac);
-        getCancelButton().addActionListener(ac);
-    }
 
     public StageInformationForm(Stage stage) {
         initComponents();
@@ -51,20 +46,70 @@ public class StageInformationForm extends JPanel{
         this.selectedID = stage.getId();
     }
 
-    public JTextField getIDField() {
-        return this.IDField;
+    public void saveStage() throws SQLException {
+        if (this.IDField.getText().equals("") || this.NameField.getText().equals("") || this.AddressField.getText().equals("")
+                || this.RentalPriceField.getText().equals("") || this.CapacityField.getText().equals("")
+                || this.Open_Hour.getValue().equals("") || this.Open_Minute.getValue().equals("") || this.Open_Second.getValue().equals("")
+                || this.Close_Hour.getValue().equals("") || this.Close_Minute.getValue().equals("") || this.Close_Second.getValue().equals("")){
+            JOptionPane.showMessageDialog(null, "Please fill in all fields");
+        }
+        else {
+            Stage stage = null;
+            if (selectedID == -1 ) { // insert
+                stage = new Stage();
+                stage.setId(Integer.parseInt(this.IDField.getText()));
+                stage.setName(this.NameField.getText());
+                stage.setAddress(this.AddressField.getText());
+                stage.setRentalPrice(Double.parseDouble(this.RentalPriceField.getText()));
+                stage.setCapacity(Integer.parseInt(this.CapacityField.getText()));
+
+                String openTime = this.Open_Hour.getValue() + ":" + this.Open_Minute.getValue() + ":" + this.Open_Second.getValue();
+                stage.setOpenTime(openTime);
+
+                String closeTime = this.Close_Hour.getValue() + ":" + this.Close_Minute.getValue() + ":" + this.Close_Second.getValue();
+                stage.setCloseTime(closeTime);
+            }
+            else { // update
+                try {
+                    stage = StageDAO.getInstance().selectByID(selectedID);
+                    stage.setId(selectedID);
+                    stage.setName(this.NameField.getText());
+                    stage.setAddress(this.AddressField.getText());
+                    stage.setRentalPrice(Double.parseDouble(this.RentalPriceField.getText()));
+                    stage.setCapacity(Integer.parseInt(this.CapacityField.getText()));
+                    String openTime = this.Open_Hour.getValue() + ":" + this.Open_Minute.getValue() + ":" + this.Open_Second.getValue();
+                    stage.setOpenTime(openTime);
+
+                    String closeTime = this.Close_Hour.getValue() + ":" + this.Close_Minute.getValue() + ":" + this.Close_Second.getValue();
+                    stage.setCloseTime(closeTime);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (selectedID != -1) {
+                int rowChanged = StageDAO.getInstance().updateStage(stage);
+                if (rowChanged == 0) {
+                    JOptionPane.showMessageDialog(null, "Update failed");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Update successfully");
+                }
+            }
+            else {
+                int rowChanged = StageDAO.getInstance().addStage(stage);
+                if (rowChanged == 0) {
+                    JOptionPane.showMessageDialog(null, "Insert failed");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Insert successfully");
+                }
+            }
+            MainPage.changeView(new StagesListPanel(), MainPage.getJlbStages() , "Stage List Panel");
+        }
     }
 
-    public JTextField getNameField() {
-        return this.NameField;
-    }
-
-    public JTextField getAddressField() {
-        return this.AddressField;
-    }
-
-    public JTextField getRentalPriceField() {
-        return this.RentalPriceField;
+    public void cancelStage() {
+        MainPage.changeView(new StagesListPanel(), MainPage.getJlbStages() , "Stage List Panel");
     }
 
     public JButton getSaveButton() {
@@ -75,64 +120,8 @@ public class StageInformationForm extends JPanel{
         return this.CancelButton;
     }
 
-    public JLabel getTicketID() {
-        return this.TicketID;
-    }
-
-    public JLabel getEventID() {
-        return this.EventID;
-    }
-
-    public JLabel getTicketPrice() {
-        return this.TicketPrice;
-    }
-
-    public JLabel getStageID() {
-        return this.StageID;
-    }
-
-    public JLabel getSeatID() {
-        return this.SeatID;
-    }
-
     public JPanel getStageInformationFormPanel() {
         return this.StageInformationFormPanel;
-    }
-
-    public JLabel getTicketPrice2() {
-        return this.TicketPrice2;
-    }
-
-    public JLabel getTicketPrice3() {
-        return this.TicketPrice3;
-    }
-
-    public JTextField getCapacityField() {
-        return this.CapacityField;
-    }
-
-    public JSpinner getOpen_Hour() {
-        return this.Open_Hour;
-    }
-
-    public JSpinner getOpen_Minute() {
-        return this.Open_Minute;
-    }
-
-    public JSpinner getOpen_Second() {
-        return this.Open_Second;
-    }
-
-    public JSpinner getClose_Hour() {
-        return this.Close_Hour;
-    }
-
-    public JSpinner getClose_Minute() {
-        return this.Close_Minute;
-    }
-
-    public JSpinner getClose_Second() {
-        return this.Close_Second;
     }
 
     private void initComponents() {
@@ -363,73 +352,4 @@ public class StageInformationForm extends JPanel{
     private JSpinner Close_Second;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
-
-    public void saveStage() throws SQLException {
-        System.out.println("Save Stage");
-        if (this.IDField.getText().equals("") || this.NameField.getText().equals("") || this.AddressField.getText().equals("")
-                || this.RentalPriceField.getText().equals("") || this.CapacityField.getText().equals("")
-                || this.Open_Hour.getValue().equals("") || this.Open_Minute.getValue().equals("") || this.Open_Second.getValue().equals("")
-                || this.Close_Hour.getValue().equals("") || this.Close_Minute.getValue().equals("") || this.Close_Second.getValue().equals("")){
-            JOptionPane.showMessageDialog(null, "Please fill in all fields");
-        }
-        else {
-            Stage stage = null;
-            if (selectedID == -1 ) { // insert
-                stage = new Stage();
-                stage.setId(Integer.parseInt(this.IDField.getText()));
-                stage.setName(this.NameField.getText());
-                stage.setAddress(this.AddressField.getText());
-                stage.setRentalPrice(Double.parseDouble(this.RentalPriceField.getText()));
-                stage.setCapacity(Integer.parseInt(this.CapacityField.getText()));
-
-                String openTime = this.Open_Hour.getValue() + ":" + this.Open_Minute.getValue() + ":" + this.Open_Second.getValue();
-                stage.setOpenTime(openTime);
-
-                String closeTime = this.Close_Hour.getValue() + ":" + this.Close_Minute.getValue() + ":" + this.Close_Second.getValue();
-                stage.setCloseTime(closeTime);
-            }
-            else { // update
-                try {
-                stage = StageDAO.getInstance().selectByID(selectedID);
-                stage.setId(selectedID);
-                stage.setName(this.NameField.getText());
-                stage.setAddress(this.AddressField.getText());
-                stage.setRentalPrice(Double.parseDouble(this.RentalPriceField.getText()));
-                stage.setCapacity(Integer.parseInt(this.CapacityField.getText()));
-                String openTime = this.Open_Hour.getValue() + ":" + this.Open_Minute.getValue() + ":" + this.Open_Second.getValue();
-                stage.setOpenTime(openTime);
-
-                String closeTime = this.Close_Hour.getValue() + ":" + this.Close_Minute.getValue() + ":" + this.Close_Second.getValue();
-                stage.setCloseTime(closeTime);
-            } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (selectedID != -1) {
-                System.out.println("Update Stage");
-                int rowChanged = StageDAO.getInstance().updateStage(stage);
-                if (rowChanged == 0) {
-                    JOptionPane.showMessageDialog(null, "Update failed");
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "Update successfully");
-                }
-            }
-            else {
-                System.out.println("Insert Stage");
-                int rowChanged = StageDAO.getInstance().addStage(stage);
-                if (rowChanged == 0) {
-                    JOptionPane.showMessageDialog(null, "Insert failed");
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "Insert successfully");
-                }
-            }
-            MainPage.changeView(new StagesListPanel(), MainPage.getJlbStages() , "Stage List Panel");
-        }
-    }
-
-    public void cancelStage() {
-        MainPage.changeView(new StagesListPanel(), MainPage.getJlbStages() , "Stage List Panel");
-    }
 }

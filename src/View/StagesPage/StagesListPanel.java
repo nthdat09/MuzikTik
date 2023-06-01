@@ -4,24 +4,19 @@
 
 package View.StagesPage;
 
-import Application.Main;
 import Controller.StagesPage.StagesListPanelListener;
 import Model.BEAN.Stage;
-import Model.BEAN.Ticket;
 import Model.DAO.Stage.StageDAO;
 import Model.DAO.Stage.StageListDAO;
-import Model.DAO.Ticket.TicketDAO;
 import View.MainPage.MainPage;
-import View.TicketPage.TicketListPanel;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.*;
-import javax.swing.GroupLayout;
-import javax.swing.table.*;
 
 /**
  * @author ADMIN
@@ -52,7 +47,6 @@ public class StagesListPanel extends JPanel {
 
     private void initMoreSetting() {
         listStage = StageListDAO.getList();
-        String a = listStage.toString();
 
         setStagesListTable();
 
@@ -72,10 +66,9 @@ public class StagesListPanel extends JPanel {
             int capacity = stage.getCapacity();
             String openTime = stage.getOpenTime();
             String closeTime = stage.getCloseTime();
-            tableModel.addRow(new Object[]{id + "", name, address, rentalPrice + "", capacity + "", openTime, closeTime});
+            tableModel.addRow(new Object[]{String.valueOf(id), name, address, String.valueOf(rentalPrice), String.valueOf(capacity), openTime, closeTime});
         }
     }
-
 
     private Stage getDataFromJTable() {
         int i = StagesListTable.getSelectedRow();
@@ -87,6 +80,62 @@ public class StagesListPanel extends JPanel {
             int IDSelected = stageSelected.getId();
             System.out.println("ID selected: " + IDSelected);
             return stageSelected;
+        }
+    }
+
+
+    public void addStage() {
+        System.out.println("addStage");
+        int newID = StageListDAO.getLastID();
+        MainPage.changeView(new StageInformationForm(newID + 1).getStageInformationFormPanel(), MainPage.getJlbStages(), "Stage Information Form");
+
+    }
+    public void editStage() {
+        System.out.println("editStage");
+        MainPage.changeView(new StageInformationForm(getDataFromJTable()).getStageInformationFormPanel(), MainPage.getJlbStages(), "Stage Information Form");
+    }
+
+    public void deleteStage() {
+        System.out.println("deleteStage");
+        int i = StagesListTable.getSelectedRow();
+        if (i == -1) {
+            JOptionPane.showMessageDialog(null, "Please select a row to delete");
+        } else {
+            stageSelected = listStage.get(i);
+            int IDSelected = stageSelected.getId();
+            ConfirmStageDeleteJPopupMenu confirmStageDeleteJPopupMenuDeleteJPopupMenu = new ConfirmStageDeleteJPopupMenu();
+            confirmStageDeleteJPopupMenuDeleteJPopupMenu.setSelectedID(IDSelected);
+        }
+    }
+    public void searchStage() throws SQLException {
+        System.out.println("search Stage");
+        textSearched = jtfSearch.getText();
+        listStage = StageDAO.getInstance().getStageList();
+        System.out.println("Text input: " + textSearched);
+        if (!textSearched.equals("")) {
+            System.out.println("Search");
+            List<Integer> idResult = new ArrayList<>();
+
+            for (Stage stage: listStage) {
+                String stageCompiled = stage.getId() + "!@#$" + stage.getName() + "!@#$" + stage.getAddress() + "!@#$" + stage.getRentalPrice()
+                        + "!@#$" + stage.getCapacity() + "!@#$" + stage.getOpenTime() + "!@#$" + stage.getCloseTime();
+
+                if (stageCompiled.contains(textSearched)) {
+                    idResult.add(stage.getId());
+                }
+            }
+
+            listStage.clear();
+            for (int id : idResult) {
+                Stage stage = StageDAO.getInstance().selectByID(id);
+                if (stage != null) {
+                    listStage.add(stage);
+                }
+            }
+            MainPage.changeView(new StagesListPanel(listStage, textSearched), MainPage.getJlbStages(), "Stage List Panel");
+        } else {
+            System.out.println("No search");
+            MainPage.changeView(new StagesListPanel(), MainPage.getJlbStages(), "Stage List Panel");
         }
     }
 
@@ -235,59 +284,4 @@ public class StagesListPanel extends JPanel {
     private JButton jlbAdd;
     private JButton jlbSearch;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
-
-    public void addStage() {
-        System.out.println("addStage");
-        int newID = StageListDAO.getLastID();
-        MainPage.changeView(new StageInformationForm(newID + 1).getStageInformationFormPanel(), MainPage.getJlbStages(), "Stage Information Form");
-
-    }
-    public void editStage() {
-        System.out.println("editStage");
-        MainPage.changeView(new StageInformationForm(getDataFromJTable()).getStageInformationFormPanel(), MainPage.getJlbStages(), "Stage Information Form");
-    }
-
-    public void deleteStage() {
-        System.out.println("deleteStage");
-        int i = StagesListTable.getSelectedRow();
-        if (i == -1) {
-            JOptionPane.showMessageDialog(null, "Please select a row to delete");
-        } else {
-            stageSelected = listStage.get(i);
-            int IDSelected = stageSelected.getId();
-            ConfirmStageDeleteJPopupMenu confirmStageDeleteJPopupMenuDeleteJPopupMenu = new ConfirmStageDeleteJPopupMenu();
-            confirmStageDeleteJPopupMenuDeleteJPopupMenu.setSelectedID(IDSelected);
-        }
-    }
-    public void searchStage() throws SQLException {
-        System.out.println("search Stage");
-        textSearched = jtfSearch.getText();
-        listStage = StageDAO.getInstance().getStageList();
-        System.out.println("Text input: " + textSearched);
-        if (!textSearched.equals("")) {
-            System.out.println("Search");
-            List<Integer> idResult = new ArrayList<>();
-
-            for (Stage stage: listStage) {
-                String stageCompiled = stage.getId() + "!@#$" + stage.getName() + "!@#$" + stage.getAddress() + "!@#$" + stage.getRentalPrice()
-                        + "!@#$" + stage.getCapacity() + "!@#$" + stage.getOpenTime() + "!@#$" + stage.getCloseTime();
-
-                if (stageCompiled.contains(textSearched)) {
-                    idResult.add(stage.getId());
-                }
-            }
-
-            listStage.clear();
-            for (int id : idResult) {
-                Stage stage = StageDAO.getInstance().selectByID(id);
-                if (stage != null) {
-                    listStage.add(stage);
-                }
-            }
-            MainPage.changeView(new StagesListPanel(listStage, textSearched), MainPage.getJlbStages(), "Stage List Panel");
-        } else {
-            System.out.println("No search");
-            MainPage.changeView(new StagesListPanel(), MainPage.getJlbStages(), "Stage List Panel");
-        }
-    }
 }

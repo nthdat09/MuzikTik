@@ -1,7 +1,6 @@
 package Controller.PartnerPage;
 
 import View.PartnerPage.ConfirmPartnerDeleteJPopupMenu;
-import View.StagesPage.ConfirmStageDeleteJPopupMenu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

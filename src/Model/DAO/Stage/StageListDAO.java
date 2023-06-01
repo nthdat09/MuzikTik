@@ -18,7 +18,7 @@ public class StageListDAO {
 
     public static List<Stage> getList(){
         List<Stage> result = new ArrayList<>();
-        Stage stage = null;
+        Stage stage;
 
         try{
             Connection con = UserDatabase.getConnection();

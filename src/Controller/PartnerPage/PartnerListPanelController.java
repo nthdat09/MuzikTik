@@ -17,24 +17,26 @@ public class PartnerListPanelController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String src = e.getActionCommand();
         System.out.println(src);
-        if (src.equals("ADD")){
-            System.out.println("ADD");
-            partnerListPanel.addPartner();
-        }
-        else if (src.equals("EDIT")){
-            System.out.println("EDIT");
-            partnerListPanel.editPartner();
-        }
-        else if (src.equals("DELETE")){
-            System.out.println("DELETE");
-            partnerListPanel.deletePartner();
-        }
-        else if (src.equals("SEARCH")){
-            System.out.println("SEARCH");
-            try {
-                partnerListPanel.searchPartner();
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
+        switch (src) {
+            case "ADD" -> {
+                System.out.println("ADD");
+                partnerListPanel.addPartner();
+            }
+            case "EDIT" -> {
+                System.out.println("EDIT");
+                partnerListPanel.editPartner();
+            }
+            case "DELETE" -> {
+                System.out.println("DELETE");
+                partnerListPanel.deletePartner();
+            }
+            case "SEARCH" -> {
+                System.out.println("SEARCH");
+                try {
+                    partnerListPanel.searchPartner();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         }
 

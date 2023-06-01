@@ -130,27 +130,6 @@ public class EmployeeDAO {
         return employee;
     }
 
-    public static int updateEmployee(Employee employee){
-        int rowChanged;
-        try{
-            Connection con = UserDatabase.getConnection();
-            String sql = "UPDATE mctmsys.employee SET EMP_EMAIL = ?, EMP_PHONE_NUMBER = ?, EMP_ADDRESS = ?, EMP_DOB = ?, EMP_AVATAR = ? WHERE EMP_USERNAME = ?";
-            PreparedStatement st = con.prepareCall(sql);
-            st.setString(1, employee.getEmail());
-            st.setString(2, employee.getPhoneNumber());
-            st.setString(3, employee.getAddress());
-            st.setDate(4, employee.getDOB());
-            st.setBytes(5, employee.getAvatar());
-            st.setString(6, employee.getUsername());
-            rowChanged = st.executeUpdate();
-            st.close();
-            UserDatabase.closeConnection(con);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rowChanged;
-    }
-
     public static int updateEmployeeWithoutAvatar(Employee employee){
         int rowChanged;
         try{

@@ -18,17 +18,16 @@ public class CustomerListListener implements ActionListener {
         String src = e.getActionCommand();
         System.out.println(src);
 
-        if (src.equals("ADD")){
-            this.customersListPanel.addCustomer();
-        } else if (src.equals("EDIT")){
-            customersListPanel.editCustomer();
-        } else if (src.equals("DELETE")){
-            customersListPanel.deleteCustomer();
-        } else if (src.equals("SEARCH")){
-            try {
-                customersListPanel.searchCustomer();
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
+        switch (src) {
+            case "ADD" -> this.customersListPanel.addCustomer();
+            case "EDIT" -> customersListPanel.editCustomer();
+            case "DELETE" -> customersListPanel.deleteCustomer();
+            case "SEARCH" -> {
+                try {
+                    customersListPanel.searchCustomer();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         }
 

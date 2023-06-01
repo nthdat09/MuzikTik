@@ -82,48 +82,8 @@ public class InformationCustomerForm extends JPanel {
         return this.SAVE;
     }
 
-    public JLabel getTotalPoint() {
-        return this.TotalPoint;
-    }
-
-    public JPanel getInformationCustomerPanel() {
-        return this.InformationCustomerPanel;
-    }
-
-    public JTextField getNameField() {
-        return this.NameField;
-    }
-
-    public JTextField getPhoneNumberFiled() {
-        return this.PhoneNumberFiled;
-    }
-
-    public JTextField getEmailField() {
-        return this.EmailField;
-    }
-
-    public JTextField getAddressField() {
-        return this.AddressField;
-    }
-
-    public JTextField getTotalPointVal() {
-        return this.TotalPointVal;
-    }
-
     public JLabel getID() {
         return this.ID;
-    }
-
-    public JTextField getIDField() {
-        return this.IDField;
-    }
-
-    public JLabel getType() {
-        return this.Type;
-    }
-
-    public JTextField getTypeField() {
-        return this.TypeField;
     }
 
     private void initComponents() {

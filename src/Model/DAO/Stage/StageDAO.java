@@ -48,7 +48,7 @@ public class StageDAO {
     }
 
     public int updateStage(Stage stage) {
-        int rowChanged = 0;
+        int rowChanged;
         try{
             Connection con = UserDatabase.getConnection();
             String sql = "UPDATE mctmsys.stage SET STG_NAME = ?, STG_ADDRESS = ?, STG_RENTAL_PRICE = ?, STG_CAPACITY = ?, STG_OPEN_TIME = ?, STG_CLOSE_TIME = ? WHERE STG_ID = ?;";
@@ -71,7 +71,7 @@ public class StageDAO {
     }
 
     public int addStage(Stage stage) {
-        int rowChanged = 0;
+        int rowChanged;
         try{
             Connection con = UserDatabase.getConnection();
             String sql = "INSERT INTO mctmsys.stage (STG_ID, STG_NAME, STG_ADDRESS, STG_RENTAL_PRICE, STG_CAPACITY, STG_OPEN_TIME, STG_CLOSE_TIME) VALUES (?, ?, ?, ?, ?, ?, ?);";
@@ -99,7 +99,7 @@ public class StageDAO {
     }
 
     public int deleteStage(int selectedID) {
-        int rowChanged = 0;
+        int rowChanged;
         try{
             Connection con = UserDatabase.getConnection();
             String sql = "DELETE FROM mctmsys.stage WHERE STG_ID = ?;";
