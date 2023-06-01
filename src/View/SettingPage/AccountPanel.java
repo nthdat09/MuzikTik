@@ -59,9 +59,13 @@ public class AccountPanel extends JPanel {
         
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
-        LocalDate localDate = LocalDate.parse(employee.getDOB().toString(), formatter);
-        getDobJpn().setDate(localDate);
-
+        if (employee.getDOB().equals("")){
+            getDobJpn().setDateToToday();
+        }
+        else{
+            LocalDate localDate = LocalDate.parse(employee.getDOB().toString(), formatter);
+            getDobJpn().setDate(localDate);
+        }
         ImageIcon imageIcon = new ImageIcon(employee.getAvatar());
         Image image = imageIcon.getImage().getScaledInstance(avatarJlb.getWidth(), avatarJlb.getHeight(), Image.SCALE_SMOOTH);
         avatarJlb.setIcon(new ImageIcon(image));
