@@ -1,30 +1,33 @@
 package Model.DAO.Event.EventInformation;
 
 import Model.BEAN.ReversedSeat;
+import Model.BEAN.TicketID;
 import Model.Database.UserDatabase;
 import View.EventPage.EventPanel;
+import View.Home.HomePanel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReversedSeatList {
+public class BookingTicket {
     private static String selectedSeatID;
-    public static List<ReversedSeat> reversedSeatList() {
+    private static Integer selectedEventID;
+    public static List<TicketID> bookingTicket() {
         selectedSeatID = EventPanel.getSeatID();
-        List<ReversedSeat> result = new ArrayList<>();
-        ReversedSeat reversedSeat = null;
+        selectedEventID = HomePanel.getSelectedEventID();
+        List<TicketID> result = new ArrayList<>();
+        TicketID ticketID = null;
         try {
             Connection con = UserDatabase.getConnection();
-            String sql = "Select * from mctmsys.ticket where TKT_SEAT_ID = '" + selectedSeatID + "'";
+            String sql = "Select * from mctmsys.ticket where TKT_SEAT_ID = '" + selectedSeatID + "' AND TKT_EVT_ID = '" + selectedEventID + "'";
             PreparedStatement st = con.prepareCall(sql);
             java.sql.ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                String eventID = rs.getString("TKT_EVT_ID");
-                String stageID = rs.getString("TKT_STG_ID");
-                reversedSeat = new ReversedSeat(eventID,stageID);
-                result.add(reversedSeat);
+                Integer ticketIDNumber = rs.getInt("TKT_ID");
+                ticketID = new TicketID(ticketIDNumber);
+                result.add(ticketID);
             }
             st.close();
             rs.close();

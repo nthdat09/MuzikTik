@@ -20,8 +20,8 @@ import Model.BEAN.CustomerBuyTicket;
 import Model.BEAN.EventArtID;
 import Model.BEAN.ReversedSeat;
 import Model.BEAN.TicketID;
+import Model.DAO.Event.EventInformation.BookingTicket;
 import Model.DAO.Event.EventInformation.CustomerInformationValidate;
-import Model.DAO.Event.EventInformation.ReversedSeatList;
 import Model.Database.UserDatabase;
 import View.Home.HomePanel;
 import net.miginfocom.swing.*;
@@ -288,7 +288,7 @@ public class EventPanel extends JPanel {
         String ticketID = model.getValueAt(row, 0).toString();
         String ticketType = model.getValueAt(row, 1).toString();
         String price = model.getValueAt(row, 2).toString();
-        String status = "YES";
+        String status = "Pending";
         
         String tbData[] = {ticketID, ticketType, price, status};
         DefaultTableModel tbModel = (DefaultTableModel) selectedSeatTable.getModel();
@@ -320,10 +320,9 @@ public class EventPanel extends JPanel {
                         for(int i=0; i < BuySeatTable.getRowCount();i++) {
                             String seatID = selectedSeatTable.getValueAt(i, 0).toString();
                             setSeatID(seatID);
-                            List<ReversedSeat> reversedSeat = ReversedSeatList.reversedSeatList();
-                            String reversedSeatStage = reversedSeat.get(0).getStageID();
-                            String reversedSeatEvent = reversedSeat.get(0).getEventID();
-                            String sqlInsertReservedSeat = "INSERT INTO reserved_seat (RSV_CUS_ID, RSV_SEAT_ID, RSV_STG_ID, RSV_EVT_ID) VALUES ('" + customer.get(0).getCustomerID() + "', '" + seatID + "', '" + reversedSeatStage + "', '" + reversedSeatEvent + "')";
+                            List<TicketID> bookedTicket = BookingTicket.bookingTicket();
+                            Integer ticketID = bookedTicket.get(0).getTicketID();
+                            String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" +  ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
                             PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
                             ps2.executeUpdate();
                             ps2.close();
