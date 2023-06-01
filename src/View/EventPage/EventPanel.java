@@ -20,11 +20,21 @@ import Model.BEAN.CustomerBuyTicket;
 import Model.BEAN.EventArtID;
 import Model.BEAN.ReversedSeat;
 import Model.BEAN.TicketID;
+import Model.DAO.Customer.CustomerListDAO;
+import Model.DAO.Employee.SendEmail;
+import Model.DAO.Employee.VerificationCode;
 import Model.DAO.Event.EventInformation.BookingTicket;
 import Model.DAO.Event.EventInformation.CustomerInformationValidate;
+import Model.DAO.Event.EventInformation.EventTableDatabase;
+import Model.DAO.Ticket.SendTicketEmail;
 import Model.Database.UserDatabase;
+import View.CustomersListPage.InformationCustomerForm;
 import View.Home.HomePanel;
+import View.MainPage.MainPage;
 import net.miginfocom.swing.*;
+
+import static View.CustomersListPage.InformationCustomerForm.settingForNewCustomer;
+import static jdk.internal.net.http.common.Utils.close;
 
 /**
  * @author Admin
@@ -180,6 +190,10 @@ public class EventPanel extends JPanel {
         jpnBuyNow.setVisible(false);
 
         jtbTabEvent.setSelectedIndex(3);
+        DefaultTableModel tableModel = (DefaultTableModel) seatTable.getModel();
+        tableModel.setRowCount(0);
+
+        EventTableDatabase.getEventTableDatabase();
     }
 
     private void jpnBuyNowMouseClicked(MouseEvent e) {
@@ -232,6 +246,8 @@ public class EventPanel extends JPanel {
 
         jtbTabEvent.setSelectedIndex(0);
         selectedTab(0);
+        DefaultTableModel tbModel = (DefaultTableModel) BuySeatTable.getModel();
+        tbModel.setRowCount(0);
     }
     public static JLabel getEventName2() {
         return EventName2;
@@ -288,9 +304,15 @@ public class EventPanel extends JPanel {
         String ticketID = model.getValueAt(row, 0).toString();
         String ticketType = model.getValueAt(row, 1).toString();
         String price = model.getValueAt(row, 2).toString();
-        String status = "Pending";
-        
-        String tbData[] = {ticketID, ticketType, price, status};
+        String status = model.getValueAt(row, 3).toString();
+        if(status.equals("Booked")) {
+            JOptionPane.showConfirmDialog(null, "This seat is booked! Please choose another seat!", "Warning", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String statusPending = "Pending";
+        model.setValueAt(statusPending, row, 3);
+
+        String tbData[] = {ticketID, ticketType, price, statusPending};
         DefaultTableModel tbModel = (DefaultTableModel) selectedSeatTable.getModel();
         tbModel.addRow(tbData);
     }
@@ -303,9 +325,17 @@ public class EventPanel extends JPanel {
 
     private void jlbNextMouseClicked(MouseEvent e) {
         customer = CustomerInformationValidate.validateCustomer();
+        System.out.println(customer.size());
         try {
             if(customer.size() == 0) {
-                JOptionPane.showMessageDialog(null, "Please check your information again!");
+                JOptionPane.showConfirmDialog(null, "You are not a customer yet! Please register to buy ticket!", "Warning", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
+                int newID = CustomerListDAO.getLastID();
+                String nameCustomer = fullNameText.getText();
+                String phoneNumber = phoneNumberText.getText();
+                String email = emailText.getText();
+
+                MainPage.changeView(new InformationCustomerForm(newID + 1), MainPage.getJlbCustomer(), "InformationCustomerPanel");
+                settingForNewCustomer(nameCustomer, phoneNumber, email);
             } else {
                 Integer balance = customer.get(0).getBalance();
                 Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" USD", ""));
@@ -319,13 +349,31 @@ public class EventPanel extends JPanel {
                         String sql = "UPDATE customer SET CUS_BALANCE = '" + newBalance + "' WHERE CUS_PHONE_NUMBER  = '" + phoneNumberText.getText() + "' AND CUS_NAME = '" + fullNameText.getText() + "' AND CUS_EMAIL = '" + emailText.getText() + "'";
                         for(int i=0; i < BuySeatTable.getRowCount();i++) {
                             String seatID = selectedSeatTable.getValueAt(i, 0).toString();
-                            setSeatID(seatID);
-                            List<TicketID> bookedTicket = BookingTicket.bookingTicket();
-                            Integer ticketID = bookedTicket.get(0).getTicketID();
-                            String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" +  ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
-                            PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
-                            ps2.executeUpdate();
-                            ps2.close();
+                            System.out.println(seatID);
+                            if(seatID.isEmpty()) {
+                                JOptionPane.showMessageDialog(null, "Please select your seat!");
+                                return;
+                            } else {
+                                setSeatID(seatID);
+                                List<TicketID> bookedTicket = BookingTicket.bookingTicket();
+                                Integer ticketID = bookedTicket.get(0).getTicketID();
+                                try {
+                                        String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
+                                        PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
+                                        new Thread(() -> {
+                                            try {
+                                                Thread.sleep(1000);
+                                                SendTicketEmail.sendCodeToEmail(totalPrice, HomePanel.getSelectedStage(), ticketID, Integer.parseInt(seatID), emailText.getText());
+                                            } catch (Exception err) {
+                                                System.err.println(err);
+                                            }
+                                        }).start();
+                                        ps2.executeUpdate();
+                                        ps2.close();
+                                        } catch (Exception ex) {
+                                    JOptionPane.showMessageDialog(null, "Ticket have been booked!");
+                                    }
+                                }
                         }
                         PreparedStatement ps = con.prepareStatement(sql);
                         ps.executeUpdate();
@@ -339,9 +387,22 @@ public class EventPanel extends JPanel {
 
                         totalDisplay.setText("0 USD");
                         quantityDisplay.setText("0 tickets");
-                        DefaultTableModel tbModel = (DefaultTableModel) BuySeatTable.getModel();
-                        tbModel.setRowCount(0);
-                        selectedTab(1);
+
+                        DefaultTableModel tableModel = (DefaultTableModel) seatTable.getModel();
+                        tableModel.setRowCount(0);
+                        DefaultTableModel tableBuyModel = (DefaultTableModel) BuySeatTable.getModel();
+                        tableBuyModel.setRowCount(0);
+                        DefaultTableModel tableSelectedModel = (DefaultTableModel) selectedSeatTable.getModel();
+                        tableSelectedModel.setRowCount(0);
+
+                        jpnInfo.setVisible(true);
+                        jpnTicketFee.setVisible(true);
+                        SeatPanel.setVisible(true);
+                        jpnBuyNow.setVisible(true);
+
+                        selectedTab(0);
+                        jtbTabEvent.setSelectedIndex(0);
+                        selectedTab(0);
                     } catch (Exception ex) {
                         JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
                     }
@@ -456,13 +517,14 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
-        .border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder
-        .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.
-        awt.Font.BOLD,12),java.awt.Color.red), getBorder()))
-        ; addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-        ){if("borde\u0072".equals(e.getPropertyName()))throw new RuntimeException();}})
-        ;
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
+        new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion"
+        , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+        , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 )
+        , java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
+        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+        ; }} );
         setLayout(null);
 
         //======== jpnEventHeader ========

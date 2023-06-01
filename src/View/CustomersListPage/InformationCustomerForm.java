@@ -54,6 +54,12 @@ public class InformationCustomerForm extends JPanel {
         System.out.println("selected id = " + this.selectedID);
     }
 
+    public static void settingForNewCustomer(String name, String phone, String email) {
+        NameField.setText(name);
+        PhoneNumberFiled.setText(phone);
+        EmailField.setText(email);
+    }
+
     public String getName() {
         return this.Name.getText();
     }
@@ -90,16 +96,16 @@ public class InformationCustomerForm extends JPanel {
         return this.InformationCustomerPanel;
     }
 
-    public JTextField getNameField() {
-        return this.NameField;
+    public static JTextField getNameField() {
+        return NameField;
     }
 
-    public JTextField getPhoneNumberFiled() {
-        return this.PhoneNumberFiled;
+    public static JTextField getPhoneNumberFiled() {
+        return PhoneNumberFiled;
     }
 
-    public JTextField getEmailField() {
-        return this.EmailField;
+    public static JTextField getEmailField() {
+        return EmailField;
     }
 
     public JTextField getAddressField() {
@@ -128,7 +134,7 @@ public class InformationCustomerForm extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - Man
         this.InformationCustomerPanel = new JPanel();
         this.Name = new JLabel();
         this.Email = new JLabel();
@@ -151,13 +157,13 @@ public class InformationCustomerForm extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(735, 548));
         setMaximumSize(new Dimension(735, 548));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-        . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder
-        . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .
-        awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder( )) )
-        ;  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-        ) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-        ;
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+        javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax
+        . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+        .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
+        PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
+        equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
         //---- Name ----
         this.Name.setText("Name:");
@@ -311,7 +317,7 @@ public class InformationCustomerForm extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - Man
     private JPanel InformationCustomerPanel;
     JLabel Name;
     JLabel Email;
@@ -320,9 +326,9 @@ public class InformationCustomerForm extends JPanel {
     JButton Cancel;
     JButton SAVE;
     JLabel TotalPoint;
-    JTextField NameField;
-    JTextField PhoneNumberFiled;
-    JTextField EmailField;
+    private static JTextField NameField;
+    private static JTextField PhoneNumberFiled;
+    private static JTextField EmailField;
     JTextField AddressField;
     JTextField TotalPointVal;
     JLabel ID;
