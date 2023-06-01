@@ -10,9 +10,8 @@ public class Employee {
     private String address;
     private Date DOB;
     private byte[] avatar;
-    private String urlAvatar;
 
-    public Employee(String username, String password, String email, String phoneNumber, String address, Date DOB, byte[] avatar, String urlAvatar) {
+    public Employee(String username, String password, String email, String phoneNumber, String address, Date DOB, byte[] avatar) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -20,16 +19,8 @@ public class Employee {
         this.address = address;
         this.DOB = DOB;
         this.avatar = avatar;
-        this.urlAvatar = urlAvatar;
     }
 
-    public String getUrlAvatar() {
-        return urlAvatar;
-    }
-
-    public void setUrlAvatar(String urlAvatar) {
-        this.urlAvatar = urlAvatar;
-    }
 
     public String getPhoneNumber() {
         return phoneNumber;

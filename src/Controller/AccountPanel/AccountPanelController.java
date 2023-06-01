@@ -28,6 +28,10 @@ public class AccountPanelController implements ActionListener {
         else if (src.equals("Upload new avatar")){
             accountPanel.uploadNewAvatar();
         }
+        else if (src.equals("Change Password")){
+            System.out.println("Change password");
+            accountPanel.changePassword();
+        }
 
     }
 }

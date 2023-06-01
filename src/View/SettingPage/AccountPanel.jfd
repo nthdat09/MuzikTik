@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:404:p, comp jlbMyAccount:::p::p, space :0:0:x}, seq l {space :p:380:p, comp jbtSave:::p:112:p, space :p:42:p, comp jbtCancel:::p:112:p, space ::374:x}, seq t {space ::705:x, comp UploadJbt:::p::p, space :p:164:p}, seq t {space :p:100:p, par l {comp jlbUsername:::p::p, comp jlbEmail:::p::p, comp jlbDOB2::l:p::p, comp jlbPhoneNumber:::p::p, comp jlbDOB::l:p::p}, space :p:23:p, par l {par t:::p {comp usernameJtf::l::244:x, comp emailJtf::l::244:x}, comp addressJtf:::p:244:p, comp phoneJtf:::p:244:p, comp dobJpn:::p:244:p}, space ::124:x, par l {seq t {comp jlbAvatar:::p::p, space :p:224:p}, seq t {par t {comp avatarLinkJlb::t:p:272:p, comp desktopPane1:::p:272:p}, space :p:117:p}}}}"
-			"$verticalGroup": "par l {seq l {par l {seq l {space :p:24:p, comp jlbMyAccount:::p::p, space :p:8:p, par b {comp jlbUsername::b:p::p, comp usernameJtf::b:p::p}, par b {comp jlbEmail::b:p::p, comp emailJtf::b:p::p}, space u:::p, par b {comp jlbDOB2::b:p::p, comp addressJtf::b:p::p}, space s:::p, par b {comp jlbPhoneNumber::b:p::p, comp phoneJtf::b:p::p}, space s:::p, par b {comp jlbDOB::b:p:30:p, comp dobJpn::b:p:41:p}}, seq l {space :p:86:p, comp jlbAvatar:::p::p, space :p:34:p, comp desktopPane1:::p:277:p}}, space u:::p, comp avatarLinkJlb:::p:29:p, space :p:18:p, comp UploadJbt:::p::p, space :::x, par b {comp jbtSave::b:p::p, comp jbtCancel::b:p::p}, space :0:66:x}}"
+			"$horizontalGroup": "par l {seq l {space :p:404:p, comp jlbMyAccount:::p::p, space :0:0:x}, seq l {space :p:380:p, comp jbtSave:::p:112:p, space :p:42:p, comp jbtCancel:::p:112:p, space ::374:x}, seq l {space :p:100:p, par l {seq l {par l {comp jlbUsername:::p::p, comp jlbEmail:::p::p, comp jlbDOB2::l:p::p, comp jlbPhoneNumber:::p::p, comp jlbDOB::l:p::p}, space :p:23:p, par l {par t:::p {comp usernameJtf::l::244:x, comp emailJtf::l::244:x}, comp addressJtf:::p:244:p, comp phoneJtf:::p:244:p, comp dobJpn:::p:244:p}}, comp changePasswordJbt::l:p::p}, space ::124:x, par l {seq t {comp jlbAvatar:::p::p, space :p:107:p}, comp desktopPane1::t:p:272:p}, space :p:117:p}, seq t {space ::695:x, comp UploadJbt:::p::p, space :p:174:p}}"
+			"$verticalGroup": "par l {seq l {par l:::p {seq l {space :p:24:p, comp jlbMyAccount:::p::p, space :p:8:p, par b {comp jlbUsername::b:p::p, comp usernameJtf::b:p::p}, par b {comp jlbEmail::b:p::p, comp emailJtf::b:p::p}, space u:::p, par b {comp jlbDOB2::b:p::p, comp addressJtf::b:p::p}, space s:::p, par b {comp jlbPhoneNumber::b:p::p, comp phoneJtf::b:p::p}, space s:::p, par b {comp jlbDOB::b:p:30:p, comp dobJpn::b:p:41:p}, space :p:42:p, comp changePasswordJbt:::p::p}, seq l {space :p:86:p, comp jlbAvatar:::p::p, space ::34:x, comp desktopPane1:::p:277:p}}, space :::p, comp UploadJbt:::p::p, space ::59:x, par b {comp jbtSave::b:p::p, comp jbtCancel::b:p::p}, space :0:66:x}}"
 		} ) {
 			name: "this"
 			"background": sfield java.awt.Color white
@@ -121,13 +121,6 @@ new FormModel {
 					"JavaCodeGenerator.variableGetter": true
 				}
 			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "avatarLinkJlb"
-				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
-				auxiliary() {
-					"JavaCodeGenerator.variableGetter": true
-				}
-			} )
 			add( new FormContainer( "javax.swing.JDesktopPane", new FormLayoutManager( class javax.swing.JDesktopPane ) ) {
 				name: "desktopPane1"
 				"background": sfield java.awt.Color white
@@ -150,6 +143,14 @@ new FormModel {
 					"x": 0
 					"y": 0
 				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "changePasswordJbt"
+				"text": "Change Password"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+					"JavaCodeGenerator.variableModifiers": 10
+				}
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 75, 0 )

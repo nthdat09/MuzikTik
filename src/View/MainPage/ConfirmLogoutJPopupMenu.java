@@ -32,9 +32,10 @@ public class ConfirmLogoutJPopupMenu extends JDialog{
     }
 
     public void Logout() {
-        this.mainPage.dispose();
-        LoginPage loginPage = new LoginPage();
-        loginPage.setVisible(true);
+        this.getConfirmJDialog().dispose();
+        this.mainPage.Destroy();
+
+        LoginPage.getLoginPageDialog().setVisible(true);
     }
 
     public void cancelLogout() {

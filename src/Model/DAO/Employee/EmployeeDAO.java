@@ -84,19 +84,22 @@ public class EmployeeDAO {
         return listUsername;
     }
 
-    public static void updatePasswordByUsername(String userName, String password){
+    public static int updatePasswordByUsername(String userName, String password){
+        int rowChanged;
         try{
             Connection con = UserDatabase.getConnection();
             String sql = "UPDATE mctmsys.employee SET EMP_PASSWORD = ? WHERE EMP_USERNAME = ?";
             PreparedStatement st = con.prepareCall(sql);
             st.setString(1, password);
             st.setString(2, userName);
-            st.executeUpdate();
+
+            rowChanged = st.executeUpdate();
             st.close();
             UserDatabase.closeConnection(con);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return rowChanged;
     }
 
     public static Employee getUserByUsername(String username){
@@ -115,8 +118,7 @@ public class EmployeeDAO {
                 String address = rs.getString("EMP_ADDRESS");
                 byte[] avatar = rs.getBytes("EMP_AVATAR");
                 Date DOB = rs.getDate("EMP_DOB");
-                String urlAvatar = rs.getString("EMP_URLAVT");
-                employee = new Employee(userName, password, email, phoneNumber, address, DOB, avatar, urlAvatar);
+                employee = new Employee(userName, password, email, phoneNumber, address, DOB, avatar);
 
             }
             st.close();
@@ -129,18 +131,17 @@ public class EmployeeDAO {
     }
 
     public static int updateEmployee(Employee employee){
-        int rowChanged = 0;
+        int rowChanged;
         try{
             Connection con = UserDatabase.getConnection();
-            String sql = "UPDATE mctmsys.employee SET EMP_EMAIL = ?, EMP_PHONE_NUMBER = ?, EMP_ADDRESS = ?, EMP_DOB = ?, EMP_AVATAR = ?, EMP_URLAVT = ? WHERE EMP_USERNAME = ?";
+            String sql = "UPDATE mctmsys.employee SET EMP_EMAIL = ?, EMP_PHONE_NUMBER = ?, EMP_ADDRESS = ?, EMP_DOB = ?, EMP_AVATAR = ? WHERE EMP_USERNAME = ?";
             PreparedStatement st = con.prepareCall(sql);
             st.setString(1, employee.getEmail());
             st.setString(2, employee.getPhoneNumber());
             st.setString(3, employee.getAddress());
             st.setDate(4, employee.getDOB());
             st.setBytes(5, employee.getAvatar());
-            st.setString(6, employee.getUrlAvatar());
-            st.setString(7, employee.getUsername());
+            st.setString(6, employee.getUsername());
             rowChanged = st.executeUpdate();
             st.close();
             UserDatabase.closeConnection(con);
@@ -148,5 +149,70 @@ public class EmployeeDAO {
             throw new RuntimeException(e);
         }
         return rowChanged;
+    }
+
+    public static int updateEmployeeWithoutAvatar(Employee employee){
+        int rowChanged;
+        try{
+            Connection con = UserDatabase.getConnection();
+            String sql = "UPDATE mctmsys.employee SET EMP_EMAIL = ?, EMP_PHONE_NUMBER = ?, EMP_ADDRESS = ?, EMP_DOB = ? WHERE EMP_USERNAME = ?";
+            PreparedStatement st = con.prepareCall(sql);
+            st.setString(1, employee.getEmail());
+            st.setString(2, employee.getPhoneNumber());
+            st.setString(3, employee.getAddress());
+            st.setDate(4, employee.getDOB());
+            st.setString(5, employee.getUsername());
+            rowChanged = st.executeUpdate();
+            st.close();
+            UserDatabase.closeConnection(con);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rowChanged;
+    }
+
+    public static int updateAvatar(Employee employee){
+        int rowChanged;
+        try{
+            Connection con = UserDatabase.getConnection();
+
+            String sql = "UPDATE mctmsys.employee SET EMP_AVATAR = ? " +
+                    " WHERE EMP_USERNAME = ?";
+
+            PreparedStatement st = con.prepareCall(sql);
+            st.setBytes(1, employee.getAvatar());
+            st.setString(2, employee.getUsername());
+            rowChanged = st.executeUpdate();
+            st.close();
+            UserDatabase.closeConnection(con);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("update avatar: " + rowChanged);
+        return rowChanged;
+    }
+
+    public static String getPasswordByUsername(String username){
+        String password = "";
+        try{
+            Connection con = UserDatabase.getConnection();
+            String sql = "SELECT EMP_PASSWORD FROM mctmsys.employee WHERE EMP_USERNAME = ?";
+            PreparedStatement st = con.prepareCall(sql);
+            st.setString(1, username);
+
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                password = rs.getString("EMP_PASSWORD");
+            }
+
+            st.close();
+            rs.close();
+            UserDatabase.closeConnection(con);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("old Password: " + password);
+        return password;
     }
 }

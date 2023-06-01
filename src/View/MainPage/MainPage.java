@@ -5,11 +5,16 @@
 package View.MainPage;
 
 import Controller.MainMenu.LogoutController;
+import Model.BEAN.Employee;
 import Model.BEAN.MenuList;
 import Controller.Menu.SwitchMenuController;
+import Model.DAO.Employee.EmployeeDAO;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -55,16 +60,32 @@ public class MainPage extends JFrame {
         controller.setEvent(listItem);
 
         this.getLogOutJMenuItem().addActionListener(ac);
+        // Set username
         this.getNameJMenuItem().setText("Hello, " + username);
+
+        // Set avatar
+        Employee employee = EmployeeDAO.getUserByUsername(MainPage.getUsername());
+        if (employee.getAvatar() != null) { // If avatar is not null
+            ImageIcon imageIcon = new ImageIcon(employee.getAvatar());
+            Image image = imageIcon.getImage();
+            Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
+            imageIcon = new ImageIcon(newimg);
+            this.getAvatarJMenu().setIcon(imageIcon);
+        }
     }
 
-    public static void changeView(JPanel jpnItem, JLabel jlbItem, String Kind){
+    public static void changeView(JPanel jpnItem, JLabel jlbItem, String Kind){  // Change view
         SwitchMenuController controller = new SwitchMenuController(getJpnView());
         controller.changeViewController(jpnItem, jlbItem, Kind);
     }
 
-    public void logout() {
+    public void logout() { // Logout
         ConfirmLogoutJPopupMenu confirmLogoutJPopupMenu = new ConfirmLogoutJPopupMenu(this);
+    }
+
+    public void Destroy() { // Destroy this frame
+        this.setVisible(false);
+        this.dispose();
     }
 
     Border border = new LineBorder(Color.decode("#61b884"),1,true);
@@ -248,13 +269,13 @@ public class MainPage extends JFrame {
         {
             headerPanel.setBorder(new LineBorder(new Color(0xbebebe)));
             headerPanel.setBackground(Color.white);
-            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-            . border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder
-            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
-            awt .Font .BOLD ,12 ), java. awt. Color. red) ,headerPanel. getBorder( )) )
-            ; headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-            ;
+            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border
+            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067"
+            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,headerPanel. getBorder
+            ( )) ); headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+            .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException
+            ( ); }} );
             headerPanel.setLayout(null);
 
             //---- searchButton ----
@@ -326,7 +347,6 @@ public class MainPage extends JFrame {
 
                 //======== avatarJMenu ========
                 {
-                    avatarJMenu.setText("Avatar");
 
                     //---- nameJMenuItem ----
                     nameJMenuItem.setText("Name");
