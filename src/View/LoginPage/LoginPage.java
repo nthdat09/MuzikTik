@@ -30,6 +30,47 @@ public class LoginPage extends JPanel {
         getForgetPasswordJbt().addActionListener(ac);
     }
 
+    public void DoLogin(){
+        String username = this.UsernameField.getText();
+        String password = this.PasswordField.getText();
+
+        Employee realuser = EmployeeDAO.getInstance().selectUserandPassByID(username);
+
+        if (loginAttempt >= 3) {
+            loginStatus = "Forgot your password? Click Forgot Password to reset the password";
+        }
+
+        if (realuser == null) {
+            this.LoginStatus.setText(loginStatus);
+            this.LoginStatus.setForeground(Color.decode("EB1212"));
+            loginAttempt++;
+        }
+        else {
+            String realUsername = realuser.getUsername();
+            String realPassword = realuser.getPassword();
+
+            if (username.equals(realUsername) && password.equals(realPassword)) {
+                this.LoginStatus.setText("");
+                this.LoginPageDialog.dispose();
+                MainPage mainMenu = new MainPage(username);
+                mainMenu.setVisible(true);
+            }
+            else {
+                this.LoginStatus.setText(loginStatus);
+                this.LoginStatus.setForeground(Color.decode("EB1212"));
+                loginAttempt++;
+            }
+
+        }
+    }
+
+    public void SwitchToForgotPasswordPage() {
+        System.out.println("Switching to Forgot Password Page");
+        ForgotPasswordPage_1 forgotPasswordPage1 = new ForgotPasswordPage_1();
+        forgotPasswordPage1.getForgotPasswordPage_1JDialog().setVisible(true);
+        this.LoginPageDialog.dispose();
+    }
+
     public JButton getLoginButton() {
         return LoginButton;
     }
@@ -231,46 +272,4 @@ public class LoginPage extends JPanel {
     public JButton ForgetPasswordJbt;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
-    //Logo
-
-    public void DoLogin(){
-        String username = this.UsernameField.getText();
-        String password = this.PasswordField.getText();
-
-        Employee realuser = EmployeeDAO.getInstance().selectUserandPassByID(username);
-
-        if (loginAttempt >= 3) {
-            loginStatus = "Forgot your password? Click Forgot Password to reset the password";
-        }
-
-        if (realuser == null) {
-            this.LoginStatus.setText(loginStatus);
-            this.LoginStatus.setForeground(Color.decode("EB1212"));
-            loginAttempt++;
-        }
-        else {
-            String realUsername = realuser.getUsername();
-            String realPassword = realuser.getPassword();
-
-            if (username.equals(realUsername) && password.equals(realPassword)) {
-                this.LoginStatus.setForeground(Color.GREEN);
-                this.LoginPageDialog.dispose();
-                MainPage mainMenu = new MainPage(username);
-                mainMenu.setVisible(true);
-            }
-            else {
-                    this.LoginStatus.setText(loginStatus);
-                    this.LoginStatus.setForeground(Color.decode("EB1212"));
-                    loginAttempt++;
-                }
-
-            }
-        }
-
-    public void SwitchToForgotPasswordPage() {
-        System.out.println("Switching to Forgot Password Page");
-        ForgotPasswordPage_1 forgotPasswordPage1 = new ForgotPasswordPage_1();
-        forgotPasswordPage1.getForgotPasswordPage_1JDialog().setVisible(true);
-        this.LoginPageDialog.dispose();
-    }
 }

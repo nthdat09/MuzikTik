@@ -31,6 +31,7 @@ public class HomePanel extends JPanel {
     int time =0;
     public String[] takeImage() {
         File f = new File(getClass().getResource("/Image").getFile());
+        System.out.println(f);
         String[] Images = f.list();
         return Images;
     }
