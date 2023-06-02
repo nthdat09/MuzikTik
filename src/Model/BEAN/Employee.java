@@ -1,6 +1,9 @@
 package Model.BEAN;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Employee {
     private String username;
@@ -10,6 +13,11 @@ public class Employee {
     private String address;
     private Date DOB;
     private byte[] avatar;
+
+
+    public Employee() {
+        super();
+    }
 
     public Employee(String username, String password, String email, String phoneNumber, String address, Date DOB, byte[] avatar) {
         this.username = username;
@@ -39,6 +47,11 @@ public class Employee {
     }
 
     public Date getDOB() {
+        if (DOB == null) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
+            LocalDateTime now = LocalDateTime.now();
+            setDOB(Date.valueOf(now.format(formatter)));
+        }
         return DOB;
     }
 
@@ -54,9 +67,6 @@ public class Employee {
         this.avatar = avatar;
     }
 
-    public Employee() {
-        super();
-    }
 
 
     public Employee(String username, String password) {
