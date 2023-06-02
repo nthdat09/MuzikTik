@@ -21,6 +21,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +72,12 @@ public class MainPage extends JFrame {
         setImageForLogoUser();
     }
 
+    public static Path getAbsolutePath() {
+        // Get Current Directory using getAbsolutePath()
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        return currentPath;
+    }
+
     public static void setImageForLogoUser(){
         // Set avatar
         Employee employee = EmployeeDAO.getUserByUsername(MainPage.getUsername());
@@ -81,8 +89,10 @@ public class MainPage extends JFrame {
             getAvatarJMenu().setIcon(imageIcon);
         }
         else {
+            Path workingDir = getAbsolutePath();
             // Set default avatar
-            File file = new File("D:\\DoAn\\Fantastic-Four\\src\\Asset\\Avatar\\DefaultAvatar.png"); // Sửa giúp chỗ này nha hix
+            Path filePath = Paths.get(workingDir.toString(), "src", "Asset", "Avatar", "DefaultAvatar.png");
+            File file = new File(filePath.toString());
 
             // Convert file to byte[]
             FileInputStream fis = null;
