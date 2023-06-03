@@ -1,0 +1,263 @@
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "this"
+			"background": new java.awt.Color( 255, 255, 255, 255 )
+			"font": &Font0 new java.awt.Font( "Lato Black", 1, 16 )
+			"foreground": sfield java.awt.Color darkGray
+			auxiliary() {
+				"JavaCodeGenerator.variableGetter": true
+			}
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "ID"
+				"text": "ID"
+				"font": #Font0
+				"foreground": sfield java.awt.Color darkGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 45
+				"y": 40
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Name"
+				"text": "Name"
+				"font": #Font0
+				"foreground": sfield java.awt.Color darkGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 45
+				"y": 80
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Artist"
+				"text": "Artist"
+				"font": #Font0
+				"foreground": sfield java.awt.Color darkGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 45
+				"y": 120
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Stage"
+				"text": "Stage"
+				"font": #Font0
+				"foreground": sfield java.awt.Color darkGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 445
+				"y": 40
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Date"
+				"text": "Date"
+				"font": #Font0
+				"foreground": sfield java.awt.Color darkGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 445
+				"y": 80
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "OpenTime"
+				"text": "Open Time"
+				"font": #Font0
+				"foreground": sfield java.awt.Color darkGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 105
+				"height": 45
+				"x": 40
+				"y": 165
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Open_Hour"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 24, 1 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 59
+				"height": 41
+				"x": 185
+				"y": 165
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Open_Minute"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 59
+				"height": 41
+				"x": 255
+				"y": 165
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Open_Second"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 59
+				"height": 41
+				"x": 325
+				"y": 165
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Close_Second"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 59
+				"height": 41
+				"x": 325
+				"y": 215
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Close_Minute"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 59
+				"height": 41
+				"x": 255
+				"y": 215
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Close_Hour"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 24, 1 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 59
+				"height": 41
+				"x": 185
+				"y": 215
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "CloseTime"
+				"text": "Close Time"
+				"font": #Font0
+				"foreground": sfield java.awt.Color darkGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 105
+				"height": 45
+				"x": 40
+				"y": 215
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Quantity"
+				"text": "Quantity"
+				"font": #Font0
+				"foreground": sfield java.awt.Color darkGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 445
+				"y": 120
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Description"
+				"text": "Description"
+				"font": #Font0
+				"foreground": sfield java.awt.Color darkGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 40
+				"y": 265
+				"height": 35
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Poster"
+				"text": "Poster"
+				"font": #Font0
+				"foreground": sfield java.awt.Color darkGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 445
+				"y": 165
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextID"
+				"foreground": new java.awt.Color( 0, 0, 0, 255 )
+				"background": new java.awt.Color( 184, 207, 229, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 180
+				"y": 40
+				"width": 205
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textName"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 180
+				"y": 80
+				"width": 205
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textArtist"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 180
+				"y": 120
+				"width": 205
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textStage"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 545
+				"y": 40
+				"width": 205
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField4"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 545
+				"y": 80
+				"width": 205
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textQuantity"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 545
+				"y": 120
+				"width": 205
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "textDescription"
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 40
+				"y": 300
+				"width": 345
+				"height": 180
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "textPoster"
+				"text": "text"
+				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 445
+				"y": 195
+				"width": 155
+				"height": 150
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 855, 720 )
+		} )
+	}
+}
