@@ -5,7 +5,18 @@
 package View.AnalyticPage;
 
 import java.awt.*;
+import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.*;
+
+import Model.Database.UserDatabase;
+import org.jfree.chart.*;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  * @author mangg
@@ -35,107 +46,149 @@ public class AnalyticPanel extends JPanel {
         return Month;
     }
 
+    private void label1MouseClicked(MouseEvent e) {
+
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Man
-        Year = new JLabel();
-        textField3 = new JTextField();
-        Statistic = new JComboBox();
+        Analytic = new JPanel();
+        Statistic = new JComboBox<>();
         TypeStatistic = new JLabel();
-        textDay = new JTextField();
         Day = new JLabel();
-        textMonth = new JTextField();
         Month = new JLabel();
+        Year = new JLabel();
+        textDay = new JTextField();
+        textMonth = new JTextField();
+        textYear = new JTextField();
+        panel1 = new JPanel();
+        label1 = new JLabel();
+        chartView = new JPanel();
 
-        //======== this ========
-        setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-        new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e"
-        , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-        , new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 )
-        , java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
-        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-        ) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( )
-        ; }} );
+        //======== Analytic ========
+        {
+            Analytic.setBackground(Color.white);
+            Analytic.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+            , 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+            , new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+            Analytic. getBorder( )) ); Analytic. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
-        //---- Year ----
-        Year.setText("Year");
-        Year.setFont(new Font("Lato Black", Font.BOLD, 16));
+            //---- Statistic ----
+            Statistic.setFont(new Font("Lato Black", Font.BOLD, 16));
+            Statistic.setModel(new DefaultComboBoxModel<>(new String[] {
+                "Monthly Ticket Revenue",
+                "Annual Ticket Revenue",
+                "Event-based Ticket Revenue",
+                "Daily Ticket Sales Statistics",
+                "Monthly Ticket Sales Statistics",
+                "Annual Ticket Sales Statistics"
+            }));
 
-        //---- Statistic ----
-        Statistic.setFont(new Font("Lato Black", Font.BOLD, 16));
+            //---- TypeStatistic ----
+            TypeStatistic.setText("Types of Statistics");
+            TypeStatistic.setFont(new Font("Lato Black", Font.BOLD, 16));
 
-        //---- TypeStatistic ----
-        TypeStatistic.setText("Types of Statistics");
-        TypeStatistic.setFont(new Font("Lato Black", Font.BOLD, 16));
+            //---- Day ----
+            Day.setText("Day");
+            Day.setFont(new Font("Lato Black", Font.BOLD, 16));
 
-        //---- Day ----
-        Day.setText("Day");
-        Day.setFont(new Font("Lato Black", Font.BOLD, 16));
+            //---- Month ----
+            Month.setText("Month");
+            Month.setFont(new Font("Lato Black", Font.BOLD, 16));
 
-        //---- Month ----
-        Month.setText("Month");
-        Month.setFont(new Font("Lato Black", Font.BOLD, 16));
+            //---- Year ----
+            Year.setText("Year");
+            Year.setFont(new Font("Lato Black", Font.BOLD, 16));
 
-        GroupLayout layout = new GroupLayout(this);
-        setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup()
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(81, 81, 81)
-                    .addGroup(layout.createParallelGroup()
-                        .addGroup(layout.createSequentialGroup()
+            //======== panel1 ========
+            {
+                panel1.setLayout(new GridLayout());
+
+                //---- label1 ----
+                label1.setText("text");
+                label1.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        label1MouseClicked(e);
+                    }
+                });
+                panel1.add(label1);
+            }
+
+            //======== chartView ========
+            {
+                chartView.setLayout(new GridLayout());
+            }
+
+            GroupLayout AnalyticLayout = new GroupLayout(Analytic);
+            Analytic.setLayout(AnalyticLayout);
+            AnalyticLayout.setHorizontalGroup(
+                AnalyticLayout.createParallelGroup()
+                    .addGroup(AnalyticLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(AnalyticLayout.createParallelGroup()
+                            .addComponent(chartView, GroupLayout.PREFERRED_SIZE, 965, GroupLayout.PREFERRED_SIZE)
+                            .addGroup(AnalyticLayout.createSequentialGroup()
+                                .addGroup(AnalyticLayout.createParallelGroup()
+                                    .addGroup(AnalyticLayout.createSequentialGroup()
+                                        .addComponent(Day)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(textDay, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(TypeStatistic))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(AnalyticLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(AnalyticLayout.createSequentialGroup()
+                                        .addComponent(Month)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(textMonth, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Year)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(textYear, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Statistic))
+                                .addGap(43, 43, 43)
+                                .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(130, Short.MAX_VALUE))
+            );
+            AnalyticLayout.setVerticalGroup(
+                AnalyticLayout.createParallelGroup()
+                    .addGroup(AnalyticLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(AnalyticLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                             .addComponent(TypeStatistic)
-                            .addGap(36, 36, 36)
-                            .addComponent(Statistic, GroupLayout.PREFERRED_SIZE, 386, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(Statistic, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(AnalyticLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(Day)
-                            .addGap(12, 12, 12)
-                            .addComponent(textDay, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12)
                             .addComponent(Month)
-                            .addGap(18, 18, 18)
-                            .addComponent(textMonth, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
+                            .addComponent(textDay, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textMonth, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addComponent(Year)
-                            .addGap(18, 18, 18)
-                            .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(130, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup()
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(40, 40, 40)
-                    .addGroup(layout.createParallelGroup()
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(TypeStatistic))
-                        .addComponent(Statistic, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup()
-                        .addComponent(textDay, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textMonth, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textField3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(1, 1, 1)
-                            .addGroup(layout.createParallelGroup()
-                                .addComponent(Day)
-                                .addComponent(Month)
-                                .addComponent(Year))))
-                    .addContainerGap(470, Short.MAX_VALUE))
-        );
+                            .addComponent(textYear, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)
+                        .addComponent(chartView, GroupLayout.PREFERRED_SIZE, 520, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(25, Short.MAX_VALUE))
+            );
+        }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - Man
-    private JLabel Year;
-    private JTextField textField3;
-    private JComboBox Statistic;
+    private JPanel Analytic;
+    private JComboBox<String> Statistic;
     private JLabel TypeStatistic;
-    private JTextField textDay;
     private JLabel Day;
-    private JTextField textMonth;
     private JLabel Month;
+    private JLabel Year;
+    private JTextField textDay;
+    private JTextField textMonth;
+    private JTextField textYear;
+    private JPanel panel1;
+    private JLabel label1;
+    private JPanel chartView;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

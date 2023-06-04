@@ -4,12 +4,7 @@
       <root url="file://$PROJECT_DIR$/src/Library" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../../Java Programming/Project/jfreechart-1.0.19.zip!/jfreechart-1.0.19/experimental" />
-      <root url="jar://$PROJECT_DIR$/../../../Java Programming/Project/jfreechart-1.0.19.zip!/jfreechart-1.0.19/source" />
-      <root url="jar://$PROJECT_DIR$/../../../Java Programming/Project/jfreechart-1.0.19.zip!/jfreechart-1.0.19/swt" />
-      <root url="jar://$PROJECT_DIR$/../../../Java Programming/Project/jfreechart-1.0.19.zip!/jfreechart-1.0.19/tests" />
-    </SOURCES>
+    <SOURCES />
     <jarDirectory url="file://$PROJECT_DIR$/src/Library" recursive="false" />
   </library>
 </component>
