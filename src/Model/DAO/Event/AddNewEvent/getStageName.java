@@ -1,7 +1,7 @@
 package Model.DAO.Event.AddNewEvent;
 
 import Model.Database.UserDatabase;
-import View.EventPage.EventInformationPanel;
+import View.EventPage.EventInfor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +17,7 @@ public class getStageName {
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
                 String stageName = rs.getString("STG_NAME");
-                EventInformationPanel.getStageComboBox().addItem(stageName);
+                EventInfor.getStageComboBox().addItem(stageName);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
