@@ -135,12 +135,11 @@ public class HomePanel extends JPanel {
 
     public void setEventList() {
         for (int i = 0; i < listEvent.size(); i++) {
-            String eventPicture = listEvent.get(i).getEventPicture();
+            ImageIcon eventPicture = listEvent.get(i).getEventPicture();
             String eventName = listEvent.get(i).getEventName();
             String eventDate = listEvent.get(i).getEventDate();
 
-            ImageIcon icon = new ImageIcon(getClass().getResource("/Image/" + eventPicture));;
-            listLabelPicture.get(i).setIcon(icon);
+            listLabelPicture.get(i).setIcon(eventPicture);
             listLabelName.get(i).setText(eventName);
             listLabelDate.get(i).setText(eventDate);
         }

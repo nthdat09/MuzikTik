@@ -6,13 +6,12 @@ package View.AnalyticPage;
 
 import java.awt.*;
 import javax.swing.*;
-import com.intellij.uiDesigner.core.*;
 
 /**
  * @author mangg
  */
-public class AnalyticPage extends JPanel {
-    public AnalyticPage() {
+public class AnalyticPanel extends JPanel {
+    public AnalyticPanel() {
         initComponents();
     }
 

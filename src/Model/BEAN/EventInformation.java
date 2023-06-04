@@ -7,19 +7,19 @@ public class EventInformation {
     private Integer eventID;
     private String eventName;
     private Integer eventStageID;
-    private Integer eventArtistID;
+    private String eventArtist;
     private LocalDate eventDate;
     private LocalTime eventOpenTime;
     private LocalTime eventCloseTime;
     private Integer eventQuantity;
     private String eventDescription;
 
-    public EventInformation(Integer eventID, String eventName, Integer eventStageID, Integer eventArtistID, LocalDate eventDate, LocalTime eventOpenTime, LocalTime eventCloseTime, Integer eventQuantity, String eventDescription) {
+    public EventInformation(Integer eventID, String eventName, Integer eventStageID, String eventArtist, LocalDate eventDate, LocalTime eventOpenTime, LocalTime eventCloseTime, Integer eventQuantity, String eventDescription) {
         this.eventID = eventID;
         this.eventName = eventName;
         this.eventDate = eventDate;
         this.eventStageID = eventStageID;
-        this.eventArtistID = eventArtistID;
+        this.eventArtist = eventArtist;
         this.eventOpenTime = eventOpenTime;
         this.eventCloseTime = eventCloseTime;
         this.eventQuantity = eventQuantity;
@@ -34,8 +34,8 @@ public class EventInformation {
     public LocalDate getEventDate() {
         return eventDate;
     }
-    public Integer getEventArtistID() {
-        return eventArtistID;
+    public String getEventArtistID() {
+        return eventArtist;
     }
     public Integer getEventQuantity() {
         return eventQuantity;
@@ -55,8 +55,8 @@ public class EventInformation {
     public void setEventName(String eventName) {
         this.eventName = eventName;
     }
-    public void setEventArtistID(Integer eventArtistID) {
-        this.eventArtistID = eventArtistID;
+    public void setEventArtistID(String eventArtistID) {
+        this.eventArtist = eventArtist;
     }
     public void setEventCloseTime(LocalTime eventCloseTime) {
         this.eventCloseTime = eventCloseTime;

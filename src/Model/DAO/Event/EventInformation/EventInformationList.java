@@ -29,14 +29,14 @@ public class EventInformationList {
                 Integer eventID = rs.getInt("EVT_ID");
                 String eventName = rs.getString("EVT_NAME");
                 Integer eventStageID = rs.getInt("EVT_STG_ID");
-                Integer eventArtistID = rs.getInt("EVT_ART_ID");
+                String eventArtist = rs.getString("EVT_ARTIST");
                 LocalDate eventDate = rs.getDate("EVT_DATE").toLocalDate();
                 LocalTime eventOpenTime = rs.getTime("EVT_OPEN_TIME").toLocalTime();
                 LocalTime eventCloseTime = rs.getTime("EVT_END_TIME").toLocalTime();
                 Integer eventQuantity = rs.getInt("EVT_QUANTITY");
                 String eventDescription = rs.getString("EVT_DESCRIPTION");
 
-                eventInformation = new EventInformation(eventID, eventName, eventStageID, eventArtistID, eventDate, eventOpenTime, eventCloseTime, eventQuantity, eventDescription);
+                eventInformation = new EventInformation(eventID, eventName, eventStageID, eventArtist, eventDate, eventOpenTime, eventCloseTime, eventQuantity, eventDescription);
                 result.add(eventInformation);
             }
             st.close();

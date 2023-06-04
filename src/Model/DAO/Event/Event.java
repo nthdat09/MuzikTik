@@ -4,12 +4,9 @@ import Model.BEAN.EventList;
 import Model.Database.UserDatabase;
 
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class Event {
     public static List<EventList> getEventList() {
@@ -17,14 +14,17 @@ public class Event {
         EventList eventList = null;
         try{
             Connection con = UserDatabase.getConnection();
-            String sql = "SELECT * FROM mctmsys.eventtest";
+            String sql = "SELECT * FROM mctmsys.event";
             PreparedStatement st = con.prepareCall(sql);
             ResultSet rs = st.executeQuery();
 
             while(rs.next()) {
-                String eventPicture = rs.getString("eventPicture");
+                Blob eventPictureBlob = rs.getBlob("EVT_PHOTO");
+                byte[] eventPictureByte = eventPictureBlob.getBytes(1, (int) eventPictureBlob.length());
+                ImageIcon eventPicture = new ImageIcon(eventPictureByte);
+
                 String eventName = rs.getString("EVT_NAME");
-                String eventDate = rs.getString("eventDate");
+                String eventDate = rs.getString("EVT_DATE");
                 eventList = new EventList(eventPicture, eventName, eventDate);
                 result.add(eventList);
             }

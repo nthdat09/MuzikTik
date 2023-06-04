@@ -1,10 +1,12 @@
 package Model.BEAN;
 
+import javax.swing.*;
+
 public class EventList {
-    private String eventPicture;
+    private ImageIcon eventPicture;
     private String eventName;
     private String eventDate;
-    public EventList(String eventPicture,String eventName, String eventDate) {
+    public EventList(ImageIcon eventPicture, String eventName, String eventDate) {
         super();
         this.eventPicture = eventPicture;
         this.eventName = eventName;
@@ -18,7 +20,7 @@ public class EventList {
         return eventName;
     }
 
-    public String getEventPicture() {
+    public ImageIcon getEventPicture() {
         return eventPicture;
     }
 
@@ -30,7 +32,7 @@ public class EventList {
         this.eventName = eventName;
     }
 
-    public void setEventPicture(String eventPicture) {
+    public void setEventPicture(ImageIcon eventPicture) {
         this.eventPicture = eventPicture;
     }
 
