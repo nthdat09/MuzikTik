@@ -37,7 +37,7 @@ public class ForgotPasswordPage_1 extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - Man
         ForgotPasswordPage_1JDialog = new JDialog();
         label2 = new JLabel();
         label4 = new JLabel();
@@ -115,7 +115,7 @@ public class ForgotPasswordPage_1 extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - Man
     private JDialog ForgotPasswordPage_1JDialog;
     private JLabel label2;
     private JLabel label4;

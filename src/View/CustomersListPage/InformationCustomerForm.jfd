@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -65,16 +65,25 @@ new FormModel {
 				name: "NameField"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
 				"name": "NameVal"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 10
+				}
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "PhoneNumberFiled"
 				"background": sfield java.awt.Color white
 				"name": "EmailVal"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 10
+				}
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "EmailField"
 				"background": sfield java.awt.Color white
 				"name": "AddressVal"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 10
+				}
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "AddressField"

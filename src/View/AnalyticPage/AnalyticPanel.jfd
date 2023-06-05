@@ -1,21 +1,85 @@
-JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:32:p, comp Analytic:::p:210:p, space ::783:x}}"
-			"$verticalGroup": "par l {seq l {space :p:27:p, comp Analytic:::p::p, space ::422:x}}"
+			"$horizontalGroup": "par l {seq l {space :p:45:p, par l {comp chartView:::p:965:p, seq {par l {seq l {comp Day:::p::p, space u:::p, comp textDay:::p:125:p}, comp TypeStatistic::l:p::p}, space u:::p, par l:::p {seq {comp Month:::p::p, space s:::p, comp textMonth:::p:125:p, space s:::p, comp Year:::p::p, space s:::p, comp textYear:::p:125:p}, comp Statistic:::::x}, space :p:43:p, comp panel1:::p:103:p}}, space ::130:x}}"
+			"$verticalGroup": "par l {seq {space :p:40:p, par t {comp TypeStatistic:::p::p, comp Statistic:::p::p, comp panel1:::p:32:p}, space s:::p, par b {comp Day::b:p::p, comp Month::b:p::p, comp textDay::b:p::p, comp textMonth::b:p::p, comp Year::b:p::p, comp textYear::b:p::p}, space :p:45:p, comp chartView:::p:520:p, space ::25:x}}"
 		} ) {
-			name: "this"
+			name: "Analytic"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "Statistic"
+				"font": &Font0 new java.awt.Font( "Lato Black", 1, 16 )
+				"model": new javax.swing.DefaultComboBoxModel {
+					selectedItem: "Monthly Ticket Revenue"
+					addElement( "Monthly Ticket Revenue" )
+					addElement( "Annual Ticket Revenue" )
+					addElement( "Event-based Ticket Revenue" )
+					addElement( "Daily Ticket Sales Statistics" )
+					addElement( "Monthly Ticket Sales Statistics" )
+					addElement( "Annual Ticket Sales Statistics" )
+				}
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "Analytic"
-				"text": "Analytics đây nè "
+				name: "TypeStatistic"
+				"text": "Types of Statistics"
+				"font": #Font0
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Day"
+				"text": "Day"
+				"font": #Font0
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Month"
+				"text": "Month"
+				"font": #Font0
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Year"
+				"text": "Year"
+				"font": #Font0
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textDay"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textMonth"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textYear"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "text"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "label1MouseClicked", true ) )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+				name: "chartView"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1025, 465 )
+			"size": new java.awt.Dimension( 1140, 710 )
 		} )
 	}
 }
