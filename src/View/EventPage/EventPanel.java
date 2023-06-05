@@ -4,25 +4,9 @@
 
 package View.EventPage;
 
-import java.awt.event.*;
-
-import java.awt.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.*;
-import javax.swing.GroupLayout;
-import javax.swing.border.*;
-import javax.swing.table.*;
-
 import Model.BEAN.CustomerBuyTicket;
-import Model.BEAN.EventArtID;
-import Model.BEAN.ReversedSeat;
 import Model.BEAN.TicketID;
 import Model.DAO.Customer.CustomerListDAO;
-import Model.DAO.Employee.SendEmail;
-import Model.DAO.Employee.VerificationCode;
 import Model.DAO.Event.EventInformation.BookingTicket;
 import Model.DAO.Event.EventInformation.CustomerInformationValidate;
 import Model.DAO.Event.EventInformation.EventTableDatabase;
@@ -31,10 +15,22 @@ import Model.Database.UserDatabase;
 import View.CustomersListPage.InformationCustomerForm;
 import View.Home.HomePanel;
 import View.MainPage.MainPage;
-import net.miginfocom.swing.*;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 
 import static View.CustomersListPage.InformationCustomerForm.settingForNewCustomer;
-import static jdk.internal.net.http.common.Utils.close;
 
 /**
  * @author Admin
@@ -412,6 +408,7 @@ public class EventPanel extends JPanel {
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
         }
     }
+
 
     public void setSeatID(String seatID) {
         this.seatID = seatID;

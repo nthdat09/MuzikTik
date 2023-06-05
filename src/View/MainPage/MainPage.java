@@ -238,7 +238,7 @@ public class MainPage extends JFrame {
         return jlbSettings;
     }
 
-    public JLabel getJlbEvent() {
+    public static JLabel getJlbEvent() {
         return jlbEvent;
     }
 

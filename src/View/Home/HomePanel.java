@@ -4,29 +4,26 @@
 
 package View.Home;
 
-import java.awt.event.*;
-
 import Controller.EventListPanel;
 import Model.BEAN.*;
 import Model.DAO.Event.Event;
-import Model.BEAN.EventArtID;
-import Model.BEAN.EventInformation;
 import Model.DAO.Event.EventInformation.*;
-import Model.BEAN.StageInformation;
 import View.EventPage.EventPanel;
 import View.MainPage.MainPage;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.*;
-import javax.swing.GroupLayout;
 
 /**
  * @author ADMIN

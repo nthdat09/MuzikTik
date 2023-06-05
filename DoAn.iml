@@ -23,5 +23,6 @@
     <orderEntry type="library" exported="" name="IntelliJ IDEA GridLayout" level="project" />
     <orderEntry type="library" name="activation" level="project" />
     <orderEntry type="library" name="LGoodDatePicker-11.2.1" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

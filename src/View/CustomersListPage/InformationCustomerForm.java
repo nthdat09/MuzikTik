@@ -9,11 +9,10 @@ import Model.BEAN.Customer;
 import Model.DAO.Customer.CustomerDAO;
 import View.MainPage.MainPage;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import javax.swing.*;
-import javax.swing.GroupLayout;
 
 /**
  * @author ADMIN
@@ -52,6 +51,12 @@ public class InformationCustomerForm extends JPanel {
         this.selectedID = customer.getId();
         this.IDField.setText(String.valueOf(customer.getId()));
         System.out.println("selected id = " + this.selectedID);
+    }
+
+    public static void settingForNewCustomer(String name, String phone, String email) {
+        NameField.setText(name);
+        PhoneNumberFiled.setText(phone);
+        EmailField.setText(email);
     }
 
     public String getName() {
@@ -280,9 +285,9 @@ public class InformationCustomerForm extends JPanel {
     JButton Cancel;
     JButton SAVE;
     JLabel TotalPoint;
-    JTextField NameField;
-    JTextField PhoneNumberFiled;
-    JTextField EmailField;
+    static JTextField NameField;
+    static JTextField PhoneNumberFiled;
+    static JTextField EmailField;
     JTextField AddressField;
     JTextField TotalPointVal;
     JLabel ID;
