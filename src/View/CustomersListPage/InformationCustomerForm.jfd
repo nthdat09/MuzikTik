@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -9,13 +9,15 @@ new FormModel {
 			"JavaCodeGenerator.memberVariableThis": true
 		}
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {par l {seq l {space :p:181:p, comp SAVE:::p:112:p, space :p:75:p, comp Cancel:::p:112:p}, seq l {space :p:102:p, par l {seq {par l {par t:l {comp PhoneNumber:::p:174:p, par l {comp ID:::p:171:p, comp Name:::p:171:p}}, comp Email::l:p:171:p}, space :p:76:p, par l {comp EmailField:::p:220:p, comp NameField:::p:220:p, comp IDField:::p:220:p, comp PhoneNumberFiled:::p:220:p}}, seq l {par l {comp Address::l:p:171:p, comp TotalPoint::l:p:174:p, comp Type::l:p:174:p}, space :p:76:p, par l {comp AddressField:::p:220:p, comp TotalPointVal:::p:220:p, comp TypeField:::p:220:p}}}}}, space ::163:x}}"
-			"$verticalGroup": "par l {seq l {space :p:52:p, par b {comp ID::b:p:39:p, comp IDField::b:p:39:p}, space u:::p, par b {comp NameField::b:p:39:p, comp Name::b:p:39:p}, space :::x, par b {comp PhoneNumber::b:p:39:p, comp PhoneNumberFiled::b:p:39:p}, space s:::p, par b {comp Email::b:p:39:p, comp EmailField::b:p:39:p}, space s:::p, par b {comp Address::b:p:39:p, comp AddressField::b:p:39:p}, space :p:28:p, par b {comp Type::b:p:39:p, comp TypeField::b:p:39:p}, space s:::p, par b {comp TotalPoint::b:p:39:p, comp TotalPointVal::b:p:39:p}, space :p:36:p, par b {comp SAVE::b:p::p, comp Cancel::b:p::p}, space :p:29:p}}"
+			"$horizontalGroup": "par l {seq {par l {seq l {space :p:375:p, comp label1:::p::p}, seq l {space :p:49:p, par l {comp ID:::p:57:p, comp Name::l:p:71:p, comp PhoneNumber:::p:126:p, comp TotalPoint::l:p:99:p}, space :::p, par l:::p {comp PhoneNumberFiled::l:::x, comp TotalPointVal::::250:x, comp NameField::l::250:x, comp IDField::l::250:x}, space :p:183:p, par l {par t:::p {comp Email::l::87:x, comp Address::l::87:x}, comp Type:::p:77:p}, space s:::p, par l:::p {comp EmailField::l::250:x, comp AddressField::l::250:x, comp TypeField::l::250:x}}}, space ::126:x}, seq t {space ::812:x, comp SAVE:::p:112:p, space s:::p, comp Cancel:::p:112:p, space :p:41:p}}"
+			"$verticalGroup": "par l {seq l {space :p:25:p, comp label1:::p::p, space :p:28:p, par b {comp ID::b:p::p, comp Address::b:p::p, comp EmailField::b:p::p, comp IDField::b:p:24:p}, space u:::p, par b {comp Name::b:p::p, comp Email::b:p::p, comp NameField::b:p::p, comp AddressField::b:p::p}, space u:::p, par b {comp PhoneNumberFiled::b:p::p, comp PhoneNumber::b:p::p, comp Type::b:p::p, comp TypeField::b:p::p}, space s:::p, par b {comp TotalPoint::b:p::p, comp TotalPointVal::b:p::p}, space s:::p, par b {comp Cancel::b:p::p, comp SAVE::b:p::p}, space ::215:x}}"
 		} ) {
 			name: "this"
-			"background": sfield java.awt.Color white
 			"minimumSize": new java.awt.Dimension( 735, 548 )
 			"maximumSize": new java.awt.Dimension( 735, 548 )
+			"font": &Font0 new java.awt.Font( "Lato Black", 0, 16 )
+			"foreground": &Color0 new java.awt.Color( 97, 184, 132, 255 )
+			"background": sfield java.awt.Color white
 			auxiliary() {
 				"JavaCodeGenerator.variableName": "InformationCustomerPanel"
 				"JavaCodeGenerator.variableModifiers": 2
@@ -23,48 +25,55 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "Name"
 				"text": "Name:"
-				"font": &Font0 new java.awt.Font( "Lato Black", 3, 20 )
+				"font": #Font0
+				"foreground": #Color0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "Email"
 				"text": "Email:"
-				"font": new java.awt.Font( "Lato Black", 1, 20 )
+				"font": #Font0
+				"foreground": #Color0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "Address"
 				"text": "Address:"
-				"font": new java.awt.Font( "Lato Black", 1, 20 )
+				"font": #Font0
+				"foreground": #Color0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "PhoneNumber"
-				"text": "Phone Number"
-				"font": &Font1 new java.awt.Font( "Lato Black", 1, 20 )
+				"text": "Phone Number:"
+				"font": #Font0
+				"foreground": #Color0
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "Cancel"
 				"text": "CANCEL"
 				"preferredSize": &Dimension0 new java.awt.Dimension( 80, 30 )
-				"font": &Font2 new java.awt.Font( "Lato Black", 1, 18 )
-				"background": &Color0 new java.awt.Color( 97, 184, 132, 255 )
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"background": &Color1 new java.awt.Color( 97, 184, 132, 255 )
 				"foreground": sfield java.awt.Color white
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "SAVE"
 				"text": "SAVE"
 				"preferredSize": #Dimension0
-				"font": #Font2
-				"background": #Color0
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"background": #Color1
 				"foreground": sfield java.awt.Color white
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "TotalPoint"
-				"font": #Font1
+				"font": new java.awt.Font( "Lato Black", 0, 16 )
 				"text": "Total Point"
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+				"background": sfield java.awt.Color white
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "NameField"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
 				"name": "NameVal"
+				"font": &Font1 new java.awt.Font( "Lato", 0, 16 )
 				auxiliary() {
 					"JavaCodeGenerator.variableModifiers": 10
 				}
@@ -73,6 +82,7 @@ new FormModel {
 				name: "PhoneNumberFiled"
 				"background": sfield java.awt.Color white
 				"name": "EmailVal"
+				"font": #Font1
 				auxiliary() {
 					"JavaCodeGenerator.variableModifiers": 10
 				}
@@ -81,6 +91,7 @@ new FormModel {
 				name: "EmailField"
 				"background": sfield java.awt.Color white
 				"name": "AddressVal"
+				"font": #Font1
 				auxiliary() {
 					"JavaCodeGenerator.variableModifiers": 10
 				}
@@ -89,36 +100,49 @@ new FormModel {
 				name: "AddressField"
 				"background": sfield java.awt.Color white
 				"name": "PhoneNumberVal"
+				"font": #Font1
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TotalPointVal"
 				"background": sfield java.awt.Color white
 				"name": "TotalPointVal"
+				"font": #Font1
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "ID"
 				"text": "ID:"
 				"font": #Font0
+				"foreground": #Color0
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "IDField"
-				"background": sfield java.awt.Color lightGray
+				"background": new java.awt.Color( 146, 207, 170, 255 )
 				"name": "NameVal"
 				"editable": false
+				"font": #Font1
+				"enabled": false
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "Type"
-				"font": #Font1
-				"text": "Type"
+				"font": #Font0
+				"text": "Type:"
+				"foreground": #Color0
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TypeField"
 				"background": sfield java.awt.Color white
 				"name": "TotalPointVal"
+				"font": #Font1
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "CUSTOMER INFORMATION"
+				"font": new java.awt.Font( "Lato Black", 0, 25 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 65, 25 )
-			"size": new java.awt.Dimension( 735, 545 )
+			"location": new java.awt.Point( 60, 25 )
+			"size": new java.awt.Dimension( 1095, 485 )
 		} )
 	}
 }

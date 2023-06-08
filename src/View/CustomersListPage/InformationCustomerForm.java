@@ -91,9 +91,53 @@ public class InformationCustomerForm extends JPanel {
         return this.ID;
     }
 
+    public JPanel getInformationCustomerPanel() {
+        return this.InformationCustomerPanel;
+    }
+
+    public JLabel getTotalPoint() {
+        return this.TotalPoint;
+    }
+
+    public JTextField getNameField() {
+        return this.NameField;
+    }
+
+    public JTextField getPhoneNumberFiled() {
+        return this.PhoneNumberFiled;
+    }
+
+    public JTextField getEmailField() {
+        return this.EmailField;
+    }
+
+    public JTextField getAddressField() {
+        return this.AddressField;
+    }
+
+    public JTextField getTotalPointVal() {
+        return this.TotalPointVal;
+    }
+
+    public JTextField getIDField() {
+        return this.IDField;
+    }
+
+    public JLabel getType() {
+        return this.Type;
+    }
+
+    public JTextField getTypeField() {
+        return this.TypeField;
+    }
+
+    public JLabel getLabel1() {
+        return this.label1;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         this.InformationCustomerPanel = new JPanel();
         this.Name = new JLabel();
         this.Email = new JLabel();
@@ -111,89 +155,114 @@ public class InformationCustomerForm extends JPanel {
         this.IDField = new JTextField();
         this.Type = new JLabel();
         this.TypeField = new JTextField();
+        this.label1 = new JLabel();
 
         //======== this ========
-        setBackground(Color.white);
         setMinimumSize(new Dimension(735, 548));
         setMaximumSize(new Dimension(735, 548));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-        . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing
-        . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-        Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-        ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-        public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName (
-        ) )) throw new RuntimeException( ); }} );
+        setFont(new Font("Lato Black", Font.PLAIN, 16));
+        setForeground(new Color(0x61b884));
+        setBackground(Color.white);
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
+        new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion"
+        , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+        , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 )
+        , java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
+        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
+        ; }} );
 
         //---- Name ----
         this.Name.setText("Name:");
-        this.Name.setFont(new Font("Lato Black", Font.BOLD | Font.ITALIC, 20));
+        this.Name.setFont(new Font("Lato Black", Font.PLAIN, 16));
+        this.Name.setForeground(new Color(0x61b884));
 
         //---- Email ----
         this.Email.setText("Email:");
-        this.Email.setFont(new Font("Lato Black", Font.BOLD, 20));
+        this.Email.setFont(new Font("Lato Black", Font.PLAIN, 16));
+        this.Email.setForeground(new Color(0x61b884));
 
         //---- Address ----
         this.Address.setText("Address:");
-        this.Address.setFont(new Font("Lato Black", Font.BOLD, 20));
+        this.Address.setFont(new Font("Lato Black", Font.PLAIN, 16));
+        this.Address.setForeground(new Color(0x61b884));
 
         //---- PhoneNumber ----
-        this.PhoneNumber.setText("Phone Number");
-        this.PhoneNumber.setFont(new Font("Lato Black", Font.BOLD, 20));
+        this.PhoneNumber.setText("Phone Number:");
+        this.PhoneNumber.setFont(new Font("Lato Black", Font.PLAIN, 16));
+        this.PhoneNumber.setForeground(new Color(0x61b884));
 
         //---- Cancel ----
         this.Cancel.setText("CANCEL");
         this.Cancel.setPreferredSize(new Dimension(80, 30));
-        this.Cancel.setFont(new Font("Lato Black", Font.BOLD, 18));
+        this.Cancel.setFont(new Font("Lato Black", Font.BOLD, 16));
         this.Cancel.setBackground(new Color(0x61b884));
         this.Cancel.setForeground(Color.white);
 
         //---- SAVE ----
         this.SAVE.setText("SAVE");
         this.SAVE.setPreferredSize(new Dimension(80, 30));
-        this.SAVE.setFont(new Font("Lato Black", Font.BOLD, 18));
+        this.SAVE.setFont(new Font("Lato Black", Font.BOLD, 16));
         this.SAVE.setBackground(new Color(0x61b884));
         this.SAVE.setForeground(Color.white);
 
         //---- TotalPoint ----
-        this.TotalPoint.setFont(new Font("Lato Black", Font.BOLD, 20));
+        this.TotalPoint.setFont(new Font("Lato Black", Font.PLAIN, 16));
         this.TotalPoint.setText("Total Point");
+        this.TotalPoint.setForeground(new Color(0x61b884));
+        this.TotalPoint.setBackground(Color.white);
 
         //---- NameField ----
         this.NameField.setBackground(Color.white);
         this.NameField.setName("NameVal");
+        this.NameField.setFont(new Font("Lato", Font.PLAIN, 16));
 
         //---- PhoneNumberFiled ----
         this.PhoneNumberFiled.setBackground(Color.white);
         this.PhoneNumberFiled.setName("EmailVal");
+        this.PhoneNumberFiled.setFont(new Font("Lato", Font.PLAIN, 16));
 
         //---- EmailField ----
         this.EmailField.setBackground(Color.white);
         this.EmailField.setName("AddressVal");
+        this.EmailField.setFont(new Font("Lato", Font.PLAIN, 16));
 
         //---- AddressField ----
         this.AddressField.setBackground(Color.white);
         this.AddressField.setName("PhoneNumberVal");
+        this.AddressField.setFont(new Font("Lato", Font.PLAIN, 16));
 
         //---- TotalPointVal ----
         this.TotalPointVal.setBackground(Color.white);
         this.TotalPointVal.setName("TotalPointVal");
+        this.TotalPointVal.setFont(new Font("Lato", Font.PLAIN, 16));
 
         //---- ID ----
         this.ID.setText("ID:");
-        this.ID.setFont(new Font("Lato Black", Font.BOLD | Font.ITALIC, 20));
+        this.ID.setFont(new Font("Lato Black", Font.PLAIN, 16));
+        this.ID.setForeground(new Color(0x61b884));
 
         //---- IDField ----
-        this.IDField.setBackground(Color.lightGray);
+        this.IDField.setBackground(new Color(0x92cfaa));
         this.IDField.setName("NameVal");
         this.IDField.setEditable(false);
+        this.IDField.setFont(new Font("Lato", Font.PLAIN, 16));
+        this.IDField.setEnabled(false);
 
         //---- Type ----
-        this.Type.setFont(new Font("Lato Black", Font.BOLD, 20));
-        this.Type.setText("Type");
+        this.Type.setFont(new Font("Lato Black", Font.PLAIN, 16));
+        this.Type.setText("Type:");
+        this.Type.setForeground(new Color(0x61b884));
 
         //---- TypeField ----
         this.TypeField.setBackground(Color.white);
         this.TypeField.setName("TotalPointVal");
+        this.TypeField.setFont(new Font("Lato", Font.PLAIN, 16));
+
+        //---- label1 ----
+        this.label1.setText("CUSTOMER INFORMATION");
+        this.label1.setFont(new Font("Lato Black", Font.PLAIN, 25));
+        this.label1.setForeground(new Color(0x61b884));
 
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
@@ -202,81 +271,78 @@ public class InformationCustomerForm extends JPanel {
                 .addGroup(layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup()
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(181, 181, 181)
-                            .addComponent(this.SAVE, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-                            .addGap(75, 75, 75)
-                            .addComponent(this.Cancel, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE))
+                            .addGap(375, 375, 375)
+                            .addComponent(this.label1))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(102, 102, 102)
+                            .addGap(49, 49, 49)
                             .addGroup(layout.createParallelGroup()
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup()
-                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                            .addComponent(this.PhoneNumber, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup()
-                                                .addComponent(this.ID, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(this.Name, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)))
-                                        .addComponent(this.Email, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
-                                    .addGap(76, 76, 76)
-                                    .addGroup(layout.createParallelGroup()
-                                        .addComponent(this.EmailField, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(this.NameField, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(this.IDField, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(this.PhoneNumberFiled, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup()
-                                        .addComponent(this.Address, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(this.TotalPoint, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(this.Type, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE))
-                                    .addGap(76, 76, 76)
-                                    .addGroup(layout.createParallelGroup()
-                                        .addComponent(this.AddressField, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(this.TotalPointVal, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(this.TypeField, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE))))))
-                    .addContainerGap(163, Short.MAX_VALUE))
+                                .addComponent(this.ID, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(this.Name, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(this.PhoneNumber, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(this.TotalPoint, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                .addComponent(this.PhoneNumberFiled)
+                                .addComponent(this.TotalPointVal, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                .addComponent(this.NameField, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                .addComponent(this.IDField, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                            .addGap(183, 183, 183)
+                            .addGroup(layout.createParallelGroup()
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(this.Email, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                                    .addComponent(this.Address, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE))
+                                .addComponent(this.Type, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                .addComponent(this.EmailField, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                .addComponent(this.AddressField, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                .addComponent(this.TypeField, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
+                    .addContainerGap(126, Short.MAX_VALUE))
+                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(812, Short.MAX_VALUE)
+                    .addComponent(this.SAVE, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(this.Cancel, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+                    .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(52, 52, 52)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(this.ID, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(this.IDField, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(this.NameField, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(this.Name, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(this.PhoneNumber, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(this.PhoneNumberFiled, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(this.Email, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(this.EmailField, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(this.Address, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(this.AddressField, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+                    .addGap(25, 25, 25)
+                    .addComponent(this.label1)
                     .addGap(28, 28, 28)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(this.Type, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(this.TypeField, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(this.ID)
+                        .addComponent(this.Address)
+                        .addComponent(this.EmailField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(this.IDField, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(this.Name)
+                        .addComponent(this.Email)
+                        .addComponent(this.NameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(this.AddressField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(this.PhoneNumberFiled, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(this.PhoneNumber)
+                        .addComponent(this.Type)
+                        .addComponent(this.TypeField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(this.TotalPoint, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(this.TotalPointVal, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
-                    .addGap(36, 36, 36)
+                        .addComponent(this.TotalPoint)
+                        .addComponent(this.TotalPointVal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(this.SAVE, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(this.Cancel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(29, 29, 29))
+                        .addComponent(this.Cancel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(this.SAVE, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(215, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     private JPanel InformationCustomerPanel;
     JLabel Name;
     JLabel Email;
@@ -285,15 +351,16 @@ public class InformationCustomerForm extends JPanel {
     JButton Cancel;
     JButton SAVE;
     JLabel TotalPoint;
-    static JTextField NameField;
-    static JTextField PhoneNumberFiled;
-    static JTextField EmailField;
+    private static JTextField NameField;
+    private static JTextField PhoneNumberFiled;
+    private static JTextField EmailField;
     JTextField AddressField;
     JTextField TotalPointVal;
     JLabel ID;
     JTextField IDField;
     JLabel Type;
     JTextField TypeField;
+    JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
     public void saveCustomer() throws SQLException {
@@ -304,7 +371,7 @@ public class InformationCustomerForm extends JPanel {
         } else {
             Customer customer = null;
             if (selectedID == -1 ) { // add new customer
-                System.out.println("add new customer");
+                System.out.println("Add new customer");
                 customer = new Customer();
                 customer.setId(Integer.parseInt(this.IDField.getText()));
                 customer.setName(this.NameField.getText());

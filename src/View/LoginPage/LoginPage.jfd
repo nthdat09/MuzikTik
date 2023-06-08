@@ -19,7 +19,7 @@ new FormModel {
 				"JavaCodeGenerator.variableModifiers": 9
 			}
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq {space ::90:x, par l {seq t {comp LoginButton:::p::p, space :p:244:p}, seq t {par t {seq t {comp label1:::p:171:p, space :p:50:p}, seq t {comp label2:::p::p, space :p:71:p}, comp label3::t:p::p, par l:::p {seq {comp LoginStatus:::p:185:p, space u:::p, comp ForgetPasswordJbt:::p::p}, comp PasswordField:::::x, comp Password::l:p:80:p, comp UsernameField::l:::x, comp Username::l:p:90:p}}, space :p:150:p}}}}"
+				"$horizontalGroup": "par l {seq {space ::106:x, par l {seq t {comp LoginButton:::p::p, space :p:244:p}, seq t {par t {seq t {comp label1:::p:171:p, space :p:50:p}, seq t {comp label2:::p::p, space :p:71:p}, comp label3::t:p::p, seq {par l {comp Password::l:p:80:p, comp Username::l:p:90:p}, space :p:223:p}}, space :p:150:p}, seq l {par t:::p {comp UsernameField::l:::x, comp PasswordField::l:::x, seq l {comp LoginStatus:::p:185:p, space :p:46:p, comp ForgetPasswordJbt:::p::p}}, space :::p}}}}"
 				"$verticalGroup": "par l {seq l {space :p:20:p, comp label1:::p:60:p, space :::x, comp label2:::p::p, space :::p, comp label3:::p::p, space :p:26:p, comp Username:::p:28:p, space :::p, comp UsernameField:::p:45:p, space s:::p, comp Password:::p::p, space :::p, comp PasswordField:::p:45:p, space :::p, par l {seq {comp LoginStatus:::p:25:p, space :::p, comp LoginButton:::p::p}, comp ForgetPasswordJbt:::p::p}, space :p:16:p}}"
 			} ) {
 				name: "LoginPagePanel"
@@ -91,15 +91,17 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "ForgetPasswordJbt"
 					"text": "Forgot Password?"
-					"foreground": sfield java.awt.Color red
-					"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+					"foreground": new java.awt.Color( 212, 92, 92, 255 )
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"background": new java.awt.Color( 255, 255, 255, 255 )
+					"font": new java.awt.Font( "Lato Black", 1, 14 )
 					auxiliary() {
 						"JavaCodeGenerator.variableGetter": true
 					}
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 155, 50 )
+			"location": new java.awt.Point( 10, 50 )
 			"size": new java.awt.Dimension( 595, 470 )
 		} )
 	}

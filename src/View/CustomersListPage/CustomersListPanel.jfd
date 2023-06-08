@@ -7,8 +7,8 @@ new FormModel {
 			"JavaCodeGenerator.defaultVariableGetter": true
 		}
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {par l {seq {space :p:35:p, par l {comp scrollPane1:::p:896:p, seq {comp jtfSearch:::p:210:p, space :::p, comp jlbSearch:::p:111:p, space :p:258:p, comp jlbAdd:::p:100:p, space :::p, comp jlbEdit:::p:100:p, space :::p, comp jlbDelete:::p::p}}}, seq l {space :p:401:p, comp textField1:::p::p}}, space ::99:x}}"
-			"$verticalGroup": "par l {seq l {space :p:9:p, comp textField1:::p::p, space s:::p, par b {comp jtfSearch::b:p::p, comp jlbSearch::b:p:26:p, comp jlbDelete::b:p::p, comp jlbEdit::b:p:26:p, comp jlbAdd::b:p:26:p}, space :::p, comp scrollPane1:::p:555:p, space ::39:x}}"
+			"$horizontalGroup": "par l {seq {par l {seq l {space :p:377:p, comp textField1:::p::p}, seq l {space :p:25:p, par l {comp scrollPane1:::p:1080:p, seq {comp jtfSearch:::p:288:p, space s:::p, comp jlbSearch:::p:111:p, space :p:337:p, comp jlbAdd:::p:100:p, space :p:18:p, comp jlbEdit:::p:100:p, space s:::p, comp jlbDelete:::p::p}}}}, space ::130:x}}"
+			"$verticalGroup": "par l {seq l {space :p:21:p, comp textField1:::p::p, space u:::p, par b {comp jlbSearch::b:p:26:p, comp jtfSearch::b:p::p, comp jlbAdd::b:p:26:p, comp jlbEdit::b:p:26:p, comp jlbDelete::b:p::p}, space u:::p, comp scrollPane1:::p:555:p, space ::34:x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -45,7 +45,7 @@ new FormModel {
 						add( null )
 						add( null )
 					}, new java.util.Vector {
-						add( null )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 3, 0, false ) )
 						add( null )
 						add( null )
 						add( null )
@@ -55,7 +55,7 @@ new FormModel {
 					} )
 					"autoCreateRowSorter": true
 					"name": "cusListTable"
-					"font": new java.awt.Font( "Segoe UI", 0, 12 )
+					"font": new java.awt.Font( "Lato", 0, 13 )
 					auxiliary() {
 						"JavaCodeGenerator.variableName": "CustomerListTable"
 						"JavaCodeGenerator.variableGetter": true
@@ -64,8 +64,8 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "textField1"
-				"text": "CUSTOMER LIST"
-				"font": new java.awt.Font( "Lato Black", 1, 26 )
+				"text": "CUSTOMER INFORMATION LIST"
+				"font": new java.awt.Font( "Lato Black", 1, 25 )
 				"foreground": new java.awt.Color( 97, 184, 132, 255 )
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			} )
@@ -107,7 +107,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 10, 0 )
-			"size": new java.awt.Dimension( 1030, 695 )
+			"size": new java.awt.Dimension( 1235, 695 )
 		} )
 	}
 }

@@ -1,60 +1,61 @@
-JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space ::135:x, par l {seq l {par l {seq l {comp OpenTime:::p:105:p, space :40:40:p, comp Open_Hour:::p:59:p, space :11:11:p, comp Open_Minute:::p:59:p, space :11:11:p, comp Open_Second:::p:59:p}, seq l {comp CloseTime:::p:105:p, space :40:40:p, comp Close_Hour:::p:59:p, space :11:11:p, comp Close_Minute:::p:59:p, space :11:11:p, comp Close_Second:::p:59:p}, comp Description:::p::p, comp scrollPane1:::p:345:p}, par l {seq {space :60:60:p, par l {comp Poster:::p::p, comp textPoster:::p:155:p, seq l {comp pathFileText:::p:292:p, space :p:27:p, comp panel2:::p:135:p}}}, seq l {space :p:111:p, comp panel1:::p:148:p}}}, seq l {space :5:5:p, par l {seq l {comp Artist:::p::p, space :94:94:p, comp textArtist:::p:205:p, space :60:60:p, comp Quantity:::p::p, space :35:35:p, comp textQuantity:::p:205:p}, seq l {par l {comp Name::l:p::p, comp ID::l:p::p}, space :p:93:p, par l {seq {comp textName:::p:205:p, space :60:60:p, comp Date:::p::p}, seq {comp TextID:::p::p, space :p:225:p, comp Stage:::p::p}}, space :p:57:p, par l:::p {comp dateTextField::::205:x, comp stageComboBox::::205:x}}}}}, space :p:56:p}}"
-			"$verticalGroup": "par l {seq l {space :p:52:p, par l {par b {comp ID::b:p::p, comp TextID::b:p::p}, par b {comp Stage::b:p::p, comp stageComboBox::b:p::p}}, space :10:10:p, par l {comp Name:::p::p, comp textName:::p::p, comp Date:::p::p, comp dateTextField:::p::p}, space :10:10:p, par l {comp Artist:::p::p, comp textArtist:::p::p, comp Quantity:::p::p, comp textQuantity:::p::p}, space :15:15:p, par l {seq l {par l {comp OpenTime:::p:45:p, comp Open_Hour:::p:41:p, comp Open_Minute:::p:41:p, comp Open_Second:::p:41:p}, space :5:5:p, par l {comp CloseTime:::p:45:p, comp Close_Hour:::p:41:p, comp Close_Minute:::p:41:p, comp Close_Second:::p:41:p}, space :5:5:p, comp Description:::p:35:p, space :0:0:p, comp scrollPane1:::p:180:p}, seq l {comp Poster:::p::p, space :8:8:p, comp textPoster:::p:150:p, space s:::p, par l:::p {comp panel2::::40:x, comp pathFileText::::40:x}, space :p:106:p, comp panel1:::p:100:p}}, space ::49:x}}"
+			"$horizontalGroup": "par l {seq {space :p:382:p, comp label1:::p::p, space :0:402:x}, seq l {space :p:59:p, par l {comp textPoster:::p:389:p, comp panel2:::p:135:p, par l:::p {comp scrollPane1:::::x, comp Description:::p::p, seq {par l {seq l {par l {comp ID::l:p::p, comp Name::l:p::p}, space :p:28:p, par l {comp TextID::l:p:250:p, comp textName::l:p:250:p}}, seq l {par l {comp Artist:::p::p, comp Stage:::p::p}, space :p:71:p, par l:::p {comp textArtist:::::x, comp stageComboBox:::p:250:p}}}, space :p:175:p, par l:::p {seq l {comp Date:::p::p, space :p:74:p, comp dateTextField:::p:250:p}, seq l {par l {par t:l::p {comp CloseTime:::::x, comp OpenTime:::p:97:p}, comp Quantity::l:p::p}, space s:::p, par l {comp textQuantity:::::x, seq t {space :0:0:x, par l {seq t {comp Close_Hour:::p:59:p, space s:::p, comp Close_Minute:::p:59:p, space s:::p, comp Close_Second:::p:59:p}, seq t {comp Open_Hour:::p:59:p, space s:::p, comp Open_Minute:::p:59:p, space s:::p, comp Open_Second:::p:59:p}}}}}}}}}, space ::82:x}, seq t {space :30:707:x, par l {seq t {comp panel1:::p:112:p, space u:::p, comp button1:::p:112:p, space :p:22:p}, seq t {comp pathFileText:::p:292:p, space :p:51:p}}}}"
+			"$verticalGroup": "par l {seq l {space :p:20:p, comp label1:::p::p, space :p:23:p, par t {comp ID:::p::p, par b:t {comp TextID::b:p::p, comp Date::b:p::p, comp dateTextField::b:p::p}}, space :p:10:p, par l {par b:l {comp Name::b:p::p, comp textName::b:p::p, comp OpenTime::b:p::p}, par b:l {comp Open_Second::b:p:24:p, comp Open_Minute::b:p:24:p, comp Open_Hour::b:p::p}}, space u:::p, par b {comp Artist::b:p::p, comp textArtist::b:p::p, comp CloseTime::b:p::p, comp Close_Second::b:p::p, comp Close_Minute::b:p:24:p, comp Close_Hour::b:p:24:p}, space s:::p, par b {comp Stage::b:p::p, comp stageComboBox::b:p:23:p, comp Quantity::b:p::p, comp textQuantity::b:p::p}, space :p:17:p, comp Description:::p::p, par l {seq l {space s:::p, comp scrollPane1:::p:157:p, space u:::p, comp panel2:::p:30:p, space s:::p, comp textPoster:::p:161:p, space ::192:x}, seq l {space ::194:x, comp pathFileText:::p:40:p, space ::294:x, par l {comp panel1:::p:30:p, comp button1:::p::p}, space :p:30:p}}}}"
 		} ) {
 			name: "this"
+			"background": sfield java.awt.Color white
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "ID"
-				"text": "ID"
+				"text": "ID:"
 				"font": &Font0 new java.awt.Font( "Lato Black", 1, 16 )
-				"foreground": sfield java.awt.Color darkGray
+				"foreground": &Color0 new java.awt.Color( 97, 184, 132, 255 )
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "Name"
-				"text": "Name"
+				"text": "Event name:"
 				"font": #Font0
-				"foreground": sfield java.awt.Color darkGray
+				"foreground": #Color0
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "Artist"
-				"text": "Artist"
+				"text": "Artist:"
 				"font": #Font0
-				"foreground": sfield java.awt.Color darkGray
+				"foreground": #Color0
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "Stage"
-				"text": "Stage"
+				"text": "Stage:"
 				"font": #Font0
-				"foreground": sfield java.awt.Color darkGray
+				"foreground": #Color0
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "Date"
-				"text": "Date"
+				"text": "Date:"
 				"font": #Font0
-				"foreground": sfield java.awt.Color darkGray
+				"foreground": #Color0
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "OpenTime"
-				"text": "Open Time"
+				"text": "Open Time:"
 				"font": #Font0
-				"foreground": sfield java.awt.Color darkGray
+				"foreground": #Color0
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
@@ -62,62 +63,58 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JSpinner" ) {
 				name: "Open_Hour"
 				"model": new javax.swing.SpinnerNumberModel( 0, 0, 24, 1 )
+				"font": &Font1 new java.awt.Font( "Lato", 0, 16 )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "textPoster"
-				"text": "text"
-				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+				"border": new javax.swing.border.LineBorder( new java.awt.Color( 97, 184, 132, 255 ), 1, false )
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTextArea" ) {
 					name: "textDescription"
+					"font": #Font1
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textQuantity"
+				"font": #Font1
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "dateTextField"
+				"font": #Font1
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textArtist"
+				"font": #Font1
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textName"
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "Poster"
-				"text": "Poster"
-				"font": #Font0
-				"foreground": sfield java.awt.Color darkGray
-				auxiliary() {
-					"JavaCodeGenerator.variableGetter": true
-				}
+				"font": #Font1
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "Description"
-				"text": "Description"
+				"text": "Description:"
 				"font": #Font0
-				"foreground": sfield java.awt.Color darkGray
+				"foreground": #Color0
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "Quantity"
-				"text": "Quantity"
+				"text": "Quantity:"
 				"font": #Font0
-				"foreground": sfield java.awt.Color darkGray
+				"foreground": #Color0
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "CloseTime"
-				"text": "Close Time"
+				"text": "Close Time:"
 				"font": #Font0
-				"foreground": sfield java.awt.Color darkGray
+				"foreground": #Color0
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
@@ -125,55 +122,85 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JSpinner" ) {
 				name: "Close_Hour"
 				"model": new javax.swing.SpinnerNumberModel( 0, 0, 24, 1 )
+				"font": #Font1
 			} )
 			add( new FormComponent( "javax.swing.JSpinner" ) {
 				name: "Close_Minute"
 				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+				"font": #Font1
 			} )
 			add( new FormComponent( "javax.swing.JSpinner" ) {
 				name: "Close_Second"
 				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+				"font": #Font1
 			} )
 			add( new FormComponent( "javax.swing.JSpinner" ) {
 				name: "Open_Second"
 				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+				"font": #Font1
 			} )
 			add( new FormComponent( "javax.swing.JSpinner" ) {
 				name: "Open_Minute"
 				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+				"font": #Font1
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "pathFileText"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 				name: "panel1"
+				"background": new java.awt.Color( 97, 184, 132, 255 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "addBtn"
-					"text": "text"
+					"text": "SAVE"
+					"font": new java.awt.Font( "Lato Black", 1, 16 )
+					"horizontalAlignment": 0
+					"foreground": sfield java.awt.Color white
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "addBtnMouseClicked", true ) )
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 				name: "panel2"
+				"background": new java.awt.Color( 97, 184, 132, 255 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "uploadBtn"
-					"text": "text"
+					"text": "UPLOAD POSTER"
+					"font": new java.awt.Font( "Lato Black", 1, 14 )
+					"horizontalAlignment": 0
+					"foreground": sfield java.awt.Color white
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "uploadBtnMouseClicked", true ) )
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
 				name: "stageComboBox"
+				"font": #Font1
+				"background": new java.awt.Color( 255, 255, 255, 255 )
 				auxiliary() {
 					"JavaCodeGenerator.variableModifiers": 10
 				}
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "EVENT INFORMATION"
+				"font": new java.awt.Font( "Lato Black", 1, 25 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextID"
-				"text": "text"
+				"background": new java.awt.Color( 146, 207, 170, 255 )
+				"font": #Font1
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "CANCEL"
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": sfield java.awt.Color white
+				"background": new java.awt.Color( 97, 184, 132, 255 )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1050, 670 )
+			"size": new java.awt.Dimension( 1050, 835 )
 		} )
 	}
 }

@@ -364,7 +364,7 @@ public class HomePanel extends JPanel {
     }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Man
+        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         mainScrollPanel = new JScrollPane();
         panel2 = new JPanel();
         mainLabel = new JLabel();
@@ -408,12 +408,12 @@ public class HomePanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
-        border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER
-        ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font
-        .BOLD,12),java.awt.Color.red), getBorder())); addPropertyChangeListener(
-        new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r"
-        .equals(e.getPropertyName()))throw new RuntimeException();}});
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
+        ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
+        .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+        . Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
+        propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+        ;} } );
 
         //======== mainScrollPanel ========
         {
@@ -424,9 +424,10 @@ public class HomePanel extends JPanel {
                 panel2.setBackground(Color.white);
 
                 //---- mainLabel ----
-                mainLabel.setText("Let Make Live Happen");
+                mainLabel.setText("LET ME LIVE HAPPEN");
                 mainLabel.setFont(new Font("Lato Black", Font.BOLD, 30));
                 mainLabel.setForeground(new Color(0x61b884));
+                mainLabel.setBackground(Color.white);
 
                 //---- mainLivePicture ----
                 mainLivePicture.setBorder(null);
@@ -565,6 +566,7 @@ public class HomePanel extends JPanel {
 
                 //---- slideDot1 ----
                 slideDot1.setBackground(Color.white);
+                slideDot1.setForeground(new Color(0x61b884));
                 slideDot1.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -574,6 +576,7 @@ public class HomePanel extends JPanel {
 
                 //---- slideDot2 ----
                 slideDot2.setBackground(Color.white);
+                slideDot2.setForeground(new Color(0x61b884));
                 slideDot2.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -583,6 +586,7 @@ public class HomePanel extends JPanel {
 
                 //---- slideDot3 ----
                 slideDot3.setBackground(Color.white);
+                slideDot3.setForeground(new Color(0x61b884));
                 slideDot3.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -592,6 +596,7 @@ public class HomePanel extends JPanel {
 
                 //---- slideDot4 ----
                 slideDot4.setBackground(Color.white);
+                slideDot4.setForeground(new Color(0x61b884));
                 slideDot4.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -601,6 +606,7 @@ public class HomePanel extends JPanel {
 
                 //---- slideDot5 ----
                 slideDot5.setBackground(Color.white);
+                slideDot5.setForeground(new Color(0x61b884));
                 slideDot5.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -610,6 +616,7 @@ public class HomePanel extends JPanel {
 
                 //---- slideDot6 ----
                 slideDot6.setBackground(Color.white);
+                slideDot6.setForeground(new Color(0x61b884));
                 slideDot6.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -624,7 +631,7 @@ public class HomePanel extends JPanel {
                         .addGroup(panel2Layout.createSequentialGroup()
                             .addGap(434, 434, 434)
                             .addComponent(mainLabel)
-                            .addGap(0, 899, Short.MAX_VALUE))
+                            .addGap(0, 917, Short.MAX_VALUE))
                         .addGroup(panel2Layout.createSequentialGroup()
                             .addGap(73, 73, 73)
                             .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
@@ -822,7 +829,7 @@ public class HomePanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Man
+    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     private JScrollPane mainScrollPanel;
     private JPanel panel2;
     private JLabel mainLabel;

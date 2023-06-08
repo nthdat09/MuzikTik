@@ -1,17 +1,17 @@
-JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {par l {seq {space :p:14:p, par l {seq l {comp TypeStatistic:::p::p, space :36:36:p, comp Statistic:::p:386:p}, seq l {comp Day:::p::p, space :12:12:p, comp textDay:::p:125:p, space :12:12:p, comp Month:::p::p, space :18:18:p, comp textMonth:::p:125:p, space :18:18:p, comp Year:::p::p, space :18:18:p, comp textYear:::p:125:p}}, space :p:88:p, par l {comp panel1:::p:103:p, comp textEvent:::p:308:p}}, seq l {space :p:133:p, comp chartView:::p:733:p}}, space ::56:x}}"
-			"$verticalGroup": "par l {seq {par l {seq {space :::x, comp panel1:::p:32:p, space s:::p, comp textEvent:::p::p, space :p:52:p}, seq l {space :::p, par l {seq l {space :10:10:p, comp TypeStatistic:::p::p}, comp Statistic:::p::p}, space :18:18:p, par l {comp textDay:::p::p, comp textMonth:::p::p, comp textYear:::p::p, seq l {space :1:1:p, par l {comp Day:::p::p, comp Month:::p::p, comp Year:::p::p}}}, space :::x}}, comp chartView:::p:425:p, space :p:102:p}}"
+			"$horizontalGroup": "par l {seq {space ::45:x, par l {seq t {par t {comp chartView:::p:1077:p, comp panel1::t:p:103:p, seq t {par t {seq t {comp TypeStatistic:::p::p, space :p:30:p, comp Statistic:::p:421:p}, seq t {comp Day:::p::p, space :::p, comp textDay:::p:125:p, space s:::p, comp Month:::p::p, space s:::p, comp textMonth:::p:125:p, space s:::p, comp Year:::p::p, space s:::p, comp textYear:::p:125:p}}, space :p:18:p, comp label2:::p::p, space s:::p, comp textEvent:::p:400:p}}, space :p:43:p}, seq t {comp title:::p::p, space :p:413:p}}}}"
+			"$verticalGroup": "par l {seq l {space :p:20:p, comp title:::p::p, space ::33:x, par b {comp TypeStatistic::b:p::p, comp Statistic::b:p::p}, space :p:11:p, par b {comp textEvent::b:p::p, comp label2::b:p::p, comp textYear::b:p::p, comp Year::b:p::p, comp Month::b:p::p, comp Day::b:p::p, comp textDay::b:p::p, comp textMonth::b:p::p}, space :p:17:p, comp panel1:::p:32:p, space :p:29:p, comp chartView:::p:441:p, space :p:58:p}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
 				name: "Statistic"
-				"font": &Font0 new java.awt.Font( "Lato Black", 1, 16 )
+				"font": new java.awt.Font( "Lato", 0, 16 )
 				"model": new javax.swing.DefaultComboBoxModel {
 					selectedItem: "Monthly Ticket Revenue"
 					addElement( "Monthly Ticket Revenue" )
@@ -29,32 +29,36 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "TypeStatistic"
-				"text": "Types of Statistics"
-				"font": #Font0
+				"text": "Types of Statistics:"
+				"font": &Font0 new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": &Color1 new java.awt.Color( 97, 184, 132, 255 )
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "Day"
-				"text": "Day"
+				"text": "Day:"
 				"font": #Font0
+				"foreground": #Color1
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "Month"
-				"text": "Month"
+				"text": "Month:"
 				"font": #Font0
+				"foreground": #Color1
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "Year"
-				"text": "Year"
+				"text": "Year:"
 				"font": #Font0
+				"foreground": #Color1
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
@@ -62,35 +66,57 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textDay"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
+				"font": &Font1 new java.awt.Font( "Lato", 0, 16 )
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textMonth"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
+				"font": #Font1
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textYear"
 				"background": #Color0
+				"font": #Font1
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 				name: "panel1"
+				"background": new java.awt.Color( 97, 184, 132, 255 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
-					"text": "text"
+					"text": "ENTER"
+					"font": new java.awt.Font( "Lato Black", 1, 16 )
+					"foreground": sfield java.awt.Color white
+					"background": new java.awt.Color( 255, 255, 255, 255 )
+					"horizontalAlignment": 0
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "label1MouseClicked", true ) )
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 				name: "chartView"
-				"border": new javax.swing.border.TitledBorder( "Chart View" )
+				"border": new javax.swing.border.TitledBorder( "" )
 				"background": new java.awt.Color( 255, 255, 255, 255 )
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textEvent"
 				"background": #Color0
+				"font": #Font1
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "title"
+				"text": "STATISTIC AND ANALYSIS"
+				"font": new java.awt.Font( "Lato Black", 0, 25 )
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Event:"
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": #Color1
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1030, 665 )
+			"size": new java.awt.Dimension( 1165, 725 )
 		} )
 	}
 }

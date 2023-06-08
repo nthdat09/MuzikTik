@@ -1,5 +1,6 @@
 package View.CustomersListPage;
 
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.*;
@@ -42,9 +43,13 @@ public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
         return ConfirmJDialog;
     }
 
+    public JLabel getConfirmText() {
+        return ConfirmText;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         ConfirmJDialog = new JDialog();
         ConfirmText = new JLabel();
         YesButton = new JButton();
@@ -53,43 +58,51 @@ public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
         //======== ConfirmJDialog ========
         {
             ConfirmJDialog.setVisible(true);
+            ConfirmJDialog.setBackground(Color.white);
+            ConfirmJDialog.setForeground(SystemColor.text);
             var ConfirmJDialogContentPane = ConfirmJDialog.getContentPane();
 
             //---- ConfirmText ----
             ConfirmText.setText("ARE YOU SURE TO DELETE THIS CUSTOMER?");
+            ConfirmText.setFont(new Font("Lato Black", Font.PLAIN, 16));
+            ConfirmText.setHorizontalAlignment(SwingConstants.CENTER);
 
             //---- YesButton ----
             YesButton.setText("YES");
+            YesButton.setFont(new Font("Lato Black", Font.BOLD, 13));
+            YesButton.setBackground(new Color(0x61b884));
+            YesButton.setForeground(Color.white);
+            YesButton.setBorderPainted(false);
 
             //---- NoButton ----
             NoButton.setText("NO");
+            NoButton.setFont(new Font("Lato Black", Font.BOLD, 13));
+            NoButton.setForeground(Color.white);
+            NoButton.setBackground(new Color(0xd45c5c));
+            NoButton.setBorderPainted(false);
 
             GroupLayout ConfirmJDialogContentPaneLayout = new GroupLayout(ConfirmJDialogContentPane);
             ConfirmJDialogContentPane.setLayout(ConfirmJDialogContentPaneLayout);
             ConfirmJDialogContentPaneLayout.setHorizontalGroup(
                 ConfirmJDialogContentPaneLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                        .addContainerGap(100, Short.MAX_VALUE)
-                        .addGroup(ConfirmJDialogContentPaneLayout.createParallelGroup()
-                            .addGroup(GroupLayout.Alignment.TRAILING, ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                                .addComponent(YesButton)
-                                .addGap(46, 46, 46)
-                                .addComponent(NoButton)
-                                .addGap(145, 145, 145))
-                            .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                                .addComponent(ConfirmText, GroupLayout.PREFERRED_SIZE, 305, GroupLayout.PREFERRED_SIZE)
-                                .addGap(93, 93, 93))))
+                    .addComponent(ConfirmText, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                    .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(YesButton, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(NoButton, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(91, Short.MAX_VALUE))
             );
             ConfirmJDialogContentPaneLayout.setVerticalGroup(
                 ConfirmJDialogContentPaneLayout.createParallelGroup()
                     .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                        .addGap(91, 91, 91)
+                        .addContainerGap(50, Short.MAX_VALUE)
                         .addComponent(ConfirmText, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(ConfirmJDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(YesButton)
                             .addComponent(NoButton))
-                        .addGap(98, 98, 98))
+                        .addGap(68, 68, 68))
             );
             ConfirmJDialog.pack();
             ConfirmJDialog.setLocationRelativeTo(ConfirmJDialog.getOwner());
@@ -98,7 +111,7 @@ public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     private JDialog ConfirmJDialog;
     private JLabel ConfirmText;
     private JButton YesButton;

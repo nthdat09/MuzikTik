@@ -4,7 +4,6 @@
 
 package View.AnalyticPage;
 
-import javax.swing.border.*;
 import Model.Database.UserDatabase;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -12,13 +11,16 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.data.category.DefaultCategoryDataset;
 
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.*;
 
 /**
  * @author mangg
@@ -28,8 +30,8 @@ public class AnalyticPage extends JPanel {
         initComponents();
         textDay.setEnabled(false);
         textEvent.setEnabled(false);
-        textDay.setBackground(Color.decode("#999999"));
-        textEvent.setBackground(Color.decode("#999999"));
+        textDay.setBackground(Color.decode("#92CFAA"));
+        textEvent.setBackground(Color.decode("#92CFAA"));
     }
     private void label1MouseClicked(MouseEvent e) {
         String selectedRevenue = Statistic.getSelectedItem().toString();
@@ -59,9 +61,9 @@ public class AnalyticPage extends JPanel {
                     throw new RuntimeException(ex);
                 }
 
-                JFreeChart chart = ChartFactory.createBarChart("Revenue", "Type", "Revenue", dataset);
+                JFreeChart chart = ChartFactory.createBarChart("Monthly Ticket Revenue", "Type", "Revenue", dataset);
                 CategoryPlot categoryPlot = chart.getCategoryPlot();
-                categoryPlot.setRangeGridlinePaint(Color.black);
+                categoryPlot.setRangeGridlinePaint(Color.decode("#61B884"));
 
                 ChartPanel chartPanel = new ChartPanel(chart);
                 chartView.removeAll();
@@ -94,9 +96,9 @@ public class AnalyticPage extends JPanel {
                     throw new RuntimeException(ex);
                 }
 
-                JFreeChart chart3 = ChartFactory.createBarChart("Revenue", "Type", "Revenue", dataset3);
+                JFreeChart chart3 = ChartFactory.createBarChart("Annual Ticket Revenue", "Type", "Revenue", dataset3);
                 CategoryPlot categoryPlot3 = chart3.getCategoryPlot();
-                categoryPlot3.setRangeGridlinePaint(Color.black);
+                categoryPlot3.setRangeGridlinePaint(Color.decode("#61B884"));
 
                 ChartPanel chartPanel3 = new ChartPanel(chart3);
                 chartView.removeAll();
@@ -106,7 +108,7 @@ public class AnalyticPage extends JPanel {
             case "Event-based Ticket Revenue":
                 String event = textEvent.getText();
                 DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();
-                String sqlEventTicket = "SELECT EVT_NAME, SUM(TKT_PRICE) * COUNT(*) AS TOTAL_REVENUE\n" +
+                String sqlEventTicket = "SELECT EVT_NAME, SUM(TKT_PRICE) AS TOTAL_REVENUE\n" +
                         "FROM EVENT\n" +
                         "JOIN TICKET ON EVENT.EVT_ID = TICKET.TKT_EVT_ID\n" +
                         "JOIN TICKET_BOOKING ON TICKET.TKT_ID = TICKET_BOOKING.TBK_TKT_ID\n" +
@@ -123,9 +125,9 @@ public class AnalyticPage extends JPanel {
                     throw new RuntimeException(ex);
                 }
 
-                JFreeChart chart2 = ChartFactory.createBarChart("Revenue", "Type", "Revenue", dataset2);
+                JFreeChart chart2 = ChartFactory.createBarChart("Event-based Ticket Revenue", "Type", "Revenue", dataset2);
                 CategoryPlot categoryPlot2 = chart2.getCategoryPlot();
-                categoryPlot2.setRangeGridlinePaint(Color.black);
+                categoryPlot2.setRangeGridlinePaint(Color.decode("#61B884"));
 
                 ChartPanel chartPanel2 = new ChartPanel(chart2);
                 chartView.removeAll();
@@ -161,9 +163,9 @@ public class AnalyticPage extends JPanel {
                     throw new RuntimeException(ex);
                 }
 
-                JFreeChart chart4 = ChartFactory.createBarChart("Revenue", "Type", "Revenue", dataset4);
+                JFreeChart chart4 = ChartFactory.createBarChart("Daily Ticket Sales Statistics", "Type", "Ticket", dataset4);
                 CategoryPlot categoryPlot4 = chart4.getCategoryPlot();
-                categoryPlot4.setRangeGridlinePaint(Color.black);
+                categoryPlot4.setRangeGridlinePaint(Color.decode("#61B884"));
 
                 ChartPanel chartPanel4 = new ChartPanel(chart4);
                 chartView.removeAll();
@@ -198,9 +200,9 @@ public class AnalyticPage extends JPanel {
                     throw new RuntimeException(ex);
                 }
 
-                JFreeChart chart5 = ChartFactory.createBarChart("Revenue", "Type", "Revenue", dataset5);
+                JFreeChart chart5 = ChartFactory.createBarChart("Monthly Ticket Sales Statistics", "Type", "Ticket", dataset5);
                 CategoryPlot categoryPlot5 = chart5.getCategoryPlot();
-                categoryPlot5.setRangeGridlinePaint(Color.black);
+                categoryPlot5.setRangeGridlinePaint(Color.decode("#61B884"));
 
                 ChartPanel chartPanel5 = new ChartPanel(chart5);
                 chartView.removeAll();
@@ -227,9 +229,9 @@ public class AnalyticPage extends JPanel {
                     throw new RuntimeException(ex);
                 }
 
-                JFreeChart chart1 = ChartFactory.createBarChart("Revenue", "Type", "Revenue", dataset1);
+                JFreeChart chart1 = ChartFactory.createBarChart("Annual Ticket Sales Statistics", "Type", "Ticket", dataset1);
                 CategoryPlot categoryPlot1 = chart1.getCategoryPlot();
-                categoryPlot1.setRangeGridlinePaint(Color.black);
+                categoryPlot1.setRangeGridlinePaint(Color.decode("#61B884"));
 
                 ChartPanel chartPanel1 = new ChartPanel(chart1);
                 chartView.removeAll();
@@ -265,8 +267,8 @@ public class AnalyticPage extends JPanel {
             textMonth.setEnabled(true);
             textYear.setEnabled(true);
             textEvent.setEnabled(false);
-            textDay.setBackground(Color.decode("#999999"));
-            textEvent.setBackground(Color.decode("#999999"));
+            textDay.setBackground(Color.decode("#92CFAA"));
+            textEvent.setBackground(Color.decode("#92CFAA"));
             textMonth.setBackground(Color.white);
             textYear.setBackground(Color.white);
         } else if (Statistic.getSelectedItem().toString() == "Annual Ticket Revenue") {
@@ -274,25 +276,25 @@ public class AnalyticPage extends JPanel {
             textMonth.setEnabled(false);
             textYear.setEnabled(true);
             textEvent.setEnabled(false);
-            textDay.setBackground(Color.decode("#999999"));
-            textMonth.setBackground(Color.decode("#999999"));
-            textEvent.setBackground(Color.decode("#999999"));
+            textDay.setBackground(Color.decode("#92CFAA"));
+            textMonth.setBackground(Color.decode("#92CFAA"));
+            textEvent.setBackground(Color.decode("#92CFAA"));
             textYear.setBackground(Color.white);
         } else if (Statistic.getSelectedItem().toString() == "Event-based Ticket Revenue") {
             textDay.setEnabled(false);
             textMonth.setEnabled(false);
             textYear.setEnabled(false);
             textEvent.setEnabled(true);
-            textDay.setBackground(Color.decode("#999999"));
-            textMonth.setBackground(Color.decode("#999999"));
-            textYear.setBackground(Color.decode("#999999"));
+            textDay.setBackground(Color.decode("#92CFAA"));
+            textMonth.setBackground(Color.decode("#92CFAA"));
+            textYear.setBackground(Color.decode("#92CFAA"));
             textEvent.setBackground(Color.white);
         } else if (Statistic.getSelectedItem().toString() == "Daily Ticket Sales Statistics") {
             textDay.setEnabled(true);
             textMonth.setEnabled(true);
             textYear.setEnabled(true);
             textEvent.setEnabled(false);
-            textEvent.setBackground(Color.decode("#999999"));
+            textEvent.setBackground(Color.decode("#92CFAA"));
             textDay.setBackground(Color.white);
             textMonth.setBackground(Color.white);
             textYear.setBackground(Color.white);
@@ -301,8 +303,8 @@ public class AnalyticPage extends JPanel {
             textMonth.setEnabled(true);
             textYear.setEnabled(true);
             textEvent.setEnabled(false);
-            textDay.setBackground(Color.decode("#999999"));
-            textEvent.setBackground(Color.decode("#999999"));
+            textDay.setBackground(Color.decode("#92CFAA"));
+            textEvent.setBackground(Color.decode("#92CFAA"));
             textMonth.setBackground(Color.white);
             textYear.setBackground(Color.white);
         } else if (Statistic.getSelectedItem().toString() == "Annual Ticket Sales Statistics") {
@@ -310,16 +312,16 @@ public class AnalyticPage extends JPanel {
             textMonth.setEnabled(false);
             textYear.setEnabled(true);
             textEvent.setEnabled(false);
-            textDay.setBackground(Color.decode("#999999"));
-            textMonth.setBackground(Color.decode("#999999"));
-            textEvent.setBackground(Color.decode("#999999"));
+            textDay.setBackground(Color.decode("#92CFAA"));
+            textMonth.setBackground(Color.decode("#92CFAA"));
+            textEvent.setBackground(Color.decode("#92CFAA"));
             textYear.setBackground(Color.white);
         }
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Man
+        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         Statistic = new JComboBox<>();
         TypeStatistic = new JLabel();
         Day = new JLabel();
@@ -332,18 +334,21 @@ public class AnalyticPage extends JPanel {
         label1 = new JLabel();
         chartView = new JPanel();
         textEvent = new JTextField();
+        title = new JLabel();
+        label2 = new JLabel();
 
         //======== this ========
         setBackground(Color.white);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
-        EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing
-        . border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,
-        java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
-        { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )
-        throw new RuntimeException( ) ;} } );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
+        javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax
+        . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
+        . awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+        . Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .
+        PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .
+        equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
         //---- Statistic ----
-        Statistic.setFont(new Font("Lato Black", Font.BOLD, 16));
+        Statistic.setFont(new Font("Lato", Font.PLAIN, 16));
         Statistic.setModel(new DefaultComboBoxModel<>(new String[] {
             "Monthly Ticket Revenue",
             "Annual Ticket Revenue",
@@ -356,36 +361,48 @@ public class AnalyticPage extends JPanel {
         Statistic.addItemListener(e -> StatisticItemStateChanged(e));
 
         //---- TypeStatistic ----
-        TypeStatistic.setText("Types of Statistics");
+        TypeStatistic.setText("Types of Statistics:");
         TypeStatistic.setFont(new Font("Lato Black", Font.BOLD, 16));
+        TypeStatistic.setForeground(new Color(0x61b884));
 
         //---- Day ----
-        Day.setText("Day");
+        Day.setText("Day:");
         Day.setFont(new Font("Lato Black", Font.BOLD, 16));
+        Day.setForeground(new Color(0x61b884));
 
         //---- Month ----
-        Month.setText("Month");
+        Month.setText("Month:");
         Month.setFont(new Font("Lato Black", Font.BOLD, 16));
+        Month.setForeground(new Color(0x61b884));
 
         //---- Year ----
-        Year.setText("Year");
+        Year.setText("Year:");
         Year.setFont(new Font("Lato Black", Font.BOLD, 16));
+        Year.setForeground(new Color(0x61b884));
 
         //---- textDay ----
         textDay.setBackground(Color.white);
+        textDay.setFont(new Font("Lato", Font.PLAIN, 16));
 
         //---- textMonth ----
         textMonth.setBackground(Color.white);
+        textMonth.setFont(new Font("Lato", Font.PLAIN, 16));
 
         //---- textYear ----
         textYear.setBackground(Color.white);
+        textYear.setFont(new Font("Lato", Font.PLAIN, 16));
 
         //======== panel1 ========
         {
+            panel1.setBackground(new Color(0x61b884));
             panel1.setLayout(new GridLayout());
 
             //---- label1 ----
-            label1.setText("text");
+            label1.setText("ENTER");
+            label1.setFont(new Font("Lato Black", Font.BOLD, 16));
+            label1.setForeground(Color.white);
+            label1.setBackground(Color.white);
+            label1.setHorizontalAlignment(SwingConstants.CENTER);
             label1.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -397,85 +414,94 @@ public class AnalyticPage extends JPanel {
 
         //======== chartView ========
         {
-            chartView.setBorder(new TitledBorder("Chart View"));
+            chartView.setBorder(new TitledBorder(""));
             chartView.setBackground(Color.white);
             chartView.setLayout(new GridLayout());
         }
 
         //---- textEvent ----
         textEvent.setBackground(Color.white);
+        textEvent.setFont(new Font("Lato", Font.PLAIN, 16));
+
+        //---- title ----
+        title.setText("STATISTIC AND ANALYSIS");
+        title.setFont(new Font("Lato Black", Font.PLAIN, 25));
+        title.setBackground(Color.white);
+        title.setForeground(new Color(0x61b884));
+
+        //---- label2 ----
+        label2.setText("Event:");
+        label2.setFont(new Font("Lato Black", Font.BOLD, 16));
+        label2.setForeground(new Color(0x61b884));
 
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
+                    .addContainerGap(45, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup()
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(14, 14, 14)
-                            .addGroup(layout.createParallelGroup()
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(TypeStatistic)
-                                    .addGap(36, 36, 36)
-                                    .addComponent(Statistic, GroupLayout.PREFERRED_SIZE, 386, GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(Day)
-                                    .addGap(12, 12, 12)
-                                    .addComponent(textDay, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(12, 12, 12)
-                                    .addComponent(Month)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(textMonth, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(Year)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(textYear, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)))
-                            .addGap(88, 88, 88)
-                            .addGroup(layout.createParallelGroup()
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                .addComponent(chartView, GroupLayout.PREFERRED_SIZE, 1077, GroupLayout.PREFERRED_SIZE)
                                 .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(textEvent, GroupLayout.PREFERRED_SIZE, 308, GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(133, 133, 133)
-                            .addComponent(chartView, GroupLayout.PREFERRED_SIZE, 733, GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(56, Short.MAX_VALUE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(TypeStatistic)
+                                            .addGap(30, 30, 30)
+                                            .addComponent(Statistic, GroupLayout.PREFERRED_SIZE, 421, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(Day)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(textDay, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(Month)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(textMonth, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(Year)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(textYear, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(label2)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(textEvent, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE)))
+                            .addGap(43, 43, 43))
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(title)
+                            .addGap(413, 413, 413))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addGroup(layout.createParallelGroup()
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(textEvent, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addGap(52, 52, 52))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup()
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(TypeStatistic))
-                                .addComponent(Statistic, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup()
-                                .addComponent(textDay, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(textMonth, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(textYear, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(1, 1, 1)
-                                    .addGroup(layout.createParallelGroup()
-                                        .addComponent(Day)
-                                        .addComponent(Month)
-                                        .addComponent(Year))))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(chartView, GroupLayout.PREFERRED_SIZE, 425, GroupLayout.PREFERRED_SIZE)
-                    .addGap(102, 102, 102))
+                    .addGap(20, 20, 20)
+                    .addComponent(title)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(TypeStatistic)
+                        .addComponent(Statistic, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(11, 11, 11)
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(textEvent, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(label2)
+                        .addComponent(textYear, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Year)
+                        .addComponent(Month)
+                        .addComponent(Day)
+                        .addComponent(textDay, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textMonth, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(17, 17, 17)
+                    .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+                    .addGap(29, 29, 29)
+                    .addComponent(chartView, GroupLayout.PREFERRED_SIZE, 441, GroupLayout.PREFERRED_SIZE)
+                    .addGap(58, 58, 58))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Man
+    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     private JComboBox<String> Statistic;
     private JLabel TypeStatistic;
     private JLabel Day;
@@ -488,5 +514,7 @@ public class AnalyticPage extends JPanel {
     private JLabel label1;
     private JPanel chartView;
     private JTextField textEvent;
+    private JLabel title;
+    private JLabel label2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
