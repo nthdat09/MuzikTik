@@ -2,8 +2,11 @@ package Model.DAO.Event.EventInformation;
 
 import Model.BEAN.EventArtID;
 import Model.Database.UserDatabase;
+import View.EventPage.EventPanel;
 import View.Home.HomePanel;
 
+import javax.swing.*;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,13 +21,14 @@ public class GetArt {
         EventArtID eventArtID = null;
         try {
             Connection con = UserDatabase.getConnection();
-            String sql = "Select * from mctmsys.eventtest where EVT_ID = '" + selectedEventID + "'";
+            String sql = "Select * from mctmsys.event where EVT_ID = '" + selectedEventID + "'";
             PreparedStatement st = con.prepareCall(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
-                String artID = rs.getString("eventPicture");
-                eventArtID = new EventArtID(artID);
-                result.add(eventArtID);
+                Blob artID = rs.getBlob("EVT_PHOTO");
+                byte[] eventPictureByte = artID.getBytes(1, (int) artID.length());
+                ImageIcon eventPicture = new ImageIcon(eventPictureByte);
+                EventPanel.getEventArt().setIcon(eventPicture);
             }
             st.close();
             rs.close();
