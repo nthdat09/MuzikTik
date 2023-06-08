@@ -1,66 +1,15 @@
-JFDML JFormDesigner: "8.0.3.0.246" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space ::446:x, comp label1:::p:147:p, space :p:432:p}, seq l {space :::p, par l {seq t {comp evetntPicture1:::p:260:p, space ::132:x, comp evetntPicture2:::p:260:p, space :p:96:p, comp evetntPicture3:::p:265:p}, seq l {space :p:63:p, comp eventName1:::p::p, par l {seq l {space :p:279:p, comp eventName2:::p::p, space ::265:x, comp eventName3:::p::p, space :p:70:p}, seq l {space :679:679:p, comp eventDate3:::p::p, space :p:108:p}}}}, space :::p}, seq {par l {seq {space :p:101:p, comp eventDate1:::p::p, space :p:356:p, comp eventDate2:::p::p, space :0:0:x}, seq l {space :::p, comp jtfSearch:::p:210:p, space :6:6:p, comp jlbSearch:::p:111:p, space ::404:x, comp jlbAdd:::p:90:p, space :6:6:p, comp jlbEdit:::p:90:p, space :6:6:p, comp jlbDelete:::p::p}}, space :::p}}"
-			"$verticalGroup": "par l {seq l {space :p:27:p, comp label1:::p:46:p, space :p:2:p, par l {comp jtfSearch:::p::p, seq l {space :2:2:p, par l {comp jlbSearch:::p:26:p, comp jlbAdd:::p:26:p, comp jlbEdit:::p:26:p, comp jlbDelete:::p:26:p}}}, space s:::p, par b {comp evetntPicture1::b:p:153:p, comp evetntPicture3::b:p:153:p, comp evetntPicture2::b:p:153:p}, space u:::p, par b {comp eventName1::b:p::p, comp eventName2::b:p::p, comp eventName3::b:p::p}, space :::p, comp eventDate3:::p::p, space :::p, par b {comp eventDate1::b:p::p, comp eventDate2::b:p::p}, space ::156:x}}"
+			"$horizontalGroup": "par l {seq {space :::p, par l {seq {comp jtfSearch:::p:210:p, space :6:6:p, comp jlbSearch:::p:111:p, space ::654:x, comp jlbAdd:::p:90:p, space :6:6:p, comp jlbEdit:::p:90:p, space :6:6:p, comp jlbDelete:::p::p, space :::p}, seq t {space :0:696:x, comp label1:::p:147:p, space :p:432:p}}}, seq t {space ::164:x, comp scrollPane1:::p:1021:p, space :p:96:p}}"
+			"$verticalGroup": "par l {seq l {space :p:27:p, comp label1:::p:46:p, space :p:2:p, par l {comp jtfSearch:::p::p, seq l {space :2:2:p, par l {comp jlbSearch:::p:26:p, comp jlbAdd:::p:26:p, comp jlbEdit:::p:26:p, comp jlbDelete:::p:26:p}}}, space :p:31:p, comp scrollPane1:::p:494:p, space ::24:x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
 			"foreground": sfield java.awt.Color white
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "evetntPicture1"
-				"text": "text"
-				"border": &LineBorder0 new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "eventName1"
-				"text": "Event Name"
-				"font": new java.awt.Font( "Lato Black", 1, 20 )
-				"foreground": new java.awt.Color( 97, 184, 132, 255 )
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "eventDate1"
-				"text": "Date"
-				"font": new java.awt.Font( "Lato", 0, 18 )
-				"foreground": new java.awt.Color( 97, 184, 132, 255 )
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "evetntPicture2"
-				"text": "text"
-				"border": #LineBorder0
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "eventName2"
-				"text": "Event Name"
-				"font": new java.awt.Font( "Lato Black", 1, 20 )
-				"foreground": new java.awt.Color( 97, 184, 132, 255 )
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "eventDate2"
-				"text": "Date"
-				"font": new java.awt.Font( "Lato", 0, 18 )
-				"foreground": new java.awt.Color( 97, 184, 132, 255 )
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "evetntPicture3"
-				"text": "text"
-				"border": #LineBorder0
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "eventName3"
-				"text": "Event Name"
-				"font": new java.awt.Font( "Lato Black", 1, 20 )
-				"foreground": new java.awt.Color( 97, 184, 132, 255 )
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "eventDate3"
-				"text": "Date"
-				"font": new java.awt.Font( "Lato", 0, 18 )
-				"foreground": new java.awt.Color( 97, 184, 132, 255 )
-			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
 				"text": "EVENT"
@@ -81,6 +30,7 @@ new FormModel {
 				"font": &Font0 new java.awt.Font( "Lato Black", 1, 16 )
 				"foreground": &Color0 new java.awt.Color( 255, 255, 255, 255 )
 				"background": &Color1 new java.awt.Color( 97, 184, 132, 255 )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jlbDeleteMouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jlbEdit"
@@ -88,6 +38,7 @@ new FormModel {
 				"font": #Font0
 				"foreground": #Color0
 				"background": #Color1
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jlbEditMouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jlbAdd"
@@ -95,6 +46,7 @@ new FormModel {
 				"font": #Font0
 				"foreground": #Color0
 				"background": #Color1
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jlbAddMouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jlbSearch"
@@ -102,6 +54,53 @@ new FormModel {
 				"font": #Font0
 				"foreground": #Color0
 				"background": #Color1
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "eventListTable"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+						add( "Event ID" )
+						add( "Event Name" )
+						add( "Event Artist" )
+						add( "Event Stage ID" )
+						add( "Event Open Time" )
+						add( "Event CloseTime" )
+						add( "Event Date" )
+						add( "Event Quantity" )
+						add( "EventDescription" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 55, 5 )

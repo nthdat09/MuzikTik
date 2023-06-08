@@ -15,6 +15,7 @@ import Model.Database.UserDatabase;
 import View.CustomersListPage.InformationCustomerForm;
 import View.Home.HomePanel;
 import View.MainPage.MainPage;
+import com.mysql.cj.jdbc.Blob;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -27,6 +28,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -426,6 +429,59 @@ public class EventPanel extends JPanel {
         return phoneNumberText;
     }
 
+    private void button1MouseClicked(MouseEvent e) {
+        MainPage.changeView(new EventInfor(), MainPage.getJlbEvent(), "EventInfor");
+        EventInfor.getTextID().setText(Integer.toString(HomePanel.getSelectedEventID()));
+        EventInfor.getTextName().setText(HomePanel.getSelectedEvent());
+        EventInfor.getStageComboBox().setSelectedItem(HomePanel.getSelectedStage());
+        String desCriptionText = DescriptionText.getText();
+        desCriptionText = desCriptionText.replace("<HTML>", "");
+        desCriptionText = desCriptionText.replace("</HTML>", "");
+        EventInfor.getTextDescription().setText(desCriptionText);
+        String[] date = EventTime.getText().split("/");
+
+        EventInfor.getDateTextField().setText(date[2] + "-" + date[1] + "-" + date[0]);
+        EventInfor.getTextPoster().setIcon(EventArt.getIcon());
+        Connection con = UserDatabase.getConnection();
+        String sql = "SELECT * FROM event WHERE EVT_ID = '" + HomePanel.getSelectedEventID() + "'";
+    try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                EventInfor.getTextQuantity().setText(rs.getString("EVT_QUANTITY"));
+                EventInfor.getTextArtist().setText(rs.getString("EVT_ARTIST"));
+                String openTime = rs.getTime("EVT_OPEN_TIME").toString();
+                String[] openTimeSplit = openTime.split(":");
+                EventInfor.getOpen_Hour().setModel(new SpinnerNumberModel(Integer.parseInt(openTimeSplit[0]), 0, 24, 1));
+                EventInfor.getOpen_Minute().setModel(new SpinnerNumberModel(Integer.parseInt(openTimeSplit[1]), 0, 60, 1));
+                EventInfor.getOpen_Second().setModel(new SpinnerNumberModel(Integer.parseInt(openTimeSplit[2]), 0, 60, 1));
+
+                String endTime = rs.getTime("EVT_END_TIME").toString();
+                String[] endTimeSplit = endTime.split(":");
+                EventInfor.getClose_Hour().setModel(new SpinnerNumberModel(Integer.parseInt(endTimeSplit[0]), 0, 24, 1));
+                EventInfor.getClose_Minute().setModel(new SpinnerNumberModel(Integer.parseInt(endTimeSplit[1]), 0, 60, 1));
+                EventInfor.getClose_Second().setModel(new SpinnerNumberModel(Integer.parseInt(endTimeSplit[2]), 0, 60, 1));
+
+                Blob blob = (Blob) rs.getBlob("EVT_PHOTO");
+                if (blob != null) {
+                    int blobLength = (int) blob.length();
+                    byte[] bytes = blob.getBytes(1, blobLength);
+                    EventInfor.setEvent_Image(bytes);
+                    ImageIcon icon = new ImageIcon(bytes);
+                    Image image = icon.getImage();
+                    Image newImage = image.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+                    ImageIcon newIcon = new ImageIcon(newImage);
+                    EventInfor.getTextPoster().setIcon(newIcon);
+                }
+            }
+            ps.close();
+            rs.close();
+            con.close();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - man
@@ -514,11 +570,12 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
-        0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
-        .BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.
-        red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
-        beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+        border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER
+        , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
+        .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
+        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r"
+        .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
         setLayout(null);
 
         //======== jpnEventHeader ========
@@ -781,6 +838,12 @@ public class EventPanel extends JPanel {
                         button1.setForeground(Color.white);
                         button1.setBackground(new Color(0x61b884));
                         button1.setFont(new Font("Lato Black", Font.BOLD, 14));
+                        button1.addMouseListener(new MouseAdapter() {
+                            @Override
+                            public void mouseClicked(MouseEvent e) {
+                                button1MouseClicked(e);
+                            }
+                        });
 
                         GroupLayout InformationPanelLayout = new GroupLayout(InformationPanel);
                         InformationPanel.setLayout(InformationPanelLayout);
@@ -1421,7 +1484,7 @@ public class EventPanel extends JPanel {
                                                     .addGroup(panel1Layout.createParallelGroup()
                                                         .addComponent(totalDisplay, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(quantityDisplay, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
-                                                    .addContainerGap(601, Short.MAX_VALUE))))
+                                                    .addContainerGap(602, Short.MAX_VALUE))))
                                         .addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                                             .addComponent(jpnBack, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)

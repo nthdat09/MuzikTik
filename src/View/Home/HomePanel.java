@@ -164,6 +164,7 @@ public class HomePanel extends JPanel {
         MainPage.changeView(new EventPanel(), MainPage.getJlbEvent(), "EventPanel");
         eventInformationList = EventInformationList.getEventInformationList();
         eventSetting();
+        System.out.println(selectedStage);
         eventStageInformation = GetStageName.getStageInformationList();
         stageSetting();
         eventArt = GetArt.getArtByID();

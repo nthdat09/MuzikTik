@@ -7,6 +7,8 @@ package View.EventPage;
 import Model.DAO.Event.AddNewEvent.getLastestID;
 import Model.DAO.Event.AddNewEvent.getStageName;
 import Model.Database.UserDatabase;
+import View.EventListPanel.EventListPanel;
+import View.MainPage.MainPage;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -17,8 +19,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -28,13 +33,13 @@ import javax.swing.border.*;
 public class EventInfor extends JPanel {
     String filename = null;
     static Integer stageID;
-    byte[] event_image = null;
+    static byte[] event_image = null;
     public EventInfor() {
         initComponents();
         initMoreSetting();
     }
 
-    private void initMoreSetting() {
+    public void initMoreSetting() {
         TextID.setEnabled(false);
         TextID.setText(String.valueOf((getLastestID.getLatestID() + 1)));
         getStageName.getStageName();
@@ -105,75 +110,177 @@ public class EventInfor extends JPanel {
     }
 
     private void addBtnMouseClicked(MouseEvent e) {
-        int id = Integer.parseInt(TextID.getText());
         String stage = stageComboBox.getSelectedItem().toString();
         try {
-            Connection con = UserDatabase.getConnection();
-            String sql = "Select STG_ID from stage where STG_NAME = '" + stage + "'";
-            PreparedStatement psStage = con.prepareStatement(sql);
+            Connection con1 = UserDatabase.getConnection();
+            String sql1 = "Select STG_ID from stage where STG_NAME = '" + stage + "'";
+            PreparedStatement psStage = con1.prepareStatement(sql1);
             ResultSet rsStage = psStage.executeQuery();
             while (rsStage.next()) {
                 Integer stageID = Integer.parseInt(rsStage.getString("STG_ID"));
                 setStageID(stageID);
             }
+        } catch (SQLException throwables1) {
+            throwables1.printStackTrace();
+        }
+
+        int id = Integer.parseInt(TextID.getText());
+        try {
+            Connection con = UserDatabase.getConnection();
+            String sql = "Select EVT_ID from event where EVT_ID = '" + id + "'";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String sqlUpdate = "UPDATE event SET EVT_NAME = ?, EVT_STG_ID = ?, EVT_ARTIST = ?, EVT_DATE = ?, EVT_OPEN_TIME = ?, EVT_END_TIME = ?, EVT_QUANTITY = ?, EVT_DESCRIPTION = ?, EVT_PHOTO = ?";
+                PreparedStatement psUpdate = con.prepareStatement(sqlUpdate);
+                psUpdate.setString(1, textName.getText());
+                psUpdate.setInt(2, stageID);
+                psUpdate.setString(3, textArtist.getText());
+                Date dateInformatted = new SimpleDateFormat("dd-MM-yyyy").parse(dateTextField.getText());
+                String date = new SimpleDateFormat("yyyy-MM-dd").format(dateInformatted);
+                psUpdate.setDate(4, java.sql.Date.valueOf(date));
+                psUpdate.setTime(5, java.sql.Time.valueOf(Open_Hour.getValue() + ":" + Open_Minute.getValue() + ":" + Open_Second.getValue()));
+                psUpdate.setTime(6, java.sql.Time.valueOf(Close_Hour.getValue() + ":" + Close_Minute.getValue() + ":" + Close_Second.getValue()));
+                psUpdate.setInt(7, Integer.parseInt(textQuantity.getText()));
+                psUpdate.setString(8, textDescription.getText());
+                psUpdate.setBytes(9, event_image);
+                psUpdate.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Update successfully!");
+            } else {
+
+                String name = textName.getText();
+                String artist = textArtist.getText();
+                Integer quantity = Integer.parseInt(textQuantity.getText());
+                String description = textDescription.getText();
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                LocalDate date = LocalDate.parse(dateTextField.getText(), formatter);
+                java.sql.Date dateFormatted = java.sql.Date.valueOf(date);
+
+                String openTime = Open_Hour.getValue() + ":" + Open_Minute.getValue() + ":" + Open_Second.getValue();
+                java.sql.Time openTimeFormatted = java.sql.Time.valueOf(openTime);
+                String closeTime = Close_Hour.getValue() + ":" + Close_Minute.getValue() + ":" + Close_Second.getValue();
+                java.sql.Time closeTimeFormatted = java.sql.Time.valueOf(closeTime);
+
+                try {
+                    Connection con2 = UserDatabase.getConnection();
+                    String query = "INSERT INTO event (EVT_ID, EVT_NAME, EVT_STG_ID, EVT_ARTIST, EVT_DATE, EVT_OPEN_TIME, EVT_END_TIME, EVT_QUANTITY, EVT_DESCRIPTION, EVT_PHOTO) VALUES";
+                    query += "(?,?,?,?,?,?,?,?,?,?)";
+                    PreparedStatement ps1 = con2.prepareStatement(query);
+                    ps1.setInt(1, id);
+                    System.out.println(id);
+                    ps1.setString(2, name);
+                    System.out.println(name);
+                    ps1.setInt(3, stageID);
+                    System.out.println(stageID);
+                    ps1.setString(4, artist);
+                    System.out.println(artist);
+                    ps1.setDate(5, dateFormatted);
+                    System.out.println(dateFormatted);
+                    ps1.setTime(6, openTimeFormatted);
+                    System.out.println(openTimeFormatted);
+                    ps1.setTime(7, closeTimeFormatted);
+                    System.out.println(closeTimeFormatted);
+                    ps1.setInt(8, quantity);
+                    System.out.println(quantity);
+                    ps1.setString(9, description);
+                    System.out.println(description);
+                    ps1.setBytes(10, event_image);
+                    ps1.executeUpdate();
+
+                    JOptionPane.showMessageDialog(null, "Event added successfully!");
+                    textName.setText("");
+                    textArtist.setText("");
+                    textQuantity.setText("");
+                    textDescription.setText("");
+                    textPoster.setIcon(null);
+                    pathFileText.setText("");
+                    Open_Hour.setValue(0);
+                    Open_Minute.setValue(0);
+                    Open_Second.setValue(0);
+                    Close_Hour.setValue(0);
+                    Close_Minute.setValue(0);
+                    Close_Second.setValue(0);
+                    dateTextField.setText("");
+                    TextID.setText(getLastestID.getLatestID() + 1 + "");
+                } catch (Exception err) {
+                    JOptionPane.showMessageDialog(null, err);
+                }
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        } catch (ParseException ex) {
+            throw new RuntimeException(ex);
         }
+    }
 
-        String name = textName.getText();
-        String artist = textArtist.getText();
-        Integer quantity = Integer.parseInt(textQuantity.getText());
-        String description = textDescription.getText();
+    public static byte[] getEvent_image() {
+        return event_image;
+    }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate date = LocalDate.parse(dateTextField.getText(), formatter);
-        java.sql.Date dateFormatted = java.sql.Date.valueOf(date);
+    public static void setEvent_Image(byte[] event_image) {
+        event_image = event_image;
+    }
 
-        String openTime = Open_Hour.getValue() + ":" + Open_Minute.getValue() + ":" + Open_Second.getValue();
-        java.sql.Time openTimeFormatted = java.sql.Time.valueOf(openTime);
-        String closeTime = Close_Hour.getValue() + ":" + Close_Minute.getValue() + ":" + Close_Second.getValue();
-        java.sql.Time closeTimeFormatted = java.sql.Time.valueOf(closeTime);
+    public static JTextField getTextID() {
+        return TextID;
+    }
 
-        try {
-            Connection con1 = UserDatabase.getConnection();
-            String query = "INSERT INTO event (EVT_ID, EVT_NAME, EVT_STG_ID, EVT_ARTIST, EVT_DATE, EVT_OPEN_TIME, EVT_END_TIME, EVT_QUANTITY, EVT_DESCRIPTION, EVT_PHOTO) VALUES";
-            query += "(?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement ps = con1.prepareStatement(query);
-            ps.setInt(1, id);
-            ps.setString(2, name);
-            ps.setInt(3, getStageID());
-            ps.setString(4, artist);
-            ps.setDate(5, dateFormatted);
-            ps.setTime(6, openTimeFormatted);
-            ps.setTime(7, closeTimeFormatted);
-            ps.setInt(8, quantity);
-            ps.setString(9, description);
-            ps.setBytes(10, event_image);
-            ps.executeUpdate();
+    public static JTextField getTextName() {
+        return textName;
+    }
 
-            JOptionPane.showMessageDialog(null, "Event added successfully!");
-            textName.setText("");
-            textArtist.setText("");
-            textQuantity.setText("");
-            textDescription.setText("");
-            textPoster.setIcon(null);
-            pathFileText.setText("");
-            Open_Hour.setValue(0);
-            Open_Minute.setValue(0);
-            Open_Second.setValue(0);
-            Close_Hour.setValue(0);
-            Close_Minute.setValue(0);
-            Close_Second.setValue(0);
-            dateTextField.setText("");
-            TextID.setText(getLastestID.getLatestID() + 1 + "");
-        } catch (Exception err) {
-            JOptionPane.showMessageDialog(null, err);
-        }
+    public static JTextArea getTextDescription() {
+        return textDescription;
+    }
+
+    public static JTextField getDateTextField() {
+        return dateTextField;
+    }
+
+    public static JTextField getTextQuantity() {
+        return textQuantity;
+    }
+
+    public static JTextField getTextArtist() {
+        return textArtist;
+    }
+
+    public static JSpinner getOpen_Hour() {
+        return Open_Hour;
+    }
+
+    public static JSpinner getOpen_Minute() {
+        return Open_Minute;
+    }
+
+    public static JSpinner getOpen_Second() {
+        return Open_Second;
+    }
+
+    public static JSpinner getClose_Second() {
+        return Close_Second;
+    }
+
+    public static JSpinner getClose_Minute() {
+        return Close_Minute;
+    }
+
+    public static JSpinner getClose_Hour() {
+        return Close_Hour;
+    }
+
+    public static JLabel getTextPoster() {
+        return textPoster;
+    }
+
+    private void button1MouseClicked(MouseEvent e) {
+        MainPage.changeView(new EventListPanel(), MainPage.getJlbEvent(), "EventInfor");
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - man
         ID = new JLabel();
         Name = new JLabel();
         Artist = new JLabel();
@@ -208,11 +315,13 @@ public class EventInfor extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-        0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-        . BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-        beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
+        javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax
+        . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
+        . awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,12 ) ,java . awt
+        . Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .
+        PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "borde\u0072" .
+        equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
         //---- ID ----
         ID.setText("ID:");
@@ -365,6 +474,12 @@ public class EventInfor extends JPanel {
         button1.setFont(new Font("Lato Black", Font.BOLD, 16));
         button1.setForeground(Color.white);
         button1.setBackground(new Color(0x61b884));
+        button1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button1MouseClicked(e);
+            }
+        });
 
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
@@ -373,75 +488,77 @@ public class EventInfor extends JPanel {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(382, 382, 382)
                     .addComponent(label1)
-                    .addGap(0, 402, Short.MAX_VALUE))
+                    .addGap(0, 668, Short.MAX_VALUE))
                 .addGroup(layout.createSequentialGroup()
                     .addGap(59, 59, 59)
                     .addGroup(layout.createParallelGroup()
-                        .addComponent(textPoster, GroupLayout.PREFERRED_SIZE, 389, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(panel2, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                            .addComponent(scrollPane1)
-                            .addComponent(Description)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup()
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup()
-                                            .addComponent(ID)
-                                            .addComponent(Name))
-                                        .addGap(28, 28, 28)
-                                        .addGroup(layout.createParallelGroup()
-                                            .addComponent(TextID, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(textName, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup()
-                                            .addComponent(Artist)
-                                            .addComponent(Stage))
-                                        .addGap(71, 71, 71)
-                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(textArtist)
-                                            .addComponent(stageComboBox, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))))
-                                .addGap(175, 175, 175)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Date)
-                                        .addGap(74, 74, 74)
-                                        .addComponent(dateTextField, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup()
-                                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(CloseTime, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(OpenTime, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(Quantity))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup()
-                                            .addComponent(textQuantity)
-                                            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup()
-                                                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                        .addComponent(Close_Hour, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(Close_Minute, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(Close_Second, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                        .addComponent(Open_Hour, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(Open_Minute, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(Open_Second, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))))))))))
-                    .addContainerGap(82, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup()
+                                .addComponent(textPoster, GroupLayout.PREFERRED_SIZE, 389, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(scrollPane1)
+                                        .addComponent(Description)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup()
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup()
+                                                        .addComponent(ID)
+                                                        .addComponent(Name))
+                                                    .addGap(28, 28, 28)
+                                                    .addGroup(layout.createParallelGroup()
+                                                        .addComponent(TextID, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(textName, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup()
+                                                        .addComponent(Artist)
+                                                        .addComponent(Stage))
+                                                    .addGap(71, 71, 71)
+                                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(textArtist)
+                                                        .addComponent(stageComboBox, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))))
+                                            .addGap(175, 175, 175)
+                                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(Date)
+                                                    .addGap(74, 74, 74)
+                                                    .addComponent(dateTextField, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup()
+                                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                                            .addComponent(CloseTime, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(OpenTime, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(Quantity))
+                                                    .addGap(18, 18, 18)
+                                                    .addGroup(layout.createParallelGroup()
+                                                        .addComponent(textQuantity)
+                                                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                            .addGap(0, 0, Short.MAX_VALUE)
+                                                            .addGroup(layout.createParallelGroup()
+                                                                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                    .addComponent(Close_Hour, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+                                                                    .addGap(18, 18, 18)
+                                                                    .addComponent(Close_Minute, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+                                                                    .addGap(18, 18, 18)
+                                                                    .addComponent(Close_Second, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))
+                                                                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                    .addComponent(Open_Hour, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+                                                                    .addGap(18, 18, 18)
+                                                                    .addComponent(Open_Minute, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+                                                                    .addGap(18, 18, 18)
+                                                                    .addComponent(Open_Second, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))))))))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 336, Short.MAX_VALUE)
+                                    .addComponent(pathFileText, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE)))
+                            .addContainerGap())
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(panel2, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
+                            .addGap(111, 1118, Short.MAX_VALUE))))
                 .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(30, 707, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup()
-                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(button1, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-                            .addGap(22, 22, 22))
-                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(pathFileText, GroupLayout.PREFERRED_SIZE, 292, GroupLayout.PREFERRED_SIZE)
-                            .addGap(51, 51, 51))))
+                    .addGap(200, 1054, Short.MAX_VALUE)
+                    .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(button1, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+                    .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
@@ -481,19 +598,19 @@ public class EventInfor extends JPanel {
                         .addComponent(textQuantity, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addGap(17, 17, 17)
                     .addComponent(Description)
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pathFileText, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(layout.createParallelGroup()
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(panel2, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(textPoster, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(192, Short.MAX_VALUE))
+                            .addContainerGap(360, Short.MAX_VALUE))
                         .addGroup(layout.createSequentialGroup()
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
-                            .addComponent(pathFileText, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
+                            .addGap(0, 0, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup()
                                 .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
                                 .addComponent(button1))
@@ -503,29 +620,29 @@ public class EventInfor extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - man
     private JLabel ID;
     private JLabel Name;
     private JLabel Artist;
     private JLabel Stage;
     private JLabel Date;
     private JLabel OpenTime;
-    private JSpinner Open_Hour;
-    private JLabel textPoster;
+    private static JSpinner Open_Hour;
+    private static JLabel textPoster;
     private JScrollPane scrollPane1;
-    private JTextArea textDescription;
-    private JTextField textQuantity;
-    private JTextField dateTextField;
-    private JTextField textArtist;
-    private JTextField textName;
+    private static JTextArea textDescription;
+    private static JTextField textQuantity;
+    private static JTextField dateTextField;
+    private static JTextField textArtist;
+    private static JTextField textName;
     private JLabel Description;
     private JLabel Quantity;
     private JLabel CloseTime;
-    private JSpinner Close_Hour;
-    private JSpinner Close_Minute;
-    private JSpinner Close_Second;
-    private JSpinner Open_Second;
-    private JSpinner Open_Minute;
+    private static JSpinner Close_Hour;
+    private static JSpinner Close_Minute;
+    private static JSpinner Close_Second;
+    private static JSpinner Open_Second;
+    private static JSpinner Open_Minute;
     private JTextField pathFileText;
     private JPanel panel1;
     private JLabel addBtn;
@@ -533,7 +650,7 @@ public class EventInfor extends JPanel {
     private JLabel uploadBtn;
     private static JComboBox stageComboBox;
     private JLabel label1;
-    private JTextField TextID;
+    private static JTextField TextID;
     private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

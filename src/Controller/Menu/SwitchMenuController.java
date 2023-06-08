@@ -3,6 +3,7 @@ package Controller.Menu;
 import Model.BEAN.MenuList;
 import View.AnalyticPage.AnalyticPage;
 import View.CustomersListPage.CustomersListPanel;
+import View.EventListPanel.EventListPanel;
 import View.EventPage.EventInfor;
 import View.Home.HomePanel;
 import View.PartnerPage.PartnerListPanel;
@@ -37,7 +38,7 @@ public class SwitchMenuController {
 
     private void initializePanelMap() {
         panelMap.put("HomePanel", HomePanel.class);
-        panelMap.put("EventPanel", EventInfor.class);
+        panelMap.put("EventPanel", EventListPanel.class);
         panelMap.put("CustomersPanel", CustomersListPanel.class);
         panelMap.put("TicketPanel", TicketListPanel.class);
         panelMap.put("StagePanel", StagesListPanel.class);

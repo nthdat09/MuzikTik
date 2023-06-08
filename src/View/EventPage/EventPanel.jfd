@@ -31,6 +31,7 @@ new FormModel {
 					"foreground": new java.awt.Color( 97, 184, 132, 255 )
 					auxiliary() {
 						"JavaCodeGenerator.variableModifiers": 10
+						"JavaCodeGenerator.variableGetter": true
 					}
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
@@ -165,6 +166,7 @@ new FormModel {
 								"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 								auxiliary() {
 									"JavaCodeGenerator.variableModifiers": 10
+									"JavaCodeGenerator.variableGetter": true
 								}
 							} )
 							add( new FormComponent( "javax.swing.JButton" ) {
@@ -173,6 +175,7 @@ new FormModel {
 								"foreground": sfield java.awt.Color white
 								"background": new java.awt.Color( 97, 184, 132, 255 )
 								"font": new java.awt.Font( "Lato Black", 1, 14 )
+								addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
 							} )
 						} )
 					} )
@@ -464,7 +467,7 @@ new FormModel {
 						name: "scrollPane2"
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-							"$horizontalGroup": "par l {seq {par l {seq l {space :p:71:p, par l {comp jlbPayment:::p:513:p, seq l {par l {comp label5::l:p::p, comp label4::l:p::p, comp label3::l:p::p}, space :p:27:p, par l {comp emailText:::p:246:p, comp phoneNumberText:::p:246:p, comp fullNameText::l:p:246:p}}, comp checkBox1::l:p::p, comp checkBox2::l:p::p, comp checkBox3::l:p:201:p}}, seq l {space :p:35:p, comp JlbInforCus:::p:224:p}}, par l {seq {space :::x, par l {seq {comp scrollPane4:::p:556:p, space ::293:x}, seq l {comp JlbInforCus2:::p:224:p, space ::625:x}, seq t {space :0:0:x, par t:::p {comp label1::::69:x, comp label2::::69:x}, space :::p, par l {comp totalDisplay::t:p:171:p, comp quantityDisplay::t:p:171:p}, space ::601:x}}}, seq t {space ::125:x, comp jpnBack:::p::p, space :::p, comp jpnNext:::p::p, space :p:392:p}}}}"
+							"$horizontalGroup": "par l {seq {par l {seq l {space :p:71:p, par l {comp jlbPayment:::p:513:p, seq l {par l {comp label5::l:p::p, comp label4::l:p::p, comp label3::l:p::p}, space :p:27:p, par l {comp emailText:::p:246:p, comp phoneNumberText:::p:246:p, comp fullNameText::l:p:246:p}}, comp checkBox1::l:p::p, comp checkBox2::l:p::p, comp checkBox3::l:p:201:p}}, seq l {space :p:35:p, comp JlbInforCus:::p:224:p}}, par l {seq {space :::x, par l {seq {comp scrollPane4:::p:556:p, space ::293:x}, seq l {comp JlbInforCus2:::p:224:p, space ::625:x}, seq t {space :0:0:x, par t:::p {comp label1::::69:x, comp label2::::69:x}, space :::p, par l {comp totalDisplay::t:p:171:p, comp quantityDisplay::t:p:171:p}, space ::602:x}}}, seq t {space ::125:x, comp jpnBack:::p::p, space :::p, comp jpnNext:::p::p, space :p:392:p}}}}"
 							"$verticalGroup": "par l {seq l {space :::p, par b {comp JlbInforCus::b:p:39:p, comp JlbInforCus2::b:p:39:p}, par l {seq l {par l {seq {space :p:71:p, par l {seq {comp fullNameText:::p::p, space u:::p, comp emailText:::p::p, space :::p, comp phoneNumberText:::p::p}, seq t {comp label3:::p::p, space s:::p, comp label4:::p::p, space :p:44:p}}}, seq {space :::p, comp scrollPane4::::0:x}}, space :::p, par l {seq {comp label1::::32:x, space :::p, comp label2:::p:30:p, space ::49:x}, seq {comp quantityDisplay:::p:30:p, space :::p, comp totalDisplay:::p:33:p, space ::48:x}}, par l {comp jpnBack:::p::p, comp jpnNext::l:p::p}, space ::572:x}, seq l {space :p:153:p, comp label5:::p::p, space :p:12:p, comp jlbPayment:::p:46:p, space s:::p, comp checkBox1:::p::p, space :::p, comp checkBox2:::p::p, space :::p, comp checkBox3:::p::p, space ::587:x}}}}"
 						} ) {
 							name: "panel1"
