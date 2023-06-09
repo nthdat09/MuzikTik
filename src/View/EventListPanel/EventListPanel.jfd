@@ -54,6 +54,7 @@ new FormModel {
 				"font": #Font0
 				"foreground": #Color0
 				"background": #Color1
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jlbSearchMouseClicked", true ) )
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
