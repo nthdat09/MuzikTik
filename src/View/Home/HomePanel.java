@@ -145,7 +145,7 @@ public class HomePanel extends JPanel {
     int position = 0;
     int index = 0;
     public String[] takeImage() {
-        File f = new File(getClass().getResource("/Image").getFile());
+        File f = new File(getClass().getResource("/Asset/Event").getFile());
         System.out.println(f);
         String[] Images = f.list();
         return Images;
@@ -154,7 +154,7 @@ public class HomePanel extends JPanel {
     public void show(int i) {
         String[] Images = takeImage();
         String img = Images[i];
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Image/" + img));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Asset/Event/" + img));
         Image image = icon.getImage().getScaledInstance(796, 262, Image.SCALE_SMOOTH);
         mainLivePicture.setIcon(new ImageIcon(image));
     }
@@ -199,7 +199,7 @@ public class HomePanel extends JPanel {
     }
     public void pictureArtSetting() {
         for(EventArtID art : eventArt) {
-            ImageIcon icon = new ImageIcon(getClass().getResource("/Image/" + art.getEventArtID()));
+            ImageIcon icon = new ImageIcon(getClass().getResource("Asset/Event/" + art.getEventArtID()));
             EventPanel.getEventArt().setIcon(icon);
         }
     }
