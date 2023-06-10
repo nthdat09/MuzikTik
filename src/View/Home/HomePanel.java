@@ -137,7 +137,7 @@ public class HomePanel extends JPanel {
             String eventDate = listEvent.get(i).getEventDate();
 
             listLabelPicture.get(i).setIcon(eventPicture);
-            listLabelName.get(i).setText(eventName);
+            listLabelName.get(i).setText("<HTML>" + eventName + "</HTML>");
             listLabelDate.get(i).setText(eventDate);
         }
     }
@@ -366,7 +366,7 @@ public class HomePanel extends JPanel {
     }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - man
         mainScrollPanel = new JScrollPane();
         panel2 = new JPanel();
         mainLabel = new JLabel();
@@ -410,12 +410,11 @@ public class HomePanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
-        ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
-        .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,12 ) ,java . awt
-        . Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
-        propertyChange (java . beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-        ;} } );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+        0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+        . BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+        beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
         //======== mainScrollPanel ========
         {
@@ -639,9 +638,9 @@ public class HomePanel extends JPanel {
                             .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                 .addGroup(panel2Layout.createParallelGroup()
                                     .addGroup(panel2Layout.createSequentialGroup()
-                                        .addGap(73, 73, 73)
-                                        .addComponent(eventName1)
-                                        .addGap(274, 274, 274)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(eventName1, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE)
+                                        .addGap(242, 242, 242)
                                         .addComponent(eventName2)
                                         .addGap(253, 253, 253)
                                         .addComponent(eventName3))
@@ -721,7 +720,7 @@ public class HomePanel extends JPanel {
                                     .addComponent(mainLivePicture, GroupLayout.PREFERRED_SIZE, 652, GroupLayout.PREFERRED_SIZE)
                                     .addGap(62, 62, 62)
                                     .addComponent(nextButton, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
-                            .addContainerGap(581, Short.MAX_VALUE))
+                            .addContainerGap(601, Short.MAX_VALUE))
                 );
                 panel2Layout.setVerticalGroup(
                     panel2Layout.createParallelGroup()
@@ -761,11 +760,14 @@ public class HomePanel extends JPanel {
                                     .addGap(18, 18, 18)
                                     .addComponent(eventDate3))
                                 .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(16, 16, 16)
-                                    .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(eventName1)
-                                        .addComponent(eventName2))
-                                    .addGap(18, 18, 18)
+                                    .addGroup(panel2Layout.createParallelGroup()
+                                        .addGroup(panel2Layout.createSequentialGroup()
+                                            .addGap(34, 34, 34)
+                                            .addComponent(eventName2))
+                                        .addGroup(panel2Layout.createSequentialGroup()
+                                            .addGap(16, 16, 16)
+                                            .addComponent(eventName1, GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(eventDate1)
                                         .addComponent(eventDate2))))
@@ -807,7 +809,7 @@ public class HomePanel extends JPanel {
                                 .addGroup(panel2Layout.createSequentialGroup()
                                     .addGap(2, 2, 2)
                                     .addComponent(eventDate9)))
-                            .addContainerGap(471, Short.MAX_VALUE))
+                            .addGap(438, 438, 438))
                 );
             }
             mainScrollPanel.setViewportView(panel2);
@@ -819,19 +821,19 @@ public class HomePanel extends JPanel {
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1250, GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE))
+                    .addGap(0, 169, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 911, GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 2239, Short.MAX_VALUE))
+                    .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1060, GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 2877, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - man
     private JScrollPane mainScrollPanel;
     private JPanel panel2;
     private JLabel mainLabel;

@@ -309,6 +309,13 @@ public class EventPanel extends JPanel {
         }
         String statusPending = "Pending";
         model.setValueAt(statusPending, row, 3);
+        for(int i=0; i < selectedSeatTable.getRowCount(); i++) {
+            String seatID = selectedSeatTable.getValueAt(i, 0).toString();
+            if(seatID.equals(ticketID)) {
+                JOptionPane.showConfirmDialog(null, "This seat is already selected! Please choose another seat!", "Warning", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        }
 
         String tbData[] = {ticketID, ticketType, price, statusPending};
         DefaultTableModel tbModel = (DefaultTableModel) selectedSeatTable.getModel();
@@ -483,7 +490,7 @@ public class EventPanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - man
         jpnEventHeader = new JPanel();
         EventArt = new JLabel();
         EventName = new JLabel();
@@ -569,11 +576,12 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0
-        ,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
-        ,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red),
-         getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-        ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+        border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER
+        , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
+        .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
+        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r"
+        .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
         setLayout(null);
 
         //======== jpnEventHeader ========
@@ -1586,7 +1594,7 @@ public class EventPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - man
     private JPanel jpnEventHeader;
     private static JLabel EventArt;
     private static JLabel EventName;

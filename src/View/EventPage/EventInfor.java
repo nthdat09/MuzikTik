@@ -132,21 +132,25 @@ public class EventInfor extends JPanel {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                String sqlUpdate = "UPDATE event SET EVT_NAME = ?, EVT_STG_ID = ?, EVT_ARTIST = ?, EVT_DATE = ?, EVT_OPEN_TIME = ?, EVT_END_TIME = ?, EVT_QUANTITY = ?, EVT_DESCRIPTION = ?, EVT_POSTER = ? WHERE EVT_ID = selectedEventID";
-                PreparedStatement psUpdate = con.prepareStatement(sqlUpdate);
-                psUpdate.setString(1, textName.getText());
-                psUpdate.setInt(2, stageID);
-                psUpdate.setString(3, textArtist.getText());
-                Date dateInformatted = new SimpleDateFormat("dd-MM-yyyy").parse(dateTextField.getText());
-                String date = new SimpleDateFormat("yyyy-MM-dd").format(dateInformatted);
-                psUpdate.setDate(4, java.sql.Date.valueOf(date));
-                psUpdate.setTime(5, java.sql.Time.valueOf(Open_Hour.getValue() + ":" + Open_Minute.getValue() + ":" + Open_Second.getValue()));
-                psUpdate.setTime(6, java.sql.Time.valueOf(Close_Hour.getValue() + ":" + Close_Minute.getValue() + ":" + Close_Second.getValue()));
-                psUpdate.setInt(7, Integer.parseInt(textQuantity.getText()));
-                psUpdate.setString(8, textDescription.getText());
-                psUpdate.setBytes(9, event_image);
-                psUpdate.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Update successfully!");
+                try {
+                    String sqlUpdate = "UPDATE event SET EVT_NAME = ?, EVT_STG_ID = ?, EVT_ARTIST = ?, EVT_DATE = ?, EVT_OPEN_TIME = ?, EVT_END_TIME = ?, EVT_QUANTITY = ?, EVT_DESCRIPTION = ?, EVT_POSTER = ? WHERE EVT_ID = selectedEventID";
+                    PreparedStatement psUpdate = con.prepareStatement(sqlUpdate);
+                    psUpdate.setString(1, textName.getText());
+                    psUpdate.setInt(2, stageID);
+                    psUpdate.setString(3, textArtist.getText());
+                    Date dateInformatted = new SimpleDateFormat("dd-MM-yyyy").parse(dateTextField.getText());
+                    String date = new SimpleDateFormat("yyyy-MM-dd").format(dateInformatted);
+                    psUpdate.setDate(4, java.sql.Date.valueOf(date));
+                    psUpdate.setTime(5, java.sql.Time.valueOf(Open_Hour.getValue() + ":" + Open_Minute.getValue() + ":" + Open_Second.getValue()));
+                    psUpdate.setTime(6, java.sql.Time.valueOf(Close_Hour.getValue() + ":" + Close_Minute.getValue() + ":" + Close_Second.getValue()));
+                    psUpdate.setInt(7, Integer.parseInt(textQuantity.getText()));
+                    psUpdate.setString(8, textDescription.getText());
+                    psUpdate.setBytes(9, event_image);
+                    psUpdate.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Update successfully!");
+                } catch (Exception err) {
+                    JOptionPane.showInputDialog(this, "Please fill all information!");
+                }
             } else {
 
                 String name = textName.getText();
@@ -163,55 +167,57 @@ public class EventInfor extends JPanel {
                 String closeTime = Close_Hour.getValue() + ":" + Close_Minute.getValue() + ":" + Close_Second.getValue();
                 java.sql.Time closeTimeFormatted = java.sql.Time.valueOf(closeTime);
 
-                try {
-                    Connection con2 = UserDatabase.getConnection();
-                    String query = "INSERT INTO event (EVT_ID, EVT_NAME, EVT_STG_ID, EVT_ARTIST, EVT_DATE, EVT_OPEN_TIME, EVT_END_TIME, EVT_QUANTITY, EVT_DESCRIPTION, EVT_POSTER) VALUES";
-                    query += "(?,?,?,?,?,?,?,?,?,?)";
-                    PreparedStatement ps1 = con2.prepareStatement(query);
-                    ps1.setInt(1, id);
-                    System.out.println(id);
-                    ps1.setString(2, name);
-                    System.out.println(name);
-                    ps1.setInt(3, stageID);
-                    System.out.println(stageID);
-                    ps1.setString(4, artist);
-                    System.out.println(artist);
-                    ps1.setDate(5, dateFormatted);
-                    System.out.println(dateFormatted);
-                    ps1.setTime(6, openTimeFormatted);
-                    System.out.println(openTimeFormatted);
-                    ps1.setTime(7, closeTimeFormatted);
-                    System.out.println(closeTimeFormatted);
-                    ps1.setInt(8, quantity);
-                    System.out.println(quantity);
-                    ps1.setString(9, description);
-                    System.out.println(description);
-                    ps1.setBytes(10, event_image);
-                    ps1.executeUpdate();
+                if(name.equals("") || artist.equals("") || quantity.equals("") || description.equals("") || date.equals("") || openTime.equals("") || closeTime.equals("") || event_image.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Please fill all the information!");
+                } else {
+                    try {
+                        Connection con2 = UserDatabase.getConnection();
+                        String query = "INSERT INTO event (EVT_ID, EVT_NAME, EVT_STG_ID, EVT_ARTIST, EVT_DATE, EVT_OPEN_TIME, EVT_END_TIME, EVT_QUANTITY, EVT_DESCRIPTION, EVT_POSTER) VALUES";
+                        query += "(?,?,?,?,?,?,?,?,?,?)";
+                        PreparedStatement ps1 = con2.prepareStatement(query);
+                        ps1.setInt(1, id);
+                        System.out.println(id);
+                        ps1.setString(2, name);
+                        System.out.println(name);
+                        ps1.setInt(3, stageID);
+                        System.out.println(stageID);
+                        ps1.setString(4, artist);
+                        System.out.println(artist);
+                        ps1.setDate(5, dateFormatted);
+                        System.out.println(dateFormatted);
+                        ps1.setTime(6, openTimeFormatted);
+                        System.out.println(openTimeFormatted);
+                        ps1.setTime(7, closeTimeFormatted);
+                        System.out.println(closeTimeFormatted);
+                        ps1.setInt(8, quantity);
+                        System.out.println(quantity);
+                        ps1.setString(9, description);
+                        System.out.println(description);
+                        ps1.setBytes(10, event_image);
+                        ps1.executeUpdate();
 
-                    JOptionPane.showMessageDialog(null, "Event added successfully!");
-                    textName.setText("");
-                    textArtist.setText("");
-                    textQuantity.setText("");
-                    textDescription.setText("");
-                    textPoster.setIcon(null);
-                    pathFileText.setText("");
-                    Open_Hour.setValue(0);
-                    Open_Minute.setValue(0);
-                    Open_Second.setValue(0);
-                    Close_Hour.setValue(0);
-                    Close_Minute.setValue(0);
-                    Close_Second.setValue(0);
-                    dateTextField.setText("");
-                    TextID.setText(getLastestID.getLatestID() + 1 + "");
-                } catch (Exception err) {
-                    JOptionPane.showMessageDialog(null, err);
+                        JOptionPane.showMessageDialog(null, "Event added successfully!");
+                        textName.setText("");
+                        textArtist.setText("");
+                        textQuantity.setText("");
+                        textDescription.setText("");
+                        textPoster.setIcon(null);
+                        pathFileText.setText("");
+                        Open_Hour.setValue(0);
+                        Open_Minute.setValue(0);
+                        Open_Second.setValue(0);
+                        Close_Hour.setValue(0);
+                        Close_Minute.setValue(0);
+                        Close_Second.setValue(0);
+                        dateTextField.setText("");
+                        TextID.setText(getLastestID.getLatestID() + 1 + "");
+                    } catch (Exception err) {
+                        JOptionPane.showMessageDialog(null, err);
+                    }
                 }
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        } catch (ParseException ex) {
-            throw new RuntimeException(ex);
         }
     }
 
@@ -281,7 +287,7 @@ public class EventInfor extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - man
         ID = new JLabel();
         Name = new JLabel();
         Artist = new JLabel();
@@ -316,12 +322,12 @@ public class EventInfor extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
-        .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder. CENTER ,javax
-        . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,
-        12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans
-        .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e.
-        getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+        EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing
+        . border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ),
+        java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+        { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () ))
+        throw new RuntimeException( ); }} );
 
         //---- ID ----
         ID.setText("ID:");
@@ -366,6 +372,7 @@ public class EventInfor extends JPanel {
             //---- textDescription ----
             textDescription.setFont(new Font("Arial", Font.PLAIN, 16));
             textDescription.setWrapStyleWord(true);
+            textDescription.setLineWrap(true);
             scrollPane1.setViewportView(textDescription);
         }
 
@@ -489,7 +496,7 @@ public class EventInfor extends JPanel {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(382, 382, 382)
                     .addComponent(label1)
-                    .addGap(0, 402, Short.MAX_VALUE))
+                    .addGap(0, 668, Short.MAX_VALUE))
                 .addGroup(layout.createSequentialGroup()
                     .addGap(59, 59, 59)
                     .addGroup(layout.createParallelGroup()
@@ -545,7 +552,7 @@ public class EventInfor extends JPanel {
                                                             .addComponent(Open_Minute, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
                                                             .addGap(18, 18, 18)
                                                             .addComponent(Open_Second, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))))))))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 336, Short.MAX_VALUE)
                             .addComponent(pathFileText, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE)
                             .addContainerGap())
                         .addGroup(layout.createSequentialGroup()
@@ -611,13 +618,13 @@ public class EventInfor extends JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(10, 10, 10)
                             .addComponent(button1)))
-                    .addContainerGap(164, Short.MAX_VALUE))
+                    .addContainerGap(360, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - man
     private JLabel ID;
     private JLabel Name;
     private JLabel Artist;

@@ -21,39 +21,39 @@ public class EventListPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         switch(selectedEventHandle) {
             case 1:
-                String src = homePanel.getEventName1().getText();
+                String src = homePanel.getEventName1().getText().replace("<HTML>","").replace("</HTML>","");
                 this.homePanel.clickEventPanel(src);
                 break;
             case 2:
-                String src2 = homePanel.getEventName2().getText();
+                String src2 = homePanel.getEventName2().getText().replace("<HTML>","").replace("</HTML>","");
                 this.homePanel.clickEventPanel(src2);
                 break;
             case 3:
-                String src3 = homePanel.getEventName3().getText();
+                String src3 = homePanel.getEventName3().getText().replace("<HTML>","").replace("</HTML>","");
                 this.homePanel.clickEventPanel(src3);
                 break;
             case 4:
-                String src4 = homePanel.getEventName4().getText();
+                String src4 = homePanel.getEventName4().getText().replace("<HTML>","").replace("</HTML>","");
                 this.homePanel.clickEventPanel(src4);
                 break;
             case 5:
-                String src5 = homePanel.getEventName5().getText();
+                String src5 = homePanel.getEventName5().getText().replace("<HTML>","").replace("</HTML>","");
                 this.homePanel.clickEventPanel(src5);
                 break;
             case 6:
-                String src6 = homePanel.getEventName6().getText();
+                String src6 = homePanel.getEventName6().getText().replace("<HTML>","").replace("</HTML>","");
                 this.homePanel.clickEventPanel(src6);
                 break;
             case 7:
-                String src7 = homePanel.getEventName7().getText();
+                String src7 = homePanel.getEventName7().getText().replace("<HTML>","").replace("</HTML>","");
                 this.homePanel.clickEventPanel(src7);
                 break;
             case 8:
-                String src8 = homePanel.getEventName8().getText();
+                String src8 = homePanel.getEventName8().getText().replace("<HTML>","").replace("</HTML>","");
                 this.homePanel.clickEventPanel(src8);
                 break;
             case 9:
-                String src9 = homePanel.getEventName9().getText();
+                String src9 = homePanel.getEventName9().getText().replace("<HTML>","").replace("</HTML>","");
                 this.homePanel.clickEventPanel(src9);
                 break;
         }
