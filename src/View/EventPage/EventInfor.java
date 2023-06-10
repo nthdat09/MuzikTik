@@ -28,6 +28,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+
 /**
  * @author mangg
  */
@@ -133,7 +134,7 @@ public class EventInfor extends JPanel {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 try {
-                    String sqlUpdate = "UPDATE event SET EVT_NAME = ?, EVT_STG_ID = ?, EVT_ARTIST = ?, EVT_DATE = ?, EVT_OPEN_TIME = ?, EVT_END_TIME = ?, EVT_QUANTITY = ?, EVT_DESCRIPTION = ?, EVT_POSTER = ? WHERE EVT_ID = selectedEventID";
+                    String sqlUpdate = "UPDATE event SET EVT_NAME = ?, EVT_STG_ID = ?, EVT_ARTIST = ?, EVT_DATE = ?, EVT_OPEN_TIME = ?, EVT_END_TIME = ?, EVT_QUANTITY = ?, EVT_DESCRIPTION = ?, EVT_POSTER = ? WHERE EVT_ID = " + id + ";";
                     PreparedStatement psUpdate = con.prepareStatement(sqlUpdate);
                     psUpdate.setString(1, textName.getText());
                     psUpdate.setInt(2, stageID);
@@ -149,7 +150,7 @@ public class EventInfor extends JPanel {
                     psUpdate.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Update successfully!");
                 } catch (Exception err) {
-                    JOptionPane.showInputDialog(this, "Please fill all information!");
+                    JOptionPane.showInputDialog(this, "Error: " + err.getMessage());
                 }
             } else {
 
@@ -168,7 +169,7 @@ public class EventInfor extends JPanel {
                 java.sql.Time closeTimeFormatted = java.sql.Time.valueOf(closeTime);
 
                 if(name.equals("") || artist.equals("") || quantity.equals("") || description.equals("") || date.equals("") || openTime.equals("") || closeTime.equals("") || event_image.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Please fill all the information!");
+                    JOptionPane.showMessageDialog(this, "Please fill all information!");
                 } else {
                     try {
                         Connection con2 = UserDatabase.getConnection();

@@ -7,7 +7,6 @@ public class EventList {
     private String eventName;
     private String eventDate;
     public EventList(ImageIcon eventPicture, String eventName, String eventDate) {
-        super();
         this.eventPicture = eventPicture;
         this.eventName = eventName;
         this.eventDate = eventDate;

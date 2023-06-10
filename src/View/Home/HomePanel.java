@@ -54,6 +54,24 @@ public class HomePanel extends JPanel {
 
     public HomePanel() {
         initComponents();
+        addListPicture();
+        addLabelName();
+        addLabelDate();
+        addButtonGroup();
+        listEvent = Event.getEventList();
+        int totalPage = 0;
+        for(int i = 0; i < listEvent.size(); i++) {
+            totalPage++;
+        }
+        if(totalPage%9 == 0) {
+            totalPage = totalPage/9;
+        } else {
+            totalPage = totalPage/9 + 1;
+        }
+        for(int i=0;i<totalPage;i++) {
+            comboBox1.addItem(i+1);
+        }
+        setEventList();
         initMoreSetting();
         initEventHandler();
     }
@@ -74,12 +92,6 @@ public class HomePanel extends JPanel {
         show(position);
         slideDot1.setSelected(true);
         mainScrollPanel.getVerticalScrollBar().setUnitIncrement(19);
-        addListPicture();
-        addLabelName();
-        addLabelDate();
-        listEvent = Event.getEventList();
-        setEventList();
-        addButtonGroup();
 
         slideDots.add(slideDot1);
         slideDots.add(slideDot2);
@@ -131,7 +143,7 @@ public class HomePanel extends JPanel {
     }
 
     public void setEventList() {
-        for (int i = 0; i < listEvent.size(); i++) {
+        for (int i = 0; i < 9; i++) {
             ImageIcon eventPicture = listEvent.get(i).getEventPicture();
             String eventName = listEvent.get(i).getEventName();
             String eventDate = listEvent.get(i).getEventDate();
@@ -364,6 +376,22 @@ public class HomePanel extends JPanel {
     private void slideDot1(ActionEvent e) {
         System.out.println(e.getActionCommand());
     }
+
+    private void button1MouseClicked(MouseEvent e) {
+        Integer selectedPage = Integer.parseInt(comboBox1.getSelectedItem().toString());
+        Integer pageRoot = selectedPage - 1;
+        int j = 0;
+        for (int i = pageRoot*9; i < 9*selectedPage; i++) {
+            ImageIcon eventPicture = listEvent.get(i).getEventPicture();
+            String eventName = listEvent.get(i).getEventName();
+            String eventDate = listEvent.get(i).getEventDate();
+
+            listLabelPicture.get(j).setIcon(eventPicture);
+            listLabelName.get(j).setText("<HTML>" + eventName + "</HTML>");
+            listLabelDate.get(j).setText(eventDate);
+            j++;
+        }
+    }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - man
@@ -407,14 +435,17 @@ public class HomePanel extends JPanel {
         slideDot4 = new JRadioButton();
         slideDot5 = new JRadioButton();
         slideDot6 = new JRadioButton();
+        comboBox1 = new JComboBox();
+        button1 = new JButton();
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-        0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-        . BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-        beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+        . EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax
+        . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,
+        12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans
+        . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .
+        getPropertyName () )) throw new RuntimeException( ); }} );
 
         //======== mainScrollPanel ========
         {
@@ -625,6 +656,15 @@ public class HomePanel extends JPanel {
                     }
                 });
 
+                //---- button1 ----
+                button1.setText("text");
+                button1.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        button1MouseClicked(e);
+                    }
+                });
+
                 GroupLayout panel2Layout = new GroupLayout(panel2);
                 panel2.setLayout(panel2Layout);
                 panel2Layout.setHorizontalGroup(
@@ -682,17 +722,23 @@ public class HomePanel extends JPanel {
                                         .addGroup(panel2Layout.createParallelGroup()
                                             .addComponent(eventLabel)
                                             .addGroup(panel2Layout.createSequentialGroup()
-                                                .addComponent(slideDot1)
+                                                .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(comboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(panel2Layout.createSequentialGroup()
+                                                        .addComponent(slideDot1)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(slideDot2)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(slideDot3)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(slideDot4)))
                                                 .addGap(18, 18, 18)
-                                                .addComponent(slideDot2)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(slideDot3)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(slideDot4)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(slideDot5)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(slideDot6)))))
+                                                .addGroup(panel2Layout.createParallelGroup()
+                                                    .addGroup(panel2Layout.createSequentialGroup()
+                                                        .addComponent(slideDot5)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(slideDot6))
+                                                    .addComponent(button1))))))
                                 .addGroup(panel2Layout.createParallelGroup()
                                     .addGroup(panel2Layout.createSequentialGroup()
                                         .addComponent(evetntPicture7, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
@@ -745,7 +791,11 @@ public class HomePanel extends JPanel {
                                 .addComponent(slideDot4)
                                 .addComponent(slideDot5)
                                 .addComponent(slideDot6))
-                            .addGap(200, 200, 200)
+                            .addGap(49, 49, 49)
+                            .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(comboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(button1))
+                            .addGap(126, 126, 126)
                             .addComponent(eventLabel)
                             .addGap(42, 42, 42)
                             .addGroup(panel2Layout.createParallelGroup()
@@ -766,7 +816,7 @@ public class HomePanel extends JPanel {
                                             .addComponent(eventName2))
                                         .addGroup(panel2Layout.createSequentialGroup()
                                             .addGap(16, 16, 16)
-                                            .addComponent(eventName1, GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)))
+                                            .addComponent(eventName1, GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(eventDate1)
@@ -874,5 +924,7 @@ public class HomePanel extends JPanel {
     private JRadioButton slideDot4;
     private JRadioButton slideDot5;
     private JRadioButton slideDot6;
+    private JComboBox comboBox1;
+    private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

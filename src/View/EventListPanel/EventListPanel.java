@@ -10,6 +10,7 @@ import View.MainPage.MainPage;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -82,13 +83,13 @@ public class EventListPanel extends JPanel {
         EventInfor.getTextQuantity().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 7).toString());
         EventInfor.getTextDescription().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 8).toString());
         Connection connection = UserDatabase.getConnection();
-        String sql = "SELECT EVT_PHOTO FROM event WHERE EVT_ID = ?";
+        String sql = "SELECT EVT_POSTER FROM event WHERE EVT_ID = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 0).toString()));
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                Blob blob = resultSet.getBlob("EVT_PHOTO");
+                Blob blob = resultSet.getBlob("EVT_POSTER");
                 EventInfor.getTextPoster().setIcon(new ImageIcon(blob.getBytes(1, (int) blob.length())));
                 EventInfor.setEvent_Image(blob.getBytes(1, (int) blob.length()));
             }
@@ -123,9 +124,22 @@ public class EventListPanel extends JPanel {
         }
     }
 
+    private void jlbSearchMouseClicked(MouseEvent e) {
+        String search = jtfSearch.getText();
+        if(search.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please enter something to search");
+            return;
+        } else {
+            DefaultTableModel defaultTableModel = (DefaultTableModel) eventListTable.getModel();
+            TableRowSorter<DefaultTableModel> tableRowSorter = new TableRowSorter<>(defaultTableModel);
+            eventListTable.setRowSorter(tableRowSorter);
+            tableRowSorter.setRowFilter(RowFilter.regexFilter(search));
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - man
         label1 = new JLabel();
         jtfSearch = new JTextField();
         jlbDelete = new JButton();
@@ -138,12 +152,11 @@ public class EventListPanel extends JPanel {
         //======== this ========
         setBackground(Color.white);
         setForeground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-        ( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-        . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-        propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-        ; }} );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
+        0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
+        . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
+        red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
+        beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
         //---- label1 ----
         label1.setText("EVENT INFORMATION LIST");
@@ -198,6 +211,12 @@ public class EventListPanel extends JPanel {
         jlbSearch.setFont(new Font("Lato Black", Font.BOLD, 16));
         jlbSearch.setForeground(Color.white);
         jlbSearch.setBackground(new Color(0x61b884));
+        jlbSearch.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                jlbSearchMouseClicked(e);
+            }
+        });
 
         //======== scrollPane1 ========
         {
@@ -269,7 +288,7 @@ public class EventListPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - man
     private JLabel label1;
     private JTextField jtfSearch;
     private JButton jlbDelete;
