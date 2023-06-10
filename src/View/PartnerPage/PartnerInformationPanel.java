@@ -9,11 +9,10 @@ import Model.BEAN.Partner;
 import Model.DAO.Partner.PartnerDAO;
 import View.MainPage.MainPage;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import javax.swing.*;
-import javax.swing.GroupLayout;
 
 /**
  * @author Admin
@@ -42,7 +41,6 @@ public class PartnerInformationPanel extends JPanel {
         this.AddressField.setText(partner.getAddress());
         this.EmailField.setText(partner.getEmail());
         this.PhoneNumberField.setText(partner.getPhoneNumber());
-        this.LogoField.setText(partner.getLogo());
         this.AccountNumberField.setText(partner.getAccNumber());
         this.BankField.setText(partner.getBank());
         
@@ -66,7 +64,6 @@ public class PartnerInformationPanel extends JPanel {
                 partner.setPhoneNumber(this.PhoneNumberField.getText());
                 partner.setEmail(this.EmailField.getText());
                 partner.setAddress(this.AddressField.getText());
-                partner.setLogo(this.LogoField.getText());
                 partner.setAccNumber(this.AccountNumberField.getText());
                 partner.setBank(this.BankField.getText());
             }
@@ -78,7 +75,6 @@ public class PartnerInformationPanel extends JPanel {
                     partner.setPhoneNumber(this.PhoneNumberField.getText());
                     partner.setEmail(this.EmailField.getText());
                     partner.setAddress(this.AddressField.getText());
-                    partner.setLogo(this.LogoField.getText());
                     partner.setAccNumber(this.AccountNumberField.getText());
                     partner.setBank(this.BankField.getText());
                 } catch (SQLException e) {

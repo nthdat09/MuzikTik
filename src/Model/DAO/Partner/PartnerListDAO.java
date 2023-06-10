@@ -34,11 +34,10 @@ public class PartnerListDAO {
                 String partnerPhone = rs.getString("PTN_PHONE_NUMBER");
                 String partnerEmail = rs.getString("PTN_EMAIL");
                 String partnerAddress = rs.getString("PTN_ADDRESS");
-                String partnerLogo = rs.getString("PTN_LOGO");
                 String partnerAccNumber = rs.getString("PTN_ACC_NUMBER");
                 String partnerBank = rs.getString("PTN_BANK");
 
-                partner = new Partner(partnerID, partnerName, partnerPhone, partnerEmail, partnerAddress, partnerLogo, partnerAccNumber, partnerBank);
+                partner = new Partner(partnerID, partnerName, partnerPhone, partnerEmail, partnerAddress, partnerAccNumber, partnerBank);
 
                 result.add(partner);
 

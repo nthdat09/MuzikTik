@@ -7,8 +7,8 @@ new FormModel {
 			"JavaCodeGenerator.defaultVariableGetter": true
 		}
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {par l {seq l {space :p:401:p, comp label1:::p::p}, seq l {space :p:36:p, par l {comp scrollPane1:::p:896:p, seq {comp jtfSearch:::p:210:p, space :6:6:p, comp jlbSearch:::p:111:p, space :287:287:p, comp jlbAdd:::p:90:p, space :6:6:p, comp jlbEdit:::p:90:p, space :6:6:p, comp jlbDelete:::p::p}}}}, space ::89:x}}"
-			"$verticalGroup": "par l {seq l {space :p:25:p, comp label1:::p::p, space :p:24:p, par l {comp jtfSearch:::p::p, seq l {space :2:2:p, par l {comp jlbSearch:::p:26:p, comp jlbAdd:::p:26:p, comp jlbEdit:::p:26:p, comp jlbDelete:::p:26:p}}}, space u:::p, comp scrollPane1:::p:363:p, space ::15:x}}"
+			"$horizontalGroup": "par l {seq {par l {seq l {space :p:401:p, comp label1:::p::p}, seq l {space :p:36:p, par l {comp scrollPane1:::p:896:p, seq {comp jtfSearch:::p:210:p, space :6:6:p, comp jlbSearch:::p:111:p, space :287:287:p, comp jlbAdd:::p:90:p, space :6:6:p, comp jlbEdit:::p:90:p, space :6:6:p, comp jlbDelete:::p::p}}}}, space ::98:x}}"
+			"$verticalGroup": "par l {seq l {space :p:25:p, comp label1:::p::p, space :p:24:p, par l {comp jtfSearch:::p::p, seq l {space :2:2:p, par l {comp jlbSearch:::p:26:p, comp jlbAdd:::p:26:p, comp jlbEdit:::p:26:p, comp jlbDelete:::p:26:p}}}, space u:::p, comp scrollPane1:::p:363:p, space ::22:x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -29,21 +29,10 @@ new FormModel {
 						add( "Phone Number" )
 						add( "Email" )
 						add( "Address" )
-						add( "Logo" )
 						add( "Account Number" )
 						add( "Bank" )
 					}, new java.util.Vector {
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-					}, new java.util.Vector {
-						add( null )
-						add( null )
+						add( class java.lang.Object )
 						add( null )
 						add( null )
 						add( null )
@@ -52,6 +41,13 @@ new FormModel {
 						add( null )
 					}, new java.util.Vector {
 						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
 						add( null )
 						add( null )
 						add( null )
@@ -60,6 +56,7 @@ new FormModel {
 						add( null )
 						add( null )
 					} )
+					"gridColor": new java.awt.Color( 255, 255, 255, 255 )
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {

@@ -6,7 +6,6 @@ public class Partner {
     String phoneNumber;
     String email;
     String address;
-    String logo;
     String accNumber;
     String bank;
 
@@ -14,13 +13,12 @@ public class Partner {
         super();
     }
 
-    public Partner(int id, String name, String phoneNumber, String email, String address, String logo, String accNumber, String bank) {
+    public Partner(int id, String name, String phoneNumber, String email, String address, String accNumber, String bank) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
-        this.logo = logo;
         this.accNumber = accNumber;
         this.bank = bank;
     }
@@ -65,14 +63,6 @@ public class Partner {
         this.address = address;
     }
 
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
-
     public String getAccNumber() {
         return accNumber;
     }
@@ -97,7 +87,6 @@ public class Partner {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
-                ", logo='" + logo + '\'' +
                 ", accNumber='" + accNumber + '\'' +
                 ", bank='" + bank + '\'' +
                 '}';

@@ -118,11 +118,12 @@ public class CustomersListPanel extends JPanel{
         //======== this ========
         setBackground(Color.white);
         setName("customersListPage");
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0
-        ,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
-        ,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.red),
-         getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-        ){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}});
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
+        (0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border
+        .TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
+        .Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
+        propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException()
+        ;}});
 
         //======== scrollPane1 ========
         {
@@ -132,7 +133,7 @@ public class CustomersListPanel extends JPanel{
                 new Object[][] {
                 },
                 new String[] {
-                    "ID", "Name", "Phone Number", "Email", "Address", "Type", "Total Point"
+                    "ID", "Name", "Phone Number", "Email", "Address", "Type", "Total Point", "Balance"
                 }
             ));
             {
@@ -142,7 +143,7 @@ public class CustomersListPanel extends JPanel{
             }
             CustomerListTable.setAutoCreateRowSorter(true);
             CustomerListTable.setName("cusListTable");
-            CustomerListTable.setFont(new Font("Lato", Font.PLAIN, 13));
+            CustomerListTable.setFont(new Font("Arial", Font.PLAIN, 13));
             scrollPane1.setViewportView(CustomerListTable);
         }
 
@@ -194,18 +195,18 @@ public class CustomersListPanel extends JPanel{
                             .addComponent(textField1))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(25, 25, 25)
-                            .addGroup(layout.createParallelGroup()
-                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 1080, GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(337, 337, 337)
-                                    .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jlbDelete)))))
+                            .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+                            .addGap(337, 337, 337)
+                            .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jlbDelete))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(16, 16, 16)
+                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 1080, GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(130, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -249,8 +250,9 @@ public class CustomersListPanel extends JPanel{
             String address = customer.getAddress();
             String type = customer.getType();
             int totalPoint = customer.getTotalPoint();
+            int balance = customer.getBalance();
             tableModel.addRow(new Object[]{
-                    ID + "", name, phoneNumber, email, address, type, totalPoint + ""});
+                    ID + "", name, phoneNumber, email, address, type, totalPoint, balance + ""});
         }
     }
 
@@ -283,7 +285,7 @@ public class CustomersListPanel extends JPanel{
             List<Integer> idResult = new ArrayList<>();
 
             for (Customer customer : listCustomer) {
-                String customerCompiled = customer.getId() + "!@#$" + customer.getName() + "!@#$" + customer.getUsernameEmail() + "!@#$" + customer.getAddress() + "!@#$" + customer.getTotalPoint() + "!@#$" + customer.getPhoneNumber();
+                String customerCompiled = customer.getId() + "!@#$" + customer.getName() + "!@#$" + customer.getUsernameEmail() + "!@#$" + customer.getAddress() + "!@#$" + customer.getTotalPoint() + "!@#$" + customer.getPhoneNumber() + "!@#$" + customer.getBalance();
                 System.out.println(customerCompiled);
                 if (customerCompiled.contains(textSearched) == true) {
                     idResult.add(customer.getId());

@@ -64,11 +64,10 @@ public class PartnerListPanel extends JPanel {
             String partnerPhone = partner.getPhoneNumber();
             String partnerEmail = partner.getEmail();
             String partnerAddress = partner.getAddress();
-            String partnerLogo = partner.getLogo();
             String partnerAccNumber = partner.getAccNumber();
             String partnerBank = partner.getBank();
 
-            tableModel.addRow(new Object[]{partnerID, partnerName, partnerPhone, partnerEmail, partnerAddress, partnerLogo, partnerAccNumber, partnerBank});
+            tableModel.addRow(new Object[]{partnerID, partnerName, partnerPhone, partnerEmail, partnerAddress, partnerAccNumber, partnerBank});
         }
     }
 
@@ -123,7 +122,7 @@ public class PartnerListPanel extends JPanel {
 
             for (Partner partner: partnerList) {
                 String partnerCompiled = partner.getId() + "!@#$" + partner.getName() + "!@#$" + partner.getAddress() + "!@#$"
-                        + partner.getEmail() + "!@#$" + partner.getPhoneNumber() + "!@#$" + partner.getLogo() + "!@#$" + partner.getAccNumber()
+                        + partner.getEmail() + "!@#$" + partner.getPhoneNumber() + "!@#$" + partner.getAccNumber()
                         + partner.getBank();
 
                 if (partnerCompiled.contains(textSearched)) {
@@ -165,9 +164,21 @@ public class PartnerListPanel extends JPanel {
         return PartnerListTable;
     }
 
+    public JLabel getLabel1() {
+        return label1;
+    }
+
+    public JScrollPane getScrollPane1() {
+        return scrollPane1;
+    }
+
+    public JTextField getJtfSearch() {
+        return jtfSearch;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         label1 = new JLabel();
         scrollPane1 = new JScrollPane();
         PartnerListTable = new JTable();
@@ -179,11 +190,13 @@ public class PartnerListPanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
-        0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
-        .BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.
-        red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
-        beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}});
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+        . swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing
+        . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+        Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+        ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+        public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName (
+        ) )) throw new RuntimeException( ); }} );
 
         //---- label1 ----
         label1.setText("PARTNERS LIST");
@@ -199,9 +212,10 @@ public class PartnerListPanel extends JPanel {
                 new Object[][] {
                 },
                 new String[] {
-                    "ID", "Name", "Phone Number", "Email", "Address", "Logo", "Account Number", "Bank"
+                    "ID", "Name", "Phone Number", "Email", "Address", "Account Number", "Bank"
                 }
             ));
+            PartnerListTable.setGridColor(Color.white);
             scrollPane1.setViewportView(PartnerListTable);
         }
 
@@ -257,7 +271,7 @@ public class PartnerListPanel extends JPanel {
                                     .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
                                     .addGap(6, 6, 6)
                                     .addComponent(jlbDelete)))))
-                    .addContainerGap(89, Short.MAX_VALUE))
+                    .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
@@ -276,13 +290,13 @@ public class PartnerListPanel extends JPanel {
                                 .addComponent(jlbDelete, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 363, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(15, Short.MAX_VALUE))
+                    .addContainerGap(22, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     private JLabel label1;
     private JScrollPane scrollPane1;
     private JTable PartnerListTable;

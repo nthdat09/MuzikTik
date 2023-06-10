@@ -40,7 +40,8 @@ public class CustomerListDAO{
                     int cusId = rs.getInt("CUS_ID");
                     String cusType = rs.getString("CUS_TYPE");
                     int cusTotalPoint = rs.getInt("CUS_TOTAL_POINT");
-                    customerList = new Customer(cusId, cusName, cusPhoneNumber, cusEmail, cusAddress, cusType, cusTotalPoint);
+                    int cusBalance = rs.getInt("CUS_BALANCE");
+                    customerList = new Customer(cusId, cusName, cusPhoneNumber, cusEmail, cusAddress, cusType, cusTotalPoint, cusBalance);
                     result.add(customerList);
                 }
 

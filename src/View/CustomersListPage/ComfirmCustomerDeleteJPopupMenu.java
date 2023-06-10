@@ -87,9 +87,9 @@ public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
                 ConfirmJDialogContentPaneLayout.createParallelGroup()
                     .addComponent(ConfirmText, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
                     .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
+                        .addGap(83, 83, 83)
                         .addComponent(YesButton, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
+                        .addGap(49, 49, 49)
                         .addComponent(NoButton, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(91, Short.MAX_VALUE))
             );
@@ -100,8 +100,8 @@ public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
                         .addComponent(ConfirmText, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(ConfirmJDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(YesButton)
-                            .addComponent(NoButton))
+                            .addComponent(NoButton)
+                            .addComponent(YesButton))
                         .addGap(68, 68, 68))
             );
             ConfirmJDialog.pack();

@@ -9,11 +9,13 @@ public class Customer {
     private String type;
     private int totalPoint;
 
+    private int balance;
+
     public Customer() {
         super();
     }
 
-    public Customer(int id, String name, String phoneNumber, String email, String address, String type, int totalPoint) {
+    public Customer(int id, String name, String phoneNumber, String email, String address, String type, int totalPoint, int balance) {
         super();
         this.id = id;
         this.name = name;
@@ -22,6 +24,7 @@ public class Customer {
         this.address = address;
         this.type = type;
         this.totalPoint = totalPoint;
+        this.balance = balance;
     }
 
     public int getId() {
@@ -58,6 +61,10 @@ public class Customer {
         return totalPoint;
     }
 
+    public int getBalance() {
+        return balance;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -86,6 +93,10 @@ public class Customer {
         this.totalPoint = totalPoint;
     }
 
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
         return "CustomerListP{" +
@@ -96,6 +107,7 @@ public class Customer {
                 ", address='" + address + '\'' +
                 ", type='" + type + '\'' +
                 ", totalPoint=" + totalPoint +
+                ", balance='" + balance + '\'' +
                 '}';
     }
 }

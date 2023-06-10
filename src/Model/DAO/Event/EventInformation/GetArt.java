@@ -25,7 +25,7 @@ public class GetArt {
             PreparedStatement st = con.prepareCall(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
-                Blob artID = rs.getBlob("EVT_PHOTO");
+                Blob artID = rs.getBlob("EVT_POSTER");
                 byte[] eventPictureByte = artID.getBytes(1, (int) artID.length());
                 ImageIcon eventPicture = new ImageIcon(eventPictureByte);
                 EventPanel.getEventArt().setIcon(eventPicture);

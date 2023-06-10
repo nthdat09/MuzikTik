@@ -3,8 +3,10 @@ package Model.DAO.Partner;
 import Model.BEAN.Partner;
 import Model.Database.UserDatabase;
 
-import java.sql.*;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class PartnerDAO {
     public static PartnerDAO getInstance() {
@@ -26,7 +28,6 @@ public class PartnerDAO {
                 partner.setPhoneNumber(rs.getString("PTN_PHONE_NUMBER"));
                 partner.setEmail(rs.getString("PTN_EMAIL"));
                 partner.setAddress(rs.getString("PTN_ADDRESS"));
-                partner.setLogo(rs.getString("PTN_LOGO"));
                 partner.setAccNumber(rs.getString("PTN_ACC_NUMBER"));
                 partner.setBank(rs.getString("PTN_BANK"));
 
@@ -45,14 +46,13 @@ public class PartnerDAO {
         int rowChanged = 0;
         try{
             Connection con = UserDatabase.getConnection();
-            String sql = "UPDATE mctmsys.partner SET PTN_NAME = ?, PTN_PHONE_NUMBER = ?, PTN_EMAIL = ?, PTN_ADDRESS = ?, PTN_LOGO = ?, PTN_ACC_NUMBER = ?, PTN_BANK = ? WHERE PTN_ID = ?;";
+            String sql = "UPDATE mctmsys.partner SET PTN_NAME = ?, PTN_PHONE_NUMBER = ?, PTN_EMAIL = ?, PTN_ADDRESS = ?, PTN_ACC_NUMBER = ?, PTN_BANK = ? WHERE PTN_ID = ?;";
             System.out.println(sql);
             PreparedStatement ps = con.prepareCall(sql);
             ps.setString(1, partner.getName());
             ps.setString(2, partner.getPhoneNumber());
             ps.setString(3, partner.getEmail());
             ps.setString(4, partner.getAddress());
-            ps.setString(5, partner.getLogo());
             ps.setString(6, partner.getAccNumber());
             ps.setString(7, partner.getBank());
             ps.setInt(8, partner.getId());
@@ -70,14 +70,13 @@ public class PartnerDAO {
         int rowChanged = 0;
         try{
             Connection con = UserDatabase.getConnection();
-            String sql = "INSERT INTO mctmsys.partner (PTN_ID, PTN_NAME, PTN_PHONE_NUMBER, PTN_EMAIL, PTN_ADDRESS, PTN_LOGO, PTN_ACC_NUMBER, PTN_BANK) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO mctmsys.partner (PTN_ID, PTN_NAME, PTN_PHONE_NUMBER, PTN_EMAIL, PTN_ADDRESS, PTN_ACC_NUMBER, PTN_BANK) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = con.prepareCall(sql);
             ps.setInt(1, partner.getId());
             ps.setString(2, partner.getName());
             ps.setString(3, partner.getPhoneNumber());
             ps.setString(4, partner.getEmail());
             ps.setString(5, partner.getAddress());
-            ps.setString(6, partner.getLogo());
             ps.setString(7, partner.getAccNumber());
             ps.setString(8, partner.getBank());
 
