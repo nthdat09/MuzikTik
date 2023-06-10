@@ -200,7 +200,7 @@ public class HomePanel extends JPanel {
     }
     public void pictureArtSetting() {
         for(EventArtID art : eventArt) {
-            ImageIcon icon = new ImageIcon(getClass().getResource("/Image/" + art.getEventArtID()));
+            ImageIcon icon = new ImageIcon(getClass().getResource("Asset/Event/" + art.getEventArtID()));
             EventPanel.getEventArt().setIcon(icon);
         }
     }
