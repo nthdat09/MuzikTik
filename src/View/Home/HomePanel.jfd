@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space ::15:x, comp mainScrollPanel:::p:1131:p, space :p:179:p}}"
-			"$verticalGroup": "par l {seq l {space :p:113:p, comp mainScrollPanel:::p:1726:p, space ::1311:x}}"
+			"$horizontalGroup": "par l {seq {space :::p, comp mainScrollPanel:::p:1457:p, space :p:24:p, comp mainLabel:::p::p, space :::x}}"
+			"$verticalGroup": "par l {seq {par l {seq {space :p:165:p, comp mainLabel:::p::p}, seq l {space :::p, comp mainScrollPanel:::p:770:p}}, space ::609:x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -13,36 +13,15 @@ new FormModel {
 				name: "mainScrollPanel"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {space :p:434:p, comp mainLabel:::p::p, space :0:0:x}, seq {space :p:73:p, par t {seq {par l {seq {space :p:404:p, par l {comp eventLabel:::p::p, seq l {par t {comp comboBox1:::p::p, seq {comp slideDot1:::p::p, space s:::p, comp slideDot2:::p::p, space s:::p, comp slideDot3:::p::p, space s:::p, comp slideDot4:::p::p}}, space s:::p, par l {seq {comp slideDot5:::p::p, space s:::p, comp slideDot6:::p::p}, comp button1:::p::p}}}}, seq l {par l:::p {comp evetntPicture7::l::260:x, comp eventDate7::l::260:x, comp eventName7::l::260:x}, space :p:109:p, par l:::p {comp evetntPicture8::l::260:x, comp eventDate8::l::260:x, comp eventName8::l::260:x}, space :p:104:p, par l:::p {comp evetntPicture9::::260:x, comp eventDate9::l::260:x, comp eventName9::l::260:x}}, seq l {par t {par l {comp evetntPicture4::l:p:260:p, comp eventName4::l:p:260:p, comp eventDate4::l:p:260:p, comp eventDate1:::p:260:p}, seq t {comp eventPicture1:::p:260:p, space :p:1:p}}, space :p:109:p, par l {comp eventName5:::p:260:p, seq l {par l {comp evetntPicture5::l:p:260:p, comp eventDate5::l:p:260:p, comp eventPicture2:::p:260:p, comp eventDate2:::p:260:p, comp eventName2::l:p:260:p}, space :p:104:p, par l {comp eventDate3:::p:260:p, comp eventDate6:::p:260:p, comp evetntPicture6:::p:260:p, comp eventName6:::p:260:p, comp eventName3::l:p:260:p, comp eventPicture3::l:p:260:p}}}}, comp eventName1::l:p:259:p}, space ::334:x}, seq t {comp previousButton:::p:94:p, space :p:70:p, comp mainLivePicture:::p:652:p, space :p:62:p, comp nextButton:::p:80:p}}, space ::266:x}}"
-					"$verticalGroup": "par l {seq {space :p:33:p, comp mainLabel:::p::p, par l {seq l {space :p:154:p, comp nextButton:::p:96:p}, seq l {space :p:148:p, comp previousButton:::p:96:p}, seq {space :p:75:p, comp mainLivePicture:::p:274:p}}, space :p:27:p, par t {comp slideDot1:::p::p, comp slideDot2:::p::p, comp slideDot3:::p::p, comp slideDot4:::p::p, comp slideDot5:::p::p, comp slideDot6:::p::p}, space :p:49:p, par b {comp comboBox1::b:p::p, comp button1::b:p::p}, space :p:126:p, comp eventLabel:::p::p, par l {seq {space :p:37:p, comp eventPicture1:::p:100:p, space u:::p, comp eventName1:::p:79:p, space :p:23:p, comp eventDate1:::p::p, space :0:0:x}, seq t {space :::x, par l {seq {space :p:12:p, comp eventPicture3:::p:100:p, space :::p, comp eventName3:::p:54:p, space :::x, comp eventDate3:::p::p}, seq {comp eventPicture2:::p:100:p, space :p:13:p, comp eventName2:::p:71:p, space :p:17:p, comp eventDate2:::p::p}}}}, space :p:52:p, par l {comp evetntPicture4:::p:100:p, comp evetntPicture5:::p:100:p, comp evetntPicture6:::p:100:p}, space u:::p, par l {comp eventName4:::p:80:p, comp eventName5:::p:80:p, comp eventName6::l:p:80:p}, space s:::p, par l {comp eventDate4:::p::p, comp eventDate5:::p::p, comp eventDate6::l:p::p}, space :p:67:p, par l {comp evetntPicture7:::p:100:p, comp evetntPicture8:::p:100:p, comp evetntPicture9:::p:100:p}, space s:::p, par l {par b {comp eventName9::b:p:66:p, comp eventName8::b:p:66:p}, comp eventName7:::p:74:p}, space :p:19:p, par b {comp eventDate9::b:p::p, comp eventDate8::b:p::p, comp eventDate7::b:p::p}, space :p:694:p}}"
+					"$horizontalGroup": "par l {seq {par l {par t:l {par l {seq l {par l:::p {comp evetntPicture7::l:::x, comp eventDate7::l:::x, comp eventName7::l:p:260:p}, space :p:109:p, par l:::p {comp evetntPicture8::l:::x, comp eventDate8::l:::x, comp eventName8::l:p:260:p}, space :p:104:p, par l:::p {comp evetntPicture9:::::x, comp eventDate9::l:::x, comp eventName9::l:p:260:p}}, seq l {par l {seq l {space :p:2:p, par l {comp evetntPicture4::l:p:260:p, comp eventName4::l:p:260:p, comp eventDate4::l:p:260:p, comp eventDate1:::p:260:p}}, comp eventPicture1::l:p:260:p}, space :p:110:p, par l {comp eventName5:::p:260:p, seq l {par l {comp evetntPicture5::l:p:260:p, comp eventDate5::l:p:260:p, comp eventDate2:::p:260:p, comp eventName2::l:p:260:p, comp eventPicture2::l:p:260:p}, space :p:104:p, par l {comp eventDate3:::p:260:p, comp eventDate6:::p:260:p, comp evetntPicture6:::p:260:p, comp eventName6:::p:260:p, comp eventName3::l:p:260:p, comp eventPicture3::l:p:260:p}}}}, comp eventName1::l:p:259:p}, seq {par l {seq {space :p:82:p, comp previousButton:::p:44:p, space :p:38:p, comp mainLivePicture:::p:781:p}, comp comboBox1::t:p::p}, space u:::p, par t {comp nextButton:::p:42:p, comp button1:::p:66:p}}}, seq l {space :p:436:p, comp slideDot1:::p::p, space s:::p, comp slideDot2:::p::p, space s:::p, comp slideDot3:::p::p, space s:::p, comp slideDot4:::p::p, space s:::p, comp slideDot5:::p::p, space s:::p, comp slideDot6:::p::p}, seq l {space :p:420:p, comp eventLabel:::p::p}}, space ::630:x}}"
+					"$verticalGroup": "par l {seq {par l {seq l {space :p:27:p, comp mainLivePicture:::p:300:p}, seq l {space :p:142:p, comp nextButton:::p:96:p}, seq l {space :p:143:p, comp previousButton:::p:76:p}}, par t {seq l {space s:::p, par t {comp slideDot1:::p::p, comp slideDot2:::p::p, comp slideDot3:::p::p, comp slideDot4:::p::p, comp slideDot5:::p::p, comp slideDot6:::p::p}, space :p:49:p, comp eventLabel:::p::p}, seq l {space :p:129:p, par b {comp button1::b:p::p, comp comboBox1::b:p::p}}}, space :p:32:p, par t {seq t {space :3:3:p, comp eventPicture1:::p:100:p, space u:::p, comp eventName1:::p:79:p, space u:::p, comp eventDate1:::p::p, space :0:0:x}, seq t {par l {comp eventPicture2::t:p:100:p, comp eventPicture3::t:p:100:p}, space s:::p, par l:::p {seq l {comp eventName3:::::x, space s:::p, comp eventDate3:::p::p}, seq l {comp eventName2:::p:71:p, space :p:17:p, comp eventDate2:::p::p}}}}, space :p:52:p, par l {comp evetntPicture4:::p:100:p, comp evetntPicture5:::p:100:p, comp evetntPicture6:::p:100:p}, space u:::p, par l {comp eventName4:::p:80:p, comp eventName5:::p:80:p, comp eventName6::l:p:80:p}, space s:::p, par l {comp eventDate4:::p::p, comp eventDate5:::p::p, comp eventDate6::l:p::p}, space :p:67:p, par l {comp evetntPicture7:::p:100:p, comp evetntPicture8:::p:100:p, comp evetntPicture9:::p:100:p}, space s:::p, par l:::p {comp eventName7:::p:74:p, comp eventName8:::::x, comp eventName9::l:p:75:p}, space s:::p, par b {comp eventDate9::b:p::p, comp eventDate8::b:p::p, comp eventDate7::b:p::p}, space :p:1046:p}}"
 				} ) {
 					name: "panel2"
 					"background": new java.awt.Color( 255, 255, 255, 255 )
 					"font": new java.awt.Font( "Lato Black", 1, 20 )
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "mainLabel"
-						"text": "LET ME LIVE HAPPEN"
-						"font": new java.awt.Font( "Lato Black", 1, 30 )
-						"foreground": new java.awt.Color( 97, 184, 132, 255 )
-						"background": new java.awt.Color( 255, 255, 255, 255 )
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "mainLivePicture"
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "previousButton"
-						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"text": "previous"
-						"foreground": new java.awt.Color( 0, 0, 0, 255 )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "previousButtonMouseClicked", true ) )
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "nextButton"
-						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"foreground": new java.awt.Color( 0, 0, 0, 255 )
-						"text": "Next"
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "nextButtonMouseClicked", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "eventLabel"
@@ -66,7 +45,7 @@ new FormModel {
 						name: "eventName1"
 						"text": "Event Name"
 						"font": &Font0 new java.awt.Font( "Lato Black", 1, 16 )
-						"foreground": new java.awt.Color( 97, 184, 132, 255 )
+						"foreground": sfield java.awt.Color darkGray
 						auxiliary() {
 							"JavaCodeGenerator.variableModifiers": 10
 						}
@@ -75,7 +54,7 @@ new FormModel {
 						name: "eventName2"
 						"text": "Event Name"
 						"font": #Font0
-						"foreground": new java.awt.Color( 97, 184, 132, 255 )
+						"foreground": sfield java.awt.Color darkGray
 						auxiliary() {
 							"JavaCodeGenerator.variableModifiers": 10
 						}
@@ -102,7 +81,7 @@ new FormModel {
 						name: "eventName3"
 						"text": "Event Name"
 						"font": #Font0
-						"foreground": new java.awt.Color( 97, 184, 132, 255 )
+						"foreground": sfield java.awt.Color darkGray
 						auxiliary() {
 							"JavaCodeGenerator.variableModifiers": 10
 						}
@@ -132,7 +111,7 @@ new FormModel {
 						name: "eventName6"
 						"text": "Event Name"
 						"font": #Font0
-						"foreground": &Color0 new java.awt.Color( 97, 184, 132, 255 )
+						"foreground": sfield java.awt.Color darkGray
 						auxiliary() {
 							"JavaCodeGenerator.variableModifiers": 10
 						}
@@ -141,7 +120,7 @@ new FormModel {
 						name: "eventDate6"
 						"text": "Date"
 						"font": &Font2 new java.awt.Font( "Lato Black", 1, 16 )
-						"foreground": #Color0
+						"foreground": &Color0 new java.awt.Color( 97, 184, 132, 255 )
 						auxiliary() {
 							"JavaCodeGenerator.variableModifiers": 10
 						}
@@ -159,7 +138,7 @@ new FormModel {
 						name: "eventName5"
 						"text": "Event Name"
 						"font": #Font0
-						"foreground": #Color0
+						"foreground": sfield java.awt.Color darkGray
 						auxiliary() {
 							"JavaCodeGenerator.variableModifiers": 10
 						}
@@ -168,7 +147,7 @@ new FormModel {
 						name: "eventName4"
 						"text": "Event Name"
 						"font": #Font0
-						"foreground": #Color0
+						"foreground": sfield java.awt.Color darkGray
 						auxiliary() {
 							"JavaCodeGenerator.variableModifiers": 10
 						}
@@ -198,7 +177,7 @@ new FormModel {
 						name: "eventName9"
 						"text": "Event Name"
 						"font": #Font0
-						"foreground": &Color1 new java.awt.Color( 97, 184, 132, 255 )
+						"foreground": sfield java.awt.Color darkGray
 						auxiliary() {
 							"JavaCodeGenerator.variableModifiers": 10
 						}
@@ -207,7 +186,7 @@ new FormModel {
 						name: "eventDate9"
 						"text": "Date"
 						"font": &Font3 new java.awt.Font( "Lato", 1, 16 )
-						"foreground": #Color1
+						"foreground": new java.awt.Color( 97, 184, 132, 255 )
 						auxiliary() {
 							"JavaCodeGenerator.variableModifiers": 10
 						}
@@ -225,7 +204,7 @@ new FormModel {
 						name: "eventName8"
 						"text": "Event Name"
 						"font": #Font0
-						"foreground": #Color0
+						"foreground": sfield java.awt.Color darkGray
 						auxiliary() {
 							"JavaCodeGenerator.variableModifiers": 10
 						}
@@ -234,7 +213,7 @@ new FormModel {
 						name: "eventName7"
 						"text": "Event Name"
 						"font": #Font0
-						"foreground": #Color0
+						"foreground": sfield java.awt.Color darkGray
 						auxiliary() {
 							"JavaCodeGenerator.variableModifiers": 10
 						}
@@ -250,25 +229,25 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JRadioButton" ) {
 						name: "slideDot1"
-						"background": &Color2 new java.awt.Color( 255, 255, 255, 255 )
+						"background": &Color1 new java.awt.Color( 255, 255, 255, 255 )
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "radioButton1MouseClicked", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JRadioButton" ) {
 						name: "slideDot2"
-						"background": #Color2
+						"background": #Color1
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "radioButton2MouseClicked", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JRadioButton" ) {
 						name: "slideDot3"
-						"background": #Color2
+						"background": #Color1
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "radioButton3MouseClicked", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JRadioButton" ) {
 						name: "slideDot4"
-						"background": #Color2
+						"background": #Color1
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "radioButton4MouseClicked", true ) )
 					} )
@@ -280,23 +259,46 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JRadioButton" ) {
 						name: "slideDot6"
-						"background": #Color2
+						"background": #Color1
 						"foreground": new java.awt.Color( 97, 184, 132, 255 )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "radioButton6MouseClicked", true ) )
 					} )
 					add( new FormComponent( "javax.swing.JComboBox" ) {
 						name: "comboBox1"
+						"font": &Font4 new java.awt.Font( "Lato Black", 1, 14 )
+						"background": new java.awt.Color( 255, 255, 255, 255 )
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "button1"
-						"text": "text"
+						"text": "GO"
+						"font": #Font4
+						"background": new java.awt.Color( 97, 184, 132, 255 )
+						"foreground": new java.awt.Color( 255, 255, 255, 255 )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "nextButton"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Asset/Icon/angle-right.png" )
+						"foreground": new java.awt.Color( 0, 0, 0, 255 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "nextButtonMouseClicked", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "previousButton"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/Asset/Icon/angle-left.png" )
+						"foreground": new java.awt.Color( 0, 0, 0, 255 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "previousButtonMouseClicked", true ) )
 					} )
 				} )
 			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "mainLabel"
+				"font": new java.awt.Font( "Lato Black", 1, 30 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 15 )
-			"size": new java.awt.Dimension( 1325, 3150 )
+			"location": new java.awt.Point( 0, 20 )
+			"size": new java.awt.Dimension( 1145, 1385 )
 		} )
 	}
 }
