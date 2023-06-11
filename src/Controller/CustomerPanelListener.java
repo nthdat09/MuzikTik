@@ -2,7 +2,7 @@ package Controller;
 
 
 import Model.BEAN.CustomerList;
-import View.CustomerPage.ListPanel.HistoryCustomerPanel;
+import View.CustomerPageUnUse.ListPanel.HistoryCustomerPanel;
 import View.CustomersListPage.InformationCustomerForm;
 
 import javax.swing.*;

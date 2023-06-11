@@ -1,11 +1,11 @@
-JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :::p, par l {seq {comp jtfSearch:::p:210:p, par l {seq {space :6:6:p, comp jlbSearch:::p:111:p, space :::x, comp jlbAdd:::p:90:p, space :6:6:p, comp jlbEdit:::p:90:p, space :6:6:p, comp jlbDelete:::p::p, space :::p}, seq l {space :p:192:p, comp label1:::p:381:p, space :::x}}}, seq t {space :0:0:x, comp scrollPane1:::p:1021:p, space :p:96:p}}}}"
-			"$verticalGroup": "par l {seq l {par l {seq {space :p:68:p, par l {comp jtfSearch:::p::p, seq l {space :2:2:p, par l {comp jlbSearch:::p:26:p, comp jlbAdd:::p:26:p, comp jlbEdit:::p:26:p, comp jlbDelete:::p:26:p}}}}, seq l {space :p:23:p, comp label1:::p:46:p}}, space :p:31:p, comp scrollPane1:::p:494:p, space :::x}}"
+			"$horizontalGroup": "par l {seq {space :::p, par l {seq {comp jtfSearch:::p:210:p, par l {seq {space :6:6:p, comp jlbSearch:::p:111:p, space ::564:x, comp jlbAdd:::p:90:p, space u:::p, comp jlbEdit:::p:90:p, space :::p, comp jlbDelete:::p::p, space :p:24:p}, seq l {space :p:192:p, comp label1:::p:381:p, space :::x}}}, comp scrollPane1::l::1204:x}}}"
+			"$verticalGroup": "par l {seq l {par l {seq {space :p:68:p, par l {comp jtfSearch:::p::p, seq l {space :2:2:p, par l {comp jlbSearch:::p:26:p, par b {comp jlbAdd::b:p:26:p, comp jlbEdit::b:p:26:p, comp jlbDelete::b:p:26:p}}}}}, seq l {space :p:20:p, comp label1:::p:46:p}}, space s:::p, comp scrollPane1:::p:494:p, space :::x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -60,16 +60,28 @@ new FormModel {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTable" ) {
 					name: "eventListTable"
-					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
-						add( "Event ID" )
-						add( "Event Name" )
-						add( "Event Artist" )
-						add( "Event Stage ID" )
-						add( "Event Open Time" )
-						add( "Event CloseTime" )
-						add( "Event Date" )
-						add( "Event Quantity" )
-						add( "EventDescription" )
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "ID" )
+						add( "Name" )
+						add( "Artist" )
+						add( "Stage Name" )
+						add( "Open Time" )
+						add( "Close Time" )
+						add( "Date" )
+						add( "Quantity" )
+						add( "Description" )
 					}, new java.util.Vector {
 						add( null )
 						add( null )
@@ -81,7 +93,7 @@ new FormModel {
 						add( null )
 						add( null )
 					}, new java.util.Vector {
-						add( null )
+						add( true )
 						add( null )
 						add( null )
 						add( null )
@@ -91,22 +103,27 @@ new FormModel {
 						add( null )
 						add( null )
 					}, new java.util.Vector {
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 20, 0, false ) )
 						add( null )
 						add( null )
 						add( null )
-						add( null )
-						add( null )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 100, 0, true ) )
 						add( null )
 						add( null )
 						add( null )
 						add( null )
 					} )
-					"font": new java.awt.Font( "Arial", 0, 12 )
+					"font": new java.awt.Font( "Lato", 0, 13 )
+					"gridColor": sfield java.awt.Color gray
+					"selectionBackground": new java.awt.Color( 97, 184, 132, 255 )
+					"selectionForeground": new java.awt.Color( 255, 255, 255, 255 )
+					"preferredScrollableViewportSize": new java.awt.Dimension( 300, 400 )
+					"minimumSize": new java.awt.Dimension( 100, 16 )
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 55, 5 )
-			"size": new java.awt.Dimension( 1025, 525 )
+			"size": new java.awt.Dimension( 1210, 525 )
 		} )
 	}
 }

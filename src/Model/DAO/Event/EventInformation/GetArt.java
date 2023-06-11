@@ -21,7 +21,7 @@ public class GetArt {
         EventArtID eventArtID = null;
         try {
             Connection con = UserDatabase.getConnection();
-            String sql = "Select * from mctmsys.event where EVT_ID = '" + selectedEventID + "'";
+            String sql = "Select * from mctmsys.event where EVT_ID = '" + selectedEventID + "' ORDER BY EVT_ID DESC";
             PreparedStatement st = con.prepareCall(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()) {

@@ -2,13 +2,12 @@
  * Created by JFormDesigner on Mon Apr 24 08:33:28 ICT 2023
  */
 
-package View.CustomerPage;
+package View.CustomerPageUnUse;
 
 import java.awt.*;
 import Controller.CustomerPanelListener;
 import Model.BEAN.CustomerList;
 
-import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;

@@ -7,7 +7,7 @@ new FormModel {
 			"JavaCodeGenerator.defaultVariableGetter": true
 		}
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {par l {seq l {space :p:377:p, comp textField1:::p::p}, seq l {space :p:25:p, comp jtfSearch:::p:288:p, space s:::p, comp jlbSearch:::p:111:p, space :p:337:p, comp jlbAdd:::p:100:p, space :p:18:p, comp jlbEdit:::p:100:p, space s:::p, comp jlbDelete:::p::p}, seq l {space :p:16:p, comp scrollPane1:::p:1080:p}}, space ::130:x}}"
+			"$horizontalGroup": "par l {seq {par l {seq l {space :p:377:p, comp textField1:::p::p}, seq l {space :p:25:p, par l {comp scrollPane1:::p:1081:p, seq {comp jtfSearch:::p:288:p, space s:::p, comp jlbSearch:::p:111:p, space :p:337:p, comp jlbAdd:::p:100:p, space :p:18:p, comp jlbEdit:::p:100:p, space s:::p, comp jlbDelete:::p::p}}}}, space ::129:x}}"
 			"$verticalGroup": "par l {seq l {space :p:21:p, comp textField1:::p::p, space u:::p, par b {comp jlbSearch::b:p:26:p, comp jtfSearch::b:p::p, comp jlbAdd::b:p:26:p, comp jlbEdit::b:p:26:p, comp jlbDelete::b:p::p}, space u:::p, comp scrollPane1:::p:555:p, space ::34:x}}"
 		} ) {
 			name: "this"
@@ -48,7 +48,7 @@ new FormModel {
 						add( null )
 						add( null )
 					}, new java.util.Vector {
-						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 3, 0, false ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 2, 0, true ) )
 						add( null )
 						add( null )
 						add( null )
@@ -59,7 +59,11 @@ new FormModel {
 					} )
 					"autoCreateRowSorter": true
 					"name": "cusListTable"
-					"font": new java.awt.Font( "Arial", 0, 13 )
+					"font": new java.awt.Font( "Lato", 0, 13 )
+					"gridColor": sfield java.awt.Color gray
+					"selectionBackground": new java.awt.Color( 97, 184, 132, 255 )
+					"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+					"selectionForeground": new java.awt.Color( 255, 255, 255, 255 )
 					auxiliary() {
 						"JavaCodeGenerator.variableName": "CustomerListTable"
 						"JavaCodeGenerator.variableGetter": true

@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Mon Apr 24 09:04:23 ICT 2023
  */
 
-package View.CustomerPage.ListPanel;
+package View.CustomerPageUnUse.ListPanel;
 
 import java.awt.*;
 import javax.swing.*;
