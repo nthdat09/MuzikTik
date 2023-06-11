@@ -179,9 +179,13 @@ public class AccountPanel extends JPanel {
         return changePasswordJbt;
     }
 
+    public JLabel getAvatarJlb() {
+        return avatarJlb;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         jbtCancel = new JButton();
         jbtSave = new JButton();
         jlbMyAccount = new JLabel();
@@ -190,7 +194,6 @@ public class AccountPanel extends JPanel {
         jlbPhoneNumber = new JLabel();
         jlbDOB = new JLabel();
         jlbDOB2 = new JLabel();
-        jlbAvatar = new JLabel();
         usernameJtf = new JTextField();
         emailJtf = new JTextField();
         phoneJtf = new JTextField();
@@ -203,12 +206,12 @@ public class AccountPanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
-        EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
-        . border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,
-        java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
-        { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )
-        throw new RuntimeException( ) ;} } );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+        EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
+        . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+        java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+        { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
+        throw new RuntimeException( ); }} );
 
         //---- jbtCancel ----
         jbtCancel.setText("CANCEL");
@@ -227,38 +230,33 @@ public class AccountPanel extends JPanel {
         //---- jlbMyAccount ----
         jlbMyAccount.setText("MY ACCOUNT");
         jlbMyAccount.setBackground(new Color(0x61b884));
-        jlbMyAccount.setFont(new Font("Lato Black", Font.BOLD, 24));
+        jlbMyAccount.setFont(new Font("Lato Black", Font.BOLD, 25));
         jlbMyAccount.setForeground(new Color(0x61b884));
 
         //---- jlbUsername ----
-        jlbUsername.setText("Username");
-        jlbUsername.setFont(new Font("Lato Black", Font.BOLD, 20));
-        jlbUsername.setForeground(new Color(0x626262));
+        jlbUsername.setText("Username:");
+        jlbUsername.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbUsername.setForeground(new Color(0x61b884));
 
         //---- jlbEmail ----
-        jlbEmail.setText("Email");
-        jlbEmail.setFont(new Font("Lato Black", Font.BOLD, 20));
-        jlbEmail.setForeground(new Color(0x626262));
+        jlbEmail.setText("Email:");
+        jlbEmail.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbEmail.setForeground(new Color(0x61b884));
 
         //---- jlbPhoneNumber ----
-        jlbPhoneNumber.setText("Phone Number");
-        jlbPhoneNumber.setFont(new Font("Lato Black", Font.BOLD, 20));
-        jlbPhoneNumber.setForeground(new Color(0x626262));
+        jlbPhoneNumber.setText("Phone Number:");
+        jlbPhoneNumber.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbPhoneNumber.setForeground(new Color(0x61b884));
 
         //---- jlbDOB ----
-        jlbDOB.setText("Date of Birth");
-        jlbDOB.setFont(new Font("Lato Black", Font.BOLD, 20));
-        jlbDOB.setForeground(new Color(0x626262));
+        jlbDOB.setText("Date of Birth:");
+        jlbDOB.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbDOB.setForeground(new Color(0x61b884));
 
         //---- jlbDOB2 ----
-        jlbDOB2.setText("Address");
-        jlbDOB2.setFont(new Font("Lato Black", Font.BOLD, 20));
-        jlbDOB2.setForeground(new Color(0x626262));
-
-        //---- jlbAvatar ----
-        jlbAvatar.setText("Avatar");
-        jlbAvatar.setFont(new Font("Lato Black", Font.BOLD, 20));
-        jlbAvatar.setForeground(new Color(0x626262));
+        jlbDOB2.setText("Address:");
+        jlbDOB2.setFont(new Font("Lato Black", Font.BOLD, 16));
+        jlbDOB2.setForeground(new Color(0x61b884));
 
         //---- usernameJtf ----
         usernameJtf.setFont(new Font("Lato", Font.PLAIN, 16));
@@ -279,7 +277,10 @@ public class AccountPanel extends JPanel {
         addressJtf.setForeground(new Color(0x61b884));
 
         //---- UploadJbt ----
-        UploadJbt.setText("Upload new avatar");
+        UploadJbt.setText("UPLOAD NEW AVATAR");
+        UploadJbt.setFont(new Font("Lato Black", Font.BOLD, 14));
+        UploadJbt.setForeground(Color.white);
+        UploadJbt.setBackground(new Color(0x61b884));
 
         //======== desktopPane1 ========
         {
@@ -290,16 +291,19 @@ public class AccountPanel extends JPanel {
 
             //---- avatarJlb ----
             avatarJlb.setBackground(Color.white);
-            avatarJlb.setBorder(LineBorder.createBlackLineBorder());
+            avatarJlb.setBorder(new LineBorder(new Color(0x61b884)));
             avatarJlb.setMaximumSize(new Dimension(208, 212));
             avatarJlb.setMinimumSize(new Dimension(208, 212));
             avatarJlb.setPreferredSize(new Dimension(208, 212));
             desktopPane1.add(avatarJlb, JLayeredPane.DEFAULT_LAYER);
-            avatarJlb.setBounds(0, 0, 265, 270);
+            avatarJlb.setBounds(0, 0, 270, 280);
         }
 
         //---- changePasswordJbt ----
-        changePasswordJbt.setText("Change Password");
+        changePasswordJbt.setText("CHANGE PASSWORD");
+        changePasswordJbt.setFont(new Font("Lato Black", Font.BOLD, 16));
+        changePasswordJbt.setForeground(Color.white);
+        changePasswordJbt.setBackground(new Color(0x61b884));
 
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
@@ -309,89 +313,92 @@ public class AccountPanel extends JPanel {
                     .addGap(404, 404, 404)
                     .addComponent(jlbMyAccount)
                     .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGap(101, 101, 101)
+                    .addComponent(UploadJbt)
+                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(380, 380, 380)
-                    .addComponent(jbtSave, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-                    .addGap(42, 42, 42)
-                    .addComponent(jbtCancel, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(374, Short.MAX_VALUE))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(100, 100, 100)
+                    .addGap(60, 60, 60)
+                    .addComponent(desktopPane1, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
+                    .addGap(36, 36, 36)
                     .addGroup(layout.createParallelGroup()
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup()
-                                .addComponent(jlbUsername)
-                                .addComponent(jlbEmail)
-                                .addComponent(jlbDOB2)
-                                .addComponent(jlbPhoneNumber)
-                                .addComponent(jlbDOB))
-                            .addGap(23, 23, 23)
+                                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup()
+                                        .addComponent(jlbUsername)
+                                        .addComponent(jlbEmail))
+                                    .addGap(47, 47, 47))
+                                .addComponent(jlbDOB2))
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup()
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(usernameJtf, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                                    .addComponent(emailJtf, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))
-                                .addComponent(addressJtf, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(phoneJtf, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(dobJpn, GroupLayout.PREFERRED_SIZE, 244, GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(changePasswordJbt))
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup()
-                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jlbAvatar)
-                            .addGap(107, 107, 107))
-                        .addComponent(desktopPane1, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE))
-                    .addGap(117, 117, 117))
+                                .addComponent(jlbDOB)
+                                .addComponent(jlbPhoneNumber))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                        .addComponent(phoneJtf)
+                        .addComponent(emailJtf)
+                        .addComponent(usernameJtf, GroupLayout.Alignment.TRAILING)
+                        .addComponent(addressJtf, GroupLayout.Alignment.TRAILING)
+                        .addComponent(dobJpn, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(changePasswordJbt, GroupLayout.Alignment.TRAILING))
+                    .addGap(276, 276, 276))
                 .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(695, Short.MAX_VALUE)
-                    .addComponent(UploadJbt)
-                    .addGap(174, 174, 174))
+                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtSave, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+                    .addGap(27, 27, 27)
+                    .addComponent(jbtCancel, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+                    .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup()
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(24, 24, 24)
+                            .addGap(30, 30, 30)
                             .addComponent(jlbMyAccount)
-                            .addGap(8, 8, 8)
-                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(jlbUsername)
-                                .addComponent(usernameJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(jlbEmail)
-                                .addComponent(emailJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                            .addGap(26, 26, 26)
+                            .addComponent(desktopPane1, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18))
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup()
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jlbUsername)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jlbEmail))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(usernameJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(emailJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(addressJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jlbDOB2))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(phoneJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jlbPhoneNumber))))
                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(jlbDOB2)
-                                .addComponent(addressJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(dobJpn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jlbDOB))
                             .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(jlbPhoneNumber)
-                                .addComponent(phoneJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(jlbDOB, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(dobJpn, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
-                            .addGap(42, 42, 42)
-                            .addComponent(changePasswordJbt))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(86, 86, 86)
-                            .addComponent(jlbAvatar)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                            .addComponent(desktopPane1, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)))
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(changePasswordJbt)
+                            .addGap(54, 54, 54)))
                     .addComponent(UploadJbt)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                    .addGap(27, 27, 27)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(jbtSave, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jbtCancel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 66, Short.MAX_VALUE))
+                        .addComponent(jbtCancel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtSave, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(149, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     private JButton jbtCancel;
     private JButton jbtSave;
     private JLabel jlbMyAccount;
@@ -400,7 +407,6 @@ public class AccountPanel extends JPanel {
     private JLabel jlbPhoneNumber;
     private JLabel jlbDOB;
     private JLabel jlbDOB2;
-    private JLabel jlbAvatar;
     private JTextField usernameJtf;
     private JTextField emailJtf;
     private JTextField phoneJtf;

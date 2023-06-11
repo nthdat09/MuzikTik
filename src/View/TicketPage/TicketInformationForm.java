@@ -50,9 +50,53 @@ public class TicketInformationForm extends JPanel{
         return this.TicketInformationFormPanel;
     }
 
+    public JLabel getTicketID() {
+        return this.TicketID;
+    }
+
+    public JLabel getEventID() {
+        return this.EventID;
+    }
+
+    public JLabel getTicketPrice() {
+        return this.TicketPrice;
+    }
+
+    public JLabel getStageID() {
+        return this.StageID;
+    }
+
+    public JLabel getSeatID() {
+        return this.SeatID;
+    }
+
+    public JTextField getTicketIDField() {
+        return this.TicketIDField;
+    }
+
+    public JTextField getEventIDField() {
+        return this.EventIDField;
+    }
+
+    public JTextField getSeatIDField() {
+        return this.SeatIDField;
+    }
+
+    public JTextField getStageIDField() {
+        return this.StageIDField;
+    }
+
+    public JTextField getTicketPriceField() {
+        return this.TicketPriceField;
+    }
+
+    public JLabel getLabel1() {
+        return this.label1;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         this.TicketInformationFormPanel = new JPanel();
         this.TicketID = new JLabel();
         this.EventID = new JLabel();
@@ -66,6 +110,7 @@ public class TicketInformationForm extends JPanel{
         this.TicketPriceField = new JTextField();
         this.SaveButton = new JButton();
         this.CancelButton = new JButton();
+        this.label1 = new JLabel();
 
         //======== TicketInformationFormPanel ========
         {
@@ -73,124 +118,156 @@ public class TicketInformationForm extends JPanel{
             this.TicketInformationFormPanel.setMinimumSize(new Dimension(670, 500));
             this.TicketInformationFormPanel.setMaximumSize(new Dimension(670, 500));
             this.TicketInformationFormPanel.setPreferredSize(new Dimension(670, 450));
-            this.TicketInformationFormPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing
-            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-            Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
-            ) ,this.TicketInformationFormPanel. getBorder () ) ); this.TicketInformationFormPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName (
-            ) ) )throw new RuntimeException( ) ;} } );
+            this.TicketInformationFormPanel.setFont(new Font("Lato Black", Font.BOLD, 16));
+            this.TicketInformationFormPanel.setForeground(new Color(0x61b884));
+            this.TicketInformationFormPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
+            . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder
+            . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .
+            awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,this.TicketInformationFormPanel. getBorder () ) )
+            ; this.TicketInformationFormPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+            ) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
+            ;
 
             //---- TicketID ----
-            this.TicketID.setText("Ticket ID");
-            this.TicketID.setFont(new Font("Leelawadee", Font.BOLD, 20));
-            this.TicketID.setForeground(Color.black);
+            this.TicketID.setText("Ticket ID:");
+            this.TicketID.setFont(new Font("Lato Black", Font.BOLD, 16));
+            this.TicketID.setForeground(new Color(0x61b884));
 
             //---- EventID ----
-            this.EventID.setText("Event ID");
-            this.EventID.setFont(new Font("Leelawadee", Font.BOLD, 20));
-            this.EventID.setForeground(Color.black);
+            this.EventID.setText("Event ID:");
+            this.EventID.setFont(new Font("Lato Black", Font.BOLD, 16));
+            this.EventID.setForeground(new Color(0x61b884));
+            this.EventID.setBackground(Color.white);
 
             //---- TicketPrice ----
-            this.TicketPrice.setText("Ticket Price");
-            this.TicketPrice.setFont(new Font("Leelawadee", Font.BOLD, 20));
-            this.TicketPrice.setForeground(Color.black);
+            this.TicketPrice.setText("Ticket Price:");
+            this.TicketPrice.setFont(new Font("Lato Black", Font.BOLD, 16));
+            this.TicketPrice.setForeground(new Color(0x61b884));
+            this.TicketPrice.setBackground(Color.white);
 
             //---- StageID ----
-            this.StageID.setText("Stage ID");
-            this.StageID.setFont(new Font("Leelawadee", Font.BOLD, 20));
-            this.StageID.setForeground(Color.black);
+            this.StageID.setText("Stage ID:");
+            this.StageID.setFont(new Font("Lato Black", Font.BOLD, 16));
+            this.StageID.setForeground(new Color(0x61b884));
+            this.StageID.setBackground(Color.white);
 
             //---- SeatID ----
-            this.SeatID.setText("Seat ID");
-            this.SeatID.setFont(new Font("Leelawadee", Font.BOLD, 20));
-            this.SeatID.setForeground(Color.black);
+            this.SeatID.setText("Seat ID:");
+            this.SeatID.setFont(new Font("Lato Black", Font.BOLD, 16));
+            this.SeatID.setForeground(new Color(0x61b884));
+            this.SeatID.setBackground(Color.white);
 
             //---- TicketIDField ----
             this.TicketIDField.setEditable(false);
             this.TicketIDField.setBackground(Color.lightGray);
+            this.TicketIDField.setFont(new Font("Lato", Font.PLAIN, 16));
+
+            //---- EventIDField ----
+            this.EventIDField.setFont(new Font("Lato", Font.PLAIN, 16));
+
+            //---- SeatIDField ----
+            this.SeatIDField.setFont(new Font("Lato", Font.PLAIN, 16));
+
+            //---- StageIDField ----
+            this.StageIDField.setFont(new Font("Lato", Font.PLAIN, 16));
+
+            //---- TicketPriceField ----
+            this.TicketPriceField.setFont(new Font("Lato", Font.PLAIN, 16));
 
             //---- SaveButton ----
             this.SaveButton.setText("SAVE");
+            this.SaveButton.setFont(new Font("Lato Black", Font.BOLD, 16));
+            this.SaveButton.setBackground(new Color(0x61b884));
+            this.SaveButton.setForeground(Color.white);
 
             //---- CancelButton ----
             this.CancelButton.setText("CANCEL");
+            this.CancelButton.setFont(new Font("Lato Black", Font.BOLD, 16));
+            this.CancelButton.setBackground(new Color(0x61b884));
+            this.CancelButton.setForeground(Color.white);
+
+            //---- label1 ----
+            this.label1.setText("TICKET INFORMATION");
+            this.label1.setForeground(new Color(0x61b884));
+            this.label1.setFont(new Font("Lato Black", Font.BOLD, 24));
 
             GroupLayout TicketInformationFormPanelLayout = new GroupLayout(this.TicketInformationFormPanel);
             TicketInformationFormPanel.setLayout(TicketInformationFormPanelLayout);
             TicketInformationFormPanelLayout.setHorizontalGroup(
                 TicketInformationFormPanelLayout.createParallelGroup()
+                    .addGroup(GroupLayout.Alignment.TRAILING, TicketInformationFormPanelLayout.createSequentialGroup()
+                        .addGap(0, 770, Short.MAX_VALUE)
+                        .addComponent(this.SaveButton, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(this.CancelButton, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
+                        .addGap(286, 286, 286)
+                        .addComponent(this.label1, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(460, Short.MAX_VALUE))
                     .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
                         .addGroup(TicketInformationFormPanelLayout.createParallelGroup()
                             .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
-                                .addGap(185, 185, 185)
-                                .addComponent(this.SaveButton)
-                                .addGap(53, 53, 53)
-                                .addComponent(this.CancelButton, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
+                                .addGap(47, 47, 47)
+                                .addGroup(TicketInformationFormPanelLayout.createParallelGroup()
+                                    .addComponent(this.TicketID, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(this.TicketPrice)))
                             .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
-                                .addGroup(TicketInformationFormPanelLayout.createParallelGroup()
-                                    .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
-                                        .addGap(100, 100, 100)
-                                        .addGroup(TicketInformationFormPanelLayout.createParallelGroup()
-                                            .addComponent(this.EventID, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(this.TicketID, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(this.SeatID, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
-                                        .addGap(105, 105, 105)
-                                        .addComponent(this.StageID, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
-                                        .addGap(95, 95, 95)
-                                        .addComponent(this.TicketPrice)))
-                                .addGap(90, 90, 90)
-                                .addGroup(TicketInformationFormPanelLayout.createParallelGroup()
-                                    .addComponent(this.TicketIDField, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(this.SeatIDField, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(this.TicketPriceField, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(this.StageIDField, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(this.EventIDField, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))))
-                        .addGap(170, 170, 170))
+                                .addGap(169, 169, 169)
+                                .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(this.TicketPriceField, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                    .addComponent(this.TicketIDField, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                        .addGroup(TicketInformationFormPanelLayout.createParallelGroup()
+                            .addComponent(this.EventID, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(this.SeatID, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(this.StageID, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                            .addComponent(this.EventIDField)
+                            .addComponent(this.SeatIDField)
+                            .addComponent(this.StageIDField, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
+                        .addGap(87, 87, 87))
             );
             TicketInformationFormPanelLayout.setVerticalGroup(
                 TicketInformationFormPanelLayout.createParallelGroup()
                     .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(this.TicketID, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(this.TicketIDField, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                            .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(this.EventID, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(this.EventIDField)))
+                        .addGap(27, 27, 27)
+                        .addComponent(this.label1)
                         .addGap(18, 18, 18)
                         .addGroup(TicketInformationFormPanelLayout.createParallelGroup()
                             .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
-                                .addComponent(this.SeatID, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(this.StageID, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                    .addComponent(this.TicketID)
+                                    .addComponent(this.TicketIDField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                    .addComponent(this.TicketPriceField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(this.TicketPrice)))
                             .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
-                                .addComponent(this.SeatIDField, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(this.StageIDField, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addComponent(this.TicketPrice, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-                            .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
-                                .addComponent(this.TicketPriceField, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                                .addGap(3, 3, 3)))
-                        .addGap(40, 40, 40)
-                        .addGroup(TicketInformationFormPanelLayout.createParallelGroup()
-                            .addComponent(this.SaveButton)
-                            .addComponent(this.CancelButton)))
+                                .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                    .addComponent(this.EventID)
+                                    .addComponent(this.EventIDField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                    .addComponent(this.SeatID)
+                                    .addComponent(this.SeatIDField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                    .addComponent(this.StageID)
+                                    .addComponent(this.StageIDField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32)
+                                .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                    .addComponent(this.CancelButton)
+                                    .addComponent(this.SaveButton))))
+                        .addContainerGap(220, Short.MAX_VALUE))
             );
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     private JPanel TicketInformationFormPanel;
     private JLabel TicketID;
     private JLabel EventID;
@@ -204,6 +281,7 @@ public class TicketInformationForm extends JPanel{
     private JTextField TicketPriceField;
     private JButton SaveButton;
     private JButton CancelButton;
+    private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
     public void saveTicket() throws SQLException {

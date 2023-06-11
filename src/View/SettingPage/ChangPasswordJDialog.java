@@ -107,8 +107,9 @@ public class ChangPasswordJDialog extends JDialog {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         dialogPane = new JPanel();
+        buttonBar = new JPanel();
         contentPanel = new JPanel();
         label1 = new JLabel();
         label2 = new JLabel();
@@ -118,7 +119,6 @@ public class ChangPasswordJDialog extends JDialog {
         newPasswordField = new JPasswordField();
         reTypeNewPasswordField = new JPasswordField();
         ShowPasswordJbt = new JButton();
-        buttonBar = new JPanel();
         okButton = new JButton();
         cancelButton = new JButton();
 
@@ -131,97 +131,136 @@ public class ChangPasswordJDialog extends JDialog {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
             dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-            border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER
-            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
+            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER
+            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font
             .BOLD ,12 ), java. awt. Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r"
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order"
             .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             dialogPane.setLayout(new BorderLayout());
 
+            //======== buttonBar ========
+            {
+                buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
+                buttonBar.setFont(new Font("Lato Black", Font.BOLD, 14));
+                buttonBar.setLayout(new GridBagLayout());
+                ((GridBagLayout)buttonBar.getLayout()).columnWidths = new int[] {0, 85, 80};
+                ((GridBagLayout)buttonBar.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
+            }
+            dialogPane.add(buttonBar, BorderLayout.SOUTH);
+
             //======== contentPanel ========
             {
+                contentPanel.setFont(new Font("Lato Black", Font.BOLD, 14));
 
                 //---- label1 ----
                 label1.setText("CHANGE PASSWORD");
-                label1.setFont(new Font("Inter", Font.BOLD, 16));
+                label1.setFont(new Font("Lato Black", Font.BOLD, 22));
+                label1.setForeground(new Color(0x61b884));
+                label1.setHorizontalAlignment(SwingConstants.CENTER);
 
                 //---- label2 ----
-                label2.setText("OLD PASSWORD");
+                label2.setText("Old password:");
+                label2.setFont(new Font("Lato Black", Font.BOLD, 14));
+                label2.setForeground(new Color(0x61b884));
 
                 //---- label3 ----
-                label3.setText("NEW PASSWORD");
+                label3.setText("New password:");
+                label3.setFont(new Font("Lato Black", Font.BOLD, 14));
+                label3.setForeground(new Color(0x61b884));
 
                 //---- label4 ----
-                label4.setText("RE-TYPE NEW PASSWORD");
+                label4.setText("Re-type new password:");
+                label4.setFont(new Font("Lato Black", Font.BOLD, 14));
+                label4.setForeground(new Color(0x61b884));
+
+                //---- oldPasswordField ----
+                oldPasswordField.setFont(new Font("Lato Black", Font.BOLD, 14));
+
+                //---- newPasswordField ----
+                newPasswordField.setFont(new Font("Lato Black", Font.BOLD, 14));
+
+                //---- reTypeNewPasswordField ----
+                reTypeNewPasswordField.setFont(new Font("Lato Black", Font.BOLD, 14));
 
                 //---- ShowPasswordJbt ----
-                ShowPasswordJbt.setText("Show Password");
+                ShowPasswordJbt.setText("SHOW");
+                ShowPasswordJbt.setFont(new Font("Lato Black", Font.BOLD, 14));
+                ShowPasswordJbt.setBackground(new Color(0x61b884));
+                ShowPasswordJbt.setForeground(Color.white);
+
+                //---- okButton ----
+                okButton.setText("OK");
+                okButton.setFont(new Font("Lato Black", Font.BOLD, 14));
+                okButton.setForeground(Color.white);
+                okButton.setBackground(new Color(0x61b884));
+
+                //---- cancelButton ----
+                cancelButton.setText("CANCEL");
+                cancelButton.setFont(new Font("Lato Black", Font.BOLD, 14));
+                cancelButton.setBackground(new Color(0x61b884));
+                cancelButton.setForeground(Color.white);
 
                 GroupLayout contentPanelLayout = new GroupLayout(contentPanel);
                 contentPanel.setLayout(contentPanelLayout);
                 contentPanelLayout.setHorizontalGroup(
                     contentPanelLayout.createParallelGroup()
-                        .addGroup(contentPanelLayout.createSequentialGroup()
-                            .addGap(42, 42, 42)
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPanelLayout.createSequentialGroup()
+                            .addGap(0, 72, Short.MAX_VALUE)
+                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 462, GroupLayout.PREFERRED_SIZE))
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPanelLayout.createSequentialGroup()
+                            .addContainerGap(44, Short.MAX_VALUE)
                             .addGroup(contentPanelLayout.createParallelGroup()
-                                .addComponent(label3)
-                                .addComponent(label2)
-                                .addGroup(contentPanelLayout.createSequentialGroup()
-                                    .addComponent(oldPasswordField, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(GroupLayout.Alignment.TRAILING, contentPanelLayout.createSequentialGroup()
+                                    .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                            .addGroup(contentPanelLayout.createParallelGroup()
+                                                .addComponent(label3)
+                                                .addComponent(label2))
+                                            .addGap(30, 30, 30)
+                                            .addGroup(contentPanelLayout.createParallelGroup()
+                                                .addGroup(contentPanelLayout.createSequentialGroup()
+                                                    .addGap(38, 38, 38)
+                                                    .addComponent(oldPasswordField, GroupLayout.PREFERRED_SIZE, 219, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(newPasswordField, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 219, GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(contentPanelLayout.createSequentialGroup()
+                                            .addComponent(label4)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(reTypeNewPasswordField, GroupLayout.PREFERRED_SIZE, 219, GroupLayout.PREFERRED_SIZE)))
                                     .addGap(18, 18, 18)
                                     .addComponent(ShowPasswordJbt))
-                                .addComponent(newPasswordField, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label4)
-                                .addComponent(reTypeNewPasswordField, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
-                            .addContainerGap(55, Short.MAX_VALUE))
-                        .addGroup(GroupLayout.Alignment.TRAILING, contentPanelLayout.createSequentialGroup()
-                            .addContainerGap(138, Short.MAX_VALUE)
-                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE)
-                            .addGap(125, 125, 125))
+                                .addGroup(GroupLayout.Alignment.TRAILING, contentPanelLayout.createSequentialGroup()
+                                    .addComponent(okButton, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cancelButton)))
+                            .addContainerGap())
                 );
                 contentPanelLayout.setVerticalGroup(
                     contentPanelLayout.createParallelGroup()
                         .addGroup(contentPanelLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(label2, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                            .addGap(3, 3, 3)
+                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addGroup(contentPanelLayout.createParallelGroup()
+                                .addGroup(contentPanelLayout.createSequentialGroup()
+                                    .addComponent(label2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(label3, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(newPasswordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ShowPasswordJbt, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(oldPasswordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(oldPasswordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ShowPasswordJbt))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(label3, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(newPasswordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(label4, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(reTypeNewPasswordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(reTypeNewPasswordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label4, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+                            .addGap(29, 29, 29)
+                            .addGroup(contentPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(cancelButton)
+                                .addComponent(okButton))
+                            .addContainerGap(201, Short.MAX_VALUE))
                 );
             }
             dialogPane.add(contentPanel, BorderLayout.NORTH);
-
-            //======== buttonBar ========
-            {
-                buttonBar.setBorder(new EmptyBorder(12, 0, 0, 0));
-                buttonBar.setLayout(new GridBagLayout());
-                ((GridBagLayout)buttonBar.getLayout()).columnWidths = new int[] {0, 85, 80};
-                ((GridBagLayout)buttonBar.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
-
-                //---- okButton ----
-                okButton.setText("OK");
-                buttonBar.add(okButton, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 0, 5), 0, 0));
-
-                //---- cancelButton ----
-                cancelButton.setText("Cancel");
-                buttonBar.add(cancelButton, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 0, 0), 0, 0));
-            }
-            dialogPane.add(buttonBar, BorderLayout.SOUTH);
         }
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
@@ -240,8 +279,9 @@ public class ChangPasswordJDialog extends JDialog {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     private JPanel dialogPane;
+    private JPanel buttonBar;
     private JPanel contentPanel;
     private JLabel label1;
     private JLabel label2;
@@ -251,7 +291,6 @@ public class ChangPasswordJDialog extends JDialog {
     private JPasswordField newPasswordField;
     private JPasswordField reTypeNewPasswordField;
     private JButton ShowPasswordJbt;
-    private JPanel buttonBar;
     private JButton okButton;
     private JButton cancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on

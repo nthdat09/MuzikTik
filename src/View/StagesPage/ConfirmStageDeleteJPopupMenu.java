@@ -1,5 +1,6 @@
 package View.StagesPage;
 
+import java.awt.*;
 import Controller.StagesPage.StageDeleteConfirmJDialogController;
 import Model.DAO.Stage.StageDAO;
 import Model.DAO.Ticket.TicketDAO;
@@ -73,7 +74,7 @@ public class ConfirmStageDeleteJPopupMenu extends JDialog{
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         ConfirmJDialog = new JDialog();
         ConfirmText = new JLabel();
         YesButton = new JButton();
@@ -86,39 +87,43 @@ public class ConfirmStageDeleteJPopupMenu extends JDialog{
 
             //---- ConfirmText ----
             ConfirmText.setText("ARE YOU SURE TO DELETE THIS STAGE?");
+            ConfirmText.setFont(new Font("Lato Black", Font.BOLD, 16));
+            ConfirmText.setHorizontalAlignment(SwingConstants.CENTER);
 
             //---- YesButton ----
             YesButton.setText("YES");
+            YesButton.setFont(new Font("Lato Black", Font.BOLD, 13));
+            YesButton.setForeground(Color.white);
+            YesButton.setBackground(new Color(0x61b884));
 
             //---- NoButton ----
             NoButton.setText("NO");
+            NoButton.setFont(new Font("Lato Black", Font.BOLD, 13));
+            NoButton.setForeground(Color.white);
+            NoButton.setBackground(new Color(0xd45c5c));
 
             GroupLayout ConfirmJDialogContentPaneLayout = new GroupLayout(ConfirmJDialogContentPane);
             ConfirmJDialogContentPane.setLayout(ConfirmJDialogContentPaneLayout);
             ConfirmJDialogContentPaneLayout.setHorizontalGroup(
                 ConfirmJDialogContentPaneLayout.createParallelGroup()
+                    .addComponent(ConfirmText, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
                     .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                        .addContainerGap(120, Short.MAX_VALUE)
-                        .addGroup(ConfirmJDialogContentPaneLayout.createParallelGroup()
-                            .addGroup(GroupLayout.Alignment.TRAILING, ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                                .addComponent(YesButton)
-                                .addGap(46, 46, 46)
-                                .addComponent(NoButton)
-                                .addGap(145, 145, 145))
-                            .addGroup(GroupLayout.Alignment.TRAILING, ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                                .addComponent(ConfirmText, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
-                                .addGap(113, 113, 113))))
+                        .addGap(122, 122, 122)
+                        .addComponent(YesButton)
+                        .addGap(46, 46, 46)
+                        .addComponent(NoButton)
+                        .addContainerGap(124, Short.MAX_VALUE))
             );
             ConfirmJDialogContentPaneLayout.setVerticalGroup(
                 ConfirmJDialogContentPaneLayout.createParallelGroup()
                     .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                        .addContainerGap(101, Short.MAX_VALUE)
+                        .addGap(49, 49, 49)
                         .addComponent(ConfirmText, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-                        .addGap(86, 86, 86)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(ConfirmJDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(YesButton)
                             .addComponent(NoButton))
-                        .addGap(98, 98, 98))
+                        .addContainerGap(69, Short.MAX_VALUE))
             );
             ConfirmJDialog.pack();
             ConfirmJDialog.setLocationRelativeTo(ConfirmJDialog.getOwner());
@@ -127,7 +132,7 @@ public class ConfirmStageDeleteJPopupMenu extends JDialog{
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     private JDialog ConfirmJDialog;
     private JLabel ConfirmText;
     private JButton YesButton;

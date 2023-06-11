@@ -35,9 +35,21 @@ public class ForgotPasswordPage_1 extends JPanel {
         return ForgotPasswordPage_1JDialog;
     }
 
+    public JTextField getUserNameField() {
+        return userNameField;
+    }
+
+    public JButton getNextJbt() {
+        return NextJbt;
+    }
+
+    public JButton getBackJbt() {
+        return BackJbt;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Man
+        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         ForgotPasswordPage_1JDialog = new JDialog();
         label2 = new JLabel();
         label4 = new JLabel();
@@ -50,63 +62,77 @@ public class ForgotPasswordPage_1 extends JPanel {
         {
             ForgotPasswordPage_1JDialog.setTitle("MuzikTic - Concert Music Ticketing");
             ForgotPasswordPage_1JDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            ForgotPasswordPage_1JDialog.setForeground(SystemColor.menu);
+            ForgotPasswordPage_1JDialog.setBackground(Color.white);
             var ForgotPasswordPage_1JDialogContentPane = ForgotPasswordPage_1JDialog.getContentPane();
 
             //---- label2 ----
             label2.setText("FORGOT PASSWORD");
-            label2.setFont(new Font("Fredoka One", Font.BOLD, 24));
-            label2.setForeground(new Color(0xa8cf45));
+            label2.setFont(new Font("Lato Black", Font.PLAIN, 24));
+            label2.setForeground(new Color(0x61b884));
+            label2.setHorizontalAlignment(SwingConstants.CENTER);
 
             //---- label4 ----
-            label4.setText("Username");
-            label4.setFont(new Font("Segoe UI", Font.BOLD, 16));
+            label4.setText("Username:");
+            label4.setFont(new Font("Lato Black", Font.PLAIN, 14));
+            label4.setForeground(new Color(0x61b884));
+
+            //---- userNameField ----
+            userNameField.setFont(new Font("Lato", Font.PLAIN, 14));
 
             //---- label5 ----
             label5.setText("Enter the username you want to reset password");
-            label5.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            label5.setFont(new Font("Lato", Font.BOLD, 14));
 
             //---- NextJbt ----
             NextJbt.setText("NEXT");
+            NextJbt.setFont(new Font("Lato Black", Font.BOLD, 14));
+            NextJbt.setBackground(new Color(0x61b884));
+            NextJbt.setForeground(Color.white);
 
             //---- BackJbt ----
             BackJbt.setText("BACK");
+            BackJbt.setFont(new Font("Lato Black", Font.BOLD, 14));
+            BackJbt.setBackground(new Color(0x61b884));
+            BackJbt.setForeground(Color.white);
 
             GroupLayout ForgotPasswordPage_1JDialogContentPaneLayout = new GroupLayout(ForgotPasswordPage_1JDialogContentPane);
             ForgotPasswordPage_1JDialogContentPane.setLayout(ForgotPasswordPage_1JDialogContentPaneLayout);
             ForgotPasswordPage_1JDialogContentPaneLayout.setHorizontalGroup(
                 ForgotPasswordPage_1JDialogContentPaneLayout.createParallelGroup()
                     .addGroup(ForgotPasswordPage_1JDialogContentPaneLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
+                        .addGap(30, 30, 30)
                         .addGroup(ForgotPasswordPage_1JDialogContentPaneLayout.createParallelGroup()
-                            .addComponent(label5, GroupLayout.PREFERRED_SIZE, 308, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label4)
-                            .addGroup(ForgotPasswordPage_1JDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                .addComponent(BackJbt)
-                                .addComponent(userNameField, GroupLayout.PREFERRED_SIZE, 256, GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(274, Short.MAX_VALUE))
+                            .addComponent(label5, GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+                            .addGroup(ForgotPasswordPage_1JDialogContentPaneLayout.createSequentialGroup()
+                                .addComponent(label4)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(userNameField, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
                     .addGroup(GroupLayout.Alignment.TRAILING, ForgotPasswordPage_1JDialogContentPaneLayout.createSequentialGroup()
-                        .addContainerGap(218, Short.MAX_VALUE)
-                        .addGroup(ForgotPasswordPage_1JDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addComponent(NextJbt)
-                            .addComponent(label2))
-                        .addGap(216, 216, 216))
+                        .addContainerGap(384, Short.MAX_VALUE)
+                        .addComponent(BackJbt)
+                        .addGap(29, 29, 29)
+                        .addComponent(NextJbt)
+                        .addGap(34, 34, 34))
+                    .addComponent(label2, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
             );
             ForgotPasswordPage_1JDialogContentPaneLayout.setVerticalGroup(
                 ForgotPasswordPage_1JDialogContentPaneLayout.createParallelGroup()
                     .addGroup(ForgotPasswordPage_1JDialogContentPaneLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(label2)
-                        .addGap(18, 18, 18)
+                        .addGap(30, 30, 30)
                         .addComponent(label5, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(userNameField, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                        .addGroup(ForgotPasswordPage_1JDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(label4, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(userNameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                         .addGroup(ForgotPasswordPage_1JDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(NextJbt)
                             .addComponent(BackJbt))
-                        .addGap(55, 55, 55))
+                        .addGap(14, 14, 14))
             );
             ForgotPasswordPage_1JDialog.pack();
             ForgotPasswordPage_1JDialog.setLocationRelativeTo(ForgotPasswordPage_1JDialog.getOwner());
@@ -115,7 +141,7 @@ public class ForgotPasswordPage_1 extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Man
+    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     private JDialog ForgotPasswordPage_1JDialog;
     private JLabel label2;
     private JLabel label4;
