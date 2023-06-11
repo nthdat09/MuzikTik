@@ -73,7 +73,7 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
-					"icon": new com.jformdesigner.model.SwingIcon( 0, "/Asset/music logo design - no name.png" )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/Asset/Icon/music logo design - no name.png" )
 					"horizontalAlignment": 0
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {

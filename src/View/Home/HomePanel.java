@@ -394,7 +394,7 @@ public class HomePanel extends JPanel {
     }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - man
+        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         mainScrollPanel = new JScrollPane();
         panel2 = new JPanel();
         mainLabel = new JLabel();
@@ -440,12 +440,11 @@ public class HomePanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-        . EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax
-        . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,
-        12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans
-        . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .
-        getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+        0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+        . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+        beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
         //======== mainScrollPanel ========
         {
@@ -454,6 +453,7 @@ public class HomePanel extends JPanel {
             //======== panel2 ========
             {
                 panel2.setBackground(Color.white);
+                panel2.setFont(new Font("Lato Black", Font.BOLD, 20));
 
                 //---- mainLabel ----
                 mainLabel.setText("LET ME LIVE HAPPEN");
@@ -502,32 +502,32 @@ public class HomePanel extends JPanel {
 
                 //---- eventName1 ----
                 eventName1.setText("Event Name");
-                eventName1.setFont(new Font("Lato Black", Font.BOLD, 20));
+                eventName1.setFont(new Font("Lato Black", Font.BOLD, 16));
                 eventName1.setForeground(new Color(0x61b884));
 
                 //---- eventName2 ----
                 eventName2.setText("Event Name");
-                eventName2.setFont(new Font("Lato Black", Font.BOLD, 20));
+                eventName2.setFont(new Font("Lato Black", Font.BOLD, 16));
                 eventName2.setForeground(new Color(0x61b884));
 
                 //---- eventDate2 ----
                 eventDate2.setText("Date");
-                eventDate2.setFont(new Font("Lato", Font.PLAIN, 18));
+                eventDate2.setFont(new Font("Lato", Font.BOLD, 16));
                 eventDate2.setForeground(new Color(0x61b884));
 
                 //---- eventDate1 ----
                 eventDate1.setText("Date");
-                eventDate1.setFont(new Font("Lato", Font.PLAIN, 18));
+                eventDate1.setFont(new Font("Lato", Font.BOLD, 16));
                 eventDate1.setForeground(new Color(0x61b884));
 
                 //---- eventName3 ----
                 eventName3.setText("Event Name");
-                eventName3.setFont(new Font("Lato Black", Font.BOLD, 20));
+                eventName3.setFont(new Font("Lato Black", Font.BOLD, 16));
                 eventName3.setForeground(new Color(0x61b884));
 
                 //---- eventDate3 ----
                 eventDate3.setText("Date");
-                eventDate3.setFont(new Font("Lato", Font.PLAIN, 18));
+                eventDate3.setFont(new Font("Lato", Font.BOLD, 16));
                 eventDate3.setForeground(new Color(0x61b884));
 
                 //---- evetntPicture4 ----
@@ -541,27 +541,33 @@ public class HomePanel extends JPanel {
 
                 //---- eventName6 ----
                 eventName6.setText("Event Name");
-                eventName6.setFont(eventName6.getFont().deriveFont(eventName6.getFont().getSize() + 7f));
+                eventName6.setFont(new Font("Lato Black", Font.BOLD, 16));
+                eventName6.setForeground(new Color(0x61b884));
 
                 //---- eventDate6 ----
                 eventDate6.setText("Date");
-                eventDate6.setFont(eventDate6.getFont().deriveFont(eventDate6.getFont().getSize() + 7f));
+                eventDate6.setFont(new Font("Lato Black", Font.BOLD, 16));
+                eventDate6.setForeground(new Color(0x61b884));
 
                 //---- eventDate5 ----
                 eventDate5.setText("Date");
-                eventDate5.setFont(eventDate5.getFont().deriveFont(eventDate5.getFont().getSize() + 7f));
+                eventDate5.setFont(new Font("Lato Black", Font.BOLD, 16));
+                eventDate5.setForeground(new Color(0x61b884));
 
                 //---- eventName5 ----
                 eventName5.setText("Event Name");
-                eventName5.setFont(eventName5.getFont().deriveFont(eventName5.getFont().getSize() + 7f));
+                eventName5.setFont(new Font("Lato Black", Font.BOLD, 16));
+                eventName5.setForeground(new Color(0x61b884));
 
                 //---- eventName4 ----
                 eventName4.setText("Event Name");
-                eventName4.setFont(eventName4.getFont().deriveFont(eventName4.getFont().getSize() + 7f));
+                eventName4.setFont(new Font("Lato Black", Font.BOLD, 16));
+                eventName4.setForeground(new Color(0x61b884));
 
                 //---- eventDate4 ----
                 eventDate4.setText("Date");
-                eventDate4.setFont(eventDate4.getFont().deriveFont(eventDate4.getFont().getSize() + 7f));
+                eventDate4.setFont(new Font("Lato Black", Font.BOLD, 16));
+                eventDate4.setForeground(new Color(0x61b884));
 
                 //---- evetntPicture7 ----
                 evetntPicture7.setBorder(null);
@@ -574,27 +580,33 @@ public class HomePanel extends JPanel {
 
                 //---- eventName9 ----
                 eventName9.setText("Event Name");
-                eventName9.setFont(eventName9.getFont().deriveFont(eventName9.getFont().getSize() + 7f));
+                eventName9.setFont(new Font("Lato Black", Font.BOLD, 16));
+                eventName9.setForeground(new Color(0x61b884));
 
                 //---- eventDate9 ----
                 eventDate9.setText("Date");
-                eventDate9.setFont(eventDate9.getFont().deriveFont(eventDate9.getFont().getSize() + 7f));
+                eventDate9.setFont(new Font("Lato", Font.BOLD, 16));
+                eventDate9.setForeground(new Color(0x61b884));
 
                 //---- eventDate8 ----
                 eventDate8.setText("Date");
-                eventDate8.setFont(eventDate8.getFont().deriveFont(eventDate8.getFont().getSize() + 7f));
+                eventDate8.setFont(new Font("Lato", Font.BOLD, 16));
+                eventDate8.setForeground(new Color(0x61b884));
 
                 //---- eventName8 ----
                 eventName8.setText("Event Name");
-                eventName8.setFont(eventName8.getFont().deriveFont(eventName8.getFont().getSize() + 7f));
+                eventName8.setFont(new Font("Lato Black", Font.BOLD, 16));
+                eventName8.setForeground(new Color(0x61b884));
 
                 //---- eventName7 ----
                 eventName7.setText("Event Name");
-                eventName7.setFont(eventName7.getFont().deriveFont(eventName7.getFont().getSize() + 7f));
+                eventName7.setFont(new Font("Lato Black", Font.BOLD, 16));
+                eventName7.setForeground(new Color(0x61b884));
 
                 //---- eventDate7 ----
                 eventDate7.setText("Date");
-                eventDate7.setFont(eventDate7.getFont().deriveFont(eventDate7.getFont().getSize() + 7f));
+                eventDate7.setFont(new Font("Lato", Font.BOLD, 16));
+                eventDate7.setForeground(new Color(0x61b884));
 
                 //---- slideDot1 ----
                 slideDot1.setBackground(Color.white);
@@ -672,101 +684,86 @@ public class HomePanel extends JPanel {
                         .addGroup(panel2Layout.createSequentialGroup()
                             .addGap(434, 434, 434)
                             .addComponent(mainLabel)
-                            .addGap(0, 917, Short.MAX_VALUE))
+                            .addGap(0, 0, Short.MAX_VALUE))
                         .addGroup(panel2Layout.createSequentialGroup()
                             .addGap(73, 73, 73)
                             .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                .addGroup(panel2Layout.createParallelGroup()
-                                    .addGroup(panel2Layout.createSequentialGroup()
-                                        .addGap(33, 33, 33)
-                                        .addComponent(eventName1, GroupLayout.PREFERRED_SIZE, 186, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(242, 242, 242)
-                                        .addComponent(eventName2)
-                                        .addGap(253, 253, 253)
-                                        .addComponent(eventName3))
-                                    .addGroup(panel2Layout.createSequentialGroup()
-                                        .addGap(106, 106, 106)
-                                        .addComponent(eventDate1)
-                                        .addGap(340, 340, 340)
-                                        .addComponent(eventDate2)
-                                        .addGap(333, 333, 333)
-                                        .addComponent(eventDate3))
-                                    .addComponent(eventPicture1, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(panel2Layout.createSequentialGroup()
-                                        .addComponent(evetntPicture4, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(109, 109, 109)
-                                        .addComponent(evetntPicture5, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(104, 104, 104)
-                                        .addComponent(evetntPicture6, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panel2Layout.createSequentialGroup()
-                                        .addGap(73, 73, 73)
-                                        .addComponent(eventName4)
-                                        .addGap(281, 281, 281)
-                                        .addComponent(eventName5)
-                                        .addGap(266, 266, 266)
-                                        .addComponent(eventName6))
-                                    .addGroup(panel2Layout.createSequentialGroup()
-                                        .addGap(106, 106, 106)
-                                        .addComponent(eventDate4)
-                                        .addGap(340, 340, 340)
-                                        .addComponent(eventDate5)
-                                        .addGap(326, 326, 326)
-                                        .addComponent(eventDate6))
-                                    .addGroup(panel2Layout.createSequentialGroup()
-                                        .addGap(369, 369, 369)
-                                        .addComponent(eventPicture2, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(104, 104, 104)
-                                        .addComponent(eventPicture3, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panel2Layout.createSequentialGroup()
-                                        .addGap(404, 404, 404)
-                                        .addGroup(panel2Layout.createParallelGroup()
-                                            .addComponent(eventLabel)
-                                            .addGroup(panel2Layout.createSequentialGroup()
-                                                .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(comboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(panel2Layout.createSequentialGroup()
-                                                        .addComponent(slideDot1)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(slideDot2)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(slideDot3)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(slideDot4)))
-                                                .addGap(18, 18, 18)
+                                .addGroup(panel2Layout.createSequentialGroup()
+                                    .addGroup(panel2Layout.createParallelGroup()
+                                        .addGroup(panel2Layout.createSequentialGroup()
+                                            .addGap(404, 404, 404)
+                                            .addGroup(panel2Layout.createParallelGroup()
+                                                .addComponent(eventLabel)
+                                                .addGroup(panel2Layout.createSequentialGroup()
+                                                    .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(comboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(panel2Layout.createSequentialGroup()
+                                                            .addComponent(slideDot1)
+                                                            .addGap(18, 18, 18)
+                                                            .addComponent(slideDot2)
+                                                            .addGap(18, 18, 18)
+                                                            .addComponent(slideDot3)
+                                                            .addGap(18, 18, 18)
+                                                            .addComponent(slideDot4)))
+                                                    .addGap(18, 18, 18)
+                                                    .addGroup(panel2Layout.createParallelGroup()
+                                                        .addGroup(panel2Layout.createSequentialGroup()
+                                                            .addComponent(slideDot5)
+                                                            .addGap(18, 18, 18)
+                                                            .addComponent(slideDot6))
+                                                        .addComponent(button1)))))
+                                        .addGroup(panel2Layout.createSequentialGroup()
+                                            .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(evetntPicture7, GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                                .addComponent(eventDate7, GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                                .addComponent(eventName7, GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
+                                            .addGap(109, 109, 109)
+                                            .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(evetntPicture8, GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                                .addComponent(eventDate8, GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                                .addComponent(eventName8, GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
+                                            .addGap(104, 104, 104)
+                                            .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(evetntPicture9, GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                                .addComponent(eventDate9, GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                                .addComponent(eventName9, GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)))
+                                        .addGroup(panel2Layout.createSequentialGroup()
+                                            .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                                 .addGroup(panel2Layout.createParallelGroup()
-                                                    .addGroup(panel2Layout.createSequentialGroup()
-                                                        .addComponent(slideDot5)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(slideDot6))
-                                                    .addComponent(button1))))))
-                                .addGroup(panel2Layout.createParallelGroup()
-                                    .addGroup(panel2Layout.createSequentialGroup()
-                                        .addComponent(evetntPicture7, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(109, 109, 109)
-                                        .addComponent(evetntPicture8, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(104, 104, 104)
-                                        .addComponent(evetntPicture9, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panel2Layout.createSequentialGroup()
-                                        .addGap(73, 73, 73)
-                                        .addComponent(eventName7)
-                                        .addGap(281, 281, 281)
-                                        .addComponent(eventName8)
-                                        .addGap(266, 266, 266)
-                                        .addComponent(eventName9))
-                                    .addGroup(panel2Layout.createSequentialGroup()
-                                        .addGap(106, 106, 106)
-                                        .addComponent(eventDate7)
-                                        .addGap(340, 340, 340)
-                                        .addComponent(eventDate8)
-                                        .addGap(326, 326, 326)
-                                        .addComponent(eventDate9)))
+                                                    .addComponent(evetntPicture4, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(eventName4, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(eventDate4, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(eventDate1, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(panel2Layout.createSequentialGroup()
+                                                    .addComponent(eventPicture1, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(1, 1, 1)))
+                                            .addGap(109, 109, 109)
+                                            .addGroup(panel2Layout.createParallelGroup()
+                                                .addComponent(eventName5, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(panel2Layout.createSequentialGroup()
+                                                    .addGroup(panel2Layout.createParallelGroup()
+                                                        .addComponent(evetntPicture5, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(eventDate5, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(eventPicture2, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(eventDate2, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(eventName2, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
+                                                    .addGap(104, 104, 104)
+                                                    .addGroup(panel2Layout.createParallelGroup()
+                                                        .addComponent(eventDate3, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(eventDate6, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(evetntPicture6, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(eventName6, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(eventName3, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(eventPicture3, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(eventName1, GroupLayout.PREFERRED_SIZE, 259, GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 334, Short.MAX_VALUE))
                                 .addGroup(panel2Layout.createSequentialGroup()
                                     .addComponent(previousButton, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
                                     .addGap(70, 70, 70)
                                     .addComponent(mainLivePicture, GroupLayout.PREFERRED_SIZE, 652, GroupLayout.PREFERRED_SIZE)
                                     .addGap(62, 62, 62)
                                     .addComponent(nextButton, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
-                            .addContainerGap(601, Short.MAX_VALUE))
+                            .addContainerGap(266, Short.MAX_VALUE))
                 );
                 panel2Layout.setVerticalGroup(
                     panel2Layout.createParallelGroup()
@@ -797,69 +794,63 @@ public class HomePanel extends JPanel {
                                 .addComponent(button1))
                             .addGap(126, 126, 126)
                             .addComponent(eventLabel)
-                            .addGap(42, 42, 42)
-                            .addGroup(panel2Layout.createParallelGroup()
-                                .addComponent(eventPicture1, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-                                .addGroup(GroupLayout.Alignment.TRAILING, panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                    .addComponent(eventPicture3, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(eventPicture2, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panel2Layout.createParallelGroup()
                                 .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(eventName3)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(eventDate3))
-                                .addGroup(panel2Layout.createSequentialGroup()
+                                    .addGap(37, 37, 37)
+                                    .addComponent(eventPicture1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(eventName1, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(23, 23, 23)
+                                    .addComponent(eventDate1)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(panel2Layout.createParallelGroup()
                                         .addGroup(panel2Layout.createSequentialGroup()
-                                            .addGap(34, 34, 34)
-                                            .addComponent(eventName2))
+                                            .addGap(12, 12, 12)
+                                            .addComponent(eventPicture3, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(eventName3, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(eventDate3))
                                         .addGroup(panel2Layout.createSequentialGroup()
-                                            .addGap(16, 16, 16)
-                                            .addComponent(eventName1, GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(eventDate1)
-                                        .addComponent(eventDate2))))
-                            .addGap(175, 175, 175)
+                                            .addComponent(eventPicture2, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(13, 13, 13)
+                                            .addComponent(eventName2, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(17, 17, 17)
+                                            .addComponent(eventDate2)))))
+                            .addGap(52, 52, 52)
                             .addGroup(panel2Layout.createParallelGroup()
-                                .addComponent(evetntPicture4, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(evetntPicture5, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(evetntPicture6, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
-                            .addGap(16, 16, 16)
+                                .addComponent(evetntPicture4, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(evetntPicture5, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(evetntPicture6, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(panel2Layout.createParallelGroup()
-                                .addComponent(eventName4)
-                                .addComponent(eventName5)
-                                .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(2, 2, 2)
-                                    .addComponent(eventName6)))
-                            .addGap(16, 16, 16)
+                                .addComponent(eventName4, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(eventName5, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(eventName6, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
                             .addGroup(panel2Layout.createParallelGroup()
                                 .addComponent(eventDate4)
                                 .addComponent(eventDate5)
-                                .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(2, 2, 2)
-                                    .addComponent(eventDate6)))
-                            .addGap(179, 179, 179)
+                                .addComponent(eventDate6))
+                            .addGap(67, 67, 67)
                             .addGroup(panel2Layout.createParallelGroup()
-                                .addComponent(evetntPicture7, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(evetntPicture8, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(evetntPicture9, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE))
-                            .addGap(16, 16, 16)
+                                .addComponent(evetntPicture7, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(evetntPicture8, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(evetntPicture9, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
                             .addGroup(panel2Layout.createParallelGroup()
-                                .addComponent(eventName7)
-                                .addComponent(eventName8)
-                                .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(2, 2, 2)
-                                    .addComponent(eventName9)))
-                            .addGap(16, 16, 16)
-                            .addGroup(panel2Layout.createParallelGroup()
-                                .addComponent(eventDate7)
+                                .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                    .addComponent(eventName9, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(eventName8, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(eventName7, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE))
+                            .addGap(19, 19, 19)
+                            .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(eventDate9)
                                 .addComponent(eventDate8)
-                                .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(2, 2, 2)
-                                    .addComponent(eventDate9)))
-                            .addGap(438, 438, 438))
+                                .addComponent(eventDate7))
+                            .addGap(694, 694, 694))
                 );
             }
             mainScrollPanel.setViewportView(panel2);
@@ -869,21 +860,23 @@ public class HomePanel extends JPanel {
         setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup()
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1250, GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 169, Short.MAX_VALUE))
+                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(15, Short.MAX_VALUE)
+                    .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1131, GroupLayout.PREFERRED_SIZE)
+                    .addGap(179, 179, 179))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1060, GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 2877, Short.MAX_VALUE))
+                    .addGap(113, 113, 113)
+                    .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1726, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(1311, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - man
+    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     private JScrollPane mainScrollPanel;
     private JPanel panel2;
     private JLabel mainLabel;
