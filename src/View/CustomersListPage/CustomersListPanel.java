@@ -249,7 +249,7 @@ public class CustomersListPanel extends JPanel{
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on'
 
     public void setColor() {
-        getCustomerListTable().getTableHeader().setBackground(Color.decode("61b884"));
+        getCustomerListTable().getTableHeader().setBackground(Color.decode("#61b884"));
         getCustomerListTable().setRowHeight(30);
         getCustomerListTable().getColumnModel().getColumn(0).setPreferredWidth(100);
         getCustomerListTable().setForeground(Color.white);

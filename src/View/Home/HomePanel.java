@@ -148,7 +148,8 @@ public class HomePanel extends JPanel {
             String eventName = listEvent.get(i).getEventName();
             String eventDate = listEvent.get(i).getEventDate();
 
-            listLabelPicture.get(i).setIcon(eventPicture);
+            Image image = eventPicture.getImage().getScaledInstance(260, 100, Image.SCALE_SMOOTH);
+            listLabelPicture.get(i).setIcon(new ImageIcon(image));
             listLabelName.get(i).setText("<HTML>" + eventName + "</HTML>");
             listLabelDate.get(i).setText(eventDate);
         }
@@ -192,9 +193,10 @@ public class HomePanel extends JPanel {
         for (int i = 0; i < listLabelType.size(); i++) {
             try {
                 listLabelType.get(i).setText("Ticket Class: " + listEventPrice.get(i).getEventType());
-                listLabelPrice.get(i).setText("Price: " + listEventPrice.get(i).getEventPrice() + " USD");
+                listLabelPrice.get(i).setText("Price: " + listEventPrice.get(i).getEventPrice() + " VND");
             } catch (Exception e) {
                 listLabelType.get(i).setText("");
+                listLabelType.get(i).setIcon(null);
                 listLabelPrice.get(i).setText("");
             }
         }
