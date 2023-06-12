@@ -326,41 +326,53 @@ public class EventPanel extends JPanel {
     }
 
     private void jlbNextMouseClicked(MouseEvent e) {
-        customer = CustomerInformationValidate.validateCustomer();
-        System.out.println(customer.size());
-        try {
-            if(customer.size() == 0) {
-                JOptionPane.showConfirmDialog(null, "You are not a customer yet! Please register to buy ticket!", "Warning", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
-                int newID = CustomerListDAO.getLastID();
-                String nameCustomer = fullNameText.getText();
-                String phoneNumber = phoneNumberText.getText();
-                String email = emailText.getText();
+        Integer ticketBookingID = null;
+        if(fullNameText.getText() == "" || phoneNumberText.getText() == "" || emailText.getText() == "") {
+            JOptionPane.showMessageDialog(null, "Please fill all information!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if(checkBox3.isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Please choose payment method!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            customer = CustomerInformationValidate.validateCustomer();
+            try {
+                if (customer.size() == 0) {
+                    JOptionPane.showConfirmDialog(null, "You are not a customer yet! Please register to buy ticket!", "Warning", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
+                    int newID = CustomerListDAO.getLastID();
+                    String nameCustomer = fullNameText.getText();
+                    String phoneNumber = phoneNumberText.getText();
+                    String email = emailText.getText();
 
-                MainPage.changeView(new InformationCustomerForm(newID + 1), MainPage.getJlbCustomer(), "InformationCustomerPanel");
-                settingForNewCustomer(nameCustomer, phoneNumber, email);
-            } else {
-                Integer balance = customer.get(0).getBalance();
-                Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" USD", ""));
-                Integer newBalance = balance - totalPrice;
-                if(balance < totalPrice) {
-                    JOptionPane.showMessageDialog(null, "Your balance is not enough to buy this ticket!");
-                    return;
+                    MainPage.changeView(new InformationCustomerForm(newID + 1), MainPage.getJlbCustomer(), "InformationCustomerPanel");
+                    settingForNewCustomer(nameCustomer, phoneNumber, email);
                 } else {
-                    try {
-                        Connection con = UserDatabase.getConnection();
-                        String sql = "UPDATE customer SET CUS_BALANCE = '" + newBalance + "' WHERE CUS_PHONE_NUMBER  = '" + phoneNumberText.getText() + "' AND CUS_NAME = '" + fullNameText.getText() + "' AND CUS_EMAIL = '" + emailText.getText() + "'";
-                        for(int i=0; i < BuySeatTable.getRowCount();i++) {
-                            String seatID = selectedSeatTable.getValueAt(i, 0).toString();
-                            System.out.println(seatID);
-                            if(seatID.isEmpty()) {
-                                JOptionPane.showMessageDialog(null, "Please select your seat!");
-                                return;
-                            } else {
-                                setSeatID(seatID);
-                                List<TicketID> bookedTicket = BookingTicket.bookingTicket();
-                                Integer ticketID = bookedTicket.get(0).getTicketID();
-                                try {
-                                        String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
+                    Integer balance = customer.get(0).getBalance();
+                    Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
+                    Integer newBalance = balance - totalPrice;
+                    if (balance < totalPrice) {
+                        JOptionPane.showMessageDialog(null, "Your balance is not enough to buy this ticket!");
+                        return;
+                    } else {
+                        try {
+                            Connection con = UserDatabase.getConnection();
+                            String sql = "UPDATE customer SET CUS_BALANCE = '" + newBalance + "' WHERE CUS_PHONE_NUMBER  = '" + phoneNumberText.getText() + "' AND CUS_NAME = '" + fullNameText.getText() + "' AND CUS_EMAIL = '" + emailText.getText() + "'";
+                            for (int i = 0; i < BuySeatTable.getRowCount(); i++) {
+                                String seatID = selectedSeatTable.getValueAt(i, 0).toString();
+                                System.out.println(seatID);
+                                if (seatID.isEmpty()) {
+                                    JOptionPane.showMessageDialog(null, "Please select your seat!");
+                                    return;
+                                } else {
+                                    setSeatID(seatID);
+                                    List<TicketID> bookedTicket = BookingTicket.bookingTicket();
+                                    Integer ticketID = bookedTicket.get(0).getTicketID();
+                                    String sqlTicketBooking = "SELECT MAX(TBK_ID) from ticket_booking";
+                                    PreparedStatement ps1 = con.prepareStatement(sqlTicketBooking);
+                                    ResultSet rs = ps1.executeQuery();
+                                    while (rs.next()) {
+                                        ticketBookingID = rs.getInt(1) + 1;
+                                    }
+                                    try {
+                                        String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_ID,TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketBookingID + "', '" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
                                         PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
                                         new Thread(() -> {
                                             try {
@@ -372,46 +384,47 @@ public class EventPanel extends JPanel {
                                         }).start();
                                         ps2.executeUpdate();
                                         ps2.close();
-                                        } catch (Exception ex) {
-                                    JOptionPane.showMessageDialog(null, "Ticket have been booked!");
+                                    } catch (Exception ex) {
+                                        JOptionPane.showMessageDialog(null, ex);
                                     }
                                 }
+                            }
+                            PreparedStatement ps = con.prepareStatement(sql);
+                            ps.executeUpdate();
+                            ps.close();
+                            con.close();
+
+                            JOptionPane.showMessageDialog(null, "Your ticket has been booked successfully!");
+                            fullNameText.setText("");
+                            emailText.setText("");
+                            phoneNumberText.setText("");
+
+                            totalDisplay.setText("0 USD");
+                            quantityDisplay.setText("0 tickets");
+
+                            DefaultTableModel tableModel = (DefaultTableModel) seatTable.getModel();
+                            tableModel.setRowCount(0);
+                            DefaultTableModel tableBuyModel = (DefaultTableModel) BuySeatTable.getModel();
+                            tableBuyModel.setRowCount(0);
+                            DefaultTableModel tableSelectedModel = (DefaultTableModel) selectedSeatTable.getModel();
+                            tableSelectedModel.setRowCount(0);
+
+                            jpnInfo.setVisible(true);
+                            jpnTicketFee.setVisible(true);
+                            SeatPanel.setVisible(true);
+                            jpnBuyNow.setVisible(true);
+
+                            selectedTab(0);
+                            jtbTabEvent.setSelectedIndex(0);
+                            selectedTab(0);
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(null, "Error1: " + ex.getMessage());
                         }
-                        PreparedStatement ps = con.prepareStatement(sql);
-                        ps.executeUpdate();
-                        ps.close();
-                        con.close();
-
-                        JOptionPane.showMessageDialog(null, "Your ticket has been booked successfully!");
-                        fullNameText.setText("");
-                        emailText.setText("");
-                        phoneNumberText.setText("");
-
-                        totalDisplay.setText("0 USD");
-                        quantityDisplay.setText("0 tickets");
-
-                        DefaultTableModel tableModel = (DefaultTableModel) seatTable.getModel();
-                        tableModel.setRowCount(0);
-                        DefaultTableModel tableBuyModel = (DefaultTableModel) BuySeatTable.getModel();
-                        tableBuyModel.setRowCount(0);
-                        DefaultTableModel tableSelectedModel = (DefaultTableModel) selectedSeatTable.getModel();
-                        tableSelectedModel.setRowCount(0);
-
-                        jpnInfo.setVisible(true);
-                        jpnTicketFee.setVisible(true);
-                        SeatPanel.setVisible(true);
-                        jpnBuyNow.setVisible(true);
-
-                        selectedTab(0);
-                        jtbTabEvent.setSelectedIndex(0);
-                        selectedTab(0);
-                    } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
                     }
                 }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error2: " + ex.getMessage());
             }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
         }
     }
 
@@ -487,7 +500,7 @@ public class EventPanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - man
         jpnEventHeader = new JPanel();
         EventArt = new JLabel();
         EventName = new JLabel();
@@ -570,13 +583,11 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-        . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing
-        . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-        Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-        ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-        public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName (
-        ) )) throw new RuntimeException( ); }} );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
+        0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
+        . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
+        red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
+        beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
         setLayout(null);
 
         //======== jpnEventHeader ========
@@ -748,7 +759,7 @@ public class EventPanel extends JPanel {
                     jpnBuyNowLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, jpnBuyNowLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jlbBuyNow, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlbBuyNow, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                             .addContainerGap())
                 );
             }
@@ -766,10 +777,10 @@ public class EventPanel extends JPanel {
                                 .addComponent(jpnTicketFee, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(SeatPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(710, Short.MAX_VALUE))
+                                .addContainerGap(715, Short.MAX_VALUE))
                             .addGroup(jpnEventHeaderLayout.createSequentialGroup()
                                 .addComponent(EventArt, GroupLayout.PREFERRED_SIZE, 520, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                                 .addGroup(jpnEventHeaderLayout.createParallelGroup()
                                     .addComponent(jpnBuyNow, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                     .addGroup(GroupLayout.Alignment.TRAILING, jpnEventHeaderLayout.createParallelGroup()
@@ -802,7 +813,7 @@ public class EventPanel extends JPanel {
             );
         }
         add(jpnEventHeader);
-        jpnEventHeader.setBounds(0, 0, 1180, 310);
+        jpnEventHeader.setBounds(0, 0, 1185, 310);
 
         //======== jtbTabEvent ========
         {
@@ -835,8 +846,8 @@ public class EventPanel extends JPanel {
                             InformationPanelLayout.createParallelGroup()
                                 .addGroup(InformationPanelLayout.createSequentialGroup()
                                     .addGap(19, 19, 19)
-                                    .addComponent(DescriptionText, GroupLayout.PREFERRED_SIZE, 1101, GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(108, Short.MAX_VALUE))
+                                    .addComponent(DescriptionText, GroupLayout.PREFERRED_SIZE, 1113, GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap(96, Short.MAX_VALUE))
                         );
                         InformationPanelLayout.setVerticalGroup(
                             InformationPanelLayout.createParallelGroup()
@@ -855,26 +866,28 @@ public class EventPanel extends JPanel {
                     jpnEventInformationLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, jpnEventInformationLayout.createSequentialGroup()
                             .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 1142, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 1172, GroupLayout.PREFERRED_SIZE)
                             .addContainerGap())
                 );
                 jpnEventInformationLayout.setVerticalGroup(
                     jpnEventInformationLayout.createParallelGroup()
                         .addGroup(jpnEventInformationLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(434, Short.MAX_VALUE))
+                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 455, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(274, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnEventInformation);
 
             //======== jpnEventTicket ========
             {
+                jpnEventTicket.setBackground(Color.white);
 
                 //======== ticketFeeScrollPanel ========
                 {
                     ticketFeeScrollPanel.setBorder(null);
                     ticketFeeScrollPanel.setPreferredSize(new Dimension(602, 10021));
+                    ticketFeeScrollPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
                     //======== panel2 ========
                     {
@@ -937,11 +950,11 @@ public class EventPanel extends JPanel {
                                 .addGroup(panel2Layout.createSequentialGroup()
                                     .addGap(19, 19, 19)
                                     .addGroup(panel2Layout.createParallelGroup()
-                                        .addComponent(ticketType2, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                                        .addComponent(ticketType1, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                                        .addComponent(ticketType5, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                                        .addComponent(ticketType4, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                                        .addComponent(ticketType3, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
+                                        .addComponent(ticketType2, GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                                        .addComponent(ticketType1, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                                        .addComponent(ticketType5, GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                                        .addComponent(ticketType4, GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                                        .addComponent(ticketType3, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(panel2Layout.createParallelGroup()
                                         .addComponent(ticketPrice6, GroupLayout.PREFERRED_SIZE, 281, GroupLayout.PREFERRED_SIZE)
@@ -989,7 +1002,7 @@ public class EventPanel extends JPanel {
                     jpnEventTicketLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, jpnEventTicketLayout.createSequentialGroup()
                             .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ticketFeeScrollPanel, GroupLayout.PREFERRED_SIZE, 1174, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ticketFeeScrollPanel, GroupLayout.PREFERRED_SIZE, 1234, GroupLayout.PREFERRED_SIZE)
                             .addContainerGap())
                 );
                 jpnEventTicketLayout.setVerticalGroup(
@@ -997,7 +1010,7 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnEventTicketLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(ticketFeeScrollPanel, GroupLayout.PREFERRED_SIZE, 387, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(348, Short.MAX_VALUE))
+                            .addContainerGap(342, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnEventTicket);
@@ -1029,7 +1042,7 @@ public class EventPanel extends JPanel {
                                 .addGroup(seatEventPanelLayout.createSequentialGroup()
                                     .addGap(231, 231, 231)
                                     .addComponent(seatingChartView, GroupLayout.PREFERRED_SIZE, 675, GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(271, Short.MAX_VALUE))
+                                    .addContainerGap(278, Short.MAX_VALUE))
                         );
                         seatEventPanelLayout.setVerticalGroup(
                             seatEventPanelLayout.createParallelGroup()
@@ -1056,7 +1069,7 @@ public class EventPanel extends JPanel {
                         .addGroup(SeatEventLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(seatEventScrollPanel, GroupLayout.PREFERRED_SIZE, 372, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(363, Short.MAX_VALUE))
+                            .addContainerGap(357, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", SeatEvent);
@@ -1172,7 +1185,7 @@ public class EventPanel extends JPanel {
                             deleteJpn.setLayout(new GridLayout());
 
                             //---- deleteJlb ----
-                            deleteJlb.setText("REMOVE TO CART");
+                            deleteJlb.setText("REMOVE FROM CART");
                             deleteJlb.setForeground(Color.white);
                             deleteJlb.setHorizontalAlignment(SwingConstants.CENTER);
                             deleteJlb.setFont(new Font("Lato Black", Font.BOLD, 16));
@@ -1222,7 +1235,7 @@ public class EventPanel extends JPanel {
                                             .addGap(132, 132, 132)
                                             .addComponent(addJpn, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
                                             .addGap(36, 36, 36)
-                                            .addComponent(deleteJpn, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(deleteJpn, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)))
                                     .addGap(177, 177, 177))
                         );
                         jpnTicketLayout.setVerticalGroup(
@@ -1239,8 +1252,8 @@ public class EventPanel extends JPanel {
                                                 .addComponent(pickTicketScrollTable, GroupLayout.PREFERRED_SIZE, 349, GroupLayout.PREFERRED_SIZE))
                                             .addGap(39, 39, 39)
                                             .addComponent(label7))
-                                        .addComponent(deleteJpn, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(addJpn, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(addJpn, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(deleteJpn, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                                     .addComponent(scrollPane3, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
@@ -1264,8 +1277,8 @@ public class EventPanel extends JPanel {
                     jpnPickTicketLayout.createParallelGroup()
                         .addGroup(jpnPickTicketLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(pickTicketScrollPane, GroupLayout.PREFERRED_SIZE, 395, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(340, Short.MAX_VALUE))
+                            .addComponent(pickTicketScrollPane, GroupLayout.PREFERRED_SIZE, 492, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(237, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnPickTicket);
@@ -1297,6 +1310,7 @@ public class EventPanel extends JPanel {
                         checkBox1.setText("Credit card");
                         checkBox1.setFont(new Font("Lato Black", Font.BOLD, 16));
                         checkBox1.setForeground(new Color(0x626262));
+                        checkBox1.setBackground(Color.white);
                         checkBox1.addActionListener(e -> {
 			checkBox1(e);
 			checkBox1(e);
@@ -1306,12 +1320,14 @@ public class EventPanel extends JPanel {
                         checkBox2.setText("Payment using Internet Banking");
                         checkBox2.setFont(new Font("Lato Black", Font.BOLD, 16));
                         checkBox2.setForeground(new Color(0x626262));
+                        checkBox2.setBackground(Color.white);
                         checkBox2.addActionListener(e -> checkBox2(e));
 
                         //---- checkBox3 ----
                         checkBox3.setText("Payment using MuzicTik Wallet");
                         checkBox3.setForeground(new Color(0x626262));
                         checkBox3.setFont(new Font("Lato Black", Font.BOLD, 16));
+                        checkBox3.setBackground(Color.white);
                         checkBox3.addActionListener(e -> checkBox3(e));
 
                         //======== jpnBack ========
@@ -1543,19 +1559,21 @@ public class EventPanel extends JPanel {
                 jpnPayment.setLayout(jpnPaymentLayout);
                 jpnPaymentLayout.setHorizontalGroup(
                     jpnPaymentLayout.createParallelGroup()
-                        .addComponent(scrollPane2, GroupLayout.DEFAULT_SIZE, 1145, Short.MAX_VALUE)
+                        .addGroup(jpnPaymentLayout.createSequentialGroup()
+                            .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 1200, GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE))
                 );
                 jpnPaymentLayout.setVerticalGroup(
                     jpnPaymentLayout.createParallelGroup()
                         .addGroup(jpnPaymentLayout.createSequentialGroup()
-                            .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 417, GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 330, Short.MAX_VALUE))
+                            .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 573, GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 162, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnPayment);
         }
         add(jtbTabEvent);
-        jtbTabEvent.setBounds(-15, 265, 1150, 775);
+        jtbTabEvent.setBounds(-15, 265, 1200, 775);
 
         {
             // compute preferred size
@@ -1575,7 +1593,7 @@ public class EventPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - man
     private JPanel jpnEventHeader;
     private static JLabel EventArt;
     private static JLabel EventName;

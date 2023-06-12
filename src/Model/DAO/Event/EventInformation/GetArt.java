@@ -6,6 +6,7 @@ import View.EventPage.EventPanel;
 import View.Home.HomePanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
