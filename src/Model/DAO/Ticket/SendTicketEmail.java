@@ -9,7 +9,7 @@ public class SendTicketEmail {
     private static final int SMTP_PORT = 465;
     public static void sendCodeToEmail(int total, int stageID, int ticketID, int seatID, String toEmail) throws EmailException {
         String subject = "Confirm successful payment for ticket " + ticketID + " !";
-        String body = "Your ticket ID is: " + ticketID + "\r\nYour seat ID is: " + seatID + "\r\nYour stage ID is: " + stageID + "\r\nYour total is: " + total + "USD" + "\r\nThank you for using our service!";
+        String body = "Your ticket ID is: " + ticketID + "\r\nYour seat ID is: " + seatID + "\r\nYour stage ID is: " + stageID + "\r\nYour total is: " + total + "VND" + "\r\nThank you for using our service!";
 
         sendTicketEmail(FROM_EMAIL, PASSWORD, SMTP_HOST, SMTP_PORT, subject, body, toEmail);
     }
