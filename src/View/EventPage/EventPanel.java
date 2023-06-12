@@ -391,6 +391,19 @@ public class EventPanel extends JPanel {
                             }
                             PreparedStatement ps = con.prepareStatement(sql);
                             ps.executeUpdate();
+
+                            String sqlGetPoint = "Select cus_total_point from customer where cus_id = " + customer.get(0).getCustomerID();
+                            PreparedStatement psGetPoint = con.prepareStatement(sqlGetPoint);
+                            ResultSet rsGetPoint = psGetPoint.executeQuery();
+                            while(rsGetPoint.next()) {
+                                Integer previousPoint = rsGetPoint.getInt("cus_total_point");
+                                Integer point = totalPrice / 1000;
+                                Integer totalPoint = point + previousPoint;
+                                String sqlUpdatePoint = "Update customer set cus_total_point = " + totalPoint + " where cus_id = " + customer.get(0).getCustomerID();
+                                PreparedStatement ps3 = con.prepareStatement(sqlUpdatePoint);
+                                ps3.executeUpdate();
+                            }
+
                             ps.close();
                             con.close();
 
@@ -583,11 +596,11 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
-        0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
-        . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
-        red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
-        beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+        , 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+        , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+         getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
         setLayout(null);
 
         //======== jpnEventHeader ========

@@ -80,7 +80,7 @@ public class EventListPanel extends JPanel {
         EventInfor.getClose_Minute().setModel(new SpinnerNumberModel(Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 5).toString().split(":")[1]), 0, 59, 1));
         EventInfor.getClose_Second().setModel(new SpinnerNumberModel(Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 5).toString().split(":")[2]), 0, 59, 1));
 
-
+        EventInfor.getStageComboBox().setSelectedItem(eventListTable.getValueAt(eventListTable.getSelectedRow(), 3).toString());
         EventInfor.getDateTextField().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 6).toString());
 
         EventInfor.getTextQuantity().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 7).toString());
