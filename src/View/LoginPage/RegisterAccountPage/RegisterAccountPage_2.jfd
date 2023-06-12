@@ -1,11 +1,11 @@
-JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {par l {seq l {space :p:319:p, comp EmailField:::p:171:p}, seq l {space :p:36:p, par l {comp label5:::p:271:p, seq l {comp ResendCodeJbt:::p::p, space s:::p, comp ResendTimeLeft:::p:42:p, space :p:11:p, comp ErrorText:::p:198:p}, comp label4::l:p::p, comp VerifyCodeField::l:p:256:p}}}, space ::178:x}, seq t {space :0:456:x, comp BackJbt:::p::p, space s:::p, comp NextJbt:::p::p, space :p:31:p}, comp label2::l::668:x}"
-			"$verticalGroup": "par l {seq l {space :p:35:p, comp label2:::p::p, space :p:18:p, par t {comp label5:::p:28:p, comp EmailField:::p::p}, space s:::p, comp label4:::p::p, space :::p, comp VerifyCodeField:::p::p, space :::p, par l {comp ErrorText:::p:18:p, comp ResendCodeJbt::l:p:24:p, comp ResendTimeLeft::l:::x}, space ::28:x, par b {comp NextJbt::b:p::p, comp BackJbt::b:p::p}, space :p:19:p}}"
+			"$horizontalGroup": "par l {comp label2::l:::x, seq {par l {seq {space :p:36:p, par l {comp label5:::p:271:p, comp label4::l:p::p, seq l {comp VerifyCodeField:::p:185:p, space u:::p, comp ResendTimeLeft:::p:42:p, space u:::p, comp ResendCodeJbt:::p::p}, comp ErrorText::l:p:198:p}}, seq {space :p:319:p, comp EmailField:::p:171:p}}, space ::-12:x}, seq t {space :0:269:x, comp BackJbt:::p:80:p, space s:::p, comp NextJbt:::p::p, space :p:48:p}}"
+			"$verticalGroup": "par l {seq l {space :p:35:p, comp label2:::p::p, space :p:18:p, par t {comp label5:::p:28:p, comp EmailField:::p::p}, space s:::p, comp label4:::p::p, space :p:10:p, par l {comp VerifyCodeField::l:p::p, comp ResendTimeLeft::l:p:24:p, comp ResendCodeJbt::l:p:24:p}, space :::p, comp ErrorText:::p:18:p, space ::73:x, par b {comp NextJbt::b:p::p, comp BackJbt::b:p::p}, space :p:15:p}}"
 		} ) {
 			name: "RegisterAccountJDialog_2"
 			"title": "MuzikTic - Concert Music Ticketing"
@@ -92,7 +92,7 @@ new FormModel {
 				}
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"size": new java.awt.Dimension( 670, 325 )
+			"size": new java.awt.Dimension( 480, 350 )
 			"location": new java.awt.Point( 0, 0 )
 		} )
 	}

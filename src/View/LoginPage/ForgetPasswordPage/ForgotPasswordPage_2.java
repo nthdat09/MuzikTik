@@ -17,7 +17,11 @@ public class ForgotPasswordPage_2 extends JPanel {
     private int timeLeft = 30;
     ActionListener ac = new ForgetPasswordPage2Listener(this);
 
-    public ForgotPasswordPage_2(int code, String userName, String email) {
+    public ForgotPasswordPage_2() {
+        initComponents();
+    }
+
+    public ForgotPasswordPage_2(int code, String userName, String email) throws EmailException {
         initComponents();
         EmailField.setText(email);
         this.verificationCode = code;
@@ -42,7 +46,7 @@ public class ForgotPasswordPage_2 extends JPanel {
 
     }
 
-    public ForgotPasswordPage_2(String email) throws MessagingException {
+    public ForgotPasswordPage_2(String email) throws MessagingException,  EmailException  {
         initComponents();
         EmailField.setText(email);
 
@@ -65,13 +69,14 @@ public class ForgotPasswordPage_2 extends JPanel {
         }).start();
     }
 
-    private void setResendTimeLeft() {
+    private void setResendTimeLeft() throws EmailException {
         ResendCodeJbt.setEnabled(false);
         new Thread(() -> {
             while (timeLeft > 0) {
                 try {
                     Thread.sleep(1000);
                     timeLeft--;
+                    ResendTimeLeft.setText(timeLeft + "s");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -200,6 +205,7 @@ public class ForgotPasswordPage_2 extends JPanel {
             //---- EmailField ----
             EmailField.setBorder(null);
             EmailField.setFont(new Font("Lato Black", Font.BOLD | Font.ITALIC, 14));
+            EmailField.setForeground(new Color(0x61b884));
 
             //---- ResendCodeJbt ----
             ResendCodeJbt.setText("RESEND CODE");
@@ -213,7 +219,7 @@ public class ForgotPasswordPage_2 extends JPanel {
             ErrorText.setFont(new Font("Lato Black", Font.PLAIN, 14));
 
             //---- ResendTimeLeft ----
-            ResendTimeLeft.setFont(new Font("Lato", Font.PLAIN, 14));
+            ResendTimeLeft.setFont(new Font("Lato", Font.BOLD, 14));
 
             //---- BackJbt ----
             BackJbt.setText("BACK");
@@ -225,33 +231,33 @@ public class ForgotPasswordPage_2 extends JPanel {
             ForgotPasswordPage_2JDialogContentPane.setLayout(ForgotPasswordPage_2JDialogContentPaneLayout);
             ForgotPasswordPage_2JDialogContentPaneLayout.setHorizontalGroup(
                 ForgotPasswordPage_2JDialogContentPaneLayout.createParallelGroup()
-                    .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createSequentialGroup()
-                        .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createParallelGroup()
-                            .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createSequentialGroup()
-                                .addGap(319, 319, 319)
-                                .addComponent(EmailField, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label2, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+                    .addGroup(GroupLayout.Alignment.TRAILING, ForgotPasswordPage_2JDialogContentPaneLayout.createSequentialGroup()
+                        .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                             .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createSequentialGroup()
                                 .addGap(36, 36, 36)
                                 .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createParallelGroup()
-                                    .addComponent(label5, GroupLayout.PREFERRED_SIZE, 271, GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createSequentialGroup()
-                                        .addComponent(ResendCodeJbt)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(ErrorText, GroupLayout.PREFERRED_SIZE, 198, GroupLayout.PREFERRED_SIZE))
                                     .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createSequentialGroup()
                                         .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createParallelGroup()
+                                            .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createSequentialGroup()
+                                                .addComponent(VerifyCodeField, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(ResendTimeLeft, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(ResendCodeJbt))
                                             .addComponent(label4)
-                                            .addComponent(VerifyCodeField, GroupLayout.PREFERRED_SIZE, 256, GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(ErrorText, GroupLayout.PREFERRED_SIZE, 198, GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE))
+                                    .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createSequentialGroup()
+                                        .addComponent(label5, GroupLayout.PREFERRED_SIZE, 271, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(ResendTimeLeft, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(98, Short.MAX_VALUE))
-                    .addGroup(GroupLayout.Alignment.TRAILING, ForgotPasswordPage_2JDialogContentPaneLayout.createSequentialGroup()
-                        .addGap(0, 387, Short.MAX_VALUE)
-                        .addComponent(BackJbt)
-                        .addGap(18, 18, 18)
-                        .addComponent(NextJbt)
-                        .addGap(31, 31, 31))
-                    .addComponent(label2, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+                                        .addComponent(EmailField, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))))
+                            .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createSequentialGroup()
+                                .addContainerGap(380, Short.MAX_VALUE)
+                                .addComponent(BackJbt, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(NextJbt)))
+                        .addGap(27, 27, 27))
             );
             ForgotPasswordPage_2JDialogContentPaneLayout.setVerticalGroup(
                 ForgotPasswordPage_2JDialogContentPaneLayout.createParallelGroup()
@@ -259,24 +265,31 @@ public class ForgotPasswordPage_2 extends JPanel {
                         .addGap(35, 35, 35)
                         .addComponent(label2)
                         .addGap(18, 18, 18)
-                        .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addComponent(label5, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EmailField))
-                        .addGap(18, 18, 18)
-                        .addComponent(label4)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addComponent(VerifyCodeField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ResendTimeLeft, GroupLayout.PREFERRED_SIZE, 11, GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createParallelGroup()
-                            .addComponent(ErrorText, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ResendCodeJbt, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(NextJbt)
-                            .addComponent(BackJbt))
-                        .addGap(19, 19, 19))
+                            .addComponent(label5, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EmailField, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+                        .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                            .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(label4)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createParallelGroup()
+                                    .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createSequentialGroup()
+                                        .addComponent(VerifyCodeField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(ErrorText, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(69, Short.MAX_VALUE))
+                                    .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createSequentialGroup()
+                                        .addComponent(ResendTimeLeft, GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                                        .addGap(99, 99, 99))))
+                            .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createSequentialGroup()
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                                .addComponent(ResendCodeJbt, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                .addGap(49, 49, 49)
+                                .addGroup(ForgotPasswordPage_2JDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                    .addComponent(BackJbt)
+                                    .addComponent(NextJbt))
+                                .addGap(23, 23, 23))))
             );
             ForgotPasswordPage_2JDialog.pack();
             ForgotPasswordPage_2JDialog.setLocationRelativeTo(ForgotPasswordPage_2JDialog.getOwner());

@@ -107,7 +107,7 @@ public class LoginPage extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         LoginPageDialog = new JDialog();
         LoginPagePanel = new JPanel();
         PasswordField = new JPasswordField();
@@ -132,13 +132,12 @@ public class LoginPage extends JPanel {
             //======== LoginPagePanel ========
             {
                 LoginPagePanel.setBackground(Color.white);
-                LoginPagePanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-                swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border
-                . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
-                ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,LoginPagePanel. getBorder
-                ( )) ); LoginPagePanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-                .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
-                ( ); }} );
+                LoginPagePanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
+                ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
+                .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+                . Color .red ) ,LoginPagePanel. getBorder () ) ); LoginPagePanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
+                propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+                ;} } );
 
                 //---- PasswordField ----
                 PasswordField.setBorder(new LineBorder(new Color(0x61b884)));
@@ -171,6 +170,7 @@ public class LoginPage extends JPanel {
                 //---- LoginStatus ----
                 LoginStatus.setFont(new Font("Lato Black", Font.BOLD, 14));
                 LoginStatus.setForeground(new Color(0xd45c5c));
+                LoginStatus.setHorizontalAlignment(SwingConstants.CENTER);
 
                 //---- label1 ----
                 label1.setIcon(new ImageIcon(getClass().getResource("/Asset/Icon/music logo design - no name.png")));
@@ -195,7 +195,7 @@ public class LoginPage extends JPanel {
 
                 //---- RegisterAccountJbt ----
                 RegisterAccountJbt.setText("Register Account");
-                RegisterAccountJbt.setForeground(Color.green);
+                RegisterAccountJbt.setForeground(new Color(0x0098da));
                 RegisterAccountJbt.setBorder(null);
                 RegisterAccountJbt.setBackground(Color.white);
                 RegisterAccountJbt.setFont(new Font("Lato Black", Font.BOLD, 14));
@@ -205,66 +205,65 @@ public class LoginPage extends JPanel {
                 LoginPagePanelLayout.setHorizontalGroup(
                     LoginPagePanelLayout.createParallelGroup()
                         .addGroup(LoginPagePanelLayout.createSequentialGroup()
-                            .addContainerGap(64, Short.MAX_VALUE)
                             .addGroup(LoginPagePanelLayout.createParallelGroup()
-                                .addGroup(GroupLayout.Alignment.TRAILING, LoginPagePanelLayout.createParallelGroup()
-                                    .addGroup(GroupLayout.Alignment.TRAILING, LoginPagePanelLayout.createSequentialGroup()
-                                        .addGroup(LoginPagePanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                            .addGroup(LoginPagePanelLayout.createSequentialGroup()
-                                                .addComponent(label1, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
-                                                .addGap(50, 50, 50))
-                                            .addGroup(LoginPagePanelLayout.createSequentialGroup()
-                                                .addComponent(label2)
-                                                .addGap(71, 71, 71))
-                                            .addComponent(label3)
-                                            .addGroup(LoginPagePanelLayout.createSequentialGroup()
-                                                .addGroup(LoginPagePanelLayout.createParallelGroup()
-                                                    .addComponent(Password, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(Username, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))
-                                                .addGap(223, 223, 223)))
-                                        .addGap(150, 150, 150))
-                                    .addGroup(LoginPagePanelLayout.createSequentialGroup()
-                                        .addGroup(LoginPagePanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(UsernameField, GroupLayout.Alignment.LEADING)
-                                            .addComponent(PasswordField, GroupLayout.Alignment.LEADING)
-                                            .addGroup(GroupLayout.Alignment.LEADING, LoginPagePanelLayout.createSequentialGroup()
-                                                .addComponent(LoginStatus, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
-                                                .addGap(46, 46, 46)
-                                                .addComponent(ForgetPasswordJbt)))
-                                        .addContainerGap()))
-                                .addGroup(GroupLayout.Alignment.TRAILING, LoginPagePanelLayout.createSequentialGroup()
-                                    .addComponent(RegisterAccountJbt)
-                                    .addGap(39, 39, 39)
-                                    .addComponent(LoginButton)
-                                    .addGap(244, 244, 244))))
+                                .addGroup(LoginPagePanelLayout.createSequentialGroup()
+                                    .addGap(178, 178, 178)
+                                    .addComponent(label1, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(LoginPagePanelLayout.createSequentialGroup()
+                                    .addGap(226, 226, 226)
+                                    .addComponent(LoginButton)))
+                            .addGap(0, 184, Short.MAX_VALUE))
+                        .addGroup(LoginPagePanelLayout.createSequentialGroup()
+                            .addGroup(LoginPagePanelLayout.createParallelGroup()
+                                .addGroup(LoginPagePanelLayout.createSequentialGroup()
+                                    .addGap(205, 205, 205)
+                                    .addComponent(label2))
+                                .addGroup(LoginPagePanelLayout.createSequentialGroup()
+                                    .addGap(138, 138, 138)
+                                    .addComponent(label3))
+                                .addGroup(LoginPagePanelLayout.createSequentialGroup()
+                                    .addGap(91, 91, 91)
+                                    .addGroup(LoginPagePanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(LoginPagePanelLayout.createSequentialGroup()
+                                            .addComponent(RegisterAccountJbt)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(ForgetPasswordJbt))
+                                        .addGroup(LoginPagePanelLayout.createParallelGroup()
+                                            .addComponent(Username, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(PasswordField, GroupLayout.PREFERRED_SIZE, 343, GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(UsernameField, GroupLayout.PREFERRED_SIZE, 343, GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Password, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(LoginPagePanelLayout.createSequentialGroup()
+                                    .addGap(163, 163, 163)
+                                    .addComponent(LoginStatus, GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE)))
+                            .addContainerGap(99, Short.MAX_VALUE))
                 );
                 LoginPagePanelLayout.setVerticalGroup(
                     LoginPagePanelLayout.createParallelGroup()
                         .addGroup(LoginPagePanelLayout.createSequentialGroup()
                             .addGap(20, 20, 20)
                             .addComponent(label1, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(12, 12, 12)
                             .addComponent(label2)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(label3)
-                            .addGap(26, 26, 26)
-                            .addComponent(Username, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(UsernameField, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
+                            .addGap(24, 24, 24)
+                            .addComponent(Username)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(UsernameField, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+                            .addGap(12, 12, 12)
                             .addComponent(Password)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(PasswordField, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PasswordField, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(LoginPagePanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(ForgetPasswordJbt)
+                                .addComponent(RegisterAccountJbt))
+                            .addGap(18, 18, 18)
+                            .addComponent(LoginButton)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(LoginPagePanelLayout.createParallelGroup()
-                                .addGroup(LoginPagePanelLayout.createSequentialGroup()
-                                    .addComponent(LoginStatus, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(LoginPagePanelLayout.createParallelGroup()
-                                        .addComponent(LoginButton)
-                                        .addComponent(RegisterAccountJbt)))
-                                .addComponent(ForgetPasswordJbt))
-                            .addGap(16, 16, 16))
+                            .addComponent(LoginStatus, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(16, Short.MAX_VALUE))
                 );
             }
 
@@ -272,17 +271,15 @@ public class LoginPage extends JPanel {
             LoginPageDialogContentPane.setLayout(LoginPageDialogContentPaneLayout);
             LoginPageDialogContentPaneLayout.setHorizontalGroup(
                 LoginPageDialogContentPaneLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, LoginPageDialogContentPaneLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(LoginPagePanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                    .addGroup(LoginPageDialogContentPaneLayout.createSequentialGroup()
+                        .addComponent(LoginPagePanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
             );
             LoginPageDialogContentPaneLayout.setVerticalGroup(
                 LoginPageDialogContentPaneLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, LoginPageDialogContentPaneLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(LoginPagePanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                    .addGroup(LoginPageDialogContentPaneLayout.createSequentialGroup()
+                        .addComponent(LoginPagePanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 4, Short.MAX_VALUE))
             );
             LoginPageDialog.pack();
             LoginPageDialog.setLocationRelativeTo(LoginPageDialog.getOwner());
@@ -291,7 +288,7 @@ public class LoginPage extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     public static JDialog LoginPageDialog;
     public JPanel LoginPagePanel;
     public JPasswordField PasswordField;
