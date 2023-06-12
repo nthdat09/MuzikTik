@@ -70,6 +70,14 @@ public class MainPage extends JFrame {
 
         // Set avatar
         setImageForLogoUser();
+
+        // Set icon for app
+        ImageIcon imageIcon = new ImageIcon("src/Asset/Logo/Logo.png");
+        Image image = imageIcon.getImage();
+        Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newimg);
+        this.setIconImage(imageIcon.getImage());
+
     }
 
     public static Path getAbsolutePath() {
