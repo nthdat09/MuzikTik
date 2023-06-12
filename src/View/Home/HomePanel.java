@@ -32,6 +32,9 @@ public class HomePanel extends JPanel {
     static Integer selectedEventID;
     static String selectedEvent;
     static Integer selectedStage;
+
+    static Integer selectedPage;
+    Integer totalPage;
     ButtonGroup bg = new ButtonGroup();
     MouseListener ac1 = new EventListPanel(this,1);
     MouseListener ac2 = new EventListPanel(this,2);
@@ -45,11 +48,11 @@ public class HomePanel extends JPanel {
     List<EventArtID> eventArt = null;
     List<EventInformation> eventInformationList= null;
     List<StageInformation> eventStageInformation = null;
-    List<EventList> listEvent = null;
+    static List<EventList> listEvent = null;
     List<EventPrice> listEventPrice = null;
-    ArrayList<JLabel> listLabelPicture = new ArrayList<JLabel>();
-    ArrayList<JLabel> listLabelName = new ArrayList<JLabel>();
-    ArrayList<JLabel> listLabelDate = new ArrayList<JLabel>();
+    static ArrayList<JLabel> listLabelPicture = new ArrayList<JLabel>();
+    static ArrayList<JLabel> listLabelName = new ArrayList<JLabel>();
+    static ArrayList<JLabel> listLabelDate = new ArrayList<JLabel>();
     ArrayList<JRadioButton> slideDots = new ArrayList<>();
 
     public HomePanel() {
@@ -58,6 +61,7 @@ public class HomePanel extends JPanel {
         addLabelName();
         addLabelDate();
         addButtonGroup();
+        setSelectedPage(1);
         listEvent = Event.getEventList();
         int totalPage = 0;
         for(int i = 0; i < listEvent.size(); i++) {
@@ -65,11 +69,10 @@ public class HomePanel extends JPanel {
         }
         if(totalPage%9 == 0) {
             totalPage = totalPage/9;
+            setTotalPage(totalPage);
         } else {
             totalPage = totalPage/9 + 1;
-        }
-        for(int i=0;i<totalPage;i++) {
-            comboBox1.addItem(i+1);
+            setTotalPage(totalPage);
         }
         setEventList();
         initMoreSetting();
@@ -323,29 +326,6 @@ public class HomePanel extends JPanel {
         }
     }
 
-    private void nextButtonMouseClicked(MouseEvent e) {
-        new Thread();
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(HomePanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int p = this.mainLivePicture.getX();
-        if(p>-1) {
-            Animacion.Animacion.mover_izquierda(200, 900, 1, 2, mainLivePicture);
-        }
-        position=position+1;
-        if (position>=takeImage().length) {
-            position = takeImage().length-1;
-        }
-        show(position);
-
-        if(index < 5) {
-            bg.setSelected(slideDots.get(index+1).getModel(), true);
-            index = index + 1;
-        }
-    }
-
     public static JLabel getEventName1() {
         return eventName1;
     }
@@ -373,29 +353,113 @@ public class HomePanel extends JPanel {
     public static JLabel getEventName9() {
         return eventName9;
     }
+    private void setTotalPage(Integer totalPage) {
+        this.totalPage = totalPage;
+    }
+    private Integer getTotalPage() {
+        return totalPage;
+    }
 
     private void slideDot1(ActionEvent e) {
         System.out.println(e.getActionCommand());
     }
+    
+    private void nextButtonMouseClicked(MouseEvent e) {
+        new Thread();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(HomePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int p = this.mainLivePicture.getX();
+        if(p>-1) {
+            Animacion.Animacion.mover_izquierda(200, 900, 1, 2, mainLivePicture);
+        }
+        position=position+1;
+        if (position>=takeImage().length) {
+            position = takeImage().length-1;
+        }
+        show(position);
 
-    private void button1MouseClicked(MouseEvent e) {
-        Integer selectedPage = Integer.parseInt(comboBox1.getSelectedItem().toString());
+        if(index < 5) {
+            bg.setSelected(slideDots.get(index+1).getModel(), true);
+            index = index + 1;
+        }
+    }
+
+    private void prevPageButtonMouseClicked(MouseEvent e) {
+        Integer selectedPage = Integer.parseInt(page.getText().toString());
+        if(selectedPage > 1) {
+            Integer selectedNextPage = selectedPage - 1;
+            selectedPage--;
+            setSelectedPage(selectedPage);
+            page.setText(selectedNextPage.toString());
+        }
         Integer pageRoot = selectedPage - 1;
         int j = 0;
         for (int i = pageRoot*9; i < 9*selectedPage; i++) {
-            ImageIcon eventPicture = listEvent.get(i).getEventPicture();
-            String eventName = listEvent.get(i).getEventName();
-            String eventDate = listEvent.get(i).getEventDate();
+            try {
+                ImageIcon eventPicture = listEvent.get(i).getEventPicture();
+                String eventName = listEvent.get(i).getEventName();
+                String eventDate = listEvent.get(i).getEventDate();
 
-            listLabelPicture.get(j).setIcon(eventPicture);
-            listLabelName.get(j).setText("<HTML>" + eventName + "</HTML>");
-            listLabelDate.get(j).setText(eventDate);
-            j++;
+                Image image = eventPicture.getImage().getScaledInstance(260, 100, Image.SCALE_SMOOTH);
+                listLabelPicture.get(j).setIcon(new ImageIcon(image));
+                listLabelName.get(j).setText("<HTML>" + eventName + "</HTML>");
+                listLabelDate.get(j).setText(eventDate);
+                j++;
+            } catch (Exception ex) {
+                listLabelPicture.get(j).setIcon(null);
+                listLabelName.get(j).setText("");
+                listLabelDate.get(j).setText("");
+                listLabelDate.get(j).setIcon(null);
+                j++;
+            }
         }
     }
+
+    private void nextPage(MouseEvent e) {
+        Integer selectedPage = Integer.parseInt(page.getText().toString());
+        if(selectedPage < getTotalPage()) {
+            Integer selectedNextPage = selectedPage + 1;
+            selectedPage++;
+            setSelectedPage(selectedPage);
+            page.setText(selectedNextPage.toString());
+        }
+        Integer pageRoot = selectedPage - 1;
+        int j = 0;
+        for (int i = pageRoot*9; i < 9*selectedPage; i++) {
+            try {
+                ImageIcon eventPicture = listEvent.get(i).getEventPicture();
+                String eventName = listEvent.get(i).getEventName();
+                String eventDate = listEvent.get(i).getEventDate();
+
+                Image image = eventPicture.getImage().getScaledInstance(260, 100, Image.SCALE_SMOOTH);
+                listLabelPicture.get(j).setIcon(new ImageIcon(image));
+                listLabelName.get(j).setText("<HTML>" + eventName + "</HTML>");
+                listLabelDate.get(j).setText(eventDate);
+                j++;
+            } catch (Exception ex) {
+                listLabelPicture.get(j).setIcon(null);
+                listLabelName.get(j).setText("");
+                listLabelDate.get(j).setText("");
+                listLabelDate.get(j).setIcon(null);
+                j++;
+            }
+        }
+    }
+
+    public static Integer getSelectedPage() {
+        return selectedPage;
+    }
+
+    public static void setSelectedPage(Integer selectedPage) {
+        HomePanel.selectedPage = selectedPage;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - man
         mainScrollPanel = new JScrollPane();
         panel2 = new JPanel();
         mainLivePicture = new JLabel();
@@ -433,19 +497,21 @@ public class HomePanel extends JPanel {
         slideDot4 = new JRadioButton();
         slideDot5 = new JRadioButton();
         slideDot6 = new JRadioButton();
-        comboBox1 = new JComboBox();
         button1 = new JButton();
         nextButton = new JLabel();
         previousButton = new JLabel();
+        button2 = new JButton();
+        page = new JTextPane();
         mainLabel = new JLabel();
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-        0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-        . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-        beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
+        border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder. CENTER
+        ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font
+        . BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener(
+        new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "borde\u0072"
+        .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
         //======== mainScrollPanel ========
         {
@@ -650,19 +716,15 @@ public class HomePanel extends JPanel {
                     }
                 });
 
-                //---- comboBox1 ----
-                comboBox1.setFont(new Font("Lato", Font.BOLD, 14));
-                comboBox1.setBackground(Color.white);
-
                 //---- button1 ----
-                button1.setText("GO");
+                button1.setText("Next");
                 button1.setFont(new Font("Lato Black", Font.BOLD, 14));
                 button1.setBackground(new Color(0x61b884));
                 button1.setForeground(Color.white);
                 button1.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        button1MouseClicked(e);
+                        nextPage(e);
                     }
                 });
 
@@ -685,6 +747,21 @@ public class HomePanel extends JPanel {
                         previousButtonMouseClicked(e);
                     }
                 });
+
+                //---- button2 ----
+                button2.setText("Prev");
+                button2.setFont(new Font("Lato Black", Font.BOLD, 14));
+                button2.setBackground(new Color(0x61b884));
+                button2.setForeground(Color.white);
+                button2.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        prevPageButtonMouseClicked(e);
+                    }
+                });
+
+                //---- page ----
+                page.setText("1");
 
                 GroupLayout panel2Layout = new GroupLayout(panel2);
                 panel2.setLayout(panel2Layout);
@@ -755,17 +832,24 @@ public class HomePanel extends JPanel {
                                                     .addComponent(eventDate6, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
                                                 .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                                     .addGroup(panel2Layout.createSequentialGroup()
+                                                        .addComponent(eventName7, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(109, 109, 109)
+                                                        .addComponent(eventName8, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(104, 104, 104)
+                                                        .addComponent(eventName9, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(panel2Layout.createSequentialGroup()
                                                         .addComponent(eventDate7, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
                                                         .addGap(109, 109, 109)
                                                         .addComponent(eventDate8, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
                                                         .addGap(104, 104, 104)
                                                         .addComponent(eventDate9, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
                                                     .addGroup(panel2Layout.createSequentialGroup()
-                                                        .addComponent(eventName7, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(109, 109, 109)
-                                                        .addComponent(eventName8, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(104, 104, 104)
-                                                        .addComponent(eventName9, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(button2, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(page, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(button1, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(325, 325, 325)))
                                                 .addGroup(panel2Layout.createSequentialGroup()
                                                     .addComponent(eventPicture1, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
                                                     .addGap(110, 110, 110)
@@ -775,16 +859,9 @@ public class HomePanel extends JPanel {
                                             .addGap(0, 0, Short.MAX_VALUE)))))
                             .addContainerGap(624, Short.MAX_VALUE))
                         .addGroup(panel2Layout.createSequentialGroup()
-                            .addGroup(panel2Layout.createParallelGroup()
-                                .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(467, 467, 467)
-                                    .addComponent(comboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(button1, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
-                                .addGroup(panel2Layout.createSequentialGroup()
-                                    .addGap(330, 330, 330)
-                                    .addComponent(eventLabel)))
-                            .addContainerGap(904, Short.MAX_VALUE))
+                            .addGap(330, 330, 330)
+                            .addComponent(eventLabel)
+                            .addContainerGap(909, Short.MAX_VALUE))
                 );
                 panel2Layout.setVerticalGroup(
                     panel2Layout.createParallelGroup()
@@ -863,11 +940,12 @@ public class HomePanel extends JPanel {
                                 .addComponent(eventDate9)
                                 .addComponent(eventDate8)
                                 .addComponent(eventDate7))
-                            .addGap(35, 35, 35)
+                            .addGap(67, 67, 67)
                             .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(page, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addComponent(button1)
-                                .addComponent(comboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addContainerGap(1147, Short.MAX_VALUE))
+                                .addComponent(button2))
+                            .addContainerGap(1115, Short.MAX_VALUE))
                 );
             }
             mainScrollPanel.setViewportView(panel2);
@@ -898,14 +976,14 @@ public class HomePanel extends JPanel {
                             .addComponent(mainLabel))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 723, GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(566, Short.MAX_VALUE))
+                            .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1515, GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(98, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - man
     private JScrollPane mainScrollPanel;
     private JPanel panel2;
     private JLabel mainLivePicture;
@@ -943,10 +1021,11 @@ public class HomePanel extends JPanel {
     private JRadioButton slideDot4;
     private JRadioButton slideDot5;
     private JRadioButton slideDot6;
-    private JComboBox comboBox1;
     private JButton button1;
     private JLabel nextButton;
     private JLabel previousButton;
+    private JButton button2;
+    private JTextPane page;
     private JLabel mainLabel;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

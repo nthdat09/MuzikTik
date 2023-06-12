@@ -29,6 +29,7 @@ import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -253,14 +254,9 @@ public class EventPanel extends JPanel {
 
     private void isCheckSelected(int index) {
         if(index == 1) {
-            checkBox2.setSelected(false);
-            checkBox3.setSelected(false);
-        } else if (index == 2) {
-            checkBox1.setSelected(false);
             checkBox3.setSelected(false);
         } else {
             checkBox1.setSelected(false);
-            checkBox2.setSelected(false);
         }
     }
 
@@ -325,14 +321,16 @@ public class EventPanel extends JPanel {
         tbModel.removeRow(row);
     }
 
-    private void jlbNextMouseClicked(MouseEvent e) {
+    private void jlbNextMouseClicked(MouseEvent e) throws SQLException {
         Integer ticketBookingID = null;
         if(fullNameText.getText() == "" || phoneNumberText.getText() == "" || emailText.getText() == "") {
             JOptionPane.showMessageDialog(null, "Please fill all information!", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if(checkBox3.isSelected() == false) {
-            JOptionPane.showMessageDialog(null, "Please choose payment method!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
         }
-        else {
+
+        if(checkBox1.isSelected() == false  && checkBox3.isSelected() == false) {
+            JOptionPane.showMessageDialog(null, "Please choose a payment method!", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if(checkBox3.isSelected() == true) {
             customer = CustomerInformationValidate.validateCustomer();
             try {
                 if (customer.size() == 0) {
@@ -438,6 +436,80 @@ public class EventPanel extends JPanel {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Error2: " + ex.getMessage());
             }
+        } else {
+            customer = CustomerInformationValidate.validateCustomer();
+            Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
+            Connection con = UserDatabase.getConnection();
+            for (int i = 0; i < BuySeatTable.getRowCount(); i++) {
+                String seatID = selectedSeatTable.getValueAt(i, 0).toString();
+                System.out.println(seatID);
+                if (seatID.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Please select your seat!");
+                    return;
+                } else {
+                    setSeatID(seatID);
+                    List<TicketID> bookedTicket = BookingTicket.bookingTicket();
+                    Integer ticketID = bookedTicket.get(0).getTicketID();
+                    String sqlTicketBooking = "SELECT MAX(TBK_ID) from ticket_booking";
+                    PreparedStatement ps1 = con.prepareStatement(sqlTicketBooking);
+                    ResultSet rs = ps1.executeQuery();
+                    while (rs.next()) {
+                        ticketBookingID = rs.getInt(1) + 1;
+                    }
+                    try {
+                        String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_ID,TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketBookingID + "', '" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
+                        PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
+                        new Thread(() -> {
+                            try {
+                                Thread.sleep(1000);
+                                SendTicketEmail.sendCodeToEmail(totalPrice, HomePanel.getSelectedStage(), ticketID, Integer.parseInt(seatID), emailText.getText());
+                            } catch (Exception err) {
+                                System.err.println(err);
+                            }
+                        }).start();
+                        ps2.executeUpdate();
+                        ps2.close();
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, ex);
+                    }
+                }
+            }
+
+            String sqlGetPoint = "Select cus_total_point from customer where cus_id = " + customer.get(0).getCustomerID();
+            PreparedStatement psGetPoint = con.prepareStatement(sqlGetPoint);
+            ResultSet rsGetPoint = psGetPoint.executeQuery();
+            while(rsGetPoint.next()) {
+                Integer previousPoint = rsGetPoint.getInt("cus_total_point");
+                Integer point = totalPrice / 1000;
+                Integer totalPoint = point + previousPoint;
+                String sqlUpdatePoint = "Update customer set cus_total_point = " + totalPoint + " where cus_id = " + customer.get(0).getCustomerID();
+                PreparedStatement ps3 = con.prepareStatement(sqlUpdatePoint);
+                ps3.executeUpdate();
+            }
+
+            JOptionPane.showMessageDialog(null, "Your ticket has been booked successfully!");
+            fullNameText.setText("");
+            emailText.setText("");
+            phoneNumberText.setText("");
+
+            totalDisplay.setText("0 USD");
+            quantityDisplay.setText("0 tickets");
+
+            DefaultTableModel tableModel = (DefaultTableModel) seatTable.getModel();
+            tableModel.setRowCount(0);
+            DefaultTableModel tableBuyModel = (DefaultTableModel) BuySeatTable.getModel();
+            tableBuyModel.setRowCount(0);
+            DefaultTableModel tableSelectedModel = (DefaultTableModel) selectedSeatTable.getModel();
+            tableSelectedModel.setRowCount(0);
+
+            jpnInfo.setVisible(true);
+            jpnTicketFee.setVisible(true);
+            SeatPanel.setVisible(true);
+            jpnBuyNow.setVisible(true);
+
+            selectedTab(0);
+            jtbTabEvent.setSelectedIndex(0);
+            selectedTab(0);
         }
     }
 
@@ -458,59 +530,6 @@ public class EventPanel extends JPanel {
         return phoneNumberText;
     }
 
-    private void button1MouseClicked(MouseEvent e) {
-        MainPage.changeView(new EventInfor(), MainPage.getJlbEvent(), "EventInfor");
-        EventInfor.getTextID().setText(Integer.toString(HomePanel.getSelectedEventID()));
-        EventInfor.getTextName().setText(HomePanel.getSelectedEvent());
-        EventInfor.getStageComboBox().setSelectedItem(HomePanel.getSelectedStage());
-        String desCriptionText = DescriptionText.getText();
-        desCriptionText = desCriptionText.replace("<HTML>", "");
-        desCriptionText = desCriptionText.replace("</HTML>", "");
-        EventInfor.getTextDescription().setText(desCriptionText);
-        String[] date = EventTime.getText().split("/");
-
-        EventInfor.getDateTextField().setText(date[2] + "-" + date[1] + "-" + date[0]);
-        EventInfor.getTextPoster().setIcon(EventArt.getIcon());
-        Connection con = UserDatabase.getConnection();
-        String sql = "SELECT * FROM event WHERE EVT_ID = '" + HomePanel.getSelectedEventID() + "'";
-    try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()) {
-                EventInfor.getTextQuantity().setText(rs.getString("EVT_QUANTITY"));
-                EventInfor.getTextArtist().setText(rs.getString("EVT_ARTIST"));
-                String openTime = rs.getTime("EVT_OPEN_TIME").toString();
-                String[] openTimeSplit = openTime.split(":");
-                EventInfor.getOpen_Hour().setModel(new SpinnerNumberModel(Integer.parseInt(openTimeSplit[0]), 0, 24, 1));
-                EventInfor.getOpen_Minute().setModel(new SpinnerNumberModel(Integer.parseInt(openTimeSplit[1]), 0, 60, 1));
-                EventInfor.getOpen_Second().setModel(new SpinnerNumberModel(Integer.parseInt(openTimeSplit[2]), 0, 60, 1));
-
-                String endTime = rs.getTime("EVT_END_TIME").toString();
-                String[] endTimeSplit = endTime.split(":");
-                EventInfor.getClose_Hour().setModel(new SpinnerNumberModel(Integer.parseInt(endTimeSplit[0]), 0, 24, 1));
-                EventInfor.getClose_Minute().setModel(new SpinnerNumberModel(Integer.parseInt(endTimeSplit[1]), 0, 60, 1));
-                EventInfor.getClose_Second().setModel(new SpinnerNumberModel(Integer.parseInt(endTimeSplit[2]), 0, 60, 1));
-
-                Blob blob = (Blob) rs.getBlob("EVT_PHOTO");
-                if (blob != null) {
-                    int blobLength = (int) blob.length();
-                    byte[] bytes = blob.getBytes(1, blobLength);
-                    EventInfor.setEvent_Image(bytes);
-                    ImageIcon icon = new ImageIcon(bytes);
-                    Image image = icon.getImage();
-                    Image newImage = image.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-                    ImageIcon newIcon = new ImageIcon(newImage);
-                    EventInfor.getTextPoster().setIcon(newIcon);
-                }
-            }
-            ps.close();
-            rs.close();
-            con.close();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-        }
-    }
-
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - man
@@ -527,6 +546,7 @@ public class EventPanel extends JPanel {
         jlbSeat = new JLabel();
         jpnBuyNow = new JPanel();
         jlbBuyNow = new JLabel();
+        panel3 = new JPanel();
         jtbTabEvent = new JTabbedPane();
         jpnEventInformation = new JPanel();
         scrollPane1 = new JScrollPane();
@@ -572,7 +592,6 @@ public class EventPanel extends JPanel {
         JlbInforCus = new JLabel();
         jlbPayment = new JLabel();
         checkBox1 = new JCheckBox();
-        checkBox2 = new JCheckBox();
         checkBox3 = new JCheckBox();
         jpnBack = new JPanel();
         jlbBack = new JLabel();
@@ -597,10 +616,10 @@ public class EventPanel extends JPanel {
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
         setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-        . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax
-        . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,
+        . EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax
+        . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
         12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans
-        . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .
+        . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .
         getPropertyName () )) throw new RuntimeException( ); }} );
         setLayout(null);
 
@@ -773,8 +792,23 @@ public class EventPanel extends JPanel {
                     jpnBuyNowLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, jpnBuyNowLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jlbBuyNow, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlbBuyNow, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                             .addContainerGap())
+                );
+            }
+
+            //======== panel3 ========
+            {
+
+                GroupLayout panel3Layout = new GroupLayout(panel3);
+                panel3.setLayout(panel3Layout);
+                panel3Layout.setHorizontalGroup(
+                    panel3Layout.createParallelGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                );
+                panel3Layout.setVerticalGroup(
+                    panel3Layout.createParallelGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                 );
             }
 
@@ -796,7 +830,10 @@ public class EventPanel extends JPanel {
                                 .addComponent(EventArt, GroupLayout.PREFERRED_SIZE, 520, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                                 .addGroup(jpnEventHeaderLayout.createParallelGroup()
-                                    .addComponent(jpnBuyNow, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(GroupLayout.Alignment.TRAILING, jpnEventHeaderLayout.createSequentialGroup()
+                                        .addComponent(panel3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27)
+                                        .addComponent(jpnBuyNow, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                     .addGroup(GroupLayout.Alignment.TRAILING, jpnEventHeaderLayout.createParallelGroup()
                                         .addComponent(EventTime, GroupLayout.PREFERRED_SIZE, 328, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(EventName, GroupLayout.PREFERRED_SIZE, 538, GroupLayout.PREFERRED_SIZE)
@@ -809,21 +846,23 @@ public class EventPanel extends JPanel {
                         .addGap(39, 39, 39)
                         .addGroup(jpnEventHeaderLayout.createParallelGroup()
                             .addGroup(jpnEventHeaderLayout.createSequentialGroup()
+                                .addComponent(EventArt, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9)
+                                .addGroup(jpnEventHeaderLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jpnEventHeaderLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jpnTicketFee, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                                        .addComponent(jpnInfo, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(SeatPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jpnEventHeaderLayout.createSequentialGroup()
                                 .addComponent(EventName, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
                                 .addComponent(EventTime, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(EventPlace, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
                                 .addGap(15, 15, 15)
-                                .addComponent(jpnBuyNow, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addComponent(EventArt, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)
-                        .addGroup(jpnEventHeaderLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addGroup(jpnEventHeaderLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jpnTicketFee, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                                .addComponent(jpnInfo, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
-                            .addComponent(SeatPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
+                                .addGroup(jpnEventHeaderLayout.createParallelGroup()
+                                    .addComponent(jpnBuyNow, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(panel3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
             );
         }
         add(jpnEventHeader);
@@ -859,16 +898,16 @@ public class EventPanel extends JPanel {
                         InformationPanelLayout.setHorizontalGroup(
                             InformationPanelLayout.createParallelGroup()
                                 .addGroup(InformationPanelLayout.createSequentialGroup()
-                                    .addGap(19, 19, 19)
+                                    .addContainerGap()
                                     .addComponent(DescriptionText, GroupLayout.PREFERRED_SIZE, 1113, GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(96, Short.MAX_VALUE))
+                                    .addContainerGap(563, Short.MAX_VALUE))
                         );
                         InformationPanelLayout.setVerticalGroup(
                             InformationPanelLayout.createParallelGroup()
                                 .addGroup(InformationPanelLayout.createSequentialGroup()
-                                    .addGap(27, 27, 27)
+                                    .addContainerGap()
                                     .addComponent(DescriptionText, GroupLayout.PREFERRED_SIZE, 609, GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(70, Short.MAX_VALUE))
+                                    .addContainerGap(91, Short.MAX_VALUE))
                         );
                     }
                     scrollPane1.setViewportView(InformationPanel);
@@ -888,7 +927,7 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnEventInformationLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 455, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(280, Short.MAX_VALUE))
+                            .addContainerGap(274, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnEventInformation);
@@ -1024,7 +1063,7 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnEventTicketLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(ticketFeeScrollPanel, GroupLayout.PREFERRED_SIZE, 387, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(348, Short.MAX_VALUE))
+                            .addContainerGap(342, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnEventTicket);
@@ -1083,7 +1122,7 @@ public class EventPanel extends JPanel {
                         .addGroup(SeatEventLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(seatEventScrollPanel, GroupLayout.PREFERRED_SIZE, 372, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(363, Short.MAX_VALUE))
+                            .addContainerGap(357, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", SeatEvent);
@@ -1292,7 +1331,7 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnPickTicketLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(pickTicketScrollPane, GroupLayout.PREFERRED_SIZE, 424, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(311, Short.MAX_VALUE))
+                            .addContainerGap(305, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnPickTicket);
@@ -1321,7 +1360,7 @@ public class EventPanel extends JPanel {
                         jlbPayment.setFont(new Font("Lato Black", Font.BOLD, 18));
 
                         //---- checkBox1 ----
-                        checkBox1.setText("Credit card");
+                        checkBox1.setText("Cash");
                         checkBox1.setFont(new Font("Lato Black", Font.BOLD, 16));
                         checkBox1.setForeground(new Color(0x626262));
                         checkBox1.setBackground(Color.white);
@@ -1329,13 +1368,6 @@ public class EventPanel extends JPanel {
 			checkBox1(e);
 			checkBox1(e);
 		});
-
-                        //---- checkBox2 ----
-                        checkBox2.setText("Payment using Internet Banking");
-                        checkBox2.setFont(new Font("Lato Black", Font.BOLD, 16));
-                        checkBox2.setForeground(new Color(0x626262));
-                        checkBox2.setBackground(Color.white);
-                        checkBox2.addActionListener(e -> checkBox2(e));
 
                         //---- checkBox3 ----
                         checkBox3.setText("Payment using MuzicTik Wallet");
@@ -1393,7 +1425,11 @@ public class EventPanel extends JPanel {
                             jlbNext.addMouseListener(new MouseAdapter() {
                                 @Override
                                 public void mouseClicked(MouseEvent e) {
-                                    jlbNextMouseClicked(e);
+                                    try {
+                                        jlbNextMouseClicked(e);
+                                    } catch (SQLException ex) {
+                                        throw new RuntimeException(ex);
+                                    }
                                 }
                             });
 
@@ -1497,9 +1533,8 @@ public class EventPanel extends JPanel {
                                                 .addComponent(phoneNumberText, GroupLayout.PREFERRED_SIZE, 246, GroupLayout.PREFERRED_SIZE)))
                                         .addComponent(JlbInforCus, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jlbPayment, GroupLayout.PREFERRED_SIZE, 513, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(checkBox1)
-                                        .addComponent(checkBox2)
-                                        .addComponent(checkBox3, GroupLayout.PREFERRED_SIZE, 314, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(checkBox3, GroupLayout.PREFERRED_SIZE, 314, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(checkBox1))
                                     .addGroup(panel1Layout.createParallelGroup()
                                         .addGroup(panel1Layout.createSequentialGroup()
                                             .addGap(12, 12, 12)
@@ -1551,19 +1586,21 @@ public class EventPanel extends JPanel {
                                         .addComponent(label1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(quantityDisplay, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(checkBox1)
-                                        .addComponent(label2, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(totalDisplay, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(checkBox2)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(panel1Layout.createParallelGroup()
+                                        .addGroup(panel1Layout.createSequentialGroup()
+                                            .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addComponent(label2, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(totalDisplay, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+                                            .addGap(39, 39, 39))
+                                        .addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                                            .addComponent(checkBox1)
+                                            .addGap(18, 18, 18)))
                                     .addComponent(checkBox3)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(panel1Layout.createParallelGroup()
                                         .addComponent(jpnNext, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jpnBack, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addContainerGap(588, Short.MAX_VALUE))
+                                    .addContainerGap(555, Short.MAX_VALUE))
                         );
                     }
                     scrollPane2.setViewportView(panel1);
@@ -1581,7 +1618,7 @@ public class EventPanel extends JPanel {
                     jpnPaymentLayout.createParallelGroup()
                         .addGroup(jpnPaymentLayout.createSequentialGroup()
                             .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 573, GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 174, Short.MAX_VALUE))
+                            .addGap(0, 162, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnPayment);
@@ -1621,6 +1658,7 @@ public class EventPanel extends JPanel {
     private JLabel jlbSeat;
     private JPanel jpnBuyNow;
     private JLabel jlbBuyNow;
+    private JPanel panel3;
     private JTabbedPane jtbTabEvent;
     private JPanel jpnEventInformation;
     private JScrollPane scrollPane1;
@@ -1666,7 +1704,6 @@ public class EventPanel extends JPanel {
     private JLabel JlbInforCus;
     private JLabel jlbPayment;
     private JCheckBox checkBox1;
-    private JCheckBox checkBox2;
     private JCheckBox checkBox3;
     private JPanel jpnBack;
     private JLabel jlbBack;
