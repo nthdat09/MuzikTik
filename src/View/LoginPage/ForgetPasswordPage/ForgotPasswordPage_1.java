@@ -1,6 +1,6 @@
 package View.LoginPage.ForgetPasswordPage;
 
-import Controller.LoginPage.ForgetPasswordPage1Listener;
+import Controller.LoginPage.ForgetPassword.ForgetPasswordPage1Listener;
 import Model.BEAN.Employee;
 import Model.DAO.Employee.EmployeeDAO;
 import Model.DAO.Employee.VerificationCode;

@@ -4,6 +4,7 @@ import Controller.LoginPage.LoginPageListener;
 import Model.BEAN.Employee;
 import Model.DAO.Employee.EmployeeDAO;
 import View.LoginPage.ForgetPasswordPage.ForgotPasswordPage_1;
+import View.LoginPage.RegisterAccountPage.RegisterAccountPage_1;
 import View.MainPage.MainPage;
 
 import javax.swing.*;
@@ -28,6 +29,7 @@ public class LoginPage extends JPanel {
         getUsernameField().addKeyListener(new LoginPageListener(this));
         getPasswordField().addKeyListener(new LoginPageListener(this));
         getForgetPasswordJbt().addActionListener(ac);
+        getRegisterAccountJbt().addActionListener(ac);
     }
 
     public void DoLogin(){
@@ -71,6 +73,13 @@ public class LoginPage extends JPanel {
         this.LoginPageDialog.dispose();
     }
 
+    public void SwitchToRegisterAccountPage() {
+        System.out.println("Switching to Register Account Page");
+        RegisterAccountPage_1 registerAccountPage1 = new RegisterAccountPage_1();
+        registerAccountPage1.getRegisterAccountJDialog_1().setVisible(true);
+        this.LoginPageDialog.dispose();
+    }
+
     public JButton getLoginButton() {
         return LoginButton;
     }
@@ -91,10 +100,14 @@ public class LoginPage extends JPanel {
         return LoginPageDialog;
     }
 
+    public JButton getRegisterAccountJbt() {
+        return RegisterAccountJbt;
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         LoginPageDialog = new JDialog();
         LoginPagePanel = new JPanel();
         PasswordField = new JPasswordField();
@@ -107,6 +120,7 @@ public class LoginPage extends JPanel {
         label2 = new JLabel();
         label3 = new JLabel();
         ForgetPasswordJbt = new JButton();
+        RegisterAccountJbt = new JButton();
 
         //======== LoginPageDialog ========
         {
@@ -118,11 +132,13 @@ public class LoginPage extends JPanel {
             //======== LoginPagePanel ========
             {
                 LoginPagePanel.setBackground(Color.white);
-                LoginPagePanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder ( 0
-                , 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
-                , new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,
-                LoginPagePanel. getBorder () ) ); LoginPagePanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-                ) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+                LoginPagePanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+                swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border
+                . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
+                ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,LoginPagePanel. getBorder
+                ( )) ); LoginPagePanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+                .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
+                ( ); }} );
 
                 //---- PasswordField ----
                 PasswordField.setBorder(new LineBorder(new Color(0x61b884)));
@@ -177,40 +193,50 @@ public class LoginPage extends JPanel {
                 ForgetPasswordJbt.setBackground(Color.white);
                 ForgetPasswordJbt.setFont(new Font("Lato Black", Font.BOLD, 14));
 
+                //---- RegisterAccountJbt ----
+                RegisterAccountJbt.setText("Register Account");
+                RegisterAccountJbt.setForeground(Color.green);
+                RegisterAccountJbt.setBorder(null);
+                RegisterAccountJbt.setBackground(Color.white);
+                RegisterAccountJbt.setFont(new Font("Lato Black", Font.BOLD, 14));
+
                 GroupLayout LoginPagePanelLayout = new GroupLayout(LoginPagePanel);
                 LoginPagePanel.setLayout(LoginPagePanelLayout);
                 LoginPagePanelLayout.setHorizontalGroup(
                     LoginPagePanelLayout.createParallelGroup()
                         .addGroup(LoginPagePanelLayout.createSequentialGroup()
-                            .addContainerGap(106, Short.MAX_VALUE)
+                            .addContainerGap(64, Short.MAX_VALUE)
                             .addGroup(LoginPagePanelLayout.createParallelGroup()
+                                .addGroup(GroupLayout.Alignment.TRAILING, LoginPagePanelLayout.createParallelGroup()
+                                    .addGroup(GroupLayout.Alignment.TRAILING, LoginPagePanelLayout.createSequentialGroup()
+                                        .addGroup(LoginPagePanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                            .addGroup(LoginPagePanelLayout.createSequentialGroup()
+                                                .addComponent(label1, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(50, 50, 50))
+                                            .addGroup(LoginPagePanelLayout.createSequentialGroup()
+                                                .addComponent(label2)
+                                                .addGap(71, 71, 71))
+                                            .addComponent(label3)
+                                            .addGroup(LoginPagePanelLayout.createSequentialGroup()
+                                                .addGroup(LoginPagePanelLayout.createParallelGroup()
+                                                    .addComponent(Password, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(Username, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))
+                                                .addGap(223, 223, 223)))
+                                        .addGap(150, 150, 150))
+                                    .addGroup(LoginPagePanelLayout.createSequentialGroup()
+                                        .addGroup(LoginPagePanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(UsernameField, GroupLayout.Alignment.LEADING)
+                                            .addComponent(PasswordField, GroupLayout.Alignment.LEADING)
+                                            .addGroup(GroupLayout.Alignment.LEADING, LoginPagePanelLayout.createSequentialGroup()
+                                                .addComponent(LoginStatus, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(46, 46, 46)
+                                                .addComponent(ForgetPasswordJbt)))
+                                        .addContainerGap()))
                                 .addGroup(GroupLayout.Alignment.TRAILING, LoginPagePanelLayout.createSequentialGroup()
+                                    .addComponent(RegisterAccountJbt)
+                                    .addGap(39, 39, 39)
                                     .addComponent(LoginButton)
-                                    .addGap(244, 244, 244))
-                                .addGroup(GroupLayout.Alignment.TRAILING, LoginPagePanelLayout.createSequentialGroup()
-                                    .addGroup(LoginPagePanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                        .addGroup(LoginPagePanelLayout.createSequentialGroup()
-                                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
-                                            .addGap(50, 50, 50))
-                                        .addGroup(LoginPagePanelLayout.createSequentialGroup()
-                                            .addComponent(label2)
-                                            .addGap(71, 71, 71))
-                                        .addComponent(label3)
-                                        .addGroup(LoginPagePanelLayout.createSequentialGroup()
-                                            .addGroup(LoginPagePanelLayout.createParallelGroup()
-                                                .addComponent(Password, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(Username, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))
-                                            .addGap(223, 223, 223)))
-                                    .addGap(150, 150, 150))
-                                .addGroup(LoginPagePanelLayout.createSequentialGroup()
-                                    .addGroup(LoginPagePanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(UsernameField, GroupLayout.Alignment.LEADING)
-                                        .addComponent(PasswordField, GroupLayout.Alignment.LEADING)
-                                        .addGroup(GroupLayout.Alignment.LEADING, LoginPagePanelLayout.createSequentialGroup()
-                                            .addComponent(LoginStatus, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
-                                            .addGap(46, 46, 46)
-                                            .addComponent(ForgetPasswordJbt)))
-                                    .addContainerGap())))
+                                    .addGap(244, 244, 244))))
                 );
                 LoginPagePanelLayout.setVerticalGroup(
                     LoginPagePanelLayout.createParallelGroup()
@@ -234,7 +260,9 @@ public class LoginPage extends JPanel {
                                 .addGroup(LoginPagePanelLayout.createSequentialGroup()
                                     .addComponent(LoginStatus, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(LoginButton))
+                                    .addGroup(LoginPagePanelLayout.createParallelGroup()
+                                        .addComponent(LoginButton)
+                                        .addComponent(RegisterAccountJbt)))
                                 .addComponent(ForgetPasswordJbt))
                             .addGap(16, 16, 16))
                 );
@@ -263,7 +291,7 @@ public class LoginPage extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     public static JDialog LoginPageDialog;
     public JPanel LoginPagePanel;
     public JPasswordField PasswordField;
@@ -276,6 +304,7 @@ public class LoginPage extends JPanel {
     public JLabel label2;
     public JLabel label3;
     public JButton ForgetPasswordJbt;
+    public JButton RegisterAccountJbt;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
 }

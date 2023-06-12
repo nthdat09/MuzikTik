@@ -135,4 +135,85 @@ public class CustomerDAO{
         return rowChanged;
     }
 
+    public int getLastID(){
+        int id = -1;
+        try {
+            Connection con = UserDatabase.getConnection();
+            String sql = "SELECT MAX(CUS_ID) FROM mctmsys.customer";
+            PreparedStatement ps = con.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            id = rs.getInt(1);
+            ps.close();
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+    public int addNewCustomer(Customer customer){
+        int rowChanged = 0;
+        try {
+            Connection con = UserDatabase.getConnection();
+            String sql = "INSERT INTO mctmsys.customer (CUS_ID, CUS_NAME, CUS_PHONE_NUMBER, CUS_EMAIL, CUS_ADDRESS, CUS_TYPE, CUS_TOTAL_POINT, CUS_BALANCE, CUS_USERNAME, CUS_PASSWORD ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            System.out.println(sql);
+
+            PreparedStatement ps = con.prepareCall(sql);
+            ps.setInt(1, customer.getId());
+            ps.setString(2, customer.getName());
+            ps.setString(3, customer.getPhoneNumber());
+            ps.setString(4, customer.getEmail());
+            ps.setString(5, customer.getAddress());
+            ps.setString(6, customer.getType());
+            ps.setInt(7, customer.getTotalPoint());
+            ps.setInt(8, customer.getBalance());
+            ps.setString(9, customer.getUsername());
+            ps.setString(10, customer.getPassword());
+
+            rowChanged = ps.executeUpdate();
+            System.out.println("Row changed: " + rowChanged);
+            ps.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowChanged;
+    }
+
+    public Customer getCustomerByUsername(String username){
+        Customer customer = null;
+        try {
+            Connection con = UserDatabase.getConnection();
+            String sql = "Select * from mctmsys.customer where CUS_USERNAME = '" + username + "';";
+            System.out.println(sql);
+            PreparedStatement ps = con.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                customer = new Customer();
+                customer.setId(rs.getInt("CUS_ID"));
+                customer.setName(rs.getString("CUS_NAME"));
+                customer.setPhoneNumber(rs.getString("CUS_PHONE_NUMBER"));
+                customer.setEmail(rs.getString("CUS_EMAIL"));
+                customer.setAddress(rs.getString("CUS_ADDRESS"));
+                customer.setType(rs.getString("CUS_TYPE"));
+                customer.setTotalPoint(rs.getInt("CUS_TOTAL_POINT"));
+                customer.setBalance(rs.getInt("CUS_BALANCE"));
+                customer.setUsername(rs.getString("CUS_USERNAME"));
+                customer.setPassword(rs.getString("CUS_PASSWORD"));
+            }
+
+            ps.close();
+            rs.close();
+            con.close();
+            return customer;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return customer;
+    }
+
 }

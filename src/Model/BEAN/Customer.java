@@ -3,6 +3,8 @@ package Model.BEAN;
 public class Customer {
     private int id;
     private String name;
+    private String username;
+    private String password;
     private String phoneNumber;
     private String email;
     private String address;
@@ -13,6 +15,19 @@ public class Customer {
 
     public Customer() {
         super();
+    }
+
+    public Customer(int id, String name, String username, String password, String phoneNumber, String email, String address, String type, int totalPoint, int balance) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+        this.type = type;
+        this.totalPoint = totalPoint;
+        this.balance = balance;
     }
 
     public Customer(int id, String name, String phoneNumber, String email, String address, String type, int totalPoint, int balance) {
@@ -95,6 +110,22 @@ public class Customer {
 
     public void setBalance(int balance) {
         this.balance = balance;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
     }
 
     @Override

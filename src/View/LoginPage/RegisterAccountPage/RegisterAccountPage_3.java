@@ -1,27 +1,31 @@
-package View.LoginPage.ForgetPasswordPage;
+package View.LoginPage.RegisterAccountPage;
 
 import Controller.LoginPage.ForgetPassword.ForgetPasswordPage3Listener;
+import Controller.LoginPage.RegisterAccount.RegisterAccountPageListener_3;
+import Model.BEAN.Customer;
+import Model.DAO.Customer.CustomerDAO;
 import Model.DAO.Employee.EmployeeDAO;
+import View.LoginPage.ForgetPasswordPage.ForgotPasswordPage_2;
 import View.LoginPage.LoginPage;
 import org.apache.commons.mail.EmailException;
 
-import java.awt.*;
-import java.awt.event.ActionListener;
 import javax.mail.MessagingException;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
-public class ForgotPasswordPage_3 extends JPanel {
-    String userName;
+public class RegisterAccountPage_3 extends JPanel {
+    Customer customer;
     String email;
-    ActionListener ac = new ForgetPasswordPage3Listener(this);
+    ActionListener ac = new RegisterAccountPageListener_3(this);
 
-    public ForgotPasswordPage_3(String userName, String email) {
+    public RegisterAccountPage_3(Customer customer, String email) {
         initComponents();
-        this.userName = userName;
+        this.customer = customer;
         this.email = email;
-        this.BackJbt.addActionListener(ac);
-        this.OKJbt.addActionListener(ac);
-        this.ShowPasswordJbt.addActionListener(ac);
+        OKJbt.addActionListener(ac);
+        BackJbt.addActionListener(ac);
+        ShowPasswordJbt.addActionListener(ac);
     }
 
     public void goToNextPage() {
@@ -30,21 +34,28 @@ public class ForgotPasswordPage_3 extends JPanel {
         }
         else {
             if (getNewPasswordField().getText().equals(getReTypeNewPasswordField().getText())) {
-                JOptionPane.showMessageDialog(null, "Change password successfully!");
-                EmployeeDAO.updatePasswordByUsername(userName, getNewPasswordField().getText());
-                LoginPage loginPage = new LoginPage();
-                loginPage.getLoginPageDialog().setVisible(true);
-                ForgotPasswordPage_3JDialog.dispose();
+                customer.setPassword(getNewPasswordField().getText());
+                System.out.println(customer.toString());
+
+                int rowChanged = CustomerDAO.getInstance().addNewCustomer(customer);
+                if (rowChanged == 0) {
+                    JOptionPane.showMessageDialog(null, "Register account failed!");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Register account successfully!");
+                    LoginPage loginPage = new LoginPage();
+                    loginPage.getLoginPageDialog().setVisible(true);
+                    getRegisterAccountJDialog_3().setVisible(false);
+                }
             } else {
                 getErrorText().setText("Password is not match!");
             }
         }
     }
     public void backToPreviousPage() throws MessagingException, EmailException {
-        ForgotPasswordPage_2 forgotPasswordPage_2 = new ForgotPasswordPage_2(email);
-        forgotPasswordPage_2.getForgotPasswordPage_2JDialog().setVisible(true);
-
-        ForgotPasswordPage_3JDialog.dispose();
+        RegisterAccountPage_2 registerAccountPage_2 = new RegisterAccountPage_2(customer.getEmail());
+        registerAccountPage_2.getRegisterAccountJDialog_2().setVisible(true);
+        RegisterAccountJDialog_3.dispose();
     }
     public void showPassword() {
         getNewPasswordField().setEchoChar((char) 0);
@@ -74,8 +85,8 @@ public class ForgotPasswordPage_3 extends JPanel {
         return ReTypeNewPasswordField;
     }
 
-    public JDialog getForgotPasswordPage_3JDialog() {
-        return ForgotPasswordPage_3JDialog;
+    public JDialog getRegisterAccountJDialog_3() {
+        return RegisterAccountJDialog_3;
     }
 
     public JButton getOKJbt() {
@@ -89,7 +100,7 @@ public class ForgotPasswordPage_3 extends JPanel {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Dat
-        ForgotPasswordPage_3JDialog = new JDialog();
+        RegisterAccountJDialog_3 = new JDialog();
         label2 = new JLabel();
         label4 = new JLabel();
         NewPasswordField = new JPasswordField();
@@ -101,20 +112,20 @@ public class ForgotPasswordPage_3 extends JPanel {
         ReTypeNewPasswordField = new JPasswordField();
         BackJbt = new JButton();
 
-        //======== ForgotPasswordPage_3JDialog ========
+        //======== RegisterAccountJDialog_3 ========
         {
-            ForgotPasswordPage_3JDialog.setTitle("MuzikTic - Concert Music Ticketing");
-            ForgotPasswordPage_3JDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            var ForgotPasswordPage_3JDialogContentPane = ForgotPasswordPage_3JDialog.getContentPane();
+            RegisterAccountJDialog_3.setTitle("MuzikTic - Concert Music Ticketing");
+            RegisterAccountJDialog_3.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            var RegisterAccountJDialog_3ContentPane = RegisterAccountJDialog_3.getContentPane();
 
             //---- label2 ----
-            label2.setText("FORGOT PASSWORD");
+            label2.setText("REGISTER ACCOUNT");
             label2.setFont(new Font("Lato Black", Font.PLAIN, 24));
             label2.setForeground(new Color(0x61b884));
             label2.setHorizontalAlignment(SwingConstants.CENTER);
 
             //---- label4 ----
-            label4.setText("New password:");
+            label4.setText("Password");
             label4.setFont(new Font("Lato Black", Font.PLAIN, 14));
             label4.setForeground(new Color(0x61b884));
 
@@ -122,7 +133,7 @@ public class ForgotPasswordPage_3 extends JPanel {
             NewPasswordField.setFont(new Font("Lato Black", Font.PLAIN, 14));
 
             //---- label5 ----
-            label5.setText("Verify success, enter your new password below");
+            label5.setText("Verify success, enter your password below");
             label5.setFont(new Font("Lato Black", Font.PLAIN, 14));
 
             //---- OKJbt ----
@@ -142,7 +153,7 @@ public class ForgotPasswordPage_3 extends JPanel {
             ErrorText.setForeground(new Color(0xd45c5c));
 
             //---- label6 ----
-            label6.setText("Re-type new password:");
+            label6.setText("Re-type password:");
             label6.setFont(new Font("Lato Black", Font.PLAIN, 14));
             label6.setForeground(new Color(0x61b884));
 
@@ -155,66 +166,66 @@ public class ForgotPasswordPage_3 extends JPanel {
             BackJbt.setBackground(new Color(0x61b884));
             BackJbt.setForeground(Color.white);
 
-            GroupLayout ForgotPasswordPage_3JDialogContentPaneLayout = new GroupLayout(ForgotPasswordPage_3JDialogContentPane);
-            ForgotPasswordPage_3JDialogContentPane.setLayout(ForgotPasswordPage_3JDialogContentPaneLayout);
-            ForgotPasswordPage_3JDialogContentPaneLayout.setHorizontalGroup(
-                ForgotPasswordPage_3JDialogContentPaneLayout.createParallelGroup()
-                    .addGroup(ForgotPasswordPage_3JDialogContentPaneLayout.createSequentialGroup()
+            GroupLayout RegisterAccountJDialog_3ContentPaneLayout = new GroupLayout(RegisterAccountJDialog_3ContentPane);
+            RegisterAccountJDialog_3ContentPane.setLayout(RegisterAccountJDialog_3ContentPaneLayout);
+            RegisterAccountJDialog_3ContentPaneLayout.setHorizontalGroup(
+                RegisterAccountJDialog_3ContentPaneLayout.createParallelGroup()
+                    .addGroup(RegisterAccountJDialog_3ContentPaneLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addGroup(ForgotPasswordPage_3JDialogContentPaneLayout.createParallelGroup()
+                        .addGroup(RegisterAccountJDialog_3ContentPaneLayout.createParallelGroup()
                             .addComponent(label5, GroupLayout.PREFERRED_SIZE, 306, GroupLayout.PREFERRED_SIZE)
-                            .addGroup(ForgotPasswordPage_3JDialogContentPaneLayout.createSequentialGroup()
-                                .addGroup(ForgotPasswordPage_3JDialogContentPaneLayout.createParallelGroup()
-                                    .addGroup(ForgotPasswordPage_3JDialogContentPaneLayout.createSequentialGroup()
+                            .addGroup(RegisterAccountJDialog_3ContentPaneLayout.createSequentialGroup()
+                                .addGroup(RegisterAccountJDialog_3ContentPaneLayout.createParallelGroup()
+                                    .addGroup(RegisterAccountJDialog_3ContentPaneLayout.createSequentialGroup()
                                         .addComponent(label6)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(ForgotPasswordPage_3JDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(RegisterAccountJDialog_3ContentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                             .addComponent(NewPasswordField, GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
                                             .addComponent(ErrorText, GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
                                             .addComponent(ReTypeNewPasswordField, GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)))
                                     .addComponent(label4))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(ShowPasswordJbt))
-                            .addGroup(GroupLayout.Alignment.TRAILING, ForgotPasswordPage_3JDialogContentPaneLayout.createSequentialGroup()
+                            .addGroup(GroupLayout.Alignment.TRAILING, RegisterAccountJDialog_3ContentPaneLayout.createSequentialGroup()
                                 .addComponent(BackJbt)
                                 .addGap(18, 18, 18)
                                 .addComponent(OKJbt, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 40, Short.MAX_VALUE))
+                        .addGap(0, 79, Short.MAX_VALUE))
                     .addComponent(label2, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
             );
-            ForgotPasswordPage_3JDialogContentPaneLayout.setVerticalGroup(
-                ForgotPasswordPage_3JDialogContentPaneLayout.createParallelGroup()
-                    .addGroup(ForgotPasswordPage_3JDialogContentPaneLayout.createSequentialGroup()
+            RegisterAccountJDialog_3ContentPaneLayout.setVerticalGroup(
+                RegisterAccountJDialog_3ContentPaneLayout.createParallelGroup()
+                    .addGroup(RegisterAccountJDialog_3ContentPaneLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(label2)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(label5, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ForgotPasswordPage_3JDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addGroup(RegisterAccountJDialog_3ContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(label4, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
                             .addComponent(NewPasswordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addComponent(ShowPasswordJbt))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ForgotPasswordPage_3JDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addGroup(RegisterAccountJDialog_3ContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(label6, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                             .addComponent(ReTypeNewPasswordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ErrorText, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(ForgotPasswordPage_3JDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addGroup(RegisterAccountJDialog_3ContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(OKJbt)
                             .addComponent(BackJbt))
                         .addGap(131, 131, 131))
             );
-            ForgotPasswordPage_3JDialog.pack();
-            ForgotPasswordPage_3JDialog.setLocationRelativeTo(ForgotPasswordPage_3JDialog.getOwner());
+            RegisterAccountJDialog_3.pack();
+            RegisterAccountJDialog_3.setLocationRelativeTo(RegisterAccountJDialog_3.getOwner());
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - Dat
-    private JDialog ForgotPasswordPage_3JDialog;
+    private JDialog RegisterAccountJDialog_3;
     private JLabel label2;
     private JLabel label4;
     private JPasswordField NewPasswordField;

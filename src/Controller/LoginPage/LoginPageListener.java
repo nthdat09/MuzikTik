@@ -23,6 +23,9 @@ private LoginPage loginPage;
         else if (src.equals("Forgot Password?")) {
             this.loginPage.SwitchToForgotPasswordPage();
         }
+        else if (src.equals("Register Account")) {
+            this.loginPage.SwitchToRegisterAccountPage();
+        }
 
     }
 

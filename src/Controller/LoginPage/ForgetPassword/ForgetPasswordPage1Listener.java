@@ -1,4 +1,4 @@
-package Controller.LoginPage;
+package Controller.LoginPage.ForgetPassword;
 
 import View.LoginPage.ForgetPasswordPage.ForgotPasswordPage_1;
 import org.apache.commons.mail.EmailException;

@@ -1,0 +1,112 @@
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space ::47:x, par l {seq t {par l {comp label4:::p::p, comp label5:::p::p, comp label6:::p::p, comp label7:::p::p, comp label8:::p::p}, space :p:112:p, par l {comp nameField:::p:249:p, comp userNameField:::p:249:p, comp phoneNumberField::l:p:249:p, comp emailField::l:p:249:p, comp addressField::l:p:249:p, comp NextJbt::l:p::p}, space :p:93:p}, seq t {comp label2:::p:588:p, space :p:38:p}}}, seq l {space :p:222:p, comp BackJbt:::p::p, space :0:373:x}}"
+			"$verticalGroup": "par l {seq l {space :p:37:p, comp label2:::p::p, space s:::p, par b {comp label4::b:p:33:p, comp userNameField::b:p::p}, space u:::p, par b {comp nameField::b:p::p, comp label5::b:p:33:p}, space s:::p, par b {comp phoneNumberField::b:p::p, comp label6::b:p:33:p}, space s:::p, par b {comp emailField::b:p::p, comp label7::b:p:33:p}, space s:::p, par b {comp addressField::b:p::p, comp label8::b:p:33:p}, space s:::p, par b {comp BackJbt::b:p::p, comp NextJbt::b:p::p}, space ::73:x}}"
+		} ) {
+			name: "RegisterAccountJDialog_1"
+			"defaultCloseOperation": 2
+			auxiliary() {
+				"JavaCodeGenerator.variableGetter": true
+			}
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "REGISTER ACCOUNT"
+				"font": new java.awt.Font( "Lato Black", 0, 24 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "Username:"
+				"font": &Font0 new java.awt.Font( "Lato Black", 0, 14 )
+				"foreground": &Color0 new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "userNameField"
+				"font": &Font1 new java.awt.Font( "Lato", 0, 14 )
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "nameField"
+				"font": #Font1
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "phoneNumberField"
+				"font": #Font1
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "emailField"
+				"font": #Font1
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "addressField"
+				"font": #Font1
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Name"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Phone Number"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "Email"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label8"
+				"text": "Address"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "BackJbt"
+				"text": "BACK"
+				"font": &Font2 new java.awt.Font( "Lato Black", 1, 14 )
+				"background": &Color1 new java.awt.Color( 97, 184, 132, 255 )
+				"foreground": &Color2 new java.awt.Color( 255, 255, 255, 255 )
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "NextJbt"
+				"text": "NEXT"
+				"font": #Font2
+				"background": #Color1
+				"foreground": #Color2
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 675, 470 )
+		} )
+	}
+}

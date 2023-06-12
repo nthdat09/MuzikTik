@@ -1,4 +1,4 @@
-package Controller.LoginPage;
+package Controller.LoginPage.ForgetPassword;
 
 import View.LoginPage.ForgetPasswordPage.ForgotPasswordPage_3;
 import org.apache.commons.mail.EmailException;
@@ -27,8 +27,8 @@ public class ForgetPasswordPage3Listener implements ActionListener {
                     throw new RuntimeException(ex);
                 }
             }
-            case "Show Password" -> this.forgotPasswordPage_3.showPassword();
-            case "Hide Password" -> this.forgotPasswordPage_3.hidePassword();
+            case "SHOW" -> this.forgotPasswordPage_3.showPassword();
+            case "HIDE" -> this.forgotPasswordPage_3.hidePassword();
         }
 
     }

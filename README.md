@@ -1,5 +1,11 @@
 # Fantastic-Four
+
 Mọi người chạy thêm scrip data này nha
+// Thêm 2 cột username và password vào bảng customer
+
+alter table customer
+add CUS_USERNAME VARCHAR(30) not null;
+add CUS_PASSWORD VARCHAR(30) not null;
 
 DELETE FROM mctmsys.event WHERE EVT_ID = 30;
 
