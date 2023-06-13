@@ -9,8 +9,8 @@ new FormModel {
 			"JavaCodeGenerator.memberVariableThis": true
 		}
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {par l {seq l {space :p:375:p, comp label1:::p::p}, seq l {space :p:49:p, par l:::p {seq {par l {comp ID:::p:57:p, comp Name::l:p:71:p}, space :p:67:p, par l {comp IDField:::p:250:p, comp NameField::::252:x}}, seq l {par l {comp Email::l:p:87:p, comp UserName::l:p::p, comp label3::l:p::p}, space :p:51:p, par l:::p {comp UserNameField::::252:x, comp textField1::l::252:x, comp EmailField::l::252:x}}}, space :p:209:p, par l {seq {comp PhoneNumber:::p:126:p, space :::p, comp PhoneNumberFiled:::p:250:p}, par t:l {seq {comp SAVE:::p:112:p, space s:::p, comp Cancel:::p:112:p}, par t:::p {seq {comp TotalPoint:::p:99:p, space ::36:x, comp TotalPointVal:::p:250:p}, seq {par l {comp Address:::p:87:p, comp Type:::p:77:p}, space :p:51:p, par l:::p {comp AddressField::::247:x, comp TypeField::::247:x}}}}}}}, space ::62:x}}"
-			"$verticalGroup": "par l {seq l {space :p:25:p, comp label1:::p::p, space :p:28:p, par b {comp ID::b:p::p, comp IDField::b:p:24:p, comp PhoneNumber::b:p::p, comp PhoneNumberFiled::b:p::p}, space u:::p, par b {comp Name::b:p::p, comp Address::b:p::p, comp AddressField::b:p::p, comp NameField::b:p::p}, space u:::p, par b {comp Type::b:p::p, comp TypeField::b:p::p, comp Email::b:p::p, comp EmailField::b:p::p}, space s:::p, par b {comp TotalPoint::b:p::p, comp TotalPointVal::b:p::p, comp UserName::b:p::p, comp UserNameField::b:p::p}, space s:::p, par b {comp label3::b:p::p, comp textField1::b:p::p}, space :p:13:p, par b {comp Cancel::b:p::p, comp SAVE::b:p::p}, space ::181:x}}"
+			"$horizontalGroup": "par l {seq {par l {seq l {space :p:375:p, comp label1:::p::p}, seq l {space :p:49:p, par l:::p {seq {par l {comp ID:::p:57:p, comp Name::l:p:71:p}, space :p:67:p, par l {comp IDField:::p:250:p, comp NameField::::252:x}}, seq l {par l {comp Email::l:p:87:p, comp UserName::l:p::p, comp label3::l:p::p}, space :p:51:p, par l:::p {comp UserNameField::::252:x, comp PasswordField::l::252:x, comp EmailField::l::252:x}}}, space :p:209:p, par l {seq {comp PhoneNumber:::p:126:p, space :::p, comp PhoneNumberFiled:::p:250:p}, par t:l {seq {comp SAVE:::p:112:p, space s:::p, comp Cancel:::p:112:p}, par t:::p {seq {comp TotalPoint:::p:99:p, space ::36:x, comp TotalPointVal:::p:250:p}, seq {par l {comp Address:::p:87:p, comp Type:::p:77:p}, space :p:51:p, par l:::p {comp AddressField::::247:x, comp TypeField::::247:x}}}}}}}, space ::62:x}}"
+			"$verticalGroup": "par l {seq l {space :p:25:p, comp label1:::p::p, space :p:28:p, par b {comp ID::b:p::p, comp IDField::b:p:24:p, comp PhoneNumber::b:p::p, comp PhoneNumberFiled::b:p::p}, space u:::p, par b {comp Name::b:p::p, comp Address::b:p::p, comp AddressField::b:p::p, comp NameField::b:p::p}, space u:::p, par b {comp Type::b:p::p, comp TypeField::b:p::p, comp Email::b:p::p, comp EmailField::b:p::p}, space s:::p, par b {comp TotalPoint::b:p::p, comp TotalPointVal::b:p::p, comp UserName::b:p::p, comp UserNameField::b:p::p}, space s:::p, par b {comp label3::b:p::p, comp PasswordField::b:p::p}, space :p:13:p, par b {comp Cancel::b:p::p, comp SAVE::b:p::p}, space ::178:x}}"
 		} ) {
 			name: "this"
 			"minimumSize": new java.awt.Dimension( 735, 548 )
@@ -116,7 +116,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "IDField"
-				"background": new java.awt.Color( 146, 207, 170, 255 )
+				"background": new java.awt.Color( 204, 204, 204, 255 )
 				"name": "NameVal"
 				"editable": false
 				"font": #Font1
@@ -157,7 +157,8 @@ new FormModel {
 				"foreground": new java.awt.Color( 97, 184, 132, 255 )
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField1"
+				name: "PasswordField"
+				"font": new java.awt.Font( "Lato", 0, 16 )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 60, 25 )

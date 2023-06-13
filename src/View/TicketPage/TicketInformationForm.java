@@ -120,6 +120,7 @@ public class TicketInformationForm extends JPanel{
             this.TicketInformationFormPanel.setPreferredSize(new Dimension(670, 450));
             this.TicketInformationFormPanel.setFont(new Font("Lato Black", Font.BOLD, 16));
             this.TicketInformationFormPanel.setForeground(new Color(0x61b884));
+<<<<<<< HEAD
             this.TicketInformationFormPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
             . border .EmptyBorder ( 0, 0 ,0 , 0) ,  " " , javax. swing .border . TitledBorder
             . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .
@@ -127,6 +128,14 @@ public class TicketInformationForm extends JPanel{
             ; this.TicketInformationFormPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
             ) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
             ;
+=======
+            this.TicketInformationFormPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
+            border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder.CENTER
+            ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.awt.Font
+            .BOLD,12),java.awt.Color.red),this.TicketInformationFormPanel. getBorder()));this.TicketInformationFormPanel. addPropertyChangeListener(
+            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072"
+            .equals(e.getPropertyName()))throw new RuntimeException();}});
+>>>>>>> 48e9ec71b36536db347b25b6224b48f222c39a08
 
             //---- TicketID ----
             this.TicketID.setText("Ticket ID:");
@@ -159,7 +168,7 @@ public class TicketInformationForm extends JPanel{
 
             //---- TicketIDField ----
             this.TicketIDField.setEditable(false);
-            this.TicketIDField.setBackground(Color.lightGray);
+            this.TicketIDField.setBackground(new Color(0xcccccc));
             this.TicketIDField.setFont(new Font("Lato", Font.PLAIN, 16));
 
             //---- EventIDField ----
@@ -217,24 +226,25 @@ public class TicketInformationForm extends JPanel{
                                 .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(this.TicketPriceField, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                                     .addComponent(this.TicketIDField, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
                         .addGroup(TicketInformationFormPanelLayout.createParallelGroup()
-                            .addComponent(this.EventID, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(this.SeatID, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(this.StageID, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                            .addComponent(this.EventIDField)
-                            .addComponent(this.SeatIDField)
-                            .addComponent(this.StageIDField, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
-                        .addGap(87, 87, 87))
+                            .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
+                                .addGroup(TicketInformationFormPanelLayout.createParallelGroup()
+                                    .addComponent(this.SeatID, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(this.StageID, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                    .addComponent(this.EventIDField, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(this.SeatIDField, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(this.StageIDField, GroupLayout.Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(this.EventID, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE))
+                        .addGap(106, 106, 106))
             );
             TicketInformationFormPanelLayout.setVerticalGroup(
                 TicketInformationFormPanelLayout.createParallelGroup()
                     .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(this.label1)
-                        .addGap(18, 18, 18)
                         .addGroup(TicketInformationFormPanelLayout.createParallelGroup()
                             .addGroup(TicketInformationFormPanelLayout.createSequentialGroup()
                                 .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
@@ -248,7 +258,7 @@ public class TicketInformationForm extends JPanel{
                                 .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                     .addComponent(this.EventID)
                                     .addComponent(this.EventIDField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addGap(14, 14, 14)
                                 .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                     .addComponent(this.SeatID)
                                     .addComponent(this.SeatIDField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -256,11 +266,11 @@ public class TicketInformationForm extends JPanel{
                                 .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                     .addComponent(this.StageID)
                                     .addComponent(this.StageIDField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                .addGap(32, 32, 32)
+                                .addGap(38, 38, 38)
                                 .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                     .addComponent(this.CancelButton)
                                     .addComponent(this.SaveButton))))
-                        .addContainerGap(220, Short.MAX_VALUE))
+                        .addContainerGap(236, Short.MAX_VALUE))
             );
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on

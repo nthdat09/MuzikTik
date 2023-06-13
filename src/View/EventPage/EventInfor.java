@@ -26,6 +26,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 
 
@@ -153,24 +154,36 @@ public class EventInfor extends JPanel {
                     JOptionPane.showInputDialog(this, "Error: " + err.getMessage());
                 }
             } else {
-
-                String name = textName.getText();
-                String artist = textArtist.getText();
-                Integer quantity = Integer.parseInt(textQuantity.getText());
-                String description = textDescription.getText();
-
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-                LocalDate date = LocalDate.parse(dateTextField.getText(), formatter);
-                java.sql.Date dateFormatted = java.sql.Date.valueOf(date);
-
-                String openTime = Open_Hour.getValue() + ":" + Open_Minute.getValue() + ":" + Open_Second.getValue();
-                java.sql.Time openTimeFormatted = java.sql.Time.valueOf(openTime);
-                String closeTime = Close_Hour.getValue() + ":" + Close_Minute.getValue() + ":" + Close_Second.getValue();
-                java.sql.Time closeTimeFormatted = java.sql.Time.valueOf(closeTime);
-
-                if(name.equals("") || artist.equals("") || quantity.equals("") || description.equals("") || date.equals("") || openTime.equals("") || closeTime.equals("") || event_image.equals("")) {
+                if(textName.getText().equals("") || textArtist.getText().equals("")  || textDescription.getText().equals("") || dateTextField.getText().equals("")  || textPoster.getIcon() == null || textQuantity.getText().equals("")) {
                     JOptionPane.showMessageDialog(this, "Please fill all information!");
                 } else {
+                    String name = textName.getText();
+                    String artist = textArtist.getText();
+                    try {
+                        Integer quantity = Integer.parseInt(textQuantity.getText());
+                    } catch (NumberFormatException err) {
+                        JOptionPane.showMessageDialog(this, "Quantity must be a number!");
+                        return;
+                    }
+                    Integer quantity = Integer.parseInt(textQuantity.getText());
+                    String description = textDescription.getText();
+
+                    try {
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                        LocalDate date = LocalDate.parse(dateTextField.getText(), formatter);
+                        java.sql.Date dateFormatted = java.sql.Date.valueOf(date);
+                    } catch (DateTimeParseException err) {
+                        JOptionPane.showMessageDialog(this, "Date must be in dd-MM-yyyy format!");
+                        return;
+                    }
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                    LocalDate date = LocalDate.parse(dateTextField.getText(), formatter);
+                    java.sql.Date dateFormatted = java.sql.Date.valueOf(date);
+                    String openTime = Open_Hour.getValue() + ":" + Open_Minute.getValue() + ":" + Open_Second.getValue();
+                    java.sql.Time openTimeFormatted = java.sql.Time.valueOf(openTime);
+                    String closeTime = Close_Hour.getValue() + ":" + Close_Minute.getValue() + ":" + Close_Second.getValue();
+                    java.sql.Time closeTimeFormatted = java.sql.Time.valueOf(closeTime);
+
                     try {
                         Connection con2 = UserDatabase.getConnection();
                         String query = "INSERT INTO event (EVT_ID, EVT_NAME, EVT_STG_ID, EVT_ARTIST, EVT_DATE, EVT_OPEN_TIME, EVT_END_TIME, EVT_QUANTITY, EVT_DESCRIPTION, EVT_POSTER) VALUES";
@@ -323,13 +336,14 @@ public class EventInfor extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-        . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing
-        . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-        Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-        ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-        public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName (
-        ) )) throw new RuntimeException( ); }} );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder (
+        new javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e"
+        , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
+        , new java. awt .Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,12 )
+        ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener(
+        new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+        ) { if( "\u0062or\u0064er" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+        ;} } );
 
         //---- ID ----
         ID.setText("ID:");
@@ -476,7 +490,7 @@ public class EventInfor extends JPanel {
         label1.setForeground(new Color(0x61b884));
 
         //---- TextID ----
-        TextID.setBackground(new Color(0x92cfaa));
+        TextID.setBackground(new Color(0xcccccc));
         TextID.setFont(new Font("Lato", Font.PLAIN, 16));
 
         //---- button1 ----

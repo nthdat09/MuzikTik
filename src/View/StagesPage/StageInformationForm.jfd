@@ -49,7 +49,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "IDField"
 				"editable": false
-				"background": sfield java.awt.Color lightGray
+				"background": new java.awt.Color( 204, 204, 204, 255 )
 				"foreground": sfield java.awt.Color darkGray
 				"font": &Font1 new java.awt.Font( "Lato", 0, 16 )
 				auxiliary() {

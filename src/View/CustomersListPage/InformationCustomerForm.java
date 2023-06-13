@@ -48,6 +48,8 @@ public class InformationCustomerForm extends JPanel {
         this.TotalPointVal.setText(String.valueOf(customer.getTotalPoint()));
         this.EmailField.setText(customer.getEmail());
         this.TypeField.setText(customer.getType());
+        this.UserNameField.setText(customer.getUsername());
+        this.PasswordField.setText(customer.getPassword());
         this.selectedID = customer.getId();
         this.IDField.setText(String.valueOf(customer.getId()));
         System.out.println("selected id = " + this.selectedID);
@@ -147,8 +149,8 @@ public class InformationCustomerForm extends JPanel {
         return this.label3;
     }
 
-    public JTextField getTextField1() {
-        return this.textField1;
+    public JTextField getPasswordField() {
+        return this.PasswordField;
     }
 
     private void initComponents() {
@@ -175,7 +177,7 @@ public class InformationCustomerForm extends JPanel {
         this.UserName = new JLabel();
         this.UserNameField = new JTextField();
         this.label3 = new JLabel();
-        this.textField1 = new JTextField();
+        this.PasswordField = new JTextField();
 
         //======== this ========
         setMinimumSize(new Dimension(735, 548));
@@ -183,6 +185,7 @@ public class InformationCustomerForm extends JPanel {
         setFont(new Font("Lato Black", Font.PLAIN, 16));
         setForeground(new Color(0x61b884));
         setBackground(Color.white);
+<<<<<<< HEAD
         setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
         javax.swing.border.EmptyBorder(0,0,0,0), " ",javax
         .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
@@ -190,6 +193,15 @@ public class InformationCustomerForm extends JPanel {
         .Color.red), getBorder())); addPropertyChangeListener(new java.beans.
         PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".
         equals(e.getPropertyName()))throw new RuntimeException();}});
+=======
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+        . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder
+        . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .
+        awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder( )) )
+        ;  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+        ;
+>>>>>>> 48e9ec71b36536db347b25b6224b48f222c39a08
 
         //---- Name ----
         this.Name.setText("Name:");
@@ -262,7 +274,7 @@ public class InformationCustomerForm extends JPanel {
         this.ID.setForeground(new Color(0x61b884));
 
         //---- IDField ----
-        this.IDField.setBackground(new Color(0x92cfaa));
+        this.IDField.setBackground(new Color(0xcccccc));
         this.IDField.setName("NameVal");
         this.IDField.setEditable(false);
         this.IDField.setFont(new Font("Lato", Font.PLAIN, 16));
@@ -296,6 +308,9 @@ public class InformationCustomerForm extends JPanel {
         this.label3.setFont(new Font("Lato Black", Font.BOLD, 16));
         this.label3.setForeground(new Color(0x61b884));
 
+        //---- PasswordField ----
+        this.PasswordField.setFont(new Font("Lato", Font.PLAIN, 16));
+
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
         layout.setHorizontalGroup(
@@ -324,7 +339,7 @@ public class InformationCustomerForm extends JPanel {
                                     .addGap(51, 51, 51)
                                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                         .addComponent(this.UserNameField, GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                                        .addComponent(this.textField1, GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                                        .addComponent(this.PasswordField, GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                                         .addComponent(this.EmailField, GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE))))
                             .addGap(209, 209, 209)
                             .addGroup(layout.createParallelGroup()
@@ -384,12 +399,12 @@ public class InformationCustomerForm extends JPanel {
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(this.label3)
-                        .addComponent(this.textField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(this.PasswordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addGap(13, 13, 13)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(this.Cancel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(this.SAVE, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(181, Short.MAX_VALUE))
+                    .addContainerGap(178, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
@@ -417,13 +432,13 @@ public class InformationCustomerForm extends JPanel {
     JLabel UserName;
     JTextField UserNameField;
     JLabel label3;
-    JTextField textField1;
+    JTextField PasswordField;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
     public void saveCustomer() throws SQLException {
         if (this.NameField.equals("") || this.EmailField.equals("") || this.AddressField.equals("")
                 || this.PhoneNumberFiled.equals("") || this.TotalPointVal.equals("") || this.TypeField.equals("")
-            || this.IDField.equals("") || this.UserNameField.equals("")){
+            || this.IDField.equals("") || this.UserNameField.equals("") || this.PasswordField.equals("")){
             JOptionPane.showMessageDialog(null, "Please fill in all fields");
         } else {
             Customer customer = null;

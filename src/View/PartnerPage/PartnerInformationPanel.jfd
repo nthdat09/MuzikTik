@@ -86,6 +86,7 @@ new FormModel {
 				name: "IDField"
 				"editable": false
 				"font": #Font0
+				"background": new java.awt.Color( 204, 204, 204, 255 )
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
