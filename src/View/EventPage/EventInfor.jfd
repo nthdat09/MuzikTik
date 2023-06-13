@@ -239,7 +239,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "TextID"
-				"background": new java.awt.Color( 146, 207, 170, 255 )
+				"background": new java.awt.Color( 204, 204, 204, 255 )
 				"font": #Font1
 				auxiliary() {
 					"JavaCodeGenerator.variableModifiers": 10
@@ -260,4 +260,3 @@ new FormModel {
 		} )
 	}
 }
-

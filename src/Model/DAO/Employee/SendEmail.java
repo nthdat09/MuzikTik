@@ -28,7 +28,7 @@ public class SendEmail {
         email.setTLS(false);
 
         try {
-            email.setFrom(fromEmail, "Fantastic Four");
+            email.setFrom(fromEmail, "MUZIKTIC - Concert Music Ticketing");
             email.setSubject(subject);
             email.setMsg(body);
             email.addTo(toEmail);

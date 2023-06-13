@@ -84,7 +84,8 @@ public class CustomerDAO{
             Connection con = UserDatabase.getConnection();
             String sql = "UPDATE mctmsys.customer SET CUS_NAME = '" + cus.getName() + "', CUS_USERNAME = '" + cus.getUsername() +
                     "', CUS_PASSWORD = '" + cus.getPassword() + "' , CUS_PHONE_NUMBER = '" + cus.getPhoneNumber() +
-                    "', CUS_EMAIL = '" + cus.getEmail() +"', CUS_ADDRESS = '" + cus.getAddress() + "', CUS_TOTAL_POINT = " + cus.getTotalPoint() +
+                    "', CUS_EMAIL = '" + cus.getEmail() +"', CUS_ADDRESS = '" + cus.getAddress() + "CUS_TYPE = '" + cus.getType() +
+                    "', CUS_TOTAL_POINT = "+ cus.getTotalPoint() +
                     ", CUS_BALANCE = " + cus.getBalance() + " WHERE CUS_ID = " +cus.getId();
             System.out.println(sql);
 

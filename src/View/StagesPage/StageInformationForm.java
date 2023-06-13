@@ -232,13 +232,12 @@ public class StageInformationForm extends JPanel{
             this.StageInformationFormPanel.setMinimumSize(new Dimension(670, 500));
             this.StageInformationFormPanel.setMaximumSize(new Dimension(670, 500));
             this.StageInformationFormPanel.setPreferredSize(new Dimension(670, 600));
-            this.StageInformationFormPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing
-            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-            Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
-            ) ,this.StageInformationFormPanel. getBorder () ) ); this.StageInformationFormPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName (
-            ) ) )throw new RuntimeException( ) ;} } );
+            this.StageInformationFormPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER
+            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
+            .BOLD ,12 ), java. awt. Color. red) ,this.StageInformationFormPanel. getBorder( )) ); this.StageInformationFormPanel. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r"
+            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             //---- TicketID ----
             this.TicketID.setText("ID:");
@@ -267,7 +266,7 @@ public class StageInformationForm extends JPanel{
 
             //---- IDField ----
             this.IDField.setEditable(false);
-            this.IDField.setBackground(Color.lightGray);
+            this.IDField.setBackground(new Color(0xcccccc));
             this.IDField.setForeground(Color.darkGray);
             this.IDField.setFont(new Font("Lato", Font.PLAIN, 16));
 
