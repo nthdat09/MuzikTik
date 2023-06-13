@@ -49,11 +49,11 @@ public class HomePanel extends JPanel {
     List<EventArtID> eventArt = null;
     List<EventInformation> eventInformationList= null;
     List<StageInformation> eventStageInformation = null;
-    static List<EventList> listEvent = null;
+    List<EventList> listEvent = null;
     List<EventPrice> listEventPrice = null;
-    static ArrayList<JLabel> listLabelPicture = new ArrayList<JLabel>();
-    static ArrayList<JLabel> listLabelName = new ArrayList<JLabel>();
-    static ArrayList<JLabel> listLabelDate = new ArrayList<JLabel>();
+    ArrayList<JLabel> listLabelPicture = new ArrayList<JLabel>();
+    ArrayList<JLabel> listLabelName = new ArrayList<JLabel>();
+    ArrayList<JLabel> listLabelDate = new ArrayList<JLabel>();
     ArrayList<JRadioButton> slideDots = new ArrayList<>();
 
     public HomePanel() {
@@ -62,8 +62,8 @@ public class HomePanel extends JPanel {
         addLabelName();
         addLabelDate();
         addButtonGroup();
-        setSelectedPage(1);
         listEvent = Event.getEventList();
+        setEventList();
         int totalPage = 0;
         for(int i = 0; i < listEvent.size(); i++) {
             totalPage++;
@@ -75,7 +75,6 @@ public class HomePanel extends JPanel {
             totalPage = totalPage/9 + 1;
             setTotalPage(totalPage);
         }
-        setEventList();
         initMoreSetting();
         initEventHandler();
     }
@@ -148,14 +147,21 @@ public class HomePanel extends JPanel {
 
     public void setEventList() {
         for (int i = 0; i < 9; i++) {
-            ImageIcon eventPicture = listEvent.get(i).getEventPicture();
-            String eventName = listEvent.get(i).getEventName();
-            String eventDate = listEvent.get(i).getEventDate();
+            try {
+                ImageIcon eventPicture = listEvent.get(i).getEventPicture();
+                String eventName = listEvent.get(i).getEventName();
+                String eventDate = listEvent.get(i).getEventDate();
 
-            Image image = eventPicture.getImage().getScaledInstance(260, 100, Image.SCALE_SMOOTH);
-            listLabelPicture.get(i).setIcon(new ImageIcon(image));
-            listLabelName.get(i).setText("<HTML>" + eventName + "</HTML>");
-            listLabelDate.get(i).setText(eventDate);
+                Image image = eventPicture.getImage().getScaledInstance(260, 100, Image.SCALE_SMOOTH);
+                listLabelPicture.get(i).setIcon(new ImageIcon(image));
+                listLabelName.get(i).setText("<HTML>" + eventName + "</HTML>");
+                listLabelDate.get(i).setText(eventDate);
+            } catch (Exception ex) {
+                listLabelPicture.get(i).setIcon(null);
+                listLabelName.get(i).setText("");
+                listLabelDate.get(i).setText("");
+                listLabelDate.get(i).setIcon(null);
+            }
         }
     }
 
@@ -393,7 +399,6 @@ public class HomePanel extends JPanel {
         if(selectedPage > 1) {
             Integer selectedNextPage = selectedPage - 1;
             selectedPage--;
-            setSelectedPage(selectedPage);
             page.setText(selectedNextPage.toString());
         }
         Integer pageRoot = selectedPage - 1;
@@ -424,7 +429,6 @@ public class HomePanel extends JPanel {
         if(selectedPage < getTotalPage()) {
             Integer selectedNextPage = selectedPage + 1;
             selectedPage++;
-            setSelectedPage(selectedPage);
             page.setText(selectedNextPage.toString());
         }
         Integer pageRoot = selectedPage - 1;
@@ -450,17 +454,9 @@ public class HomePanel extends JPanel {
         }
     }
 
-    public static Integer getSelectedPage() {
-        return selectedPage;
-    }
-
-    public static void setSelectedPage(Integer selectedPage) {
-        HomePanel.selectedPage = selectedPage;
-    }
-
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - man
         mainScrollPanel = new JScrollPane();
         panel2 = new JPanel();
         mainLivePicture = new JLabel();
@@ -508,12 +504,13 @@ public class HomePanel extends JPanel {
         //======== this ========
         setBackground(Color.white);
         setMaximumSize(new Dimension(33912, 2000));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.
-        EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER,javax.swing
-        .border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),
-        java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener()
-        {@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName()))
-        throw new RuntimeException();}});
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
+        .swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing
+        .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
+        Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red
+        ), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
+        public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName(
+        )))throw new RuntimeException();}});
 
         //======== mainScrollPanel ========
         {
@@ -771,6 +768,8 @@ public class HomePanel extends JPanel {
                 page.setBackground(Color.white);
                 page.setBorder(new LineBorder(new Color(0x61b884)));
                 page.setCaretColor(new Color(0x61b884));
+                page.setEditable(false);
+                page.setEnabled(false);
 
                 GroupLayout panel2Layout = new GroupLayout(panel2);
                 panel2.setLayout(panel2Layout);
@@ -872,7 +871,7 @@ public class HomePanel extends JPanel {
                                     .addComponent(page, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(button1, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)))
-                            .addContainerGap(909, Short.MAX_VALUE))
+                            .addContainerGap(913, Short.MAX_VALUE))
                 );
                 panel2Layout.setVerticalGroup(
                     panel2Layout.createParallelGroup()
@@ -973,10 +972,10 @@ public class HomePanel extends JPanel {
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1133, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1165, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(mainLabel)
-                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(254, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
@@ -987,14 +986,14 @@ public class HomePanel extends JPanel {
                             .addComponent(mainLabel))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 700, GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(384, Short.MAX_VALUE))
+                            .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 733, GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(5, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - man
     private JScrollPane mainScrollPanel;
     private JPanel panel2;
     private JLabel mainLivePicture;

@@ -282,10 +282,6 @@ public class EventPanel extends JPanel {
     private void checkBox3(ActionEvent e) {
         isCheckSelected(3);
     }
-    
-    public static JTable getSelectedSSeatTable() {
-        return selectedSeatTable;
-    }
     private void seatTableMouseClicked(MouseEvent e) {
     }
 
@@ -305,7 +301,7 @@ public class EventPanel extends JPanel {
         for(int i=0; i < selectedSeatTable.getRowCount(); i++) {
             String seatID = selectedSeatTable.getValueAt(i, 0).toString();
             if(seatID.equals(ticketID)) {
-                JOptionPane.showConfirmDialog(null, "This seat is already selected! Please choose another seat!", "Warning", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "This seat is already in your cart! Please choose another seat!", "Warning", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
                 return;
             }
         }
@@ -321,7 +317,7 @@ public class EventPanel extends JPanel {
         tbModel.removeRow(row);
     }
 
-    private void jlbNextMouseClicked(MouseEvent e) throws SQLException {
+    private void jlbNextMouseClicked(MouseEvent e) {
         Integer ticketBookingID = null;
         if(fullNameText.getText() == "" || phoneNumberText.getText() == "" || emailText.getText() == "") {
             JOptionPane.showMessageDialog(null, "Please fill all information!", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -447,44 +443,51 @@ public class EventPanel extends JPanel {
                     JOptionPane.showMessageDialog(null, "Please select your seat!");
                     return;
                 } else {
-                    setSeatID(seatID);
-                    List<TicketID> bookedTicket = BookingTicket.bookingTicket();
-                    Integer ticketID = bookedTicket.get(0).getTicketID();
-                    String sqlTicketBooking = "SELECT MAX(TBK_ID) from ticket_booking";
-                    PreparedStatement ps1 = con.prepareStatement(sqlTicketBooking);
-                    ResultSet rs = ps1.executeQuery();
-                    while (rs.next()) {
-                        ticketBookingID = rs.getInt(1) + 1;
-                    }
                     try {
-                        String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_ID,TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketBookingID + "', '" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
-                        PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
-                        new Thread(() -> {
-                            try {
-                                Thread.sleep(1000);
-                                SendTicketEmail.sendCodeToEmail(totalPrice, HomePanel.getSelectedStage(), ticketID, Integer.parseInt(seatID), emailText.getText());
-                            } catch (Exception err) {
-                                System.err.println(err);
-                            }
-                        }).start();
-                        ps2.executeUpdate();
-                        ps2.close();
-                    } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(null, ex);
+                        setSeatID(seatID);
+                        List<TicketID> bookedTicket = BookingTicket.bookingTicket();
+                        Integer ticketID = bookedTicket.get(0).getTicketID();
+                        String sqlTicketBooking = "SELECT MAX(TBK_ID) from ticket_booking";
+                        PreparedStatement ps1 = con.prepareStatement(sqlTicketBooking);
+                        ResultSet rs = ps1.executeQuery();
+                        while (rs.next()) {
+                            ticketBookingID = rs.getInt(1) + 1;
+                        }
+                        try {
+                            String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_ID,TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketBookingID + "', '" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
+                            PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
+                            new Thread(() -> {
+                                try {
+                                    Thread.sleep(1000);
+                                    SendTicketEmail.sendCodeToEmail(totalPrice, HomePanel.getSelectedStage(), ticketID, Integer.parseInt(seatID), emailText.getText());
+                                } catch (Exception err) {
+                                    System.err.println(err);
+                                }
+                            }).start();
+                            ps2.executeUpdate();
+                            ps2.close();
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
+                    } catch(SQLException sql) {
+                        JOptionPane.showMessageDialog(null, "Error: " + sql.getMessage());
                     }
                 }
             }
-
-            String sqlGetPoint = "Select cus_total_point from customer where cus_id = " + customer.get(0).getCustomerID();
-            PreparedStatement psGetPoint = con.prepareStatement(sqlGetPoint);
-            ResultSet rsGetPoint = psGetPoint.executeQuery();
-            while(rsGetPoint.next()) {
-                Integer previousPoint = rsGetPoint.getInt("cus_total_point");
-                Integer point = totalPrice / 1000;
-                Integer totalPoint = point + previousPoint;
-                String sqlUpdatePoint = "Update customer set cus_total_point = " + totalPoint + " where cus_id = " + customer.get(0).getCustomerID();
-                PreparedStatement ps3 = con.prepareStatement(sqlUpdatePoint);
-                ps3.executeUpdate();
+            try {
+                String sqlGetPoint = "Select cus_total_point from customer where cus_id = " + customer.get(0).getCustomerID();
+                PreparedStatement psGetPoint = con.prepareStatement(sqlGetPoint);
+                ResultSet rsGetPoint = psGetPoint.executeQuery();
+                while (rsGetPoint.next()) {
+                    Integer previousPoint = rsGetPoint.getInt("cus_total_point");
+                    Integer point = totalPrice / 1000;
+                    Integer totalPoint = point + previousPoint;
+                    String sqlUpdatePoint = "Update customer set cus_total_point = " + totalPoint + " where cus_id = " + customer.get(0).getCustomerID();
+                    PreparedStatement ps3 = con.prepareStatement(sqlUpdatePoint);
+                    ps3.executeUpdate();
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
             }
 
             JOptionPane.showMessageDialog(null, "Your ticket has been booked successfully!");
@@ -532,7 +535,7 @@ public class EventPanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - man
         jpnEventHeader = new JPanel();
         EventArt = new JLabel();
         EventName = new JLabel();
@@ -615,13 +618,12 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
-        .swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing
-        .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
-        Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.red
-        ), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
-        public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName(
-        )))throw new RuntimeException();}});
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+        border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER
+        , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
+        .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
+        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r"
+        .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
         setLayout(null);
 
         //======== jpnEventHeader ========
@@ -793,7 +795,7 @@ public class EventPanel extends JPanel {
                     jpnBuyNowLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, jpnBuyNowLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jlbBuyNow, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlbBuyNow, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                             .addContainerGap())
                 );
             }
@@ -928,7 +930,7 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnEventInformationLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 455, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(280, Short.MAX_VALUE))
+                            .addContainerGap(274, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnEventInformation);
@@ -1064,7 +1066,7 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnEventTicketLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(ticketFeeScrollPanel, GroupLayout.PREFERRED_SIZE, 387, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(348, Short.MAX_VALUE))
+                            .addContainerGap(342, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnEventTicket);
@@ -1122,8 +1124,8 @@ public class EventPanel extends JPanel {
                     SeatEventLayout.createParallelGroup()
                         .addGroup(SeatEventLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(seatEventScrollPanel, GroupLayout.PREFERRED_SIZE, 372, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(363, Short.MAX_VALUE))
+                            .addComponent(seatEventScrollPanel, GroupLayout.PREFERRED_SIZE, 472, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(257, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", SeatEvent);
@@ -1183,7 +1185,7 @@ public class EventPanel extends JPanel {
                                 new Object[][] {
                                 },
                                 new String[] {
-                                    "Seat ID", "Seat Type", "Price", "Status"
+                                    "Seat ID", "Seat Type", "Price (VND)", "Status"
                                 }
                             ));
                             seatTable.setFont(new Font("Lato", Font.PLAIN, 14));
@@ -1207,7 +1209,7 @@ public class EventPanel extends JPanel {
                                 new Object[][] {
                                 },
                                 new String[] {
-                                    "Seat ID", "Seat Type", "Price", "Status"
+                                    "Seat ID", "Seat Type", "Price (VND)", "Status"
                                 }
                             ));
                             selectedSeatTable.setFont(new Font("Lato", Font.PLAIN, 14));
@@ -1331,8 +1333,8 @@ public class EventPanel extends JPanel {
                     jpnPickTicketLayout.createParallelGroup()
                         .addGroup(jpnPickTicketLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(pickTicketScrollPane, GroupLayout.PREFERRED_SIZE, 424, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(311, Short.MAX_VALUE))
+                            .addComponent(pickTicketScrollPane, GroupLayout.PREFERRED_SIZE, 467, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(262, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnPickTicket);
@@ -1426,7 +1428,7 @@ public class EventPanel extends JPanel {
                             jlbNext.addMouseListener(new MouseAdapter() {
                                 @Override
                                 public void mouseClicked(MouseEvent e) {
-                                   // jlbNextMouseClicked(e);
+                                    jlbNextMouseClicked(e);
                                 }
                             });
 
@@ -1504,7 +1506,7 @@ public class EventPanel extends JPanel {
                                 new Object[][] {
                                 },
                                 new String[] {
-                                    "SeatID", "Seat Type", "Price"
+                                    "SeatID", "Seat Type", "Price (VND)"
                                 }
                             ));
                             BuySeatTable.setFont(new Font("Lato", Font.PLAIN, 14));
@@ -1614,7 +1616,7 @@ public class EventPanel extends JPanel {
                     jpnPaymentLayout.createParallelGroup()
                         .addGroup(jpnPaymentLayout.createSequentialGroup()
                             .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 573, GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 174, Short.MAX_VALUE))
+                            .addGap(0, 162, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnPayment);
@@ -1640,7 +1642,7 @@ public class EventPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - man
     private JPanel jpnEventHeader;
     private static JLabel EventArt;
     private static JLabel EventName;
