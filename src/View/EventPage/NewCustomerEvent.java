@@ -98,87 +98,118 @@ public class NewCustomerEvent extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-        border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER
-        , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
-        .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
-        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r"
-        .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
+        ( 0, 0 ,0 , 0) ,  "" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
+        .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+        . Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
+        propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+        ;} } );
+        setLayout(null);
 
         //---- label3 ----
         label3.setText("Password:");
         label3.setFont(new Font("Lato Black", Font.BOLD, 16));
         label3.setForeground(new Color(0x61b884));
+        add(label3);
+        label3.setBounds(new Rectangle(new Point(5, 395), label3.getPreferredSize()));
 
         //---- PasswordField ----
         PasswordField.setFont(new Font("Lato", Font.PLAIN, 16));
         PasswordField.setBackground(Color.white);
+        add(PasswordField);
+        PasswordField.setBounds(145, 390, 252, PasswordField.getPreferredSize().height);
 
         //---- UserNameField ----
         UserNameField.setFont(new Font("Lato", Font.PLAIN, 16));
         UserNameField.setBackground(Color.white);
+        add(UserNameField);
+        UserNameField.setBounds(145, 340, 252, UserNameField.getPreferredSize().height);
 
         //---- UserName ----
         UserName.setText("Username:");
         UserName.setFont(new Font("Lato Black", Font.BOLD, 16));
         UserName.setForeground(new Color(0x61b884));
+        add(UserName);
+        UserName.setBounds(new Rectangle(new Point(5, 345), UserName.getPreferredSize()));
 
         //---- label1 ----
         label1.setText("CUSTOMER INFORMATION");
         label1.setFont(new Font("Lato Black", Font.BOLD, 25));
         label1.setForeground(new Color(0x61b884));
+        add(label1);
+        label1.setBounds(new Rectangle(new Point(325, 60), label1.getPreferredSize()));
 
         //---- TypeField ----
         TypeField.setBackground(Color.white);
         TypeField.setName("TotalPointVal");
         TypeField.setFont(new Font("Lato", Font.PLAIN, 16));
+        add(TypeField);
+        TypeField.setBounds(745, 290, 247, TypeField.getPreferredSize().height);
 
         //---- Type ----
         Type.setFont(new Font("Lato Black", Font.BOLD, 16));
         Type.setText("Type:");
         Type.setForeground(new Color(0x61b884));
+        add(Type);
+        Type.setBounds(605, 295, 77, Type.getPreferredSize().height);
 
         //---- IDField ----
         IDField.setName("NameVal");
         IDField.setEditable(false);
         IDField.setFont(new Font("Lato", Font.PLAIN, 16));
         IDField.setEnabled(false);
+        add(IDField);
+        IDField.setBounds(145, 205, 250, 28);
 
         //---- ID ----
         ID.setText("ID:");
         ID.setFont(new Font("Lato Black", Font.BOLD, 16));
         ID.setForeground(new Color(0x61b884));
+        add(ID);
+        ID.setBounds(5, 210, 57, ID.getPreferredSize().height);
 
         //---- TotalPointVal ----
         TotalPointVal.setBackground(Color.white);
         TotalPointVal.setName("TotalPointVal");
         TotalPointVal.setFont(new Font("Lato", Font.PLAIN, 16));
+        add(TotalPointVal);
+        TotalPointVal.setBounds(740, 340, 250, TotalPointVal.getPreferredSize().height);
 
         //---- AddressField ----
         AddressField.setBackground(Color.white);
         AddressField.setName("PhoneNumberVal");
         AddressField.setFont(new Font("Lato", Font.PLAIN, 16));
+        add(AddressField);
+        AddressField.setBounds(745, 245, 247, AddressField.getPreferredSize().height);
 
         //---- EmailField ----
         EmailField.setBackground(Color.white);
         EmailField.setName("AddressVal");
         EmailField.setFont(new Font("Lato", Font.PLAIN, 16));
+        add(EmailField);
+        EmailField.setBounds(145, 290, 252, EmailField.getPreferredSize().height);
 
         //---- PhoneNumberFiled ----
         PhoneNumberFiled.setBackground(Color.white);
         PhoneNumberFiled.setName("EmailVal");
         PhoneNumberFiled.setFont(new Font("Lato", Font.PLAIN, 16));
+        add(PhoneNumberFiled);
+        PhoneNumberFiled.setBounds(740, 205, 250, PhoneNumberFiled.getPreferredSize().height);
 
         //---- NameField ----
         NameField.setBackground(Color.white);
         NameField.setName("NameVal");
         NameField.setFont(new Font("Lato", Font.PLAIN, 16));
+        add(NameField);
+        NameField.setBounds(145, 245, 252, NameField.getPreferredSize().height);
 
         //---- TotalPoint ----
         TotalPoint.setFont(new Font("Lato Black", Font.BOLD, 16));
         TotalPoint.setText("Total Point:");
         TotalPoint.setForeground(new Color(0x61b884));
         TotalPoint.setBackground(Color.white);
+        add(TotalPoint);
+        TotalPoint.setBounds(605, 345, 99, TotalPoint.getPreferredSize().height);
 
         //---- SAVE ----
         SAVE.setText("SAVE");
@@ -192,139 +223,51 @@ public class NewCustomerEvent extends JPanel {
                 SAVEMouseClicked(e);
             }
         });
+        add(SAVE);
+        SAVE.setBounds(870, 410, 112, SAVE.getPreferredSize().height);
 
         //---- PhoneNumber ----
         PhoneNumber.setText("Phone Number:");
         PhoneNumber.setFont(new Font("Lato Black", Font.BOLD, 16));
         PhoneNumber.setForeground(new Color(0x61b884));
+        add(PhoneNumber);
+        PhoneNumber.setBounds(605, 210, 126, PhoneNumber.getPreferredSize().height);
 
         //---- Address ----
         Address.setText("Address:");
         Address.setFont(new Font("Lato Black", Font.BOLD, 16));
         Address.setForeground(new Color(0x61b884));
+        add(Address);
+        Address.setBounds(605, 250, 87, Address.getPreferredSize().height);
 
         //---- Email ----
         Email.setText("Email:");
         Email.setFont(new Font("Lato Black", Font.BOLD, 16));
         Email.setForeground(new Color(0x61b884));
+        add(Email);
+        Email.setBounds(5, 295, 87, Email.getPreferredSize().height);
 
         //---- Name ----
         Name.setText("Name:");
         Name.setFont(new Font("Lato Black", Font.BOLD, 16));
         Name.setForeground(new Color(0x61b884));
+        add(Name);
+        Name.setBounds(5, 250, 71, Name.getPreferredSize().height);
 
-        GroupLayout layout = new GroupLayout(this);
-        setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup()
-                .addGroup(layout.createParallelGroup()
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup()
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(ID, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
-                                .addGap(81, 81, 81)
-                                .addComponent(IDField, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
-                                .addGap(211, 211, 211)
-                                .addComponent(PhoneNumber, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(PhoneNumberFiled, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Name, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
-                                .addGap(67, 67, 67)
-                                .addComponent(NameField, GroupLayout.PREFERRED_SIZE, 252, GroupLayout.PREFERRED_SIZE)
-                                .addGap(209, 209, 209)
-                                .addComponent(Address, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(AddressField, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Email, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(EmailField, GroupLayout.PREFERRED_SIZE, 252, GroupLayout.PREFERRED_SIZE)
-                                .addGap(209, 209, 209)
-                                .addComponent(Type, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-                                .addGap(61, 61, 61)
-                                .addComponent(TypeField, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(UserName)
-                                .addGap(56, 56, 56)
-                                .addComponent(UserNameField, GroupLayout.PREFERRED_SIZE, 252, GroupLayout.PREFERRED_SIZE)
-                                .addGap(209, 209, 209)
-                                .addComponent(TotalPoint, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(TotalPointVal, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label3)
-                                .addGap(58, 58, 58)
-                                .addComponent(PasswordField, GroupLayout.PREFERRED_SIZE, 252, GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 91, Short.MAX_VALUE)))
-                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(864, Short.MAX_VALUE)
-                    .addComponent(SAVE, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
-                    .addGap(99, 99, 99))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(327, 327, 327)
-                    .addComponent(label1)
-                    .addContainerGap(430, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup()
-                .addGroup(layout.createParallelGroup()
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 103, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup()
-                            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup()
-                                    .addComponent(PhoneNumberFiled, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(5, 5, 5)
-                                        .addGroup(layout.createParallelGroup()
-                                            .addComponent(ID)
-                                            .addComponent(PhoneNumber))))
-                                .addGap(12, 12, 12))
-                            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(IDField, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(layout.createParallelGroup()
-                            .addComponent(NameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AddressField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addGroup(layout.createParallelGroup()
-                                    .addComponent(Name)
-                                    .addComponent(Address))))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup()
-                            .addComponent(EmailField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TypeField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addGroup(layout.createParallelGroup()
-                                    .addComponent(Email)
-                                    .addComponent(Type))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup()
-                            .addComponent(UserNameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TotalPointVal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addGroup(layout.createParallelGroup()
-                                    .addComponent(UserName)
-                                    .addComponent(TotalPoint))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup()
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(label3))
-                            .addComponent(PasswordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 389, Short.MAX_VALUE)))
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(label1)
-                    .addGap(272, 272, 272)
-                    .addComponent(SAVE, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(370, Short.MAX_VALUE))
-        );
+        {
+            // compute preferred size
+            Dimension preferredSize = new Dimension();
+            for(int i = 0; i < getComponentCount(); i++) {
+                Rectangle bounds = getComponent(i).getBounds();
+                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+            }
+            Insets insets = getInsets();
+            preferredSize.width += insets.right;
+            preferredSize.height += insets.bottom;
+            setMinimumSize(preferredSize);
+            setPreferredSize(preferredSize);
+        }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 

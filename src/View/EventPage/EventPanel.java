@@ -378,7 +378,7 @@ public class EventPanel extends JPanel {
                     frame.setVisible(true);
                     frame.setLocationRelativeTo(null);
                     frame.setResizable(false);
-                    frame.setSize(1150, 500);
+                    frame.setSize(1050, 650);
 
                 } else {
                     Integer balance = customer.get(0).getBalance();
@@ -491,7 +491,7 @@ public class EventPanel extends JPanel {
                 frame.setVisible(true);
                 frame.setLocationRelativeTo(null);
                 frame.setResizable(false);
-                frame.setSize(1150, 500);
+                frame.setSize(1050, 550);
             } else {
                 Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
                 Connection con = UserDatabase.getConnection();
