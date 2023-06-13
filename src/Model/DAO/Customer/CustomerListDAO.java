@@ -34,6 +34,8 @@ public class CustomerListDAO{
                 // Tìm kiếm trong database
                 while(rs.next()) {
                     String cusName = rs.getString("CUS_NAME");
+                    String cusUserName = rs.getString("CUS_USERNAME");
+                    String cusPassWord = rs.getString("CUS_PASSWORD");
                     String cusPhoneNumber = rs.getString("CUS_PHONE_NUMBER");
                     String cusEmail = rs.getString("CUS_EMAIL");
                     String cusAddress = rs.getString("CUS_ADDRESS");
@@ -41,7 +43,7 @@ public class CustomerListDAO{
                     String cusType = rs.getString("CUS_TYPE");
                     int cusTotalPoint = rs.getInt("CUS_TOTAL_POINT");
                     int cusBalance = rs.getInt("CUS_BALANCE");
-                    customerList = new Customer(cusId, cusName, cusPhoneNumber, cusEmail, cusAddress, cusType, cusTotalPoint, cusBalance);
+                    customerList = new Customer(cusId, cusName, cusUserName, cusPassWord, cusPhoneNumber, cusEmail, cusAddress, cusType, cusTotalPoint, cusBalance);
                     result.add(customerList);
                 }
 

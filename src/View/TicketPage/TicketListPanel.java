@@ -51,6 +51,7 @@ public class TicketListPanel extends JPanel{
         listTicket = TicketListDAO.getList();
 
         setTicketListTable();
+        setColor();
         jlbAdd.addActionListener(ac);
         jlbEdit.addActionListener(ac);
         jlbDelete.addActionListener(ac);
@@ -137,6 +138,14 @@ public class TicketListPanel extends JPanel{
         }
     }
 
+    public void setColor() {
+        getTicketListTable().getTableHeader().setBackground(Color.white);
+        getTicketListTable().getTableHeader().setForeground(Color.decode("#61b884"));
+        getTicketListTable().getTableHeader().setFont(new Font("Lato Black", Font.BOLD, 16));
+        getTicketListTable().setRowHeight(20);
+        getTicketListTable().setForeground(Color.DARK_GRAY);
+        getTicketListTable().setFont(new Font("Lato",Font.PLAIN, 14));
+    }
     public JButton getJlbAdd() {
         return jlbAdd;
     }
@@ -187,11 +196,12 @@ public class TicketListPanel extends JPanel{
 
         //======== this ========
         setBackground(Color.white);
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0
-        ,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
-        ,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.red),
-         getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-        ){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}});
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+        border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER
+        , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font
+        .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
+        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order"
+        .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
         //---- jlbTicket ----
         jlbTicket.setText("TICKET INFORMATION LIST");
@@ -210,6 +220,9 @@ public class TicketListPanel extends JPanel{
                     "TicketID", "EventID", "SeatID", "StageID", "Ticket Price"
                 }
             ));
+            TicketListTable.setGridColor(Color.lightGray);
+            TicketListTable.setSelectionBackground(new Color(0x61b884));
+            TicketListTable.setSelectionForeground(Color.white);
             scrollPane1.setViewportView(TicketListTable);
         }
 
@@ -284,7 +297,7 @@ public class TicketListPanel extends JPanel{
                                     .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)))))
                     .addGap(18, 18, 18)
                     .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(51, Short.MAX_VALUE))
+                    .addContainerGap(47, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }

@@ -122,13 +122,12 @@ public class CustomersListPanel extends JPanel{
         //======== this ========
         setBackground(Color.white);
         setName("customersListPage");
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-        swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border
-        . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
-        ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder
-        ( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-        .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
-        ( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+        ( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+        . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+        propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+        ; }} );
 
         //======== scrollPane1 ========
         {
@@ -138,7 +137,7 @@ public class CustomersListPanel extends JPanel{
                 new Object[][] {
                 },
                 new String[] {
-                    "ID", "Name", "Phone Number", "Email", "Address", "Type", "Total Point", "Balance"
+                    "ID", "Name", "Username", "Password", "Phone Number", "Email", "Address", "Type", "Total Point", "Balance"
                 }
             ));
             {
@@ -148,9 +147,9 @@ public class CustomersListPanel extends JPanel{
             CustomerListTable.setAutoCreateRowSorter(true);
             CustomerListTable.setName("cusListTable");
             CustomerListTable.setFont(new Font("Lato", Font.PLAIN, 13));
-            CustomerListTable.setGridColor(Color.gray);
+            CustomerListTable.setGridColor(Color.lightGray);
             CustomerListTable.setSelectionBackground(new Color(0x61b884));
-            CustomerListTable.setBorder(LineBorder.createBlackLineBorder());
+            CustomerListTable.setBorder(null);
             CustomerListTable.setSelectionForeground(Color.white);
             scrollPane1.setViewportView(CustomerListTable);
         }
@@ -249,17 +248,28 @@ public class CustomersListPanel extends JPanel{
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on'
 
     public void setColor() {
-        getCustomerListTable().getTableHeader().setBackground(Color.decode("#61b884"));
-        getCustomerListTable().setRowHeight(30);
-        getCustomerListTable().getColumnModel().getColumn(0).setPreferredWidth(100);
-        getCustomerListTable().setForeground(Color.white);
-        getCustomerListTable().getTableHeader().setFont(new Font("Lato Black", Font.BOLD, 25));
+        getCustomerListTable().getTableHeader().setBackground(Color.white);
+        getCustomerListTable().getTableHeader().setForeground(Color.decode("#61b884"));
+        getCustomerListTable().getTableHeader().setFont(new Font("Lato Black", Font.BOLD, 16));
+        getCustomerListTable().setRowHeight(20);
+        getCustomerListTable().getColumnModel().getColumn(0).setPreferredWidth(5);
+        getCustomerListTable().getColumnModel().getColumn(2).setPreferredWidth(55);
+        getCustomerListTable().getColumnModel().getColumn(3).setPreferredWidth(55);
+        getCustomerListTable().getColumnModel().getColumn(4).setPreferredWidth(90);
+        getCustomerListTable().getColumnModel().getColumn(6).setPreferredWidth(150);
+        getCustomerListTable().getColumnModel().getColumn(7).setPreferredWidth(40);
+        getCustomerListTable().getColumnModel().getColumn(8).setPreferredWidth(50);
+        getCustomerListTable().getColumnModel().getColumn(9).setPreferredWidth(40);
+        getCustomerListTable().setForeground(Color.DARK_GRAY);
+        getCustomerListTable().setFont(new Font("Lato",Font.PLAIN, 14));
     }
     public void setCustomerListTable() {
         DefaultTableModel tableModel = (DefaultTableModel) getCustomerListTable().getModel();
         for (Customer customer : listCustomer) {
             int ID = customer.getId();
             String name = customer.getName();
+            String username = customer.getUsername();
+            String password = customer.getPassword();
             String phoneNumber = customer.getPhoneNumber();
             String email = customer.getEmail();
             String address = customer.getAddress();
@@ -267,7 +277,7 @@ public class CustomersListPanel extends JPanel{
             int totalPoint = customer.getTotalPoint();
             int balance = customer.getBalance();
             tableModel.addRow(new Object[]{
-                    ID + "", name, phoneNumber, email, address, type, totalPoint, balance + ""});
+                    ID + "", name, username, password, phoneNumber, email, address, type, totalPoint, balance + ""});
         }
     }
 

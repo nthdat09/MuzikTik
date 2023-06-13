@@ -56,6 +56,7 @@ public class EventListPanel extends JPanel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        setColor();
     }
 
     private void jlbAddMouseClicked(MouseEvent e) {
@@ -140,6 +141,27 @@ public class EventListPanel extends JPanel {
         }
     }
 
+    public void setColor() {
+        getEventListTable().getTableHeader().setBackground(Color.white);
+        getEventListTable().getTableHeader().setForeground(Color.decode("#61b884"));
+        getEventListTable().getTableHeader().setFont(new Font("Lato Black", Font.BOLD, 16));
+        getEventListTable().setRowHeight(20);
+        getEventListTable().getColumnModel().getColumn(0).setPreferredWidth(10);
+        getEventListTable().getColumnModel().getColumn(2).setPreferredWidth(100);
+        getEventListTable().getColumnModel().getColumn(3).setPreferredWidth(100);
+        getEventListTable().getColumnModel().getColumn(4).setPreferredWidth(30);
+        getEventListTable().getColumnModel().getColumn(5).setPreferredWidth(50);
+        getEventListTable().getColumnModel().getColumn(6).setPreferredWidth(45);
+        getEventListTable().getColumnModel().getColumn(7).setPreferredWidth(45);
+        getEventListTable().getColumnModel().getColumn(1).setPreferredWidth(200);
+        getEventListTable().setForeground(Color.DARK_GRAY);
+        getEventListTable().setFont(new Font("Lato",Font.PLAIN, 14));
+    }
+
+    public JTable getEventListTable() {
+        return eventListTable;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
@@ -155,11 +177,11 @@ public class EventListPanel extends JPanel {
         //======== this ========
         setBackground(Color.white);
         setForeground(Color.white);
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
-        0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
-        .BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.
-        red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
-        beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}});
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+        , 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+        , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+         getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
         //---- label1 ----
         label1.setText("EVENT INFORMATION LIST");
@@ -168,7 +190,6 @@ public class EventListPanel extends JPanel {
         label1.setForeground(new Color(0x61b884));
 
         //---- jtfSearch ----
-        jtfSearch.setText(" Search MuzikTic");
         jtfSearch.setFont(new Font("Lato", Font.PLAIN, 16));
         jtfSearch.setForeground(new Color(0x61b884));
         jtfSearch.setCaretColor(new Color(0x61b884));
@@ -227,7 +248,6 @@ public class EventListPanel extends JPanel {
             //---- eventListTable ----
             eventListTable.setModel(new DefaultTableModel(
                 new Object[][] {
-                    {null, null, null, null, null, null, null, null, null},
                 },
                 new String[] {
                     "ID", "Name", "Artist", "Stage Name", "Open Time", "Close Time", "Date", "Quantity", "Description"
@@ -235,12 +255,11 @@ public class EventListPanel extends JPanel {
             ));
             {
                 TableColumnModel cm = eventListTable.getColumnModel();
-                cm.getColumn(0).setResizable(false);
                 cm.getColumn(0).setMinWidth(20);
                 cm.getColumn(4).setMinWidth(100);
             }
             eventListTable.setFont(new Font("Lato", Font.PLAIN, 13));
-            eventListTable.setGridColor(Color.gray);
+            eventListTable.setGridColor(Color.lightGray);
             eventListTable.setSelectionBackground(new Color(0x61b884));
             eventListTable.setSelectionForeground(Color.white);
             eventListTable.setPreferredScrollableViewportSize(new Dimension(300, 400));
@@ -255,13 +274,14 @@ public class EventListPanel extends JPanel {
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup()
+                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 1303, Short.MAX_VALUE)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup()
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(6, 6, 6)
                                     .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 564, Short.MAX_VALUE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 663, Short.MAX_VALUE)
                                     .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
@@ -271,8 +291,7 @@ public class EventListPanel extends JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(192, 192, 192)
                                     .addComponent(label1, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 1204, Short.MAX_VALUE)))
+                                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
@@ -293,7 +312,7 @@ public class EventListPanel extends JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(20, 20, 20)
                             .addComponent(label1, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)))
-                    .addGap(18, 18, 18)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 494, GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

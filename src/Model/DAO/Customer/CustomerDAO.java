@@ -26,11 +26,14 @@ public class CustomerDAO{
                 Customer customer = new Customer();
                 customer.setId(rs.getInt("CUS_ID"));
                 customer.setName(rs.getString("CUS_NAME"));
+                customer.setUsername(rs.getString("CUS_USERNAME"));
+                customer.setPassword(rs.getString("CUS_PASSWORD"));
                 customer.setPhoneNumber(rs.getString("CUS_PHONE_NUMBER"));
                 customer.setEmail(rs.getString("CUS_EMAIL"));
                 customer.setAddress(rs.getString("CUS_ADDRESS"));
                 customer.setType(rs.getString("CUS_TYPE"));
                 customer.setTotalPoint(rs.getInt("CUS_TOTAL_POINT"));
+                customer.setBalance(rs.getInt("CUS_BALANCE"));
                 list.add(customer);
             }
             ps.close();
@@ -55,11 +58,14 @@ public class CustomerDAO{
                 customer = new Customer();
                 customer.setId(rs.getInt("CUS_ID"));
                 customer.setName(rs.getString("CUS_NAME"));
+                customer.setUsername(rs.getString("CUS_USERNAME"));
+                customer.setPassword(rs.getString("CUS_PASSWORD"));
                 customer.setPhoneNumber(rs.getString("CUS_PHONE_NUMBER"));
                 customer.setEmail(rs.getString("CUS_EMAIL"));
                 customer.setAddress(rs.getString("CUS_ADDRESS"));
                 customer.setType(rs.getString("CUS_TYPE"));
                 customer.setTotalPoint(rs.getInt("CUS_TOTAL_POINT"));
+                customer.setBalance(rs.getInt("CUS_BALANCE"));
             }
 
             ps.close();
@@ -76,8 +82,10 @@ public class CustomerDAO{
         int rowChanged = 0;
         try {
             Connection con = UserDatabase.getConnection();
-            String sql = "UPDATE mctmsys.customer SET CUS_NAME = '" + cus.getName() + "' , CUS_PHONE_NUMBER = '" + cus.getPhoneNumber() +
-                    "', CUS_EMAIL = '" + cus.getEmail() +"', CUS_ADDRESS = '" + cus.getAddress() + "', CUS_TOTAL_POINT = " + cus.getTotalPoint() + " WHERE CUS_ID = " +cus.getId();
+            String sql = "UPDATE mctmsys.customer SET CUS_NAME = '" + cus.getName() + "', CUS_USERNAME = '" + cus.getUsername() +
+                    "', CUS_PASSWORD = '" + cus.getPassword() + "' , CUS_PHONE_NUMBER = '" + cus.getPhoneNumber() +
+                    "', CUS_EMAIL = '" + cus.getEmail() +"', CUS_ADDRESS = '" + cus.getAddress() + "', CUS_TOTAL_POINT = " + cus.getTotalPoint() +
+                    ", CUS_BALANCE = " + cus.getBalance() + " WHERE CUS_ID = " +cus.getId();
             System.out.println(sql);
 
             PreparedStatement ps = con.prepareCall(sql);
@@ -96,17 +104,21 @@ public class CustomerDAO{
         int rowChanged = 0;
         try {
             Connection con = UserDatabase.getConnection();
-            String sql = "INSERT INTO mctmsys.customer (CUS_ID, CUS_NAME, CUS_PHONE_NUMBER, CUS_EMAIL, CUS_ADDRESS, CUS_TYPE, CUS_TOTAL_POINT) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO mctmsys.customer (CUS_ID, CUS_NAME, CUS_USERNAME, CUS_PASSWORD, CUS_PHONE_NUMBER, CUS_EMAIL, CUS_ADDRESS, CUS_TYPE, CUS_TOTAL_POINT, CUS_BALANCE) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             System.out.println(sql);
 
             PreparedStatement ps = con.prepareCall(sql);
             ps.setInt(1, newCustomer.getId());
             ps.setString(2, newCustomer.getName());
-            ps.setString(3, newCustomer.getPhoneNumber());
-            ps.setString(4, newCustomer.getEmail());
-            ps.setString(5, newCustomer.getAddress());
-            ps.setString(6, newCustomer.getType());
-            ps.setInt(7, newCustomer.getTotalPoint());
+            ps.setString(3, newCustomer.getUsername());
+            ps.setString(4, newCustomer.getPassword());
+            ps.setString(5, newCustomer.getPhoneNumber());
+            ps.setString(6, newCustomer.getEmail());
+            ps.setString(7, newCustomer.getAddress());
+            ps.setString(8, newCustomer.getType());
+            ps.setInt(9, newCustomer.getTotalPoint());
+            ps.setInt(10,newCustomer.getBalance());
 
             rowChanged = ps.executeUpdate();
             System.out.println("Row changed: " + rowChanged);
@@ -202,7 +214,6 @@ public class CustomerDAO{
                 customer.setTotalPoint(rs.getInt("CUS_TOTAL_POINT"));
                 customer.setBalance(rs.getInt("CUS_BALANCE"));
                 customer.setUsername(rs.getString("CUS_USERNAME"));
-                customer.setPassword(rs.getString("CUS_PASSWORD"));
             }
 
             ps.close();

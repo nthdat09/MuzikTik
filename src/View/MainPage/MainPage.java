@@ -278,7 +278,6 @@ public class MainPage extends JFrame {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         headerPanel = new JPanel();
-        searchButton = new JTextField();
         nameAppLabell = new JLabel();
         jpnBuffer = new JPanel();
         Logo1 = new JLabel();
@@ -317,28 +316,14 @@ public class MainPage extends JFrame {
         {
             headerPanel.setBorder(new LineBorder(new Color(0xbebebe)));
             headerPanel.setBackground(Color.white);
-            headerPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
-            swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border
-            .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog"
-            ,java.awt.Font.BOLD,12),java.awt.Color.red),headerPanel. getBorder
-            ()));headerPanel. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
-            .beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException
-            ();}});
+            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+            . border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder
+            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
+            awt .Font .BOLD ,12 ), java. awt. Color. red) ,headerPanel. getBorder( )) )
+            ; headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+            ;
             headerPanel.setLayout(null);
-
-            //---- searchButton ----
-            searchButton.setText("Search");
-            searchButton.setFont(new Font("Lato", Font.PLAIN, 16));
-            searchButton.setForeground(new Color(0x666666));
-            searchButton.setBorder(new LineBorder(new Color(0x61b884), 1, true));
-            searchButton.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    searchButtonMouseEntered(e);
-                }
-            });
-            headerPanel.add(searchButton);
-            searchButton.setBounds(750, 20, 461, 30);
 
             //---- nameAppLabell ----
             nameAppLabell.setFont(new Font("Fredoka One", Font.BOLD, 20));
@@ -395,15 +380,21 @@ public class MainPage extends JFrame {
 
                 //======== avatarJMenu ========
                 {
-                    avatarJMenu.setIcon(new ImageIcon(getClass().getResource("/Asset/Icon/music logo design - no name.png")));
+                    avatarJMenu.setIcon(new ImageIcon(getClass().getResource("/Asset/Avatar/DefaultAvatar.png")));
 
                     //---- nameJMenuItem ----
                     nameJMenuItem.setText("Name");
+                    nameJMenuItem.setFont(new Font("Lato Black", Font.BOLD, 14));
+                    nameJMenuItem.setForeground(new Color(0x61b884));
+                    nameJMenuItem.setBackground(Color.white);
                     avatarJMenu.add(nameJMenuItem);
                     avatarJMenu.addSeparator();
 
                     //---- logOutJMenuItem ----
                     logOutJMenuItem.setText("LOGOUT");
+                    logOutJMenuItem.setFont(new Font("Lato Black", Font.BOLD, 14));
+                    logOutJMenuItem.setForeground(new Color(0x61b884));
+                    logOutJMenuItem.setBackground(Color.white);
                     avatarJMenu.add(logOutJMenuItem);
                 }
                 menuBar1.add(avatarJMenu);
@@ -825,7 +816,6 @@ public class MainPage extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     private JPanel headerPanel;
-    private JTextField searchButton;
     private JLabel nameAppLabell;
     private JPanel jpnBuffer;
     private JLabel Logo1;

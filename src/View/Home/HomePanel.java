@@ -4,6 +4,7 @@
 
 package View.Home;
 
+import javax.swing.border.*;
 import Controller.EventListPanel;
 import Model.BEAN.*;
 import Model.DAO.Event.Event;
@@ -459,7 +460,7 @@ public class HomePanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - man
+        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         mainScrollPanel = new JScrollPane();
         panel2 = new JPanel();
         mainLivePicture = new JLabel();
@@ -506,21 +507,24 @@ public class HomePanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
-        border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder. CENTER
-        ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font
-        . BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener(
-        new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "borde\u0072"
-        .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setMaximumSize(new Dimension(33912, 2000));
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.
+        EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER,javax.swing
+        .border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),
+        java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener()
+        {@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName()))
+        throw new RuntimeException();}});
 
         //======== mainScrollPanel ========
         {
             mainScrollPanel.setBorder(null);
+            mainScrollPanel.setMaximumSize(new Dimension(32767, 2000));
 
             //======== panel2 ========
             {
                 panel2.setBackground(Color.white);
                 panel2.setFont(new Font("Lato Black", Font.BOLD, 20));
+                panel2.setMaximumSize(new Dimension(2000, 2400));
 
                 //---- mainLivePicture ----
                 mainLivePicture.setBorder(null);
@@ -717,7 +721,7 @@ public class HomePanel extends JPanel {
                 });
 
                 //---- button1 ----
-                button1.setText("Next");
+                button1.setText("NEXT");
                 button1.setFont(new Font("Lato Black", Font.BOLD, 14));
                 button1.setBackground(new Color(0x61b884));
                 button1.setForeground(Color.white);
@@ -749,7 +753,7 @@ public class HomePanel extends JPanel {
                 });
 
                 //---- button2 ----
-                button2.setText("Prev");
+                button2.setText("PREV");
                 button2.setFont(new Font("Lato Black", Font.BOLD, 14));
                 button2.setBackground(new Color(0x61b884));
                 button2.setForeground(Color.white);
@@ -762,6 +766,11 @@ public class HomePanel extends JPanel {
 
                 //---- page ----
                 page.setText("1");
+                page.setFont(new Font("Lato Black", Font.BOLD, 16));
+                page.setForeground(Color.darkGray);
+                page.setBackground(Color.white);
+                page.setBorder(new LineBorder(new Color(0x61b884)));
+                page.setCaretColor(new Color(0x61b884));
 
                 GroupLayout panel2Layout = new GroupLayout(panel2);
                 panel2.setLayout(panel2Layout);
@@ -842,14 +851,7 @@ public class HomePanel extends JPanel {
                                                         .addGap(109, 109, 109)
                                                         .addComponent(eventDate8, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
                                                         .addGap(104, 104, 104)
-                                                        .addComponent(eventDate9, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(panel2Layout.createSequentialGroup()
-                                                        .addComponent(button2, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(page, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(button1, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(325, 325, 325)))
+                                                        .addComponent(eventDate9, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)))
                                                 .addGroup(panel2Layout.createSequentialGroup()
                                                     .addComponent(eventPicture1, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
                                                     .addGap(110, 110, 110)
@@ -857,10 +859,19 @@ public class HomePanel extends JPanel {
                                                     .addGap(104, 104, 104)
                                                     .addComponent(eventPicture3, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)))
                                             .addGap(0, 0, Short.MAX_VALUE)))))
-                            .addContainerGap(624, Short.MAX_VALUE))
+                            .addContainerGap(628, Short.MAX_VALUE))
                         .addGroup(panel2Layout.createSequentialGroup()
-                            .addGap(330, 330, 330)
-                            .addComponent(eventLabel)
+                            .addGroup(panel2Layout.createParallelGroup()
+                                .addGroup(panel2Layout.createSequentialGroup()
+                                    .addGap(330, 330, 330)
+                                    .addComponent(eventLabel))
+                                .addGroup(panel2Layout.createSequentialGroup()
+                                    .addGap(436, 436, 436)
+                                    .addComponent(button2, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(page, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(button1, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)))
                             .addContainerGap(909, Short.MAX_VALUE))
                 );
                 panel2Layout.setVerticalGroup(
@@ -940,12 +951,12 @@ public class HomePanel extends JPanel {
                                 .addComponent(eventDate9)
                                 .addComponent(eventDate8)
                                 .addComponent(eventDate7))
-                            .addGap(67, 67, 67)
+                            .addGap(31, 31, 31)
                             .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(page, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addComponent(button1)
-                                .addComponent(button2))
-                            .addContainerGap(1115, Short.MAX_VALUE))
+                                .addComponent(button2)
+                                .addComponent(page, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
+                            .addContainerGap(1151, Short.MAX_VALUE))
                 );
             }
             mainScrollPanel.setViewportView(panel2);
@@ -962,8 +973,8 @@ public class HomePanel extends JPanel {
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1457, GroupLayout.PREFERRED_SIZE)
-                    .addGap(24, 24, 24)
+                    .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1133, GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(mainLabel)
                     .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -976,14 +987,14 @@ public class HomePanel extends JPanel {
                             .addComponent(mainLabel))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 1515, GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(98, Short.MAX_VALUE))
+                            .addComponent(mainScrollPanel, GroupLayout.PREFERRED_SIZE, 700, GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(384, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - man
+    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     private JScrollPane mainScrollPanel;
     private JPanel panel2;
     private JLabel mainLivePicture;

@@ -56,7 +56,9 @@ new FormModel {
 						add( null )
 						add( null )
 					} )
-					"gridColor": new java.awt.Color( 255, 255, 255, 255 )
+					"gridColor": sfield java.awt.Color lightGray
+					"selectionBackground": new java.awt.Color( 97, 184, 132, 255 )
+					"selectionForeground": new java.awt.Color( 255, 255, 255, 255 )
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {

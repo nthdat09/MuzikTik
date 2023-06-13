@@ -25,8 +25,8 @@ public class AccountPanelController implements ActionListener {
                 }
             }
             case "CANCEL" -> accountPanel.cancel();
-            case "Upload new avatar" -> accountPanel.uploadNewAvatar();
-            case "Change Password" -> {
+            case "UPLOAD NEW AVATAR" -> accountPanel.uploadNewAvatar();
+            case "CHANGE PASSWORD" -> {
                 System.out.println("Change password");
                 accountPanel.changePassword();
             }

@@ -49,6 +49,7 @@ public class PartnerListPanel extends JPanel {
         partnerList = PartnerListDAO.getList();
 
         setPartnerListTable();
+        setColor();
 
         getJlbDelete().addActionListener(ac);
         getJlbEdit().addActionListener(ac);
@@ -144,6 +145,22 @@ public class PartnerListPanel extends JPanel {
         }
     }
 
+    public void setColor() {
+        getPartnerListTable().getTableHeader().setBackground(Color.white);
+        getPartnerListTable().getTableHeader().setForeground(Color.decode("#61b884"));
+        getPartnerListTable().getTableHeader().setFont(new Font("Lato Black", Font.BOLD, 16));
+        getPartnerListTable().setRowHeight(20);
+        getPartnerListTable().getColumnModel().getColumn(0).setPreferredWidth(20);
+        getPartnerListTable().getColumnModel().getColumn(1).setPreferredWidth(70);
+        getPartnerListTable().getColumnModel().getColumn(2).setPreferredWidth(45);
+        getPartnerListTable().getColumnModel().getColumn(3).setPreferredWidth(100);
+        getPartnerListTable().getColumnModel().getColumn(4).setPreferredWidth(110);
+        getPartnerListTable().getColumnModel().getColumn(5).setPreferredWidth(45);
+        getPartnerListTable().getColumnModel().getColumn(6).setPreferredWidth(30);
+        getPartnerListTable().setForeground(Color.DARK_GRAY);
+        getPartnerListTable().setFont(new Font("Lato",Font.PLAIN, 14));
+    }
+
     public JButton getJlbSearch() {
         return jlbSearch;
     }
@@ -190,12 +207,11 @@ public class PartnerListPanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-        ( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-        . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-        propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-        ; }} );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
+        0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
+        . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
+        red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
+        beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
         //---- label1 ----
         label1.setText("PARTNERS CUSTOMER LIST");
@@ -214,7 +230,9 @@ public class PartnerListPanel extends JPanel {
                     "ID", "Name", "Phone Number", "Email", "Address", "Account Number", "Bank"
                 }
             ));
-            PartnerListTable.setGridColor(Color.white);
+            PartnerListTable.setGridColor(Color.lightGray);
+            PartnerListTable.setSelectionBackground(new Color(0x61b884));
+            PartnerListTable.setSelectionForeground(Color.white);
             scrollPane1.setViewportView(PartnerListTable);
         }
 

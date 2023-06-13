@@ -17,9 +17,9 @@ public class ChangPasswordJDialogController implements ActionListener {
         String src = e.getActionCommand();
         switch (src) {
             case "OK" -> changPasswordJDialog.save();
-            case "Cancel" -> changPasswordJDialog.cancel();
-            case "Show Password" -> changPasswordJDialog.showPassword();
-            case "Hide Password" -> changPasswordJDialog.hidePassword();
+            case "CANCEL" -> changPasswordJDialog.cancel();
+            case "SHOW" -> changPasswordJDialog.showPassword();
+            case "HIDE" -> changPasswordJDialog.hidePassword();
         }
 
 

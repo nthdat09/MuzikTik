@@ -49,6 +49,7 @@ public class StagesListPanel extends JPanel {
         listStage = StageListDAO.getList();
 
         setStagesListTable();
+        setColor();
 
         getJlbDelete().addActionListener(ac);
         getJlbEdit().addActionListener(ac);
@@ -139,6 +140,20 @@ public class StagesListPanel extends JPanel {
         }
     }
 
+
+    public void setColor() {
+        getStagesListTable().getTableHeader().setBackground(Color.white);
+        getStagesListTable().getTableHeader().setForeground(Color.decode("#61b884"));
+        getStagesListTable().getTableHeader().setFont(new Font("Lato Black", Font.BOLD, 16));
+        getStagesListTable().setRowHeight(20);
+        getStagesListTable().getColumnModel().getColumn(2).setPreferredWidth(350);
+        getStagesListTable().getColumnModel().getColumn(0).setPreferredWidth(20);
+        getStagesListTable().getColumnModel().getColumn(4).setPreferredWidth(45);
+        getStagesListTable().setForeground(Color.DARK_GRAY);
+        getStagesListTable().setFont(new Font("Lato",Font.PLAIN, 14));
+    }
+
+
     public JTable getStagesListTable() {
         return StagesListTable;
     }
@@ -159,6 +174,10 @@ public class StagesListPanel extends JPanel {
         return jlbSearch;
     }
 
+    public JTextField getJtfSearch() {
+        return jtfSearch;
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -174,11 +193,13 @@ public class StagesListPanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
-        0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
-        .BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.
-        red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
-        beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}});
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+        . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder
+        . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .
+        awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder( )) )
+        ;  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+        ;
 
         //---- jlbStageList ----
         jlbStageList.setText("STAGES INFORMATION LIST");
@@ -200,6 +221,7 @@ public class StagesListPanel extends JPanel {
             StagesListTable.setFont(new Font("Lato", Font.PLAIN, 12));
             StagesListTable.setSelectionBackground(new Color(0x61b884));
             StagesListTable.setSelectionForeground(Color.white);
+            StagesListTable.setGridColor(Color.lightGray);
             scrollPane1.setViewportView(StagesListTable);
         }
 
@@ -242,13 +264,13 @@ public class StagesListPanel extends JPanel {
                     .addContainerGap(597, Short.MAX_VALUE))
                 .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(88, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                         .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 1080, GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(440, 440, 440)
                             .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
@@ -269,8 +291,8 @@ public class StagesListPanel extends JPanel {
                         .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
-                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(28, Short.MAX_VALUE))
+                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(216, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }

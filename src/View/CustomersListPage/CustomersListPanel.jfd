@@ -23,6 +23,8 @@ new FormModel {
 					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
 						add( "ID" )
 						add( "Name" )
+						add( "Username" )
+						add( "Password" )
 						add( "Phone Number" )
 						add( "Email" )
 						add( "Address" )
@@ -38,7 +40,11 @@ new FormModel {
 						add( null )
 						add( null )
 						add( null )
+						add( null )
+						add( null )
 					}, new java.util.Vector {
+						add( null )
+						add( null )
 						add( null )
 						add( null )
 						add( null )
@@ -56,13 +62,15 @@ new FormModel {
 						add( null )
 						add( null )
 						add( null )
+						add( null )
+						add( null )
 					} )
 					"autoCreateRowSorter": true
 					"name": "cusListTable"
 					"font": new java.awt.Font( "Lato", 0, 13 )
-					"gridColor": sfield java.awt.Color gray
+					"gridColor": sfield java.awt.Color lightGray
 					"selectionBackground": new java.awt.Color( 97, 184, 132, 255 )
-					"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					"selectionForeground": new java.awt.Color( 255, 255, 255, 255 )
 					auxiliary() {
 						"JavaCodeGenerator.variableName": "CustomerListTable"

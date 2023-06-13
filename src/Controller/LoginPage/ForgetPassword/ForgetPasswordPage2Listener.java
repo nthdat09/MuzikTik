@@ -20,7 +20,7 @@ public class ForgetPasswordPage2Listener implements ActionListener {
         switch (src) {
             case "VERIFY" -> this.forgotPasswordPage_2.goToNextPage();
             case "BACK" -> this.forgotPasswordPage_2.backToPreviousPage();
-            case "Resend code" -> {
+            case "RESEND CODE" -> {
                 try {
                     this.forgotPasswordPage_2.resendCode();
                 } catch (MessagingException | EmailException ex) {

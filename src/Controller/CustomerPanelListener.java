@@ -2,7 +2,6 @@ package Controller;
 
 
 import Model.BEAN.CustomerList;
-import View.CustomerPageUnUse.ListPanel.HistoryCustomerPanel;
 import View.CustomersListPage.InformationCustomerForm;
 
 import javax.swing.*;
@@ -68,7 +67,7 @@ public class CustomerPanelListener {
             return jlbItem;
         }
         @Override
-        public void mouseClicked(MouseEvent e) {
+        public void mouseClicked(MouseEvent e) {/*
             switch(kind) {
                 case "historyCustomer":
                     node = new HistoryCustomerPanel();
@@ -81,7 +80,7 @@ public class CustomerPanelListener {
             root.setLayout(new BorderLayout());
             root.add(node);
             root.validate();
-            root.repaint();
+            root.repaint();*/
         }
 
         @Override
