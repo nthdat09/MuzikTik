@@ -18,10 +18,7 @@ import java.awt.event.MouseEvent;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -110,6 +107,22 @@ public class EventInfor extends JPanel {
 
     public static Integer getStageID() {
         return stageID;
+    }
+
+    public static void getImage() {
+        String sql = "SELECT EVT_POSTER FROM event WHERE EVT_ID = ?";
+        Connection connection = UserDatabase.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, Integer.parseInt(TextID.getText()));
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                Blob blob = resultSet.getBlob("EVT_POSTER");
+                event_image = blob.getBytes(1, (int) blob.length());
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     private void addBtnMouseClicked(MouseEvent e) {
@@ -233,14 +246,6 @@ public class EventInfor extends JPanel {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-    }
-
-    public static byte[] getEvent_image() {
-        return event_image;
-    }
-
-    public static void setEvent_Image(byte[] event_image) {
-        event_image = event_image;
     }
 
     public static JTextField getTextID() {

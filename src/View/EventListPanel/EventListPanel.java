@@ -96,7 +96,7 @@ public class EventListPanel extends JPanel {
             if(resultSet.next()) {
                 Blob blob = resultSet.getBlob("EVT_POSTER");
                 EventInfor.getTextPoster().setIcon(new ImageIcon(blob.getBytes(1, (int) blob.length())));
-                EventInfor.setEvent_Image(blob.getBytes(1, (int) blob.length()));
+                EventInfor.getImage();
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
