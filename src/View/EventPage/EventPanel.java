@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -32,6 +33,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static View.CustomersListPage.InformationCustomerForm.settingForNewCustomer;
 
@@ -41,6 +44,7 @@ import static View.CustomersListPage.InformationCustomerForm.settingForNewCustom
 public class EventPanel extends JPanel {
     ArrayList<JLabel> ticketTypeJlb = new ArrayList<>();
     List<CustomerBuyTicket> customer = null;
+
     static String seatID = "";
     Border border = BorderFactory.createLineBorder(Color.decode("#61b884"),1);
     public EventPanel() {
@@ -74,6 +78,15 @@ public class EventPanel extends JPanel {
         ticketPriceJlb.add(getJlbTicketPrice4());
         ticketPriceJlb.add(getJlbTicketPrice5());
         return ticketPriceJlb;
+    }
+
+    private static final String EMAIL_PATTERN = "^(.+)@(\\S+)$";
+
+    private static final Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+
+    public static boolean isValid(final String email) {
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
     public static JLabel getSeatingChartView() {
         return seatingChartView;
@@ -324,6 +337,13 @@ public class EventPanel extends JPanel {
         int row = selectedSeatTable.getSelectedRow();
         DefaultTableModel tbModel = (DefaultTableModel) selectedSeatTable.getModel();
         tbModel.removeRow(row);
+
+        int rowRemove = seatTable.getSelectedRow();
+        TableModel model = seatTable.getModel();
+        String ticketID = model.getValueAt(rowRemove, 0).toString();
+        String status = model.getValueAt(rowRemove, 3).toString();
+        String statusAvailable = "Available";
+        model.setValueAt(statusAvailable, rowRemove, 3);
     }
 
     private void jlbNextMouseClicked(MouseEvent e) {
@@ -333,6 +353,12 @@ public class EventPanel extends JPanel {
             return;
         } else if(checkBox1.isSelected() == false  && checkBox3.isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Please choose a payment method!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else if (!isValid(emailText.getText().toString())) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid email!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }else if(Pattern.compile("^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$").matcher(phoneNumberText.getText().toString()).matches() == false) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid phone number!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         } else if(checkBox3.isSelected() == true) {
             customer = CustomerInformationValidate.validateCustomer();
@@ -344,8 +370,16 @@ public class EventPanel extends JPanel {
                     String phoneNumber = phoneNumberText.getText();
                     String email = emailText.getText();
 
-                    MainPage.changeView(new InformationCustomerForm(newID + 1), MainPage.getJlbCustomer(), "InformationCustomerPanel");
-                    settingForNewCustomer(nameCustomer, phoneNumber, email);
+                    JFrame frame = new JFrame("Register");
+                    frame.setContentPane(new NewCustomerEvent(newID+1));
+                    NewCustomerEvent.settingForNewCustomer(nameCustomer, phoneNumber, email);
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.pack();
+                    frame.setVisible(true);
+                    frame.setLocationRelativeTo(null);
+                    frame.setResizable(false);
+                    frame.setSize(1150, 500);
+
                 } else {
                     Integer balance = customer.get(0).getBalance();
                     Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
@@ -449,8 +483,15 @@ public class EventPanel extends JPanel {
                 String phoneNumber = phoneNumberText.getText();
                 String email = emailText.getText();
 
-                MainPage.changeView(new InformationCustomerForm(newID + 1), MainPage.getJlbCustomer(), "InformationCustomerPanel");
-                settingForNewCustomer(nameCustomer, phoneNumber, email);
+                JFrame frame = new JFrame("Register");
+                frame.setContentPane(new NewCustomerEvent(newID+1));
+                NewCustomerEvent.settingForNewCustomer(nameCustomer, phoneNumber, email);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+                frame.setLocationRelativeTo(null);
+                frame.setResizable(false);
+                frame.setSize(1150, 500);
             } else {
                 Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
                 Connection con = UserDatabase.getConnection();
@@ -558,7 +599,7 @@ public class EventPanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - man
         jpnEventHeader = new JPanel();
         EventArt = new JLabel();
         EventName = new JLabel();
@@ -641,13 +682,13 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-        . border. EmptyBorder( 0, 0, 0, 0) , "", javax. swing. border. TitledBorder
-        . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
-        awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder( )) )
-        ;  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-        ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-        ;
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+        javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "", javax
+        . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+        .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
+        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
+        PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .
+        equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
         setLayout(null);
 
         //======== jpnEventHeader ========
@@ -819,7 +860,7 @@ public class EventPanel extends JPanel {
                     jpnBuyNowLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, jpnBuyNowLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jlbBuyNow, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlbBuyNow, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                             .addContainerGap())
                 );
             }
@@ -945,7 +986,7 @@ public class EventPanel extends JPanel {
                 jpnEventInformationLayout.setHorizontalGroup(
                     jpnEventInformationLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, jpnEventInformationLayout.createSequentialGroup()
-                            .addContainerGap(17, Short.MAX_VALUE)
+                            .addContainerGap(22, Short.MAX_VALUE)
                             .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 1172, GroupLayout.PREFERRED_SIZE)
                             .addContainerGap())
                 );
@@ -954,7 +995,7 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnEventInformationLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 523, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(218, Short.MAX_VALUE))
+                            .addContainerGap(206, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnEventInformation);
@@ -1090,7 +1131,7 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnEventTicketLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(ticketFeeScrollPanel, GroupLayout.PREFERRED_SIZE, 387, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(348, Short.MAX_VALUE))
+                            .addContainerGap(342, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnEventTicket);
@@ -1149,7 +1190,7 @@ public class EventPanel extends JPanel {
                         .addGroup(SeatEventLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(seatEventScrollPanel, GroupLayout.PREFERRED_SIZE, 472, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(263, Short.MAX_VALUE))
+                            .addContainerGap(257, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", SeatEvent);
@@ -1357,8 +1398,8 @@ public class EventPanel extends JPanel {
                     jpnPickTicketLayout.createParallelGroup()
                         .addGroup(jpnPickTicketLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(pickTicketScrollPane, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(365, Short.MAX_VALUE))
+                            .addComponent(pickTicketScrollPane, GroupLayout.PREFERRED_SIZE, 450, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(279, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnPickTicket);
@@ -1640,7 +1681,7 @@ public class EventPanel extends JPanel {
                     jpnPaymentLayout.createParallelGroup()
                         .addGroup(jpnPaymentLayout.createSequentialGroup()
                             .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 573, GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 174, Short.MAX_VALUE))
+                            .addGap(0, 162, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnPayment);
@@ -1666,7 +1707,7 @@ public class EventPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - man
     private JPanel jpnEventHeader;
     private static JLabel EventArt;
     private static JLabel EventName;
