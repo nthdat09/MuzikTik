@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {comp label2::l:::x, seq {par l {seq {space :p:36:p, par l {comp label5:::p:271:p, comp label4::l:p::p, seq l {comp VerifyCodeField:::p:185:p, space u:::p, comp ResendTimeLeft:::p:42:p, space u:::p, comp ResendCodeJbt:::p::p}, comp ErrorText::l:p:198:p}}, seq {space :p:319:p, comp EmailField:::p:171:p}}, space ::-12:x}, seq t {space :0:269:x, comp BackJbt:::p:80:p, space s:::p, comp NextJbt:::p::p, space :p:48:p}}"
-			"$verticalGroup": "par l {seq l {space :p:35:p, comp label2:::p::p, space :p:18:p, par t {comp label5:::p:28:p, comp EmailField:::p::p}, space s:::p, comp label4:::p::p, space :p:10:p, par l {comp VerifyCodeField::l:p::p, comp ResendTimeLeft::l:p:24:p, comp ResendCodeJbt::l:p:24:p}, space :::p, comp ErrorText:::p:18:p, space ::73:x, par b {comp NextJbt::b:p::p, comp BackJbt::b:p::p}, space :p:15:p}}"
+			"$horizontalGroup": "par l {comp label2::l:::x, seq {space :p:36:p, par l {seq l {comp label5::::307:x, space :::p, comp EmailField:::p:295:p, space :p:24:p}, seq {par l {comp label4::l:p::p, seq l {comp VerifyCodeField:::p:185:p, space u:::p, comp ResendTimeLeft:::p:42:p, space u:::p, comp ResendCodeJbt:::p::p}, comp ErrorText::l:p:198:p}, space :p:12:p}}}, seq t {space :0:441:x, comp BackJbt:::p:80:p, space s:::p, comp NextJbt:::p::p, space :p:48:p}}"
+			"$verticalGroup": "par l {seq l {space :p:35:p, comp label2:::p::p, space :p:18:p, par l {comp label5:::p:28:p, comp EmailField:::::x}, space s:::p, comp label4:::p::p, space :p:10:p, par l {comp VerifyCodeField::l:p::p, comp ResendTimeLeft::l:p:24:p, comp ResendCodeJbt::l:p:24:p}, space :::p, comp ErrorText:::p:18:p, space ::73:x, par b {comp NextJbt::b:p::p, comp BackJbt::b:p::p}, space :p:15:p}}"
 		} ) {
 			name: "RegisterAccountJDialog_2"
 			"title": "MuzikTic - Concert Music Ticketing"
@@ -51,6 +51,7 @@ new FormModel {
 				name: "EmailField"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"font": new java.awt.Font( "Lato Black", 3, 14 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
@@ -76,7 +77,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "ResendTimeLeft"
-				"font": #Font0
+				"font": new java.awt.Font( "Lato Black", 0, 14 )
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
@@ -92,7 +93,7 @@ new FormModel {
 				}
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"size": new java.awt.Dimension( 480, 350 )
+			"size": new java.awt.Dimension( 670, 350 )
 			"location": new java.awt.Point( 0, 0 )
 		} )
 	}

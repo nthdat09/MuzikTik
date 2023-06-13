@@ -64,7 +64,7 @@ public class AnalyticPage extends JPanel {
                 CategoryPlot categoryPlot = chart.getCategoryPlot();
                 categoryPlot.setRangeGridlinePaint(Color.decode("#61B884"));
                 chart.setBackgroundPaint(Color.WHITE);
-                chart.getPlot().setBackgroundPaint(Color.decode("#61B884"));
+                chart.getPlot().setBackgroundPaint(Color.white);
 
                 ChartPanel chartPanel = new ChartPanel(chart);
                 chartView.removeAll();
@@ -100,6 +100,8 @@ public class AnalyticPage extends JPanel {
                 JFreeChart chart3 = ChartFactory.createBarChart("Annual Ticket Revenue", "Type", "Revenue", dataset3);
                 CategoryPlot categoryPlot3 = chart3.getCategoryPlot();
                 categoryPlot3.setRangeGridlinePaint(Color.decode("#61B884"));
+                chart3.setBackgroundPaint(Color.WHITE);
+                chart3.getPlot().setBackgroundPaint(Color.white);
 
                 ChartPanel chartPanel3 = new ChartPanel(chart3);
                 chartView.removeAll();
@@ -129,6 +131,8 @@ public class AnalyticPage extends JPanel {
                 JFreeChart chart2 = ChartFactory.createBarChart("Event-based Ticket Revenue", "Type", "Revenue", dataset2);
                 CategoryPlot categoryPlot2 = chart2.getCategoryPlot();
                 categoryPlot2.setRangeGridlinePaint(Color.decode("#61B884"));
+                chart2.setBackgroundPaint(Color.WHITE);
+                chart2.getPlot().setBackgroundPaint(Color.white);
 
                 ChartPanel chartPanel2 = new ChartPanel(chart2);
                 chartView.removeAll();
@@ -167,6 +171,8 @@ public class AnalyticPage extends JPanel {
                 JFreeChart chart4 = ChartFactory.createBarChart("Daily Ticket Sales Statistics", "Type", "Ticket", dataset4);
                 CategoryPlot categoryPlot4 = chart4.getCategoryPlot();
                 categoryPlot4.setRangeGridlinePaint(Color.decode("#61B884"));
+                chart4.setBackgroundPaint(Color.WHITE);
+                chart4.getPlot().setBackgroundPaint(Color.white);
 
                 ChartPanel chartPanel4 = new ChartPanel(chart4);
                 chartView.removeAll();
@@ -204,6 +210,8 @@ public class AnalyticPage extends JPanel {
                 JFreeChart chart5 = ChartFactory.createBarChart("Monthly Ticket Sales Statistics", "Type", "Ticket", dataset5);
                 CategoryPlot categoryPlot5 = chart5.getCategoryPlot();
                 categoryPlot5.setRangeGridlinePaint(Color.decode("#61B884"));
+                chart5.setBackgroundPaint(Color.WHITE);
+                chart5.getPlot().setBackgroundPaint(Color.white);
 
                 ChartPanel chartPanel5 = new ChartPanel(chart5);
                 chartView.removeAll();
@@ -233,6 +241,8 @@ public class AnalyticPage extends JPanel {
                 JFreeChart chart1 = ChartFactory.createBarChart("Annual Ticket Sales Statistics", "Type", "Ticket", dataset1);
                 CategoryPlot categoryPlot1 = chart1.getCategoryPlot();
                 categoryPlot1.setRangeGridlinePaint(Color.decode("#61B884"));
+                chart1.setBackgroundPaint(Color.WHITE);
+                chart1.getPlot().setBackgroundPaint(Color.white);
 
                 ChartPanel chartPanel1 = new ChartPanel(chart1);
                 chartView.removeAll();
@@ -363,12 +373,12 @@ public class AnalyticPage extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
-        .EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax
-        .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,
-        12),java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans
-        .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.
-        getPropertyName()))throw new RuntimeException();}});
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
+        ( 0, 0 ,0 , 0) ,  "" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
+        .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,12 ) ,java . awt
+        . Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
+        propertyChange (java . beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+        ;} } );
 
         //---- Statistic ----
         Statistic.setFont(new Font("Lato", Font.PLAIN, 16));

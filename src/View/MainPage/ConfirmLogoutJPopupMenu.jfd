@@ -7,8 +7,8 @@ new FormModel {
 			"JavaCodeGenerator.defaultVariableGetter": true
 		}
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space ::151:x, par l {seq t {comp YesButton:::p::p, space :p:46:p, comp NoButton:::p::p, space :p:145:p}, seq t {comp ConfirmText:::p::p, space :p:154:p}}}}"
-			"$verticalGroup": "par l {seq l {space ::100:x, comp ConfirmText:::p:54:p, space :p:87:p, par b {comp YesButton::b:p::p, comp NoButton::b:p::p}, space :p:98:p}}"
+			"$horizontalGroup": "par l {seq {space ::80:x, comp YesButton:::p:75:p, space :p:41:p, comp NoButton:::p:73:p, space :p:104:p}, seq l {space :::p, comp ConfirmText::::367:x}}"
+			"$verticalGroup": "par l {seq l {space ::74:x, comp ConfirmText:::p:54:p, space u:::p, par l {comp YesButton:::p::p, comp NoButton:::p::p}, space :p:92:p}}"
 		} ) {
 			name: "ConfirmJDialog"
 			"visible": true
@@ -16,18 +16,26 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "ConfirmText"
 				"text": "ARE YOU SURE TO LOGOUT?"
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"horizontalAlignment": 0
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "YesButton"
 				"text": "YES"
+				"font": &Font0 new java.awt.Font( "Lato Black", 1, 13 )
+				"foreground": sfield java.awt.Color white
+				"background": new java.awt.Color( 97, 184, 132, 255 )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "NoButton"
 				"text": "NO"
+				"font": #Font0
+				"foreground": sfield java.awt.Color white
+				"background": new java.awt.Color( 212, 92, 92, 255 )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 500, 400 )
+			"size": new java.awt.Dimension( 375, 285 )
 		} )
 	}
 }

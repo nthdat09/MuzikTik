@@ -308,7 +308,7 @@ public class MainPage extends JFrame {
         //======== this ========
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setIconImage(new ImageIcon(getClass().getResource("/Asset/Avatar/White.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Asset/Icon/music logo design - no name.png")).getImage());
         setFont(new Font("Lato", Font.PLAIN, 14));
         var contentPane = getContentPane();
         contentPane.setLayout(null);
@@ -317,13 +317,13 @@ public class MainPage extends JFrame {
         {
             headerPanel.setBorder(null);
             headerPanel.setBackground(Color.white);
-            headerPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "" , javax. swing
-            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-            Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
-            ) ,headerPanel. getBorder () ) ); headerPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName (
-            ) ) )throw new RuntimeException( ) ;} } );
+            headerPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
+            javax.swing.border.EmptyBorder(0,0,0,0), "",javax
+            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
+            .awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
+            .Color.red),headerPanel. getBorder()));headerPanel. addPropertyChangeListener(new java.beans.
+            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".
+            equals(e.getPropertyName()))throw new RuntimeException();}});
             headerPanel.setLayout(null);
 
             //---- nameAppLabell ----

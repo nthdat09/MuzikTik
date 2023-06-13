@@ -7,7 +7,7 @@ new FormModel {
 			name: "this"
 			"visible": true
 			"defaultCloseOperation": 3
-			"iconImage": new com.jformdesigner.model.SwingIcon( 0, "/Asset/Avatar/White.png" )
+			"iconImage": new com.jformdesigner.model.SwingIcon( 0, "/Asset/Icon/music logo design - no name.png" )
 			"font": new java.awt.Font( "Lato", 0, 14 )
 			auxiliary() {
 				"JavaCodeGenerator.variableGetter": true

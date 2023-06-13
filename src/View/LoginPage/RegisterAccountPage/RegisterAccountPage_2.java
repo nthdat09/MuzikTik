@@ -77,6 +77,7 @@ public class RegisterAccountPage_2 {
                 try {
                     Thread.sleep(1000);
                     timeLeft--;
+                    ResendTimeLeft.setText(timeLeft + "s");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -205,6 +206,7 @@ public class RegisterAccountPage_2 {
             //---- EmailField ----
             EmailField.setBorder(null);
             EmailField.setFont(new Font("Lato Black", Font.BOLD | Font.ITALIC, 14));
+            EmailField.setForeground(new Color(0x61b884));
 
             //---- ResendCodeJbt ----
             ResendCodeJbt.setText("RESEND CODE");
@@ -218,7 +220,7 @@ public class RegisterAccountPage_2 {
             ErrorText.setFont(new Font("Lato Black", Font.PLAIN, 14));
 
             //---- ResendTimeLeft ----
-            ResendTimeLeft.setFont(new Font("Lato", Font.PLAIN, 14));
+            ResendTimeLeft.setFont(new Font("Lato Black", Font.PLAIN, 14));
 
             //---- BackJbt ----
             BackJbt.setText("BACK");
@@ -232,11 +234,15 @@ public class RegisterAccountPage_2 {
                 RegisterAccountJDialog_2ContentPaneLayout.createParallelGroup()
                     .addComponent(label2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(RegisterAccountJDialog_2ContentPaneLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
                         .addGroup(RegisterAccountJDialog_2ContentPaneLayout.createParallelGroup()
                             .addGroup(RegisterAccountJDialog_2ContentPaneLayout.createSequentialGroup()
-                                .addGap(36, 36, 36)
+                                .addComponent(label5, GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(EmailField, GroupLayout.PREFERRED_SIZE, 295, GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24))
+                            .addGroup(RegisterAccountJDialog_2ContentPaneLayout.createSequentialGroup()
                                 .addGroup(RegisterAccountJDialog_2ContentPaneLayout.createParallelGroup()
-                                    .addComponent(label5, GroupLayout.PREFERRED_SIZE, 271, GroupLayout.PREFERRED_SIZE)
                                     .addComponent(label4)
                                     .addGroup(RegisterAccountJDialog_2ContentPaneLayout.createSequentialGroup()
                                         .addComponent(VerifyCodeField, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
@@ -244,13 +250,10 @@ public class RegisterAccountPage_2 {
                                         .addComponent(ResendTimeLeft, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(ResendCodeJbt))
-                                    .addComponent(ErrorText, GroupLayout.PREFERRED_SIZE, 198, GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(RegisterAccountJDialog_2ContentPaneLayout.createSequentialGroup()
-                                .addGap(319, 319, 319)
-                                .addComponent(EmailField, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(ErrorText, GroupLayout.PREFERRED_SIZE, 198, GroupLayout.PREFERRED_SIZE))
+                                .addGap(12, 12, 12))))
                     .addGroup(GroupLayout.Alignment.TRAILING, RegisterAccountJDialog_2ContentPaneLayout.createSequentialGroup()
-                        .addGap(0, 269, Short.MAX_VALUE)
+                        .addGap(0, 441, Short.MAX_VALUE)
                         .addComponent(BackJbt, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(NextJbt)
@@ -262,9 +265,9 @@ public class RegisterAccountPage_2 {
                         .addGap(35, 35, 35)
                         .addComponent(label2)
                         .addGap(18, 18, 18)
-                        .addGroup(RegisterAccountJDialog_2ContentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                        .addGroup(RegisterAccountJDialog_2ContentPaneLayout.createParallelGroup()
                             .addComponent(label5, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EmailField))
+                            .addComponent(EmailField, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(label4)
                         .addGap(10, 10, 10)
