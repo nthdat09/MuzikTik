@@ -7,17 +7,19 @@ new FormModel {
 			name: "this"
 			"visible": true
 			"defaultCloseOperation": 3
+			"iconImage": new com.jformdesigner.model.SwingIcon( 0, "/Asset/Avatar/White.png" )
+			"font": new java.awt.Font( "Lato", 0, 14 )
 			auxiliary() {
 				"JavaCodeGenerator.variableGetter": true
 			}
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 				name: "headerPanel"
-				"border": new javax.swing.border.LineBorder( new java.awt.Color( 190, 190, 190, 255 ), 1, false )
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"background": new java.awt.Color( 255, 255, 255, 255 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "nameAppLabell"
 					"font": new java.awt.Font( "Fredoka One", 1, 20 )
-					"icon": new com.jformdesigner.model.SwingIcon( 0, "/Asset/music logo design - no name.png" )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/Asset/Icon/music logo design - no name.png" )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
 					"y": 5
@@ -96,13 +98,13 @@ new FormModel {
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 1260
-					"y": 15
-					"width": 105
-					"height": 40
+					"y": 20
+					"width": 65
+					"height": 55
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 1401
-				"height": 75
+				"height": 85
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {seq {par l {comp jpnHome::l:p:231:p, comp jpnEvent::l:p:231:p, comp jpnCustomers::l:p:231:p, comp jpnTickets::l:p:231:p, comp jpnStages::l:p:231:p, comp jpnPartners::l:p:231:p, comp jpnAnalytics::l:p:231:p, comp jpnSettings::l:p:231:p}, space :::x}}"

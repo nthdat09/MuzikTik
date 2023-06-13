@@ -71,13 +71,12 @@ public class MainPage extends JFrame {
         // Set avatar
         setImageForLogoUser();
 
-        // Set icon for app
-        ImageIcon imageIcon = new ImageIcon("src/Asset/Logo/Logo.png");
-        Image image = imageIcon.getImage();
-        Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
-        imageIcon = new ImageIcon(newimg);
-        this.setIconImage(imageIcon.getImage());
-
+//         Set icon for app
+//        ImageIcon imageIcon = new ImageIcon("src/Asset/Logo/Logo.png");
+//        Image image = imageIcon.getImage();
+//        Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
+//        imageIcon = new ImageIcon(newimg);
+//        this.setIconImage(imageIcon.getImage());
     }
 
     public static Path getAbsolutePath() {
@@ -309,20 +308,22 @@ public class MainPage extends JFrame {
         //======== this ========
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new ImageIcon(getClass().getResource("/Asset/Avatar/White.png")).getImage());
+        setFont(new Font("Lato", Font.PLAIN, 14));
         var contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //======== headerPanel ========
         {
-            headerPanel.setBorder(new LineBorder(new Color(0xbebebe)));
+            headerPanel.setBorder(null);
             headerPanel.setBackground(Color.white);
-            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-            . border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder
-            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
-            awt .Font .BOLD ,12 ), java. awt. Color. red) ,headerPanel. getBorder( )) )
-            ; headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-            ;
+            headerPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
+            . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "" , javax. swing
+            .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
+            Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
+            ) ,headerPanel. getBorder () ) ); headerPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
+            public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName (
+            ) ) )throw new RuntimeException( ) ;} } );
             headerPanel.setLayout(null);
 
             //---- nameAppLabell ----
@@ -400,7 +401,7 @@ public class MainPage extends JFrame {
                 menuBar1.add(avatarJMenu);
             }
             headerPanel.add(menuBar1);
-            menuBar1.setBounds(1260, 15, 105, 40);
+            menuBar1.setBounds(1260, 20, 65, 55);
 
             {
                 // compute preferred size
@@ -418,7 +419,7 @@ public class MainPage extends JFrame {
             }
         }
         contentPane.add(headerPanel);
-        headerPanel.setBounds(0, 0, 1401, 75);
+        headerPanel.setBounds(0, 0, 1401, 85);
 
         //======== navigationPanel ========
         {
