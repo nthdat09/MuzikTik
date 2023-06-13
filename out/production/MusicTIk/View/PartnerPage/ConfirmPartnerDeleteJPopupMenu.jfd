@@ -1,0 +1,40 @@
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		auxiliary() {
+			"JavaCodeGenerator.defaultVariableGetter": true
+		}
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:90:p, comp YesButton:::p:82:p, space :p:46:p, comp NoButton:::p:84:p, space ::101:x}, seq l {space :::p, comp ConfirmText::::391:x, space :::p}}"
+			"$verticalGroup": "par l {seq l {space ::63:x, comp ConfirmText:::p:54:p, space :::p, par b {comp NoButton::b:p::p, comp YesButton::b:p::p}, space :p:55:p}}"
+		} ) {
+			name: "ConfirmJDialog"
+			"visible": true
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "ConfirmText"
+				"text": "ARE YOU SURE TO DELETE THIS PARTNER?"
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "YesButton"
+				"text": "YES"
+				"font": &Font0 new java.awt.Font( "Lato Black", 1, 13 )
+				"background": new java.awt.Color( 97, 184, 132, 255 )
+				"foreground": &Color0 new java.awt.Color( 255, 255, 255, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "NoButton"
+				"text": "NO"
+				"font": #Font0
+				"background": new java.awt.Color( 212, 92, 92, 255 )
+				"foreground": #Color0
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 405, 235 )
+		} )
+	}
+}
