@@ -28,9 +28,9 @@ import java.sql.SQLException;
 public class AnalyticPage extends JPanel {
     public AnalyticPage() {
         initComponents();
-        textDay.setEnabled(false);
+        monthComboBox.setEnabled(false);
         textEvent.setEnabled(false);
-        textDay.setBackground(Color.decode("#92CFAA"));
+        dayComboBox.setBackground(Color.decode("#92CFAA"));
         textEvent.setBackground(Color.decode("#92CFAA"));
     }
     private void label1MouseClicked(MouseEvent e) {
@@ -40,8 +40,8 @@ public class AnalyticPage extends JPanel {
         int year;
         switch(selectedRevenue) {
             case "Monthly Ticket Revenue":
-                month = Integer.parseInt(textMonth.getText());
-                year = Integer.parseInt(textYear.getText());
+                month = Integer.parseInt(monthComboBox.getSelectedItem().toString());
+                year = Integer.parseInt(yearComboBox.getSelectedItem().toString());
                 DefaultCategoryDataset dataset = new DefaultCategoryDataset();
                 String sqlMonthlyRevenue = "select date(tbk_datetime) as date,SUM(TKT_PRICE) as revenue from ticket join ticket_booking tb on ticket.TKT_ID = tb.TBK_TKT_ID where exists(\n" +
                         "    select TBK_TKT_ID from ticket_booking where month(TBK_DATETIME) = " + month + " and\n" +
@@ -73,7 +73,7 @@ public class AnalyticPage extends JPanel {
                 chartView.validate();
                 break;
             case "Annual Ticket Revenue":
-                year = Integer.parseInt(textYear.getText());
+                year = Integer.parseInt(yearComboBox.getSelectedItem().toString());
                 DefaultCategoryDataset dataset3 = new DefaultCategoryDataset();
                 String sqlAnnualRevenue = "SELECT \n" +
                         "  MONTH(TBK_DATETIME) AS MONTH, \n" +
@@ -137,9 +137,9 @@ public class AnalyticPage extends JPanel {
                 chartView.validate();
                 break;
             case "Daily Ticket Sales Statistics":
-                String day = textDay.getText();
-                month = Integer.parseInt(textMonth.getText());
-                year = Integer.parseInt(textYear.getText());
+                String day = dayComboBox.getSelectedItem().toString();
+                month = Integer.parseInt(monthComboBox.getSelectedItem().toString());
+                year = Integer.parseInt(yearComboBox.getSelectedItem().toString());
                 String date = year + "-" + month + "-" + day;
                 DefaultCategoryDataset dataset4 = new DefaultCategoryDataset();
                 String sqlDailyTicket =  "SELECT \n" +
@@ -175,8 +175,8 @@ public class AnalyticPage extends JPanel {
                 chartView.validate();
                 break;
             case "Monthly Ticket Sales Statistics":
-                month = Integer.parseInt(textMonth.getText());
-                year = Integer.parseInt(textYear.getText());
+                month = Integer.parseInt(monthComboBox.getSelectedItem().toString());
+                year = Integer.parseInt(yearComboBox.getSelectedItem().toString());
                 DefaultCategoryDataset dataset5 = new DefaultCategoryDataset();
                 String sqlMonthlyTicket = "SELECT \n" +
                         "  EVT_NAME, \n" +
@@ -212,7 +212,7 @@ public class AnalyticPage extends JPanel {
                 chartView.validate();
                 break;
             case "Annual Ticket Sales Statistics":
-                year = Integer.parseInt(textYear.getText());
+                year = Integer.parseInt(yearComboBox.getSelectedItem().toString());
                 DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
                 String sqlAnnualTicket = "SELECT MONTH(TBK_DATETIME) AS ticket_month, COUNT(*) AS ticket_count\n" +
                         "FROM ticket_booking\n" +
@@ -265,89 +265,112 @@ public class AnalyticPage extends JPanel {
 
     private void StatisticItemStateChanged(ItemEvent e) {
         if(Statistic.getSelectedItem().toString() == "Monthly Ticket Revenue") {
-            textDay.setEnabled(false);
-            textMonth.setEnabled(true);
-            textYear.setEnabled(true);
+            dayComboBox.setEnabled(false);
+            monthComboBox.setEnabled(true);
+            yearComboBox.setEnabled(true);
             textEvent.setEnabled(false);
-            textDay.setBackground(Color.decode("#92CFAA"));
+            dayComboBox.setBackground(Color.decode("#92CFAA"));
             textEvent.setBackground(Color.decode("#92CFAA"));
-            textMonth.setBackground(Color.white);
-            textYear.setBackground(Color.white);
+            monthComboBox.setBackground(Color.white);
+            yearComboBox.setBackground(Color.white);
         } else if (Statistic.getSelectedItem().toString() == "Annual Ticket Revenue") {
-            textDay.setEnabled(false);
-            textMonth.setEnabled(false);
-            textYear.setEnabled(true);
+            dayComboBox.setEnabled(false);
+            monthComboBox.setEnabled(false);
+            yearComboBox.setEnabled(true);
             textEvent.setEnabled(false);
-            textDay.setBackground(Color.decode("#92CFAA"));
-            textMonth.setBackground(Color.decode("#92CFAA"));
+            dayComboBox.setBackground(Color.decode("#92CFAA"));
+            monthComboBox.setBackground(Color.decode("#92CFAA"));
             textEvent.setBackground(Color.decode("#92CFAA"));
-            textYear.setBackground(Color.white);
+            yearComboBox.setBackground(Color.white);
         } else if (Statistic.getSelectedItem().toString() == "Event-based Ticket Revenue") {
-            textDay.setEnabled(false);
-            textMonth.setEnabled(false);
-            textYear.setEnabled(false);
+            dayComboBox.setEnabled(false);
+            monthComboBox.setEnabled(false);
+            yearComboBox.setEnabled(false);
             textEvent.setEnabled(true);
-            textDay.setBackground(Color.decode("#92CFAA"));
-            textMonth.setBackground(Color.decode("#92CFAA"));
-            textYear.setBackground(Color.decode("#92CFAA"));
+            dayComboBox.setBackground(Color.decode("#92CFAA"));
+            monthComboBox.setBackground(Color.decode("#92CFAA"));
+            yearComboBox.setBackground(Color.decode("#92CFAA"));
             textEvent.setBackground(Color.white);
         } else if (Statistic.getSelectedItem().toString() == "Daily Ticket Sales Statistics") {
-            textDay.setEnabled(true);
-            textMonth.setEnabled(true);
-            textYear.setEnabled(true);
+            dayComboBox.setEnabled(true);
+            monthComboBox.setEnabled(true);
+            yearComboBox.setEnabled(true);
             textEvent.setEnabled(false);
             textEvent.setBackground(Color.decode("#92CFAA"));
-            textDay.setBackground(Color.white);
-            textMonth.setBackground(Color.white);
-            textYear.setBackground(Color.white);
+            dayComboBox.setBackground(Color.white);
+            monthComboBox.setBackground(Color.white);
+            yearComboBox.setBackground(Color.white);
         } else if (Statistic.getSelectedItem().toString() == "Monthly Ticket Sales Statistics") {
-            textDay.setEnabled(false);
-            textMonth.setEnabled(true);
-            textYear.setEnabled(true);
+            dayComboBox.setEnabled(false);
+            monthComboBox.setEnabled(true);
+            yearComboBox.setEnabled(true);
             textEvent.setEnabled(false);
-            textDay.setBackground(Color.decode("#92CFAA"));
+            dayComboBox.setBackground(Color.decode("#92CFAA"));
             textEvent.setBackground(Color.decode("#92CFAA"));
-            textMonth.setBackground(Color.white);
-            textYear.setBackground(Color.white);
+            monthComboBox.setBackground(Color.white);
+            yearComboBox.setBackground(Color.white);
         } else if (Statistic.getSelectedItem().toString() == "Annual Ticket Sales Statistics") {
-            textDay.setEnabled(false);
-            textMonth.setEnabled(false);
-            textYear.setEnabled(true);
+            dayComboBox.setEnabled(false);
+            monthComboBox.setEnabled(false);
+            yearComboBox.setEnabled(true);
             textEvent.setEnabled(false);
-            textDay.setBackground(Color.decode("#92CFAA"));
-            textMonth.setBackground(Color.decode("#92CFAA"));
+            dayComboBox.setBackground(Color.decode("#92CFAA"));
+            monthComboBox.setBackground(Color.decode("#92CFAA"));
             textEvent.setBackground(Color.decode("#92CFAA"));
-            textYear.setBackground(Color.white);
+            yearComboBox.setBackground(Color.white);
+        }
+    }
+
+    private void comboBox2ItemStateChanged(ItemEvent e) {
+        if(monthComboBox.getSelectedItem().toString() == "1" || monthComboBox.getSelectedItem().toString() == "3" ||
+                monthComboBox.getSelectedItem().toString() == "5" || monthComboBox.getSelectedItem().toString() == "7" ||
+                monthComboBox.getSelectedItem().toString() == "8" || monthComboBox.getSelectedItem().toString() == "10" ||
+                monthComboBox.getSelectedItem().toString() == "12") {
+            dayComboBox.removeAllItems();
+            for(int i = 1; i <= 31; i++) {
+                dayComboBox.addItem(i);
+            }
+        } else if(monthComboBox.getSelectedItem().toString() == "4" || monthComboBox.getSelectedItem().toString() == "6" ||
+                monthComboBox.getSelectedItem().toString() == "9" || monthComboBox.getSelectedItem().toString() == "11") {
+            dayComboBox.removeAllItems();
+            for(int i = 1; i <= 30; i++) {
+                dayComboBox.addItem(i);
+            }
+        } else if(monthComboBox.getSelectedItem().toString() == "2") {
+            dayComboBox.removeAllItems();
+            for(int i = 1; i <= 28; i++) {
+                dayComboBox.addItem(i);
+            }
         }
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - man
         Statistic = new JComboBox<>();
         TypeStatistic = new JLabel();
         Day = new JLabel();
         Month = new JLabel();
         Year = new JLabel();
-        textDay = new JTextField();
-        textMonth = new JTextField();
-        textYear = new JTextField();
         panel1 = new JPanel();
         label1 = new JLabel();
         chartView = new JPanel();
         textEvent = new JTextField();
         title = new JLabel();
         label2 = new JLabel();
+        dayComboBox = new JComboBox();
+        monthComboBox = new JComboBox<>();
+        yearComboBox = new JComboBox<>();
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-        . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder
-        . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
-        awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder( )) )
-        ;  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-        ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-        ;
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
+        swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border
+        . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067"
+        , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) , getBorder
+        () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
+        . beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException
+        ( ) ;} } );
 
         //---- Statistic ----
         Statistic.setFont(new Font("Lato", Font.PLAIN, 16));
@@ -381,18 +404,6 @@ public class AnalyticPage extends JPanel {
         Year.setText("Year:");
         Year.setFont(new Font("Lato Black", Font.BOLD, 16));
         Year.setForeground(new Color(0x61b884));
-
-        //---- textDay ----
-        textDay.setBackground(Color.white);
-        textDay.setFont(new Font("Lato", Font.PLAIN, 16));
-
-        //---- textMonth ----
-        textMonth.setBackground(Color.white);
-        textMonth.setFont(new Font("Lato", Font.PLAIN, 16));
-
-        //---- textYear ----
-        textYear.setBackground(Color.white);
-        textYear.setFont(new Font("Lato", Font.PLAIN, 16));
 
         //======== panel1 ========
         {
@@ -436,87 +447,121 @@ public class AnalyticPage extends JPanel {
         label2.setFont(new Font("Lato Black", Font.BOLD, 16));
         label2.setForeground(new Color(0x61b884));
 
+        //---- monthComboBox ----
+        monthComboBox.setModel(new DefaultComboBoxModel<>(new String[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+        }));
+        monthComboBox.addItemListener(e -> comboBox2ItemStateChanged(e));
+
+        //---- yearComboBox ----
+        yearComboBox.setModel(new DefaultComboBoxModel<>(new String[] {
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023"
+        }));
+
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap(27, Short.MAX_VALUE)
+                    .addContainerGap(131, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(TypeStatistic)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(Statistic, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(Day)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(textDay, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(Month)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(textMonth, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(Year)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(textYear, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(label2)
-                                    .addGap(10, 10, 10)
-                                    .addComponent(textEvent, GroupLayout.PREFERRED_SIZE, 450, GroupLayout.PREFERRED_SIZE))
-                                .addComponent(chartView, GroupLayout.DEFAULT_SIZE, 1095, Short.MAX_VALUE))
-                            .addGap(43, 43, 43))
-                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(title)
-                            .addGap(413, 413, 413))))
+                            .addGap(413, 413, 413))
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(TypeStatistic)
+                                                .addGap(37, 37, 37)
+                                                .addComponent(Statistic, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(95, 95, 95))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(Day)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(dayComboBox, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(42, 42, 42)
+                                                .addComponent(Month)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(monthComboBox, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(53, 53, 53)
+                                                .addComponent(Year)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(yearComboBox, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(45, 45, 45)))
+                                        .addComponent(label2)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(textEvent, GroupLayout.PREFERRED_SIZE, 450, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(chartView, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGap(152, 152, 152))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
                     .addGap(20, 20, 20)
                     .addComponent(title)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                    .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(Statistic, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(TypeStatistic))
+                        .addComponent(TypeStatistic)
+                        .addComponent(Statistic, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addGap(11, 11, 11)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(Day)
-                        .addComponent(textDay, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Month)
-                        .addComponent(textMonth, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Year)
-                        .addComponent(textYear, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(label2)
-                        .addComponent(textEvent, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(17, 17, 17)
+                        .addComponent(textEvent, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Day)
+                        .addComponent(dayComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Month)
+                        .addComponent(monthComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Year)
+                        .addComponent(yearComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
                     .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29)
+                    .addGap(28, 28, 28)
                     .addComponent(chartView, GroupLayout.PREFERRED_SIZE, 441, GroupLayout.PREFERRED_SIZE)
-                    .addGap(58, 58, 58))
+                    .addContainerGap(240, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - man
     private JComboBox<String> Statistic;
     private JLabel TypeStatistic;
     private JLabel Day;
     private JLabel Month;
     private JLabel Year;
-    private JTextField textDay;
-    private JTextField textMonth;
-    private JTextField textYear;
     private JPanel panel1;
     private JLabel label1;
     private JPanel chartView;
     private JTextField textEvent;
     private JLabel title;
     private JLabel label2;
+    private JComboBox dayComboBox;
+    private JComboBox<String> monthComboBox;
+    private JComboBox<String> yearComboBox;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
