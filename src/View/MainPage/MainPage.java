@@ -6,8 +6,8 @@ package View.MainPage;
 
 import Controller.MainMenu.LogoutController;
 import Controller.Menu.SwitchMenuController;
-import Model.BEAN.Employee;
-import Model.BEAN.MenuList;
+import Model.BEAN.Employee.Employee;
+import Model.BEAN.Menu.MenuList;
 import Model.DAO.Employee.EmployeeDAO;
 
 import javax.swing.*;

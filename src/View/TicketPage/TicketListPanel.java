@@ -5,7 +5,7 @@
 package View.TicketPage;
 
 import Controller.TicketPage.TicketPageListener;
-import Model.BEAN.Ticket;
+import Model.BEAN.TicketBooking.TicketBooking;
 import Model.DAO.Ticket.TicketDAO;
 import Model.DAO.Ticket.TicketListDAO;
 import View.MainPage.MainPage;
@@ -24,8 +24,8 @@ import javax.swing.table.*;
  */
 public class TicketListPanel extends JPanel{
     ActionListener ac = new TicketPageListener(this);
-    Ticket ticketSelected = new Ticket();
-    List<Ticket> listTicket = null;
+    TicketBooking ticketBookingSelected = new TicketBooking();
+    List<TicketBooking> listTicketBooking = null;
     String textSearched = "";
 
     public TicketListPanel() {
@@ -33,10 +33,10 @@ public class TicketListPanel extends JPanel{
         initMoreSetting();
     }
 
-    public TicketListPanel(List<Ticket> listTicket, String textSearched) {
+    public TicketListPanel(List<TicketBooking> listTicketBooking, String textSearched) {
         initComponents();
 
-        this.listTicket = listTicket;
+        this.listTicketBooking = listTicketBooking;
         setTicketListTable();
 
         getJlbAdd().addActionListener(ac);
@@ -48,7 +48,7 @@ public class TicketListPanel extends JPanel{
     }
 
     public void initMoreSetting() {
-        listTicket = TicketListDAO.getList();
+        listTicketBooking = TicketListDAO.getList();
 
         setTicketListTable();
         setColor();
@@ -58,27 +58,27 @@ public class TicketListPanel extends JPanel{
         jlbSearch.addActionListener(ac);
     }
 
-    public Ticket getDataFromJTable() {
+    public TicketBooking getDataFromJTable() {
         int i = TicketListTable.getSelectedRow();
         if (i == -1) {
             JOptionPane.showMessageDialog(null, "Please choose a ticket to edit");
             return null;
         } else {
-            ticketSelected = listTicket.get(i);
-            int IDSelected = ticketSelected.getTicketID();
+            ticketBookingSelected = listTicketBooking.get(i);
+            int IDSelected = ticketBookingSelected.getTicketID();
             System.out.println("ID selected: " + IDSelected);
-            return ticketSelected;
+            return ticketBookingSelected;
         }
     }
 
     public void setTicketListTable() {
         DefaultTableModel tableModel = (DefaultTableModel) getTicketListTable().getModel();
-        for (Ticket ticket : listTicket) {
-            int TKT_ID = ticket.getTicketID();
-            int EVT_ID = ticket.getEventID();
-            int STG_ID = ticket.getStageID();
-            int SEAT_ID = ticket.getSeatID();
-            double TKT_PRICE = ticket.getPrice();
+        for (TicketBooking ticketBooking : listTicketBooking) {
+            int TKT_ID = ticketBooking.getTicketID();
+            int EVT_ID = ticketBooking.getEventID();
+            int STG_ID = ticketBooking.getStageID();
+            int SEAT_ID = ticketBooking.getSeatID();
+            double TKT_PRICE = ticketBooking.getPrice();
             tableModel.addRow(new Object[]{String.valueOf(TKT_ID), String.valueOf(EVT_ID), String.valueOf(STG_ID), String.valueOf(SEAT_ID), String.valueOf(TKT_PRICE)});
         }
     }
@@ -100,8 +100,8 @@ public class TicketListPanel extends JPanel{
         if (i == -1) {
             JOptionPane.showMessageDialog(null, "Please select a row to delete");
         } else {
-            ticketSelected = listTicket.get(i);
-            int IDSelected = ticketSelected.getTicketID();
+            ticketBookingSelected = listTicketBooking.get(i);
+            int IDSelected = ticketBookingSelected.getTicketID();
             ComfirmTicketDeleteJPopupMenu comfirmTicketDeleteJPopupMenu = new ComfirmTicketDeleteJPopupMenu();
             comfirmTicketDeleteJPopupMenu.setSelectedID(IDSelected);
         }
@@ -110,28 +110,28 @@ public class TicketListPanel extends JPanel{
     public void searchTicket() throws SQLException {
         System.out.println("search Ticket");
         textSearched = jtfSearch.getText();
-        listTicket = TicketDAO.getInstance().getTicketList();
+        listTicketBooking = TicketDAO.getInstance().getTicketList();
         System.out.println("Text input: " + textSearched);
         if (!textSearched.equals("")) {
             System.out.println("Search");
             List<Integer> idResult = new ArrayList<>();
 
-            for (Ticket ticket : listTicket) {
-                String ticketCompiled = ticket.getTicketID() + "!@#$" + ticket.getEventID() + "!@#$" + ticket.getStageID() + "!@#$" + ticket.getSeatID() + "!@#$" + ticket.getPrice();
+            for (TicketBooking ticketBooking : listTicketBooking) {
+                String ticketCompiled = ticketBooking.getTicketID() + "!@#$" + ticketBooking.getEventID() + "!@#$" + ticketBooking.getStageID() + "!@#$" + ticketBooking.getSeatID() + "!@#$" + ticketBooking.getPrice();
 
                 if (ticketCompiled.contains(textSearched)) {
-                    idResult.add(ticket.getTicketID());
+                    idResult.add(ticketBooking.getTicketID());
                 }
             }
 
-            listTicket.clear();
+            listTicketBooking.clear();
             for (int id : idResult) {
-                Ticket ticket = TicketDAO.getInstance().selectByID(id);
-                if (ticket != null) {
-                    listTicket.add(ticket);
+                TicketBooking ticketBooking = TicketDAO.getInstance().selectByID(id);
+                if (ticketBooking != null) {
+                    listTicketBooking.add(ticketBooking);
                 }
             }
-            MainPage.changeView(new TicketListPanel(listTicket, textSearched), MainPage.getJlbTickets(), "Ticket List Panel");
+            MainPage.changeView(new TicketListPanel(listTicketBooking, textSearched), MainPage.getJlbTickets(), "Ticket List Panel");
         } else {
             System.out.println("No search");
             MainPage.changeView(new TicketListPanel(), MainPage.getJlbTickets(), "Ticket List Panel");
@@ -184,7 +184,7 @@ public class TicketListPanel extends JPanel{
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         jlbTicket = new JLabel();
         scrollPane1 = new JScrollPane();
         TicketListTable = new JTable();
@@ -196,12 +196,12 @@ public class TicketListPanel extends JPanel{
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-        border. EmptyBorder( 0, 0, 0, 0) , "  ", javax. swing. border. TitledBorder. CENTER
-        , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font
-        .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
-        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order"
-        .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
+        (0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border
+        .TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
+        .Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
+        propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
+        ;}});
 
         //---- jlbTicket ----
         jlbTicket.setText("TICKET INFORMATION LIST");
@@ -219,7 +219,15 @@ public class TicketListPanel extends JPanel{
                 new String[] {
                     "TicketID", "EventID", "SeatID", "StageID", "Ticket Price"
                 }
-            ));
+            ) {
+                boolean[] columnEditable = new boolean[] {
+                    false, false, false, false, false
+                };
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return columnEditable[columnIndex];
+                }
+            });
             TicketListTable.setGridColor(Color.lightGray);
             TicketListTable.setSelectionBackground(new Color(0x61b884));
             TicketListTable.setSelectionForeground(Color.white);
@@ -259,51 +267,49 @@ public class TicketListPanel extends JPanel{
         setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup()
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(26, 26, 26)
+                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(480, Short.MAX_VALUE)
+                    .addComponent(jlbTicket)
+                    .addGap(472, 472, 472))
+                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap()
                     .addGroup(layout.createParallelGroup()
-                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 1204, Short.MAX_VALUE)
+                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 1263, Short.MAX_VALUE)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
-                            .addGap(6, 6, 6)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 570, Short.MAX_VALUE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 621, Short.MAX_VALUE)
                             .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jlbDelete)))
-                    .addGap(45, 45, 45))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(448, 448, 448)
-                    .addComponent(jlbTicket)
-                    .addContainerGap(512, Short.MAX_VALUE))
+                    .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(17, 17, 17)
+                    .addGap(15, 15, 15)
                     .addComponent(jlbTicket)
-                    .addGap(18, 18, 18)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(layout.createParallelGroup()
-                        .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(2, 2, 2)
-                            .addGroup(layout.createParallelGroup()
-                                .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jlbDelete, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)))))
-                    .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlbDelete, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)))
+                    .addGap(19, 19, 19)
                     .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(47, Short.MAX_VALUE))
+                    .addContainerGap(48, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JLabel jlbTicket;
     private JScrollPane scrollPane1;
     private JTable TicketListTable;

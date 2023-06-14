@@ -1,18 +1,12 @@
 package Model.DAO.Event;
 
-import Model.BEAN.EventList;
+import Model.BEAN.Event.EventList;
 import Model.Database.UserDatabase;
 
 import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class Event {
     public static List<EventList> getEventList() {

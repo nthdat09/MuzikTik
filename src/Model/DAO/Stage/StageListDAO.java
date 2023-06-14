@@ -1,6 +1,6 @@
 package Model.DAO.Stage;
 
-import Model.BEAN.Stage;
+import Model.BEAN.Stage.Stage;
 import Model.Database.UserDatabase;
 
 import java.sql.Connection;
@@ -34,7 +34,7 @@ public class StageListDAO {
                 int stageID = rs.getInt("STG_ID");
                 String stageName = rs.getString("STG_NAME");
                 String stageAddress = rs.getString("STG_ADDRESS");
-                double rentalPrice = rs.getDouble("STG_RENTAL_PRICE");
+                long rentalPrice = rs.getLong("STG_RENTAL_PRICE");
                 int capacity = rs.getInt("STG_CAPACITY");
 
                 SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");

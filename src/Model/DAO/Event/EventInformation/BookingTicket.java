@@ -1,7 +1,6 @@
 package Model.DAO.Event.EventInformation;
 
-import Model.BEAN.ReversedSeat;
-import Model.BEAN.TicketID;
+import Model.BEAN.Ticket.TicketID;
 import Model.Database.UserDatabase;
 import View.EventPage.EventPanel;
 import View.Home.HomePanel;

@@ -1,13 +1,9 @@
 package View.LoginPage.RegisterAccountPage;
 
-import Controller.LoginPage.ForgetPassword.ForgetPasswordPage2Listener;
 import Controller.LoginPage.RegisterAccount.RegisterAccountPageListener_2;
-import Model.BEAN.Customer;
+import Model.BEAN.Customer.Customer;
 import Model.DAO.Employee.SendEmail;
 import Model.DAO.Employee.VerificationCode;
-import View.LoginPage.ForgetPasswordPage.ForgotPasswordPage_1;
-import View.LoginPage.ForgetPasswordPage.ForgotPasswordPage_2;
-import View.LoginPage.ForgetPasswordPage.ForgotPasswordPage_3;
 import org.apache.commons.mail.EmailException;
 
 import javax.mail.MessagingException;

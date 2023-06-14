@@ -1,9 +1,11 @@
 package Model.DAO.Stage;
 
-import Model.BEAN.Stage;
+import Model.BEAN.Stage.Stage;
 import Model.Database.UserDatabase;
 
+import java.math.BigDecimal;
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -24,7 +26,10 @@ public class StageDAO {
                 stage.setName(rs.getString("STG_NAME"));
                 stage.setAddress(rs.getString("STG_ADDRESS"));
                 stage.setCapacity(rs.getInt("STG_CAPACITY"));
-                stage.setRentalPrice(rs.getInt("STG_RENTAL_PRICE"));
+
+                BigDecimal rentalPrice = rs.getBigDecimal("STG_RENTAL_PRICE");
+                stage.setRentalPrice(rentalPrice.doubleValue());
+
                 SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 
                 Time openTime = rs.getTime("STG_OPEN_TIME");

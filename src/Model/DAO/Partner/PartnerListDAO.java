@@ -1,6 +1,6 @@
 package Model.DAO.Partner;
 
-import Model.BEAN.Partner;
+import Model.BEAN.Partner.Partner;
 import Model.Database.UserDatabase;
 
 import java.sql.Connection;

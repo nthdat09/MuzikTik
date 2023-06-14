@@ -5,7 +5,7 @@
 package View.CustomersListPage;
 
 import Controller.CustomerPanel.InformationCustomerController;
-import Model.BEAN.Customer;
+import Model.BEAN.Customer.Customer;
 import Model.DAO.Customer.CustomerDAO;
 import View.MainPage.MainPage;
 
@@ -155,7 +155,7 @@ public class InformationCustomerForm extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         this.InformationCustomerPanel = new JPanel();
         this.Name = new JLabel();
         this.Email = new JLabel();
@@ -185,12 +185,13 @@ public class InformationCustomerForm extends JPanel {
         setFont(new Font("Lato Black", Font.PLAIN, 16));
         setForeground(new Color(0x61b884));
         setBackground(Color.white);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
-        border .EmptyBorder ( 0, 0 ,0 , 0) ,  "" , javax. swing .border . TitledBorder. CENTER
-        ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069al\u006fg", java .awt . Font
-        . BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener(
-        new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062or\u0064er"
-        .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
+        swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border
+        . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog"
+        , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) , getBorder
+        () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
+        . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException
+        ( ) ;} } );
 
         //---- Name ----
         this.Name.setText("Name:");
@@ -307,9 +308,6 @@ public class InformationCustomerForm extends JPanel {
                 .addGroup(layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup()
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(375, 375, 375)
-                            .addComponent(this.label1))
-                        .addGroup(layout.createSequentialGroup()
                             .addGap(49, 49, 49)
                             .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
@@ -353,7 +351,10 @@ public class InformationCustomerForm extends JPanel {
                                             .addGap(51, 51, 51)
                                             .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(this.AddressField, GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                                                .addComponent(this.TypeField, GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))))))))
+                                                .addComponent(this.TypeField, GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)))))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(387, 387, 387)
+                            .addComponent(this.label1)))
                     .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -393,13 +394,13 @@ public class InformationCustomerForm extends JPanel {
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(this.Cancel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(this.SAVE, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(178, Short.MAX_VALUE))
+                    .addContainerGap(135, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JPanel InformationCustomerPanel;
     JLabel Name;
     JLabel Email;

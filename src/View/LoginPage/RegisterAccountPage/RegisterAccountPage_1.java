@@ -5,10 +5,8 @@
 package View.LoginPage.RegisterAccountPage;
 
 import Controller.LoginPage.RegisterAccount.RegisterAccountPageListener_1;
-import Model.BEAN.Customer;
-import Model.BEAN.Employee;
+import Model.BEAN.Customer.Customer;
 import Model.DAO.Customer.CustomerDAO;
-import Model.DAO.Employee.EmployeeDAO;
 import Model.DAO.Employee.VerificationCode;
 import View.LoginPage.LoginPage;
 import org.apache.commons.mail.EmailException;
@@ -118,7 +116,7 @@ public class RegisterAccountPage_1 {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         RegisterAccountJDialog_1 = new JDialog();
         label2 = new JLabel();
         label4 = new JLabel();
@@ -202,13 +200,13 @@ public class RegisterAccountPage_1 {
             RegisterAccountJDialog_1ContentPaneLayout.setHorizontalGroup(
                 RegisterAccountJDialog_1ContentPaneLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, RegisterAccountJDialog_1ContentPaneLayout.createSequentialGroup()
-                        .addContainerGap(295, Short.MAX_VALUE)
+                        .addContainerGap(280, Short.MAX_VALUE)
                         .addComponent(BackJbt)
                         .addGap(26, 26, 26)
                         .addComponent(NextJbt)
                         .addGap(16, 16, 16))
                     .addGroup(RegisterAccountJDialog_1ContentPaneLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(55, 55, 55)
                         .addGroup(RegisterAccountJDialog_1ContentPaneLayout.createParallelGroup()
                             .addComponent(label8)
                             .addGroup(RegisterAccountJDialog_1ContentPaneLayout.createSequentialGroup()
@@ -228,13 +226,16 @@ public class RegisterAccountPage_1 {
                                     .addComponent(emailField, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
                                     .addComponent(phoneNumberField, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE)
                                     .addComponent(addressField, GroupLayout.PREFERRED_SIZE, 249, GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(74, Short.MAX_VALUE))
-                    .addComponent(label2, GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                        .addContainerGap(57, Short.MAX_VALUE))
+                    .addGroup(RegisterAccountJDialog_1ContentPaneLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(label2, GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                        .addContainerGap())
             );
             RegisterAccountJDialog_1ContentPaneLayout.setVerticalGroup(
                 RegisterAccountJDialog_1ContentPaneLayout.createParallelGroup()
                     .addGroup(RegisterAccountJDialog_1ContentPaneLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
+                        .addGap(18, 18, 18)
                         .addComponent(label2)
                         .addGap(18, 18, 18)
                         .addGroup(RegisterAccountJDialog_1ContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
@@ -256,11 +257,11 @@ public class RegisterAccountPage_1 {
                         .addGroup(RegisterAccountJDialog_1ContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(label8, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
                             .addComponent(addressField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
+                        .addGap(52, 52, 52)
                         .addGroup(RegisterAccountJDialog_1ContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(NextJbt)
                             .addComponent(BackJbt))
-                        .addContainerGap(15, Short.MAX_VALUE))
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             RegisterAccountJDialog_1.pack();
             RegisterAccountJDialog_1.setLocationRelativeTo(RegisterAccountJDialog_1.getOwner());
@@ -269,7 +270,7 @@ public class RegisterAccountPage_1 {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JDialog RegisterAccountJDialog_1;
     private JLabel label2;
     private JLabel label4;

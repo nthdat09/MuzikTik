@@ -1,7 +1,7 @@
 package Controller;
 
 
-import Model.BEAN.CustomerList;
+import Model.BEAN.Customer.CustomerList;
 import View.CustomersListPage.InformationCustomerForm;
 
 import javax.swing.*;

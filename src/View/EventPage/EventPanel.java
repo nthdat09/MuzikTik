@@ -4,18 +4,15 @@
 
 package View.EventPage;
 
-import Model.BEAN.CustomerBuyTicket;
-import Model.BEAN.TicketID;
+import Model.BEAN.Customer.CustomerBuyTicket;
+import Model.BEAN.Ticket.TicketID;
 import Model.DAO.Customer.CustomerListDAO;
 import Model.DAO.Event.EventInformation.BookingTicket;
 import Model.DAO.Event.EventInformation.CustomerInformationValidate;
 import Model.DAO.Event.EventInformation.EventTableDatabase;
 import Model.DAO.Ticket.SendTicketEmail;
 import Model.Database.UserDatabase;
-import View.CustomersListPage.InformationCustomerForm;
 import View.Home.HomePanel;
-import View.MainPage.MainPage;
-import com.mysql.cj.jdbc.Blob;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -24,7 +21,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -35,8 +31,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static View.CustomersListPage.InformationCustomerForm.settingForNewCustomer;
 
 /**
  * @author Admin
@@ -599,7 +593,7 @@ public class EventPanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - man
+        // Generated using JFormDesigner Evaluation license - Dat
         jpnEventHeader = new JPanel();
         EventArt = new JLabel();
         EventName = new JLabel();
@@ -682,13 +676,11 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-        javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "", javax
-        . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-        .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
-        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
-        PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .
-        equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+        , 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+        , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+         getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
         setLayout(null);
 
         //======== jpnEventHeader ========
@@ -1707,7 +1699,7 @@ public class EventPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - man
+    // Generated using JFormDesigner Evaluation license - Dat
     private JPanel jpnEventHeader;
     private static JLabel EventArt;
     private static JLabel EventName;

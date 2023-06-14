@@ -4,7 +4,7 @@
 
 package View.EventPage;
 
-import Model.BEAN.Customer;
+import Model.BEAN.Customer.Customer;
 import Model.Database.UserDatabase;
 
 import java.awt.*;
@@ -12,7 +12,6 @@ import java.awt.event.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javax.swing.*;
-import javax.swing.GroupLayout;
 
 /**
  * @author giama
@@ -74,7 +73,7 @@ public class NewCustomerEvent extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - man
+        // Generated using JFormDesigner Evaluation license - Dat
         label3 = new JLabel();
         PasswordField = new JTextField();
         UserNameField = new JTextField();
@@ -98,12 +97,12 @@ public class NewCustomerEvent extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
-        ( 0, 0 ,0 , 0) ,  "" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
-        .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
-        . Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
-        propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-        ;} } );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
+        .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax
+        . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,
+        12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans
+        .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e.
+        getPropertyName () ) )throw new RuntimeException( ) ;} } );
         setLayout(null);
 
         //---- label3 ----
@@ -137,14 +136,14 @@ public class NewCustomerEvent extends JPanel {
         label1.setFont(new Font("Lato Black", Font.BOLD, 25));
         label1.setForeground(new Color(0x61b884));
         add(label1);
-        label1.setBounds(new Rectangle(new Point(325, 60), label1.getPreferredSize()));
+        label1.setBounds(new Rectangle(new Point(270, 60), label1.getPreferredSize()));
 
         //---- TypeField ----
         TypeField.setBackground(Color.white);
         TypeField.setName("TotalPointVal");
         TypeField.setFont(new Font("Lato", Font.PLAIN, 16));
         add(TypeField);
-        TypeField.setBounds(745, 290, 247, TypeField.getPreferredSize().height);
+        TypeField.setBounds(740, 290, 247, TypeField.getPreferredSize().height);
 
         //---- Type ----
         Type.setFont(new Font("Lato Black", Font.BOLD, 16));
@@ -180,7 +179,7 @@ public class NewCustomerEvent extends JPanel {
         AddressField.setName("PhoneNumberVal");
         AddressField.setFont(new Font("Lato", Font.PLAIN, 16));
         add(AddressField);
-        AddressField.setBounds(745, 245, 247, AddressField.getPreferredSize().height);
+        AddressField.setBounds(740, 245, 247, AddressField.getPreferredSize().height);
 
         //---- EmailField ----
         EmailField.setBackground(Color.white);
@@ -272,7 +271,7 @@ public class NewCustomerEvent extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - man
+    // Generated using JFormDesigner Evaluation license - Dat
     private JLabel label3;
     private JTextField PasswordField;
     private JTextField UserNameField;

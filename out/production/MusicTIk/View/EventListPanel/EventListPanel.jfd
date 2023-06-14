@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :::p, par l {comp scrollPane1::::1638:x, seq {comp jtfSearch:::p:210:p, par l {seq {space :6:6:p, comp jlbSearch:::p:111:p, space ::993:x, comp jlbAdd:::p:90:p, space u:::p, comp jlbEdit:::p:90:p, space :::p, comp jlbDelete:::p::p, space :p:24:p}, seq l {space :p:192:p, comp label1:::p:381:p, space :::x}}}}}}"
-			"$verticalGroup": "par l {seq l {par l {seq {space :p:68:p, par l {comp jtfSearch:::p::p, seq l {space :2:2:p, par l {comp jlbSearch:::p:26:p, par b {comp jlbAdd::b:p:26:p, comp jlbEdit::b:p:26:p, comp jlbDelete::b:p:26:p}}}}}, seq l {space :p:20:p, comp label1:::p:46:p}}, space u:::p, comp scrollPane1:::p:494:p, space :::x}}"
+			"$horizontalGroup": "par l {seq l {space :::p, par l {comp scrollPane1::::1309:x, seq {comp jtfSearch:::p:210:p, space :6:6:p, comp jlbSearch:::p:111:p, space ::661:x, comp jlbAdd:::p:90:p, space u:::p, comp jlbEdit:::p:90:p, space :::p, comp jlbDelete:::p::p, space :p:24:p}}}, seq l {space :p:460:p, comp label1:::p:381:p, space :0:474:x}}"
+			"$verticalGroup": "par l {seq l {space :p:20:p, comp label1:::p:46:p, space :p:2:p, par l {comp jtfSearch:::p::p, seq l {space :2:2:p, par l {comp jlbSearch:::p:26:p, par b {comp jlbAdd::b:p:26:p, comp jlbEdit::b:p:26:p, comp jlbDelete::b:p:26:p}}}}, space u:::p, comp scrollPane1:::p:494:p, space :::x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -80,15 +80,15 @@ new FormModel {
 						add( null )
 						add( null )
 					}, new java.util.Vector {
-						add( true )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
 					}, new java.util.Vector {
 						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 20, 0, true ) )
 						add( null )

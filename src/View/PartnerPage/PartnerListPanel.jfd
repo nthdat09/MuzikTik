@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -7,11 +7,12 @@ new FormModel {
 			"JavaCodeGenerator.defaultVariableGetter": true
 		}
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space :p:36:p, par t {comp scrollPane1::::1239:x, seq {comp jtfSearch:::p:249:p, space u:::p, comp jlbSearch:::p:111:p, space ::560:x, comp jlbAdd:::p:90:p, space s:::p, comp jlbEdit:::p:90:p, space s:::p, comp jlbDelete:::p::p}}, space :p:15:p}, seq t {space ::550:x, comp label1:::p::p, space :p:414:p}}"
-			"$verticalGroup": "par l {seq l {space :p:30:p, comp label1:::p::p, space :p:29:p, par l {par b {comp jtfSearch::b:p::p, comp jlbSearch::b:p:26:p}, par b {comp jlbDelete::b:p:26:p, comp jlbEdit::b:p:26:p, comp jlbAdd::b:p:26:p}}, space u:::p, comp scrollPane1:::p:527:p, space ::25:x}}"
+			"$horizontalGroup": "par l {seq t {space ::476:x, comp label1:::p::p, space :p:466:p}, comp scrollPane1::t:::x, seq t {comp jtfSearch:::p:249:p, space u:::p, comp jlbSearch:::p:111:p, space ::603:x, comp jlbAdd:::p:90:p, space s:::p, comp jlbEdit:::p:90:p, space s:::p, comp jlbDelete:::p::p}}"
+			"$verticalGroup": "par l {seq t {space :p:19:p, comp label1:::p::p, space :::p, par l {par b:l {comp jtfSearch::b:p::p, comp jlbSearch::b:p:26:p}, par b:l {comp jlbDelete::b:p:26:p, comp jlbEdit::b:p:26:p, comp jlbAdd::b:p:26:p}}, space u:::p, comp scrollPane1:::p:527:p, space ::100:x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
+			"preferredSize": new java.awt.Dimension( 1160, 381 )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
 				"text": "PARTNERS CUSTOMER LIST"
@@ -40,13 +41,13 @@ new FormModel {
 						add( null )
 						add( null )
 					}, new java.util.Vector {
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
 					}, new java.util.Vector {
 						add( null )
 						add( null )
@@ -108,8 +109,8 @@ new FormModel {
 				}
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1290, 680 )
+			"location": new java.awt.Point( 5, 0 )
+			"size": new java.awt.Dimension( 1290, 730 )
 		} )
 	}
 }

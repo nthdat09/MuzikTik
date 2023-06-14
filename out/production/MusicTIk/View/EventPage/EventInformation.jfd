@@ -1,0 +1,267 @@
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space ::382:x, comp label1:::p::p, space :p:388:p}, seq l {space :p:59:p, par l {seq {par l {seq {par l:::p {seq l {comp ID:::p::p, space :p:102:p, comp TextID:::p:250:p}, seq t {comp Name:::p::p, space :::x, comp textName:::p:250:p}, seq t {comp Artist:::p::p, space :::x, comp textArtist:::p:250:p}, seq t {comp Stage:::p::p, space :p:74:p, comp stageComboBox:::p:250:p}}, space :p:175:p, par l {par l:l {comp OpenTime::l:p:97:p, comp Quantity::l:p::p, seq t {comp CloseTime:::p:97:p, space :p:30:p}}, seq l {comp Date:::p::p, space :p:86:p}}, par l:::p {comp textQuantity::::248:x, seq l {space :p:18:p, par l:::p {seq l {comp Open_Hour:::p:59:p, space s:::p, comp Open_Minute:::p:59:p, space s:::p, comp Open_Second:::p:59:p}, seq t {comp Close_Hour:::p:59:p, space s:::p, comp Close_Minute:::p:59:p, space s:::p, comp Close_Second:::p:59:p}}}, comp dateJDatePicker::l::248:x}}, comp textPoster:::p:517:p}, space ::52:x, comp pathFileText:::p:0:p}, seq {par l {comp Description::l:p::p, seq l {comp panel2:::p:135:p, space :p:520:p, comp panel3:::p:112:p, space :p:45:p, comp panel1:::p:112:p}, comp scrollPane1:::p:901:p}, space :0:46:x}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :p:25:p, comp label1:::p::p, space s:::p, par t {comp ID:::p::p, par b:t {comp TextID::b:p::p, comp Date::b:p::p, comp dateJDatePicker::b:p::p}}, space s:::p, par b {comp textName::b:p::p, comp Quantity::b:p:21:p, comp textQuantity::b:p::p, comp Name::b:p::p}, space :p:18:p, par l {seq {par b {comp textArtist::b:p::p, comp Artist::b:p::p}, space s:::p, par b {comp Stage::b:p::p, comp stageComboBox::b:p:23:p}}, seq l {par b {comp Open_Hour::b:p::p, comp Open_Minute::b:p::p, comp Open_Second::b:p::p}, space u:::p, par b {comp Close_Second::b:p::p, comp Close_Minute::t:p:29:p, comp Close_Hour::t:p:29:p}}, seq {comp OpenTime:::p::p, space :p:30:p, comp CloseTime:::p::p}}, space :p:12:p, comp Description:::p::p, par l {seq l {space :p:171:p, comp pathFileText:::p:40:p}, seq l {space s:::p, comp scrollPane1:::p:136:p, space s:::p, comp textPoster:::p:161:p}}, space s:::p, par l {comp panel2:::p:30:p, comp panel1:::p:30:p, comp panel3:::p:30:p}, space ::15:x}}"
+		} ) {
+			name: "this"
+			"background": sfield java.awt.Color white
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "ID"
+				"text": "ID"
+				"font": &Font0 new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": &Color0 new java.awt.Color( 97, 184, 132, 255 )
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Name"
+				"text": "Event name"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Artist"
+				"text": "Artist"
+				"font": #Font0
+				"foreground": #Color0
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Stage"
+				"text": "Stage"
+				"font": #Font0
+				"foreground": #Color0
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Date"
+				"text": "Date"
+				"font": #Font0
+				"foreground": #Color0
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "OpenTime"
+				"text": "Open Time"
+				"font": #Font0
+				"foreground": #Color0
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Open_Hour"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 24, 1 )
+				"font": &Font1 new java.awt.Font( "Lato", 0, 16 )
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+					"JavaCodeGenerator.variableModifiers": 10
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "textPoster"
+				"border": new javax.swing.border.LineBorder( new java.awt.Color( 97, 184, 132, 255 ), 1, false )
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+					"JavaCodeGenerator.variableModifiers": 10
+				}
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "textDescription"
+					"font": &Font2 new java.awt.Font( "Arial", 0, 16 )
+					"wrapStyleWord": true
+					"lineWrap": true
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+						"JavaCodeGenerator.variableModifiers": 10
+					}
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textQuantity"
+				"font": #Font1
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 10
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "com.github.lgooddatepicker.components.DatePicker" ) {
+				name: "dateJDatePicker"
+				"font": #Font1
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+					"JavaCodeGenerator.variableModifiers": 10
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textArtist"
+				"font": #Font2
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+					"JavaCodeGenerator.variableModifiers": 10
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textName"
+				"font": #Font2
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+					"JavaCodeGenerator.variableModifiers": 10
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Description"
+				"text": "Description"
+				"font": #Font0
+				"foreground": #Color0
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Quantity"
+				"text": "Quantity"
+				"font": #Font0
+				"foreground": #Color0
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "CloseTime"
+				"text": "Close Time"
+				"font": #Font0
+				"foreground": #Color0
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Close_Hour"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 24, 1 )
+				"font": #Font1
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+					"JavaCodeGenerator.variableModifiers": 10
+				}
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Close_Minute"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+				"font": #Font1
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+					"JavaCodeGenerator.variableModifiers": 10
+				}
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Close_Second"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+				"font": #Font1
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+					"JavaCodeGenerator.variableModifiers": 10
+				}
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Open_Second"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+				"font": #Font1
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 10
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Open_Minute"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+				"font": #Font1
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 10
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "pathFileText"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+				name: "panel1"
+				"background": &Color1 new java.awt.Color( 97, 184, 132, 255 )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button1"
+					"text": "CANCEL"
+					"font": new java.awt.Font( "Lato Black", 1, 16 )
+					"foreground": sfield java.awt.Color white
+					"background": new java.awt.Color( 97, 184, 132, 255 )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+				name: "panel2"
+				"background": new java.awt.Color( 97, 184, 132, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "uploadBtn"
+					"text": "UPLOAD POSTER"
+					"font": new java.awt.Font( "Lato Black", 1, 14 )
+					"horizontalAlignment": 0
+					"foreground": sfield java.awt.Color white
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "uploadBtnMouseClicked", true ) )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "stageComboBox"
+				"font": #Font1
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 10
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "EVENT INFORMATION"
+				"font": new java.awt.Font( "Lato Black", 1, 25 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TextID"
+				"background": new java.awt.Color( 204, 204, 204, 255 )
+				"font": #Font1
+				"editable": false
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 10
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+				name: "panel3"
+				"background": #Color1
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "addBtn"
+					"text": "SAVE"
+					"font": new java.awt.Font( "Lato Black", 1, 16 )
+					"horizontalAlignment": 0
+					"foreground": sfield java.awt.Color white
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "addBtnMouseClicked", true ) )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1035, 690 )
+		} )
+	}
+}

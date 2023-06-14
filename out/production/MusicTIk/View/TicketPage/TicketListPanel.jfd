@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -7,8 +7,8 @@ new FormModel {
 			"JavaCodeGenerator.defaultVariableGetter": true
 		}
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :p:26:p, par l {comp scrollPane1::::1204:x, seq {comp jtfSearch:::p:210:p, space :6:6:p, comp jlbSearch:::p:111:p, space ::570:x, comp jlbAdd:::p:90:p, space s:::p, comp jlbEdit:::p:90:p, space s:::p, comp jlbDelete:::p::p}}, space :p:45:p}, seq l {space :p:448:p, comp jlbTicket:::p::p, space ::512:x}}"
-			"$verticalGroup": "par l {seq l {space :p:17:p, comp jlbTicket:::p::p, space :p:18:p, par l {comp jtfSearch:::p::p, seq l {space :2:2:p, par l {comp jlbSearch:::p:26:p, par b {comp jlbDelete::b:p:26:p, comp jlbEdit::b:p:26:p, comp jlbAdd::b:p:26:p}}}}, space s:::p, comp scrollPane1:::p::p, space ::47:x}}"
+			"$horizontalGroup": "par l {seq t {space ::480:x, comp jlbTicket:::p::p, space :p:472:p}, seq t {space :::p, par l {comp scrollPane1::::1263:x, seq l {comp jtfSearch:::p:210:p, space :::p, comp jlbSearch:::p:111:p, space ::621:x, comp jlbAdd:::p:90:p, space s:::p, comp jlbEdit:::p:90:p, space s:::p, comp jlbDelete:::p::p}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :p:15:p, comp jlbTicket:::p::p, space :::p, par l {par b:l {comp jlbSearch::b:p:26:p, comp jtfSearch::b:p::p}, par b:l {comp jlbDelete::b:p:26:p, comp jlbEdit::b:p:26:p, comp jlbAdd::b:p:26:p}}, space :p:19:p, comp scrollPane1:::p::p, space ::48:x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -36,11 +36,11 @@ new FormModel {
 						add( null )
 						add( null )
 					}, new java.util.Vector {
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
 					}, new java.util.Vector {
 						add( null )
 						add( null )

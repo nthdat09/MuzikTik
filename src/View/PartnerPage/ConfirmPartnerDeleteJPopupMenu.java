@@ -72,7 +72,7 @@ public class ConfirmPartnerDeleteJPopupMenu extends JDialog{
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         ConfirmJDialog = new JDialog();
         ConfirmText = new JLabel();
         YesButton = new JButton();
@@ -118,9 +118,9 @@ public class ConfirmPartnerDeleteJPopupMenu extends JDialog{
             ConfirmJDialogContentPaneLayout.setVerticalGroup(
                 ConfirmJDialogContentPaneLayout.createParallelGroup()
                     .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                        .addContainerGap(63, Short.MAX_VALUE)
+                        .addGap(24, 24, 24)
                         .addComponent(ConfirmText, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                         .addGroup(ConfirmJDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(NoButton)
                             .addComponent(YesButton))
@@ -133,7 +133,7 @@ public class ConfirmPartnerDeleteJPopupMenu extends JDialog{
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JDialog ConfirmJDialog;
     private JLabel ConfirmText;
     private JButton YesButton;

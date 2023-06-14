@@ -1,7 +1,7 @@
 package View.StagesPage;
 
 import Controller.StagesPage.StageInformationController;
-import Model.BEAN.Stage;
+import Model.BEAN.Stage.Stage;
 import Model.DAO.Stage.StageDAO;
 import View.MainPage.MainPage;
 
@@ -202,7 +202,7 @@ public class StageInformationForm extends JPanel{
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         this.StageInformationFormPanel = new JPanel();
         this.TicketID = new JLabel();
         this.EventID = new JLabel();
@@ -232,12 +232,12 @@ public class StageInformationForm extends JPanel{
             this.StageInformationFormPanel.setMinimumSize(new Dimension(670, 500));
             this.StageInformationFormPanel.setMaximumSize(new Dimension(670, 500));
             this.StageInformationFormPanel.setPreferredSize(new Dimension(670, 600));
-            this.StageInformationFormPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-            border. EmptyBorder( 0, 0, 0, 0) , "", javax. swing. border. TitledBorder. CENTER
-            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
-            .BOLD ,12 ), java. awt. Color. red) ,this.StageInformationFormPanel. getBorder( )) ); this.StageInformationFormPanel. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r"
-            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            this.StageInformationFormPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
+            border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER
+            ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font
+            .BOLD,12),java.awt.Color.red),this.StageInformationFormPanel. getBorder()));this.StageInformationFormPanel. addPropertyChangeListener(
+            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r"
+            .equals(e.getPropertyName()))throw new RuntimeException();}});
 
             //---- TicketID ----
             this.TicketID.setText("ID:");
@@ -347,28 +347,33 @@ public class StageInformationForm extends JPanel{
             StageInformationFormPanel.setLayout(StageInformationFormPanelLayout);
             StageInformationFormPanelLayout.setHorizontalGroup(
                 StageInformationFormPanelLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, StageInformationFormPanelLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(StageInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                    .addGroup(StageInformationFormPanelLayout.createSequentialGroup()
+                        .addContainerGap(33, Short.MAX_VALUE)
+                        .addGroup(StageInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                             .addGroup(StageInformationFormPanelLayout.createSequentialGroup()
-                                .addComponent(this.StageID, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(this.RentalPriceField, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(GroupLayout.Alignment.TRAILING, StageInformationFormPanelLayout.createSequentialGroup()
-                                .addGroup(StageInformationFormPanelLayout.createParallelGroup()
-                                    .addComponent(this.TicketID, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(this.EventID, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(this.SeatID, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(StageInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(this.NameField, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                    .addComponent(this.IDField, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                    .addComponent(this.AddressField, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
-                        .addGap(203, 203, 203)
-                        .addGroup(StageInformationFormPanelLayout.createParallelGroup()
-                            .addComponent(this.TicketPrice)
-                            .addComponent(this.TicketPrice2)
-                            .addComponent(this.TicketPrice3))
+                                    .addGroup(StageInformationFormPanelLayout.createSequentialGroup()
+                                        .addComponent(this.StageID, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(this.RentalPriceField, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(GroupLayout.Alignment.TRAILING, StageInformationFormPanelLayout.createSequentialGroup()
+                                        .addGroup(StageInformationFormPanelLayout.createParallelGroup()
+                                            .addComponent(this.TicketID, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(this.EventID, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(this.SeatID, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(StageInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(this.NameField, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                            .addComponent(this.IDField, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                            .addComponent(this.AddressField, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
+                                .addGap(203, 203, 203)
+                                .addGroup(StageInformationFormPanelLayout.createParallelGroup()
+                                    .addComponent(this.TicketPrice)
+                                    .addComponent(this.TicketPrice2)
+                                    .addComponent(this.TicketPrice3)))
+                            .addGroup(StageInformationFormPanelLayout.createSequentialGroup()
+                                .addComponent(this.label1)
+                                .addGap(3, 3, 3)))
                         .addGap(26, 26, 26)
                         .addGroup(StageInformationFormPanelLayout.createParallelGroup()
                             .addGroup(StageInformationFormPanelLayout.createSequentialGroup()
@@ -392,10 +397,6 @@ public class StageInformationForm extends JPanel{
                                         .addComponent(this.CancelButton, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE))))
                             .addComponent(this.CapacityField, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
                         .addGap(51, 51, 51))
-                    .addGroup(StageInformationFormPanelLayout.createSequentialGroup()
-                        .addGap(410, 410, 410)
-                        .addComponent(this.label1)
-                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             StageInformationFormPanelLayout.setVerticalGroup(
                 StageInformationFormPanelLayout.createParallelGroup()
@@ -432,14 +433,14 @@ public class StageInformationForm extends JPanel{
                         .addGroup(StageInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(this.SaveButton)
                             .addComponent(this.CancelButton))
-                        .addContainerGap(350, Short.MAX_VALUE))
+                        .addContainerGap(312, Short.MAX_VALUE))
             );
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JPanel StageInformationFormPanel;
     private JLabel TicketID;
     private JLabel EventID;

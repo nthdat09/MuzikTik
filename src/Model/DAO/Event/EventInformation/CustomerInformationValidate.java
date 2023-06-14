@@ -1,6 +1,6 @@
 package Model.DAO.Event.EventInformation;
 
-import Model.BEAN.CustomerBuyTicket;
+import Model.BEAN.Customer.CustomerBuyTicket;
 import Model.Database.UserDatabase;
 import View.EventPage.EventPanel;
 

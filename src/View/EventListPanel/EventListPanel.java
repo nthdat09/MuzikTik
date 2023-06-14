@@ -4,9 +4,8 @@
 
 package View.EventListPanel;
 
-import java.awt.event.*;
 import Model.Database.UserDatabase;
-import View.EventPage.EventInfor;
+import View.EventPage.EventInformation;
 import View.MainPage.MainPage;
 
 import javax.swing.*;
@@ -18,6 +17,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 /**
  * @author Admin
@@ -28,7 +30,7 @@ public class EventListPanel extends JPanel {
         try {
             Connection connection = UserDatabase.getConnection();
             String sql = "SELECT EVT_ID, EVT_NAME, EVT_ARTIST, STG_NAME, EVT_DATE, EVT_OPEN_TIME, EVT_END_TIME, EVT_QUANTITY, EVT_DESCRIPTION\n" +
-                    "FROM EVENT e, STAGE s\n" +
+                    "FROM mctmsys.event e, mctmsys.stage s\n" +
                     "WHERE e.EVT_STG_ID = s.STG_ID;";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -61,7 +63,7 @@ public class EventListPanel extends JPanel {
     }
 
     private void jlbAddMouseClicked(MouseEvent e) {
-        MainPage.changeView(new EventInfor(), MainPage.getJlbEvent(), "EventInfor");
+        MainPage.changeView(new EventInformation(), MainPage.getJlbEvent(), "EventInfor");
     }
 
     private void jlbEditMouseClicked(MouseEvent e) {
@@ -69,34 +71,37 @@ public class EventListPanel extends JPanel {
             JOptionPane.showMessageDialog(null, "Please select a event to edit");
             return;
         }
-        MainPage.changeView(new EventInfor(), MainPage.getJlbEvent(), "EventInfor");
-        EventInfor.getTextID().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 0).toString());
-        EventInfor.getTextName().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 1).toString());
-        EventInfor.getTextArtist().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 2).toString());
+        MainPage.changeView(new EventInformation(), MainPage.getJlbEvent(), "EventInfor");
+        EventInformation.getTextID().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 0).toString());
+        EventInformation.getTextName().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 1).toString());
+        EventInformation.getTextArtist().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 2).toString());
 
-        EventInfor.getOpen_Hour().setModel(new SpinnerNumberModel(Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 4).toString().split(":")[0]), 0, 23, 1));
-        EventInfor.getOpen_Minute().setModel(new SpinnerNumberModel(Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 4).toString().split(":")[1]), 0, 59, 1));
-        EventInfor.getOpen_Second().setModel(new SpinnerNumberModel(Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 4).toString().split(":")[2]), 0, 59, 1));
+        EventInformation.getOpen_Hour().setModel(new SpinnerNumberModel(Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 4).toString().split(":")[0]), 0, 23, 1));
+        EventInformation.getOpen_Minute().setModel(new SpinnerNumberModel(Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 4).toString().split(":")[1]), 0, 59, 1));
+        EventInformation.getOpen_Second().setModel(new SpinnerNumberModel(Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 4).toString().split(":")[2]), 0, 59, 1));
 
-        EventInfor.getClose_Hour().setModel(new SpinnerNumberModel(Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 5).toString().split(":")[0]), 0, 23, 1));
-        EventInfor.getClose_Minute().setModel(new SpinnerNumberModel(Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 5).toString().split(":")[1]), 0, 59, 1));
-        EventInfor.getClose_Second().setModel(new SpinnerNumberModel(Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 5).toString().split(":")[2]), 0, 59, 1));
+        EventInformation.getClose_Hour().setModel(new SpinnerNumberModel(Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 5).toString().split(":")[0]), 0, 23, 1));
+        EventInformation.getClose_Minute().setModel(new SpinnerNumberModel(Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 5).toString().split(":")[1]), 0, 59, 1));
+        EventInformation.getClose_Second().setModel(new SpinnerNumberModel(Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 5).toString().split(":")[2]), 0, 59, 1));
 
-        EventInfor.getStageComboBox().setSelectedItem(eventListTable.getValueAt(eventListTable.getSelectedRow(), 3).toString());
-        EventInfor.getDateTextField().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 6).toString());
+        EventInformation.getStageComboBox().setSelectedItem(eventListTable.getValueAt(eventListTable.getSelectedRow(), 3).toString());
 
-        EventInfor.getTextQuantity().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 7).toString());
-        EventInfor.getTextDescription().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 8).toString());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH);
+        LocalDate localDate = LocalDate.parse(eventListTable.getValueAt(eventListTable.getSelectedRow(), 6).toString(), formatter);
+        EventInformation.getDateJDatePicker().setDate(localDate);
+
+        EventInformation.getTextQuantity().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 7).toString());
+        EventInformation.getTextDescription().setText(eventListTable.getValueAt(eventListTable.getSelectedRow(), 8).toString());
         Connection connection = UserDatabase.getConnection();
-        String sql = "SELECT EVT_POSTER FROM event WHERE EVT_ID = ?";
+        String sql = "SELECT EVT_POSTER FROM mctmsys.event WHERE EVT_ID = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 0).toString()));
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
                 Blob blob = resultSet.getBlob("EVT_POSTER");
-                EventInfor.getTextPoster().setIcon(new ImageIcon(blob.getBytes(1, (int) blob.length())));
-                EventInfor.getImage();
+                EventInformation.getTextPoster().setIcon(new ImageIcon(blob.getBytes(1, (int) blob.length())));
+                EventInformation.getImage();
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -117,7 +122,7 @@ public class EventListPanel extends JPanel {
     private void deleteEvent() {
         Integer idSelectedToDelete = Integer.parseInt(eventListTable.getValueAt(eventListTable.getSelectedRow(), 0).toString());
         Connection connection = UserDatabase.getConnection();
-        String sql = "DELETE FROM event WHERE EVT_ID = ?";
+        String sql = "DELETE FROM mctmsys.event WHERE EVT_ID = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, idSelectedToDelete);
@@ -145,7 +150,7 @@ public class EventListPanel extends JPanel {
         try {
             Connection connection = UserDatabase.getConnection();
             String sql = "SELECT EVT_ID, EVT_NAME, EVT_ARTIST, STG_NAME, EVT_DATE, EVT_OPEN_TIME, EVT_END_TIME, EVT_QUANTITY, EVT_DESCRIPTION\n" +
-                    "FROM EVENT e, STAGE s\n" +
+                    "FROM mctmsys.event e, mctmsys.stage s\n" +
                     "WHERE e.EVT_STG_ID = s.STG_ID;";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -200,7 +205,7 @@ public class EventListPanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         label1 = new JLabel();
         jtfSearch = new JTextField();
         jlbDelete = new JButton();
@@ -213,13 +218,12 @@ public class EventListPanel extends JPanel {
         //======== this ========
         setBackground(Color.white);
         setForeground(Color.white);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
-        . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "" , javax. swing .border . TitledBorder
-        . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .
-        awt . Font. BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) )
-        ;  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-        ) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
-        ;
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
+        border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER
+        ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font
+        .BOLD,12),java.awt.Color.red), getBorder())); addPropertyChangeListener(
+        new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order"
+        .equals(e.getPropertyName()))throw new RuntimeException();}});
 
         //---- label1 ----
         label1.setText("EVENT INFORMATION LIST");
@@ -290,7 +294,15 @@ public class EventListPanel extends JPanel {
                 new String[] {
                     "ID", "Name", "Artist", "Stage Name", "Open Time", "Close Time", "Date", "Quantity", "Description"
                 }
-            ));
+            ) {
+                boolean[] columnEditable = new boolean[] {
+                    false, false, false, false, false, false, false, false, false
+                };
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return columnEditable[columnIndex];
+                }
+            });
             {
                 TableColumnModel cm = eventListTable.getColumnModel();
                 cm.getColumn(0).setMinWidth(20);
@@ -312,44 +324,39 @@ public class EventListPanel extends JPanel {
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup()
-                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 1638, Short.MAX_VALUE)
+                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 1309, Short.MAX_VALUE)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup()
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 993, Short.MAX_VALUE)
-                                    .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jlbDelete)
-                                    .addGap(24, 24, 24))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(192, 192, 192)
-                                    .addComponent(label1, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                            .addGap(6, 6, 6)
+                            .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 661, Short.MAX_VALUE)
+                            .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jlbDelete)
+                            .addGap(24, 24, 24))))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(460, 460, 460)
+                    .addComponent(label1, GroupLayout.PREFERRED_SIZE, 381, GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 474, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(label1, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+                    .addGap(2, 2, 2)
                     .addGroup(layout.createParallelGroup()
+                        .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(68, 68, 68)
+                            .addGap(2, 2, 2)
                             .addGroup(layout.createParallelGroup()
-                                .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(2, 2, 2)
-                                    .addGroup(layout.createParallelGroup()
-                                        .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jlbDelete, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlbDelete, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)))))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 494, GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -358,7 +365,7 @@ public class EventListPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JLabel label1;
     private JTextField jtfSearch;
     private JButton jlbDelete;

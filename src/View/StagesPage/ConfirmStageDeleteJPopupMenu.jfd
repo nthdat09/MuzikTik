@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -7,8 +7,8 @@ new FormModel {
 			"JavaCodeGenerator.defaultVariableGetter": true
 		}
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {comp ConfirmText::l::403:x, seq l {space :p:122:p, comp YesButton:::p::p, space :p:46:p, comp NoButton:::p::p, space ::124:x}}"
-			"$verticalGroup": "par l {seq l {space :p:49:p, comp ConfirmText:::p:54:p, space :::p, par b {comp YesButton::b:p::p, comp NoButton::b:p::p}, space ::69:x}}"
+			"$horizontalGroup": "par l {seq l {space :p:106:p, comp YesButton:::p::p, space :p:35:p, comp NoButton:::p::p, space ::106:x}, seq l {space :::p, comp ConfirmText::::391:x, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :p:37:p, comp ConfirmText:::p:54:p, space s:::p, par b {comp YesButton::b:p::p, comp NoButton::b:p::p}, space ::65:x}}"
 		} ) {
 			name: "ConfirmJDialog"
 			"visible": true

@@ -49,7 +49,7 @@ public class ComfirmTicketDeleteJPopupMenu extends JDialog{
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         ConfirmJDialog = new JDialog();
         ConfirmText = new JLabel();
         YesButton = new JButton();
@@ -87,21 +87,18 @@ public class ComfirmTicketDeleteJPopupMenu extends JDialog{
                         .addGap(49, 49, 49)
                         .addComponent(NoButton, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
                         .addGap(100, 100, 100))
-                    .addGroup(GroupLayout.Alignment.TRAILING, ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ConfirmText, GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
-                        .addContainerGap())
+                    .addComponent(ConfirmText, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
             );
             ConfirmJDialogContentPaneLayout.setVerticalGroup(
                 ConfirmJDialogContentPaneLayout.createParallelGroup()
                     .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
+                        .addGap(36, 36, 36)
                         .addComponent(ConfirmText, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(ConfirmJDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(NoButton)
                             .addComponent(YesButton))
-                        .addContainerGap(70, Short.MAX_VALUE))
+                        .addContainerGap(66, Short.MAX_VALUE))
             );
             ConfirmJDialog.pack();
             ConfirmJDialog.setLocationRelativeTo(ConfirmJDialog.getOwner());
@@ -110,7 +107,7 @@ public class ComfirmTicketDeleteJPopupMenu extends JDialog{
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JDialog ConfirmJDialog;
     private JLabel ConfirmText;
     private JButton YesButton;

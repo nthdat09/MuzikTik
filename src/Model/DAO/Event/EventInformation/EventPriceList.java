@@ -1,6 +1,6 @@
 package Model.DAO.Event.EventInformation;
 
-import Model.BEAN.EventPrice;
+import Model.BEAN.Event.EventPrice;
 import Model.Database.UserDatabase;
 import View.Home.HomePanel;
 

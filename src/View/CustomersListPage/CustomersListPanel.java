@@ -4,16 +4,21 @@
 
 package View.CustomersListPage;
 
+import java.awt.event.*;
 import Controller.CustomerPanel.CustomerListListener;
-import Model.BEAN.Customer;
+import Model.BEAN.Customer.Customer;
+import Model.BEAN.Seat.Seat;
+import Model.BEAN.TicketBooking.TicketBooking;
 import Model.DAO.Customer.CustomerDAO;
 import Model.DAO.Customer.CustomerListDAO;
+import Model.DAO.Seat.SeatDAO;
+import Model.DAO.Ticket_Booking.TicketBookingDAO;
 import View.MainPage.MainPage;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -106,10 +111,84 @@ public class CustomersListPanel extends JPanel{
         return jtfSearch;
     }
 
+    private void CustomerListTableMouseClicked(MouseEvent e) {
+        if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
+            ShowPurchasedHistory(e);
+        }
+    }
+
+    private void ShowPurchasedHistory(MouseEvent e) {
+        int index = CustomerListTable.getSelectedRow();
+        TableModel model = CustomerListTable.getModel();
+
+        String id = model.getValueAt(index, 0).toString();
+
+        List<TicketBooking> purchasedTicket = TicketBookingDAO.getTicketByCustomerID(Integer.parseInt(id));
+        List<String> SeatTypeTicket = new ArrayList<>();
+
+        for (TicketBooking ticketBooking : purchasedTicket) {
+            String seatType = SeatDAO.getSeatTypeByID(ticketBooking.getSeatID(), ticketBooking.getStageID());
+            SeatTypeTicket.add(seatType);
+        }
+
+        JTable purchasedTicketTable = new JTable();
+        purchasedTicketTable.setModel(new DefaultTableModel(
+                new Object[][] {
+                },
+                new String[] {
+                        "Ticket ID", "Event ID", "Price", "Stage ID", "Seat ID", "Seat Type"
+                }
+        ));
+
+        for (TicketBooking ticketBooking : purchasedTicket) {
+            Object[] row = new Object[6];
+            row[0] = ticketBooking.getTicketID();
+            row[1] = ticketBooking.getEventID();
+            row[2] = ticketBooking.getPrice();
+            row[3] = ticketBooking.getStageID();
+            row[4] = ticketBooking.getSeatID();
+            row[5] = SeatTypeTicket.get(purchasedTicket.indexOf(ticketBooking));
+            ((DefaultTableModel) purchasedTicketTable.getModel()).addRow(row);
+        }
+
+        purchasedTicketTable.setAutoCreateRowSorter(true);
+        purchasedTicketTable.setRowHeight(30);
+        purchasedTicketTable.setGridColor(Color.black);
+        purchasedTicketTable.setBackground(Color.white);
+        purchasedTicketTable.setForeground(Color.black);
+        purchasedTicketTable.setFont(new Font("Arial", Font.PLAIN, 15));
+        purchasedTicketTable.getTableHeader().setFont(new Font("Arial", Font.BOLD, 15));
+        purchasedTicketTable.getTableHeader().setOpaque(false);
+        purchasedTicketTable.getTableHeader().setBackground(Color.black);
+        purchasedTicketTable.getTableHeader().setForeground(Color.white);
+        purchasedTicketTable.getTableHeader().setReorderingAllowed(false);
+        purchasedTicketTable.getTableHeader().setResizingAllowed(false);
+        purchasedTicketTable.setRowSelectionAllowed(true);
+        purchasedTicketTable.setColumnSelectionAllowed(false);
+        purchasedTicketTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        purchasedTicketTable.setPreferredScrollableViewportSize(purchasedTicketTable.getPreferredSize());
+        purchasedTicketTable.setFillsViewportHeight(true);
+
+        TableColumnModel columnModel = purchasedTicketTable.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(100);
+        columnModel.getColumn(1).setPreferredWidth(100);
+        columnModel.getColumn(2).setPreferredWidth(100);
+        columnModel.getColumn(3).setPreferredWidth(100);
+        columnModel.getColumn(4).setPreferredWidth(100);
+        columnModel.getColumn(5).setPreferredWidth(100);
+
+        purchasedTicketTable.setPreferredScrollableViewportSize(purchasedTicketTable.getPreferredSize());
+        purchasedTicketTable.setFillsViewportHeight(true);
+
+        JScrollPane scrollPane = new JScrollPane(purchasedTicketTable);
+        scrollPane.setPreferredSize(new Dimension(500, 200));
+        JOptionPane.showMessageDialog(null, scrollPane, "Purchased Ticket", JOptionPane.INFORMATION_MESSAGE);
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         scrollPane1 = new JScrollPane();
         CustomerListTable = new JTable();
         textField1 = new JLabel();
@@ -122,13 +201,12 @@ public class CustomersListPanel extends JPanel{
         //======== this ========
         setBackground(Color.white);
         setName("customersListPage");
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-        swing. border. EmptyBorder( 0, 0, 0, 0) , "", javax. swing. border
-        . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
-        ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder
-        ( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-        .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
-        ( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+        EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing
+        . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+        java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+        { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () ))
+        throw new RuntimeException( ); }} );
 
         //======== scrollPane1 ========
         {
@@ -140,18 +218,31 @@ public class CustomersListPanel extends JPanel{
                 new String[] {
                     "ID", "Name", "Username", "Password", "Phone Number", "Email", "Address", "Type", "Total Point", "Balance"
                 }
-            ));
+            ) {
+                boolean[] columnEditable = new boolean[] {
+                    false, false, false, false, false, false, false, false, false, false
+                };
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return columnEditable[columnIndex];
+                }
+            });
             {
                 TableColumnModel cm = CustomerListTable.getColumnModel();
                 cm.getColumn(0).setMinWidth(2);
             }
-            CustomerListTable.setAutoCreateRowSorter(true);
             CustomerListTable.setName("cusListTable");
             CustomerListTable.setFont(new Font("Lato", Font.PLAIN, 13));
             CustomerListTable.setGridColor(Color.lightGray);
             CustomerListTable.setSelectionBackground(new Color(0x61b884));
             CustomerListTable.setBorder(null);
             CustomerListTable.setSelectionForeground(Color.white);
+            CustomerListTable.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    CustomerListTableMouseClicked(e);
+                }
+            });
             scrollPane1.setViewportView(CustomerListTable);
         }
 
@@ -197,25 +288,24 @@ public class CustomersListPanel extends JPanel{
         layout.setHorizontalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
+                    .addGap(425, 425, 425)
+                    .addComponent(textField1)
+                    .addContainerGap(425, Short.MAX_VALUE))
+                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(78, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup()
+                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 1081, GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(377, 377, 377)
-                            .addComponent(textField1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(25, 25, 25)
-                            .addGroup(layout.createParallelGroup()
-                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 1081, GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(337, 337, 337)
-                                    .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jlbDelete)))))
-                    .addContainerGap(129, Short.MAX_VALUE))
+                            .addComponent(jtfSearch, GroupLayout.PREFERRED_SIZE, 288, GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jlbSearch, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+                            .addGap(337, 337, 337)
+                            .addComponent(jlbAdd, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jlbEdit, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jlbDelete)))
+                    .addGap(68, 68, 68))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
@@ -231,13 +321,13 @@ public class CustomersListPanel extends JPanel{
                         .addComponent(jlbDelete))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 555, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(34, Short.MAX_VALUE))
+                    .addContainerGap(29, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JScrollPane scrollPane1;
     private JTable CustomerListTable;
     private JLabel textField1;

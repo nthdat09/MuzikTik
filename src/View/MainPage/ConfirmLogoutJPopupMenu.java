@@ -61,7 +61,7 @@ public class ConfirmLogoutJPopupMenu extends JDialog{
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         ConfirmJDialog = new JDialog();
         ConfirmText = new JLabel();
         YesButton = new JButton();
@@ -95,25 +95,26 @@ public class ConfirmLogoutJPopupMenu extends JDialog{
             ConfirmJDialogContentPaneLayout.setHorizontalGroup(
                 ConfirmJDialogContentPaneLayout.createParallelGroup()
                     .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                        .addContainerGap(80, Short.MAX_VALUE)
+                        .addContainerGap(90, Short.MAX_VALUE)
                         .addComponent(YesButton, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
+                        .addGap(42, 42, 42)
                         .addComponent(NoButton, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-                        .addGap(104, 104, 104))
+                        .addGap(93, 93, 93))
                     .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(ConfirmText, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE))
+                        .addComponent(ConfirmText, GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                        .addContainerGap())
             );
             ConfirmJDialogContentPaneLayout.setVerticalGroup(
                 ConfirmJDialogContentPaneLayout.createParallelGroup()
                     .addGroup(ConfirmJDialogContentPaneLayout.createSequentialGroup()
-                        .addContainerGap(74, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
                         .addComponent(ConfirmText, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(ConfirmJDialogContentPaneLayout.createParallelGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(ConfirmJDialogContentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(YesButton)
                             .addComponent(NoButton))
-                        .addGap(92, 92, 92))
+                        .addContainerGap(54, Short.MAX_VALUE))
             );
             ConfirmJDialog.pack();
             ConfirmJDialog.setLocationRelativeTo(ConfirmJDialog.getOwner());
@@ -122,7 +123,7 @@ public class ConfirmLogoutJPopupMenu extends JDialog{
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JDialog ConfirmJDialog;
     private JLabel ConfirmText;
     private JButton YesButton;

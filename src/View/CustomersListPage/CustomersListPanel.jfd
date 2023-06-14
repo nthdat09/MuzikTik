@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -7,8 +7,8 @@ new FormModel {
 			"JavaCodeGenerator.defaultVariableGetter": true
 		}
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {par l {seq l {space :p:377:p, comp textField1:::p::p}, seq l {space :p:25:p, par l {comp scrollPane1:::p:1081:p, seq {comp jtfSearch:::p:288:p, space s:::p, comp jlbSearch:::p:111:p, space :p:337:p, comp jlbAdd:::p:100:p, space :p:18:p, comp jlbEdit:::p:100:p, space s:::p, comp jlbDelete:::p::p}}}}, space ::129:x}}"
-			"$verticalGroup": "par l {seq l {space :p:21:p, comp textField1:::p::p, space u:::p, par b {comp jlbSearch::b:p:26:p, comp jtfSearch::b:p::p, comp jlbAdd::b:p:26:p, comp jlbEdit::b:p:26:p, comp jlbDelete::b:p::p}, space u:::p, comp scrollPane1:::p:555:p, space ::34:x}}"
+			"$horizontalGroup": "par l {seq {space :p:425:p, comp textField1:::p::p, space ::425:x}, seq t {space ::78:x, par l {comp scrollPane1:::p:1081:p, seq l {comp jtfSearch:::p:288:p, space s:::p, comp jlbSearch:::p:111:p, space :p:337:p, comp jlbAdd:::p:100:p, space :p:18:p, comp jlbEdit:::p:100:p, space s:::p, comp jlbDelete:::p::p}}, space :p:68:p}}"
+			"$verticalGroup": "par l {seq l {space :p:21:p, comp textField1:::p::p, space u:::p, par b {comp jlbSearch::b:p:26:p, comp jtfSearch::b:p::p, comp jlbAdd::b:p:26:p, comp jlbEdit::b:p:26:p, comp jlbDelete::b:p::p}, space u:::p, comp scrollPane1:::p:555:p, space ::29:x}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -43,16 +43,16 @@ new FormModel {
 						add( null )
 						add( null )
 					}, new java.util.Vector {
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
 					}, new java.util.Vector {
 						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 2, 0, true ) )
 						add( null )
@@ -65,7 +65,6 @@ new FormModel {
 						add( null )
 						add( null )
 					} )
-					"autoCreateRowSorter": true
 					"name": "cusListTable"
 					"font": new java.awt.Font( "Lato", 0, 13 )
 					"gridColor": sfield java.awt.Color lightGray
@@ -76,6 +75,7 @@ new FormModel {
 						"JavaCodeGenerator.variableName": "CustomerListTable"
 						"JavaCodeGenerator.variableGetter": true
 					}
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "CustomerListTableMouseClicked", true ) )
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {

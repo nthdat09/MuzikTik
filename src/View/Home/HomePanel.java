@@ -6,7 +6,11 @@ package View.Home;
 
 import javax.swing.border.*;
 import Controller.EventListPanel;
-import Model.BEAN.*;
+import Model.BEAN.Event.EventInformation;
+import Model.BEAN.Event.EventList;
+import Model.BEAN.Event.EventArtID;
+import Model.BEAN.Event.EventPrice;
+import Model.BEAN.Stage.StageInformation;
 import Model.DAO.Event.Event;
 import Model.DAO.Event.EventInformation.*;
 import View.EventPage.EventPanel;
@@ -456,7 +460,7 @@ public class HomePanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - man
+        // Generated using JFormDesigner Evaluation license - Dat
         mainScrollPanel = new JScrollPane();
         panel2 = new JPanel();
         mainLivePicture = new JLabel();
@@ -504,13 +508,12 @@ public class HomePanel extends JPanel {
         //======== this ========
         setBackground(Color.white);
         setMaximumSize(new Dimension(33912, 2000));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
-        .swing.border.EmptyBorder(0,0,0,0), "",javax.swing
-        .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
-        Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.red
-        ), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
-        public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName(
-        )))throw new RuntimeException();}});
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
+        .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax
+        . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,
+        12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans
+        .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e.
+        getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
         //======== mainScrollPanel ========
         {
@@ -993,7 +996,7 @@ public class HomePanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - man
+    // Generated using JFormDesigner Evaluation license - Dat
     private JScrollPane mainScrollPanel;
     private JPanel panel2;
     private JLabel mainLivePicture;

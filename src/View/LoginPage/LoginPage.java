@@ -1,7 +1,7 @@
 package View.LoginPage;
 
 import Controller.LoginPage.LoginPageListener;
-import Model.BEAN.Employee;
+import Model.BEAN.Employee.Employee;
 import Model.DAO.Employee.EmployeeDAO;
 import View.LoginPage.ForgetPasswordPage.ForgotPasswordPage_1;
 import View.LoginPage.RegisterAccountPage.RegisterAccountPage_1;

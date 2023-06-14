@@ -1,7 +1,7 @@
 package Model.DAO.Customer;
 
 import Model.Database.UserDatabase;
-import Model.BEAN.Customer;
+import Model.BEAN.Customer.Customer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

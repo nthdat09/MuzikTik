@@ -5,7 +5,7 @@
 package View.SettingPage;
 
 import Controller.AccountPanel.AccountPanelController;
-import Model.BEAN.Employee;
+import Model.BEAN.Employee.Employee;
 import Model.DAO.Employee.EmployeeDAO;
 import View.MainPage.MainPage;
 import com.github.lgooddatepicker.components.DatePicker;
@@ -56,7 +56,6 @@ public class AccountPanel extends JPanel {
         getEmailJtf().setText(employee.getEmail());
         getAddressJtf().setText(employee.getAddress());
         getPhoneJtf().setText(String.valueOf(employee.getPhoneNumber()));
-        
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
         if (employee.getDOB().equals("")){
@@ -185,7 +184,7 @@ public class AccountPanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         jbtCancel = new JButton();
         jbtSave = new JButton();
         jlbMyAccount = new JLabel();
@@ -206,13 +205,14 @@ public class AccountPanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-        . border. EmptyBorder( 0, 0, 0, 0) , "", javax. swing. border. TitledBorder
-        . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
-        awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder( )) )
-        ;  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-        ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-        ;
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder (
+        new javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion"
+        , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
+        , new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 )
+        ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener(
+        new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+        ) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+        ;} } );
 
         //---- jbtCancel ----
         jbtCancel.setText("CANCEL");
@@ -311,14 +311,6 @@ public class AccountPanel extends JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(404, 404, 404)
-                    .addComponent(jlbMyAccount)
-                    .addGap(0, 0, Short.MAX_VALUE))
-                .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(101, 101, 101)
-                    .addComponent(UploadJbt)
-                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(layout.createSequentialGroup()
                     .addGap(60, 60, 60)
                     .addComponent(desktopPane1, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
                     .addGap(36, 36, 36)
@@ -351,19 +343,28 @@ public class AccountPanel extends JPanel {
                     .addGap(27, 27, 27)
                     .addComponent(jbtCancel, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
                     .addGap(35, 35, 35))
+                .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup()
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(101, 101, 101)
+                            .addComponent(UploadJbt))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(426, 426, 426)
+                            .addComponent(jlbMyAccount)))
+                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup()
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(jlbMyAccount)
-                            .addGap(26, 26, 26)
+                            .addGap(90, 90, 90)
                             .addComponent(desktopPane1, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18))
                         .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addContainerGap()
+                            .addComponent(jlbMyAccount)
+                            .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup()
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jlbUsername)
@@ -393,13 +394,13 @@ public class AccountPanel extends JPanel {
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(jbtCancel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(jbtSave, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(149, Short.MAX_VALUE))
+                    .addContainerGap(143, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JButton jbtCancel;
     private JButton jbtSave;
     private JLabel jlbMyAccount;

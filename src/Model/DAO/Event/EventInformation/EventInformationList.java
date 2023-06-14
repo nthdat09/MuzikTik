@@ -1,6 +1,6 @@
 package Model.DAO.Event.EventInformation;
 
-import Model.BEAN.EventInformation;
+import Model.BEAN.Event.EventInformation;
 import Model.Database.UserDatabase;
 import View.Home.HomePanel;
 

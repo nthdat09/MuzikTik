@@ -1,11 +1,8 @@
 package View.LoginPage.RegisterAccountPage;
 
-import Controller.LoginPage.ForgetPassword.ForgetPasswordPage3Listener;
 import Controller.LoginPage.RegisterAccount.RegisterAccountPageListener_3;
-import Model.BEAN.Customer;
+import Model.BEAN.Customer.Customer;
 import Model.DAO.Customer.CustomerDAO;
-import Model.DAO.Employee.EmployeeDAO;
-import View.LoginPage.ForgetPasswordPage.ForgotPasswordPage_2;
 import View.LoginPage.LoginPage;
 import org.apache.commons.mail.EmailException;
 

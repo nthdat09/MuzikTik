@@ -1,7 +1,7 @@
 package Model.DAO.Employee;
 
 import Model.Database.UserDatabase;
-import Model.BEAN.Employee;
+import Model.BEAN.Employee.Employee;
 
 import java.sql.*;
 import java.util.ArrayList;

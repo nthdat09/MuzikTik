@@ -1,10 +1,9 @@
 package Controller.Menu;
 
-import Model.BEAN.MenuList;
+import Model.BEAN.Menu.MenuList;
 import View.AnalyticPage.AnalyticPage;
 import View.CustomersListPage.CustomersListPanel;
 import View.EventListPanel.EventListPanel;
-import View.EventPage.EventInfor;
 import View.Home.HomePanel;
 import View.PartnerPage.PartnerListPanel;
 import View.SettingPage.AccountPanel;

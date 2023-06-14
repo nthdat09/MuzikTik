@@ -1,6 +1,6 @@
 package Model.DAO.Ticket;
 
-import Model.BEAN.Ticket;
+import Model.BEAN.TicketBooking.TicketBooking;
 import Model.Database.UserDatabase;
 
 import java.sql.Connection;
@@ -15,9 +15,9 @@ public class TicketListDAO {
         return new TicketListDAO();
     }
 
-    public static List<Ticket> getList() {
-        List<Ticket> result = new ArrayList<>();
-        Ticket ticket;
+    public static List<TicketBooking> getList() {
+        List<TicketBooking> result = new ArrayList<>();
+        TicketBooking ticketBooking;
         try {
             Connection con = UserDatabase.getConnection();
 
@@ -33,8 +33,8 @@ public class TicketListDAO {
                 int stageID = rs.getInt("TKT_STG_ID");
                 int seatID = rs.getInt("TKT_SEAT_ID");
 
-                ticket = new Ticket(ticketID, eventID, price, stageID, seatID);
-                result.add(ticket);
+                ticketBooking = new TicketBooking(ticketID, eventID, price, stageID, seatID);
+                result.add(ticketBooking);
             }
 
             ps.close();
