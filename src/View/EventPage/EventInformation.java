@@ -238,6 +238,8 @@ public class EventInformation extends JPanel {
                         Close_Second.setValue(0);
                         getDateJDatePicker().setText("");
                         TextID.setText(getLastestID.getLatestID() + 1 + "");
+
+                        MainPage.changeView(new EventListPanel(), MainPage.getJlbEvent(), "Event List");
                     } catch (Exception err) {
                         JOptionPane.showMessageDialog(null, err);
                     }

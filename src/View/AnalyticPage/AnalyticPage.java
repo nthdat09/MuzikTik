@@ -111,16 +111,16 @@ public class AnalyticPage extends JPanel {
             case "Event-based Ticket Revenue":
                 String event = textEvent.getText();
                 DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();
-                String sqlEventTicket = "SELECT EVT_NAME, SUM(TKT_PRICE) AS TOTAL_REVENUE\n" +
-                        "FROM EVENT\n" +
-                        "JOIN TICKET ON EVENT.EVT_ID = TICKET.TKT_EVT_ID\n" +
-                        "JOIN TICKET_BOOKING ON TICKET.TKT_ID = TICKET_BOOKING.TBK_TKT_ID\n" +
-                        "WHERE EVT_NAME = '" + event + "';";
+                String sqlEventTicket = "SELECT SEAT_TYPE, SUM(TKT_PRICE) AS TOTAL_REVENUE FROM EVENT JOIN TICKET ON EVENT.EVT_ID = TICKET.TKT_EVT_ID\n" +
+                        "                        join ticket_booking tb on ticket.TKT_ID = tb.TBK_TKT_ID\n" +
+                        "                        JOIN seat s on ticket.TKT_SEAT_ID = s.SEAT_ID and ticket.TKT_STG_ID = s.SEAT_STG_ID\n" +
+                        "                                                  WHERE EVT_NAME = " + event + "\n" +
+                        "                        group by SEAT_TYPE;";
                 try {
                     PreparedStatement ps = con.prepareStatement(sqlEventTicket);
                     ResultSet rs = ps.executeQuery();
                     while(rs.next()) {
-                        String type = rs.getString("EVT_NAME");
+                        String type = rs.getString("SEAT_TYPE");
                         int revenue = rs.getInt("TOTAL_REVENUE");
                         dataset2.setValue(revenue, "Revenue", type);
                     }

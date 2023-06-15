@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.*;
 
 /**
@@ -26,19 +27,8 @@ public class NewCustomerEvent extends JPanel {
     public NewCustomerEvent(int newID) {
         initComponents();
         this.IDField.setText(String.valueOf(newID));
-    }
-    public void initMoreSetting(Customer customer) {
-        this.NameField.setText(customer.getName());
-        this.AddressField.setText(customer.getAddress());
-        this.PhoneNumberFiled.setText(customer.getPhoneNumber());
-        this.TotalPointVal.setText(String.valueOf(customer.getTotalPoint()));
-        this.EmailField.setText(customer.getEmail());
-        this.TypeField.setText(customer.getType());
-        this.UserNameField.setText(customer.getUsername());
-        this.PasswordField.setText(customer.getPassword());
-        this.selectedID = customer.getId();
-        this.IDField.setText(String.valueOf(customer.getId()));
-        System.out.println("selected id = " + this.selectedID);
+        this.TotalPointVal.setText("0");
+        this.TypeField.setText("MEMBER");
     }
     public static void settingForNewCustomer(String name, String phone, String email) {
         NameField.setText(name);
@@ -53,7 +43,7 @@ public class NewCustomerEvent extends JPanel {
         } else {
             try {
                 Connection connection = UserDatabase.getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO customer VALUES (?,?,?,?,?,?,?,?)");
+                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO customer VALUES (?,?,?,?,?,?,?,?,?,?)");
                 preparedStatement.setInt(1, Integer.parseInt(this.IDField.getText()));
                 preparedStatement.setString(2, this.NameField.getText());
                 preparedStatement.setString(3, this.PhoneNumberFiled.getText());
@@ -62,14 +52,17 @@ public class NewCustomerEvent extends JPanel {
                 preparedStatement.setString(6, this.TypeField.getText());
                 preparedStatement.setInt(7, Integer.parseInt(this.TotalPointVal.getText()));
                 preparedStatement.setString(8, null);
-                preparedStatement.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Add new customer successfully");
-                connection.close();
+                preparedStatement.setString(9, this.UserNameField.getText().toString());
+                preparedStatement.setString(10,this.PasswordField.getText().toString());
+                preparedStatement.execute();
+
+                JOptionPane.showMessageDialog(null,"Register for new customer successfully!");
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
         }
     }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -98,7 +91,7 @@ public class NewCustomerEvent extends JPanel {
         //======== this ========
         setBackground(Color.white);
         setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
-        .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax
+        .EmptyBorder ( 0, 0 ,0 , 0) ,  "" , javax. swing .border . TitledBorder. CENTER ,javax
         . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,
         12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans
         .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e.

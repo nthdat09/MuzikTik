@@ -4,7 +4,9 @@
 
 package View.EventPage;
 
+import java.awt.event.*;
 import Model.BEAN.Customer.CustomerBuyTicket;
+import Model.BEAN.Event.EventSuggestionTextField;
 import Model.BEAN.Ticket.TicketID;
 import Model.DAO.Customer.CustomerListDAO;
 import Model.DAO.Event.EventInformation.BookingTicket;
@@ -44,8 +46,29 @@ public class EventPanel extends JPanel {
     public EventPanel() {
         initComponents();
         initSetting();
+        initCustomerName();
+        fullNameText.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusLost(java.awt.event.FocusEvent evt) {
+            }
+        });
     }
-    
+
+    private void initCustomerName() {
+        Connection connection = UserDatabase.getConnection();
+        String sql = "SELECT CUS_NAME FROM customer";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String name = resultSet.getString("CUS_NAME");
+                fullNameText.addItemSuggestion(name);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
     private void initSetting() {
         selectedTab(0);
         scrollPane1.getVerticalScrollBar().setUnitIncrement(19);
@@ -591,9 +614,29 @@ public class EventPanel extends JPanel {
         return BuySeatTable;
     }
 
+    private void fullNameTextKeyTyped(KeyEvent e) {
+        int c = e.getKeyChar();
+        if (c == KeyEvent.VK_ENTER) {
+            Connection connection = UserDatabase.getConnection();
+            String sql = "SELECT CUS_EMAIL, CUS_PHONE_NUMBER FROM customer WHERE CUS_NAME = '" + fullNameText.getText().toString() + "'";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    String email = resultSet.getString("CUS_EMAIL");
+                    String phoneNumber = resultSet.getString("CUS_PHONE_NUMBER");
+                    emailText.setText(email);
+                    phoneNumberText.setText(phoneNumber);
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - man
         jpnEventHeader = new JPanel();
         EventArt = new JLabel();
         EventName = new JLabel();
@@ -661,7 +704,7 @@ public class EventPanel extends JPanel {
         label3 = new JLabel();
         label4 = new JLabel();
         label5 = new JLabel();
-        fullNameText = new JTextField();
+        fullNameText = new EventSuggestionTextField();
         emailText = new JTextField();
         phoneNumberText = new JTextField();
         JlbInforCus2 = new JLabel();
@@ -676,11 +719,12 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
-        , 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-        , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
-         getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-        ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+        EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
+        . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+        java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+        { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
+        throw new RuntimeException( ); }} );
         setLayout(null);
 
         //======== jpnEventHeader ========
@@ -1408,16 +1452,21 @@ public class EventPanel extends JPanel {
                     //======== panel1 ========
                     {
                         panel1.setBackground(Color.white);
+                        panel1.setLayout(null);
 
                         //---- JlbInforCus ----
                         JlbInforCus.setText("CUSTOMER INFORMATION");
                         JlbInforCus.setFont(new Font("Lato Black", Font.BOLD, 18));
                         JlbInforCus.setForeground(new Color(0x61b884));
+                        panel1.add(JlbInforCus);
+                        JlbInforCus.setBounds(33, 33, 258, 39);
 
                         //---- jlbPayment ----
                         jlbPayment.setText("PAYMENT METHOD");
                         jlbPayment.setForeground(new Color(0x61b884));
                         jlbPayment.setFont(new Font("Lato Black", Font.BOLD, 18));
+                        panel1.add(jlbPayment);
+                        jlbPayment.setBounds(33, 189, 513, 46);
 
                         //---- checkBox1 ----
                         checkBox1.setText("Cash");
@@ -1428,6 +1477,8 @@ public class EventPanel extends JPanel {
 			checkBox1(e);
 			checkBox1(e);
 		});
+                        panel1.add(checkBox1);
+                        checkBox1.setBounds(new Rectangle(new Point(33, 241), checkBox1.getPreferredSize()));
 
                         //---- checkBox3 ----
                         checkBox3.setText("Payment using MuzicTik Wallet");
@@ -1435,6 +1486,8 @@ public class EventPanel extends JPanel {
                         checkBox3.setFont(new Font("Lato Black", Font.BOLD, 16));
                         checkBox3.setBackground(Color.white);
                         checkBox3.addActionListener(e -> checkBox3(e));
+                        panel1.add(checkBox3);
+                        checkBox3.setBounds(33, 278, 314, checkBox3.getPreferredSize().height);
 
                         //======== jpnBack ========
                         {
@@ -1471,6 +1524,8 @@ public class EventPanel extends JPanel {
                                     .addComponent(jlbBack, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             );
                         }
+                        panel1.add(jpnBack);
+                        jpnBack.setBounds(760, 311, jpnBack.getPreferredSize().width, 44);
 
                         //======== jpnNext ========
                         {
@@ -1502,58 +1557,88 @@ public class EventPanel extends JPanel {
                                     .addComponent(jlbNext, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                             );
                         }
+                        panel1.add(jpnNext);
+                        jpnNext.setBounds(new Rectangle(new Point(954, 311), jpnNext.getPreferredSize()));
 
                         //---- label3 ----
                         label3.setText("Full Name:");
                         label3.setForeground(new Color(0x626262));
                         label3.setFont(new Font("Lato Black", Font.BOLD, 16));
+                        panel1.add(label3);
+                        label3.setBounds(new Rectangle(new Point(33, 69), label3.getPreferredSize()));
 
                         //---- label4 ----
                         label4.setText("Email:");
                         label4.setForeground(new Color(0x626262));
                         label4.setFont(new Font("Lato Black", Font.BOLD, 16));
+                        panel1.add(label4);
+                        label4.setBounds(new Rectangle(new Point(33, 116), label4.getPreferredSize()));
 
                         //---- label5 ----
                         label5.setText("Phone Number:");
                         label5.setForeground(new Color(0x626262));
                         label5.setFont(new Font("Lato Black", Font.BOLD, 16));
+                        panel1.add(label5);
+                        label5.setBounds(new Rectangle(new Point(33, 162), label5.getPreferredSize()));
 
                         //---- fullNameText ----
                         fullNameText.setFont(new Font("Lato", Font.PLAIN, 16));
                         fullNameText.setForeground(new Color(0x61b884));
+                        fullNameText.addKeyListener(new KeyAdapter() {
+                            @Override
+                            public void keyTyped(KeyEvent e) {
+                                fullNameTextKeyTyped(e);
+                            }
+                        });
+                        panel1.add(fullNameText);
+                        fullNameText.setBounds(155, 70, 246, 30);
 
                         //---- emailText ----
                         emailText.setFont(new Font("Lato", Font.PLAIN, 16));
                         emailText.setForeground(new Color(0x61b884));
+                        panel1.add(emailText);
+                        emailText.setBounds(155, 115, 246, 29);
 
                         //---- phoneNumberText ----
                         phoneNumberText.setFont(new Font("Lato", Font.PLAIN, 16));
                         phoneNumberText.setForeground(new Color(0x61b884));
+                        panel1.add(phoneNumberText);
+                        phoneNumberText.setBounds(157, 160, 246, 29);
 
                         //---- JlbInforCus2 ----
                         JlbInforCus2.setText("TICKET INFORMATION");
                         JlbInforCus2.setFont(new Font("Lato Black", Font.BOLD, 18));
                         JlbInforCus2.setForeground(new Color(0x61b884));
+                        panel1.add(JlbInforCus2);
+                        JlbInforCus2.setBounds(555, 33, 224, 39);
 
                         //---- label1 ----
                         label1.setText("Quantity:");
                         label1.setForeground(new Color(0x61b884));
                         label1.setFont(new Font("Lato Black", Font.BOLD, 16));
+                        panel1.add(label1);
+                        label1.setBounds(558, 202, 91, label1.getPreferredSize().height);
 
                         //---- label2 ----
                         label2.setText("Total:");
                         label2.setForeground(new Color(0x61b884));
                         label2.setFont(new Font("Lato Black", Font.BOLD, 16));
+                        panel1.add(label2);
+                        label2.setBounds(558, 243, 69, 19);
 
                         //---- totalDisplay ----
                         totalDisplay.setText("text");
                         totalDisplay.setFont(new Font("Lato Black", Font.BOLD, 16));
                         totalDisplay.setForeground(new Color(0x666666));
+                        panel1.add(totalDisplay);
+                        totalDisplay.setBounds(655, 241, 171, totalDisplay.getPreferredSize().height);
 
                         //---- quantityDisplay ----
                         quantityDisplay.setText("text");
                         quantityDisplay.setFont(new Font("Lato Black", Font.BOLD, 16));
                         quantityDisplay.setForeground(new Color(0x666666));
+                        panel1.add(quantityDisplay);
+                        quantityDisplay.setBounds(655, 202, 171, quantityDisplay.getPreferredSize().height);
 
                         //======== scrollPane4 ========
                         {
@@ -1569,94 +1654,23 @@ public class EventPanel extends JPanel {
                             BuySeatTable.setFont(new Font("Lato", Font.PLAIN, 14));
                             scrollPane4.setViewportView(BuySeatTable);
                         }
+                        panel1.add(scrollPane4);
+                        scrollPane4.setBounds(555, 78, 547, 111);
 
-                        GroupLayout panel1Layout = new GroupLayout(panel1);
-                        panel1.setLayout(panel1Layout);
-                        panel1Layout.setHorizontalGroup(
-                            panel1Layout.createParallelGroup()
-                                .addGroup(panel1Layout.createSequentialGroup()
-                                    .addGap(33, 33, 33)
-                                    .addGroup(panel1Layout.createParallelGroup()
-                                        .addGroup(panel1Layout.createSequentialGroup()
-                                            .addGroup(panel1Layout.createParallelGroup()
-                                                .addComponent(label4)
-                                                .addComponent(label3)
-                                                .addComponent(label5))
-                                            .addGap(6, 6, 6)
-                                            .addGroup(panel1Layout.createParallelGroup()
-                                                .addComponent(emailText, GroupLayout.PREFERRED_SIZE, 246, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(fullNameText, GroupLayout.PREFERRED_SIZE, 246, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(phoneNumberText, GroupLayout.PREFERRED_SIZE, 246, GroupLayout.PREFERRED_SIZE)))
-                                        .addComponent(JlbInforCus, GroupLayout.PREFERRED_SIZE, 258, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jlbPayment, GroupLayout.PREFERRED_SIZE, 513, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(checkBox3, GroupLayout.PREFERRED_SIZE, 314, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(checkBox1))
-                                    .addGroup(panel1Layout.createParallelGroup()
-                                        .addGroup(panel1Layout.createSequentialGroup()
-                                            .addGap(12, 12, 12)
-                                            .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                                .addGroup(panel1Layout.createSequentialGroup()
-                                                    .addComponent(label2, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(totalDisplay, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(panel1Layout.createSequentialGroup()
-                                                    .addComponent(label1, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(quantityDisplay, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))))
-                                        .addGroup(panel1Layout.createSequentialGroup()
-                                            .addGap(9, 9, 9)
-                                            .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                                .addGroup(panel1Layout.createSequentialGroup()
-                                                    .addComponent(jpnBack, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(28, 28, 28)
-                                                    .addComponent(jpnNext, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(panel1Layout.createParallelGroup()
-                                                    .addComponent(JlbInforCus2, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(scrollPane4, GroupLayout.PREFERRED_SIZE, 547, GroupLayout.PREFERRED_SIZE)))))
-                                    .addContainerGap(357, Short.MAX_VALUE))
-                        );
-                        panel1Layout.setVerticalGroup(
-                            panel1Layout.createParallelGroup()
-                                .addGroup(panel1Layout.createSequentialGroup()
-                                    .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                        .addGroup(panel1Layout.createSequentialGroup()
-                                            .addGap(25, 25, 25)
-                                            .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                .addComponent(JlbInforCus, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(JlbInforCus2, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(scrollPane4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(GroupLayout.Alignment.LEADING, panel1Layout.createSequentialGroup()
-                                            .addGap(68, 68, 68)
-                                            .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                .addComponent(label3)
-                                                .addComponent(fullNameText, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-                                            .addGap(23, 23, 23)
-                                            .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                .addComponent(label4)
-                                                .addComponent(emailText, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-                                            .addGap(18, 18, 18)
-                                            .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                .addComponent(label5)
-                                                .addComponent(phoneNumberText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jlbPayment, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(label1)
-                                        .addComponent(quantityDisplay))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(panel1Layout.createParallelGroup()
-                                        .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                            .addComponent(label2, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(totalDisplay))
-                                        .addComponent(checkBox1))
-                                    .addGap(10, 10, 10)
-                                    .addComponent(checkBox3)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(panel1Layout.createParallelGroup()
-                                        .addComponent(jpnNext, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jpnBack, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGap(519, 519, 519))
-                        );
+                        {
+                            // compute preferred size
+                            Dimension preferredSize = new Dimension();
+                            for(int i = 0; i < panel1.getComponentCount(); i++) {
+                                Rectangle bounds = panel1.getComponent(i).getBounds();
+                                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                            }
+                            Insets insets = panel1.getInsets();
+                            preferredSize.width += insets.right;
+                            preferredSize.height += insets.bottom;
+                            panel1.setMinimumSize(preferredSize);
+                            panel1.setPreferredSize(preferredSize);
+                        }
                     }
                     scrollPane2.setViewportView(panel1);
                 }
@@ -1699,7 +1713,7 @@ public class EventPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - man
     private JPanel jpnEventHeader;
     private static JLabel EventArt;
     private static JLabel EventName;
@@ -1767,7 +1781,7 @@ public class EventPanel extends JPanel {
     private JLabel label3;
     private JLabel label4;
     private JLabel label5;
-    private static JTextField fullNameText;
+    private static EventSuggestionTextField fullNameText;
     private static JTextField emailText;
     private static JTextField phoneNumberText;
     private JLabel JlbInforCus2;
