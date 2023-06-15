@@ -603,6 +603,7 @@ new FormModel {
 								auxiliary() {
 									"JavaCodeGenerator.variableModifiers": 10
 								}
+								addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "fullNameTextFocusLost", true ) )
 								addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "fullNameTextKeyTyped", true ) )
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 								"x": 155
@@ -610,13 +611,15 @@ new FormModel {
 								"width": 246
 								"height": 30
 							} )
-							add( new FormComponent( "javax.swing.JTextField" ) {
+							add( new FormComponent( "Model.BEAN.Event.EventSuggestionTextField" ) {
 								name: "emailText"
 								"font": #Font5
 								"foreground": #Color7
 								auxiliary() {
 									"JavaCodeGenerator.variableModifiers": 10
 								}
+								addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "emailTextFocusLost", true ) )
+								addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "emailTextKeyTyped", true ) )
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 								"x": 155
 								"y": 115

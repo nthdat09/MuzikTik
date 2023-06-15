@@ -620,17 +620,62 @@ public class EventPanel extends JPanel {
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 ResultSet resultSet = preparedStatement.executeQuery();
+                int count = 0;
                 while (resultSet.next()) {
+                    count++;
+                }
+                if(count == 1) {
                     String email = resultSet.getString("CUS_EMAIL");
                     String phoneNumber = resultSet.getString("CUS_PHONE_NUMBER");
                     emailText.setText(email);
+                    phoneNumberText.setText(phoneNumber);
+                } else {
+                    try {
+                        String sql1 = "SELECT CUS_EMAIL, CUS_PHONE_NUMBER FROM customer WHERE CUS_NAME = '" + fullNameText.getText().toString() + "'";
+                        PreparedStatement preparedStatement1 = connection.prepareStatement(sql1);
+                        ResultSet resultSet1 = preparedStatement1.executeQuery();
+                        while (resultSet1.next()) {
+                            String email = resultSet1.getString("CUS_EMAIL");
+                            emailText.addItemSuggestion(email);
+                        }
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
+        private void emailTextFocusLost(FocusEvent e) {
+            Connection con = UserDatabase.getConnection();
+            String sql = "SELECT CUS_PHONE_NUMBER FROM customer WHERE CUS_EMAIL = '" + emailText.getText().toString() + "' AND CUS_NAME = '" + fullNameText.getText().toString() + "'";
+            try {
+                PreparedStatement preparedStatement = con.prepareStatement(sql);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    String phoneNumber = resultSet.getString("CUS_PHONE_NUMBER");
                     phoneNumberText.setText(phoneNumber);
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
         }
-    
+
+        private void fullNameTextKeyTyped(KeyEvent e) {
+            char c = e.getKeyChar();
+            if (c== KeyEvent.VK_BACK_SPACE || c== KeyEvent.VK_DELETE) {
+                fullNameText.setText("");
+            }
+        }
+
+        private void emailTextKeyTyped(KeyEvent e) {
+            char c = e.getKeyChar();
+            if (c== KeyEvent.VK_BACK_SPACE || c== KeyEvent.VK_DELETE) {
+                emailText.setText("");
+            }
+        }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -703,7 +748,7 @@ public class EventPanel extends JPanel {
         label4 = new JLabel();
         label5 = new JLabel();
         fullNameText = new EventSuggestionTextField();
-        emailText = new JTextField();
+        emailText = new EventSuggestionTextField();
         phoneNumberText = new JTextField();
         JlbInforCus2 = new JLabel();
         label1 = new JLabel();
@@ -717,11 +762,12 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
-        0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
-        .BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.
-        red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
-        beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
+        EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder. CENTER ,javax . swing
+        . border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,12 ) ,
+        java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
+        { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "borde\u0072" .equals ( e. getPropertyName () ) )
+        throw new RuntimeException( ) ;} } );
         setLayout(null);
 
         //======== jpnEventHeader ========
@@ -1587,12 +1633,30 @@ public class EventPanel extends JPanel {
                                 fullNameTextFocusLost(e);
                             }
                         });
+                        fullNameText.addKeyListener(new KeyAdapter() {
+                            @Override
+                            public void keyTyped(KeyEvent e) {
+                                fullNameTextKeyTyped(e);
+                            }
+                        });
                         panel1.add(fullNameText);
                         fullNameText.setBounds(155, 70, 246, 30);
 
                         //---- emailText ----
                         emailText.setFont(new Font("Lato", Font.PLAIN, 16));
                         emailText.setForeground(new Color(0x61b884));
+                        emailText.addFocusListener(new FocusAdapter() {
+                            @Override
+                            public void focusLost(FocusEvent e) {
+                                emailTextFocusLost(e);
+                            }
+                        });
+                        emailText.addKeyListener(new KeyAdapter() {
+                            @Override
+                            public void keyTyped(KeyEvent e) {
+                                emailTextKeyTyped(e);
+                            }
+                        });
                         panel1.add(emailText);
                         emailText.setBounds(155, 115, 246, 29);
 
@@ -1779,7 +1843,7 @@ public class EventPanel extends JPanel {
     private JLabel label4;
     private JLabel label5;
     private static EventSuggestionTextField fullNameText;
-    private static JTextField emailText;
+    private static EventSuggestionTextField emailText;
     private static JTextField phoneNumberText;
     private JLabel JlbInforCus2;
     private JLabel label1;

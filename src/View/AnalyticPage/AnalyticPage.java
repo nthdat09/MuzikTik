@@ -368,10 +368,6 @@ public class AnalyticPage extends JPanel {
         }
     }
 
-    private void button1MouseClicked(MouseEvent e) {
-
-    }
-
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - man
