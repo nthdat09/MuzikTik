@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :p:5:p, comp chartView:::p:1099:p, space ::8:x}, seq t {space ::192:x, par l {seq l {space :p:148:p, comp title:::p::p}, seq l {comp TypeStatistic:::p::p, space :40:40:p, comp Statistic:::p:385:p}, seq l {comp label2:::p::p, space :28:28:p, comp eventcbBox:::p:415:p}, seq l {comp Day:::p::p, space :18:18:p, comp dayComboBox:::p:95:p, space :37:37:p, comp Month:::p::p, space :18:18:p, comp monthComboBox:::p:95:p, space :68:68:p, comp Year:::p::p, space :18:18:p, comp yearComboBox:::p:95:p, space :p:63:p, comp panel1:::p:103:p}}, space :p:182:p}}"
-			"$verticalGroup": "par l {seq {space :p:27:p, comp title:::p::p, space :18:18:p, par l {seq l {space :5:5:p, comp TypeStatistic:::p::p}, comp Statistic:::p::p}, space :11:11:p, par l {comp dayComboBox:::p::p, comp monthComboBox:::p::p, comp yearComboBox:::p::p, seq l {space :5:5:p, par l {comp Day:::p::p, comp Month:::p::p, comp Year:::p::p}}, comp panel1:::p:32:p}, space :p:18:p, par l {comp label2:::p::p, comp eventcbBox:::p::p}, space s:::p, comp chartView:::p:441:p, space :p:245:p}}"
+			"$horizontalGroup": "par l {seq {space :p:436:p, comp title:::p::p, space ::420:x}, seq t {space :::p, par t {comp chartView::l::1102:x, seq {space :0:0:x, par t {comp panel1:::p:103:p, seq {par l:::p {seq t {comp TypeStatistic:::p::p, space :p:37:p}, seq l {comp Day:::p::p, space s:::p, comp dayComboBox:::p:95:p, space :::x}}, par t {comp Statistic:::p:385:p, seq {comp Month:::p::p, space s:::p, comp monthComboBox:::p:95:p, space :p:68:p, comp Year:::p::p, space s:::p, comp yearComboBox:::p:95:p}}, space :p:48:p, comp label2:::p::p, space s:::p, comp textEvent:::p:424:p}}}}, space :p:57:p}}"
+			"$verticalGroup": "par l {seq l {space :p:20:p, comp title:::p::p, space s:::p, par b {comp TypeStatistic::b:p::p, comp Statistic::b:p::p}, space :p:11:p, par b {comp Day::b:p::p, comp Month::b:p::p, comp dayComboBox::b:p::p, comp monthComboBox::b:p::p, comp yearComboBox::b:p::p, comp Year::b:p::p, comp label2::b:p::p, comp textEvent::b:p::p}, space :p:18:p, comp panel1:::p:32:p, space ::30:x, comp chartView:::p:441:p, space :p:66:p}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -21,7 +21,7 @@ new FormModel {
 					addElement( "Monthly Ticket Sales Statistics" )
 					addElement( "Annual Ticket Sales Statistics" )
 				}
-				"background": new java.awt.Color( 255, 255, 255, 255 )
+				"background": &Color0 new java.awt.Color( 255, 255, 255, 255 )
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
@@ -31,7 +31,7 @@ new FormModel {
 				name: "TypeStatistic"
 				"text": "Types of Statistics:"
 				"font": &Font0 new java.awt.Font( "Lato Black", 1, 16 )
-				"foreground": &Color0 new java.awt.Color( 97, 184, 132, 255 )
+				"foreground": &Color1 new java.awt.Color( 97, 184, 132, 255 )
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
@@ -40,7 +40,7 @@ new FormModel {
 				name: "Day"
 				"text": "Day:"
 				"font": #Font0
-				"foreground": #Color0
+				"foreground": #Color1
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
@@ -49,7 +49,7 @@ new FormModel {
 				name: "Month"
 				"text": "Month:"
 				"font": #Font0
-				"foreground": #Color0
+				"foreground": #Color1
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
@@ -58,7 +58,7 @@ new FormModel {
 				name: "Year"
 				"text": "Year:"
 				"font": #Font0
-				"foreground": #Color0
+				"foreground": #Color1
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
@@ -81,6 +81,11 @@ new FormModel {
 				"border": new javax.swing.border.TitledBorder( "" )
 				"background": new java.awt.Color( 255, 255, 255, 255 )
 			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textEvent"
+				"background": #Color0
+				"font": new java.awt.Font( "Lato", 0, 16 )
+			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "title"
 				"text": "STATISTIC AND ANALYSIS"
@@ -92,11 +97,11 @@ new FormModel {
 				name: "label2"
 				"text": "Event:"
 				"font": new java.awt.Font( "Lato Black", 1, 16 )
-				"foreground": #Color0
+				"foreground": #Color1
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
 				name: "dayComboBox"
-				"background": &Color1 new java.awt.Color( 255, 255, 255, 255 )
+				"background": &Color2 new java.awt.Color( 255, 255, 255, 255 )
 				"font": &Font1 new java.awt.Font( "Lato", 1, 16 )
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
@@ -116,7 +121,7 @@ new FormModel {
 					addElement( "11" )
 					addElement( "12" )
 				}
-				"background": #Color1
+				"background": #Color2
 				"font": #Font1
 				addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "comboBox2ItemStateChanged", true ) )
 			} )
@@ -136,15 +141,12 @@ new FormModel {
 					addElement( "2022" )
 					addElement( "2023" )
 				}
-				"background": #Color1
+				"background": #Color2
 				"font": #Font1
-			} )
-			add( new FormComponent( "javax.swing.JComboBox" ) {
-				name: "eventcbBox"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 890, 725 )
+			"size": new java.awt.Dimension( 1165, 725 )
 		} )
 	}
 }
