@@ -614,11 +614,9 @@ public class EventPanel extends JPanel {
         return BuySeatTable;
     }
 
-    private void fullNameTextKeyTyped(KeyEvent e) {
-        int c = e.getKeyChar();
-        if (c == KeyEvent.VK_ENTER) {
-            Connection connection = UserDatabase.getConnection();
-            String sql = "SELECT CUS_EMAIL, CUS_PHONE_NUMBER FROM customer WHERE CUS_NAME = '" + fullNameText.getText().toString() + "'";
+    private void fullNameTextFocusLost(FocusEvent e) {
+        Connection connection = UserDatabase.getConnection();
+        String sql = "SELECT CUS_EMAIL, CUS_PHONE_NUMBER FROM customer WHERE CUS_NAME = '" + fullNameText.getText().toString() + "'";
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 ResultSet resultSet = preparedStatement.executeQuery();
@@ -632,7 +630,7 @@ public class EventPanel extends JPanel {
                 throwables.printStackTrace();
             }
         }
-    }
+    
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -719,12 +717,11 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-        EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
-        . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
-        java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-        { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
-        throw new RuntimeException( ); }} );
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
+        0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
+        .BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.
+        red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
+        beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
         setLayout(null);
 
         //======== jpnEventHeader ========
@@ -1584,10 +1581,10 @@ public class EventPanel extends JPanel {
                         //---- fullNameText ----
                         fullNameText.setFont(new Font("Lato", Font.PLAIN, 16));
                         fullNameText.setForeground(new Color(0x61b884));
-                        fullNameText.addKeyListener(new KeyAdapter() {
+                        fullNameText.addFocusListener(new FocusAdapter() {
                             @Override
-                            public void keyTyped(KeyEvent e) {
-                                fullNameTextKeyTyped(e);
+                            public void focusLost(FocusEvent e) {
+                                fullNameTextFocusLost(e);
                             }
                         });
                         panel1.add(fullNameText);
