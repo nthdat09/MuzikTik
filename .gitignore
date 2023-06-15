@@ -1,3 +1,16 @@
+### Intellj ###
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
 ### Eclipse ###
 .apt_generated
 .classpath

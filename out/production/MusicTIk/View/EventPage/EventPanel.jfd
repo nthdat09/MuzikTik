@@ -479,10 +479,7 @@ new FormModel {
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 						name: "scrollPane2"
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-							"$horizontalGroup": "par l {seq {space :p:33:p, par l {seq {par l {comp label4::l:p::p, comp label3::l:p::p, comp label5:::p::p}, space :p:6:p, par l {comp emailText:::p:246:p, comp fullNameText:::p:246:p, comp phoneNumberText:::p:246:p}}, comp JlbInforCus:::p:258:p, comp jlbPayment::l:p:513:p, comp checkBox3::l:p:314:p, comp checkBox1::l:p::p}, par l {seq {space :p:12:p, par l:::p {seq {comp label2:::p:69:p, space :::x, comp totalDisplay:::p:171:p}, seq {comp label1:::p:91:p, space :::p, comp quantityDisplay:::p:171:p}}}, seq l {space :p:9:p, par t {seq {comp jpnBack:::p::p, space :p:28:p, comp jpnNext:::p::p}, par l {comp JlbInforCus2:::p:224:p, comp scrollPane4:::p:547:p}}}}, space ::357:x}}"
-							"$verticalGroup": "par l {seq {par t {seq t {space :p:25:p, par b {comp JlbInforCus::b:p:39:p, comp JlbInforCus2::b:p:39:p}, space :::p, comp scrollPane4:::p:111:p}, seq l {space :p:68:p, par b {comp label3::b:p::p, comp fullNameText::b:p:24:p}, space :p:23:p, par b {comp label4::b:p::p, comp emailText::b:p:24:p}, space s:::p, par b {comp label5::b:p::p, comp phoneNumberText::b:p::p}}}, par b {comp jlbPayment::b:p:46:p, comp label1::b:p::p, comp quantityDisplay::b:p::p}, space :::p, par l {par b {comp label2::b:p:19:p, comp totalDisplay::b:p::p}, comp checkBox1:::p::p}, space :p:10:p, comp checkBox3:::p::p, space :::p, par l {comp jpnNext:::p::p, comp jpnBack:::::x}, space :p:519:p}}"
-						} ) {
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 							name: "panel1"
 							"background": new java.awt.Color( 255, 255, 255, 255 )
 							add( new FormComponent( "javax.swing.JLabel" ) {
@@ -490,12 +487,22 @@ new FormModel {
 								"text": "CUSTOMER INFORMATION"
 								"font": new java.awt.Font( "Lato Black", 1, 18 )
 								"foreground": &Color4 new java.awt.Color( 97, 184, 132, 255 )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 33
+								"y": 33
+								"width": 258
+								"height": 39
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "jlbPayment"
 								"text": "PAYMENT METHOD"
 								"foreground": new java.awt.Color( 97, 184, 132, 255 )
 								"font": new java.awt.Font( "Lato Black", 1, 18 )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 33
+								"y": 189
+								"width": 513
+								"height": 46
 							} )
 							add( new FormComponent( "javax.swing.JCheckBox" ) {
 								name: "checkBox1"
@@ -505,6 +512,9 @@ new FormModel {
 								"background": &Color5 new java.awt.Color( 255, 255, 255, 255 )
 								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox1", true ) )
 								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox1", true ) )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 33
+								"y": 241
 							} )
 							add( new FormComponent( "javax.swing.JCheckBox" ) {
 								name: "checkBox3"
@@ -513,6 +523,10 @@ new FormModel {
 								"font": #Font3
 								"background": #Color5
 								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox3", true ) )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 33
+								"y": 278
+								"width": 314
 							} )
 							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {comp jlbBack::l::166:x}"
@@ -531,6 +545,10 @@ new FormModel {
 									"background": new java.awt.Color( 97, 184, 132, 255 )
 									addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jlbBackMouseClicked", true ) )
 								} )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 760
+								"y": 311
+								"height": 44
 							} )
 							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 								"$horizontalGroup": "par l {seq t {space :0:0:x, comp jlbNext:::p:148:p}}"
@@ -547,32 +565,50 @@ new FormModel {
 									"foreground": sfield java.awt.Color white
 									addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jlbNextMouseClicked", true ) )
 								} )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 954
+								"y": 311
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label3"
 								"text": "Full Name:"
 								"foreground": &Color6 new java.awt.Color( 98, 98, 98, 255 )
 								"font": &Font4 new java.awt.Font( "Lato Black", 1, 16 )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 33
+								"y": 69
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label4"
 								"text": "Email:"
 								"foreground": #Color6
 								"font": #Font4
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 33
+								"y": 116
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label5"
 								"text": "Phone Number:"
 								"foreground": #Color6
 								"font": #Font4
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 33
+								"y": 162
 							} )
-							add( new FormComponent( "javax.swing.JTextField" ) {
+							add( new FormComponent( "Model.BEAN.Event.EventSuggestionTextField" ) {
 								name: "fullNameText"
 								"font": &Font5 new java.awt.Font( "Lato", 0, 16 )
 								"foreground": &Color7 new java.awt.Color( 97, 184, 132, 255 )
 								auxiliary() {
 									"JavaCodeGenerator.variableModifiers": 10
 								}
+								addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "fullNameTextKeyTyped", true ) )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 155
+								"y": 70
+								"width": 246
+								"height": 30
 							} )
 							add( new FormComponent( "javax.swing.JTextField" ) {
 								name: "emailText"
@@ -581,6 +617,11 @@ new FormModel {
 								auxiliary() {
 									"JavaCodeGenerator.variableModifiers": 10
 								}
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 155
+								"y": 115
+								"width": 246
+								"height": 29
 							} )
 							add( new FormComponent( "javax.swing.JTextField" ) {
 								name: "phoneNumberText"
@@ -589,36 +630,63 @@ new FormModel {
 								auxiliary() {
 									"JavaCodeGenerator.variableModifiers": 10
 								}
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 157
+								"y": 160
+								"width": 246
+								"height": 29
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "JlbInforCus2"
 								"text": "TICKET INFORMATION"
 								"font": new java.awt.Font( "Lato Black", 1, 18 )
 								"foreground": #Color4
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 555
+								"y": 33
+								"width": 224
+								"height": 39
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label1"
 								"text": "Quantity:"
 								"foreground": &Color8 new java.awt.Color( 97, 184, 132, 255 )
 								"font": new java.awt.Font( "Lato Black", 1, 16 )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 558
+								"y": 202
+								"width": 91
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label2"
 								"text": "Total:"
 								"foreground": #Color8
 								"font": &Font6 new java.awt.Font( "Lato Black", 1, 16 )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 558
+								"y": 243
+								"width": 69
+								"height": 19
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "totalDisplay"
 								"text": "text"
 								"font": #Font6
 								"foreground": &Color9 new java.awt.Color( 102, 102, 102, 255 )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 655
+								"y": 241
+								"width": 171
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "quantityDisplay"
 								"text": "text"
 								"font": #Font6
 								"foreground": #Color9
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 655
+								"y": 202
+								"width": 171
 							} )
 							add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 								name: "scrollPane4"
@@ -646,6 +714,11 @@ new FormModel {
 										"JavaCodeGenerator.variableGetter": true
 									}
 								} )
+							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+								"x": 555
+								"y": 78
+								"width": 547
+								"height": 111
 							} )
 						} )
 					} )
