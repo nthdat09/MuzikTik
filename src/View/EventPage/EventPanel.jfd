@@ -320,21 +320,21 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {seq t {space :::x, comp pickTicketScrollPane:::p:1199:p, space :::p}}"
-					"$verticalGroup": "par l {seq l {space :::p, comp pickTicketScrollPane:::p:450:p, space ::279:x}}"
+					"$verticalGroup": "par l {seq l {space :::p, comp pickTicketScrollPane:::p:456:p, space ::273:x}}"
 				} ) {
-					name: "jpnPickTicket"
+					name: "jpnSeat50"
 					"background": new java.awt.Color( 255, 255, 255, 255 )
 					"preferredSize": new java.awt.Dimension( 1025, 1000 )
 					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 						name: "pickTicketScrollPane"
-						"background": new java.awt.Color( 255, 255, 255, 255 )
+						"background": &Color2 new java.awt.Color( 255, 255, 255, 255 )
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-							"$horizontalGroup": "par l {seq t {par t {seq {space ::371:x, comp jpnNextButton:::p::p}, seq {space :p:18:p, par t {seq t {space :0:0:x, comp label6:::p:491:p}, comp eventSeatStage::t::499:x, comp label7::t:::x, comp scrollPane3::t::499:x}}}, space :p:44:p, par l {comp pickTicketScrollTable:::p:569:p, seq l {space :p:132:p, comp addJpn:::p:153:p, space :p:36:p, comp deleteJpn:::p:178:p}}, space :p:177:p}}"
-							"$verticalGroup": "par l {seq l {space ::35:x, par l {seq t {par t {seq {comp label6:::p::p, space s:::p, comp eventSeatStage:::p:309:p}, comp pickTicketScrollTable:::p:349:p}, space :p:39:p, comp label7:::p::p}, comp addJpn::t:p:34:p, comp deleteJpn::t:p:36:p}, space ::18:x, comp scrollPane3:::p:168:p, space s:::p, comp jpnNextButton:::p::p, space ::39:x}}"
+							"$horizontalGroup": "par l {seq t {space ::32:x, par l {comp label6::l:p:491:p, seq l {space :p:10:p, comp seatingChart50:::p:649:p, space :p:48:p, par t {comp scrollPane3:::p:385:p, comp jpnNextButton:::p::p}}}, space :0:230:x}, seq l {space :p:58:p, comp panel4:::p:68:p, space s:::p, comp label8:::p:83:p, space :p:27:p, comp panel6:::p:68:p, space :p:18:p, comp label9:::p:89:p, space :p:29:p, comp panel7:::p:68:p, space :18:18:p, comp label10:::p:83:p, space :0:727:x}}"
+							"$verticalGroup": "par l {seq {space :::p, comp label6:::p::p, space :p:28:p, par l:::p {seq {comp scrollPane3:::p:225:p, space :::x, comp jpnNextButton:::p::p}, comp seatingChart50:::p:304:p}, space s:::p, par l {seq {par l {comp panel4:::p:33:p, comp label8:::::x}, space ::131:x}, seq {par l {comp panel6:::p:33:p, comp panel7:::p:33:p, comp label10:::p:33:p, comp label9::l:p:33:p}, space ::131:x}}}}"
 						} ) {
 							name: "jpnTicket"
-							"background": new java.awt.Color( 255, 255, 255, 255 )
+							"background": &Color3 new java.awt.Color( 255, 255, 255, 255 )
 							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 							auxiliary() {
 								"JavaCodeGenerator.variableModifiers": 10
@@ -344,125 +344,181 @@ new FormModel {
 								"$verticalGroup": "par l {comp jlbNextButton::l::47:x}"
 							} ) {
 								name: "jpnNextButton"
-								"background": new java.awt.Color( 97, 184, 132, 255 )
+								"background": &Color4 new java.awt.Color( 97, 184, 132, 255 )
 								add( new FormComponent( "javax.swing.JLabel" ) {
 									name: "jlbNextButton"
 									"text": "NEXT"
 									"horizontalAlignment": 0
 									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-									"font": new java.awt.Font( "Lato Black", 1, 16 )
-									"background": new java.awt.Color( 97, 184, 132, 255 )
+									"font": &Font2 new java.awt.Font( "Lato Black", 1, 16 )
+									"background": &Color5 new java.awt.Color( 97, 184, 132, 255 )
 									"foreground": sfield java.awt.Color white
 									addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jlbNextButtonMouseClicked", true ) )
-								} )
-							} )
-							add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-								name: "pickTicketScrollTable"
-								add( new FormComponent( "javax.swing.JTable" ) {
-									name: "seatTable"
-									"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
-										add( "Seat ID" )
-										add( "Seat Type" )
-										add( "Price (VND)" )
-										add( "Status" )
-									}, new java.util.Vector {
-										add( null )
-										add( null )
-										add( null )
-										add( null )
-									}, new java.util.Vector {
-										add( null )
-										add( null )
-										add( null )
-										add( null )
-									}, new java.util.Vector {
-										add( null )
-										add( null )
-										add( null )
-										add( null )
-									} )
-									"font": new java.awt.Font( "Lato", 0, 14 )
-									auxiliary() {
-										"JavaCodeGenerator.variableModifiers": 10
-									}
-									addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "seatTableMouseClicked", true ) )
-								} )
-							} )
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "eventSeatStage"
-								"text": "text"
-								auxiliary() {
-									"JavaCodeGenerator.variableModifiers": 10
-								}
-							} )
-							add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
-								name: "scrollPane3"
-								add( new FormComponent( "javax.swing.JTable" ) {
-									name: "selectedSeatTable"
-									"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
-										add( "Seat ID" )
-										add( "Seat Type" )
-										add( "Price (VND)" )
-										add( "Status" )
-									}, new java.util.Vector {
-										add( null )
-										add( null )
-										add( null )
-										add( null )
-									}, new java.util.Vector {
-										add( null )
-										add( null )
-										add( null )
-										add( null )
-									}, new java.util.Vector {
-										add( null )
-										add( null )
-										add( null )
-										add( null )
-									} )
-									"font": new java.awt.Font( "Lato", 0, 14 )
-									auxiliary() {
-										"JavaCodeGenerator.variableModifiers": 10
-									}
-								} )
-							} )
-							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
-								name: "addJpn"
-								"background": &Color2 new java.awt.Color( 97, 184, 132, 255 )
-								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "addJlb"
-									"text": "ADD TO CART"
-									"foreground": &Color3 new java.awt.Color( 255, 255, 255, 255 )
-									"horizontalAlignment": 0
-									"font": &Font2 new java.awt.Font( "Lato Black", 1, 16 )
-									addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "addJlbMouseClicked", true ) )
-								} )
-							} )
-							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
-								name: "deleteJpn"
-								"background": #Color2
-								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "deleteJlb"
-									"text": "REMOVE FROM CART"
-									"foreground": #Color3
-									"horizontalAlignment": 0
-									"font": #Font2
-									addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "deleteJlbMouseClicked", true ) )
 								} )
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label6"
 								"text": "SEATING CHART"
 								"horizontalAlignment": 0
-								"font": new java.awt.Font( "Lato Black", 1, 18 )
-								"foreground": new java.awt.Color( 97, 184, 132, 255 )
+								"font": &Font3 new java.awt.Font( "Lato Black", 1, 18 )
+								"foreground": &Color6 new java.awt.Color( 97, 184, 132, 255 )
+							} )
+							add( new FormComponent( "Model.BEAN.Event.SeatView50" ) {
+								name: "seatingChart50"
+							} )
+							add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+								name: "scrollPane3"
+								add( new FormComponent( "javax.swing.JTable" ) {
+									name: "selectedTable50"
+									"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+										add( "Seat ID" )
+										add( "Type" )
+										add( "Price" )
+									}, new java.util.Vector {
+										add( null )
+										add( null )
+										add( null )
+									}, new java.util.Vector {
+										add( null )
+										add( null )
+										add( null )
+									}, new java.util.Vector {
+										add( null )
+										add( null )
+										add( null )
+									} )
+									auxiliary() {
+										"JavaCodeGenerator.variableModifiers": 10
+										"JavaCodeGenerator.variableGetter": true
+									}
+								} )
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+								name: "panel4"
+								"background": &Color7 new java.awt.Color( 255, 51, 51, 255 )
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label8"
+								"text": "Occupied"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label9"
+								"text": "Selected "
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+								name: "panel6"
+								"background": &Color8 new java.awt.Color( 255, 255, 0, 255 )
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label10"
+								"text": "Available"
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+								name: "panel7"
+								"background": &Color9 new java.awt.Color( 146, 207, 170, 255 )
+							} )
+						} )
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "text"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {space :0:1200:x};par l {seq t {space :::x, comp pickTicketScrollPane2:::p:1199:p, space :::x}}"
+					"$verticalGroup": "par l {space :0:735:x};par l {seq l {space :::p, comp pickTicketScrollPane2:::p:429:p, space ::300:x}}"
+				} ) {
+					name: "jpnSeat100"
+					"background": new java.awt.Color( 255, 255, 255, 255 )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "pickTicketScrollPane2"
+						"background": #Color2
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+							"$horizontalGroup": "par l {seq t {space ::233:x, par l {seq l {comp panel10:::p:68:p, space :18:18:p, comp label13:::p:83:p, space :27:27:p, comp panel9:::p:68:p, space :18:18:p, comp label12:::p:89:p, space :29:29:p, comp panel8:::p:68:p, space :18:18:p, comp label11:::p:83:p, space :p:146:p}, comp selectedSeat100::t:p:385:p}, space :p:74:p, comp jpnNextButton2:::p::p, space :p:136:p}, seq t {space ::75:x, comp panel5:::p:1154:p, space ::75:x}, seq l {space :p:60:p, comp label7:::p:491:p, space :::x}}"
+							"$verticalGroup": "par l {seq t {space :::x, comp jpnNextButton2:::p::p, space :p:133:p}, seq l {space :::p, comp label7:::p::p, space :::p, comp panel5:::p:366:p, space :::p, par l {comp panel10:::p:33:p, comp label13:::p:33:p, comp panel9:::p:33:p, comp label12:::p:33:p, comp panel8:::p:33:p, comp label11:::p:33:p}, space ::73:x, comp selectedSeat100:::p:158:p, space :::p}}"
+						} ) {
+							name: "jpnTicket2"
+							"background": #Color3
+							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 10
+							}
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+								"$horizontalGroup": "par l {seq l {comp jlbNextButton2:::p:146:p, space :0:0:x}}"
+								"$verticalGroup": "par l {comp jlbNextButton2::l::47:x}"
+							} ) {
+								name: "jpnNextButton2"
+								"background": #Color4
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "jlbNextButton2"
+									"text": "NEXT"
+									"horizontalAlignment": 0
+									"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+									"font": #Font2
+									"background": #Color5
+									"foreground": sfield java.awt.Color white
+									addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "jlbNextButton2MouseClicked", true ) )
+								} )
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label7"
-								"text": "TICKET CART"
-								"font": new java.awt.Font( "Lato Black", 1, 22 )
-								"foreground": new java.awt.Color( 97, 184, 132, 255 )
+								"text": "SEATING CHART"
 								"horizontalAlignment": 0
+								"font": #Font3
+								"foreground": #Color6
+							} )
+							add( new FormComponent( "Model.BEAN.Event.SeatView100" ) {
+								name: "panel5"
+							} )
+							add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+								name: "selectedSeat100"
+								add( new FormComponent( "javax.swing.JTable" ) {
+									name: "selectedTable100"
+									"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+										add( "Seat ID" )
+										add( "Type" )
+										add( "Price" )
+									}, new java.util.Vector {
+										add( null )
+										add( null )
+										add( null )
+									}, new java.util.Vector {
+										add( null )
+										add( null )
+										add( null )
+									}, new java.util.Vector {
+										add( null )
+										add( null )
+										add( null )
+									} )
+									auxiliary() {
+										"JavaCodeGenerator.variableGetter": true
+										"JavaCodeGenerator.variableModifiers": 10
+									}
+								} )
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+								name: "panel8"
+								"background": #Color9
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label11"
+								"text": "Available"
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label12"
+								"text": "Selected "
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+								name: "panel9"
+								"background": #Color8
+							} )
+							add( new FormComponent( "javax.swing.JLabel" ) {
+								name: "label13"
+								"text": "Occupied"
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+								name: "panel10"
+								"background": #Color7
 							} )
 						} )
 					} )
@@ -486,7 +542,7 @@ new FormModel {
 								name: "JlbInforCus"
 								"text": "CUSTOMER INFORMATION"
 								"font": new java.awt.Font( "Lato Black", 1, 18 )
-								"foreground": &Color4 new java.awt.Color( 97, 184, 132, 255 )
+								"foreground": &Color10 new java.awt.Color( 97, 184, 132, 255 )
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 								"x": 33
 								"y": 33
@@ -507,9 +563,9 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JCheckBox" ) {
 								name: "checkBox1"
 								"text": "Cash"
-								"font": &Font3 new java.awt.Font( "Lato Black", 1, 16 )
+								"font": &Font4 new java.awt.Font( "Lato Black", 1, 16 )
 								"foreground": new java.awt.Color( 98, 98, 98, 255 )
-								"background": &Color5 new java.awt.Color( 255, 255, 255, 255 )
+								"background": &Color11 new java.awt.Color( 255, 255, 255, 255 )
 								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox1", true ) )
 								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox1", true ) )
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -520,8 +576,8 @@ new FormModel {
 								name: "checkBox3"
 								"text": "Payment using MuzicTik Wallet"
 								"foreground": new java.awt.Color( 98, 98, 98, 255 )
-								"font": #Font3
-								"background": #Color5
+								"font": #Font4
+								"background": #Color11
 								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkBox3", true ) )
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 								"x": 33
@@ -572,8 +628,8 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label3"
 								"text": "Full Name:"
-								"foreground": &Color6 new java.awt.Color( 98, 98, 98, 255 )
-								"font": &Font4 new java.awt.Font( "Lato Black", 1, 16 )
+								"foreground": &Color12 new java.awt.Color( 98, 98, 98, 255 )
+								"font": &Font5 new java.awt.Font( "Lato Black", 1, 16 )
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 								"x": 33
 								"y": 69
@@ -581,8 +637,8 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label4"
 								"text": "Email:"
-								"foreground": #Color6
-								"font": #Font4
+								"foreground": #Color12
+								"font": #Font5
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 								"x": 33
 								"y": 116
@@ -590,16 +646,16 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label5"
 								"text": "Phone Number:"
-								"foreground": #Color6
-								"font": #Font4
+								"foreground": #Color12
+								"font": #Font5
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 								"x": 33
 								"y": 162
 							} )
 							add( new FormComponent( "Model.BEAN.Event.EventSuggestionTextField" ) {
 								name: "fullNameText"
-								"font": &Font5 new java.awt.Font( "Lato", 0, 16 )
-								"foreground": &Color7 new java.awt.Color( 97, 184, 132, 255 )
+								"font": &Font6 new java.awt.Font( "Lato", 0, 16 )
+								"foreground": &Color13 new java.awt.Color( 97, 184, 132, 255 )
 								auxiliary() {
 									"JavaCodeGenerator.variableModifiers": 10
 								}
@@ -613,8 +669,8 @@ new FormModel {
 							} )
 							add( new FormComponent( "Model.BEAN.Event.EventSuggestionTextField" ) {
 								name: "emailText"
-								"font": #Font5
-								"foreground": #Color7
+								"font": #Font6
+								"foreground": #Color13
 								auxiliary() {
 									"JavaCodeGenerator.variableModifiers": 10
 								}
@@ -628,8 +684,8 @@ new FormModel {
 							} )
 							add( new FormComponent( "javax.swing.JTextField" ) {
 								name: "phoneNumberText"
-								"font": #Font5
-								"foreground": #Color7
+								"font": #Font6
+								"foreground": #Color13
 								auxiliary() {
 									"JavaCodeGenerator.variableModifiers": 10
 								}
@@ -643,7 +699,7 @@ new FormModel {
 								name: "JlbInforCus2"
 								"text": "TICKET INFORMATION"
 								"font": new java.awt.Font( "Lato Black", 1, 18 )
-								"foreground": #Color4
+								"foreground": #Color10
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 								"x": 555
 								"y": 33
@@ -653,7 +709,7 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label1"
 								"text": "Quantity:"
-								"foreground": &Color8 new java.awt.Color( 97, 184, 132, 255 )
+								"foreground": &Color14 new java.awt.Color( 97, 184, 132, 255 )
 								"font": new java.awt.Font( "Lato Black", 1, 16 )
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 								"x": 558
@@ -663,8 +719,8 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "label2"
 								"text": "Total:"
-								"foreground": #Color8
-								"font": &Font6 new java.awt.Font( "Lato Black", 1, 16 )
+								"foreground": #Color14
+								"font": &Font7 new java.awt.Font( "Lato Black", 1, 16 )
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 								"x": 558
 								"y": 243
@@ -674,8 +730,8 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "totalDisplay"
 								"text": "text"
-								"font": #Font6
-								"foreground": &Color9 new java.awt.Color( 102, 102, 102, 255 )
+								"font": #Font7
+								"foreground": &Color15 new java.awt.Color( 102, 102, 102, 255 )
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 								"x": 655
 								"y": 241
@@ -684,8 +740,8 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "quantityDisplay"
 								"text": "text"
-								"font": #Font6
-								"foreground": #Color9
+								"font": #Font7
+								"foreground": #Color15
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 								"x": 655
 								"y": 202
@@ -714,6 +770,7 @@ new FormModel {
 									} )
 									"font": new java.awt.Font( "Lato", 0, 14 )
 									auxiliary() {
+										"JavaCodeGenerator.variableModifiers": 10
 										"JavaCodeGenerator.variableGetter": true
 									}
 								} )

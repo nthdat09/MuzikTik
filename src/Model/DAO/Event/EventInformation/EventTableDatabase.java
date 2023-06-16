@@ -25,10 +25,6 @@ public class EventTableDatabase {
                 String seatType = rs.getString("SEAT_TYPE");
                 String ticketPrice = rs.getString("TKT_PRICE");
                 String status = EventStatus.getStatus(ticketID);
-
-                String tbData[] = {seatID, seatType, ticketPrice, status};
-                DefaultTableModel tblModel = (DefaultTableModel) EventPanel.getSeatTable().getModel();
-                tblModel.addRow(tbData);
             }
             rs.close();
             st.close();

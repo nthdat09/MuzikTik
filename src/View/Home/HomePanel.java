@@ -236,14 +236,9 @@ public class HomePanel extends JPanel {
             EventPanel.getEventPlace().setText(stage.getStageName());
             ImageIcon icon = new ImageIcon(getClass().getResource("/Asset/Stage/" + stage.getStageSeatingChart()));
             EventPanel.getSeatingChartView().setIcon(icon);
-            EventPanel.getEventSeatingChart().setIcon(icon);
             EventPanel.getSeatingChartView().setText("");
             EventPanel.getSeatingChartView().setVerticalAlignment(JLabel.CENTER);
             EventPanel.getSeatingChartView().setHorizontalAlignment(JLabel.CENTER);
-            EventPanel.getEventSeatingChart().setText("");
-            EventPanel.getEventSeatingChart().setVerticalAlignment(JLabel.CENTER);
-            EventPanel.getEventSeatingChart().setHorizontalAlignment(JLabel.CENTER);
-
         }
     }
     public String localDateToString(LocalDate localDate) {
