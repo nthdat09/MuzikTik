@@ -1,11 +1,11 @@
-JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :p:5:p, comp chartView:::p:1099:p, space ::8:x}, seq t {space ::192:x, par l {seq l {space :p:148:p, comp title:::p::p}, seq l {comp TypeStatistic:::p::p, space :40:40:p, comp Statistic:::p:385:p}, seq l {comp label2:::p::p, space :28:28:p, comp eventcbBox:::p:415:p}, seq l {comp Day:::p::p, space :18:18:p, comp dayComboBox:::p:95:p, space :37:37:p, comp Month:::p::p, space :18:18:p, comp monthComboBox:::p:95:p, space :68:68:p, comp Year:::p::p, space :18:18:p, comp yearComboBox:::p:95:p, space :p:63:p, comp panel1:::p:103:p}}, space :p:182:p}}"
-			"$verticalGroup": "par l {seq {space :p:27:p, comp title:::p::p, space :18:18:p, par l {seq l {space :5:5:p, comp TypeStatistic:::p::p}, comp Statistic:::p::p}, space :11:11:p, par l {comp dayComboBox:::p::p, comp monthComboBox:::p::p, comp yearComboBox:::p::p, seq l {space :5:5:p, par l {comp Day:::p::p, comp Month:::p::p, comp Year:::p::p}}, comp panel1:::p:32:p}, space :p:18:p, par l {comp label2:::p::p, comp eventcbBox:::p::p}, space s:::p, comp chartView:::p:441:p, space :p:245:p}}"
+			"$horizontalGroup": "par l {seq {space :p:5:p, comp chartView:::p:1099:p, space :::x}, seq t {space :p:26:p, par l {comp TypeStatistic:::p::p, seq {comp Day:::p::p, space s:::p, comp dayComboBox:::p:95:p}}, space :::x, par l {seq l {space :p:148:p, comp title:::p::p}, par t:l {seq t {space :p:359:p, comp panel1:::p:103:p}, seq l {par t:::p {seq {comp Month:::p::p, space s:::p, comp monthComboBox:::p:95:p, space :::x, comp Year:::p::p, space s:::p, comp yearComboBox:::p:95:p}, comp Statistic:::p:385:p}, space s:::p, comp label2:::p::p, space :::p, comp eventcbBox:::p:226:p}}}, space :p:245:p}}"
+			"$verticalGroup": "par l {seq {space :p:27:p, comp title:::p::p, space :18:18:p, par b {comp TypeStatistic::b:p::p, comp Statistic::b:p::p}, space :p:11:p, par t {seq {par b {comp Day::b:p::p, comp dayComboBox::b:p::p, comp Month::b:p::p, comp monthComboBox::b:p::p, comp yearComboBox::b:p::p, comp Year::b:p::p, comp label2::b:p::p, comp eventcbBox::b:p::p}, space :p:49:p}, comp panel1:::p:32:p}, space s:::p, comp chartView:::p:441:p, space :p:69:p}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -141,6 +141,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
 				name: "eventcbBox"
+				"font": new java.awt.Font( "Lato Black", 0, 14 )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

@@ -308,7 +308,7 @@ public class EventInformation extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
         ID = new JLabel();
         Name = new JLabel();
         Artist = new JLabel();
@@ -344,11 +344,13 @@ public class EventInformation extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-        0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-        . BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-        beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+        javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax
+        . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+        .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt
+        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
+        PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .
+        equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
         //---- ID ----
         ID.setText("ID");
@@ -498,6 +500,7 @@ public class EventInformation extends JPanel {
         TextID.setBackground(new Color(0xcccccc));
         TextID.setFont(new Font("Lato", Font.PLAIN, 16));
         TextID.setEditable(false);
+        TextID.setDisabledTextColor(new Color(0x333333));
 
         //======== panel3 ========
         {
@@ -523,7 +526,7 @@ public class EventInformation extends JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup()
                 .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(382, Short.MAX_VALUE)
+                    .addContainerGap(379, Short.MAX_VALUE)
                     .addComponent(label1)
                     .addGap(388, 388, 388))
                 .addGroup(layout.createSequentialGroup()
@@ -579,7 +582,7 @@ public class EventInformation extends JPanel {
                                                     .addComponent(Close_Second, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))))
                                         .addComponent(dateJDatePicker, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)))
                                 .addComponent(textPoster, GroupLayout.PREFERRED_SIZE, 517, GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                             .addComponent(pathFileText, GroupLayout.PREFERRED_SIZE, 0, GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup()
@@ -652,13 +655,13 @@ public class EventInformation extends JPanel {
                         .addComponent(panel2, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
                         .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
                         .addComponent(panel3, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(15, Short.MAX_VALUE))
+                    .addContainerGap(28, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
     private JLabel ID;
     private JLabel Name;
     private JLabel Artist;
