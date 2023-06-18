@@ -1,0 +1,170 @@
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		auxiliary() {
+			"JavaCodeGenerator.defaultVariableGetter": true
+			"JavaCodeGenerator.memberVariableThis": true
+		}
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space ::33:x, par t {seq t {par l:::p {seq {comp StageID:::p:110:p, space :::p, comp RentalPriceField:::p:250:p}, seq t {par l {comp TicketID::l:p:90:p, comp EventID::l:p:68:p, comp SeatID::l:p:85:p}, space :::x, par l:::p {comp NameField::l::250:x, comp IDField::l::250:x, comp AddressField::l::250:x}}}, space :p:203:p, par l {comp TicketPrice::l:p::p, comp TicketPrice2:::p::p, comp TicketPrice3:::p::p}}, seq t {comp label1:::p::p, space :p:3:p}}, space :p:26:p, par l {seq {par l {comp Open_Hour:::p:59:p, comp Close_Hour:::p:59:p}, space s:::p, par l {seq {comp Open_Minute:::p:59:p, space s:::p, comp Open_Second:::p:59:p}, seq l {par t {comp SaveButton:::p:96:p, seq {comp Close_Minute:::p:59:p, space s:::p, comp Close_Second:::p:59:p}}, space s:::p, comp CancelButton:::p:111:p}}}, comp CapacityField:::p:250:p}, space :p:51:p}}"
+			"$verticalGroup": "par l {seq {space :p:30:p, comp label1:::p::p, space s:::p, par b {comp TicketID::b:p::p, comp IDField::b:p::p, comp TicketPrice::b:p::p, comp CapacityField::b:p::p}, space u:::p, par b {comp EventID::b:p::p, comp NameField::b:p::p, comp TicketPrice2::b:p::p, comp Open_Hour::b:p::p, comp Open_Minute::b:p::p, comp Open_Second::b:p::p}, space u:::p, par b {comp SeatID::b:p::p, comp AddressField::b:p::p, comp TicketPrice3::b:p::p, comp Close_Hour::b:p::p, comp Close_Minute::b:p::p, comp Close_Second::b:p::p}, space s:::p, par b {comp StageID::b:p::p, comp RentalPriceField::b:p::p}, space :p:34:p, par b {comp SaveButton::b:p::p, comp CancelButton::b:p::p}, space ::312:x}}"
+		} ) {
+			name: "StageInformationFormPanel"
+			"background": sfield java.awt.Color white
+			"minimumSize": new java.awt.Dimension( 670, 500 )
+			"maximumSize": new java.awt.Dimension( 670, 500 )
+			"preferredSize": new java.awt.Dimension( 670, 600 )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "TicketID"
+				"text": "ID:"
+				"font": &Font0 new java.awt.Font( "Lato Black", 0, 16 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "EventID"
+				"text": "Name:"
+				"font": #Font0
+				"foreground": &Color0 new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "TicketPrice"
+				"text": "Capacity:"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "StageID"
+				"text": "Rental Price:"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "SeatID"
+				"text": "Address:"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "IDField"
+				"editable": false
+				"background": new java.awt.Color( 204, 204, 204, 255 )
+				"foreground": sfield java.awt.Color darkGray
+				"font": &Font1 new java.awt.Font( "Lato", 0, 16 )
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "NameField"
+				"font": #Font1
+				"foreground": sfield java.awt.Color darkGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "AddressField"
+				"font": #Font1
+				"foreground": sfield java.awt.Color darkGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "RentalPriceField"
+				"font": #Font1
+				"foreground": sfield java.awt.Color darkGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "SaveButton"
+				"text": "SAVE"
+				"font": #Font0
+				"background": &Color1 new java.awt.Color( 97, 184, 132, 255 )
+				"foreground": &Color2 new java.awt.Color( 255, 255, 255, 255 )
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "CancelButton"
+				"text": "CANCEL"
+				"font": #Font0
+				"background": #Color1
+				"foreground": #Color2
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "TicketPrice2"
+				"text": "Open Time:"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "TicketPrice3"
+				"text": "Close Time:"
+				"font": #Font0
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "CapacityField"
+				"font": #Font1
+				"foreground": sfield java.awt.Color darkGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Open_Hour"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 24, 1 )
+				"font": #Font1
+				"foreground": sfield java.awt.Color darkGray
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Open_Minute"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+				"font": #Font1
+				"foreground": sfield java.awt.Color darkGray
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Open_Second"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+				"font": #Font1
+				"foreground": sfield java.awt.Color darkGray
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Close_Hour"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 24, 1 )
+				"font": #Font1
+				"foreground": sfield java.awt.Color darkGray
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Close_Minute"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+				"font": #Font1
+				"foreground": sfield java.awt.Color darkGray
+			} )
+			add( new FormComponent( "javax.swing.JSpinner" ) {
+				name: "Close_Second"
+				"model": new javax.swing.SpinnerNumberModel( 0, 0, 59, 1 )
+				"font": #Font1
+				"foreground": sfield java.awt.Color darkGray
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "STAGE INFORMATION"
+				"font": new java.awt.Font( "Lato Black", 1, 24 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 5 )
+			"size": new java.awt.Dimension( 1105, 630 )
+		} )
+	}
+}

@@ -1,0 +1,224 @@
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "this"
+			"background": new java.awt.Color( 255, 255, 255, 255 )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Password:"
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"y": 395
+				"x": 5
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "PasswordField"
+				"font": new java.awt.Font( "Lato", 0, 16 )
+				"background": &Color0 new java.awt.Color( 255, 255, 255, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 145
+				"y": 390
+				"width": 252
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "UserNameField"
+				"font": new java.awt.Font( "Lato", 0, 16 )
+				"background": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 145
+				"y": 340
+				"width": 252
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "UserName"
+				"text": "Username:"
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"y": 345
+				"x": 5
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "CUSTOMER INFORMATION"
+				"font": new java.awt.Font( "Lato Black", 1, 25 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 270
+				"y": 60
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TypeField"
+				"background": sfield java.awt.Color white
+				"name": "TotalPointVal"
+				"font": &Font0 new java.awt.Font( "Lato", 0, 16 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 740
+				"y": 290
+				"width": 247
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Type"
+				"font": &Font1 new java.awt.Font( "Lato Black", 1, 16 )
+				"text": "Type:"
+				"foreground": &Color1 new java.awt.Color( 97, 184, 132, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 605
+				"y": 295
+				"width": 77
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "IDField"
+				"name": "NameVal"
+				"editable": false
+				"font": #Font0
+				"enabled": false
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 145
+				"y": 205
+				"width": 250
+				"height": 28
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "ID"
+				"text": "ID:"
+				"font": &Font2 new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": #Color1
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"y": 210
+				"width": 57
+				"x": 5
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "TotalPointVal"
+				"background": sfield java.awt.Color white
+				"name": "TotalPointVal"
+				"font": #Font0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 740
+				"y": 340
+				"width": 250
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "AddressField"
+				"background": sfield java.awt.Color white
+				"name": "PhoneNumberVal"
+				"font": #Font0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 740
+				"y": 245
+				"width": 247
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "EmailField"
+				"background": sfield java.awt.Color white
+				"name": "AddressVal"
+				"font": #Font0
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 10
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 145
+				"y": 290
+				"width": 252
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "PhoneNumberFiled"
+				"background": sfield java.awt.Color white
+				"name": "EmailVal"
+				"font": #Font0
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 10
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 740
+				"y": 205
+				"width": 250
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "NameField"
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+				"name": "NameVal"
+				"font": #Font0
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 10
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 145
+				"y": 245
+				"width": 252
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "TotalPoint"
+				"font": #Font1
+				"text": "Total Point:"
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+				"background": sfield java.awt.Color white
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 605
+				"y": 345
+				"width": 99
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "SAVE"
+				"text": "SAVE"
+				"preferredSize": new java.awt.Dimension( 80, 30 )
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"background": new java.awt.Color( 97, 184, 132, 255 )
+				"foreground": sfield java.awt.Color white
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "SAVEMouseClicked", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 870
+				"y": 410
+				"width": 112
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "PhoneNumber"
+				"text": "Phone Number:"
+				"font": #Font2
+				"foreground": #Color1
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 605
+				"y": 210
+				"width": 126
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Address"
+				"text": "Address:"
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": #Color1
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 605
+				"y": 250
+				"width": 87
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Email"
+				"text": "Email:"
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": #Color1
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"y": 295
+				"width": 87
+				"x": 5
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "Name"
+				"text": "Name:"
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": #Color1
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"y": 250
+				"width": 71
+				"x": 5
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 5 )
+			"size": new java.awt.Dimension( 1010, 460 )
+		} )
+	}
+}

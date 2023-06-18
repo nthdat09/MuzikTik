@@ -1,0 +1,160 @@
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:60:p, comp desktopPane1:::p:272:p, space :p:36:p, par l {seq l {par l {seq t {par l {comp jlbUsername:::p::p, comp jlbEmail::l:p::p}, space :p:47:p}, comp jlbDOB2::l:p::p}, space :0:0:x}, seq l {par l {comp jlbDOB::l:p::p, comp jlbPhoneNumber:::p::p}, space :::x}}, par l:::p {comp phoneJtf:::::x, comp emailJtf::l:::x, comp usernameJtf::t:::x, comp addressJtf::t:::x, comp dobJpn::l:p:250:p, comp changePasswordJbt::t:p::p}, space :p:276:p}, seq t {space :::x, comp jbtSave:::p:112:p, space :p:27:p, comp jbtCancel:::p:112:p, space :p:35:p}, seq {par l {seq l {space :p:101:p, comp UploadJbt:::p::p}, seq l {space :p:426:p, comp jlbMyAccount:::p::p}}, space :::x}}"
+			"$verticalGroup": "par l {seq l {par l {seq {space :p:90:p, comp desktopPane1:::p:277:p, space s:::p}, seq t {space :::p, comp jlbMyAccount:::p::p, space s:::p, par l {seq l {comp jlbUsername:::p::p, space :p:18:p, comp jlbEmail:::p::p}, seq l {comp usernameJtf:::p::p, space u:::p, comp emailJtf:::p::p, space u:::p, par b {comp addressJtf::b:p::p, comp jlbDOB2::b:p::p}, space u:::p, par b {comp phoneJtf::b:p::p, comp jlbPhoneNumber::b:p::p}}}, space u:::p, par b {comp dobJpn::b:p::p, comp jlbDOB::b:p::p}, space s:::p, comp changePasswordJbt:::p::p, space :p:54:p}}, comp UploadJbt:::p::p, space :p:27:p, par b {comp jbtCancel::b:p::p, comp jbtSave::b:p::p}, space ::143:x}}"
+		} ) {
+			name: "this"
+			"background": sfield java.awt.Color white
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jbtCancel"
+				"text": "CANCEL"
+				"preferredSize": &Dimension0 new java.awt.Dimension( 80, 30 )
+				"font": &Font0 new java.awt.Font( "Lato Black", 1, 18 )
+				"background": &Color0 new java.awt.Color( 97, 184, 132, 255 )
+				"foreground": sfield java.awt.Color white
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jbtSave"
+				"text": "SAVE"
+				"preferredSize": #Dimension0
+				"font": #Font0
+				"background": #Color0
+				"foreground": sfield java.awt.Color white
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jlbMyAccount"
+				"text": "MY ACCOUNT"
+				"background": new java.awt.Color( 97, 184, 132, 255 )
+				"font": new java.awt.Font( "Lato Black", 1, 25 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jlbUsername"
+				"text": "Username:"
+				"font": &Font1 new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": &Color1 new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jlbEmail"
+				"text": "Email:"
+				"font": #Font1
+				"foreground": #Color1
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jlbPhoneNumber"
+				"text": "Phone Number:"
+				"font": #Font1
+				"foreground": #Color1
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jlbDOB"
+				"text": "Date of Birth:"
+				"font": #Font1
+				"foreground": #Color1
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jlbDOB2"
+				"text": "Address:"
+				"font": #Font1
+				"foreground": #Color1
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "usernameJtf"
+				"font": &Font2 new java.awt.Font( "Lato", 0, 16 )
+				"foreground": &Color2 new java.awt.Color( 97, 184, 132, 255 )
+				"editable": false
+				"background": sfield java.awt.Color lightGray
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "emailJtf"
+				"font": #Font2
+				"foreground": #Color2
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "phoneJtf"
+				"font": #Font2
+				"foreground": #Color2
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "addressJtf"
+				"font": #Font2
+				"foreground": #Color2
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "com.github.lgooddatepicker.components.DatePicker" ) {
+				name: "dobJpn"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "UploadJbt"
+				"text": "UPLOAD NEW AVATAR"
+				"font": new java.awt.Font( "Lato Black", 1, 14 )
+				"foreground": &Color3 new java.awt.Color( 255, 255, 255, 255 )
+				"background": &Color4 new java.awt.Color( 97, 184, 132, 255 )
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormContainer( "javax.swing.JDesktopPane", new FormLayoutManager( class javax.swing.JDesktopPane ) ) {
+				name: "desktopPane1"
+				"background": sfield java.awt.Color white
+				"maximumSize": new java.awt.Dimension( 208, 212 )
+				"minimumSize": new java.awt.Dimension( 208, 212 )
+				"preferredSize": new java.awt.Dimension( 208, 212 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "avatarJlb"
+					"background": new java.awt.Color( 255, 255, 255, 255 )
+					"border": new javax.swing.border.LineBorder( new java.awt.Color( 97, 184, 132, 255 ), 1, false )
+					"maximumSize": new java.awt.Dimension( 208, 212 )
+					"minimumSize": new java.awt.Dimension( 208, 212 )
+					"preferredSize": new java.awt.Dimension( 208, 212 )
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
+				}, new FormLayoutConstraints( null ) {
+					"width": 270
+					"height": 280
+					"x": 0
+					"y": 0
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "changePasswordJbt"
+				"text": "CHANGE PASSWORD"
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": #Color3
+				"background": #Color4
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+					"JavaCodeGenerator.variableModifiers": 10
+				}
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1020, 615 )
+		} )
+	}
+}
