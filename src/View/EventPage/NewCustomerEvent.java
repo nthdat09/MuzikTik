@@ -66,7 +66,7 @@ public class NewCustomerEvent extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         label3 = new JLabel();
         PasswordField = new JTextField();
         UserNameField = new JTextField();
@@ -90,13 +90,12 @@ public class NewCustomerEvent extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
-        . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder
-        . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .
-        awt . Font. BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) )
-        ;  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-        ) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
-        ;
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
+        .EmptyBorder ( 0, 0 ,0 , 0) ,  "" , javax. swing .border . TitledBorder. CENTER ,javax
+        . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,
+        12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans
+        .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e.
+        getPropertyName () ) )throw new RuntimeException( ) ;} } );
         setLayout(null);
 
         //---- label3 ----
@@ -104,26 +103,26 @@ public class NewCustomerEvent extends JPanel {
         label3.setFont(new Font("Lato Black", Font.BOLD, 16));
         label3.setForeground(new Color(0x61b884));
         add(label3);
-        label3.setBounds(5, 300, 115, label3.getPreferredSize().height);
+        label3.setBounds(new Rectangle(new Point(5, 395), label3.getPreferredSize()));
 
         //---- PasswordField ----
         PasswordField.setFont(new Font("Lato", Font.PLAIN, 16));
         PasswordField.setBackground(Color.white);
         add(PasswordField);
-        PasswordField.setBounds(145, 295, 252, PasswordField.getPreferredSize().height);
+        PasswordField.setBounds(145, 390, 252, PasswordField.getPreferredSize().height);
 
         //---- UserNameField ----
         UserNameField.setFont(new Font("Lato", Font.PLAIN, 16));
         UserNameField.setBackground(Color.white);
         add(UserNameField);
-        UserNameField.setBounds(145, 245, 252, UserNameField.getPreferredSize().height);
+        UserNameField.setBounds(145, 340, 252, UserNameField.getPreferredSize().height);
 
         //---- UserName ----
         UserName.setText("Username:");
         UserName.setFont(new Font("Lato Black", Font.BOLD, 16));
         UserName.setForeground(new Color(0x61b884));
         add(UserName);
-        UserName.setBounds(new Rectangle(new Point(5, 250), UserName.getPreferredSize()));
+        UserName.setBounds(new Rectangle(new Point(5, 345), UserName.getPreferredSize()));
 
         //---- label1 ----
         label1.setText("CUSTOMER INFORMATION");
@@ -137,66 +136,64 @@ public class NewCustomerEvent extends JPanel {
         TypeField.setName("TotalPointVal");
         TypeField.setFont(new Font("Lato", Font.PLAIN, 16));
         add(TypeField);
-        TypeField.setBounds(740, 195, 247, TypeField.getPreferredSize().height);
+        TypeField.setBounds(740, 290, 247, TypeField.getPreferredSize().height);
 
         //---- Type ----
         Type.setFont(new Font("Lato Black", Font.BOLD, 16));
         Type.setText("Type:");
         Type.setForeground(new Color(0x61b884));
         add(Type);
-        Type.setBounds(605, 200, 77, Type.getPreferredSize().height);
+        Type.setBounds(605, 295, 77, Type.getPreferredSize().height);
 
         //---- IDField ----
         IDField.setName("NameVal");
         IDField.setEditable(false);
         IDField.setFont(new Font("Lato", Font.PLAIN, 16));
         IDField.setEnabled(false);
-        IDField.setBackground(new Color(0xcccccc));
-        IDField.setDisabledTextColor(new Color(0x333333));
         add(IDField);
-        IDField.setBounds(145, 110, 250, 28);
+        IDField.setBounds(145, 205, 250, 28);
 
         //---- ID ----
         ID.setText("ID:");
         ID.setFont(new Font("Lato Black", Font.BOLD, 16));
         ID.setForeground(new Color(0x61b884));
         add(ID);
-        ID.setBounds(5, 115, 57, ID.getPreferredSize().height);
+        ID.setBounds(5, 210, 57, ID.getPreferredSize().height);
 
         //---- TotalPointVal ----
         TotalPointVal.setBackground(Color.white);
         TotalPointVal.setName("TotalPointVal");
         TotalPointVal.setFont(new Font("Lato", Font.PLAIN, 16));
         add(TotalPointVal);
-        TotalPointVal.setBounds(740, 245, 250, TotalPointVal.getPreferredSize().height);
+        TotalPointVal.setBounds(740, 340, 250, TotalPointVal.getPreferredSize().height);
 
         //---- AddressField ----
         AddressField.setBackground(Color.white);
         AddressField.setName("PhoneNumberVal");
         AddressField.setFont(new Font("Lato", Font.PLAIN, 16));
         add(AddressField);
-        AddressField.setBounds(740, 150, 247, AddressField.getPreferredSize().height);
+        AddressField.setBounds(740, 245, 247, AddressField.getPreferredSize().height);
 
         //---- EmailField ----
         EmailField.setBackground(Color.white);
         EmailField.setName("AddressVal");
         EmailField.setFont(new Font("Lato", Font.PLAIN, 16));
         add(EmailField);
-        EmailField.setBounds(145, 195, 252, EmailField.getPreferredSize().height);
+        EmailField.setBounds(145, 290, 252, EmailField.getPreferredSize().height);
 
         //---- PhoneNumberFiled ----
         PhoneNumberFiled.setBackground(Color.white);
         PhoneNumberFiled.setName("EmailVal");
         PhoneNumberFiled.setFont(new Font("Lato", Font.PLAIN, 16));
         add(PhoneNumberFiled);
-        PhoneNumberFiled.setBounds(740, 110, 250, PhoneNumberFiled.getPreferredSize().height);
+        PhoneNumberFiled.setBounds(740, 205, 250, PhoneNumberFiled.getPreferredSize().height);
 
         //---- NameField ----
         NameField.setBackground(Color.white);
         NameField.setName("NameVal");
         NameField.setFont(new Font("Lato", Font.PLAIN, 16));
         add(NameField);
-        NameField.setBounds(145, 150, 252, NameField.getPreferredSize().height);
+        NameField.setBounds(145, 245, 252, NameField.getPreferredSize().height);
 
         //---- TotalPoint ----
         TotalPoint.setFont(new Font("Lato Black", Font.BOLD, 16));
@@ -204,7 +201,7 @@ public class NewCustomerEvent extends JPanel {
         TotalPoint.setForeground(new Color(0x61b884));
         TotalPoint.setBackground(Color.white);
         add(TotalPoint);
-        TotalPoint.setBounds(605, 250, 99, TotalPoint.getPreferredSize().height);
+        TotalPoint.setBounds(605, 345, 99, TotalPoint.getPreferredSize().height);
 
         //---- SAVE ----
         SAVE.setText("SAVE");
@@ -219,35 +216,35 @@ public class NewCustomerEvent extends JPanel {
             }
         });
         add(SAVE);
-        SAVE.setBounds(870, 315, 112, SAVE.getPreferredSize().height);
+        SAVE.setBounds(870, 410, 112, SAVE.getPreferredSize().height);
 
         //---- PhoneNumber ----
         PhoneNumber.setText("Phone Number:");
         PhoneNumber.setFont(new Font("Lato Black", Font.BOLD, 16));
         PhoneNumber.setForeground(new Color(0x61b884));
         add(PhoneNumber);
-        PhoneNumber.setBounds(605, 115, 126, PhoneNumber.getPreferredSize().height);
+        PhoneNumber.setBounds(605, 210, 126, PhoneNumber.getPreferredSize().height);
 
         //---- Address ----
         Address.setText("Address:");
         Address.setFont(new Font("Lato Black", Font.BOLD, 16));
         Address.setForeground(new Color(0x61b884));
         add(Address);
-        Address.setBounds(605, 155, 87, Address.getPreferredSize().height);
+        Address.setBounds(605, 250, 87, Address.getPreferredSize().height);
 
         //---- Email ----
         Email.setText("Email:");
         Email.setFont(new Font("Lato Black", Font.BOLD, 16));
         Email.setForeground(new Color(0x61b884));
         add(Email);
-        Email.setBounds(5, 200, 87, Email.getPreferredSize().height);
+        Email.setBounds(5, 295, 87, Email.getPreferredSize().height);
 
         //---- Name ----
         Name.setText("Name:");
         Name.setFont(new Font("Lato Black", Font.BOLD, 16));
         Name.setForeground(new Color(0x61b884));
         add(Name);
-        Name.setBounds(5, 155, 71, Name.getPreferredSize().height);
+        Name.setBounds(5, 250, 71, Name.getPreferredSize().height);
 
         {
             // compute preferred size
@@ -267,7 +264,7 @@ public class NewCustomerEvent extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JLabel label3;
     private JTextField PasswordField;
     private JTextField UserNameField;
