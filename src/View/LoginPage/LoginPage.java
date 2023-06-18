@@ -3,18 +3,23 @@ package View.LoginPage;
 import Controller.LoginPage.LoginPageListener;
 import Model.BEAN.Employee.Employee;
 import Model.DAO.Employee.EmployeeDAO;
+import Model.Database.UserDatabase;
 import View.LoginPage.ForgetPasswordPage.ForgotPasswordPage_1;
 import View.LoginPage.RegisterAccountPage.RegisterAccountPage_1;
 import View.MainPage.MainPage;
+import View.MainPage.MainPageCustomer;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class LoginPage extends JPanel {
     ActionListener ac = new LoginPageListener(this);
-
+    String cus_password = "";
     private static int loginAttempt = 0;
 
     String loginStatus = "Login Failed";
@@ -37,17 +42,37 @@ public class LoginPage extends JPanel {
         String password = this.PasswordField.getText();
 
         Employee realuser = EmployeeDAO.getInstance().selectUserandPassByID(username);
-
-        if (loginAttempt >= 3) {
-            loginStatus = "Forgot your password? Click Forgot Password to reset the password";
-        }
-
-        if (realuser == null) {
-            this.LoginStatus.setText(loginStatus);
-            this.LoginStatus.setForeground(Color.decode("EB1212"));
-            loginAttempt++;
-        }
-        else {
+        // User not found => User may be customer
+        if(realuser == null) {
+            // Check if username is customer
+            Connection con = UserDatabase.getConnection();
+            String sql = "SELECT cus_password FROM customer WHERE CUS_USERNAME = '" + username + "'";
+            try {
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    cus_password = rs.getString("cus_password");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            if(cus_password == null) {
+                this.LoginStatus.setText(loginStatus);
+                this.LoginStatus.setForeground(Color.decode("EB1212"));
+                loginAttempt++;
+            } else if(cus_password.equals(password)) {
+                this.LoginStatus.setText("");
+                this.LoginPageDialog.dispose();
+                MainPageCustomer mainMenu = new MainPageCustomer();
+                mainMenu.setVisible(true);
+            } else {
+                this.LoginStatus.setText(loginStatus);
+                this.LoginStatus.setForeground(Color.decode("EB1212"));
+                loginAttempt++;
+            }
+        } else //User is customer
+            {
             String realUsername = realuser.getUsername();
             String realPassword = realuser.getPassword();
 
@@ -62,7 +87,11 @@ public class LoginPage extends JPanel {
                 this.LoginStatus.setForeground(Color.decode("EB1212"));
                 loginAttempt++;
             }
+        }
 
+
+        if (loginAttempt >= 3) {
+            loginStatus = "Forgot your password? Click Forgot Password to reset the password";
         }
     }
 
