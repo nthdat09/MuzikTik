@@ -1,0 +1,228 @@
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par t {seq {par t {comp dialogPane::l:p:808:p, seq l {space :p:103:p, par l {comp scrollPane1:::p:433:p, seq {comp label2:::p:50:p, space u:::p, comp eventcbBox:::p:363:p}}, space :p:35:p, par t {comp RemoveButton:::p:103:p, comp AddButton:::p:103:p}}}, space :::x}, seq t {space :0:0:x, comp buttonBar:::p:720:p, space :p:46:p}}"
+			"$verticalGroup": "par l {seq {comp dialogPane:::p::p, space :::p, par b {comp label2::b:p:32:p, comp eventcbBox::b:p::p}, space s:::p, par l {seq {comp scrollPane1::::153:x, space :::p}, seq t {space :0:25:x, comp AddButton:::p:38:p, space s:::p, comp RemoveButton:::p:38:p, space :p:40:p}}, comp buttonBar:::p::p, space :::p}}"
+		} ) {
+			name: "this"
+			auxiliary() {
+				"JavaCodeGenerator.variableGetter": true
+				"JavaCodeGenerator.variableName": "ExportReportJDialog"
+			}
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq {par l {seq {space :p:285:p, comp title:::p::p, space :0:0:x}, seq t {space ::91:x, par l:::p {seq {comp TypeStatistic:::p::p, space s:::p, comp Statistic:::::x}, seq {comp Day:::p:42:p, space s:::p, comp dayComboBox:::p:59:p, space s:::p, comp Month:::p:54:p, space s:::p, comp monthComboBox:::p:53:p, space :p:18:p, comp Year:::p::p, space :p:18:p, comp yearComboBox:::p:95:p}}}}, space :p:260:p}}"
+					"$verticalGroup": "par l {seq l {space :::p, comp title:::p::p, space :p:20:p, par l {comp TypeStatistic:::p:32:p, comp Statistic:::p::p}, space :p:18:p, par l {par b:l {comp Day::b:::x, comp dayComboBox::b:::x, comp Month::b:p::p, comp monthComboBox::b:p::p}, par b:t {comp yearComboBox::b:p::p, comp Year::b:::x}}}}"
+				} ) {
+					name: "contentPanel"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "TypeStatistic"
+						"text": "Types of Statistics:"
+						"font": new java.awt.Font( "Lato Black", 1, 16 )
+						"foreground": new java.awt.Color( 97, 184, 132, 255 )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "title"
+						"text": "EXPORT REPORT"
+						"font": new java.awt.Font( "Lato Black", 0, 25 )
+						"background": new java.awt.Color( 255, 255, 255, 255 )
+						"foreground": new java.awt.Color( 97, 184, 132, 255 )
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "Statistic"
+						"font": new java.awt.Font( "Lato", 0, 16 )
+						"model": new javax.swing.DefaultComboBoxModel {
+							selectedItem: "Monthly Ticket Revenue"
+							addElement( "Monthly Ticket Revenue" )
+							addElement( "Annual Ticket Revenue" )
+							addElement( "Event-based Ticket Revenue" )
+							addElement( "Daily Ticket Sales Statistics" )
+							addElement( "Monthly Ticket Sales Statistics" )
+							addElement( "Annual Ticket Sales Statistics" )
+						}
+						"background": new java.awt.Color( 255, 255, 255, 255 )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+						addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "StatisticItemStateChanged", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "Day"
+						"text": "Day:"
+						"font": &Font0 new java.awt.Font( "Lato Black", 1, 16 )
+						"foreground": &Color0 new java.awt.Color( 97, 184, 132, 255 )
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "dayComboBox"
+						"background": &Color1 new java.awt.Color( 255, 255, 255, 255 )
+						"font": &Font1 new java.awt.Font( "Lato", 1, 16 )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "Month"
+						"text": "Month:"
+						"font": #Font0
+						"foreground": #Color0
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "monthComboBox"
+						"model": new javax.swing.DefaultComboBoxModel {
+							selectedItem: "1"
+							addElement( "1" )
+							addElement( "2" )
+							addElement( "3" )
+							addElement( "4" )
+							addElement( "5" )
+							addElement( "6" )
+							addElement( "7" )
+							addElement( "8" )
+							addElement( "9" )
+							addElement( "10" )
+							addElement( "11" )
+							addElement( "12" )
+						}
+						"background": #Color1
+						"font": #Font1
+						addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "comboBox2ItemStateChanged", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "Year"
+						"text": "Year:"
+						"font": #Font0
+						"foreground": #Color0
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "yearComboBox"
+						"model": new javax.swing.DefaultComboBoxModel {
+							selectedItem: "2013"
+							addElement( "2013" )
+							addElement( "2014" )
+							addElement( "2015" )
+							addElement( "2016" )
+							addElement( "2017" )
+							addElement( "2018" )
+							addElement( "2019" )
+							addElement( "2020" )
+							addElement( "2021" )
+							addElement( "2022" )
+							addElement( "2023" )
+						}
+						"background": #Color1
+						"font": #Font1
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "North"
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0:1.0, 80, 80"
+				"$rowSpecs": "0, 0"
+				"$hGap": 5
+				"$vGap": 5
+			} ) {
+				name: "buttonBar"
+				"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "okButton"
+					"text": "OK"
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 1
+					"gridy": 0
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "cancelButton"
+					"text": "Cancel"
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridx": 2
+					"gridy": 0
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "reportTable"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+						add( "STT" )
+						add( "Name" )
+						add( "Day" )
+						add( "Month" )
+						add( "Year" )
+					}, new java.util.Vector {
+						add( class java.lang.Integer )
+						add( class java.lang.String )
+						add( class java.lang.String )
+						add( class java.lang.String )
+						add( class java.lang.String )
+					}, new java.util.Vector {
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "eventcbBox"
+				"font": new java.awt.Font( "Lato Black", 0, 14 )
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Event:"
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": #Color0
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "RemoveButton"
+				"text": "REMOVE"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "AddButton"
+				"text": "ADD"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 810, 485 )
+		} )
+	}
+}

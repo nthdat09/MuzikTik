@@ -5,6 +5,7 @@
 package View.AnalyticPage;
 
 import Model.Database.UserDatabase;
+import View.AnalyticPage.ExportReport.ExportReportDialog;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -36,7 +37,7 @@ public class AnalyticPage extends JPanel {
     
     private void settingEventComboBox() {
         Connection con = UserDatabase.getConnection();
-        String sql = "select EVT_NAME from event";
+        String sql = "select EVT_NAME from mctmsys.event";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -57,8 +58,8 @@ public class AnalyticPage extends JPanel {
                 month = Integer.parseInt(monthComboBox.getSelectedItem().toString());
                 year = Integer.parseInt(yearComboBox.getSelectedItem().toString());
                 DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-                String sqlMonthlyRevenue = "select date(tbk_datetime) as date,SUM(TKT_PRICE) as revenue from ticket join ticket_booking tb on ticket.TKT_ID = tb.TBK_TKT_ID where exists(\n" +
-                        "    select TBK_TKT_ID from ticket_booking where month(TBK_DATETIME) = " + month + " and\n" +
+                String sqlMonthlyRevenue = "select date(tbk_datetime) as date,SUM(TKT_PRICE) as revenue from mctmsys.ticket join mctmsys.ticket_booking tb on ticket.TKT_ID = tb.TBK_TKT_ID where exists(\n" +
+                        "    select TBK_TKT_ID from mctmsys.ticket_booking where month(TBK_DATETIME) = " + month + " and\n" +
                         "                                                year(TBK_DATETIME) = "+ year +"\n" +
                         "                                       )\n" +
                         "    group by date\n" +
@@ -93,9 +94,9 @@ public class AnalyticPage extends JPanel {
                         "  MONTH(TBK_DATETIME) AS MONTH, \n" +
                         "  SUM(TKT_PRICE) AS TOTAL_REVENUE \n" +
                         "FROM \n" +
-                        "  TICKET \n" +
-                        "  JOIN TICKET_BOOKING ON TICKET.TKT_ID = TICKET_BOOKING.TBK_TKT_ID \n" +
-                        "  JOIN EVENT ON TICKET.TKT_EVT_ID = EVENT.EVT_ID \n" +
+                        "  mctmsys.ticket \n" +
+                        "  JOIN mctmsys.ticket_booking ON TICKET.TKT_ID = TICKET_BOOKING.TBK_TKT_ID \n" +
+                        "  JOIN mctmsys.event ON TICKET.TKT_EVT_ID = EVENT.EVT_ID \n" +
                         "WHERE \n" +
                         "  YEAR(TBK_DATETIME) = '" + year + "'\n" +
                         "GROUP BY \n" +
@@ -126,9 +127,9 @@ public class AnalyticPage extends JPanel {
             case "Event-based Ticket Revenue":
                 String event = eventcbBox.getSelectedItem().toString();
                 DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();
-                String sqlEventTicket = "SELECT SEAT_TYPE, SUM(TKT_PRICE) AS TOTAL_REVENUE FROM EVENT JOIN TICKET ON EVENT.EVT_ID = TICKET.TKT_EVT_ID\n" +
-                        "                        join ticket_booking tb on ticket.TKT_ID = tb.TBK_TKT_ID\n" +
-                        "                        JOIN seat s on ticket.TKT_SEAT_ID = s.SEAT_ID and ticket.TKT_STG_ID = s.SEAT_STG_ID\n" +
+                String sqlEventTicket = "SELECT SEAT_TYPE, SUM(TKT_PRICE) AS TOTAL_REVENUE FROM mctmsys.event JOIN mctmsys.ticket ON EVENT.EVT_ID = TICKET.TKT_EVT_ID\n" +
+                        "                        join mctmsys.ticket_booking tb on ticket.TKT_ID = tb.TBK_TKT_ID\n" +
+                        "                        JOIN mctmsys.seat s on ticket.TKT_SEAT_ID = s.SEAT_ID and ticket.TKT_STG_ID = s.SEAT_STG_ID\n" +
                         "                                                  WHERE EVT_NAME = '" + event + "'\n" +
                         "                        group by SEAT_TYPE;";
                 try {
@@ -164,9 +165,9 @@ public class AnalyticPage extends JPanel {
                         "  EVT_NAME, \n" +
                         "  COUNT(*) AS TOTAL_TICKETS_SOLD \n" +
                         "FROM \n" +
-                        "  EVENT \n" +
-                        "  JOIN TICKET ON EVENT.EVT_ID = TICKET.TKT_EVT_ID \n" +
-                        "  JOIN TICKET_BOOKING ON TICKET.TKT_ID = TICKET_BOOKING.TBK_TKT_ID \n" +
+                        "  mctmsys.event \n" +
+                        "  JOIN mctmsys.ticket ON EVENT.EVT_ID = TICKET.TKT_EVT_ID \n" +
+                        "  JOIN mctmsys.ticket_booking ON TICKET.TKT_ID = TICKET_BOOKING.TBK_TKT_ID \n" +
                         "WHERE \n" +
                         "  DATE(TBK_DATETIME) = '"+ date +"'\n" +
                         "GROUP BY \n" +
@@ -202,9 +203,9 @@ public class AnalyticPage extends JPanel {
                         "  EVT_NAME, \n" +
                         "  COUNT(*) AS TOTAL_TICKETS_SOLD \n" +
                         "FROM \n" +
-                        "  EVENT \n" +
-                        "  JOIN TICKET ON EVENT.EVT_ID = TICKET.TKT_EVT_ID \n" +
-                        "  JOIN TICKET_BOOKING ON TICKET.TKT_ID = TICKET_BOOKING.TBK_TKT_ID \n" +
+                        "  mctmsys.event \n" +
+                        "  JOIN mctmsys.ticket ON EVENT.EVT_ID = TICKET.TKT_EVT_ID \n" +
+                        "  JOIN mctmsys.ticket_booking ON TICKET.TKT_ID = TICKET_BOOKING.TBK_TKT_ID \n" +
                         "WHERE \n" +
                         "  MONTH(TBK_DATETIME) = '" + month + "' \n" +
                         "  AND YEAR(TBK_DATETIME) = '" + year + "' \n" +
@@ -237,7 +238,7 @@ public class AnalyticPage extends JPanel {
                 year = Integer.parseInt(yearComboBox.getSelectedItem().toString());
                 DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
                 String sqlAnnualTicket = "SELECT MONTH(TBK_DATETIME) AS ticket_month, COUNT(*) AS ticket_count\n" +
-                        "FROM ticket_booking\n" +
+                        "FROM mctmsys.ticket_booking\n" +
                         "WHERE YEAR(TBK_DATETIME) = " + year + "\n" +
                         "GROUP BY ticket_month\n" +
                         "ORDER BY ticket_month;";
@@ -368,9 +369,40 @@ public class AnalyticPage extends JPanel {
         }
     }
 
+    private void ExportReportMouseClicked(MouseEvent e) {
+        ExportReportDialog exportReportDialog = new ExportReportDialog();
+        exportReportDialog.setVisible(true);
+
+
+    }
+
+    public JPanel getPanel2() {
+        return panel2;
+    }
+
+    public JLabel getLabel3() {
+        return label3;
+    }
+
+    public JComboBox getEventcbBox() {
+        return eventcbBox;
+    }
+
+    public JComboBox<String> getYearComboBox() {
+        return yearComboBox;
+    }
+
+    public JComboBox getDayComboBox() {
+        return dayComboBox;
+    }
+
+    public JComboBox<String> getMonthComboBox() {
+        return monthComboBox;
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         Statistic = new JComboBox<>();
         TypeStatistic = new JLabel();
         Day = new JLabel();
@@ -385,15 +417,18 @@ public class AnalyticPage extends JPanel {
         monthComboBox = new JComboBox<>();
         yearComboBox = new JComboBox<>();
         eventcbBox = new JComboBox();
+        panel2 = new JPanel();
+        label3 = new JLabel();
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-        EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
-        . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
-        java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-        { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
-        throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+        . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing
+        . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+        Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+        ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+        public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName (
+        ) )) throw new RuntimeException( ); }} );
 
         //---- Statistic ----
         Statistic.setFont(new Font("Lato", Font.PLAIN, 16));
@@ -509,6 +544,26 @@ public class AnalyticPage extends JPanel {
         //---- eventcbBox ----
         eventcbBox.setFont(new Font("Lato Black", Font.PLAIN, 14));
 
+        //======== panel2 ========
+        {
+            panel2.setBackground(new Color(0x61b884));
+            panel2.setLayout(new GridLayout());
+
+            //---- label3 ----
+            label3.setText("EXPORT REPORT");
+            label3.setFont(new Font("Lato Black", Font.BOLD, 16));
+            label3.setForeground(Color.white);
+            label3.setBackground(Color.white);
+            label3.setHorizontalAlignment(SwingConstants.CENTER);
+            label3.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    ExportReportMouseClicked(e);
+                }
+            });
+            panel2.add(label3);
+        }
+
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
         layout.setHorizontalGroup(
@@ -519,12 +574,13 @@ public class AnalyticPage extends JPanel {
                     .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addGap(26, 26, 26)
-                    .addGroup(layout.createParallelGroup()
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                         .addComponent(TypeStatistic)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(Day)
                             .addGap(18, 18, 18)
-                            .addComponent(dayComboBox, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(dayComboBox, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(panel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup()
                         .addGroup(layout.createSequentialGroup()
@@ -572,7 +628,8 @@ public class AnalyticPage extends JPanel {
                                 .addComponent(Year)
                                 .addComponent(label2)
                                 .addComponent(eventcbBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addGap(49, 49, 49))
+                            .addGap(18, 18, 18)
+                            .addComponent(panel2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
                         .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addComponent(chartView, GroupLayout.PREFERRED_SIZE, 441, GroupLayout.PREFERRED_SIZE)
@@ -582,7 +639,7 @@ public class AnalyticPage extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JComboBox<String> Statistic;
     private JLabel TypeStatistic;
     private JLabel Day;
@@ -593,9 +650,11 @@ public class AnalyticPage extends JPanel {
     private JPanel chartView;
     private JLabel title;
     private JLabel label2;
-    private JComboBox dayComboBox;
-    private JComboBox<String> monthComboBox;
-    private JComboBox<String> yearComboBox;
+    private static JComboBox dayComboBox;
+    private static JComboBox<String> monthComboBox;
+    private static JComboBox<String> yearComboBox;
     private JComboBox eventcbBox;
+    private JPanel panel2;
+    private JLabel label3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

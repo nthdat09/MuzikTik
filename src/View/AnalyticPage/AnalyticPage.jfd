@@ -1,11 +1,11 @@
-JFDML JFormDesigner: "8.0.5.0.268" Java: "17.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :p:5:p, comp chartView:::p:1099:p, space :::x}, seq t {space :p:26:p, par l {comp TypeStatistic:::p::p, seq {comp Day:::p::p, space s:::p, comp dayComboBox:::p:95:p}}, space :::x, par l {seq l {space :p:148:p, comp title:::p::p}, par t:l {seq t {space :p:359:p, comp panel1:::p:103:p}, seq l {par t:::p {seq {comp Month:::p::p, space s:::p, comp monthComboBox:::p:95:p, space :::x, comp Year:::p::p, space s:::p, comp yearComboBox:::p:95:p}, comp Statistic:::p:385:p}, space s:::p, comp label2:::p::p, space :::p, comp eventcbBox:::p:226:p}}}, space :p:245:p}}"
-			"$verticalGroup": "par l {seq {space :p:27:p, comp title:::p::p, space :18:18:p, par b {comp TypeStatistic::b:p::p, comp Statistic::b:p::p}, space :p:11:p, par t {seq {par b {comp Day::b:p::p, comp dayComboBox::b:p::p, comp Month::b:p::p, comp monthComboBox::b:p::p, comp yearComboBox::b:p::p, comp Year::b:p::p, comp label2::b:p::p, comp eventcbBox::b:p::p}, space :p:49:p}, comp panel1:::p:32:p}, space s:::p, comp chartView:::p:441:p, space :p:69:p}}"
+			"$horizontalGroup": "par l {seq {space :p:5:p, comp chartView:::p:1099:p, space :::x}, seq t {space :p:26:p, par l:::p {comp TypeStatistic:::p::p, seq {comp Day:::p::p, space s:::p, comp dayComboBox:::p:95:p}, comp panel2::l:::x}, space :::x, par l {seq l {space :p:148:p, comp title:::p::p}, par t:l {seq t {space :p:359:p, comp panel1:::p:103:p}, seq l {par t:::p {seq {comp Month:::p::p, space s:::p, comp monthComboBox:::p:95:p, space :::x, comp Year:::p::p, space s:::p, comp yearComboBox:::p:95:p}, comp Statistic:::p:385:p}, space s:::p, comp label2:::p::p, space :::p, comp eventcbBox:::p:226:p}}}, space :p:245:p}}"
+			"$verticalGroup": "par l {seq {space :p:27:p, comp title:::p::p, space :18:18:p, par b {comp TypeStatistic::b:p::p, comp Statistic::b:p::p}, space :p:11:p, par t {seq {par b {comp Day::b:p::p, comp dayComboBox::b:p::p, comp Month::b:p::p, comp monthComboBox::b:p::p, comp yearComboBox::b:p::p, comp Year::b:p::p, comp label2::b:p::p, comp eventcbBox::b:p::p}, space s:::p, comp panel2:::p:32:p}, comp panel1:::p:32:p}, space s:::p, comp chartView:::p:441:p, space :p:69:p}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -65,13 +65,13 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
 				name: "panel1"
-				"background": new java.awt.Color( 97, 184, 132, 255 )
+				"background": &Color1 new java.awt.Color( 97, 184, 132, 255 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
 					"text": "ENTER"
-					"font": new java.awt.Font( "Lato Black", 1, 16 )
+					"font": &Font1 new java.awt.Font( "Lato Black", 1, 16 )
 					"foreground": sfield java.awt.Color white
-					"background": new java.awt.Color( 255, 255, 255, 255 )
+					"background": &Color2 new java.awt.Color( 255, 255, 255, 255 )
 					"horizontalAlignment": 0
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "label1MouseClicked", true ) )
 				} )
@@ -96,8 +96,12 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
 				name: "dayComboBox"
-				"background": &Color1 new java.awt.Color( 255, 255, 255, 255 )
-				"font": &Font1 new java.awt.Font( "Lato", 1, 16 )
+				"background": &Color3 new java.awt.Color( 255, 255, 255, 255 )
+				"font": &Font2 new java.awt.Font( "Lato", 1, 16 )
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+					"JavaCodeGenerator.variableModifiers": 10
+				}
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
 				name: "monthComboBox"
@@ -116,8 +120,12 @@ new FormModel {
 					addElement( "11" )
 					addElement( "12" )
 				}
-				"background": #Color1
-				"font": #Font1
+				"background": #Color3
+				"font": #Font2
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 10
+					"JavaCodeGenerator.variableGetter": true
+				}
 				addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "comboBox2ItemStateChanged", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
@@ -136,12 +144,38 @@ new FormModel {
 					addElement( "2022" )
 					addElement( "2023" )
 				}
-				"background": #Color1
-				"font": #Font1
+				"background": #Color3
+				"font": #Font2
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+					"JavaCodeGenerator.variableModifiers": 10
+				}
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
 				name: "eventcbBox"
 				"font": new java.awt.Font( "Lato Black", 0, 14 )
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+				name: "panel2"
+				"background": #Color1
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label3"
+					"text": "EXPORT REPORT"
+					"font": #Font1
+					"foreground": sfield java.awt.Color white
+					"background": #Color2
+					"horizontalAlignment": 0
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "ExportReportMouseClicked", true ) )
+				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
