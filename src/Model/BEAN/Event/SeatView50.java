@@ -344,7 +344,6 @@ public class SeatView50 extends JPanel {
                             e1.printStackTrace();
                         }
                     } else if (button.getBackground().equals(Color.YELLOW)) {
-                        System.out.println("Yellow");
                         button.setBackground(Color.decode("#92CFAA"));
                         button.setForeground(Color.WHITE);
                         boolean found = false;
