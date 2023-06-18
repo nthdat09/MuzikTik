@@ -4,6 +4,7 @@ import Controller.LoginPage.LoginPageListener;
 import Model.BEAN.Employee.Employee;
 import Model.DAO.Employee.EmployeeDAO;
 import Model.Database.UserDatabase;
+import View.Home.HomePanel;
 import View.LoginPage.ForgetPasswordPage.ForgotPasswordPage_1;
 import View.LoginPage.RegisterAccountPage.RegisterAccountPage_1;
 import View.MainPage.MainPage;
@@ -21,6 +22,7 @@ public class LoginPage extends JPanel {
     ActionListener ac = new LoginPageListener(this);
     String cus_password = "";
     private static int loginAttempt = 0;
+    private static String userName = "";
 
     String loginStatus = "Login Failed";
     public LoginPage() {
@@ -56,7 +58,7 @@ public class LoginPage extends JPanel {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            
+
             if(cus_password == null) {
                 this.LoginStatus.setText(loginStatus);
                 this.LoginStatus.setForeground(Color.decode("EB1212"));
@@ -64,14 +66,16 @@ public class LoginPage extends JPanel {
             } else if(cus_password.equals(password)) {
                 this.LoginStatus.setText("");
                 this.LoginPageDialog.dispose();
-                MainPageCustomer mainMenu = new MainPageCustomer();
+                MainPageCustomer mainMenu = new MainPageCustomer(username);
                 mainMenu.setVisible(true);
+                HomePanel.setIsCustomer(true);
+                setUsername(username);
             } else {
                 this.LoginStatus.setText(loginStatus);
                 this.LoginStatus.setForeground(Color.decode("EB1212"));
                 loginAttempt++;
             }
-        } else //User is customer
+        } else //User is employee
             {
             String realUsername = realuser.getUsername();
             String realPassword = realuser.getPassword();
@@ -81,6 +85,7 @@ public class LoginPage extends JPanel {
                 this.LoginPageDialog.dispose();
                 MainPage mainMenu = new MainPage(username);
                 mainMenu.setVisible(true);
+                HomePanel.setIsCustomer(false);
             }
             else {
                 this.LoginStatus.setText(loginStatus);
@@ -88,8 +93,6 @@ public class LoginPage extends JPanel {
                 loginAttempt++;
             }
         }
-
-
         if (loginAttempt >= 3) {
             loginStatus = "Forgot your password? Click Forgot Password to reset the password";
         }
@@ -111,6 +114,14 @@ public class LoginPage extends JPanel {
 
     public JButton getLoginButton() {
         return LoginButton;
+    }
+
+    public static String getUsername() {
+        return userName;
+    }
+
+    public static void setUsername(String username) {
+        LoginPage.userName = username;
     }
 
     public JTextField getUsernameField() {

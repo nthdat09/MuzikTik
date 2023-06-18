@@ -3,7 +3,7 @@ JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
-		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 				name: "headerPanel"
@@ -102,13 +102,13 @@ new FormModel {
 				"y": 10
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq {par l {seq {comp jpnHome:::p:231:p, space :0:0:x}, seq t {space :0:0:x, comp jpnSettings:::p:231:p}}, space :::p}}"
+				"$horizontalGroup": "par l {seq t {space :0:0:x, par l {comp jpnHome:::p:240:p, comp jpnSettings:::p:239:p}, space :::p}}"
 				"$verticalGroup": "par l {seq l {space :p:30:p, comp jpnHome:::p:53:p, space :::p, comp jpnSettings:::p:53:p, space ::763:x}}"
 			} ) {
 				name: "navigationPanel"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbHome::t::231:x}"
+					"$horizontalGroup": "par l {seq l {comp jlbHome:::p:240:p, space :0:0:x}}"
 					"$verticalGroup": "par l {comp jlbHome::l::53:x}"
 				} ) {
 					name: "jpnHome"
@@ -128,12 +128,10 @@ new FormModel {
 							"JavaCodeGenerator.variableGetter": true
 							"JavaCodeGenerator.variableModifiers": 10
 						}
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbHomeMouseEntered", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbHomeMouseExited", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq t {space :0:6:x, comp jlbSettings:::p::p}}"
+					"$horizontalGroup": "par l {seq l {comp jlbSettings:::p:239:p, space :0:0:x}}"
 					"$verticalGroup": "par l {comp jlbSettings::l::53:x}"
 				} ) {
 					name: "jpnSettings"
@@ -151,8 +149,6 @@ new FormModel {
 							"JavaCodeGenerator.variableGetter": true
 							"JavaCodeGenerator.variableModifiers": 10
 						}
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseEntered", "jlbSettingsMouseEntered", true ) )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseExited", "jlbSettingsMouseExited", true ) )
 					} )
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -188,7 +184,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1155, 635 )
+			"size": new java.awt.Dimension( 1540, 635 )
 		} )
 	}
 }

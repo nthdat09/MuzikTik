@@ -13,8 +13,11 @@ import Model.BEAN.Event.EventPrice;
 import Model.BEAN.Stage.StageInformation;
 import Model.DAO.Event.Event;
 import Model.DAO.Event.EventInformation.*;
+import Model.Database.UserDatabase;
 import View.EventPage.EventPanel;
+import View.LoginPage.LoginPage;
 import View.MainPage.MainPage;
+import View.MainPage.MainPageCustomer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +26,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -35,6 +42,7 @@ import java.util.logging.Logger;
  */
 public class HomePanel extends JPanel {
     static Integer selectedEventID;
+    static Boolean isCustomer = false;
     static String selectedEvent;
     static Integer selectedStage;
 
@@ -149,6 +157,10 @@ public class HomePanel extends JPanel {
         listLabelDate.add(eventDate9);
     }
 
+    public static void setIsCustomer(Boolean isCustomer) {
+        HomePanel.isCustomer = isCustomer;
+    }
+
     public void setEventList() {
         for (int i = 0; i < 9; i++) {
             try {
@@ -188,19 +200,58 @@ public class HomePanel extends JPanel {
     }
 
     public void clickEventPanel(String src) {
-        setSelectedEvent(src);
-        MainPage.changeView(new EventPanel(), MainPage.getJlbEvent(), "EventPanel");
-        eventInformationList = EventInformationList.getEventInformationList();
-        eventSetting();
-        System.out.println(selectedStage);
-        eventStageInformation = GetStageName.getStageInformationList();
-        stageSetting();
-        eventArt = GetArt.getArtByID();
-        pictureArtSetting();
-        listEventPrice = EventPriceList.getEventPriceList();
-        eventPriceSetting();
-        EventTableDatabase.getEventTableDatabase();
+        if(isCustomer == false) {
+            setSelectedEvent(src);
+            MainPage.changeView(new EventPanel(), MainPage.getJlbEvent(), "EventPanel");
+            eventInformationList = EventInformationList.getEventInformationList();
+            eventSetting();
+            System.out.println(selectedStage);
+            eventStageInformation = GetStageName.getStageInformationList();
+            stageSetting();
+            eventArt = GetArt.getArtByID();
+            pictureArtSetting();
+            listEventPrice = EventPriceList.getEventPriceList();
+            eventPriceSetting();
+            EventTableDatabase.getEventTableDatabase();
+        } else {
+            setSelectedEvent(src);
+            MainPageCustomer.changeView(new EventPanel(), MainPage.getJlbEvent(), "EventPanel");
+            eventInformationList = EventInformationList.getEventInformationList();
+            eventSetting();
+            System.out.println(selectedStage);
+            eventStageInformation = GetStageName.getStageInformationList();
+            stageSetting();
+            eventArt = GetArt.getArtByID();
+            pictureArtSetting();
+            listEventPrice = EventPriceList.getEventPriceList();
+            eventPriceSetting();
+            EventTableDatabase.getEventTableDatabase();
+
+            System.out.println(LoginPage.getUsername());
+            settingCustomer(LoginPage.getUsername());
+        }
     }
+
+    private void settingCustomer(String username) {
+        Connection connection = UserDatabase.getConnection();
+        String sql = "SELECT CUS_NAME, CUS_EMAIL, CUS_PHONE_NUMBER from customer where cus_username = '" + username + "'";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String name = resultSet.getString("CUS_NAME");
+                String email = resultSet.getString("CUS_EMAIL");
+                String phoneNumber = resultSet.getString("CUS_PHONE_NUMBER");
+
+                EventPanel.getNameTextField().setText(name);
+                EventPanel.getEmailTextField().setText(email);
+                EventPanel.getPhoneTextField().setText(phoneNumber);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
     public void eventPriceSetting() {
         ArrayList<JLabel> listLabelType = EventPanel.addTicketType();
         ArrayList<JLabel> listLabelPrice = EventPanel.addTicketPrice();

@@ -4,16 +4,51 @@
 
 package View.MainPage;
 
+import Controller.MainMenu.LogoutController;
+import Controller.Menu.SwitchMenuController;
+import Model.BEAN.Menu.MenuList;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
+
+import static View.MainPage.MainPage.setImageForLogoUser;
 
 /**
  * @author giama
  */
-public class MainPageCustomer extends JPanel {
+public class MainPageCustomer extends JFrame {
+
+    static String username;
     public MainPageCustomer() {
         initComponents();
+    }
+
+    public MainPageCustomer(String username) {
+        initComponents();
+        initSetting(username);
+    }
+
+    private void initSetting(String username) {
+        SwitchMenuController controller = new SwitchMenuController(jpnView);
+        controller.setUserName(username);
+        controller.setView(jpnHome,jlbHome);
+
+        this.username = username;
+
+        List<MenuList> listItem = new ArrayList<MenuList>();
+        listItem.add(new MenuList("HomePanel", jpnHome, jlbHome));
+        listItem.add(new MenuList("AccountPanel", jpnSettings,jlbSettings));
+        controller.setEvent(listItem);
+
+        //this.getLogOutJMenuItem().addActionListener(ac);
+        // Set username
+        this.getNameJMenuItem().setText("Hello, " + username);
+
+        // Set avatar
+        //setImageForLogoUser();
     }
 
     private void jpnBufferMouseEntered(MouseEvent e) {
@@ -24,68 +59,15 @@ public class MainPageCustomer extends JPanel {
         // TODO add your code here
     }
 
-    private void jlbHomeMouseEntered(MouseEvent e) {
-        // TODO add your code here
+    public static void changeView(JPanel jpnItem, JLabel jlbItem, String Kind){  // Change view
+        SwitchMenuController controller = new SwitchMenuController(getJpnView());
+        controller.changeViewController(jpnItem, jlbItem, Kind);
     }
 
-    private void jlbHomeMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
 
-    private void jlbEventMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbEventMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbCustomerMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbCustomerMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbTicketsMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbTicketsMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbStagesMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbStagesMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbParnersMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbParnersMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbAnalyticsMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbAnalyticsMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbSettingsMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbSettingsMouseExited(MouseEvent e) {
-        // TODO add your code here
+    public void Destroy() { // Destroy this frame
+        this.setVisible(false);
+        this.dispose();
     }
 
     public JMenu getAvatarJMenu() {
@@ -108,7 +90,7 @@ public class MainPageCustomer extends JPanel {
         return jlbSettings;
     }
 
-    public JPanel getJpnView() {
+    public static JPanel getJpnView() {
         return jpnView;
     }
 
@@ -133,19 +115,19 @@ public class MainPageCustomer extends JPanel {
         jpnView = new JPanel();
 
         //======== this ========
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-        . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing
-        .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-        Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
-        ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-        public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName (
-        ) ) )throw new RuntimeException( ) ;} } );
-        setLayout(null);
+        var contentPane = getContentPane();
+        contentPane.setLayout(null);
 
         //======== headerPanel ========
         {
             headerPanel.setBorder(null);
             headerPanel.setBackground(Color.white);
+            headerPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
+            ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
+            .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt
+            . Color .red ) ,headerPanel. getBorder () ) ); headerPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
+            propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+            ;} } );
             headerPanel.setLayout(null);
 
             //---- nameAppLabell ----
@@ -240,7 +222,7 @@ public class MainPageCustomer extends JPanel {
                 headerPanel.setPreferredSize(preferredSize);
             }
         }
-        add(headerPanel);
+        contentPane.add(headerPanel);
         headerPanel.setBounds(0, 10, 1401, 85);
 
         //======== navigationPanel ========
@@ -261,22 +243,14 @@ public class MainPageCustomer extends JPanel {
                 jlbHome.setFont(new Font("Lato Black", Font.BOLD, 20));
                 jlbHome.setForeground(new Color(0x61b884));
                 jlbHome.setIcon(null);
-                jlbHome.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        jlbHomeMouseEntered(e);
-                    }
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        jlbHomeMouseExited(e);
-                    }
-                });
 
                 GroupLayout jpnHomeLayout = new GroupLayout(jpnHome);
                 jpnHome.setLayout(jpnHomeLayout);
                 jpnHomeLayout.setHorizontalGroup(
                     jpnHomeLayout.createParallelGroup()
-                        .addComponent(jlbHome, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                        .addGroup(jpnHomeLayout.createSequentialGroup()
+                            .addComponent(jlbHome, GroupLayout.PREFERRED_SIZE, 240, GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE))
                 );
                 jpnHomeLayout.setVerticalGroup(
                     jpnHomeLayout.createParallelGroup()
@@ -296,24 +270,14 @@ public class MainPageCustomer extends JPanel {
                 jlbSettings.setPreferredSize(new Dimension(225, 65));
                 jlbSettings.setForeground(new Color(0x61b884));
                 jlbSettings.setFont(new Font("Lato Black", Font.BOLD, 20));
-                jlbSettings.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        jlbSettingsMouseEntered(e);
-                    }
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        jlbSettingsMouseExited(e);
-                    }
-                });
 
                 GroupLayout jpnSettingsLayout = new GroupLayout(jpnSettings);
                 jpnSettings.setLayout(jpnSettingsLayout);
                 jpnSettingsLayout.setHorizontalGroup(
                     jpnSettingsLayout.createParallelGroup()
-                        .addGroup(GroupLayout.Alignment.TRAILING, jpnSettingsLayout.createSequentialGroup()
-                            .addGap(0, 6, Short.MAX_VALUE)
-                            .addComponent(jlbSettings, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jpnSettingsLayout.createSequentialGroup()
+                            .addComponent(jlbSettings, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE))
                 );
                 jpnSettingsLayout.setVerticalGroup(
                     jpnSettingsLayout.createParallelGroup()
@@ -325,14 +289,11 @@ public class MainPageCustomer extends JPanel {
             navigationPanel.setLayout(navigationPanelLayout);
             navigationPanelLayout.setHorizontalGroup(
                 navigationPanelLayout.createParallelGroup()
-                    .addGroup(navigationPanelLayout.createSequentialGroup()
+                    .addGroup(GroupLayout.Alignment.TRAILING, navigationPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(navigationPanelLayout.createParallelGroup()
-                            .addGroup(navigationPanelLayout.createSequentialGroup()
-                                .addComponent(jpnHome, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(GroupLayout.Alignment.TRAILING, navigationPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jpnSettings, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jpnHome, GroupLayout.PREFERRED_SIZE, 240, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jpnSettings, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
             );
             navigationPanelLayout.setVerticalGroup(
@@ -345,7 +306,7 @@ public class MainPageCustomer extends JPanel {
                         .addContainerGap(763, Short.MAX_VALUE))
             );
         }
-        add(navigationPanel);
+        contentPane.add(navigationPanel);
         navigationPanel.setBounds(0, 70, 237, 905);
 
         //======== jpnMainMenu ========
@@ -386,23 +347,25 @@ public class MainPageCustomer extends JPanel {
                 jpnMainMenu.setPreferredSize(preferredSize);
             }
         }
-        add(jpnMainMenu);
+        contentPane.add(jpnMainMenu);
         jpnMainMenu.setBounds(240, 95, 1161, 735);
 
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < getComponentCount(); i++) {
-                Rectangle bounds = getComponent(i).getBounds();
+            for(int i = 0; i < contentPane.getComponentCount(); i++) {
+                Rectangle bounds = contentPane.getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
             }
-            Insets insets = getInsets();
+            Insets insets = contentPane.getInsets();
             preferredSize.width += insets.right;
             preferredSize.height += insets.bottom;
-            setMinimumSize(preferredSize);
-            setPreferredSize(preferredSize);
+            contentPane.setMinimumSize(preferredSize);
+            contentPane.setPreferredSize(preferredSize);
         }
+        pack();
+        setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
