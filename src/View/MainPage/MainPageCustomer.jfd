@@ -5,13 +5,6 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
-			"visible": true
-			"defaultCloseOperation": 3
-			"iconImage": new com.jformdesigner.model.SwingIcon( 0, "/Asset/Icon/music logo design - no name.png" )
-			"font": new java.awt.Font( "Lato", 0, 14 )
-			auxiliary() {
-				"JavaCodeGenerator.variableGetter": true
-			}
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 				name: "headerPanel"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -105,15 +98,17 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 1401
 				"height": 85
+				"x": 0
+				"y": 10
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq {par l {comp jpnHome::l:p:231:p, comp jpnEvent::l:p:231:p, comp jpnCustomers::l:p:231:p, comp jpnTickets::l:p:231:p, comp jpnStages::l:p:231:p, comp jpnPartners::l:p:231:p, comp jpnAnalytics::l:p:231:p, comp jpnSettings::l:p:231:p}, space :::x}}"
-				"$verticalGroup": "par l {seq l {space :p:30:p, comp jpnHome:::p:53:p, space :::p, comp jpnEvent:::p:53:p, space :::p, comp jpnCustomers:::p:53:p, space :::p, comp jpnTickets:::p:53:p, space :::p, comp jpnStages:::p:53:p, space :::p, comp jpnPartners:::p:53:p, space :::p, comp jpnAnalytics:::p:53:p, space :::p, comp jpnSettings:::p:53:p, space ::409:x}}"
+				"$horizontalGroup": "par l {seq t {space :0:0:x, par l {comp jpnHome:::p:240:p, comp jpnSettings:::p:239:p}, space :::p}}"
+				"$verticalGroup": "par l {seq l {space :p:30:p, comp jpnHome:::p:53:p, space :::p, comp jpnSettings:::p:53:p, space ::763:x}}"
 			} ) {
 				name: "navigationPanel"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbHome::t::231:x}"
+					"$horizontalGroup": "par l {seq l {comp jlbHome:::p:240:p, space :0:0:x}}"
 					"$verticalGroup": "par l {comp jlbHome::l::53:x}"
 				} ) {
 					name: "jpnHome"
@@ -136,133 +131,7 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbEvent::l::231:x}"
-					"$verticalGroup": "par l {comp jlbEvent::l::53:x}"
-				} ) {
-					name: "jpnEvent"
-					"preferredSize": new java.awt.Dimension( 225, 65 )
-					"background": sfield java.awt.Color white
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "jlbEvent"
-						"text": "EVENTS"
-						"horizontalAlignment": 0
-						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"preferredSize": new java.awt.Dimension( 225, 65 )
-						"foreground": #Color2
-						"font": new java.awt.Font( "Lato Black", 1, 20 )
-						auxiliary() {
-							"JavaCodeGenerator.variableGetter": true
-							"JavaCodeGenerator.variableModifiers": 10
-						}
-					} )
-				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbCustomer::t::231:x}"
-					"$verticalGroup": "par l {comp jlbCustomer::l::53:x}"
-				} ) {
-					name: "jpnCustomers"
-					"preferredSize": new java.awt.Dimension( 225, 65 )
-					"background": sfield java.awt.Color white
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "jlbCustomer"
-						"text": "CUSTOMERS"
-						"horizontalAlignment": 0
-						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"preferredSize": new java.awt.Dimension( 225, 65 )
-						"foreground": #Color2
-						"font": new java.awt.Font( "Lato Black", 1, 20 )
-						auxiliary() {
-							"JavaCodeGenerator.variableGetter": true
-							"JavaCodeGenerator.variableModifiers": 10
-						}
-					} )
-				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbTickets::t::231:x}"
-					"$verticalGroup": "par l {comp jlbTickets::l::53:x}"
-				} ) {
-					name: "jpnTickets"
-					"preferredSize": new java.awt.Dimension( 225, 65 )
-					"background": sfield java.awt.Color white
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "jlbTickets"
-						"text": "TICKETS"
-						"horizontalAlignment": 0
-						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"preferredSize": new java.awt.Dimension( 225, 65 )
-						"foreground": #Color2
-						"font": new java.awt.Font( "Lato Black", 1, 20 )
-						auxiliary() {
-							"JavaCodeGenerator.variableGetter": true
-							"JavaCodeGenerator.variableModifiers": 10
-						}
-					} )
-				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbStages::t::231:x}"
-					"$verticalGroup": "par l {seq l {comp jlbStages:::p:51:p, space :0:2:x}}"
-				} ) {
-					name: "jpnStages"
-					"preferredSize": new java.awt.Dimension( 225, 65 )
-					"background": sfield java.awt.Color white
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "jlbStages"
-						"text": "STAGES"
-						"horizontalAlignment": 0
-						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"preferredSize": new java.awt.Dimension( 225, 65 )
-						"foreground": #Color2
-						"font": new java.awt.Font( "Lato Black", 1, 20 )
-						auxiliary() {
-							"JavaCodeGenerator.variableGetter": true
-							"JavaCodeGenerator.variableModifiers": 10
-						}
-					} )
-				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbPartners::t::231:x}"
-					"$verticalGroup": "par l {comp jlbPartners::l::53:x}"
-				} ) {
-					name: "jpnPartners"
-					"preferredSize": new java.awt.Dimension( 225, 65 )
-					"background": sfield java.awt.Color white
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "jlbPartners"
-						"text": "PARTNERS"
-						"horizontalAlignment": 0
-						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"preferredSize": new java.awt.Dimension( 225, 65 )
-						"foreground": #Color2
-						"font": new java.awt.Font( "Lato Black", 1, 20 )
-						auxiliary() {
-							"JavaCodeGenerator.variableGetter": true
-							"JavaCodeGenerator.variableModifiers": 10
-						}
-					} )
-				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp jlbAnalytics::t::231:x}"
-					"$verticalGroup": "par l {comp jlbAnalytics::l::53:x}"
-				} ) {
-					name: "jpnAnalytics"
-					"preferredSize": new java.awt.Dimension( 225, 65 )
-					"background": sfield java.awt.Color white
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "jlbAnalytics"
-						"text": "ANALYTICS"
-						"horizontalAlignment": 0
-						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						"preferredSize": new java.awt.Dimension( 225, 65 )
-						"foreground": #Color2
-						"font": new java.awt.Font( "Lato Black", 1, 20 )
-						auxiliary() {
-							"JavaCodeGenerator.variableGetter": true
-							"JavaCodeGenerator.variableModifiers": 10
-						}
-					} )
-				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq t {space :0:6:x, comp jlbSettings:::p::p}}"
+					"$horizontalGroup": "par l {seq l {comp jlbSettings:::p:239:p, space :0:0:x}}"
 					"$verticalGroup": "par l {comp jlbSettings::l::53:x}"
 				} ) {
 					name: "jpnSettings"
@@ -283,14 +152,14 @@ new FormModel {
 					} )
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"y": 65
+				"width": 237
 				"height": 905
 				"x": 0
+				"y": 70
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 				name: "jpnMainMenu"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-				"background": new java.awt.Color( 255, 255, 255, 255 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 					"$horizontalGroup": "par l {space :0:1155:x}"
 					"$verticalGroup": "par l {space :0:730:x}"
@@ -302,20 +171,20 @@ new FormModel {
 						"JavaCodeGenerator.variableModifiers": 10
 					}
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 5
+					"x": 10
 					"y": 5
 					"width": 1155
 					"height": 730
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 1161
+				"height": 735
 				"x": 240
 				"y": 95
-				"height": 735
-				"width": 1161
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1405, 870 )
+			"size": new java.awt.Dimension( 1540, 635 )
 		} )
 	}
 }

@@ -15,6 +15,64 @@ public class CustomerDAO{
         return new CustomerDAO();
     }
 
+    public static List<String> getListUsername() {
+        List<String> listUsername = new ArrayList<>();
+        try{
+            Connection con = UserDatabase.getConnection();
+            String sql = "SELECT CUS_USERNAME FROM mctmsys.customer";
+            PreparedStatement st = con.prepareCall(sql);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                listUsername.add(rs.getString("CUS_USERNAME"));
+            }
+            st.close();
+            rs.close();
+            UserDatabase.closeConnection(con);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listUsername;
+    }
+
+    public static String getEmailByUsername(String userName) {
+        String email  = "";
+        try{
+            Connection con = UserDatabase.getConnection();
+            String sql = "SELECT CUS_EMAIL FROM mctmsys.customer WHERE CUS_USERNAME = ?";
+            PreparedStatement st = con.prepareCall(sql);
+            st.setString(1, userName);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                email = rs.getString("CUS_EMAIL");
+            }
+            st.close();
+            rs.close();
+            UserDatabase.closeConnection(con);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return email;
+    }
+
+    public static int updatePasswordByUsername(String username, String password) {
+        int rowChanged;
+        try{
+            Connection con = UserDatabase.getConnection();
+            String sql = "UPDATE mctmsys.customer SET CUS_PASSWORD = ? WHERE CUS_USERNAME = ?";
+            PreparedStatement st = con.prepareCall(sql);
+            st.setString(1, password);
+            st.setString(2, username);
+
+            rowChanged = st.executeUpdate();
+            st.close();
+            UserDatabase.closeConnection(con);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rowChanged;
+    }
+
     public List<Customer> getList() {
         try {
             Connection con = UserDatabase.getConnection();
@@ -215,6 +273,8 @@ public class CustomerDAO{
                 customer.setTotalPoint(rs.getInt("CUS_TOTAL_POINT"));
                 customer.setBalance(rs.getInt("CUS_BALANCE"));
                 customer.setUsername(rs.getString("CUS_USERNAME"));
+                customer.setDateOfBirth(rs.getDate("CUS_DOB"));
+                customer.setAvatar(rs.getBytes("CUS_AVATAR"));
             }
 
             ps.close();
@@ -228,4 +288,89 @@ public class CustomerDAO{
         return customer;
     }
 
+    public Customer selectUserandPassByID(String userName) {
+        Connection con = UserDatabase.getConnection();
+        Customer customer = new Customer();
+        String sql = "Select * from mctmsys.customer where CUS_USERNAME = '" + userName + "';";
+        try {
+            PreparedStatement ps = con.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String username = rs.getString("CUS_USERNAME");
+                String password = rs.getString("CUS_PASSWORD");
+                customer.setPassword(password);
+                customer.setUsername(username);
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return customer;
+    }
+
+    public static int updateCustomerWithoutAvatar(Customer customer) {
+        int rowChanged = 0;
+        try {
+            Connection con = UserDatabase.getConnection();
+            String sql = "UPDATE mctmsys.customer SET CUS_EMAIL = ?, CUS_PHONE_NUMBER = ?, CUS_ADDRESS = ?, CUS_DOB = ? WHERE CUS_USERNAME = ?";
+            
+            PreparedStatement ps = con.prepareCall(sql);
+            ps.setString(1, customer.getEmail());
+            ps.setString(2, customer.getPhoneNumber());
+            ps.setString(3, customer.getAddress());
+            ps.setDate(4, customer.getDateOfBirth());
+            ps.setString(5, customer.getUsername());
+
+            rowChanged = ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowChanged;
+    }
+
+    public static int updateAvatar(Customer customer) {
+        int rowChanged;
+        try{
+            Connection con = UserDatabase.getConnection();
+
+            String sql = "UPDATE mctmsys.customer SET CUS_AVATAR = ? " +
+                    " WHERE CUS_USERNAME = ?";
+
+            PreparedStatement st = con.prepareCall(sql);
+            st.setBytes(1, customer.getAvatar());
+            st.setString(2, customer.getUsername());
+            rowChanged = st.executeUpdate();
+            st.close();
+            UserDatabase.closeConnection(con);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("update avatar: " + rowChanged);
+        return rowChanged;
+    }
+
+    public static String getPasswordByUsername(String username) {
+        String password = "";
+        try{
+            Connection con = UserDatabase.getConnection();
+            String sql = "SELECT CUS_PASSWORD FROM mctmsys.customer WHERE CUS_USERNAME = ?";
+            PreparedStatement st = con.prepareCall(sql);
+            st.setString(1, username);
+
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                password = rs.getString("CUS_PASSWORD");
+            }
+
+            st.close();
+            rs.close();
+            UserDatabase.closeConnection(con);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("old Password: " + password);
+        return password;
+    }
 }

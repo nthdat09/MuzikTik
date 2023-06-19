@@ -5,9 +5,14 @@
 package View.SettingPage;
 
 import Controller.AccountPanel.AccountPanelController;
+import Model.BEAN.Customer.Customer;
 import Model.BEAN.Employee.Employee;
+import Model.DAO.Customer.CustomerDAO;
 import Model.DAO.Employee.EmployeeDAO;
+import View.Home.HomePanel;
+import View.LoginPage.LoginPage;
 import View.MainPage.MainPage;
+import View.MainPage.MainPageCustomer;
 import com.github.lgooddatepicker.components.DatePicker;
 
 import javax.swing.*;
@@ -39,14 +44,51 @@ public class AccountPanel extends JPanel {
     }
 
     private void initMoreSetting() {
-        setDataForComponents();
-
-        getJbtCancel().addActionListener(ac);
-        getJbtSave().addActionListener(ac);
-        getUploadJbt().addActionListener(ac);
-        getChangePasswordJbt().addActionListener(ac);
-
+        if(HomePanel.getIsCustomer() == false) {
+            setDataForComponents();
+            getJbtCancel().addActionListener(ac);
+            getJbtSave().addActionListener(ac);
+            getUploadJbt().addActionListener(ac);
+            getChangePasswordJbt().addActionListener(ac);
+        } else {
+            setDataCustomerForComponents();
+            getJbtCancel().addActionListener(ac);
+            getJbtSave().addActionListener(ac);
+            getUploadJbt().addActionListener(ac);
+            getChangePasswordJbt().addActionListener(ac);
+        }
         newPhotoUploaded = 0;
+    }
+
+    private void setDataCustomerForComponents() {
+        Customer customer = CustomerDAO.getInstance().getCustomerByUsername(LoginPage.getUsername());
+        System.out.println(LoginPage.getUsername());
+
+        getUsernameJtf().setText(customer.getUsername());
+        getEmailJtf().setText(customer.getEmail());
+        getAddressJtf().setText(customer.getAddress());
+        getPhoneJtf().setText(String.valueOf(customer.getPhoneNumber()));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
+        if (customer.getDateOfBirth().equals("")){
+            getDobJpn().setDateToToday();
+        }
+        else{
+            LocalDate localDate = LocalDate.parse(customer.getDateOfBirth().toString(), formatter);
+            getDobJpn().setDate(localDate);
+        }
+        byte[] bytes = customer.getAvatar();
+        if (bytes != null) {
+            ImageIcon imageIcon = new ImageIcon(bytes);
+            Image image = imageIcon.getImage().getScaledInstance(avatarJlb.getWidth(), avatarJlb.getHeight(), Image.SCALE_SMOOTH);
+            avatarJlb.setIcon(new ImageIcon(image));
+        }
+        else {
+            ImageIcon imageIcon = new ImageIcon("src\\View\\SettingPage\\default_avatar.png");
+            Image image = imageIcon.getImage().getScaledInstance(avatarJlb.getWidth(), avatarJlb.getHeight(), Image.SCALE_SMOOTH);
+            avatarJlb.setIcon(new ImageIcon(image));
+        }
+
     }
 
     private void setDataForComponents() {
@@ -85,13 +127,53 @@ public class AccountPanel extends JPanel {
     }
 
     public void changePassword() {
-        ChangPasswordJDialog changPasswordJDialog = new ChangPasswordJDialog();
+        ChangPasswordJDialog changPasswordJDialog = new ChangPasswordJDialog(HomePanel.getIsCustomer());
     }
 
     public void save() throws IOException {
         if (getUsernameJtf().getText().equals("") || getEmailJtf().getText().equals("") || getAddressJtf().getText().equals("")
                 || getPhoneJtf().getText().equals("") || getDobJpn().getDate().toString().equals("")){
             JOptionPane.showMessageDialog(this, "Please fill all the fields");
+        } else if(HomePanel.getIsCustomer() == true) {
+            Customer customer = new Customer();
+            customer.setUsername(getUsernameJtf().getText());
+            customer.setEmail(getEmailJtf().getText());
+            customer.setAddress(getAddressJtf().getText());
+            customer.setPhoneNumber(getPhoneJtf().getText());
+            customer.setDateOfBirth(java.sql.Date.valueOf(getDobJpn().getDate()));
+
+            int rowChanged = CustomerDAO.getInstance().updateCustomerWithoutAvatar(customer);
+            int avatarUploadSuscessfully = 0;
+            if(newPhotoUploaded == 1) {
+                File image = new File(filename);
+                FileInputStream fis = new FileInputStream(image);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                byte[] buf = new byte[1024];
+                for (int readNum; (readNum = fis.read(buf)) != -1; ) {
+                    bos.write(buf, 0, readNum);
+                }
+                photo = bos.toByteArray();
+                customer.setAvatar(photo);
+
+                avatarUploadSuscessfully = CustomerDAO.getInstance().updateAvatar(customer);
+
+                if(rowChanged > 0 && avatarUploadSuscessfully > 0) {
+                    JOptionPane.showMessageDialog(this, "Update successfully");
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "Update failed");
+                }
+            } else {
+                if(rowChanged > 0) {
+                    JOptionPane.showMessageDialog(this, "Update successfully");
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "Update failed");
+                }
+            }
+
+            MainPageCustomer.setImageForLogoUser();
+            MainPageCustomer.changeView(new AccountPanel(), MainPage.getJlbSettings(), "AccountPanel");
         }
         else {
             Employee employee = new Employee();
@@ -139,7 +221,11 @@ public class AccountPanel extends JPanel {
         }
     }
     public void cancel() {
-        setDataForComponents();
+        if(HomePanel.getIsCustomer() == true) {
+            setDataForComponents();
+        } else {
+            setDataForComponents();
+        }
     }
 
     public JButton getJbtCancel() {

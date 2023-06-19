@@ -5,8 +5,11 @@
 package View.SettingPage;
 
 import Controller.AccountPanel.ChangPasswordJDialogController;
+import Model.DAO.Customer.CustomerDAO;
 import Model.DAO.Employee.EmployeeDAO;
+import View.LoginPage.LoginPage;
 import View.MainPage.MainPage;
+import View.MainPage.MainPageCustomer;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -19,8 +22,10 @@ import javax.swing.border.*;
  */
 public class ChangPasswordJDialog extends JDialog {
     ActionListener ac = new ChangPasswordJDialogController(this);
-    public ChangPasswordJDialog() {
+    private Boolean isCustomer;
+    public ChangPasswordJDialog(Boolean isCustomer) {
         super();
+        this.isCustomer = isCustomer;
         initComponents();
         initMoreSetting();
     }
@@ -35,6 +40,29 @@ public class ChangPasswordJDialog extends JDialog {
         if (getOldPasswordField().getText().equals("") || getNewPasswordField().getText().equals("")
                 || getReTypeNewPasswordField().getText().equals("")) { // check if any field is empty
             JOptionPane.showMessageDialog(this, "Please fill all the fields");
+        } else if(isCustomer == true) {
+            String oldPassword = getOldPasswordField().getText();
+            String newPassword = getNewPasswordField().getText();
+            String reTypeNewPassword = getReTypeNewPasswordField().getText();
+
+            if(!oldPassword.equals(CustomerDAO.getPasswordByUsername(LoginPage.getUsername()))){ // check if old password is correct
+                JOptionPane.showMessageDialog(this, "Old password is not correct");
+            }
+
+            else if(!newPassword.equals(reTypeNewPassword)){
+                JOptionPane.showMessageDialog(this, "New password and retype new password are not the same");
+            }
+
+            else {
+                int rowChanged = CustomerDAO.updatePasswordByUsername(LoginPage.getUsername(), newPassword);
+                if(rowChanged == 1){
+                    JOptionPane.showMessageDialog(this, "Change password successfully");
+                    this.dispose();
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "Change password failed");
+                }
+            }
         }
         else { // check if old password is correct and new password and retype new password are the same
             String oldPassword = getOldPasswordField().getText();

@@ -96,7 +96,7 @@ public class TicketInformationForm extends JPanel{
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         this.TicketInformationFormPanel = new JPanel();
         this.TicketID = new JLabel();
         this.EventID = new JLabel();
@@ -120,11 +120,13 @@ public class TicketInformationForm extends JPanel{
             this.TicketInformationFormPanel.setPreferredSize(new Dimension(670, 450));
             this.TicketInformationFormPanel.setFont(new Font("Lato Black", Font.BOLD, 16));
             this.TicketInformationFormPanel.setForeground(new Color(0x61b884));
-            this.TicketInformationFormPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
-            0, 0 ,0 , 0) ,  "" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
-            . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
-            red ) ,this.TicketInformationFormPanel. getBorder () ) ); this.TicketInformationFormPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
-            beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            this.TicketInformationFormPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
+            . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder
+            . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .
+            awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,this.TicketInformationFormPanel. getBorder () ) )
+            ; this.TicketInformationFormPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+            ) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
+            ;
 
             //---- TicketID ----
             this.TicketID.setText("Ticket ID:");
@@ -159,7 +161,6 @@ public class TicketInformationForm extends JPanel{
             this.TicketIDField.setEditable(false);
             this.TicketIDField.setBackground(new Color(0xcccccc));
             this.TicketIDField.setFont(new Font("Lato", Font.PLAIN, 16));
-            this.TicketIDField.setDisabledTextColor(new Color(0x333333));
 
             //---- EventIDField ----
             this.EventIDField.setFont(new Font("Lato", Font.PLAIN, 16));
@@ -263,14 +264,14 @@ public class TicketInformationForm extends JPanel{
                                 .addGroup(TicketInformationFormPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                     .addComponent(this.CancelButton)
                                     .addComponent(this.SaveButton))))
-                        .addContainerGap(218, Short.MAX_VALUE))
+                        .addContainerGap(210, Short.MAX_VALUE))
             );
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JPanel TicketInformationFormPanel;
     private JLabel TicketID;
     private JLabel EventID;

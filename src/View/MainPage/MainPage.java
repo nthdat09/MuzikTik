@@ -6,6 +6,7 @@ package View.MainPage;
 
 import Controller.MainMenu.LogoutController;
 import Controller.Menu.SwitchMenuController;
+import Controller.Menu.SwitchMenuControllerCustomer;
 import Model.BEAN.Employee.Employee;
 import Model.BEAN.Menu.MenuList;
 import Model.DAO.Employee.EmployeeDAO;
@@ -142,81 +143,6 @@ public class MainPage extends JFrame {
         this.dispose();
     }
 
-    Border border = new LineBorder(Color.decode("#61b884"),1,true);
-
-    private void button1MouseClicked(MouseEvent e) {
-        jpnMainMenu.setVisible(false);
-    }
-    
-    private void searchButtonMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-
-    private void jlbHomeMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbHomeMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbEventMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbEventMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbCustomerMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbCustomerMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbTicketsMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbTicketsMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbStagesMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbStagesMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbParnersMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbParnersMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbAnalyticsMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbAnalyticsMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbSettingsMouseEntered(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void jlbSettingsMouseExited(MouseEvent e) {
-        // TODO add your code here
-    }
-
     public static JLabel getJlbCustomer() {
         return jlbCustomer;
     }
@@ -275,7 +201,7 @@ public class MainPage extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - man
         headerPanel = new JPanel();
         nameAppLabell = new JLabel();
         jpnBuffer = new JPanel();
@@ -317,13 +243,12 @@ public class MainPage extends JFrame {
         {
             headerPanel.setBorder(null);
             headerPanel.setBackground(Color.white);
-            headerPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),headerPanel. getBorder()));headerPanel. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+            headerPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,headerPanel. getBorder( )) ); headerPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             headerPanel.setLayout(null);
 
             //---- nameAppLabell ----
@@ -439,16 +364,6 @@ public class MainPage extends JFrame {
                 jlbHome.setFont(new Font("Lato Black", Font.BOLD, 20));
                 jlbHome.setForeground(new Color(0x61b884));
                 jlbHome.setIcon(null);
-                jlbHome.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        jlbHomeMouseEntered(e);
-                    }
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        jlbHomeMouseExited(e);
-                    }
-                });
 
                 GroupLayout jpnHomeLayout = new GroupLayout(jpnHome);
                 jpnHome.setLayout(jpnHomeLayout);
@@ -474,16 +389,6 @@ public class MainPage extends JFrame {
                 jlbEvent.setPreferredSize(new Dimension(225, 65));
                 jlbEvent.setForeground(new Color(0x61b884));
                 jlbEvent.setFont(new Font("Lato Black", Font.BOLD, 20));
-                jlbEvent.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        jlbEventMouseEntered(e);
-                    }
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        jlbEventMouseExited(e);
-                    }
-                });
 
                 GroupLayout jpnEventLayout = new GroupLayout(jpnEvent);
                 jpnEvent.setLayout(jpnEventLayout);
@@ -509,16 +414,6 @@ public class MainPage extends JFrame {
                 jlbCustomer.setPreferredSize(new Dimension(225, 65));
                 jlbCustomer.setForeground(new Color(0x61b884));
                 jlbCustomer.setFont(new Font("Lato Black", Font.BOLD, 20));
-                jlbCustomer.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        jlbCustomerMouseEntered(e);
-                    }
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        jlbCustomerMouseExited(e);
-                    }
-                });
 
                 GroupLayout jpnCustomersLayout = new GroupLayout(jpnCustomers);
                 jpnCustomers.setLayout(jpnCustomersLayout);
@@ -544,16 +439,6 @@ public class MainPage extends JFrame {
                 jlbTickets.setPreferredSize(new Dimension(225, 65));
                 jlbTickets.setForeground(new Color(0x61b884));
                 jlbTickets.setFont(new Font("Lato Black", Font.BOLD, 20));
-                jlbTickets.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        jlbTicketsMouseEntered(e);
-                    }
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        jlbTicketsMouseExited(e);
-                    }
-                });
 
                 GroupLayout jpnTicketsLayout = new GroupLayout(jpnTickets);
                 jpnTickets.setLayout(jpnTicketsLayout);
@@ -579,16 +464,6 @@ public class MainPage extends JFrame {
                 jlbStages.setPreferredSize(new Dimension(225, 65));
                 jlbStages.setForeground(new Color(0x61b884));
                 jlbStages.setFont(new Font("Lato Black", Font.BOLD, 20));
-                jlbStages.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        jlbStagesMouseEntered(e);
-                    }
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        jlbStagesMouseExited(e);
-                    }
-                });
 
                 GroupLayout jpnStagesLayout = new GroupLayout(jpnStages);
                 jpnStages.setLayout(jpnStagesLayout);
@@ -616,16 +491,6 @@ public class MainPage extends JFrame {
                 jlbPartners.setPreferredSize(new Dimension(225, 65));
                 jlbPartners.setForeground(new Color(0x61b884));
                 jlbPartners.setFont(new Font("Lato Black", Font.BOLD, 20));
-                jlbPartners.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        jlbParnersMouseEntered(e);
-                    }
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        jlbParnersMouseExited(e);
-                    }
-                });
 
                 GroupLayout jpnPartnersLayout = new GroupLayout(jpnPartners);
                 jpnPartners.setLayout(jpnPartnersLayout);
@@ -651,16 +516,6 @@ public class MainPage extends JFrame {
                 jlbAnalytics.setPreferredSize(new Dimension(225, 65));
                 jlbAnalytics.setForeground(new Color(0x61b884));
                 jlbAnalytics.setFont(new Font("Lato Black", Font.BOLD, 20));
-                jlbAnalytics.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        jlbAnalyticsMouseEntered(e);
-                    }
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        jlbAnalyticsMouseExited(e);
-                    }
-                });
 
                 GroupLayout jpnAnalyticsLayout = new GroupLayout(jpnAnalytics);
                 jpnAnalytics.setLayout(jpnAnalyticsLayout);
@@ -686,16 +541,6 @@ public class MainPage extends JFrame {
                 jlbSettings.setPreferredSize(new Dimension(225, 65));
                 jlbSettings.setForeground(new Color(0x61b884));
                 jlbSettings.setFont(new Font("Lato Black", Font.BOLD, 20));
-                jlbSettings.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-                        jlbSettingsMouseEntered(e);
-                    }
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-                        jlbSettingsMouseExited(e);
-                    }
-                });
 
                 GroupLayout jpnSettingsLayout = new GroupLayout(jpnSettings);
                 jpnSettings.setLayout(jpnSettingsLayout);
@@ -815,7 +660,7 @@ public class MainPage extends JFrame {
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - man
     private JPanel headerPanel;
     private JLabel nameAppLabell;
     private JPanel jpnBuffer;

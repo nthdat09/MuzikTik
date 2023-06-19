@@ -7,6 +7,7 @@ package View.AnalyticPage.ExportReport;
 import java.awt.event.*;
 import javax.swing.table.*;
 import Controller.AnalyticPage.ExportReport.ExportReportDialogListener;
+import Model.BEAN.Analyst.Revenue;
 import Model.Database.UserDatabase;
 import org.jfree.data.category.DefaultCategoryDataset;
 
@@ -27,8 +28,7 @@ import javax.swing.border.*;
  */
 public class ExportReportDialog extends JDialog {
     ActionListener ac = new ExportReportDialogListener(this);
-    List<String> listReport = new ArrayList<>();
-    int stt;
+    List<Revenue> listReport = new ArrayList<>();
     public ExportReportDialog() {
         super();
         initComponents();
@@ -47,8 +47,8 @@ public class ExportReportDialog extends JDialog {
         settingEventComboBox();
 
         // Set size for reportTable
-        reportTable.getColumnModel().getColumn(0).setPreferredWidth(50);
-        reportTable.getColumnModel().getColumn(1).setPreferredWidth(200);
+        reportTable.getColumnModel().getColumn(0).setPreferredWidth(175);
+        reportTable.getColumnModel().getColumn(1).setPreferredWidth(175);
         reportTable.getColumnModel().getColumn(2).setPreferredWidth(50);
         reportTable.getColumnModel().getColumn(3).setPreferredWidth(50);
         reportTable.getColumnModel().getColumn(4).setPreferredWidth(50);
@@ -58,6 +58,9 @@ public class ExportReportDialog extends JDialog {
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
         reportTable.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
         reportTable.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
+        reportTable.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
+        reportTable.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
+        reportTable.getColumnModel().getColumn(4).setCellRenderer( centerRenderer );
     }
 
     private void settingEventComboBox() {
@@ -82,49 +85,45 @@ public class ExportReportDialog extends JDialog {
         else {
             Connection con = UserDatabase.getConnection();
 
-            for (String rev : listReport) {
+            for (Revenue rev : listReport) {
                 int index = listReport.indexOf(rev);
-                int day;
-                int month;
-                int year;
-                String event;
+
                 if (rev.equals("Monthly Ticket Revenue")){
-                    month = Integer.parseInt(reportTable.getValueAt(index, 3).toString());
-                    year = Integer.parseInt(reportTable.getValueAt(index, 4).toString());
+                    rev.setStatisticType("Monthly Ticket Revenue");
+                    rev.setMonth(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 3).toString())));
+                    rev.setYear(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 4).toString())));
                 }
 
                 else if (rev.equals("Annual Ticket Revenue")) {
-                    year = Integer.parseInt(reportTable.getValueAt(index, 4).toString());
-
+                    rev.setStatisticType("Annual Ticket Revenue");
+                    rev.setYear(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 4).toString())));
                 }
 
                 else if (rev.equals("Event-based Ticket Revenue")){
-                    event = reportTable.getValueAt(index, 5).toString();
-
+                    rev.setStatisticType("Event-based Ticket Revenue");
+                    rev.setEvent(reportTable.getValueAt(index, 2).toString());
                 }
 
                 else if (rev.equals("Daily Ticket Sales Statistics")){
-                    day = Integer.parseInt(reportTable.getValueAt(index, 2).toString());
-                    month = Integer.parseInt(reportTable.getValueAt(index, 3).toString());
-                    year = Integer.parseInt(reportTable.getValueAt(index, 4).toString());
+                    rev.setStatisticType("Daily Ticket Sales Statistics");
+                    rev.setDay(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 2).toString())));
+                    rev.setMonth(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 3).toString())));
+                    rev.setYear(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 4).toString())));
 
                 }
 
                 else if (rev.equals("Monthly Ticket Sales Statistics")){
-                    month = Integer.parseInt(reportTable.getValueAt(index, 3).toString());
-                    year = Integer.parseInt(reportTable.getValueAt(index, 4).toString());
-
+                    rev.setStatisticType("Monthly Ticket Sales Statistics");
+                    rev.setMonth(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 3).toString())));
+                    rev.setYear(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 4).toString())));
                 }
 
                 else if (rev.equals("Annual Ticket Sales Statistics")){
-                    year = Integer.parseInt(reportTable.getValueAt(index, 4).toString());
-
+                    rev.setStatisticType("Annual Ticket Sales Statistics");
+                    rev.setYear(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 4).toString())));
                 }
-
             }
         }
-
-
     }
 
     public void CancelButton() {
@@ -137,53 +136,95 @@ public class ExportReportDialog extends JDialog {
         String month = "";
         String year = "";
         String event = "";
+        String statisticType = "";
         if (selectedRevenue.equals("Monthly Ticket Revenue")) {
+            statisticType = "Monthly Ticket Revenue";
             month = monthComboBox.getSelectedItem().toString();
             year = yearComboBox.getSelectedItem().toString();
         }
 
         else if (selectedRevenue.equals("Annual Ticket Revenue")) {
+            statisticType = "Annual Ticket Revenue";
             year = yearComboBox.getSelectedItem().toString();
         }
 
         else if (selectedRevenue.equals("Event-based Ticket Revenue")) {
+            statisticType = "Event-based Ticket Revenue";
             event = eventcbBox.getSelectedItem().toString();
         }
 
         else if (selectedRevenue.equals("Daily Ticket Sales Statistics")) {
+            statisticType = "Daily Ticket Sales Statistics";
             day = dayComboBox.getSelectedItem().toString();
             month = monthComboBox.getSelectedItem().toString();
             year = yearComboBox.getSelectedItem().toString();
         }
 
         else if (selectedRevenue.equals("Monthly Ticket Sales Statistics")) {
+            statisticType = "Monthly Ticket Sales Statistics";
             month = monthComboBox.getSelectedItem().toString();
             year = yearComboBox.getSelectedItem().toString();
         }
 
-        else if (selectedRevenue.equals("Annual Ticket Sales Statistics")){
+        else if (selectedRevenue.equals("Annual Ticket Sales Statistics")) {
+            statisticType = "Annual Ticket Sales Statistics";
             year = yearComboBox.getSelectedItem().toString();
         }
-        stt++;
+        System.out.println("day: " + day + ", month: " + month + ", year: " + year + ", event: " + event + ", statisticType: " + statisticType);
 
         // Validate if selected revenue is already in listReport
-        for (String revenue : listReport) {
-            if (revenue.equals(selectedRevenue)) {
-                JOptionPane.showMessageDialog(null, "This revenue is already in the list");
-                return;
+        if (listReport.size() > 0) {
+            for (Revenue revenue : listReport) {
+                System.out.println(revenue.toString());
+                if (revenue.getStatisticType().equals("Daily Ticket Sales Statistics")) {
+                    System.out.println("Monthly Ticket Revenue");
+                    if (revenue.getStatisticType().equals(statisticType) && revenue.getMonth().equals(month) && revenue.getYear().equals(year)) {
+                        JOptionPane.showMessageDialog(null, "This statistic is already in the list");
+                        return;
+                    }
+                } else if (revenue.getStatisticType().equals("Monthly Ticket Revenue")) {
+                    System.out.println("Annual Ticket Revenue");
+                    if (revenue.getStatisticType().equals(statisticType) && revenue.getYear().equals(year)) {
+                        JOptionPane.showMessageDialog(null, "This statistic is already in the list");
+                        return;
+                    }
+                } else if (revenue.getStatisticType().equals("Annual Ticket Revenue")) {
+                    System.out.println("Event-based Ticket Revenue");
+                    if (revenue.getStatisticType().equals(statisticType) && revenue.getEvent().equals(event)) {
+                        JOptionPane.showMessageDialog(null, "This statistic is already in the list");
+                        return;
+                    }
+                } else if (revenue.getStatisticType().equals("Event-based Ticket Revenue")) {
+                    System.out.println("Daily Ticket Sales Statistics");
+                    if (revenue.getStatisticType().equals(statisticType) && revenue.getDay().equals(day) && revenue.getMonth().equals(month) && revenue.getYear().equals(year)) {
+                        JOptionPane.showMessageDialog(null, "This statistic is already in the list");
+                        return;
+                    }
+                } else if (revenue.getStatisticType().equals("Daily Ticket Sales Statistics")) {
+                    System.out.println("Monthly Ticket Sales Statistics");
+                    if (revenue.getStatisticType().equals(statisticType) && revenue.getMonth().equals(month) && revenue.getYear().equals(year)) {
+                        JOptionPane.showMessageDialog(null, "This statistic is already in the list");
+                        return;
+                    }
+                } else if (revenue.getStatisticType().equals("Monthly Ticket Sales Statistics")){
+                    System.out.println("Annual Ticket Sales Statistics");
+                    if (revenue.getStatisticType().equals(statisticType) && revenue.getYear().equals(year)) {
+                        JOptionPane.showMessageDialog(null, "This statistic is already in the list");
+                        return;
+                    }
+                }
             }
         }
 
-        listReport.add(selectedRevenue);
+        listReport.add(new Revenue(day, month, year, event, statisticType));
         DefaultTableModel model = (DefaultTableModel) reportTable.getModel();
-        model.addRow(new Object[]{stt, selectedRevenue, day, month, year, event});
+        model.addRow(new Object[]{statisticType, event, day, month, year});
     }
 
     public void RemoveButton() {
         int selectedRow = reportTable.getSelectedRow();
         if (selectedRow != -1) {
             listReport.remove(selectedRow);
-            stt--;
             DefaultTableModel model = (DefaultTableModel) reportTable.getModel();
             model.removeRow(selectedRow);
         }
@@ -352,13 +393,13 @@ public class ExportReportDialog extends JDialog {
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
-            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-            swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border
-            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
-            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,dialogPane. getBorder
-            ( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
-            ( ); }} );
+            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
+            swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border
+            . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog"
+            , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane. getBorder
+            () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
+            . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException
+            ( ) ;} } );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -526,11 +567,11 @@ public class ExportReportDialog extends JDialog {
                 new Object[][] {
                 },
                 new String[] {
-                    "STT", "Name", "Day", "Month", "Year"
+                    "Statitic Type", "Name", "Day", "Month", "Year"
                 }
             ) {
                 Class<?>[] columnTypes = new Class<?>[] {
-                    Integer.class, String.class, String.class, String.class, String.class
+                    String.class, String.class, String.class, String.class, String.class
                 };
                 boolean[] columnEditable = new boolean[] {
                     false, false, false, false, false

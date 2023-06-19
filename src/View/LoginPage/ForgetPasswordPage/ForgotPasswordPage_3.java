@@ -1,6 +1,7 @@
 package View.LoginPage.ForgetPasswordPage;
 
 import Controller.LoginPage.ForgetPassword.ForgetPasswordPage3Listener;
+import Model.DAO.Customer.CustomerDAO;
 import Model.DAO.Employee.EmployeeDAO;
 import View.LoginPage.LoginPage;
 import org.apache.commons.mail.EmailException;
@@ -31,10 +32,17 @@ public class ForgotPasswordPage_3 extends JPanel {
         else {
             if (getNewPasswordField().getText().equals(getReTypeNewPasswordField().getText())) {
                 JOptionPane.showMessageDialog(null, "Change password successfully!");
-                EmployeeDAO.updatePasswordByUsername(userName, getNewPasswordField().getText());
-                LoginPage loginPage = new LoginPage();
-                loginPage.getLoginPageDialog().setVisible(true);
-                ForgotPasswordPage_3JDialog.dispose();
+                if(ForgotPasswordPage_1.getIsCustomer() == true) {
+                    CustomerDAO.updatePasswordByUsername(userName, getNewPasswordField().getText());
+                    LoginPage loginPage = new LoginPage();
+                    loginPage.getLoginPageDialog().setVisible(true);
+                    ForgotPasswordPage_3JDialog.dispose();
+                } else {
+                    EmployeeDAO.updatePasswordByUsername(userName, getNewPasswordField().getText());
+                    LoginPage loginPage = new LoginPage();
+                    loginPage.getLoginPageDialog().setVisible(true);
+                    ForgotPasswordPage_3JDialog.dispose();
+                }
             } else {
                 getErrorText().setText("Password is not match!");
             }
