@@ -334,8 +334,8 @@ public class CustomerDAO{
         try{
             Connection con = UserDatabase.getConnection();
 
-            String sql = "UPDATE mctmsys.employee SET EMP_AVATAR = ? " +
-                    " WHERE EMP_USERNAME = ?";
+            String sql = "UPDATE mctmsys.customer SET CUS_AVATAR = ? " +
+                    " WHERE CUS_USERNAME = ?";
 
             PreparedStatement st = con.prepareCall(sql);
             st.setBytes(1, customer.getAvatar());

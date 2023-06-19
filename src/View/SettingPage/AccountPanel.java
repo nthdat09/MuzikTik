@@ -12,6 +12,7 @@ import Model.DAO.Employee.EmployeeDAO;
 import View.Home.HomePanel;
 import View.LoginPage.LoginPage;
 import View.MainPage.MainPage;
+import View.MainPage.MainPageCustomer;
 import com.github.lgooddatepicker.components.DatePicker;
 
 import javax.swing.*;
@@ -171,8 +172,8 @@ public class AccountPanel extends JPanel {
                 }
             }
 
-            MainPage.setImageForLogoUser();
-            MainPage.changeView(new AccountPanel(), MainPage.getJlbSettings(), "AccountPanel");
+            MainPageCustomer.setImageForLogoUser();
+            MainPageCustomer.changeView(new AccountPanel(), MainPage.getJlbSettings(), "AccountPanel");
         }
         else {
             Employee employee = new Employee();
