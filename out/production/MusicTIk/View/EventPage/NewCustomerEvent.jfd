@@ -56,6 +56,9 @@ new FormModel {
 				"background": sfield java.awt.Color white
 				"name": "TotalPointVal"
 				"font": &Font0 new java.awt.Font( "Lato", 0, 16 )
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 740
 				"y": 290
@@ -98,6 +101,9 @@ new FormModel {
 				"background": sfield java.awt.Color white
 				"name": "TotalPointVal"
 				"font": #Font0
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 740
 				"y": 340

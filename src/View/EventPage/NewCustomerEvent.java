@@ -6,6 +6,7 @@ package View.EventPage;
 
 import Model.BEAN.Customer.Customer;
 import Model.Database.UserDatabase;
+import View.Home.HomePanel;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -29,6 +30,10 @@ public class NewCustomerEvent extends JPanel {
         this.IDField.setText(String.valueOf(newID));
         this.TotalPointVal.setText("0");
         this.TypeField.setText("MEMBER");
+        if(HomePanel.getIsCustomer() == true) {
+            TotalPointVal.setEnabled(false);
+            TypeField.setEnabled(false);
+        }
     }
     public static void settingForNewCustomer(String name, String phone, String email) {
         NameField.setText(name);
@@ -63,10 +68,18 @@ public class NewCustomerEvent extends JPanel {
         }
     }
 
+    public JTextField getTypeField() {
+        return TypeField;
+    }
+
+    public JTextField getTotalPointVal() {
+        return TotalPointVal;
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - man
         label3 = new JLabel();
         PasswordField = new JTextField();
         UserNameField = new JTextField();
@@ -90,12 +103,12 @@ public class NewCustomerEvent extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
-        .EmptyBorder ( 0, 0 ,0 , 0) ,  "" , javax. swing .border . TitledBorder. CENTER ,javax
-        . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,
-        12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans
-        .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e.
-        getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
+        border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER
+        ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font
+        .BOLD,12),java.awt.Color.red), getBorder())); addPropertyChangeListener(
+        new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er"
+        .equals(e.getPropertyName()))throw new RuntimeException();}});
         setLayout(null);
 
         //---- label3 ----
@@ -264,7 +277,7 @@ public class NewCustomerEvent extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - man
     private JLabel label3;
     private JTextField PasswordField;
     private JTextField UserNameField;
