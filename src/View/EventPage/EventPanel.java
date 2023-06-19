@@ -17,6 +17,7 @@ import Model.DAO.Event.EventInformation.EventTableDatabase;
 import Model.DAO.Ticket.SendTicketEmail;
 import Model.Database.UserDatabase;
 import View.Home.HomePanel;
+import View.LoginPage.LoginPage;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -50,11 +51,9 @@ public class EventPanel extends JPanel {
         initComponents();
         initSetting();
         initCustomerName();
-        fullNameText.addFocusListener(new java.awt.event.FocusAdapter() {
-            @Override
-            public void focusLost(java.awt.event.FocusEvent evt) {
-            }
-        });
+        if(HomePanel.getIsCustomer() == true) {
+            checkBox1.setVisible(false);
+        }
     }
 
     private void initCustomerName() {
@@ -232,13 +231,13 @@ public class EventPanel extends JPanel {
 
         Connection con = UserDatabase.getConnection();
         int capacity = 0;
-        String sql = "Select stg_capacity from stage where stg_id = " + HomePanel.getSelectedStage();
+        String sql = "Select evt_quantity from event where evt_id = " + HomePanel.getSelectedEventID();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             capacity = 0;
             while (rs.next()) {
-                capacity = rs.getInt("stg_capacity");
+                capacity = rs.getInt("evt_quantity");
             }
         } catch (SQLException e1) {
             e1.printStackTrace();
@@ -499,21 +498,29 @@ public class EventPanel extends JPanel {
         } else {
             customer = CustomerInformationValidate.validateCustomer();
             if (customer.size() == 0) {
-                JOptionPane.showConfirmDialog(null, "You are not a customer yet! Please register to buy ticket!", "Warning", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
-                int newID = CustomerListDAO.getLastID();
-                String nameCustomer = fullNameText.getText();
-                String phoneNumber = phoneNumberText.getText();
-                String email = emailText.getText();
+                int dialogResult = JOptionPane.showConfirmDialog(null, "You are not a member. Do you want to register?", "Warning", JOptionPane.YES_NO_OPTION);
+                if(dialogResult == JOptionPane.NO_OPTION){
+                    if(checkBox1.isSelected() == true) {
+                        JOptionPane.showMessageDialog(null, "You are not a member. Please choose cash payment to continue!");
+                    } else {
+                        return;
+                    }
+                } else {
+                    int newID = CustomerListDAO.getLastID();
+                    String nameCustomer = fullNameText.getText();
+                    String phoneNumber = phoneNumberText.getText();
+                    String email = emailText.getText();
 
-                JFrame frame = new JFrame("Register");
-                frame.setContentPane(new NewCustomerEvent(newID + 1));
-                NewCustomerEvent.settingForNewCustomer(nameCustomer, phoneNumber, email);
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setVisible(true);
-                frame.setLocationRelativeTo(null);
-                frame.setResizable(false);
-                frame.setSize(1050, 550);
+                    JFrame frame = new JFrame("Register");
+                    frame.setContentPane(new NewCustomerEvent(newID + 1));
+                    NewCustomerEvent.settingForNewCustomer(nameCustomer, phoneNumber, email);
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.pack();
+                    frame.setVisible(true);
+                    frame.setLocationRelativeTo(null);
+                    frame.setResizable(false);
+                    frame.setSize(1050, 550);
+                }
             } else {
                 Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
                 Connection con = UserDatabase.getConnection();
