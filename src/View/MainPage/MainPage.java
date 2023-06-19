@@ -48,7 +48,7 @@ public class MainPage extends JFrame {
     }
 
     private void initSomeSetting(String username) {
-        SwitchMenuControllerCustomer controller = new SwitchMenuControllerCustomer(jpnView);
+        SwitchMenuController controller = new SwitchMenuController(jpnView);
         controller.setUserName(username);
         controller.setView(jpnHome,jlbHome);
 

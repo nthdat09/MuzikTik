@@ -6,14 +6,28 @@ package View.MainPage;
 
 import Controller.MainMenu.LogoutController;
 import Controller.Menu.SwitchMenuController;
+import Model.BEAN.Employee.Employee;
 import Model.BEAN.Menu.MenuList;
+import Model.DAO.Employee.EmployeeDAO;
+import Model.Database.UserDatabase;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 
+import static View.MainPage.MainPage.getAbsolutePath;
 import static View.MainPage.MainPage.setImageForLogoUser;
 
 /**
@@ -48,7 +62,72 @@ public class MainPageCustomer extends JFrame {
         this.getNameJMenuItem().setText("Hello, " + username);
 
         // Set avatar
-        //setImageForLogoUser();
+        setImageForLogoUser();
+    }
+
+    public static void setImageForLogoUser() {
+        // Set avatar
+        Connection connection = UserDatabase.getConnection();
+        String sql = "SELECT CUS_AVATAR FROM customer WHERE cus_username = '" + username + "'";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                byte[] img = resultSet.getBytes("CUS_AVATAR");
+                if(img == null) {
+                    Path workingDir = getAbsolutePath();
+                    // Set default avatar
+                    Path filePath = Paths.get(workingDir.toString(), "src", "Asset", "Avatar", "DefaultAvatar.png");
+                    File file = new File(filePath.toString());
+
+                    // Convert file to byte[]
+                    FileInputStream fis = null;
+                    try {
+                        fis = new FileInputStream(file);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    byte[] buf = new byte[1024];
+                    try {
+                        for (int readNum; (readNum = fis.read(buf)) != -1; ) {
+                            bos.write(buf, 0, readNum); //no doubt here is 0
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+                    byte[] bytes = bos.toByteArray();
+                    try{
+                        Connection con = UserDatabase.getConnection();
+
+                        String sqlUpdate = "UPDATE mctmsys.customer SET CUS_AVATAR = ? WHERE CUS_USERNAME = ?";
+
+                        PreparedStatement st = con.prepareCall(sqlUpdate);
+                        st.setBytes(1, bytes);
+                        st.setString(2, username);
+                        st.executeUpdate();
+                        st.close();
+                        UserDatabase.closeConnection(con);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    ImageIcon imageIcon = new ImageIcon(bytes);
+                    Image image = imageIcon.getImage();
+                    Image newimg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(newimg);
+                    getAvatarJMenu().setIcon(imageIcon);
+                } else {
+                    ImageIcon imageIcon = new ImageIcon(img);
+                    Image image = imageIcon.getImage();
+                    Image newimg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(newimg);
+                    getAvatarJMenu().setIcon(imageIcon);
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     private void jpnBufferMouseEntered(MouseEvent e) {
@@ -70,7 +149,7 @@ public class MainPageCustomer extends JFrame {
         this.dispose();
     }
 
-    public JMenu getAvatarJMenu() {
+    public static JMenu getAvatarJMenu() {
         return avatarJMenu;
     }
 

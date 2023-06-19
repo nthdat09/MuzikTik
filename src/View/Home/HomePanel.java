@@ -161,6 +161,10 @@ public class HomePanel extends JPanel {
         HomePanel.isCustomer = isCustomer;
     }
 
+    public static Boolean getIsCustomer() {
+        return isCustomer;
+    }
+
     public void setEventList() {
         for (int i = 0; i < 9; i++) {
             try {
