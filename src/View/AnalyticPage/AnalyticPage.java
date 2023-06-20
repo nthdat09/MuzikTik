@@ -400,6 +400,231 @@ public class AnalyticPage extends JPanel {
         return monthComboBox;
     }
 
+    private void enterClick(MouseEvent e) {
+        String selectedRevenue = Statistic.getSelectedItem().toString();
+        Connection con = UserDatabase.getConnection();
+        int month;
+        int year;
+        switch(selectedRevenue) {
+            case "Monthly Ticket Revenue":
+                month = Integer.parseInt(monthComboBox.getSelectedItem().toString());
+                year = Integer.parseInt(yearComboBox.getSelectedItem().toString());
+                DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+                String sqlMonthlyRevenue = "select date(tbk_datetime) as date,SUM(TKT_PRICE) as revenue from ticket join ticket_booking tb on ticket.TKT_ID = tb.TBK_TKT_ID where exists(\n" +
+                        "    select TBK_TKT_ID from ticket_booking where month(TBK_DATETIME) = " + month + " and\n" +
+                        "                                                year(TBK_DATETIME) = "+ year +"\n" +
+                        "                                       )\n" +
+                        "    group by date\n" +
+                        "    order by date;";
+                try {
+                    PreparedStatement ps = con.prepareStatement(sqlMonthlyRevenue);
+                    ResultSet rs = ps.executeQuery();
+                    while(rs.next()) {
+                        String type = rs.getString("date");
+                        int revenue = rs.getInt("revenue");
+                        dataset.setValue(revenue, "Revenue", type);
+                    }
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                JFreeChart chart = ChartFactory.createBarChart("Monthly Ticket Revenue", "Type", "Revenue", dataset);
+                CategoryPlot categoryPlot = chart.getCategoryPlot();
+                categoryPlot.setRangeGridlinePaint(Color.decode("#61B884"));
+                chart.setBackgroundPaint(Color.WHITE);
+                chart.getPlot().setBackgroundPaint(Color.white);
+
+                ChartPanel chartPanel = new ChartPanel(chart);
+                chartView.removeAll();
+                chartView.add(chartPanel, BorderLayout.CENTER);
+                chartView.validate();
+                break;
+            case "Annual Ticket Revenue":
+                year = Integer.parseInt(yearComboBox.getSelectedItem().toString());
+                DefaultCategoryDataset dataset3 = new DefaultCategoryDataset();
+                String sqlAnnualRevenue = "SELECT \n" +
+                        "  MONTH(TBK_DATETIME) AS MONTH, \n" +
+                        "  SUM(TKT_PRICE) AS TOTAL_REVENUE \n" +
+                        "FROM \n" +
+                        "  TICKET \n" +
+                        "  JOIN TICKET_BOOKING ON TICKET.TKT_ID = TICKET_BOOKING.TBK_TKT_ID \n" +
+                        "  JOIN EVENT ON TICKET.TKT_EVT_ID = EVENT.EVT_ID \n" +
+                        "WHERE \n" +
+                        "  YEAR(TBK_DATETIME) = '" + year + "'\n" +
+                        "GROUP BY \n" +
+                        "  MONTH(TBK_DATETIME);";
+                try {
+                    PreparedStatement ps = con.prepareStatement(sqlAnnualRevenue);
+                    ResultSet rs = ps.executeQuery();
+                    while(rs.next()) {
+                        String type = rs.getString("MONTH");
+                        int revenue = rs.getInt("TOTAL_REVENUE");
+                        dataset3.setValue(revenue, "Revenue", type);
+                    }
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                JFreeChart chart3 = ChartFactory.createBarChart("Annual Ticket Revenue", "Type", "Revenue", dataset3);
+                CategoryPlot categoryPlot3 = chart3.getCategoryPlot();
+                categoryPlot3.setRangeGridlinePaint(Color.decode("#61B884"));
+                chart3.setBackgroundPaint(Color.WHITE);
+                chart3.getPlot().setBackgroundPaint(Color.white);
+
+                ChartPanel chartPanel3 = new ChartPanel(chart3);
+                chartView.removeAll();
+                chartView.add(chartPanel3, BorderLayout.CENTER);
+                chartView.validate();
+                break;
+            case "Event-based Ticket Revenue":
+                String event = eventcbBox.getSelectedItem().toString();
+                DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();
+                String sqlEventTicket = "SELECT SEAT_TYPE, SUM(TKT_PRICE) AS TOTAL_REVENUE FROM EVENT JOIN TICKET ON EVENT.EVT_ID = TICKET.TKT_EVT_ID\n" +
+                        "                        join ticket_booking tb on ticket.TKT_ID = tb.TBK_TKT_ID\n" +
+                        "                        JOIN seat s on ticket.TKT_SEAT_ID = s.SEAT_ID and ticket.TKT_STG_ID = s.SEAT_STG_ID\n" +
+                        "                                                  WHERE EVT_NAME = '" + event + "'\n" +
+                        "                        group by SEAT_TYPE;";
+                try {
+                    PreparedStatement ps = con.prepareStatement(sqlEventTicket);
+                    ResultSet rs = ps.executeQuery();
+                    while(rs.next()) {
+                        String type = rs.getString("SEAT_TYPE");
+                        int revenue = rs.getInt("TOTAL_REVENUE");
+                        dataset2.setValue(revenue, "Revenue", type);
+                    }
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                JFreeChart chart2 = ChartFactory.createBarChart("Event-based Ticket Revenue", "Type", "Revenue", dataset2);
+                CategoryPlot categoryPlot2 = chart2.getCategoryPlot();
+                categoryPlot2.setRangeGridlinePaint(Color.decode("#61B884"));
+                chart2.setBackgroundPaint(Color.WHITE);
+                chart2.getPlot().setBackgroundPaint(Color.white);
+
+                ChartPanel chartPanel2 = new ChartPanel(chart2);
+                chartView.removeAll();
+                chartView.add(chartPanel2, BorderLayout.CENTER);
+                chartView.validate();
+                break;
+            case "Daily Ticket Sales Statistics":
+                String day = dayComboBox.getSelectedItem().toString();
+                month = Integer.parseInt(monthComboBox.getSelectedItem().toString());
+                year = Integer.parseInt(yearComboBox.getSelectedItem().toString());
+                String date = year + "-" + month + "-" + day;
+                DefaultCategoryDataset dataset4 = new DefaultCategoryDataset();
+                String sqlDailyTicket =  "SELECT \n" +
+                        "  EVT_NAME, \n" +
+                        "  COUNT(*) AS TOTAL_TICKETS_SOLD \n" +
+                        "FROM \n" +
+                        "  EVENT \n" +
+                        "  JOIN TICKET ON EVENT.EVT_ID = TICKET.TKT_EVT_ID \n" +
+                        "  JOIN TICKET_BOOKING ON TICKET.TKT_ID = TICKET_BOOKING.TBK_TKT_ID \n" +
+                        "WHERE \n" +
+                        "  DATE(TBK_DATETIME) = '"+ date +"'\n" +
+                        "GROUP BY \n" +
+                        "  EVT_NAME;";
+                try {
+                    PreparedStatement ps = con.prepareStatement(sqlDailyTicket);
+                    ResultSet rs = ps.executeQuery();
+                    while(rs.next()) {
+                        String type = rs.getString("EVT_NAME");
+                        int revenue = rs.getInt("TOTAL_TICKETS_SOLD");
+                        dataset4.setValue(revenue, "Revenue", type);
+                    }
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                JFreeChart chart4 = ChartFactory.createBarChart("Daily Ticket Sales Statistics", "Type", "Ticket", dataset4);
+                CategoryPlot categoryPlot4 = chart4.getCategoryPlot();
+                categoryPlot4.setRangeGridlinePaint(Color.decode("#61B884"));
+                chart4.setBackgroundPaint(Color.WHITE);
+                chart4.getPlot().setBackgroundPaint(Color.white);
+
+                ChartPanel chartPanel4 = new ChartPanel(chart4);
+                chartView.removeAll();
+                chartView.add(chartPanel4, BorderLayout.CENTER);
+                chartView.validate();
+                break;
+            case "Monthly Ticket Sales Statistics":
+                month = Integer.parseInt(monthComboBox.getSelectedItem().toString());
+                year = Integer.parseInt(yearComboBox.getSelectedItem().toString());
+                DefaultCategoryDataset dataset5 = new DefaultCategoryDataset();
+                String sqlMonthlyTicket = "SELECT \n" +
+                        "  EVT_NAME, \n" +
+                        "  COUNT(*) AS TOTAL_TICKETS_SOLD \n" +
+                        "FROM \n" +
+                        "  EVENT \n" +
+                        "  JOIN TICKET ON EVENT.EVT_ID = TICKET.TKT_EVT_ID \n" +
+                        "  JOIN TICKET_BOOKING ON TICKET.TKT_ID = TICKET_BOOKING.TBK_TKT_ID \n" +
+                        "WHERE \n" +
+                        "  MONTH(TBK_DATETIME) = '" + month + "' \n" +
+                        "  AND YEAR(TBK_DATETIME) = '" + year + "' \n" +
+                        "GROUP BY \n" +
+                        "  EVT_NAME;";
+                try {
+                    PreparedStatement ps = con.prepareStatement(sqlMonthlyTicket);
+                    ResultSet rs = ps.executeQuery();
+                    while(rs.next()) {
+                        String type = rs.getString("EVT_NAME");
+                        int revenue = rs.getInt("TOTAL_TICKETS_SOLD");
+                        dataset5.setValue(revenue, "Revenue", type);
+                    }
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                JFreeChart chart5 = ChartFactory.createBarChart("Monthly Ticket Sales Statistics", "Type", "Ticket", dataset5);
+                CategoryPlot categoryPlot5 = chart5.getCategoryPlot();
+                categoryPlot5.setRangeGridlinePaint(Color.decode("#61B884"));
+                chart5.setBackgroundPaint(Color.WHITE);
+                chart5.getPlot().setBackgroundPaint(Color.white);
+
+                ChartPanel chartPanel5 = new ChartPanel(chart5);
+                chartView.removeAll();
+                chartView.add(chartPanel5, BorderLayout.CENTER);
+                chartView.validate();
+                break;
+            case "Annual Ticket Sales Statistics":
+                year = Integer.parseInt(yearComboBox.getSelectedItem().toString());
+                DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
+                String sqlAnnualTicket = "SELECT MONTH(TBK_DATETIME) AS ticket_month, COUNT(*) AS ticket_count\n" +
+                        "FROM ticket_booking\n" +
+                        "WHERE YEAR(TBK_DATETIME) = " + year + "\n" +
+                        "GROUP BY ticket_month\n" +
+                        "ORDER BY ticket_month;";
+                try {
+                    PreparedStatement ps = con.prepareStatement(sqlAnnualTicket);
+                    ResultSet rs = ps.executeQuery();
+                    while(rs.next()) {
+                        String type = rs.getString("ticket_month");
+                        int revenue = rs.getInt("ticket_count");
+                        dataset1.setValue(revenue, "Revenue", type);
+                    }
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                JFreeChart chart1 = ChartFactory.createBarChart("Annual Ticket Sales Statistics", "Type", "Ticket", dataset1);
+                CategoryPlot categoryPlot1 = chart1.getCategoryPlot();
+                categoryPlot1.setRangeGridlinePaint(Color.decode("#61B884"));
+                chart1.setBackgroundPaint(Color.WHITE);
+                chart1.getPlot().setBackgroundPaint(Color.white);
+
+                ChartPanel chartPanel1 = new ChartPanel(chart1);
+                chartView.removeAll();
+                chartView.add(chartPanel1, BorderLayout.CENTER);
+                chartView.validate();
+                break;
+        }
+    }
+
+    private void exportReportClick(MouseEvent e) {
+        ExportReportDialog exportReportDialog = new ExportReportDialog();
+        exportReportDialog.setVisible(true);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Dat
@@ -422,13 +647,13 @@ public class AnalyticPage extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-        . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing
-        . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-        Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-        ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-        public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName (
-        ) )) throw new RuntimeException( ); }} );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
+        . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing .border . TitledBorder
+        . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069al\u006fg", java .
+        awt . Font. BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) )
+        ;  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+        ) { if( "\u0062or\u0064er" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
+        ;
 
         //---- Statistic ----
         Statistic.setFont(new Font("Lato", Font.PLAIN, 16));
@@ -477,7 +702,7 @@ public class AnalyticPage extends JPanel {
             label1.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    label1MouseClicked(e);
+                    enterClick(e);
                 }
             });
             panel1.add(label1);
@@ -558,7 +783,7 @@ public class AnalyticPage extends JPanel {
             label3.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    ExportReportMouseClicked(e);
+                    exportReportClick(e);
                 }
             });
             panel2.add(label3);
@@ -583,14 +808,12 @@ public class AnalyticPage extends JPanel {
                         .addComponent(panel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup()
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(148, 148, 148)
-                            .addComponent(title))
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                        .addComponent(panel1, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createParallelGroup()
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(359, 359, 359)
-                                .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(148, 148, 148)
+                                .addComponent(title))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(Month)
@@ -650,9 +873,9 @@ public class AnalyticPage extends JPanel {
     private JPanel chartView;
     private JLabel title;
     private JLabel label2;
-    private static JComboBox dayComboBox;
-    private static JComboBox<String> monthComboBox;
-    private static JComboBox<String> yearComboBox;
+    private JComboBox dayComboBox;
+    private JComboBox<String> monthComboBox;
+    private JComboBox<String> yearComboBox;
     private JComboBox eventcbBox;
     private JPanel panel2;
     private JLabel label3;

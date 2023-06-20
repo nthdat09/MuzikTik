@@ -164,13 +164,13 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JTable" ) {
 					name: "reportTable"
 					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
-						add( "STT" )
+						add( "Statitic Type" )
 						add( "Name" )
 						add( "Day" )
 						add( "Month" )
 						add( "Year" )
 					}, new java.util.Vector {
-						add( class java.lang.Integer )
+						add( class java.lang.String )
 						add( class java.lang.String )
 						add( class java.lang.String )
 						add( class java.lang.String )

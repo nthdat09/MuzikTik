@@ -3,6 +3,7 @@ package Controller.AnalyticPage.ExportReport;
 import View.AnalyticPage.ExportReport.ExportReportDialog;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class ExportReportDialogListener implements ActionListener {
     private ExportReportDialog exportReportDialog;
@@ -16,7 +17,11 @@ public class ExportReportDialogListener implements ActionListener {
         System.out.println(command);
 
         if (command.equals("OK")) {
-            exportReportDialog.OKButton();
+            try {
+                exportReportDialog.OKButton();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         } else if (command.equals("Cancel")) {
             exportReportDialog.CancelButton();
         }
