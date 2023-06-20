@@ -31,6 +31,9 @@ public class AnalyticPage extends JPanel {
         eventcbBox.setEnabled(false);
         dayComboBox.setBackground(Color.decode("#92CFAA"));
         eventcbBox.setBackground(Color.decode("#92CFAA"));
+        for(int i =1 ; i < 31; i++) {
+            dayComboBox.addItem(i);
+        }
         settingEventComboBox();
     }
     

@@ -353,6 +353,12 @@ public class EventPanel extends JPanel {
 
     private void jlbNextMouseClicked(MouseEvent e) {
         Integer ticketBookingID = null;
+        List<Integer> listTicketID = new ArrayList<>();
+        List<String> listSeatID = new ArrayList<>();
+
+        listSeatID.removeAll(listSeatID);
+        listTicketID.removeAll(listTicketID);
+
         if (fullNameText.getText().toString().equals("") || phoneNumberText.getText().toString().equals("") || emailText.getText().toString().equals("")) {
             JOptionPane.showMessageDialog(null, "Please fill all information!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
@@ -366,28 +372,73 @@ public class EventPanel extends JPanel {
             JOptionPane.showMessageDialog(null, "Please enter a valid phone number!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         } else if (checkBox3.isSelected() == true) {
+            Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
             //
             //Process payment for account balance
             //
 
-            customer = CustomerInformationValidate.validateCustomer();
-            if (customer.size() == 0) {
-                int dialogResult = JOptionPane.showConfirmDialog(null, "You are not a member. Do you want to register?", "Warning", JOptionPane.YES_NO_OPTION);
-                if(dialogResult == JOptionPane.NO_OPTION){
-                    JOptionPane.showMessageDialog(null, "You're not customer, please choose another payment method");
-                } else {
-                    registerForNewCustomer();
-                }
-                return;
-            } else {
-                Integer balance = customer.get(0).getBalance();
-                Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
-                Integer newBalance = balance - totalPrice;
-                if (balance < totalPrice) {
-                    JOptionPane.showMessageDialog(null, "Your balance is not enough to buy this ticket!");
+
+            //Process payment for customer login
+            //
+            if (HomePanel.getIsCustomer() == true) {
+                customer = CustomerInformationValidate.validateCustomer();
+                if(BuySeatTable.getRowCount() == 0) {
+                    JOptionPane.showMessageDialog(null, "Please choose your seat!", "Warning", JOptionPane.WARNING_MESSAGE);
                     return;
+                }
+                for (int i = 0; i < BuySeatTable.getRowCount(); i++) {
+                    String seatID = BuySeatTable.getValueAt(i, 0).toString();
+
+                    BuyProcessForCustomerLogin(seatID, ticketBookingID, listTicketID, listSeatID);
+                }
+                if(listSeatID.size() > 1 && listTicketID.size() > 1) {
+                    sendMoreMail(listTicketID,listSeatID,customer.get(0).getCustomerID());
                 } else {
-                    buyProcessForAccount(newBalance, ticketBookingID, totalPrice);
+                    sendMail(totalPrice,listTicketID.get(0),listSeatID.get(0),customer.get(0).getCustomerID());
+                }
+
+                JOptionPane.showMessageDialog(null, "Your ticket has been booked successfully!");
+                updatePoint(customer.get(0).getCustomerID(),totalPrice);
+                afterBuySettingForCustomer();
+            } else {
+
+                //Process payment for employee login
+                //
+
+                customer = CustomerInformationValidate.validateCustomer();
+
+                //If not found customer
+                //
+                if (customer.size() == 0) {
+                    int dialogResult = JOptionPane.showConfirmDialog(null, "You are not a member. Do you want to register?", "Warning", JOptionPane.YES_NO_OPTION);
+                    if (dialogResult == JOptionPane.NO_OPTION) {
+                        JOptionPane.showMessageDialog(null, "You're not customer, please choose another payment method");
+                    } else {
+                        registerForNewCustomer();
+                    }
+                    return;
+                } else
+                //Customer found
+                //
+                {
+                    Integer balance = customer.get(0).getBalance();
+                    Integer newBalance = balance - totalPrice;
+                    if (balance < totalPrice) {
+                        JOptionPane.showMessageDialog(null, "Your balance is not enough to buy this ticket!");
+                        return;
+                    } else {
+                        buyProcessForAccount(newBalance, ticketBookingID, totalPrice, listTicketID, listSeatID);
+                        updatePoint(customer.get(0).getCustomerID(),totalPrice);
+                        JOptionPane.showMessageDialog(null, "Your ticket has been booked successfully!");
+
+
+                        if(listSeatID.size() > 1 && listTicketID.size() > 1) {
+                            sendMoreMail(listTicketID,listSeatID,customer.get(0).getCustomerID());
+                        } else {
+                            sendMail(totalPrice,listTicketID.get(0),listSeatID.get(0),customer.get(0).getCustomerID());
+                        }
+                        afterBuySetting();
+                    }
                 }
             }
         } else
@@ -397,6 +448,10 @@ public class EventPanel extends JPanel {
             //
 
             customer = CustomerInformationValidate.validateCustomer();
+            Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
+
+            //Process cash payment for non-customer
+            //
             if (customer.size() == 0) {
                 int dialogResult = JOptionPane.showConfirmDialog(null, "You are not a member. Do you want to register?", "Warning", JOptionPane.YES_NO_OPTION);
                 if(dialogResult == JOptionPane.NO_OPTION){
@@ -406,34 +461,87 @@ public class EventPanel extends JPanel {
                             JOptionPane.showMessageDialog(null, "Please select your seat!");
                             return;
                         } else {
-                            buyProcessForNonCustomer(ticketBookingID, seatID);
+                            buyProcessForNonCustomer(ticketBookingID, seatID, listTicketID, listSeatID);
                         }
                     }
+
+                    if(listSeatID.size() > 1 && listTicketID.size() > 1) {
+                        sendMoreMail(listTicketID,listSeatID,customer.get(0).getCustomerID());
+                    } else {
+                        sendMail(totalPrice,listTicketID.get(0),listSeatID.get(0),customer.get(0).getCustomerID());
+                    }
+
+                    updatePoint(customer.get(0).getCustomerID(), totalPrice);
                     JOptionPane.showMessageDialog(null, "Your ticket has been booked successfully!");
                     afterBuySetting();
                 } else {
                     registerForNewCustomer();
                 }
+
+                //Process cash payment for customer
+                //
             } else {
-                Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
                 for (int i = 0; i < BuySeatTable.getRowCount(); i++) {
                     String seatID = BuySeatTable.getValueAt(i, 0).toString();
                     if (seatID.isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Please select your seat!");
                         return;
                     } else {
-                        buyProcessWithCash(ticketBookingID, totalPrice, seatID);
+                        buyProcessWithCash(ticketBookingID, totalPrice, seatID, listTicketID, listSeatID);
                     }
                 }
-                updatePoint(customer.get(0).getCustomerID(), totalPrice);
 
+                if(listSeatID.size() > 1 && listTicketID.size() > 1) {
+                    sendMoreMail(listTicketID,listSeatID,customer.get(0).getCustomerID());
+                } else {
+                    sendMail(totalPrice,listTicketID.get(0),listSeatID.get(0),customer.get(0).getCustomerID());
+                }
+
+                updatePoint(customer.get(0).getCustomerID(), totalPrice);
                 JOptionPane.showMessageDialog(null, "Your ticket has been booked successfully!");
                 afterBuySetting();
             }
         }
     }
 
-    private void buyProcessForNonCustomer(Integer ticketBookingID, String seatID) {
+    private void BuyProcessForCustomerLogin(String seatID, Integer ticketBookingID, List<Integer> listTicketID, List<String> listSeatID) {
+        Connection con = UserDatabase.getConnection();
+        try {
+            setSeatID(seatID);
+            List<TicketID> bookedTicket = BookingTicket.bookingTicket();
+            Integer ticketID = bookedTicket.get(0).getTicketID();
+            listTicketID.add(ticketID);
+            listSeatID.add(seatID);
+            String sqlTicketBooking = "SELECT MAX(TBK_ID) from ticket_booking";
+            PreparedStatement ps1 = con.prepareStatement(sqlTicketBooking);
+            ResultSet rs = ps1.executeQuery();
+            while (rs.next()) {
+                ticketBookingID = rs.getInt(1) + 1;
+            }
+
+            try {
+                String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_ID,TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketBookingID + "', '" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
+                PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
+
+                ps2.executeUpdate();
+                ps2.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            try {
+                String sqlInsertReservedSeat = "insert into reserved_seat (RSV_CUS_ID, RSV_SEAT_ID, RSV_STG_ID, RSV_EVT_ID) values ('" + customer.get(0).getCustomerID() + "', '" + seatID + "' , '" + HomePanel.getSelectedStage() + "', '" + HomePanel.getSelectedEventID() + "')";
+                PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
+                ps2.executeUpdate();
+                ps2.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+            }
+        } catch (SQLException sql) {
+            JOptionPane.showMessageDialog(null, "Error: " + sql.getMessage());
+        }
+    }
+
+    private void buyProcessForNonCustomer(Integer ticketBookingID, String seatID, List<Integer> listTicketID, List<String> listSeatID) {
         Connection con = UserDatabase.getConnection();
         try {
             setSeatID(seatID);
@@ -492,13 +600,15 @@ public class EventPanel extends JPanel {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
             }
-            sendMail(totalPrice, ticketBookingID, seatID);
+
+            listTicketID.add(ticketID);
+            listSeatID.add(seatID);
         } catch (SQLException sql) {
             JOptionPane.showMessageDialog(null, "Error: " + sql.getMessage());
         }
     }
 
-    private void buyProcessWithCash(Integer ticketBookingID, Integer totalPrice, String seatID) {
+    private void buyProcessWithCash(Integer ticketBookingID, Integer totalPrice, String seatID, List<Integer> listTicketID, List<String> listSeatID) {
         Connection con = UserDatabase.getConnection();
         try {
             setSeatID(seatID);
@@ -513,7 +623,7 @@ public class EventPanel extends JPanel {
             try {
                 String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_ID,TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketBookingID + "', '" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
                 PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
-                sendMail(totalPrice,ticketID,seatID);
+                sendMail(totalPrice,ticketID,seatID, customer.get(0).getCustomerID());
                 ps2.executeUpdate();
                 ps2.close();
             } catch (Exception ex) {
@@ -527,12 +637,15 @@ public class EventPanel extends JPanel {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
             }
+
+            listTicketID.add(ticketID);
+            listSeatID.add(seatID);
         } catch (SQLException sql) {
             JOptionPane.showMessageDialog(null, "Error: " + sql.getMessage());
         }
     }
 
-    private void buyProcessForAccount(Integer newBalance, Integer ticketBookingID, Integer totalPrice) {
+    private void buyProcessForAccount(Integer newBalance, Integer ticketBookingID, Integer totalPrice,List<Integer> listTicketID, List<String> listSeatID) {
         try {
             Connection con = UserDatabase.getConnection();
             String sql = "UPDATE customer SET CUS_BALANCE = '" + newBalance + "' WHERE CUS_PHONE_NUMBER  = '" + phoneNumberText.getText() + "' AND CUS_NAME = '" + fullNameText.getText() + "' AND CUS_EMAIL = '" + emailText.getText() + "'";
@@ -554,22 +667,27 @@ public class EventPanel extends JPanel {
                     try {
                         String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_ID,TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketBookingID + "', '" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
                         PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
-                        sendMail(totalPrice,ticketID,seatID);
+                        listTicketID.add(ticketID);
+                        listSeatID.add(seatID);
                         ps2.executeUpdate();
                         ps2.close();
                     } catch (Exception ex) {
                         JOptionPane.showMessageDialog(null, ex);
+                    }
+
+                    try {
+                        String sqlInsertReservedSeat = "insert into reserved_seat (RSV_CUS_ID, RSV_SEAT_ID, RSV_STG_ID, RSV_EVT_ID) values ('" + customer.get(0).getCustomerID() + "', '" + seatID + "' , '" + HomePanel.getSelectedStage() + "', '" + HomePanel.getSelectedEventID() + "')";
+                        PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
+                        ps2.executeUpdate();
+                        ps2.close();
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
                     }
                 }
             }
             PreparedStatement ps = con.prepareStatement(sql);
             ps.executeUpdate();
 
-
-            updatePoint(customer.get(0).getCustomerID(), totalPrice);
-
-            JOptionPane.showMessageDialog(null, "Your ticket has been booked successfully!");
-            afterBuySetting();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error1: " + ex.getMessage());
         }
@@ -618,13 +736,63 @@ public class EventPanel extends JPanel {
         selectedTab(0);
     }
 
-    private void sendMail(Integer totalPrice, Integer ticketID, String seatID) {
+    private void afterBuySettingForCustomer() {
+        totalDisplay.setText("0 VND");
+        quantityDisplay.setText("0 tickets");
+
+        DefaultTableModel tableBuyModel = (DefaultTableModel) BuySeatTable.getModel();
+        tableBuyModel.setRowCount(0);
+
+        jpnInfo.setVisible(true);
+        jpnTicketFee.setVisible(true);
+        SeatPanel.setVisible(true);
+        jpnBuyNow.setVisible(true);
+
+        List<JButton> btnList50 = SeatView50.getSeatButton();
+        for (JButton btn : btnList50) {
+            if (btn.getBackground() == Color.YELLOW) {
+                btn.setBackground(Color.RED);
+                btn.setForeground(Color.WHITE);
+            }
+        }
+
+        List<JButton> btnList100 = SeatView100.getSeatButton();
+        for (JButton btn : btnList100) {
+            if (btn.getBackground() == Color.YELLOW) {
+                btn.setBackground(Color.RED);
+                btn.setForeground(Color.WHITE);
+            }
+        }
+
+        DefaultTableModel tableReserved = (DefaultTableModel) selectedTable100.getModel();
+        tableReserved.setRowCount(0);
+
+        DefaultTableModel tableSelected = (DefaultTableModel) selectedTable50.getModel();
+        tableSelected.setRowCount(0);
+
+        selectedTab(0);
+        jtbTabEvent.setSelectedIndex(0);
+        selectedTab(0);
+    }
+
+    private void sendMail(Integer totalPrice, Integer ticketID, String seatID, Integer customerID) {
         new Thread(() -> {
             try {
                 Thread.sleep(1000);
-                SendTicketEmail.sendCodeToEmail(totalPrice, HomePanel.getSelectedStage(), ticketID, Integer.parseInt(seatID), emailText.getText(), getEventName().getText(), fullNameText.getText(), getEventPlace().getText(), getEventTime().getText());
+                SendTicketEmail.sendCodeToEmail(totalPrice, HomePanel.getSelectedStage(), ticketID, Integer.parseInt(seatID), emailText.getText(), getEventName().getText(), customerID, getEventPlace().getText(), getEventTime().getText());
             } catch (Exception err) {
-                System.err.println(err);
+                err.printStackTrace();
+            }
+        }).start();
+    }
+
+    private void sendMoreMail(List<Integer> listTicketID, List<String> listSeatID, Integer customerID) {
+        new Thread(() -> {
+            try {
+                Thread.sleep(1000);
+                SendTicketEmail.sendMoreCodeToEmail(listTicketID, listSeatID, emailText.getText(), getEventName().getText(), customerID, getEventPlace().getText(), getEventTime().getText());
+            } catch (Exception err) {
+                err.printStackTrace();
             }
         }).start();
     }
