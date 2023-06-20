@@ -70,7 +70,7 @@ public class AccountPanel extends JPanel {
         getPhoneJtf().setText(String.valueOf(customer.getPhoneNumber()));
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
-        if (customer.getDateOfBirth().equals("")){
+        if (customer.getDateOfBirth() == null){
             getDobJpn().setDateToToday();
         }
         else{
@@ -110,7 +110,6 @@ public class AccountPanel extends JPanel {
         ImageIcon imageIcon = new ImageIcon(employee.getAvatar());
         Image image = imageIcon.getImage().getScaledInstance(avatarJlb.getWidth(), avatarJlb.getHeight(), Image.SCALE_SMOOTH);
         avatarJlb.setIcon(new ImageIcon(image));
-
     }
 
     public void uploadNewAvatar() {
@@ -140,7 +139,12 @@ public class AccountPanel extends JPanel {
             customer.setEmail(getEmailJtf().getText());
             customer.setAddress(getAddressJtf().getText());
             customer.setPhoneNumber(getPhoneJtf().getText());
-            customer.setDateOfBirth(java.sql.Date.valueOf(getDobJpn().getDate()));
+            if (java.sql.Date.valueOf(getDobJpn().getDate()).after(java.sql.Date.valueOf(LocalDate.now()))) {
+                JOptionPane.showMessageDialog(this, "Date of birth must be before today");
+                return;
+            } else {
+                customer.setDateOfBirth(java.sql.Date.valueOf(getDobJpn().getDate()));
+            }
 
             int rowChanged = CustomerDAO.getInstance().updateCustomerWithoutAvatar(customer);
             int avatarUploadSuscessfully = 0;
@@ -181,7 +185,13 @@ public class AccountPanel extends JPanel {
             employee.setEmail(getEmailJtf().getText());
             employee.setAddress(getAddressJtf().getText());
             employee.setPhoneNumber(getPhoneJtf().getText());
-            employee.setDOB(java.sql.Date.valueOf(getDobJpn().getDate()));
+
+            if (java.sql.Date.valueOf(getDobJpn().getDate()).after(java.sql.Date.valueOf(LocalDate.now()))) {
+                JOptionPane.showMessageDialog(this, "Date of birth must be before today");
+                return;
+            } else {
+                employee.setDOB(java.sql.Date.valueOf(getDobJpn().getDate()));
+            }
 
             int rowChanged = EmployeeDAO.updateEmployeeWithoutAvatar(employee);
             System.out.println(rowChanged);
@@ -240,7 +250,7 @@ public class AccountPanel extends JPanel {
         return usernameJtf;
     }
 
-    public JTextField getEmailJtf() {
+    public JTextArea getEmailJtf() {
         return emailJtf;
     }
 
@@ -248,7 +258,7 @@ public class AccountPanel extends JPanel {
         return phoneJtf;
     }
 
-    public JTextField getAddressJtf() {
+    public JTextArea getAddressJtf() {
         return addressJtf;
     }
 
@@ -270,7 +280,7 @@ public class AccountPanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - man
         jbtCancel = new JButton();
         jbtSave = new JButton();
         jlbMyAccount = new JLabel();
@@ -280,9 +290,11 @@ public class AccountPanel extends JPanel {
         jlbDOB = new JLabel();
         jlbDOB2 = new JLabel();
         usernameJtf = new JTextField();
-        emailJtf = new JTextField();
+        scrollPane2 = new JScrollPane();
+        emailJtf = new JTextArea();
         phoneJtf = new JTextField();
-        addressJtf = new JTextField();
+        scrollPane1 = new JScrollPane();
+        addressJtf = new JTextArea();
         dobJpn = new DatePicker();
         UploadJbt = new JButton();
         desktopPane1 = new JDesktopPane();
@@ -291,14 +303,11 @@ public class AccountPanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder (
-        new javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion"
-        , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
-        , new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 )
-        ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener(
-        new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-        ) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-        ;} } );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+        0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+        . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+        beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
         //---- jbtCancel ----
         jbtCancel.setText("CANCEL");
@@ -351,17 +360,29 @@ public class AccountPanel extends JPanel {
         usernameJtf.setEditable(false);
         usernameJtf.setBackground(Color.lightGray);
 
-        //---- emailJtf ----
-        emailJtf.setFont(new Font("Lato", Font.PLAIN, 16));
-        emailJtf.setForeground(new Color(0x61b884));
+        //======== scrollPane2 ========
+        {
+
+            //---- emailJtf ----
+            emailJtf.setFont(new Font("Lato", Font.PLAIN, 16));
+            emailJtf.setForeground(new Color(0x61b884));
+            emailJtf.setLineWrap(true);
+            scrollPane2.setViewportView(emailJtf);
+        }
 
         //---- phoneJtf ----
         phoneJtf.setFont(new Font("Lato", Font.PLAIN, 16));
         phoneJtf.setForeground(new Color(0x61b884));
 
-        //---- addressJtf ----
-        addressJtf.setFont(new Font("Lato", Font.PLAIN, 16));
-        addressJtf.setForeground(new Color(0x61b884));
+        //======== scrollPane1 ========
+        {
+
+            //---- addressJtf ----
+            addressJtf.setFont(new Font("Lato", Font.PLAIN, 16));
+            addressJtf.setForeground(new Color(0x61b884));
+            addressJtf.setLineWrap(true);
+            scrollPane1.setViewportView(addressJtf);
+        }
 
         //---- UploadJbt ----
         UploadJbt.setText("UPLOAD NEW AVATAR");
@@ -417,9 +438,9 @@ public class AccountPanel extends JPanel {
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                         .addComponent(phoneJtf)
-                        .addComponent(emailJtf)
+                        .addComponent(scrollPane2)
                         .addComponent(usernameJtf, GroupLayout.Alignment.TRAILING)
-                        .addComponent(addressJtf, GroupLayout.Alignment.TRAILING)
+                        .addComponent(scrollPane1, GroupLayout.Alignment.TRAILING)
                         .addComponent(dobJpn, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
                         .addComponent(changePasswordJbt, GroupLayout.Alignment.TRAILING))
                     .addGap(276, 276, 276))
@@ -459,10 +480,10 @@ public class AccountPanel extends JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(usernameJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(emailJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(addressJtf, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jlbDOB2))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
@@ -480,13 +501,13 @@ public class AccountPanel extends JPanel {
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(jbtCancel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(jbtSave, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(143, Short.MAX_VALUE))
+                    .addContainerGap(297, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - man
     private JButton jbtCancel;
     private JButton jbtSave;
     private JLabel jlbMyAccount;
@@ -496,9 +517,11 @@ public class AccountPanel extends JPanel {
     private JLabel jlbDOB;
     private JLabel jlbDOB2;
     private JTextField usernameJtf;
-    private JTextField emailJtf;
+    private JScrollPane scrollPane2;
+    private JTextArea emailJtf;
     private JTextField phoneJtf;
-    private JTextField addressJtf;
+    private JScrollPane scrollPane1;
+    private JTextArea addressJtf;
     private DatePicker dobJpn;
     private JButton UploadJbt;
     private JDesktopPane desktopPane1;

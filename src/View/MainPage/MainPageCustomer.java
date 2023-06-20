@@ -5,6 +5,7 @@
 package View.MainPage;
 
 import Controller.MainMenu.LogoutController;
+import Controller.MainMenu.LogoutControllerForCustomer;
 import Controller.Menu.SwitchMenuController;
 import Model.BEAN.Employee.Employee;
 import Model.BEAN.Menu.MenuList;
@@ -40,6 +41,8 @@ public class MainPageCustomer extends JFrame {
         initComponents();
     }
 
+    ActionListener ac = new LogoutControllerForCustomer(this);
+
     public MainPageCustomer(String username) {
         initComponents();
         initSetting(username);
@@ -57,7 +60,7 @@ public class MainPageCustomer extends JFrame {
         listItem.add(new MenuList("AccountPanel", jpnSettings,jlbSettings));
         controller.setEvent(listItem);
 
-        //this.getLogOutJMenuItem().addActionListener(ac);
+        this.getLogOutJMenuItem().addActionListener(ac);
         // Set username
         this.getNameJMenuItem().setText("Hello, " + username);
 
@@ -141,6 +144,10 @@ public class MainPageCustomer extends JFrame {
     public static void changeView(JPanel jpnItem, JLabel jlbItem, String Kind){  // Change view
         SwitchMenuController controller = new SwitchMenuController(getJpnView());
         controller.changeViewController(jpnItem, jlbItem, Kind);
+    }
+
+    public void logout() { // Logout
+        ConfirmLogoutJPopupMenu confirmLogoutJPopupMenu = new ConfirmLogoutJPopupMenu(this);
     }
 
 
