@@ -4,19 +4,32 @@
 
 package View.AnalyticPage.ExportReport;
 
+import java.awt.Font;
 import java.awt.event.*;
+import javax.imageio.ImageIO;
 import javax.swing.table.*;
 import Controller.AnalyticPage.ExportReport.ExportReportDialogListener;
 import Model.BEAN.Analyst.Revenue;
+import Model.BEAN.Analyst.Statistic;
+import Model.DAO.Analyst.StatisticDAO;
 import Model.Database.UserDatabase;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
@@ -77,52 +90,759 @@ public class ExportReportDialog extends JDialog {
         }
     }
 
-    public void OKButton() {
+    public void OKButton() throws IOException {
         if (listReport.size() == 0) {
             JOptionPane.showMessageDialog(null, "Please select at least one revenue");
-            return;
         }
         else {
-            Connection con = UserDatabase.getConnection();
-
             for (Revenue rev : listReport) {
-                int index = listReport.indexOf(rev);
+                if (rev.getStatisticType().equals("Monthly Ticket Revenue")) {
+                    // Set data for chart
+                    String date;
+                    int revenue;
+                    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-                if (rev.equals("Monthly Ticket Revenue")){
-                    rev.setStatisticType("Monthly Ticket Revenue");
-                    rev.setMonth(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 3).toString())));
-                    rev.setYear(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 4).toString())));
+                    List<Model.BEAN.Analyst.Statistic> statisticList = StatisticDAO.getInstance().getMonthlyTicketRevenue(rev.getMonth(), rev.getYear());
+
+                    for (Model.BEAN.Analyst.Statistic statistic : statisticList) {
+                        date = statistic.getType();
+                        revenue = statistic.getRevenue();
+                        dataset.setValue(revenue, "Revenue", date);
+                    }
+
+                    // Create chart
+                    JFreeChart chart = ChartFactory.createBarChart("Monthly Ticket Revenue", "Date", "Revenue", dataset);
+                    CategoryPlot categoryPlot = chart.getCategoryPlot();
+                    categoryPlot.setRangeGridlinePaint(Color.decode("#61B884"));
+                    chart.setBackgroundPaint(Color.WHITE);
+                    chart.getPlot().setBackgroundPaint(Color.white);
+
+                    // Export chart to png file
+                    BufferedImage objBufferedImage=chart.createBufferedImage(600,800);
+                    ByteArrayOutputStream bas = new ByteArrayOutputStream();
+                    try {
+                        ImageIO.write(objBufferedImage, "png", bas);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    byte[] byteArray=bas.toByteArray();
+
+                    InputStream in = new ByteArrayInputStream(byteArray);
+                    BufferedImage image = ImageIO.read(in);
+                    File outputfile = new File("src\\Asset\\Analyst\\Image\\" + rev.getStatisticType() + " - " + rev.getMonth() + " - " + rev.getYear() + ".png");
+                    ImageIO.write(image, "png", outputfile);
+
+                    // Export table and image to pdf file
+                    try {
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+                        LocalDateTime now = LocalDateTime.now();
+                        String fileName = "src\\Asset\\Analyst\\Report\\" + "Report - " + rev.getStatisticType() + " - " + dtf.format(now) + ".pdf";
+
+                        Document document = new Document();
+
+                        PdfWriter.getInstance(document, new FileOutputStream(fileName));
+
+                        document.open();
+
+                        // Set UTF-8 encoding for text
+                        BaseFont bf = BaseFont.createFont("c:\\windows\\fonts\\times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                        com.itextpdf.text.Font font = new com.itextpdf.text.Font(bf, 12);
+
+                        Paragraph title = new Paragraph("Report"); // Create Tittle
+                        title.setAlignment(Element.ALIGN_CENTER);
+
+                        Paragraph statisticTitle = new Paragraph(rev.getStatisticType() + " - " + rev.getMonth() + " - " + rev.getYear()); // Create statistic title
+                        statisticTitle.setAlignment(Element.ALIGN_CENTER);
+
+                        Paragraph space = new Paragraph(" "); // Create space
+
+                        document.add(title);
+                        // Set style for title
+                        com.itextpdf.text.Font titleFont = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.BOLD);
+                        title.setFont(titleFont);
+
+                        document.add(statisticTitle);
+                        document.add(space);
+                        document.add(space);
+
+                        PdfPTable table = new PdfPTable(3); // Create table
+
+                        PdfPCell cell1 = new PdfPCell(new Paragraph("No.")); // Create cell
+                        PdfPCell cell2 = new PdfPCell(new Paragraph("Date"));
+                        PdfPCell cell3 = new PdfPCell(new Paragraph("Revenue"));
+
+                        cell1.setHorizontalAlignment(Element.ALIGN_CENTER); // Set text align for cell
+                        cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                        cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                        table.addCell(cell1); // Add cell to table
+                        table.addCell(cell2);
+                        table.addCell(cell3);
+
+                        int stt = 1;
+                        for (Model.BEAN.Analyst.Statistic statistic : statisticList) {
+                            PdfPCell cell = new PdfPCell(new Paragraph(String.valueOf(stt), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            cell = new PdfPCell(new Paragraph(statistic.getType(), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            cell = new PdfPCell(new Paragraph(String.valueOf(statistic.getRevenue()), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            stt++;
+                        }
+
+                        document.add(table); // Add table to document
+
+                        document.add(space);
+                        document.add(space);
+                        document.add(space);
+
+                        // add image to document
+                        com.itextpdf.text.Image img = com.itextpdf.text.Image.getInstance("src\\Asset\\Analyst\\Image\\" + rev.getStatisticType() + " - " + rev.getMonth() + " - " + rev.getYear() + ".png");
+                        img.setAlignment(Element.ALIGN_CENTER);
+                        // Scale image
+                        img.scaleToFit(500, 500);
+                        document.add(img);
+
+                        document.close();
+
+                        // Check if file is exist
+                        if (!(outputfile.exists() || new File(fileName).exists())) {
+                            JOptionPane.showMessageDialog(null, "Export failed");
+                            return;
+                        }
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 }
 
-                else if (rev.equals("Annual Ticket Revenue")) {
-                    rev.setStatisticType("Annual Ticket Revenue");
-                    rev.setYear(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 4).toString())));
+                else if (rev.getStatisticType().equals("Annual Ticket Revenue")) {
+                    String type;
+                    int revenue;
+                    DefaultCategoryDataset dataset3 = new DefaultCategoryDataset();
+                    List<Statistic> statisticList = StatisticDAO.getInstance().getAnnualTicketRevenue(rev.getYear());
+
+                    for (Model.BEAN.Analyst.Statistic statistic : statisticList) {
+                        type = statistic.getType();
+                        revenue = statistic.getRevenue();
+                        dataset3.setValue(revenue, "Revenue", type);
+                    }
+
+                    JFreeChart chart3 = ChartFactory.createBarChart("Annual Ticket Revenue", rev.getYear(), "Revenue", dataset3);
+                    CategoryPlot categoryPlot3 = chart3.getCategoryPlot();
+                    categoryPlot3.setRangeGridlinePaint(Color.decode("#61B884"));
+                    chart3.setBackgroundPaint(Color.WHITE);
+                    chart3.getPlot().setBackgroundPaint(Color.white);
+
+                    BufferedImage objBufferedImage=chart3.createBufferedImage(600,800);
+                    ByteArrayOutputStream bas = new ByteArrayOutputStream();
+                    try {
+                        ImageIO.write(objBufferedImage, "png", bas);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    byte[] byteArray=bas.toByteArray();
+
+                    InputStream in = new ByteArrayInputStream(byteArray);
+                    BufferedImage image = ImageIO.read(in);
+                    File outputfile = new File("src\\Asset\\Analyst\\Image\\" + rev.getStatisticType() + " - " + rev.getYear() + ".png");
+                    ImageIO.write(image, "png", outputfile);
+
+                    // Export table and image to pdf file
+                    try {
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+                        LocalDateTime now = LocalDateTime.now();
+                        String fileName = "src\\Asset\\Analyst\\Report\\" + "Report - " + rev.getStatisticType() + " - " + dtf.format(now) + ".pdf";
+
+                        Document document = new Document();
+
+                        PdfWriter.getInstance(document, new FileOutputStream(fileName));
+
+                        document.open();
+
+                        // Set UTF-8 encoding for text
+                        BaseFont bf = BaseFont.createFont("c:\\windows\\fonts\\times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                        com.itextpdf.text.Font font = new com.itextpdf.text.Font(bf, 12);
+
+                        Paragraph title = new Paragraph("Report"); // Create Tittle
+                        title.setAlignment(Element.ALIGN_CENTER);
+
+                        Paragraph statisticTitle = new Paragraph(rev.getStatisticType() + " - " + rev.getYear()); // Create statistic title
+                        statisticTitle.setAlignment(Element.ALIGN_CENTER);
+
+                        Paragraph space = new Paragraph(" "); // Create space
+
+                        document.add(title);
+                        // Set style for title
+                        com.itextpdf.text.Font titleFont = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.BOLD);
+                        title.setFont(titleFont);
+
+                        document.add(statisticTitle);
+                        document.add(space);
+                        document.add(space);
+
+                        PdfPTable table = new PdfPTable(3); // Create table
+
+                        PdfPCell cell1 = new PdfPCell(new Paragraph("No.")); // Create cell
+                        PdfPCell cell2 = new PdfPCell(new Paragraph("Month"));
+                        PdfPCell cell3 = new PdfPCell(new Paragraph("Revenue"));
+
+                        cell1.setHorizontalAlignment(Element.ALIGN_CENTER); // Set text align for cell
+                        cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                        cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                        table.addCell(cell1); // Add cell to table
+                        table.addCell(cell2);
+                        table.addCell(cell3);
+
+                        int stt = 1;
+                        for (Model.BEAN.Analyst.Statistic statistic : statisticList) {
+                            PdfPCell cell = new PdfPCell(new Paragraph(String.valueOf(stt), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            cell = new PdfPCell(new Paragraph(statistic.getType(), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            cell = new PdfPCell(new Paragraph(String.valueOf(statistic.getRevenue()), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            stt++;
+                        }
+
+                        document.add(table); // Add table to document
+
+                        document.add(space);
+                        document.add(space);
+                        document.add(space);
+
+                        // add image to document
+                        com.itextpdf.text.Image img = com.itextpdf.text.Image.getInstance("src\\Asset\\Analyst\\Image\\" + rev.getStatisticType() + " - " + rev.getYear() + ".png");
+                        img.setAlignment(Element.ALIGN_CENTER);
+                        // Scale image
+                        img.scaleToFit(500, 500);
+                        document.add(img);
+
+                        document.close();
+
+                        // Check if file is exist
+                        if (!(outputfile.exists() || new File(fileName).exists())) {
+                            JOptionPane.showMessageDialog(null, "Export failed");
+                            return;
+                        }
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 }
+                else if (rev.getStatisticType().equals("Event-based Ticket Revenue")) {
+                    String type;
+                    int revenue;
+                    DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();
+                    List<Statistic> statisticList = StatisticDAO.getInstance().getEventbasedTicketRevenue(rev.getEvent());
 
-                else if (rev.equals("Event-based Ticket Revenue")){
-                    rev.setStatisticType("Event-based Ticket Revenue");
-                    rev.setEvent(reportTable.getValueAt(index, 2).toString());
+                    for (Model.BEAN.Analyst.Statistic statistic : statisticList) {
+                        type = statistic.getType();
+                        revenue = statistic.getRevenue();
+                        dataset2.setValue(revenue, "Revenue", type);
+                    }
+
+                    JFreeChart chart2 = ChartFactory.createBarChart("Event-based Ticket Revenue", rev.getStatisticType(), "Revenue", dataset2);
+                    CategoryPlot categoryPlot2 = chart2.getCategoryPlot();
+                    categoryPlot2.setRangeGridlinePaint(Color.decode("#61B884"));
+                    chart2.setBackgroundPaint(Color.WHITE);
+                    chart2.getPlot().setBackgroundPaint(Color.white);
+
+                    BufferedImage objBufferedImage=chart2.createBufferedImage(600,800);
+                    ByteArrayOutputStream bas = new ByteArrayOutputStream();
+                    try {
+                        ImageIO.write(objBufferedImage, "png", bas);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    byte[] byteArray=bas.toByteArray();
+
+                    InputStream in = new ByteArrayInputStream(byteArray);
+                    BufferedImage image = ImageIO.read(in);
+                    File outputfile = new File("src\\Asset\\Analyst\\Image\\" + rev.getStatisticType() + " - " + rev.getEvent() + ".png");
+                    ImageIO.write(image, "png", outputfile);
+
+                    // Export table and image to pdf file
+                    try {
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+                        LocalDateTime now = LocalDateTime.now();
+                        String fileName = "src\\Asset\\Analyst\\Report\\" + "Report - " + rev.getStatisticType() + " - " + dtf.format(now) + ".pdf";
+
+                        Document document = new Document();
+
+                        PdfWriter.getInstance(document, new FileOutputStream(fileName));
+
+                        document.open();
+
+                        // Set UTF-8 encoding for text
+                        BaseFont bf = BaseFont.createFont("c:\\windows\\fonts\\times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                        com.itextpdf.text.Font font = new com.itextpdf.text.Font(bf, 12);
+
+
+                        Paragraph title = new Paragraph("Report"); // Create Tittle
+                        title.setAlignment(Element.ALIGN_CENTER);
+
+                        Paragraph statisticTitle = new Paragraph(rev.getStatisticType() + " - " + rev.getEvent(), font); // Create statistic title
+                        statisticTitle.setAlignment(Element.ALIGN_CENTER);
+
+                        Paragraph space = new Paragraph(" "); // Create space
+
+                        document.add(title);
+                        // Set style for title
+                        com.itextpdf.text.Font titleFont = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.BOLD);
+                        title.setFont(titleFont);
+
+                        document.add(statisticTitle);
+                        document.add(space);
+                        document.add(space);
+
+                        PdfPTable table = new PdfPTable(3); // Create table
+
+                        PdfPCell cell1 = new PdfPCell(new Paragraph("No.")); // Create cell
+                        PdfPCell cell2 = new PdfPCell(new Paragraph("Ticket type"));
+                        PdfPCell cell3 = new PdfPCell(new Paragraph("Revenue"));
+
+                        cell1.setHorizontalAlignment(Element.ALIGN_CENTER); // Set text align for cell
+                        cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                        cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                        table.addCell(cell1); // Add cell to table
+                        table.addCell(cell2);
+                        table.addCell(cell3);
+
+                        int stt = 1;
+                        for (Model.BEAN.Analyst.Statistic statistic : statisticList) {
+                            PdfPCell cell = new PdfPCell(new Paragraph(String.valueOf(stt), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            cell = new PdfPCell(new Paragraph(statistic.getType(), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            cell = new PdfPCell(new Paragraph(String.valueOf(statistic.getRevenue()), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            stt++;
+                        }
+
+                        document.add(table); // Add table to document
+
+                        document.add(space);
+                        document.add(space);
+                        document.add(space);
+
+                        // add image to document
+                        com.itextpdf.text.Image img = com.itextpdf.text.Image.getInstance("src\\Asset\\Analyst\\Image\\" + rev.getStatisticType() + " - " + rev.getEvent() + ".png");
+                        img.setAlignment(Element.ALIGN_CENTER);
+                        // Scale image
+                        img.scaleToFit(500, 500);
+                        document.add(img);
+
+                        document.close();
+
+                        // Check if file is exist
+                        if (!(outputfile.exists() || new File(fileName).exists())) {
+                            JOptionPane.showMessageDialog(null, "Export failed");
+                            return;
+                        }
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 }
+                else if (rev.getStatisticType().equals("Daily Ticket Sales Statistics")) {
+                    String type;
+                    int revenue;
+                    DefaultCategoryDataset dataset4 = new DefaultCategoryDataset();
+                    List<Statistic> statisticList = StatisticDAO.getInstance().getDailyTicketSalesStatistics(rev.getDay(), rev.getMonth(), rev.getYear());
 
-                else if (rev.equals("Daily Ticket Sales Statistics")){
-                    rev.setStatisticType("Daily Ticket Sales Statistics");
-                    rev.setDay(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 2).toString())));
-                    rev.setMonth(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 3).toString())));
-                    rev.setYear(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 4).toString())));
+                    for (Model.BEAN.Analyst.Statistic statistic : statisticList) {
+                        type = statistic.getType();
+                        revenue = statistic.getRevenue();
+                        dataset4.setValue(revenue, "Revenue", type);
+                    }
+
+                    JFreeChart chart4 = ChartFactory.createBarChart("Daily Ticket Sales Statistics", "Event name", "Ticket", dataset4);
+                    CategoryPlot categoryPlot4 = chart4.getCategoryPlot();
+                    categoryPlot4.setRangeGridlinePaint(Color.decode("#61B884"));
+                    chart4.setBackgroundPaint(Color.WHITE);
+                    chart4.getPlot().setBackgroundPaint(Color.white);
+
+                    BufferedImage objBufferedImage=chart4.createBufferedImage(600,800);
+                    ByteArrayOutputStream bas = new ByteArrayOutputStream();
+                    try {
+                        ImageIO.write(objBufferedImage, "png", bas);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    byte[] byteArray=bas.toByteArray();
+
+                    InputStream in = new ByteArrayInputStream(byteArray);
+                    BufferedImage image = ImageIO.read(in);
+                    File outputfile = new File("src\\Asset\\Analyst\\Image\\" + rev.getStatisticType() + " - " + rev.getDay() + " - " + rev.getMonth() + " - " + rev.getYear() + ".png");
+                    ImageIO.write(image, "png", outputfile);
+
+                    // Export table and image to pdf file
+                    try {
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+                        LocalDateTime now = LocalDateTime.now();
+                        String fileName = "src\\Asset\\Analyst\\Report\\" + "Report - " + rev.getStatisticType() + " - " + dtf.format(now) + ".pdf";
+
+                        Document document = new Document();
+
+                        PdfWriter.getInstance(document, new FileOutputStream(fileName));
+
+                        document.open();
+                        // Set UTF-8 encoding for text
+                        BaseFont bf = BaseFont.createFont("c:\\windows\\fonts\\times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                        com.itextpdf.text.Font font = new com.itextpdf.text.Font(bf, 12);
+
+                        Paragraph title = new Paragraph("Report"); // Create Tittle
+                        title.setAlignment(Element.ALIGN_CENTER);
+
+                        Paragraph statisticTitle = new Paragraph(rev.getStatisticType() + " - " + rev.getDay() + " - " + rev.getMonth() + " - " + rev.getYear()); // Create statistic title
+                        statisticTitle.setAlignment(Element.ALIGN_CENTER);
+
+                        Paragraph space = new Paragraph(" "); // Create space
+
+                        document.add(title);
+                        // Set style for title
+                        com.itextpdf.text.Font titleFont = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.BOLD);
+                        title.setFont(titleFont);
+
+                        document.add(statisticTitle);
+                        document.add(space);
+                        document.add(space);
+
+                        PdfPTable table = new PdfPTable(3); // Create table
+
+                        PdfPCell cell1 = new PdfPCell(new Paragraph("No.")); // Create cell
+                        PdfPCell cell2 = new PdfPCell(new Paragraph("Event"));
+                        PdfPCell cell3 = new PdfPCell(new Paragraph("Revenue"));
+
+                        cell1.setHorizontalAlignment(Element.ALIGN_CENTER); // Set text align for cell
+                        cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                        cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                        table.addCell(cell1); // Add cell to table
+                        table.addCell(cell2);
+                        table.addCell(cell3);
+
+                        int stt = 1;
+                        for (Model.BEAN.Analyst.Statistic statistic : statisticList) {
+                            PdfPCell cell = new PdfPCell(new Paragraph(String.valueOf(stt), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            cell = new PdfPCell(new Paragraph(statistic.getType(), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            cell = new PdfPCell(new Paragraph(String.valueOf(statistic.getRevenue()), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            stt++;
+                        }
+
+                        document.add(table); // Add table to document
+
+                        document.add(space);
+                        document.add(space);
+                        document.add(space);
+
+                        // add image to document
+                        com.itextpdf.text.Image img = com.itextpdf.text.Image.getInstance("src\\Asset\\Analyst\\Image\\" + rev.getStatisticType() + " - " + rev.getDay() + " - " + rev.getMonth() + " - " + rev.getYear() + ".png");
+                        img.setAlignment(Element.ALIGN_CENTER);
+                        // Scale image
+                        img.scaleToFit(500, 500);
+                        document.add(img);
+
+                        document.close();
+
+                        // Check if file is exist
+                        if (!(outputfile.exists() || new File(fileName).exists())) {
+                            JOptionPane.showMessageDialog(null, "Export failed");
+                            return;
+                        }
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
                 }
+                else if (rev.getStatisticType().equals("Monthly Ticket Sales Statistics")) {
+                    String type;
+                    int revenue;
+                    DefaultCategoryDataset dataset5 = new DefaultCategoryDataset();
+                    List<Statistic> statisticList = StatisticDAO.getInstance().getMonthlyTicketSalesStatistics(rev.getMonth(), rev.getYear());
 
-                else if (rev.equals("Monthly Ticket Sales Statistics")){
-                    rev.setStatisticType("Monthly Ticket Sales Statistics");
-                    rev.setMonth(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 3).toString())));
-                    rev.setYear(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 4).toString())));
+                    for (Model.BEAN.Analyst.Statistic statistic : statisticList) {
+                        type = statistic.getType();
+                        revenue = statistic.getRevenue();
+                        dataset5.setValue(revenue, "Revenue", type);
+                    }
+
+                    JFreeChart chart5 = ChartFactory.createBarChart("Monthly Ticket Sales Statistics", "Event name", "Ticket", dataset5);
+                    CategoryPlot categoryPlot5 = chart5.getCategoryPlot();
+                    categoryPlot5.setRangeGridlinePaint(Color.decode("#61B884"));
+                    chart5.setBackgroundPaint(Color.WHITE);
+                    chart5.getPlot().setBackgroundPaint(Color.white);
+
+                    BufferedImage objBufferedImage=chart5.createBufferedImage(600,800);
+                    ByteArrayOutputStream bas = new ByteArrayOutputStream();
+                    try {
+                        ImageIO.write(objBufferedImage, "png", bas);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    byte[] byteArray=bas.toByteArray();
+
+                    InputStream in = new ByteArrayInputStream(byteArray);
+                    BufferedImage image = ImageIO.read(in);
+                    File outputfile = new File("src\\Asset\\Analyst\\Image\\" + rev.getStatisticType() + " - " + rev.getMonth() + " - " + rev.getYear() + ".png");
+                    ImageIO.write(image, "png", outputfile);
+
+                    // Export table and image to pdf file
+                    try {
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+                        LocalDateTime now = LocalDateTime.now();
+                        String fileName = "src\\Asset\\Analyst\\Report\\" + "Report - " + rev.getStatisticType() + " - " + dtf.format(now) + ".pdf";
+
+                        Document document = new Document();
+
+                        PdfWriter.getInstance(document, new FileOutputStream(fileName));
+
+                        document.open();
+
+                        // Set UTF-8 encoding for text
+                        BaseFont bf = BaseFont.createFont("c:\\windows\\fonts\\times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                        com.itextpdf.text.Font font = new com.itextpdf.text.Font(bf, 12);
+
+                        Paragraph title = new Paragraph("Report"); // Create Tittle
+                        title.setAlignment(Element.ALIGN_CENTER);
+
+                        Paragraph statisticTitle = new Paragraph(rev.getStatisticType() + " - " + rev.getMonth() + " - " + rev.getYear()); // Create statistic title
+                        statisticTitle.setAlignment(Element.ALIGN_CENTER);
+
+                        Paragraph space = new Paragraph(" "); // Create space
+
+                        document.add(title);
+                        // Set style for title
+                        com.itextpdf.text.Font titleFont = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.BOLD);
+                        title.setFont(titleFont);
+
+                        document.add(statisticTitle);
+                        document.add(space);
+                        document.add(space);
+
+                        PdfPTable table = new PdfPTable(3); // Create table
+
+                        PdfPCell cell1 = new PdfPCell(new Paragraph("No.")); // Create cell
+                        PdfPCell cell2 = new PdfPCell(new Paragraph("Month"));
+                        PdfPCell cell3 = new PdfPCell(new Paragraph("Revenue"));
+
+                        cell1.setHorizontalAlignment(Element.ALIGN_CENTER); // Set text align for cell
+                        cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                        cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                        table.addCell(cell1); // Add cell to table
+                        table.addCell(cell2);
+                        table.addCell(cell3);
+
+                        int stt = 1;
+                        for (Model.BEAN.Analyst.Statistic statistic : statisticList) {
+                            PdfPCell cell = new PdfPCell(new Paragraph(String.valueOf(stt), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            cell = new PdfPCell(new Paragraph(statistic.getType(), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            cell = new PdfPCell(new Paragraph(String.valueOf(statistic.getRevenue()), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            stt++;
+                        }
+
+                        document.add(table); // Add table to document
+
+                        document.add(space);
+                        document.add(space);
+                        document.add(space);
+
+                        // add image to document
+                        com.itextpdf.text.Image img = com.itextpdf.text.Image.getInstance("src\\Asset\\Analyst\\Image\\" + rev.getStatisticType() + " - " + rev.getMonth() + " - " + rev.getYear() + ".png");
+                        img.setAlignment(Element.ALIGN_CENTER);
+                        // Scale image
+                        img.scaleToFit(500, 500);
+                        document.add(img);
+
+                        document.close();
+
+                        // Check if file is exist
+                        if (!(outputfile.exists() || new File(fileName).exists())) {
+                            JOptionPane.showMessageDialog(null, "Export failed");
+                            return;
+                        }
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 }
+                else if (rev.getStatisticType().equals("Annual Ticket Sales Statistics")) {
+                    String type;
+                    int revenue;
+                    DefaultCategoryDataset dataset1 = new DefaultCategoryDataset();
+                    List<Statistic> statisticList = StatisticDAO.getInstance().getAnnualTicketSalesStatistics(rev.getYear());
 
-                else if (rev.equals("Annual Ticket Sales Statistics")){
-                    rev.setStatisticType("Annual Ticket Sales Statistics");
-                    rev.setYear(String.valueOf(Integer.parseInt(reportTable.getValueAt(index, 4).toString())));
+                    for (Model.BEAN.Analyst.Statistic statistic : statisticList) {
+                        type = statistic.getType();
+                        revenue = statistic.getRevenue();
+                        dataset1.setValue(revenue, "Revenue", type);
+                    }
+
+                    JFreeChart chart1 = ChartFactory.createBarChart("Annual Ticket Sales Statistics", rev.getYear(), "Ticket", dataset1);
+                    CategoryPlot categoryPlot1 = chart1.getCategoryPlot();
+                    categoryPlot1.setRangeGridlinePaint(Color.decode("#61B884"));
+                    chart1.setBackgroundPaint(Color.WHITE);
+                    chart1.getPlot().setBackgroundPaint(Color.white);
+
+                    BufferedImage objBufferedImage=chart1.createBufferedImage(600,800);
+                    ByteArrayOutputStream bas = new ByteArrayOutputStream();
+                    try {
+                        ImageIO.write(objBufferedImage, "png", bas);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    byte[] byteArray=bas.toByteArray();
+
+                    InputStream in = new ByteArrayInputStream(byteArray);
+                    BufferedImage image = ImageIO.read(in);
+                    File outputfile = new File("src\\Asset\\Analyst\\Image\\" + rev.getStatisticType() + " - " + rev.getYear() + ".png");
+                    ImageIO.write(image, "png", outputfile);
+
+                    // Export table and image to pdf file
+                    try {
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+                        LocalDateTime now = LocalDateTime.now();
+                        String fileName = "src\\Asset\\Analyst\\Report\\" + "Report - " + rev.getStatisticType() + " - " + dtf.format(now) + ".pdf";
+
+                        Document document = new Document();
+
+                        PdfWriter.getInstance(document, new FileOutputStream(fileName));
+
+                        document.open();
+
+                        // Set UTF-8 encoding for text
+                        BaseFont bf = BaseFont.createFont("c:\\windows\\fonts\\times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                        com.itextpdf.text.Font font = new com.itextpdf.text.Font(bf, 12);
+
+                        Paragraph title = new Paragraph("Report"); // Create Tittle
+                        title.setAlignment(Element.ALIGN_CENTER);
+
+                        Paragraph statisticTitle = new Paragraph(rev.getStatisticType() + " - " + rev.getYear()); // Create statistic title
+                        statisticTitle.setAlignment(Element.ALIGN_CENTER);
+
+                        Paragraph space = new Paragraph(" "); // Create space
+
+                        document.add(title);
+                        // Set style for title
+                        com.itextpdf.text.Font titleFont = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.BOLD);
+                        title.setFont(titleFont);
+
+                        document.add(statisticTitle);
+                        document.add(space);
+                        document.add(space);
+
+                        PdfPTable table = new PdfPTable(3); // Create table
+
+                        PdfPCell cell1 = new PdfPCell(new Paragraph("No.")); // Create cell
+                        PdfPCell cell2 = new PdfPCell(new Paragraph("Month"));
+                        PdfPCell cell3 = new PdfPCell(new Paragraph("Revenue"));
+
+                        // Set text align for cell
+                        cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+                        cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                        cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+                        // Add cell to table
+                        table.addCell(cell1);
+                        table.addCell(cell2);
+                        table.addCell(cell3);
+
+                        int stt = 1;
+                        for (Model.BEAN.Analyst.Statistic statistic : statisticList) {
+                            PdfPCell cell = new PdfPCell(new Paragraph(String.valueOf(stt), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            cell = new PdfPCell(new Paragraph(statistic.getType(), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            cell = new PdfPCell(new Paragraph(String.valueOf(statistic.getRevenue()), font));
+                            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                            table.addCell(cell);
+
+                            stt++;
+                        }
+
+                        document.add(table); // Add table to document
+
+                        document.add(space);
+                        document.add(space);
+                        document.add(space);
+
+                        // add image to document
+                        com.itextpdf.text.Image img = com.itextpdf.text.Image.getInstance("src\\Asset\\Analyst\\Image\\" + rev.getStatisticType() + " - " + rev.getYear() + ".png");
+                        img.setAlignment(Element.ALIGN_CENTER);
+                        // Scale image
+                        img.scaleToFit(500, 500);
+                        document.add(img);
+
+                        document.close();
+
+                        // Check if file is exist
+                        if (!(outputfile.exists() || new File(fileName).exists())) {
+                            JOptionPane.showMessageDialog(null, "Export failed");
+                            return;
+                        }
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
+
+            JOptionPane.showMessageDialog(null, "Export successfully");
         }
     }
 
@@ -393,13 +1113,12 @@ public class ExportReportDialog extends JDialog {
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
-            dialogPane.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
-            swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border
-            . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog"
-            , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,dialogPane. getBorder
-            () ) ); dialogPane. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
-            . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException
-            ( ) ;} } );
+            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
+            .EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax
+            .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,
+            12),java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans
+            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.
+            getPropertyName()))throw new RuntimeException();}});
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
