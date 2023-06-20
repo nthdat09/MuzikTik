@@ -155,7 +155,7 @@ public class InformationCustomerForm extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Dat
         this.InformationCustomerPanel = new JPanel();
         this.Name = new JLabel();
         this.Email = new JLabel();
@@ -185,13 +185,13 @@ public class InformationCustomerForm extends JPanel {
         setFont(new Font("Lato Black", Font.PLAIN, 16));
         setForeground(new Color(0x61b884));
         setBackground(Color.white);
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
-        swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border
-        .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog"
-        ,java.awt.Font.BOLD,12),java.awt.Color.red), getBorder
-        ())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
-        .beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException
-        ();}});
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax .
+        swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border
+        . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog"
+        , java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) , getBorder
+        () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java
+        . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException
+        ( ) ;} } );
 
         //---- Name ----
         this.Name.setText("Name:");
@@ -269,7 +269,6 @@ public class InformationCustomerForm extends JPanel {
         this.IDField.setEditable(false);
         this.IDField.setFont(new Font("Lato", Font.PLAIN, 16));
         this.IDField.setEnabled(false);
-        this.IDField.setDisabledTextColor(new Color(0x333333));
 
         //---- Type ----
         this.Type.setFont(new Font("Lato Black", Font.PLAIN, 16));
@@ -395,13 +394,13 @@ public class InformationCustomerForm extends JPanel {
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(this.Cancel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(this.SAVE, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(148, Short.MAX_VALUE))
+                    .addContainerGap(135, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Dat
     private JPanel InformationCustomerPanel;
     JLabel Name;
     JLabel Email;

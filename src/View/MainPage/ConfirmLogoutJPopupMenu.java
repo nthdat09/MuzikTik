@@ -2,6 +2,7 @@ package View.MainPage;
 
 import java.awt.*;
 import Controller.MainMenu.ConfirmLogoutController;
+import View.Home.HomePanel;
 import View.LoginPage.LoginPage;
 
 import javax.swing.*;
@@ -12,6 +13,8 @@ public class ConfirmLogoutJPopupMenu extends JDialog{
     int selectedID;
 
     MainPage mainPage;
+
+    MainPageCustomer mainPageCustomer;
 
     public void setSelectedID(int selectedID) {
         this.selectedID = selectedID;
@@ -27,6 +30,12 @@ public class ConfirmLogoutJPopupMenu extends JDialog{
         this.mainPage = mainPage;
     }
 
+    public ConfirmLogoutJPopupMenu(MainPageCustomer mainPageCustomer) {
+        initComponents();
+        initSomeComponents();
+        this.mainPageCustomer = mainPageCustomer;
+    }
+
     public void initSomeComponents() {
         getYesButton().addActionListener(ac);
         getNoButton().addActionListener(ac);
@@ -34,8 +43,12 @@ public class ConfirmLogoutJPopupMenu extends JDialog{
 
     public void Logout() {
         this.getConfirmJDialog().dispose();
-        this.mainPage.Destroy();
-
+        if(HomePanel.getIsCustomer() == false) {
+            this.mainPage.Destroy();
+        }
+        else {
+            this.mainPageCustomer.Destroy();
+        }
         LoginPage.getLoginPageDialog().setVisible(true);
     }
 

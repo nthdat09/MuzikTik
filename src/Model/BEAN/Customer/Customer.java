@@ -1,5 +1,7 @@
 package Model.BEAN.Customer;
 
+import java.sql.Date;
+
 public class Customer {
     private int id;
     private String name;
@@ -12,9 +14,39 @@ public class Customer {
     private int totalPoint;
 
     private int balance;
+    private byte[] avatar;
+    private Date dateOfBirth;
 
     public Customer() {
         super();
+    }
+
+    public Customer(int id, String name, String username, String password, String phoneNumber, String email, String address, String type, int totalPoint, int balance, byte[] avatar, Date dateOfBirth) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+        this.type = type;
+        this.totalPoint = totalPoint;
+        this.balance = balance;
+        this.avatar = avatar;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public Customer(int id, String name, String phoneNumber, String email, String address, String type, int totalPoint, int balance, byte[] avatar) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+        this.type = type;
+        this.totalPoint = totalPoint;
+        this.balance = balance;
+        this.avatar = avatar;
     }
 
     public Customer(int id, String name, String username, String password, String phoneNumber, String email, String address, String type, int totalPoint, int balance) {
@@ -30,20 +62,16 @@ public class Customer {
         this.balance = balance;
     }
 
-    public Customer(int id, String name, String phoneNumber, String email, String address, String type, int totalPoint, int balance) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.address = address;
-        this.type = type;
-        this.totalPoint = totalPoint;
-        this.balance = balance;
-    }
-
     public int getId() {
         return id;
+    }
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
     }
 
     public String getName() {
@@ -126,6 +154,14 @@ public class Customer {
 
     public void setPassword(String password){
         this.password = password;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth){
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public Date getDateOfBirth(){
+        return dateOfBirth;
     }
 
     @Override

@@ -1,7 +1,9 @@
 package View.LoginPage.ForgetPasswordPage;
 
 import Controller.LoginPage.ForgetPassword.ForgetPasswordPage1Listener;
+import Model.BEAN.Customer.Customer;
 import Model.BEAN.Employee.Employee;
+import Model.DAO.Customer.CustomerDAO;
 import Model.DAO.Employee.EmployeeDAO;
 import Model.DAO.Employee.VerificationCode;
 import View.LoginPage.LoginPage;
@@ -149,6 +151,7 @@ public class ForgotPasswordPage_1 extends JPanel {
     private JLabel label5;
     private JButton NextJbt;
     private JButton BackJbt;
+    private static Boolean isCustomer = false;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 
     public void goToNextPage() throws MessagingException, EmailException {
@@ -156,7 +159,32 @@ public class ForgotPasswordPage_1 extends JPanel {
         Employee realuser = EmployeeDAO.getInstance().selectUserandPassByID(userName);
 
         if (realuser == null) {
-            JOptionPane.showMessageDialog(null, "Username is not exist");
+            Customer realCustomer = CustomerDAO.getInstance().selectUserandPassByID(userName);
+            if(realCustomer == null) {
+                JOptionPane.showMessageDialog(null, "Username is not exist");
+            } else {
+                List<String> realUserName = CustomerDAO.getListUsername();
+                boolean checkUserNameForCustomer = false;
+                for (String s : realUserName) {
+                    if (s.equals(userName)) {
+                        checkUserNameForCustomer = true;
+                        break;
+                    }
+                }
+                if(!checkUserNameForCustomer) {
+                    JOptionPane.showMessageDialog(null, "Username is not exist");
+                } else {
+                    String email = CustomerDAO.getEmailByUsername(userName);
+                    System.out.println("email: " + email);
+                    int verificationCode = VerificationCode.createVerificationCode();
+                    System.out.println("verificationCode: " + verificationCode);
+
+                    ForgotPasswordPage_2 forgotPasswordPage_2 = new ForgotPasswordPage_2(verificationCode, userName, email);
+                    forgotPasswordPage_2.getForgotPasswordPage_2JDialog().setVisible(true);
+                    setIsCustomer(true);
+                    ForgotPasswordPage_1JDialog.dispose();
+                }
+            }
         } else {
             List<String> realUserName = EmployeeDAO.getListUsername();
             boolean checkUserName = false;
@@ -187,5 +215,13 @@ public class ForgotPasswordPage_1 extends JPanel {
         LoginPage loginPage = new LoginPage();
         loginPage.getLoginPageDialog().setVisible(true);
         ForgotPasswordPage_1JDialog.dispose();
+    }
+
+    public static void setIsCustomer(Boolean isCustomer) {
+        ForgotPasswordPage_1.isCustomer = isCustomer;
+    }
+
+    public static Boolean getIsCustomer() {
+        return isCustomer;
     }
 }

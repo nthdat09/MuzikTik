@@ -17,6 +17,7 @@ import Model.DAO.Event.EventInformation.EventTableDatabase;
 import Model.DAO.Ticket.SendTicketEmail;
 import Model.Database.UserDatabase;
 import View.Home.HomePanel;
+import View.LoginPage.LoginPage;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -50,7 +51,11 @@ public class EventPanel extends JPanel {
         initComponents();
         initSetting();
         initCustomerName();
-
+        if(HomePanel.getIsCustomer() == true) {
+            checkBox1.setVisible(false);
+            checkBox3.setSelected(true);
+            checkBox3.setVisible(false);
+        }
     }
 
     private void initCustomerName() {
@@ -228,14 +233,13 @@ public class EventPanel extends JPanel {
 
         Connection con = UserDatabase.getConnection();
         int capacity = 0;
-        String sql = "Select EVT_QUANTITY from event where evt_id = " + HomePanel.getSelectedEventID();
-        System.out.println(HomePanel.getSelectedEventID());
+        String sql = "Select evt_quantity from event where evt_id = " + HomePanel.getSelectedEventID();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             capacity = 0;
             while (rs.next()) {
-                capacity = rs.getInt("EVT_QUANTITY");
+                capacity = rs.getInt("evt_quantity");
             }
         } catch (SQLException e1) {
             e1.printStackTrace();
@@ -256,13 +260,13 @@ public class EventPanel extends JPanel {
 
         Connection con = UserDatabase.getConnection();
         int capacity = 0;
-        String sql = "Select EVT_QUANTITY from event where evt_id = " + HomePanel.getSelectedEventID();
+        String sql = "Select stg_capacity from stage where stg_id = " + HomePanel.getSelectedStage();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             capacity = 0;
             while (rs.next()) {
-                capacity = rs.getInt("EVT_QUANTITY");
+                capacity = rs.getInt("stg_capacity");
             }
         } catch (SQLException e1) {
             e1.printStackTrace();
@@ -349,6 +353,12 @@ public class EventPanel extends JPanel {
 
     private void jlbNextMouseClicked(MouseEvent e) {
         Integer ticketBookingID = null;
+        List<Integer> listTicketID = new ArrayList<>();
+        List<String> listSeatID = new ArrayList<>();
+
+        listSeatID.removeAll(listSeatID);
+        listTicketID.removeAll(listTicketID);
+
         if (fullNameText.getText().toString().equals("") || phoneNumberText.getText().toString().equals("") || emailText.getText().toString().equals("")) {
             JOptionPane.showMessageDialog(null, "Please fill all information!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
@@ -362,262 +372,466 @@ public class EventPanel extends JPanel {
             JOptionPane.showMessageDialog(null, "Please enter a valid phone number!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         } else if (checkBox3.isSelected() == true) {
-            customer = CustomerInformationValidate.validateCustomer();
-            try {
-                if (customer.size() == 0) {
-                    JOptionPane.showConfirmDialog(null, "You are not a customer yet! Please register to buy ticket!", "Warning", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
-                    int newID = CustomerListDAO.getLastID();
-                    String nameCustomer = fullNameText.getText();
-                    String phoneNumber = phoneNumberText.getText();
-                    String email = emailText.getText();
+            Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
+            //
+            //Process payment for account balance
+            //
 
-                    JFrame frame = new JFrame("Register");
-                    frame.setContentPane(new NewCustomerEvent(newID + 1));
-                    NewCustomerEvent.settingForNewCustomer(nameCustomer, phoneNumber, email);
-                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    frame.pack();
-                    frame.setVisible(true);
-                    frame.setLocationRelativeTo(null);
-                    frame.setResizable(false);
-                    frame.setSize(1050, 650);
 
+            //Process payment for customer login
+            //
+            if (HomePanel.getIsCustomer() == true) {
+                customer = CustomerInformationValidate.validateCustomer();
+                if(BuySeatTable.getRowCount() == 0) {
+                    JOptionPane.showMessageDialog(null, "Please choose your seat!", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                for (int i = 0; i < BuySeatTable.getRowCount(); i++) {
+                    String seatID = BuySeatTable.getValueAt(i, 0).toString();
+
+                    BuyProcessForCustomerLogin(seatID, ticketBookingID, listTicketID, listSeatID);
+                }
+                if(listSeatID.size() > 1 && listTicketID.size() > 1) {
+                    sendMoreMail(listTicketID,listSeatID,customer.get(0).getCustomerID());
                 } else {
+                    sendMail(totalPrice,listTicketID.get(0),listSeatID.get(0),customer.get(0).getCustomerID());
+                }
+
+                JOptionPane.showMessageDialog(null, "Your ticket has been booked successfully!");
+                updatePoint(customer.get(0).getCustomerID(),totalPrice);
+                afterBuySettingForCustomer();
+            } else {
+
+                //Process payment for employee login
+                //
+
+                customer = CustomerInformationValidate.validateCustomer();
+
+                //If not found customer
+                //
+                if (customer.size() == 0) {
+                    int dialogResult = JOptionPane.showConfirmDialog(null, "You are not a member. Do you want to register?", "Warning", JOptionPane.YES_NO_OPTION);
+                    if (dialogResult == JOptionPane.NO_OPTION) {
+                        JOptionPane.showMessageDialog(null, "You're not customer, please choose another payment method");
+                    } else {
+                        registerForNewCustomer();
+                    }
+                    return;
+                } else
+                //Customer found
+                //
+                {
                     Integer balance = customer.get(0).getBalance();
-                    Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
                     Integer newBalance = balance - totalPrice;
                     if (balance < totalPrice) {
                         JOptionPane.showMessageDialog(null, "Your balance is not enough to buy this ticket!");
                         return;
                     } else {
-                        try {
-                            Connection con = UserDatabase.getConnection();
-                            String sql = "UPDATE customer SET CUS_BALANCE = '" + newBalance + "' WHERE CUS_PHONE_NUMBER  = '" + phoneNumberText.getText() + "' AND CUS_NAME = '" + fullNameText.getText() + "' AND CUS_EMAIL = '" + emailText.getText() + "'";
-                            for (int i = 0; i < BuySeatTable.getRowCount(); i++) {
-                                String seatID = BuySeatTable.getValueAt(i, 0).toString();
-                                if (seatID.isEmpty()) {
-                                    JOptionPane.showMessageDialog(null, "Please select your seat!");
-                                    return;
-                                } else {
-                                    setSeatID(seatID);
-                                    List<TicketID> bookedTicket = BookingTicket.bookingTicket();
-                                    Integer ticketID = bookedTicket.get(0).getTicketID();
-                                    String sqlTicketBooking = "SELECT MAX(TBK_ID) from ticket_booking";
-                                    PreparedStatement ps1 = con.prepareStatement(sqlTicketBooking);
-                                    ResultSet rs = ps1.executeQuery();
-                                    while (rs.next()) {
-                                        ticketBookingID = rs.getInt(1) + 1;
-                                    }
-                                    try {
-                                        String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_ID,TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketBookingID + "', '" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
-                                        PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
-                                        new Thread(() -> {
-                                            try {
-                                                Thread.sleep(1000);
-                                                SendTicketEmail.sendCodeToEmail(totalPrice, HomePanel.getSelectedStage(), ticketID, Integer.parseInt(seatID), emailText.getText(), getEventName().getText(), fullNameText.getText(), getEventPlace().getText(), getEventTime().getText());
-                                            } catch (Exception err) {
-                                                System.err.println(err);
-                                            }
-                                        }).start();
-                                        ps2.executeUpdate();
-                                        ps2.close();
-                                    } catch (Exception ex) {
-                                        JOptionPane.showMessageDialog(null, ex);
-                                    }
-                                }
-                            }
-                            PreparedStatement ps = con.prepareStatement(sql);
-                            ps.executeUpdate();
-
-                            String sqlGetPoint = "Select cus_total_point from customer where cus_id = " + customer.get(0).getCustomerID();
-                            PreparedStatement psGetPoint = con.prepareStatement(sqlGetPoint);
-                            ResultSet rsGetPoint = psGetPoint.executeQuery();
-                            while (rsGetPoint.next()) {
-                                Integer previousPoint = rsGetPoint.getInt("cus_total_point");
-                                Integer point = totalPrice / 1000;
-                                Integer totalPoint = point + previousPoint;
-                                String sqlUpdatePoint = "Update customer set cus_total_point = " + totalPoint + " where cus_id = " + customer.get(0).getCustomerID();
-                                PreparedStatement ps3 = con.prepareStatement(sqlUpdatePoint);
-                                ps3.executeUpdate();
-                            }
-
-                            ps.close();
-                            con.close();
-
-                            JOptionPane.showMessageDialog(null, "Your ticket has been booked successfully!");
-                            fullNameText.setText("");
-                            emailText.setText("");
-                            phoneNumberText.setText("");
-
-                            totalDisplay.setText("0 VND");
-                            quantityDisplay.setText("0 tickets");
+                        buyProcessForAccount(newBalance, ticketBookingID, totalPrice, listTicketID, listSeatID);
+                        updatePoint(customer.get(0).getCustomerID(),totalPrice);
+                        JOptionPane.showMessageDialog(null, "Your ticket has been booked successfully!");
 
 
-                            DefaultTableModel tableBuyModel = (DefaultTableModel) BuySeatTable.getModel();
-                            tableBuyModel.setRowCount(0);
-
-                            List<JButton> btnList = SeatView50.getSeatButton();
-                            for (JButton btn : btnList) {
-                                if (btn.getBackground() == Color.decode("#fff49c")) {
-                                    btn.setBackground(Color.RED);
-                                    btn.setForeground(Color.WHITE);
-                                }
-                            }
-
-                            List<JButton> btnList100 = SeatView100.getSeatButton();
-                            for (JButton btn : btnList100) {
-                                if (btn.getBackground() == Color.decode("#fff49c")) {
-                                    btn.setBackground(Color.RED);
-                                    btn.setForeground(Color.WHITE);
-                                }
-                            }
-
-                            DefaultTableModel tableReserved = (DefaultTableModel) selectedTable100.getModel();
-                            tableReserved.setRowCount(0);
-
-                            DefaultTableModel tableSelected = (DefaultTableModel) selectedTable50.getModel();
-                            tableSelected.setRowCount(0);
-
-                            jpnInfo.setVisible(true);
-                            jpnTicketFee.setVisible(true);
-                            SeatPanel.setVisible(true);
-                            jpnBuyNow.setVisible(true);
-
-                            selectedTab(0);
-                            jtbTabEvent.setSelectedIndex(0);
-                            selectedTab(0);
-                        } catch (Exception ex) {
-                            JOptionPane.showMessageDialog(null, "Error1: " + ex.getMessage());
+                        if(listSeatID.size() > 1 && listTicketID.size() > 1) {
+                            sendMoreMail(listTicketID,listSeatID,customer.get(0).getCustomerID());
+                        } else {
+                            sendMail(totalPrice,listTicketID.get(0),listSeatID.get(0),customer.get(0).getCustomerID());
                         }
+                        afterBuySetting();
                     }
                 }
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Error2: " + ex.getMessage());
             }
-        } else {
-            customer = CustomerInformationValidate.validateCustomer();
-            if (customer.size() == 0) {
-                JOptionPane.showConfirmDialog(null, "You are not a customer yet! Please register to buy ticket!", "Warning", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
-                int newID = CustomerListDAO.getLastID();
-                String nameCustomer = fullNameText.getText();
-                String phoneNumber = phoneNumberText.getText();
-                String email = emailText.getText();
+        } else
+        {
+            //
+            //Process payment for cash
+            //
 
-                JFrame frame = new JFrame("Register");
-                frame.setContentPane(new NewCustomerEvent(newID + 1));
-                NewCustomerEvent.settingForNewCustomer(nameCustomer, phoneNumber, email);
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setVisible(true);
-                frame.setLocationRelativeTo(null);
-                frame.setResizable(false);
-                frame.setSize(1050, 550);
+            customer = CustomerInformationValidate.validateCustomer();
+            Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
+
+            //Process cash payment for non-customer
+            //
+            if (customer.size() == 0) {
+                int dialogResult = JOptionPane.showConfirmDialog(null, "You are not a member. Do you want to register?", "Warning", JOptionPane.YES_NO_OPTION);
+                if(dialogResult == JOptionPane.NO_OPTION){
+                    for(int i = 0; i< BuySeatTable.getRowCount(); i++) {
+                        String seatID = BuySeatTable.getValueAt(i, 0).toString();
+                        if(seatID.isEmpty()) {
+                            JOptionPane.showMessageDialog(null, "Please select your seat!");
+                            return;
+                        } else {
+                            buyProcessForNonCustomer(ticketBookingID, seatID, listTicketID, listSeatID);
+                        }
+                    }
+
+                    if(listSeatID.size() > 1 && listTicketID.size() > 1) {
+                        sendMoreMail(listTicketID,listSeatID,customer.get(0).getCustomerID());
+                    } else {
+                        sendMail(totalPrice,listTicketID.get(0),listSeatID.get(0),customer.get(0).getCustomerID());
+                    }
+
+                    updatePoint(customer.get(0).getCustomerID(), totalPrice);
+                    JOptionPane.showMessageDialog(null, "Your ticket has been booked successfully!");
+                    afterBuySetting();
+                } else {
+                    registerForNewCustomer();
+                }
+
+                //Process cash payment for customer
+                //
             } else {
-                Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
-                Connection con = UserDatabase.getConnection();
                 for (int i = 0; i < BuySeatTable.getRowCount(); i++) {
                     String seatID = BuySeatTable.getValueAt(i, 0).toString();
-                    System.out.println(seatID);
                     if (seatID.isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Please select your seat!");
                         return;
                     } else {
-                        try {
-                            setSeatID(seatID);
-                            List<TicketID> bookedTicket = BookingTicket.bookingTicket();
-                            Integer ticketID = bookedTicket.get(0).getTicketID();
-                            String sqlTicketBooking = "SELECT MAX(TBK_ID) from ticket_booking";
-                            PreparedStatement ps1 = con.prepareStatement(sqlTicketBooking);
-                            ResultSet rs = ps1.executeQuery();
-                            while (rs.next()) {
-                                ticketBookingID = rs.getInt(1) + 1;
-                            }
-                            try {
-                                String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_ID,TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketBookingID + "', '" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
-                                PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
-                                new Thread(() -> {
-                                    try {
-                                        Thread.sleep(1000);
-                                        SendTicketEmail.sendCodeToEmail(totalPrice, HomePanel.getSelectedStage(), ticketID, Integer.parseInt(seatID), emailText.getText(), getEventName().getText(), fullNameText.getText(), getEventPlace().getText(), getEventTime().getText());
-                                    } catch (Exception err) {
-                                        System.err.println(err);
-                                    }
-                                }).start();
-                                ps2.executeUpdate();
-                                ps2.close();
-                            } catch (Exception ex) {
-                                JOptionPane.showMessageDialog(null, ex);
-                            }
-                            try {
-                                String sqlInsertReservedSeat = "insert into reserved_seat (RSV_CUS_ID, RSV_SEAT_ID, RSV_STG_ID, RSV_EVT_ID) values ('" + customer.get(0).getCustomerID() + "', '" + seatID + "' , '" + HomePanel.getSelectedStage() + "', '" + HomePanel.getSelectedEventID() + "')";
-                                PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
-                                ps2.executeUpdate();
-                                ps2.close();
-                            } catch (Exception ex) {
-                                JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-                            }
-                        } catch (SQLException sql) {
-                            JOptionPane.showMessageDialog(null, "Error: " + sql.getMessage());
-                        }
+                        buyProcessWithCash(ticketBookingID, totalPrice, seatID, listTicketID, listSeatID);
                     }
-                }
-                try {
-                    String sqlGetPoint = "Select cus_total_point from customer where cus_id = " + customer.get(0).getCustomerID();
-                    PreparedStatement psGetPoint = con.prepareStatement(sqlGetPoint);
-                    ResultSet rsGetPoint = psGetPoint.executeQuery();
-                    while (rsGetPoint.next()) {
-                        Integer previousPoint = rsGetPoint.getInt("cus_total_point");
-                        Integer point = totalPrice / 1000;
-                        Integer totalPoint = point + previousPoint;
-                        String sqlUpdatePoint = "Update customer set cus_total_point = " + totalPoint + " where cus_id = " + customer.get(0).getCustomerID();
-                        PreparedStatement ps3 = con.prepareStatement(sqlUpdatePoint);
-                        ps3.executeUpdate();
-                    }
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
                 }
 
+                if(listSeatID.size() > 1 && listTicketID.size() > 1) {
+                    sendMoreMail(listTicketID,listSeatID,customer.get(0).getCustomerID());
+                } else {
+                    sendMail(totalPrice,listTicketID.get(0),listSeatID.get(0),customer.get(0).getCustomerID());
+                }
+
+                updatePoint(customer.get(0).getCustomerID(), totalPrice);
                 JOptionPane.showMessageDialog(null, "Your ticket has been booked successfully!");
-                fullNameText.setText("");
-                emailText.setText("");
-                phoneNumberText.setText("");
-
-                totalDisplay.setText("0 VND");
-                quantityDisplay.setText("0 tickets");
-
-                DefaultTableModel tableBuyModel = (DefaultTableModel) BuySeatTable.getModel();
-                tableBuyModel.setRowCount(0);
-
-                jpnInfo.setVisible(true);
-                jpnTicketFee.setVisible(true);
-                SeatPanel.setVisible(true);
-                jpnBuyNow.setVisible(true);
-
-                List<JButton> btnList50 = SeatView50.getSeatButton();
-                for (JButton btn : btnList50) {
-                    if (btn.getBackground() == Color.decode("#fff49c")) {
-                        btn.setBackground(Color.decode("#92CFAA"));
-                        btn.setForeground(Color.WHITE);
-                    }
-                }
-
-                List<JButton> btnList100 = SeatView100.getSeatButton();
-                for (JButton btn : btnList100) {
-                    if (btn.getBackground() == Color.decode("#fff49c")) {
-                        btn.setBackground(Color.decode("#92CFAA"));
-                        btn.setForeground(Color.WHITE);
-                    }
-                }
-
-                DefaultTableModel tableReserved = (DefaultTableModel) selectedTable100.getModel();
-                tableReserved.setRowCount(0);
-
-                DefaultTableModel tableSelected = (DefaultTableModel) selectedTable50.getModel();
-                tableSelected.setRowCount(0);
-
-                selectedTab(0);
-                jtbTabEvent.setSelectedIndex(0);
-                selectedTab(0);
+                afterBuySetting();
             }
+        }
+    }
+
+    private void BuyProcessForCustomerLogin(String seatID, Integer ticketBookingID, List<Integer> listTicketID, List<String> listSeatID) {
+        Connection con = UserDatabase.getConnection();
+        try {
+            setSeatID(seatID);
+            List<TicketID> bookedTicket = BookingTicket.bookingTicket();
+            Integer ticketID = bookedTicket.get(0).getTicketID();
+            listTicketID.add(ticketID);
+            listSeatID.add(seatID);
+            String sqlTicketBooking = "SELECT MAX(TBK_ID) from ticket_booking";
+            PreparedStatement ps1 = con.prepareStatement(sqlTicketBooking);
+            ResultSet rs = ps1.executeQuery();
+            while (rs.next()) {
+                ticketBookingID = rs.getInt(1) + 1;
+            }
+
+            try {
+                String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_ID,TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketBookingID + "', '" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
+                PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
+
+                ps2.executeUpdate();
+                ps2.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            try {
+                String sqlInsertReservedSeat = "insert into reserved_seat (RSV_CUS_ID, RSV_SEAT_ID, RSV_STG_ID, RSV_EVT_ID) values ('" + customer.get(0).getCustomerID() + "', '" + seatID + "' , '" + HomePanel.getSelectedStage() + "', '" + HomePanel.getSelectedEventID() + "')";
+                PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
+                ps2.executeUpdate();
+                ps2.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+            }
+        } catch (SQLException sql) {
+            JOptionPane.showMessageDialog(null, "Error: " + sql.getMessage());
+        }
+    }
+
+    private void buyProcessForNonCustomer(Integer ticketBookingID, String seatID, List<Integer> listTicketID, List<String> listSeatID) {
+        Connection con = UserDatabase.getConnection();
+        try {
+            setSeatID(seatID);
+            Integer customerID = 0;
+            Integer totalPrice = Integer.parseInt(totalDisplay.getText().replace(" VND", ""));
+            List<TicketID> bookedTicket = BookingTicket.bookingTicket();
+            Integer ticketID = bookedTicket.get(0).getTicketID();
+            String sqlTicketBooking = "SELECT MAX(TBK_ID) from ticket_booking";
+            PreparedStatement ps1 = con.prepareStatement(sqlTicketBooking);
+            ResultSet rs = ps1.executeQuery();
+            while (rs.next()) {
+                ticketBookingID = rs.getInt(1) + 1;
+            }
+
+            String getCusID = "select max(cus_id) from customer";
+            PreparedStatement ps2 = con.prepareStatement(getCusID);
+            ResultSet rs2 = ps2.executeQuery();
+            while (rs2.next()) {
+                customerID = rs2.getInt(1) + 1;
+            }
+
+            try {
+                String sql = "Insert into customer(cus_id, cus_name, cus_email, cus_address) values (?, ?, ?, ?)";
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setInt(1, customerID);
+                ps.setString(2, fullNameText.getText().toString());
+                ps.setString(3, emailText.getText().toString());
+                ps.setString(4, phoneNumberText.getText().toString());
+                ps.executeUpdate();
+                ps.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+
+            String idNewCustomer = "Select cus_id from customer where cus_name ;" + fullNameText.getText().toString() + "'";
+            PreparedStatement ps5 = con.prepareStatement(idNewCustomer);
+            ResultSet rs5 = ps2.executeQuery();
+            while(rs5.next()) {
+                customerID = rs5.getInt(1);
+            }
+
+            try {
+                String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_ID, TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketBookingID + "', '" + ticketID + "', '" +customerID + "' , '" + java.time.LocalDate.now() + "', '" + 1 + "')";
+                PreparedStatement ps3 = con.prepareStatement(sqlInsertReservedSeat);
+                ps3.executeUpdate();
+                ps3.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+
+            try {
+                String sqlInsertReservedSeat = "insert into reserved_seat (RSV_CUS_ID, RSV_SEAT_ID, RSV_STG_ID, RSV_EVT_ID) values ('" +customerID + "', '" + seatID + "' , '" + HomePanel.getSelectedStage() + "', '" + HomePanel.getSelectedEventID() + "')";
+                PreparedStatement ps4 = con.prepareStatement(sqlInsertReservedSeat);
+                ps4.executeUpdate();
+                ps4.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+            }
+
+            listTicketID.add(ticketID);
+            listSeatID.add(seatID);
+        } catch (SQLException sql) {
+            JOptionPane.showMessageDialog(null, "Error: " + sql.getMessage());
+        }
+    }
+
+    private void buyProcessWithCash(Integer ticketBookingID, Integer totalPrice, String seatID, List<Integer> listTicketID, List<String> listSeatID) {
+        Connection con = UserDatabase.getConnection();
+        try {
+            setSeatID(seatID);
+            List<TicketID> bookedTicket = BookingTicket.bookingTicket();
+            Integer ticketID = bookedTicket.get(0).getTicketID();
+            String sqlTicketBooking = "SELECT MAX(TBK_ID) from ticket_booking";
+            PreparedStatement ps1 = con.prepareStatement(sqlTicketBooking);
+            ResultSet rs = ps1.executeQuery();
+            while (rs.next()) {
+                ticketBookingID = rs.getInt(1) + 1;
+            }
+            try {
+                String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_ID,TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketBookingID + "', '" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
+                PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
+                sendMail(totalPrice,ticketID,seatID, customer.get(0).getCustomerID());
+                ps2.executeUpdate();
+                ps2.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            try {
+                String sqlInsertReservedSeat = "insert into reserved_seat (RSV_CUS_ID, RSV_SEAT_ID, RSV_STG_ID, RSV_EVT_ID) values ('" + customer.get(0).getCustomerID() + "', '" + seatID + "' , '" + HomePanel.getSelectedStage() + "', '" + HomePanel.getSelectedEventID() + "')";
+                PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
+                ps2.executeUpdate();
+                ps2.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+            }
+
+            listTicketID.add(ticketID);
+            listSeatID.add(seatID);
+        } catch (SQLException sql) {
+            JOptionPane.showMessageDialog(null, "Error: " + sql.getMessage());
+        }
+    }
+
+    private void buyProcessForAccount(Integer newBalance, Integer ticketBookingID, Integer totalPrice,List<Integer> listTicketID, List<String> listSeatID) {
+        try {
+            Connection con = UserDatabase.getConnection();
+            String sql = "UPDATE customer SET CUS_BALANCE = '" + newBalance + "' WHERE CUS_PHONE_NUMBER  = '" + phoneNumberText.getText() + "' AND CUS_NAME = '" + fullNameText.getText() + "' AND CUS_EMAIL = '" + emailText.getText() + "'";
+            for (int i = 0; i < BuySeatTable.getRowCount(); i++) {
+                String seatID = BuySeatTable.getValueAt(i, 0).toString();
+                if (seatID.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Please select your seat!");
+                    return;
+                } else {
+                    setSeatID(seatID);
+                    List<TicketID> bookedTicket = BookingTicket.bookingTicket();
+                    Integer ticketID = bookedTicket.get(0).getTicketID();
+                    String sqlTicketBooking = "SELECT MAX(TBK_ID) from ticket_booking";
+                    PreparedStatement ps1 = con.prepareStatement(sqlTicketBooking);
+                    ResultSet rs = ps1.executeQuery();
+                    while (rs.next()) {
+                        ticketBookingID = rs.getInt(1) + 1;
+                    }
+                    try {
+                        String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_ID,TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketBookingID + "', '" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
+                        PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
+                        listTicketID.add(ticketID);
+                        listSeatID.add(seatID);
+                        ps2.executeUpdate();
+                        ps2.close();
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, ex);
+                    }
+
+                    try {
+                        String sqlInsertReservedSeat = "insert into reserved_seat (RSV_CUS_ID, RSV_SEAT_ID, RSV_STG_ID, RSV_EVT_ID) values ('" + customer.get(0).getCustomerID() + "', '" + seatID + "' , '" + HomePanel.getSelectedStage() + "', '" + HomePanel.getSelectedEventID() + "')";
+                        PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
+                        ps2.executeUpdate();
+                        ps2.close();
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+                    }
+                }
+            }
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error1: " + ex.getMessage());
+        }
+    }
+
+    private void afterBuySetting() {
+        fullNameText.setText("");
+        emailText.setText("");
+        phoneNumberText.setText("");
+
+        totalDisplay.setText("0 VND");
+        quantityDisplay.setText("0 tickets");
+
+        DefaultTableModel tableBuyModel = (DefaultTableModel) BuySeatTable.getModel();
+        tableBuyModel.setRowCount(0);
+
+        jpnInfo.setVisible(true);
+        jpnTicketFee.setVisible(true);
+        SeatPanel.setVisible(true);
+        jpnBuyNow.setVisible(true);
+
+        List<JButton> btnList50 = SeatView50.getSeatButton();
+        for (JButton btn : btnList50) {
+            if (btn.getBackground() == Color.YELLOW) {
+                btn.setBackground(Color.RED);
+                btn.setForeground(Color.WHITE);
+            }
+        }
+
+        List<JButton> btnList100 = SeatView100.getSeatButton();
+        for (JButton btn : btnList100) {
+            if (btn.getBackground() == Color.YELLOW) {
+                btn.setBackground(Color.RED);
+                btn.setForeground(Color.WHITE);
+            }
+        }
+
+        DefaultTableModel tableReserved = (DefaultTableModel) selectedTable100.getModel();
+        tableReserved.setRowCount(0);
+
+        DefaultTableModel tableSelected = (DefaultTableModel) selectedTable50.getModel();
+        tableSelected.setRowCount(0);
+
+        selectedTab(0);
+        jtbTabEvent.setSelectedIndex(0);
+        selectedTab(0);
+    }
+
+    private void afterBuySettingForCustomer() {
+        totalDisplay.setText("0 VND");
+        quantityDisplay.setText("0 tickets");
+
+        DefaultTableModel tableBuyModel = (DefaultTableModel) BuySeatTable.getModel();
+        tableBuyModel.setRowCount(0);
+
+        jpnInfo.setVisible(true);
+        jpnTicketFee.setVisible(true);
+        SeatPanel.setVisible(true);
+        jpnBuyNow.setVisible(true);
+
+        List<JButton> btnList50 = SeatView50.getSeatButton();
+        for (JButton btn : btnList50) {
+            if (btn.getBackground() == Color.YELLOW) {
+                btn.setBackground(Color.RED);
+                btn.setForeground(Color.WHITE);
+            }
+        }
+
+        List<JButton> btnList100 = SeatView100.getSeatButton();
+        for (JButton btn : btnList100) {
+            if (btn.getBackground() == Color.YELLOW) {
+                btn.setBackground(Color.RED);
+                btn.setForeground(Color.WHITE);
+            }
+        }
+
+        DefaultTableModel tableReserved = (DefaultTableModel) selectedTable100.getModel();
+        tableReserved.setRowCount(0);
+
+        DefaultTableModel tableSelected = (DefaultTableModel) selectedTable50.getModel();
+        tableSelected.setRowCount(0);
+
+        selectedTab(0);
+        jtbTabEvent.setSelectedIndex(0);
+        selectedTab(0);
+    }
+
+    private void sendMail(Integer totalPrice, Integer ticketID, String seatID, Integer customerID) {
+        new Thread(() -> {
+            try {
+                Thread.sleep(1000);
+                SendTicketEmail.sendCodeToEmail(totalPrice, HomePanel.getSelectedStage(), ticketID, Integer.parseInt(seatID), emailText.getText(), getEventName().getText(), customerID, getEventPlace().getText(), getEventTime().getText());
+            } catch (Exception err) {
+                err.printStackTrace();
+            }
+        }).start();
+    }
+
+    private void sendMoreMail(List<Integer> listTicketID, List<String> listSeatID, Integer customerID) {
+        new Thread(() -> {
+            try {
+                Thread.sleep(1000);
+                SendTicketEmail.sendMoreCodeToEmail(listTicketID, listSeatID, emailText.getText(), getEventName().getText(), customerID, getEventPlace().getText(), getEventTime().getText());
+            } catch (Exception err) {
+                err.printStackTrace();
+            }
+        }).start();
+    }
+
+    private void registerForNewCustomer() {
+        int newID = CustomerListDAO.getLastID();
+        String nameCustomer = fullNameText.getText();
+        String phoneNumber = phoneNumberText.getText();
+        String email = emailText.getText();
+
+
+        JFrame frame = new JFrame("Register");
+        frame.setContentPane(new NewCustomerEvent(newID + 1));
+        NewCustomerEvent.settingForNewCustomer(nameCustomer, phoneNumber, email);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
+        frame.setSize(1050, 550);
+    }
+
+
+    private void updatePoint(Integer customerID, Integer totalPrice) {
+        Connection con = UserDatabase.getConnection();
+        try {
+            String sqlGetPoint = "Select cus_total_point from customer where cus_id = " + customerID;
+            PreparedStatement psGetPoint = con.prepareStatement(sqlGetPoint);
+            ResultSet rsGetPoint = psGetPoint.executeQuery();
+            while (rsGetPoint.next()) {
+                Integer previousPoint = rsGetPoint.getInt("cus_total_point");
+                Integer point = totalPrice / 1000;
+                Integer totalPoint = point + previousPoint;
+                String sqlUpdatePoint = "Update customer set cus_total_point = " + totalPoint + " where cus_id = " + customerID;
+                PreparedStatement ps3 = con.prepareStatement(sqlUpdatePoint);
+                ps3.executeUpdate();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
         }
     }
 
@@ -745,7 +959,7 @@ public class EventPanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - man
         jpnEventHeader = new JPanel();
         EventArt = new JLabel();
         EventName = new JLabel();
@@ -843,10 +1057,10 @@ public class EventPanel extends JPanel {
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
         setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-        0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-        . BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+        0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+        . BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
         red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-        beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
         setLayout(null);
 
         //======== jpnEventHeader ========
@@ -1153,7 +1367,7 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnEventInformationLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 523, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(214, Short.MAX_VALUE))
+                            .addContainerGap(206, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnEventInformation);
@@ -1289,7 +1503,7 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnEventTicketLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(ticketFeeScrollPanel, GroupLayout.PREFERRED_SIZE, 387, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(350, Short.MAX_VALUE))
+                            .addContainerGap(342, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnEventTicket);
@@ -1348,7 +1562,7 @@ public class EventPanel extends JPanel {
                         .addGroup(SeatEventLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(seatEventScrollPanel, GroupLayout.PREFERRED_SIZE, 472, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(265, Short.MAX_VALUE))
+                            .addContainerGap(257, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", SeatEvent);
@@ -1422,7 +1636,7 @@ public class EventPanel extends JPanel {
 
                         //======== panel4 ========
                         {
-                            panel4.setBackground(new Color(0xd45c5c));
+                            panel4.setBackground(new Color(0xff3333));
                             panel4.setLayout(null);
 
                             {
@@ -1443,17 +1657,13 @@ public class EventPanel extends JPanel {
 
                         //---- label8 ----
                         label8.setText("Occupied");
-                        label8.setFont(new Font("Lato Black", Font.BOLD, 14));
-                        label8.setForeground(new Color(0x333333));
 
                         //---- label9 ----
                         label9.setText("Selected ");
-                        label9.setFont(new Font("Lato Black", Font.BOLD, 14));
-                        label9.setForeground(new Color(0x333333));
 
                         //======== panel6 ========
                         {
-                            panel6.setBackground(new Color(0xfff49c));
+                            panel6.setBackground(Color.yellow);
                             panel6.setLayout(null);
 
                             {
@@ -1474,8 +1684,6 @@ public class EventPanel extends JPanel {
 
                         //---- label10 ----
                         label10.setText("Available");
-                        label10.setFont(new Font("Lato Black", Font.BOLD, 14));
-                        label10.setForeground(new Color(0x333333));
 
                         //======== panel7 ========
                         {
@@ -1515,19 +1723,19 @@ public class EventPanel extends JPanel {
                                                 .addComponent(jpnNextButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
                                     .addGap(0, 230, Short.MAX_VALUE))
                                 .addGroup(jpnTicketLayout.createSequentialGroup()
-                                    .addGap(98, 98, 98)
-                                    .addComponent(panel4, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(58, 58, 58)
+                                    .addComponent(panel4, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(label8, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(48, 48, 48)
-                                    .addComponent(panel6, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGap(27, 27, 27)
+                                    .addComponent(panel6, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
                                     .addComponent(label9, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(63, 63, 63)
-                                    .addComponent(panel7, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(29, 29, 29)
+                                    .addComponent(panel7, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(label10, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 715, Short.MAX_VALUE))
+                                    .addGap(0, 727, Short.MAX_VALUE))
                         );
                         jpnTicketLayout.setVerticalGroup(
                             jpnTicketLayout.createParallelGroup()
@@ -1543,16 +1751,18 @@ public class EventPanel extends JPanel {
                                         .addComponent(seatingChart50, GroupLayout.PREFERRED_SIZE, 304, GroupLayout.PREFERRED_SIZE))
                                     .addGap(18, 18, 18)
                                     .addGroup(jpnTicketLayout.createParallelGroup()
-                                        .addComponent(label8, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(jpnTicketLayout.createSequentialGroup()
                                             .addGroup(jpnTicketLayout.createParallelGroup()
                                                 .addComponent(panel4, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(label8, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addContainerGap(131, Short.MAX_VALUE))
+                                        .addGroup(jpnTicketLayout.createSequentialGroup()
+                                            .addGroup(jpnTicketLayout.createParallelGroup()
                                                 .addComponent(panel6, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label9, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(panel7, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label10, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-                                            .addGap(0, 0, Short.MAX_VALUE)))
-                                    .addContainerGap(131, Short.MAX_VALUE))
+                                                .addComponent(label10, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(label9, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+                                            .addContainerGap(131, Short.MAX_VALUE))))
                         );
                     }
                     pickTicketScrollPane.setViewportView(jpnTicket);
@@ -1571,8 +1781,8 @@ public class EventPanel extends JPanel {
                     jpnSeat50Layout.createParallelGroup()
                         .addGroup(jpnSeat50Layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(pickTicketScrollPane, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(437, Short.MAX_VALUE))
+                            .addComponent(pickTicketScrollPane, GroupLayout.PREFERRED_SIZE, 456, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(273, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnSeat50);
@@ -1666,17 +1876,13 @@ public class EventPanel extends JPanel {
 
                         //---- label11 ----
                         label11.setText("Available");
-                        label11.setFont(new Font("Lato Black", Font.BOLD, 14));
-                        label11.setForeground(new Color(0x333333));
 
                         //---- label12 ----
                         label12.setText("Selected ");
-                        label12.setFont(new Font("Lato Black", Font.BOLD, 14));
-                        label12.setForeground(new Color(0x333333));
 
                         //======== panel9 ========
                         {
-                            panel9.setBackground(new Color(0xfff49c));
+                            panel9.setBackground(Color.yellow);
                             panel9.setLayout(null);
 
                             {
@@ -1697,12 +1903,10 @@ public class EventPanel extends JPanel {
 
                         //---- label13 ----
                         label13.setText("Occupied");
-                        label13.setFont(new Font("Lato Black", Font.BOLD, 14));
-                        label13.setForeground(new Color(0x333333));
 
                         //======== panel10 ========
                         {
-                            panel10.setBackground(new Color(0xd45c5c));
+                            panel10.setBackground(new Color(0xff3333));
                             panel10.setLayout(null);
 
                             {
@@ -1725,58 +1929,57 @@ public class EventPanel extends JPanel {
                         jpnTicket2.setLayout(jpnTicket2Layout);
                         jpnTicket2Layout.setHorizontalGroup(
                             jpnTicket2Layout.createParallelGroup()
-                                .addGroup(jpnTicket2Layout.createSequentialGroup()
-                                    .addComponent(panel5, GroupLayout.PREFERRED_SIZE, 1063, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 654, Short.MAX_VALUE))
-                                .addGroup(jpnTicket2Layout.createSequentialGroup()
+                                .addGroup(GroupLayout.Alignment.TRAILING, jpnTicket2Layout.createSequentialGroup()
+                                    .addContainerGap(233, Short.MAX_VALUE)
                                     .addGroup(jpnTicket2Layout.createParallelGroup()
                                         .addGroup(jpnTicket2Layout.createSequentialGroup()
-                                            .addGap(60, 60, 60)
-                                            .addComponent(label7, GroupLayout.PREFERRED_SIZE, 491, GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jpnTicket2Layout.createSequentialGroup()
-                                            .addGap(245, 245, 245)
-                                            .addGroup(jpnTicket2Layout.createParallelGroup()
-                                                .addGroup(jpnTicket2Layout.createSequentialGroup()
-                                                    .addComponent(selectedSeat100, GroupLayout.PREFERRED_SIZE, 421, GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(63, 63, 63)
-                                                    .addComponent(jpnNextButton2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(jpnTicket2Layout.createSequentialGroup()
-                                                    .addComponent(panel10, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(label13, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(28, 28, 28)
-                                                    .addComponent(panel9, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(label12, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(30, 30, 30)
-                                                    .addComponent(panel8, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(label11, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)))))
-                                    .addContainerGap(842, Short.MAX_VALUE))
+                                            .addComponent(panel10, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(label13, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(27, 27, 27)
+                                            .addComponent(panel9, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(label12, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(29, 29, 29)
+                                            .addComponent(panel8, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(label11, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(146, 146, 146))
+                                        .addComponent(selectedSeat100, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))
+                                    .addGap(74, 74, 74)
+                                    .addComponent(jpnNextButton2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(136, 136, 136))
+                                .addGroup(GroupLayout.Alignment.TRAILING, jpnTicket2Layout.createSequentialGroup()
+                                    .addContainerGap(75, Short.MAX_VALUE)
+                                    .addComponent(panel5, GroupLayout.PREFERRED_SIZE, 1154, GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap(75, Short.MAX_VALUE))
+                                .addGroup(jpnTicket2Layout.createSequentialGroup()
+                                    .addGap(60, 60, 60)
+                                    .addComponent(label7, GroupLayout.PREFERRED_SIZE, 491, GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         );
                         jpnTicket2Layout.setVerticalGroup(
                             jpnTicket2Layout.createParallelGroup()
                                 .addGroup(GroupLayout.Alignment.TRAILING, jpnTicket2Layout.createSequentialGroup()
+                                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jpnNextButton2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(133, 133, 133))
+                                .addGroup(jpnTicket2Layout.createSequentialGroup()
                                     .addContainerGap()
                                     .addComponent(label7)
-                                    .addGap(25, 25, 25)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(panel5, GroupLayout.PREFERRED_SIZE, 366, GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jpnTicket2Layout.createParallelGroup()
-                                        .addGroup(jpnTicket2Layout.createSequentialGroup()
-                                            .addGroup(jpnTicket2Layout.createParallelGroup()
-                                                .addComponent(panel10, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label13, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(panel9, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label12, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(panel8, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label11, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                                            .addComponent(selectedSeat100, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jpnTicket2Layout.createSequentialGroup()
-                                            .addGap(0, 237, Short.MAX_VALUE)
-                                            .addComponent(jpnNextButton2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(29, 29, 29))
+                                        .addComponent(panel10, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label13, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(panel9, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label12, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(panel8, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label11, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                                    .addComponent(selectedSeat100, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap())
                         );
                     }
                     pickTicketScrollPane2.setViewportView(jpnTicket2);
@@ -1798,9 +2001,9 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnSeat100Layout.createParallelGroup()
                             .addGroup(jpnSeat100Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(pickTicketScrollPane2, GroupLayout.PREFERRED_SIZE, 748, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(0, 754, Short.MAX_VALUE)
+                                .addComponent(pickTicketScrollPane2, GroupLayout.PREFERRED_SIZE, 429, GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(300, Short.MAX_VALUE)))
+                        .addGap(0, 735, Short.MAX_VALUE)
                 );
             }
             jtbTabEvent.addTab("text", jpnSeat100);
@@ -2070,7 +2273,7 @@ public class EventPanel extends JPanel {
                     jpnPaymentLayout.createParallelGroup()
                         .addGroup(jpnPaymentLayout.createSequentialGroup()
                             .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 573, GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 170, Short.MAX_VALUE))
+                            .addGap(0, 162, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnPayment);
@@ -2096,7 +2299,7 @@ public class EventPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - man
     private JPanel jpnEventHeader;
     private static JLabel EventArt;
     private static JLabel EventName;

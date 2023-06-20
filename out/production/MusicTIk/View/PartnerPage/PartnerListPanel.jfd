@@ -1,0 +1,116 @@
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		auxiliary() {
+			"JavaCodeGenerator.defaultVariableGetter": true
+		}
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space ::476:x, comp label1:::p::p, space :p:466:p}, comp scrollPane1::t:::x, seq t {comp jtfSearch:::p:249:p, space u:::p, comp jlbSearch:::p:111:p, space ::603:x, comp jlbAdd:::p:90:p, space s:::p, comp jlbEdit:::p:90:p, space s:::p, comp jlbDelete:::p::p}}"
+			"$verticalGroup": "par l {seq t {space :p:19:p, comp label1:::p::p, space :::p, par l {par b:l {comp jtfSearch::b:p::p, comp jlbSearch::b:p:26:p}, par b:l {comp jlbDelete::b:p:26:p, comp jlbEdit::b:p:26:p, comp jlbAdd::b:p:26:p}}, space u:::p, comp scrollPane1:::p:527:p, space ::100:x}}"
+		} ) {
+			name: "this"
+			"background": new java.awt.Color( 255, 255, 255, 255 )
+			"preferredSize": new java.awt.Dimension( 1160, 381 )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "PARTNERS CUSTOMER LIST"
+				"horizontalAlignment": 0
+				"font": new java.awt.Font( "Lato Black", 1, 25 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "PartnerListTable"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+						add( "ID" )
+						add( "Name" )
+						add( "Phone Number" )
+						add( "Email" )
+						add( "Address" )
+						add( "Account Number" )
+						add( "Bank" )
+					}, new java.util.Vector {
+						add( class java.lang.Object )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					"gridColor": sfield java.awt.Color lightGray
+					"selectionBackground": new java.awt.Color( 97, 184, 132, 255 )
+					"selectionForeground": new java.awt.Color( 255, 255, 255, 255 )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "jtfSearch"
+				"font": new java.awt.Font( "Lato", 0, 16 )
+				"foreground": new java.awt.Color( 97, 184, 132, 255 )
+				"caretColor": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jlbDelete"
+				"text": "DELETE"
+				"font": &Font0 new java.awt.Font( "Lato Black", 1, 16 )
+				"foreground": &Color0 new java.awt.Color( 255, 255, 255, 255 )
+				"background": &Color1 new java.awt.Color( 97, 184, 132, 255 )
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jlbEdit"
+				"text": "EDIT"
+				"font": #Font0
+				"foreground": #Color0
+				"background": #Color1
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jlbAdd"
+				"text": "ADD"
+				"font": #Font0
+				"foreground": #Color0
+				"background": #Color1
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jlbSearch"
+				"text": "SEARCH"
+				"font": #Font0
+				"foreground": #Color0
+				"background": #Color1
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 5, 0 )
+			"size": new java.awt.Dimension( 1290, 730 )
+		} )
+	}
+}

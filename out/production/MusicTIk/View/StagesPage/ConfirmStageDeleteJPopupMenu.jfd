@@ -1,0 +1,40 @@
+JFDML JFormDesigner: "8.1.0.0.283" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		auxiliary() {
+			"JavaCodeGenerator.defaultVariableGetter": true
+		}
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:106:p, comp YesButton:::p::p, space :p:35:p, comp NoButton:::p::p, space ::106:x}, seq l {space :::p, comp ConfirmText::::391:x, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :p:37:p, comp ConfirmText:::p:54:p, space s:::p, par b {comp YesButton::b:p::p, comp NoButton::b:p::p}, space ::65:x}}"
+		} ) {
+			name: "ConfirmJDialog"
+			"visible": true
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "ConfirmText"
+				"text": "ARE YOU SURE TO DELETE THIS STAGE?"
+				"font": new java.awt.Font( "Lato Black", 1, 16 )
+				"horizontalAlignment": 0
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "YesButton"
+				"text": "YES"
+				"font": &Font0 new java.awt.Font( "Lato Black", 1, 13 )
+				"foreground": &Color0 new java.awt.Color( 255, 255, 255, 255 )
+				"background": new java.awt.Color( 97, 184, 132, 255 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "NoButton"
+				"text": "NO"
+				"font": #Font0
+				"foreground": #Color0
+				"background": new java.awt.Color( 212, 92, 92, 255 )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 405, 235 )
+		} )
+	}
+}
