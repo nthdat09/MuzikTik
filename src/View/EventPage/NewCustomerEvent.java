@@ -48,7 +48,7 @@ public class NewCustomerEvent extends JPanel {
         } else {
             try {
                 Connection connection = UserDatabase.getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO customer VALUES (?,?,?,?,?,?,?,?,?,?)");
+                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO customer(Cus_id, cus_name, cus_phone_number, cus_email, cus_address, cus_type,cus_total_point, cus_balance, cus_username,cus_password) VALUES (?,?,?,?,?,?,?,?,?,?)");
                 preparedStatement.setInt(1, Integer.parseInt(this.IDField.getText()));
                 preparedStatement.setString(2, this.NameField.getText());
                 preparedStatement.setString(3, this.PhoneNumberFiled.getText());

@@ -465,6 +465,8 @@ public class EventPanel extends JPanel {
                         }
                     }
 
+                    customer = CustomerInformationValidate.validateCustomer();
+                    System.out.println(customer.get(0).getCustomerID());
                     if(listSeatID.size() > 1 && listTicketID.size() > 1) {
                         sendMoreMail(listTicketID,listSeatID,customer.get(0).getCustomerID());
                     } else {
@@ -564,7 +566,7 @@ public class EventPanel extends JPanel {
             }
 
             try {
-                String sql = "Insert into customer(cus_id, cus_name, cus_email, cus_address) values (?, ?, ?, ?)";
+                String sql = "Insert into customer(cus_id, cus_name, cus_email, cus_phone_number) values (?, ?, ?, ?)";
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setInt(1, customerID);
                 ps.setString(2, fullNameText.getText().toString());
@@ -623,7 +625,6 @@ public class EventPanel extends JPanel {
             try {
                 String sqlInsertReservedSeat = "INSERT INTO ticket_booking (TBK_ID,TBK_TKT_ID, TBK_CUS_ID, TBK_DATETIME, TBT_POINT) VALUES ('" + ticketBookingID + "', '" + ticketID + "', '" + customer.get(0).getCustomerID() + "', '" + java.time.LocalDate.now() + "', '1')";
                 PreparedStatement ps2 = con.prepareStatement(sqlInsertReservedSeat);
-                sendMail(totalPrice,ticketID,seatID, customer.get(0).getCustomerID());
                 ps2.executeUpdate();
                 ps2.close();
             } catch (Exception ex) {
