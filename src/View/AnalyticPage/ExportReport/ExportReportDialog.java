@@ -74,6 +74,14 @@ public class ExportReportDialog extends JDialog {
         reportTable.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
         reportTable.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
         reportTable.getColumnModel().getColumn(4).setCellRenderer( centerRenderer );
+
+        getReportTable().getTableHeader().setBackground(Color.white);
+        getReportTable().getTableHeader().setForeground(Color.decode("#61b884"));
+        getReportTable().getTableHeader().setFont(new Font("Lato Black", Font.BOLD, 12));
+        getReportTable().setRowHeight(20);
+        reportTable.setForeground(Color.DARK_GRAY);
+        reportTable.setFont(new Font("Lato",Font.PLAIN, 12));
+
     }
 
     private void settingEventComboBox() {
@@ -1096,7 +1104,7 @@ public class ExportReportDialog extends JDialog {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - Xuan Quynh Le
         ExportReportJDialog = new JDialog();
         dialogPane = new JPanel();
         contentPanel = new JPanel();
@@ -1125,12 +1133,12 @@ public class ExportReportDialog extends JDialog {
         //======== dialogPane ========
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
-            .EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax
-            .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,
-            12),java.awt.Color.red),dialogPane. getBorder()));dialogPane. addPropertyChangeListener(new java.beans
-            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.
-            getPropertyName()))throw new RuntimeException();}});
+            dialogPane.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,dialogPane. getBorder( )) ); dialogPane. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             dialogPane.setLayout(new BorderLayout());
 
             //======== contentPanel ========
@@ -1279,12 +1287,18 @@ public class ExportReportDialog extends JDialog {
 
             //---- okButton ----
             okButton.setText("OK");
+            okButton.setFont(new Font("Lato Black", Font.BOLD, 14));
+            okButton.setBackground(new Color(0x61b884));
+            okButton.setForeground(Color.white);
             buttonBar.add(okButton, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 5, 5), 0, 0));
 
             //---- cancelButton ----
             cancelButton.setText("Cancel");
+            cancelButton.setFont(new Font("Lato Black", Font.BOLD, 14));
+            cancelButton.setBackground(new Color(0x61b884));
+            cancelButton.setForeground(Color.white);
             buttonBar.add(cancelButton, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 5, 0), 0, 0));
@@ -1329,9 +1343,15 @@ public class ExportReportDialog extends JDialog {
 
         //---- RemoveButton ----
         RemoveButton.setText("REMOVE");
+        RemoveButton.setFont(new Font("Lato Black", Font.BOLD, 14));
+        RemoveButton.setBackground(new Color(0x61b884));
+        RemoveButton.setForeground(Color.white);
 
         //---- AddButton ----
         AddButton.setText("ADD");
+        AddButton.setFont(new Font("Lato Black", Font.BOLD, 14));
+        AddButton.setBackground(new Color(0x61b884));
+        AddButton.setForeground(Color.white);
 
         GroupLayout ExportReportJDialogContentPaneLayout = new GroupLayout(ExportReportJDialogContentPane);
         ExportReportJDialogContentPane.setLayout(ExportReportJDialogContentPaneLayout);
@@ -1369,10 +1389,10 @@ public class ExportReportDialog extends JDialog {
                     .addGap(18, 18, 18)
                     .addGroup(ExportReportJDialogContentPaneLayout.createParallelGroup()
                         .addGroup(ExportReportJDialogContentPaneLayout.createSequentialGroup()
-                            .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                            .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED))
                         .addGroup(GroupLayout.Alignment.TRAILING, ExportReportJDialogContentPaneLayout.createSequentialGroup()
-                            .addGap(0, 25, Short.MAX_VALUE)
+                            .addGap(0, 22, Short.MAX_VALUE)
                             .addComponent(AddButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(RemoveButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
@@ -1386,7 +1406,7 @@ public class ExportReportDialog extends JDialog {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - Xuan Quynh Le
     private JDialog ExportReportJDialog;
     private JPanel dialogPane;
     private JPanel contentPanel;

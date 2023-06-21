@@ -148,7 +148,7 @@ public class PartnerInformationPanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Dat
+        // Generated using JFormDesigner Evaluation license - Xuan Quynh Le
         label5 = new JLabel();
         label6 = new JLabel();
         label7 = new JLabel();
@@ -169,13 +169,12 @@ public class PartnerInformationPanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-        javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax
-        . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-        .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
-        PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .
-        equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
+        border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER
+        ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font
+        .BOLD,12),java.awt.Color.red), getBorder())); addPropertyChangeListener(
+        new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order"
+        .equals(e.getPropertyName()))throw new RuntimeException();}});
 
         //---- label5 ----
         label5.setText("ID:");
@@ -235,6 +234,7 @@ public class PartnerInformationPanel extends JPanel {
         IDField.setEditable(false);
         IDField.setFont(new Font("Lato Black", Font.BOLD, 16));
         IDField.setBackground(new Color(0xcccccc));
+        IDField.setDisabledTextColor(new Color(0x333333));
 
         //---- NameField ----
         NameField.setFont(new Font("Lato Black", Font.BOLD, 16));
@@ -340,13 +340,13 @@ public class PartnerInformationPanel extends JPanel {
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(CancelBtn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(SaveBtn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(221, Short.MAX_VALUE))
+                    .addContainerGap(253, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Dat
+    // Generated using JFormDesigner Evaluation license - Xuan Quynh Le
     private JLabel label5;
     private JLabel label6;
     private JLabel label7;

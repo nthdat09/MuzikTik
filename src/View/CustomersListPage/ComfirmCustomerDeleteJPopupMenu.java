@@ -49,7 +49,7 @@ public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+        // Generated using JFormDesigner Evaluation license - Xuan Quynh Le
         ConfirmJDialog = new JDialog();
         ConfirmText = new JLabel();
         YesButton = new JButton();
@@ -111,7 +111,7 @@ public class ComfirmCustomerDeleteJPopupMenu extends JDialog{
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Le Xuan Quynh
+    // Generated using JFormDesigner Evaluation license - Xuan Quynh Le
     private JDialog ConfirmJDialog;
     private JLabel ConfirmText;
     private JButton YesButton;

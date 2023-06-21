@@ -5,7 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 			"$horizontalGroup": "par t {seq {par t {comp dialogPane::l:p:808:p, seq l {space :p:103:p, par l {comp scrollPane1:::p:433:p, seq {comp label2:::p:50:p, space u:::p, comp eventcbBox:::p:363:p}}, space :p:35:p, par t {comp RemoveButton:::p:103:p, comp AddButton:::p:103:p}}}, space :::x}, seq t {space :0:0:x, comp buttonBar:::p:720:p, space :p:46:p}}"
-			"$verticalGroup": "par l {seq {comp dialogPane:::p::p, space :::p, par b {comp label2::b:p:32:p, comp eventcbBox::b:p::p}, space s:::p, par l {seq {comp scrollPane1::::153:x, space :::p}, seq t {space :0:25:x, comp AddButton:::p:38:p, space s:::p, comp RemoveButton:::p:38:p, space :p:40:p}}, comp buttonBar:::p::p, space :::p}}"
+			"$verticalGroup": "par l {seq {comp dialogPane:::p::p, space :::p, par b {comp label2::b:p:32:p, comp eventcbBox::b:p::p}, space s:::p, par l {seq {comp scrollPane1::::150:x, space :::p}, seq t {space :0:22:x, comp AddButton:::p:38:p, space s:::p, comp RemoveButton:::p:38:p, space :p:40:p}}, comp buttonBar:::p::p, space :::p}}"
 		} ) {
 			name: "this"
 			auxiliary() {
@@ -141,6 +141,9 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "okButton"
 					"text": "OK"
+					"font": &Font2 new java.awt.Font( "Lato Black", 1, 14 )
+					"background": &Color2 new java.awt.Color( 97, 184, 132, 255 )
+					"foreground": &Color3 new java.awt.Color( 255, 255, 255, 255 )
 					auxiliary() {
 						"JavaCodeGenerator.variableGetter": true
 					}
@@ -151,6 +154,9 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "cancelButton"
 					"text": "Cancel"
+					"font": #Font2
+					"background": #Color2
+					"foreground": #Color3
 					auxiliary() {
 						"JavaCodeGenerator.variableGetter": true
 					}
@@ -209,6 +215,9 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "RemoveButton"
 				"text": "REMOVE"
+				"font": #Font2
+				"background": #Color2
+				"foreground": #Color3
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
@@ -216,6 +225,9 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "AddButton"
 				"text": "ADD"
+				"font": #Font2
+				"background": #Color2
+				"foreground": #Color3
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}

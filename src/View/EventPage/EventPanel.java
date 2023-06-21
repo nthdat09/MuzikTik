@@ -56,6 +56,7 @@ public class EventPanel extends JPanel {
             checkBox3.setSelected(true);
             checkBox3.setVisible(false);
         }
+        setColor();
     }
 
     private void initCustomerName() {
@@ -712,7 +713,7 @@ public class EventPanel extends JPanel {
 
         List<JButton> btnList50 = SeatView50.getSeatButton();
         for (JButton btn : btnList50) {
-            if (btn.getBackground() == Color.YELLOW) {
+            if (btn.getBackground() == Color.decode("#fff9aa")) {
                 btn.setBackground(Color.RED);
                 btn.setForeground(Color.WHITE);
             }
@@ -720,7 +721,7 @@ public class EventPanel extends JPanel {
 
         List<JButton> btnList100 = SeatView100.getSeatButton();
         for (JButton btn : btnList100) {
-            if (btn.getBackground() == Color.YELLOW) {
+            if (btn.getBackground() == Color.decode("#fff9aa")) {
                 btn.setBackground(Color.RED);
                 btn.setForeground(Color.WHITE);
             }
@@ -751,7 +752,7 @@ public class EventPanel extends JPanel {
 
         List<JButton> btnList50 = SeatView50.getSeatButton();
         for (JButton btn : btnList50) {
-            if (btn.getBackground() == Color.YELLOW) {
+            if (btn.getBackground() == Color.decode("#fff9aa")) {
                 btn.setBackground(Color.RED);
                 btn.setForeground(Color.WHITE);
             }
@@ -759,7 +760,7 @@ public class EventPanel extends JPanel {
 
         List<JButton> btnList100 = SeatView100.getSeatButton();
         for (JButton btn : btnList100) {
-            if (btn.getBackground() == Color.YELLOW) {
+            if (btn.getBackground() == Color.decode("#fff9aa")) {
                 btn.setBackground(Color.RED);
                 btn.setForeground(Color.WHITE);
             }
@@ -957,10 +958,33 @@ public class EventPanel extends JPanel {
             }
         }
 
+    public void setColor() {
+        getSelectedTable50().getTableHeader().setBackground(Color.white);
+        getSelectedTable50().getTableHeader().setForeground(Color.decode("#61b884"));
+        getSelectedTable50().getTableHeader().setFont(new Font("Lato Black", Font.BOLD, 16));
+        getSelectedTable50().setRowHeight(20);
+        getSelectedTable50().setForeground(Color.DARK_GRAY);
+        getSelectedTable50().setFont(new Font("Lato",Font.PLAIN, 14));
+
+        getSelectedTable100().getTableHeader().setBackground(Color.white);
+        getSelectedTable100().getTableHeader().setForeground(Color.decode("#61b884"));
+        getSelectedTable100().getTableHeader().setFont(new Font("Lato Black", Font.BOLD, 16));
+        getSelectedTable100().setRowHeight(20);
+        getSelectedTable100().setForeground(Color.DARK_GRAY);
+        getSelectedTable100().setFont(new Font("Lato",Font.PLAIN, 14));
+
+        getBuySeatTable().getTableHeader().setBackground(Color.white);
+        getBuySeatTable().getTableHeader().setForeground(Color.decode("#61b884"));
+        getBuySeatTable().getTableHeader().setFont(new Font("Lato Black", Font.BOLD, 16));
+        getBuySeatTable().setRowHeight(20);
+        getBuySeatTable().setForeground(Color.DARK_GRAY);
+        getBuySeatTable().setFont(new Font("Lato",Font.PLAIN, 14));
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Evaluation license - man
+        // Generated using JFormDesigner Evaluation license - Xuan Quynh Le
         jpnEventHeader = new JPanel();
         EventArt = new JLabel();
         EventName = new JLabel();
@@ -1057,11 +1081,13 @@ public class EventPanel extends JPanel {
         setBackground(Color.white);
         setMinimumSize(new Dimension(1268, 355));
         setPreferredSize(new Dimension(1030, 2000));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-        0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-        . BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-        beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+        . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder
+        . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .
+        awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder( )) )
+        ;  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+        ;
         setLayout(null);
 
         //======== jpnEventHeader ========
@@ -1233,7 +1259,7 @@ public class EventPanel extends JPanel {
                     jpnBuyNowLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, jpnBuyNowLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jlbBuyNow, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                            .addComponent(jlbBuyNow, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addContainerGap())
                 );
             }
@@ -1359,7 +1385,7 @@ public class EventPanel extends JPanel {
                 jpnEventInformationLayout.setHorizontalGroup(
                     jpnEventInformationLayout.createParallelGroup()
                         .addGroup(GroupLayout.Alignment.TRAILING, jpnEventInformationLayout.createSequentialGroup()
-                            .addContainerGap(22, Short.MAX_VALUE)
+                            .addContainerGap(12, Short.MAX_VALUE)
                             .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 1172, GroupLayout.PREFERRED_SIZE)
                             .addContainerGap())
                 );
@@ -1368,7 +1394,7 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnEventInformationLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 523, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(206, Short.MAX_VALUE))
+                            .addContainerGap(212, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnEventInformation);
@@ -1504,7 +1530,7 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnEventTicketLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(ticketFeeScrollPanel, GroupLayout.PREFERRED_SIZE, 387, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(342, Short.MAX_VALUE))
+                            .addContainerGap(348, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnEventTicket);
@@ -1563,7 +1589,7 @@ public class EventPanel extends JPanel {
                         .addGroup(SeatEventLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(seatEventScrollPanel, GroupLayout.PREFERRED_SIZE, 472, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(257, Short.MAX_VALUE))
+                            .addContainerGap(263, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", SeatEvent);
@@ -1637,7 +1663,7 @@ public class EventPanel extends JPanel {
 
                         //======== panel4 ========
                         {
-                            panel4.setBackground(new Color(0xff3333));
+                            panel4.setBackground(new Color(0xd45c5c));
                             panel4.setLayout(null);
 
                             {
@@ -1658,13 +1684,15 @@ public class EventPanel extends JPanel {
 
                         //---- label8 ----
                         label8.setText("Occupied");
+                        label8.setFont(new Font("Lato Black", Font.BOLD, 14));
 
                         //---- label9 ----
                         label9.setText("Selected ");
+                        label9.setFont(new Font("Lato Black", Font.BOLD, 14));
 
                         //======== panel6 ========
                         {
-                            panel6.setBackground(Color.yellow);
+                            panel6.setBackground(new Color(0xfff9aa));
                             panel6.setLayout(null);
 
                             {
@@ -1685,6 +1713,7 @@ public class EventPanel extends JPanel {
 
                         //---- label10 ----
                         label10.setText("Available");
+                        label10.setFont(new Font("Lato Black", Font.BOLD, 14));
 
                         //======== panel7 ========
                         {
@@ -1720,23 +1749,23 @@ public class EventPanel extends JPanel {
                                             .addComponent(seatingChart50, GroupLayout.PREFERRED_SIZE, 649, GroupLayout.PREFERRED_SIZE)
                                             .addGap(48, 48, 48)
                                             .addGroup(jpnTicketLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                                .addComponent(scrollPane3, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jpnNextButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(jpnNextButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(scrollPane3, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))))
                                     .addGap(0, 230, Short.MAX_VALUE))
                                 .addGroup(jpnTicketLayout.createSequentialGroup()
-                                    .addGap(58, 58, 58)
-                                    .addComponent(panel4, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(102, 102, 102)
+                                    .addComponent(panel4, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(label8, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(panel6, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(61, 61, 61)
+                                    .addComponent(panel6, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(label9, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(29, 29, 29)
-                                    .addComponent(panel7, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+                                    .addGap(61, 61, 61)
+                                    .addComponent(panel7, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(label10, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 727, Short.MAX_VALUE))
+                                    .addGap(0, 717, Short.MAX_VALUE))
                         );
                         jpnTicketLayout.setVerticalGroup(
                             jpnTicketLayout.createParallelGroup()
@@ -1744,26 +1773,22 @@ public class EventPanel extends JPanel {
                                     .addContainerGap()
                                     .addComponent(label6)
                                     .addGap(28, 28, 28)
-                                    .addGroup(jpnTicketLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jpnTicketLayout.createSequentialGroup()
+                                    .addGroup(jpnTicketLayout.createParallelGroup()
+                                        .addGroup(GroupLayout.Alignment.TRAILING, jpnTicketLayout.createSequentialGroup()
                                             .addComponent(scrollPane3, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGap(18, 18, 18)
                                             .addComponent(jpnNextButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                         .addComponent(seatingChart50, GroupLayout.PREFERRED_SIZE, 304, GroupLayout.PREFERRED_SIZE))
-                                    .addGap(18, 18, 18)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jpnTicketLayout.createParallelGroup()
-                                        .addGroup(jpnTicketLayout.createSequentialGroup()
-                                            .addGroup(jpnTicketLayout.createParallelGroup()
-                                                .addComponent(panel4, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label8, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addContainerGap(131, Short.MAX_VALUE))
-                                        .addGroup(jpnTicketLayout.createSequentialGroup()
-                                            .addGroup(jpnTicketLayout.createParallelGroup()
-                                                .addComponent(panel6, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(panel7, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label10, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label9, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-                                            .addContainerGap(131, Short.MAX_VALUE))))
+                                        .addGroup(jpnTicketLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(label10, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(label9, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(panel6, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(panel7, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(panel4, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label8, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+                                    .addContainerGap(203, Short.MAX_VALUE))
                         );
                     }
                     pickTicketScrollPane.setViewportView(jpnTicket);
@@ -1783,7 +1808,7 @@ public class EventPanel extends JPanel {
                         .addGroup(jpnSeat50Layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(pickTicketScrollPane, GroupLayout.PREFERRED_SIZE, 456, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(273, Short.MAX_VALUE))
+                            .addContainerGap(279, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnSeat50);
@@ -1877,13 +1902,15 @@ public class EventPanel extends JPanel {
 
                         //---- label11 ----
                         label11.setText("Available");
+                        label11.setFont(new Font("Lato Black", Font.BOLD, 14));
 
                         //---- label12 ----
                         label12.setText("Selected ");
+                        label12.setFont(new Font("Lato Black", Font.BOLD, 14));
 
                         //======== panel9 ========
                         {
-                            panel9.setBackground(Color.yellow);
+                            panel9.setBackground(new Color(0xfff9aa));
                             panel9.setLayout(null);
 
                             {
@@ -1904,10 +1931,11 @@ public class EventPanel extends JPanel {
 
                         //---- label13 ----
                         label13.setText("Occupied");
+                        label13.setFont(new Font("Lato Black", Font.BOLD, 14));
 
                         //======== panel10 ========
                         {
-                            panel10.setBackground(new Color(0xff3333));
+                            panel10.setBackground(new Color(0xd45c5c));
                             panel10.setLayout(null);
 
                             {
@@ -1930,57 +1958,54 @@ public class EventPanel extends JPanel {
                         jpnTicket2.setLayout(jpnTicket2Layout);
                         jpnTicket2Layout.setHorizontalGroup(
                             jpnTicket2Layout.createParallelGroup()
-                                .addGroup(GroupLayout.Alignment.TRAILING, jpnTicket2Layout.createSequentialGroup()
-                                    .addContainerGap(233, Short.MAX_VALUE)
-                                    .addGroup(jpnTicket2Layout.createParallelGroup()
-                                        .addGroup(jpnTicket2Layout.createSequentialGroup()
-                                            .addComponent(panel10, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(label13, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-                                            .addGap(27, 27, 27)
-                                            .addComponent(panel9, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(label12, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-                                            .addGap(29, 29, 29)
-                                            .addComponent(panel8, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(label11, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-                                            .addGap(146, 146, 146))
-                                        .addComponent(selectedSeat100, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE))
-                                    .addGap(74, 74, 74)
-                                    .addComponent(jpnNextButton2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(136, 136, 136))
-                                .addGroup(GroupLayout.Alignment.TRAILING, jpnTicket2Layout.createSequentialGroup()
-                                    .addContainerGap(75, Short.MAX_VALUE)
-                                    .addComponent(panel5, GroupLayout.PREFERRED_SIZE, 1154, GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(75, Short.MAX_VALUE))
                                 .addGroup(jpnTicket2Layout.createSequentialGroup()
                                     .addGap(60, 60, 60)
-                                    .addComponent(label7, GroupLayout.PREFERRED_SIZE, 491, GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jpnTicket2Layout.createParallelGroup()
+                                        .addGroup(jpnTicket2Layout.createSequentialGroup()
+                                            .addGap(15, 15, 15)
+                                            .addComponent(panel10, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(label13, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(58, 58, 58)
+                                            .addComponent(panel9, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(label12, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(66, 66, 66)
+                                            .addComponent(panel8, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(label11, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jpnTicket2Layout.createSequentialGroup()
+                                            .addComponent(panel5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(115, 115, 115)
+                                            .addGroup(jpnTicket2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                                .addComponent(selectedSeat100, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jpnNextButton2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(label7, GroupLayout.PREFERRED_SIZE, 491, GroupLayout.PREFERRED_SIZE))
+                                    .addContainerGap(256, Short.MAX_VALUE))
                         );
                         jpnTicket2Layout.setVerticalGroup(
                             jpnTicket2Layout.createParallelGroup()
-                                .addGroup(GroupLayout.Alignment.TRAILING, jpnTicket2Layout.createSequentialGroup()
-                                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jpnNextButton2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(133, 133, 133))
                                 .addGroup(jpnTicket2Layout.createSequentialGroup()
                                     .addContainerGap()
                                     .addComponent(label7)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(panel5, GroupLayout.PREFERRED_SIZE, 366, GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jpnTicket2Layout.createParallelGroup()
-                                        .addComponent(panel10, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(label13, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(panel9, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(label12, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(panel8, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(label11, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                                    .addComponent(selectedSeat100, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap())
+                                        .addGroup(jpnTicket2Layout.createSequentialGroup()
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(panel5, GroupLayout.PREFERRED_SIZE, 366, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jpnTicket2Layout.createSequentialGroup()
+                                            .addGap(56, 56, 56)
+                                            .addComponent(selectedSeat100, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(28, 28, 28)
+                                            .addComponent(jpnNextButton2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jpnTicket2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(label13, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                                        .addComponent(panel9, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                                        .addComponent(label12, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                                        .addComponent(panel8, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                                        .addComponent(label11, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                                        .addComponent(panel10, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                                    .addGap(0, 405, Short.MAX_VALUE))
                         );
                     }
                     pickTicketScrollPane2.setViewportView(jpnTicket2);
@@ -1990,21 +2015,17 @@ public class EventPanel extends JPanel {
                 jpnSeat100.setLayout(jpnSeat100Layout);
                 jpnSeat100Layout.setHorizontalGroup(
                     jpnSeat100Layout.createParallelGroup()
-                        .addGroup(jpnSeat100Layout.createParallelGroup()
-                            .addGroup(GroupLayout.Alignment.TRAILING, jpnSeat100Layout.createSequentialGroup()
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(pickTicketScrollPane2, GroupLayout.PREFERRED_SIZE, 1199, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(0, 1200, Short.MAX_VALUE)
+                        .addGroup(jpnSeat100Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(pickTicketScrollPane2, GroupLayout.PREFERRED_SIZE, 1199, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
                 jpnSeat100Layout.setVerticalGroup(
                     jpnSeat100Layout.createParallelGroup()
-                        .addGroup(jpnSeat100Layout.createParallelGroup()
-                            .addGroup(jpnSeat100Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(pickTicketScrollPane2, GroupLayout.PREFERRED_SIZE, 429, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(300, Short.MAX_VALUE)))
-                        .addGap(0, 735, Short.MAX_VALUE)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jpnSeat100Layout.createSequentialGroup()
+                            .addContainerGap(46, Short.MAX_VALUE)
+                            .addComponent(pickTicketScrollPane2, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
+                            .addGap(219, 219, 219))
                 );
             }
             jtbTabEvent.addTab("text", jpnSeat100);
@@ -2274,7 +2295,7 @@ public class EventPanel extends JPanel {
                     jpnPaymentLayout.createParallelGroup()
                         .addGroup(jpnPaymentLayout.createSequentialGroup()
                             .addComponent(scrollPane2, GroupLayout.PREFERRED_SIZE, 573, GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 162, Short.MAX_VALUE))
+                            .addGap(0, 174, Short.MAX_VALUE))
                 );
             }
             jtbTabEvent.addTab("text", jpnPayment);
@@ -2300,7 +2321,7 @@ public class EventPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - man
+    // Generated using JFormDesigner Evaluation license - Xuan Quynh Le
     private JPanel jpnEventHeader;
     private static JLabel EventArt;
     private static JLabel EventName;
