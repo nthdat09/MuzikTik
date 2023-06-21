@@ -12,7 +12,7 @@ new FormModel {
 				"font": new java.awt.Font( "Lato Black", 1, 16 )
 				"foreground": new java.awt.Color( 97, 184, 132, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"y": 395
+				"y": 300
 				"x": 5
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
@@ -21,7 +21,7 @@ new FormModel {
 				"background": &Color0 new java.awt.Color( 255, 255, 255, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 145
-				"y": 390
+				"y": 295
 				"width": 252
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
@@ -30,7 +30,7 @@ new FormModel {
 				"background": #Color0
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 145
-				"y": 340
+				"y": 245
 				"width": 252
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -39,7 +39,7 @@ new FormModel {
 				"font": new java.awt.Font( "Lato Black", 1, 16 )
 				"foreground": new java.awt.Color( 97, 184, 132, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"y": 345
+				"y": 250
 				"x": 5
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -61,7 +61,7 @@ new FormModel {
 				}
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 740
-				"y": 290
+				"y": 195
 				"width": 247
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -71,7 +71,7 @@ new FormModel {
 				"foreground": &Color1 new java.awt.Color( 97, 184, 132, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 605
-				"y": 295
+				"y": 200
 				"width": 77
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
@@ -80,9 +80,10 @@ new FormModel {
 				"editable": false
 				"font": #Font0
 				"enabled": false
+				"disabledTextColor": new java.awt.Color( 51, 51, 51, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 145
-				"y": 205
+				"y": 110
 				"width": 250
 				"height": 28
 			} )
@@ -92,7 +93,7 @@ new FormModel {
 				"font": &Font2 new java.awt.Font( "Lato Black", 1, 16 )
 				"foreground": #Color1
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"y": 210
+				"y": 115
 				"width": 57
 				"x": 5
 			} )
@@ -106,7 +107,7 @@ new FormModel {
 				}
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 740
-				"y": 340
+				"y": 245
 				"width": 250
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
@@ -116,7 +117,7 @@ new FormModel {
 				"font": #Font0
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 740
-				"y": 245
+				"y": 150
 				"width": 247
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
@@ -129,7 +130,7 @@ new FormModel {
 				}
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 145
-				"y": 290
+				"y": 195
 				"width": 252
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
@@ -142,7 +143,7 @@ new FormModel {
 				}
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 740
-				"y": 205
+				"y": 110
 				"width": 250
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
@@ -155,7 +156,7 @@ new FormModel {
 				}
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 145
-				"y": 245
+				"y": 150
 				"width": 252
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -166,7 +167,7 @@ new FormModel {
 				"background": sfield java.awt.Color white
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 605
-				"y": 345
+				"y": 250
 				"width": 99
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -179,7 +180,7 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "SAVEMouseClicked", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 870
-				"y": 410
+				"y": 315
 				"width": 112
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -189,7 +190,7 @@ new FormModel {
 				"foreground": #Color1
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 605
-				"y": 210
+				"y": 115
 				"width": 126
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -199,7 +200,7 @@ new FormModel {
 				"foreground": #Color1
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 605
-				"y": 250
+				"y": 155
 				"width": 87
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -208,7 +209,7 @@ new FormModel {
 				"font": new java.awt.Font( "Lato Black", 1, 16 )
 				"foreground": #Color1
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"y": 295
+				"y": 200
 				"width": 87
 				"x": 5
 			} )
@@ -218,7 +219,7 @@ new FormModel {
 				"font": new java.awt.Font( "Lato Black", 1, 16 )
 				"foreground": #Color1
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"y": 250
+				"y": 155
 				"width": 71
 				"x": 5
 			} )
