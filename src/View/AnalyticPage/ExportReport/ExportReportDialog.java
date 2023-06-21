@@ -843,6 +843,18 @@ public class ExportReportDialog extends JDialog {
             }
 
             JOptionPane.showMessageDialog(null, "Export successfully");
+            // Open folder contain file
+            Desktop desktop = Desktop.getDesktop();
+            File dirToOpen = null;
+            try {
+                dirToOpen = new File("src\\Asset\\Analyst");
+                desktop.open(dirToOpen);
+            } catch (IllegalArgumentException iae) {
+                System.out.println("File Not Found");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
