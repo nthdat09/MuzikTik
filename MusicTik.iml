@@ -26,5 +26,6 @@
     <orderEntry type="library" name="LGoodDatePicker-11.2.1" level="project" />
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="JFreeChart" level="project" />
+    <orderEntry type="library" name="itextpdf-5.5.9" level="project" />
   </component>
 </module>
