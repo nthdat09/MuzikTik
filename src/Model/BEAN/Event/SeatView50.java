@@ -313,7 +313,7 @@ public class SeatView50 extends JPanel {
         for(int i = 0 ; i < reversedSeatList.size(); i++) {
             for(int j = 0; j < seatButton.size(); j++) {
                 if(seatButton.get(j).getText().equals(String.valueOf(reversedSeatList.get(i)))) {
-                    seatButton.get(j).setBackground(Color.RED);
+                    seatButton.get(j).setBackground(Color.decode("#d45c5c"));
                     seatButton.get(j).setForeground(Color.WHITE);
                 }
             }
@@ -326,7 +326,7 @@ public class SeatView50 extends JPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (button.getBackground().equals(Color.decode("#92CFAA"))) {
-                        button.setBackground(Color.YELLOW);
+                        button.setBackground(Color.decode("#fff9aa"));
                         button.setForeground(Color.BLACK);
                         Integer seatID = Integer.parseInt(button.getText());
                         Connection connection = UserDatabase.getConnection();
@@ -343,7 +343,7 @@ public class SeatView50 extends JPanel {
                         } catch (SQLException e1) {
                             e1.printStackTrace();
                         }
-                    } else if (button.getBackground().equals(Color.YELLOW)) {
+                    } else if (button.getBackground().equals(Color.decode("#fff9aa"))) {
                         button.setBackground(Color.decode("#92CFAA"));
                         button.setForeground(Color.WHITE);
                         boolean found = false;
@@ -389,7 +389,7 @@ public class SeatView50 extends JPanel {
 
     public static void getSelectedSeatAndPrice() {
         for(JButton button : seatButton) {
-            if(button.getBackground().equals(Color.YELLOW)) {
+            if(button.getBackground().equals(Color.decode("#fff9aa"))) {
                 selectedSeat.add(Integer.parseInt(button.getText()));
             }
         }
