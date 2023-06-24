@@ -49,7 +49,7 @@ The objective of the Music Concert Ticketing Management System project is to dev
 Generate statistical reports
 * Manage ticket for music events
 ### 6. Developer tools & Technology 
-* Programming language used: Java * 
+* Programming language used: Java 
 * IDE used: IntelliJ IDEA 
 * GUI programming tool: JFormDesigner - Java/Swing GUI Designer 
 * Database: MySQL 
